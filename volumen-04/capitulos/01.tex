@@ -1,0 +1,197 @@
+\chapter{Promedios y sumación de Cesàro}\label{cap:v4-01}
+Una serie de Fourier puede conservar información sobre una función aunque sus sumas parciales no converjan. Antes de trabajar con funciones, estudiaremos una operación elemental que reduce las oscilaciones: tomar promedios. Conviene distinguir siempre los términos de una serie, sus sumas parciales y los promedios de esas sumas.
+
+\section{Regularidad del promedio}\label{lectura:v4-01}
+\index{Cesaro@Cesàro!sumacion@sumación}\index{serie!sumable por Cesaro@sumable por Cesàro}
+\begin{proposicion}
+Si $x_n\to x$ en un espacio normado $V$, entonces $n^{-1}\sum_{k=1}^nx_k\to x$.
+\end{proposicion}
+\begin{proof}
+Fijemos $\eps>0$. Existe $N$ tal que $\norm{x_k-x}<\eps/2$ para $k>N$. Para $n>N$,
+\[
+ \left\|\frac1n\sum_{k=1}^nx_k-x\right\|
+ \leq\frac1n\sum_{k=1}^N\norm{x_k-x}+\frac{n-N}{n}\frac\eps2.
+\]
+La primera suma tiene un número fijo de términos; su cociente entre $n$ es menor que $\eps/2$ cuando $n$ es suficientemente grande. No se ha usado completitud: el límite ya pertenece a $V$.
+\end{proof}
+\begin{definicion}
+Para una serie $\sum_{n\geq1}v_n$ escribimos
+\[
+ s_n=\sum_{k=1}^nv_k,\qquad \sigma_n=\frac1n\sum_{k=1}^ns_k.
+\]
+La serie es \emph{sumable por Cesàro}, o $(C,1)$-sumable, con suma $v$, si $\sigma_n\to v$ en norma.
+\end{definicion}
+\begin{proposicion}
+La sumación de Cesàro es lineal y consistente con la suma ordinaria. Además, si $\sigma_n$ converge, entonces $s_n/n\to0$.
+\end{proposicion}
+\begin{proof}
+Para las series $\sum u_n$ y $\sum v_n$, las sumas parciales y sus promedios se combinan con los mismos escalares; la continuidad de suma y multiplicación escalar prueba linealidad. La proposición anterior, aplicada a $(s_n)$, prueba consistencia. Finalmente,
+\[
+ \frac{s_n}{n}=\sigma_n-\frac{n-1}{n}\sigma_{n-1}
+ =(\sigma_n-\sigma_{n-1})+\frac{\sigma_{n-1}}n\quad(n\geq2).
+\]
+La primera diferencia tiende a cero y la segunda también, porque una sucesión convergente es acotada.
+\end{proof}
+\begin{ejemplo}
+Si $z\in\C$, $|z|=1$ y $z\ne1$, entonces $s_n=z(1-z^n)/(1-z)$. En consecuencia,
+\[
+ \sigma_n=\frac z{1-z}-\frac{z^2(1-z^n)}{n(1-z)^2}\longrightarrow\frac z{1-z}.
+\]
+La serie $\sum z^n$ no converge ordinariamente, pues sus términos no tienden a cero. Esto incluye $z=e^{i}$, ejemplo de la lectura original. Los promedios no cambian la suma de una serie convergente, pero sí amplían la clase de series a las que puede asignarse una suma.
+\end{ejemplo}
+
+\section{Una condición tauberiana}
+\index{Hardy--Landau, teorema de}\index{teorema!tauberiano}
+\begin{teorema}[Hardy--Landau]
+Si $\sigma_n\to v$ y $\norm{v_n}\leq A/n$ para todo $n$ suficientemente grande, entonces $s_n\to v$.
+\end{teorema}
+\begin{estrategia}
+El promedio global $\sigma_n$ puede ocultar oscilaciones. La cota sobre $v_n$ asegura que las sumas parciales cambian poco dentro de un intervalo corto de índices. Compararemos $s_m$ con el promedio de $s_{n+1},\ldots,s_m$, tomando $m/n$ cercano a uno.
+\end{estrategia}
+\begin{proof}
+Para $m>n$ después del índice donde vale la hipótesis,
+\[
+ \frac1{m-n}\sum_{k=n+1}^ms_k=\frac{m\sigma_m-n\sigma_n}{m-n}.
+\]
+Además, $\norm{s_m-s_k}\leq\sum_{j=k+1}^m A/j\leq A(m-k)/n$. Por tanto
+\[
+ \norm{s_m-v}\leq
+ \frac{m\norm{\sigma_m-v}+n\norm{\sigma_n-v}}{m-n}
+ +A\frac{m-n}{n}.
+\]
+Fijemos $0<\delta<1$ y, para cada $m$ grande, tomemos $n=\lfloor m/(1+\delta)\rfloor$. Entonces $n\to\infty$, $m/n\to1+\delta$ y los cocientes $m/(m-n)$ y $n/(m-n)$ permanecen acotados. El primer sumando tiende a cero, de modo que $\limsup_m\norm{s_m-v}\leq A\delta$. Como esto vale para todo $\delta>0$, el límite superior es cero.
+\end{proof}
+Esta prueba corrige las identidades de sumas intermedias de la lectura: no aparece ningún término adicional $s_{n+1}$ en $\sum_{k=n+1}^ms_k=m\sigma_m-n\sigma_n$.
+
+\section{Ejercicios sobre sumabilidad y productos}
+\begin{ejercicio}[Lectura 1, ejercicio 1]\label{ej:v4-l01-1}
+Si $\sum v_n$ tiene suma de Cesàro $v$, demostrar que $\sum_{n\geq1}v_{n+1}$ tiene suma de Cesàro $v-v_1$.
+\end{ejercicio}
+\begin{solucion}
+Sus sumas parciales son $s_{n+1}-v_1$. El promedio de las primeras $n$ es
+\[
+ \frac1n\sum_{k=1}^n(s_{k+1}-v_1)
+ =\frac{n+1}{n}\sigma_{n+1}-\frac{s_1}{n}-v_1\longrightarrow v-v_1.
+\]
+Así se justifica quitar un término sin suponer convergencia ordinaria.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 2: rectificación del criterio de Abel]\label{ej:v4-l01-2}
+El enunciado original afirma que la monotonía de $(\alpha_n)$ basta para que $\sum\alpha_nv_n$ sea sumable por Cesàro cuando lo es $\sum v_n$. Mostrar que es falso. Probar la siguiente versión suficiente en un espacio de Banach $V$: si $(\alpha_n)$ converge y
+\[
+ \sum_{n\geq1} n|\alpha_n-\alpha_{n+1}|<\infty,
+\]
+entonces el producto término a término conserva la sumabilidad de Cesàro.
+\end{ejercicio}
+\begin{solucion}
+Tomemos $v_n=(-1)^{n+1}$ y $\alpha_n=n$. La primera serie tiene suma de Cesàro $1/2$, mientras que la segunda no es sumable, como se calcula en el ejercicio~\ref{ej:v4-l01-8}. La sola monotonía es insuficiente.
+
+Ni siquiera añadir acotación a la monotonía basta. Para verlo, fijemos $N_j=2^{4j}$, $A_j=2^{2j}$ y una serie cuyas únicas sumas parciales no nulas sean $s_{N_j}=A_j$. Es decir, sus términos no nulos son $v_{N_j}=A_j$ y $v_{N_j+1}=-A_j$. Si $N_j\leq n<N_{j+1}$,
+\[
+ 0\leq\sigma_n\leq\frac{\sum_{r\leq j}4^r}{16^j}\longrightarrow0.
+\]
+Definamos $\alpha_n=\sum_{r:N_r\geq n}2^{-r}$. Esta sucesión es no negativa, decreciente y acotada, y $\alpha_{N_j}-\alpha_{N_j+1}=2^{-j}$. Cada pareja de términos de la serie multiplicada deja un incremento permanente $A_j2^{-j}=2^j$. Todas sus sumas parciales son no negativas; para $N_j+1\leq n\leq2N_j$ son al menos $2^j$. Su promedio en $2N_j$ es, por ello, al menos $2^{j-1}$.
+
+Probemos ahora la versión corregida. Pongamos $d_k=\alpha_k-\alpha_{k+1}$ y $\alpha=\lim\alpha_n$. La sumación por partes, obtenida al sustituir $v_k=s_k-s_{k-1}$, da
+\[
+ t_n:=\sum_{k=1}^n\alpha_kv_k=\alpha_ns_n+\sum_{k=1}^{n-1}d_ks_k.
+\]
+Como $s_k/k\to0$, existe $C$ con $\norm{s_k}\leq Ck$. La serie $\sum d_ks_k$ es absolutamente convergente si $V$ es completo; sin completitud puede no tener suma en $V$. Por tanto, para esta versión añadimos explícitamente que $V$ sea de Banach (o que esa serie converja en $V$). Sea $b$ su suma. Además,
+\[
+ n|\alpha_n-\alpha|\leq\sum_{k\geq n}k|d_k|\longrightarrow0,
+\]
+de donde $(\alpha_n-\alpha)s_n\to0$. Los promedios de $t_n$ convergen, entonces, a $\alpha v+b$: el promedio de $\alpha s_n$ tiende a $\alpha v$, el del error tiende a cero y el de las sumas parciales de $\sum d_ks_k$ tiende a $b$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 3]\label{ej:v4-l01-3}
+Sean $s_n=\sum_{k=1}^nv_k$, $t_n=\sum_{k=1}^nkv_k$ y $\sigma_n=n^{-1}\sum_{k=1}^ns_k$. Probar: (i) $t_n=(n+1)s_n-n\sigma_n$; (ii) si la serie es Cesàro-sumable, converge ordinariamente si y solo si $t_n/n\to0$; (iii) la serie es Cesàro-sumable si y solo si $\sum t_n/[n(n+1)]$ converge en $V$.
+\end{ejercicio}
+\begin{solucion}
+Cada $v_k$ aparece $n-k+1$ veces en $\sum_{j=1}^ns_j$, así que $n\sigma_n=\sum_{k=1}^n(n-k+1)v_k=(n+1)s_n-t_n$. Esto prueba (i). Si $s_n\to s$, la consistencia da $\sigma_n\to s$, y (i) implica $t_n/n\to0$. Recíprocamente, $s_n=\frac n{n+1}(\sigma_n+t_n/n)$ prueba (ii).
+
+Con $\sigma_0=0$, la identidad $s_n=n\sigma_n-(n-1)\sigma_{n-1}$ transforma (i) en
+\[
+ \frac{t_n}{n(n+1)}=\frac n{n+1}\sigma_n-\frac{n-1}{n}\sigma_{n-1}.
+\]
+La suma telescópica hasta $N$ vale $\frac N{N+1}\sigma_N$. Su convergencia equivale a la de $\sigma_N$, incluso sin la hipótesis de Banach que añadía el original.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 4]\label{ej:v4-l01-4}
+En dimensión finita, demostrar que una serie es Cesàro-sumable si y solo si lo son sus series coordenadas respecto de una base fija.
+\end{ejercicio}
+\begin{solucion}
+Sea $(e_1,\ldots,e_d)$ una base. Las coordenadas del promedio vectorial son los promedios escalares, por linealidad. Las aplicaciones coordenadas son continuas porque todas las normas en dimensión finita son equivalentes; así, convergencia vectorial implica convergencia de cada coordenada. Recíprocamente, si las coordenadas convergen a $a_j$, entonces
+\[
+ \left\|\sigma_n-\sum_{j=1}^da_je_j\right\|
+ \leq\sum_{j=1}^d|\sigma_n^{(j)}-a_j|\norm{e_j}\longrightarrow0.
+\]
+La finitud de la suma es esencial.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 5: uniformidad necesaria]\label{ej:v4-l01-5}
+El original propone caracterizar la sumabilidad en $\ell^\infty$ por sumabilidad de cada coordenada y acotación de las sumas obtenidas. Dar un contraejemplo y formular el criterio correcto.
+\end{ejercicio}
+\begin{solucion}
+Sean $s_n(k)=\mathbf1_{\{k\geq n\}}$, $v_1=s_1$ y $v_n=s_n-s_{n-1}$ para $n\geq2$. Todos son elementos de $\ell^\infty$. Para cada coordenada fija $k$, $s_n(k)\to0$, luego la suma de Cesàro escalar es cero. Sin embargo,
+\[
+ \sigma_n(k)=\frac{\min(k,n)}n,\qquad \norm{\sigma_n}_\infty=1.
+\]
+No hay convergencia en $\ell^\infty$: cualquier límite tendría todas sus coordenadas nulas. El criterio correcto es que los promedios escalares converjan \emph{uniformemente en la coordenada} a una sucesión acotada $a$, esto es, $\sup_k|\sigma_n(k)-a(k)|\to0$. Esta condición es exactamente la definición de convergencia en la norma de $\ell^\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 6]\label{ej:v4-l01-6}
+En un álgebra de Banach $A$, sea $\sum u_n$ absolutamente convergente y sea $w_n=\sum_{k=1}^nu_kv_{n+1-k}$. Demostrar que $\sum w_n$ converge absolutamente, ordinariamente o por Cesàro si $\sum v_n$ tiene, respectivamente, esa propiedad. En cada caso su suma es el producto de las sumas en el orden indicado.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $a=\sum u_n$ y $b=\sum v_n$, entendiendo la segunda suma según el caso. Si ambas series son absolutamente convergentes,
+\[
+ \sum_n\norm{w_n}\leq\sum_{k,j\geq1}\norm{u_k}\norm{v_j}
+ =\left(\sum_k\norm{u_k}\right)\left(\sum_j\norm{v_j}\right)<\infty.
+\]
+Las sumas rectangulares del producto convergen a $ab$ por continuidad de la multiplicación; la convergencia absoluta permite reordenarlas en diagonales y conserva el límite.
+
+En el caso ordinario, pongamos $t_j=\sum_{r=1}^jv_r$, $t_0=0$. Las sumas parciales del producto son $W_n=\sum_{k=1}^nu_kt_{n+1-k}$. La sucesión $(t_j)$ es acotada. Dado $\eps>0$, elegimos $K$ con $\sum_{k>K}\norm{u_k}$ tan pequeña como se requiera; la cola de $W_n$ queda acotada por esa suma multiplicada por $\sup_j\norm{t_j}$. Para los primeros $K$ términos, $t_{n+1-k}\to b$. Pasando primero $n\to\infty$ y luego $K\to\infty$, resulta $W_n\to ab$.
+
+Para Cesàro, sean $\tau_m=m^{-1}\sum_{j=1}^mt_j\to b$. Al intercambiar dos sumas finitas,
+\[
+ \frac1n\sum_{r=1}^nW_r
+ =\sum_{k=1}^nu_k\frac{n+1-k}{n}\tau_{n+1-k}.
+\]
+Para cada $k$ fijo el segundo factor tiende a $b$, y su norma es a lo sumo $\sup_m\norm{\tau_m}$. El mismo argumento de cabeza finita y cola absolutamente pequeña prueba convergencia a $ab$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 7]\label{ej:v4-l01-7}
+Si $\sum u_n=a$ y $\sum v_n=b$ convergen en un álgebra normada, probar que su producto de Cauchy tiene suma de Cesàro $ab$. Determinar si necesariamente converge ordinariamente.
+\end{ejercicio}
+\begin{solucion}
+Sean $s_n=\sum_{j\leq n}u_j$, $t_n=\sum_{j\leq n}v_j$. Contando cuántas veces aparece cada producto $u_iv_j$, obtenemos
+\[
+ \frac1n\sum_{r=1}^nW_r=\frac1n\sum_{k=1}^ns_kt_{n+1-k}.
+\]
+Elijamos $K$ para que $\norm{s_k-a}<\eps$ y $\norm{t_k-b}<\eps$ si $k\geq K$. Fuera de los a lo sumo $2K$ índices próximos a los extremos, ambos factores son próximos a sus límites; allí
+\[
+ \norm{s_kt_{n+1-k}-ab}\leq\eps\sup_j\norm{t_j}+\norm a\eps.
+\]
+Los términos extremos, uniformemente acotados, contribuyen $O(K/n)$. Así el promedio tiende a $ab$.
+
+La convergencia ordinaria puede fallar: tomemos $u_n=v_n=(-1)^{n-1}/\sqrt n$. Ambas series convergen por el criterio alternante, pero
+\[
+ |w_n|=\sum_{k=1}^n\frac1{\sqrt{k(n+1-k)}}\geq\frac{2n}{n+1},
+\]
+porque $k(n+1-k)\leq(n+1)^2/4$. Los términos del producto ni siquiera tienden a cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 8]\label{ej:v4-l01-8}
+Calcular la suma de Cesàro de $\sum_{n\geq1}(-1)^{n+1}$ y mostrar que su producto de Cauchy consigo misma no es Cesàro-sumable.
+\end{ejercicio}
+\begin{solucion}
+Las sumas parciales de la primera serie alternan entre $1$ y $0$, por lo que sus promedios tienden a $1/2$. Los términos del producto son $w_n=n(-1)^{n+1}$. Sus sumas parciales satisfacen $W_{2m}=-m$ y $W_{2m-1}=m$. Por tanto
+\[
+ \frac1{2m}\sum_{r=1}^{2m}W_r=0,
+ \qquad \frac1{2m+1}\sum_{r=1}^{2m+1}W_r=\frac{m+1}{2m+1}\longrightarrow\frac12.
+\]
+Los dos límites subsecuenciales difieren. El ejercicio anterior exige convergencia ordinaria de las dos series; sustituirla por sumabilidad de Cesàro invalida su conclusión.
+\end{solucion}
+
+\paragraph{Enlace con las series de Fourier.}
+Los promedios de Cesàro convertirán el núcleo oscilante de Dirichlet en el núcleo no negativo de Fejér. La positividad permitirá estimar el error separando una vecindad pequeña del origen de su complemento; esa idea reaparecerá en las identidades aproximadas de grupos.

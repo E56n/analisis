@@ -1,0 +1,180 @@
+\chapter{Espacios, duales y operadores: punto de partida}\label{cap:v3-01}
+La dimensión finita oculta diferencias que serán decisivas: allí toda aplicación lineal es continua y toda bola cerrada es compacta. En dimensión infinita hay que distinguir esas propiedades y comprobarlas. Este capítulo fija las convenciones y reúne las herramientas previas que utilizaremos; los argumentos breves muestran cómo se conectan los resultados de los dos primeros volúmenes.
+
+\section{Normas, completitud y ejemplos}\label{lec:v3-00}
+\fuentelectura{00}{Algunos resultados preliminares}
+\begin{definicion}
+Una norma en un espacio vectorial $X$ sobre $\F=\R$ o $\C$ es una función $\norm\cdot:X\to[0,\infty)$ tal que $\norm x=0$ equivale a $x=0$, $\norm{\alpha x}=|\alpha|\norm x$ y $\norm{x+y}\leq\norm x+\norm y$. La distancia asociada es $d(x,y)=\norm{x-y}$. El espacio es de Banach si toda sucesión de Cauchy converge en él.
+\end{definicion}
+\index{Banach, espacio de}\index{norma}
+La desigualdad triangular implica $|\norm x-\norm y|\leq\norm{x-y}$. Por tanto la norma es continua. También lo son las operaciones, pues
+\[
+ \norm{(x+y)-(x_0+y_0)}\leq\norm{x-x_0}+\norm{y-y_0},\qquad
+ \norm{\alpha x-\alpha_0x_0}\leq|\alpha|\norm{x-x_0}+|\alpha-\alpha_0|\norm{x_0}.
+\]
+En la segunda estimación $|\alpha|$ permanece acotado cuando $\alpha\to\alpha_0$.
+
+\begin{proposicion}\label{v3:series-banach}
+Un espacio normado es de Banach si y solo si toda serie $\sum_nx_n$ con $\sum_n\norm{x_n}<\infty$ converge en el espacio.
+\end{proposicion}
+\begin{proof}
+Las sumas parciales de una serie absolutamente convergente son de Cauchy, porque la norma de cualquier cola no supera la suma de las normas de esa cola. La completitud da el límite.
+
+Recíprocamente, dada una sucesión de Cauchy $(y_n)$, elija $n_1<n_2<\cdots$ de modo que $\norm{y_p-y_q}<2^{-j}$ si $p,q\geq n_j$. La serie
+\[
+ y_{n_1}+\sum_{j\geq1}(y_{n_{j+1}}-y_{n_j})
+\]
+es absolutamente convergente. Sus sumas parciales son $y_{n_j}$, así que esta subsucesión converge a algún $y$. Para $\eps>0$, elija $N$ con $\norm{y_p-y_q}<\eps/2$ para $p,q\geq N$ y después $j$ con $n_j\geq N$, $\norm{y_{n_j}-y}<\eps/2$. Entonces $\norm{y_n-y}<\eps$ para $n\geq N$. Converge la sucesión completa.
+\end{proof}
+
+Los siguientes ejemplos recuperan los de la lectura, con las precisiones necesarias.
+\begin{enumerate}
+\item En $\F^m$ las normas $\norm\cdot_1$, $\norm\cdot_2$ y $\norm\cdot_\infty$ son equivalentes: $\norm x_\infty\leq\norm x_2\leq\norm x_1\leq m\norm x_\infty$. La convergencia de Cauchy se verifica coordenada a coordenada, y esos espacios son completos.
+\item Para un espacio de medida $(\Omega,\Sigma,\mu)$, $L^p(\mu)$, $1\leq p<\infty$, consta de \emph{clases de equivalencia} de funciones medibles, con $\norm f_p=(\int|f|^p\,d\mu)^{1/p}$. La norma sería solo una seminorma si no se identificaran funciones iguales casi en todas partes. Minkowski da la desigualdad triangular. Para comprobar completitud mediante series, suponga $\sum_n\norm{f_n}_p<\infty$. Las sumas $g_N=\sum_{n\leq N}|f_n|$ satisfacen $\norm{g_N}_p\leq\sum_n\norm{f_n}_p$. Convergencia monótona da $g=\sum_n|f_n|\in L^p$, de modo que $\sum_nf_n$ converge casi en todas partes a $f$. Aplicando Fatou a cada cola se obtiene $\norm{f-\sum_{n\leq N}f_n}_p\leq\sum_{n>N}\norm{f_n}_p\to0$. El caso de medida de conteo produce $\ell^p(I)$.
+\item $L^\infty(\mu)$ lleva la norma $\norm f_\infty=\inf\{C\geq0:|f|\leq C\text{ casi en todas partes}\}$. Para una serie con suma de normas finita, retire la unión numerable de los conjuntos excepcionales donde las cotas fallan. Fuera de ella la serie converge uniformemente y su cola está dominada por la cola de normas. Esto demuestra completitud. Incluye $\ell^\infty(I)$.
+\item Para un espacio topológico $X$, la norma uniforme está definida en $C_b(X)$, las funciones continuas \emph{acotadas}. Una sucesión uniformemente de Cauchy tiene un límite uniforme acotado; la estimación de tres términos demuestra su continuidad. Si $X$ es compacto, toda función continua es acotada y escribimos $C(X)$. En un espacio general no puede atribuirse una norma finita a todo $C(X)$: en $X=\R$, $x\mapsto x$ es un contraejemplo.
+\item Las medidas con signo o complejas de variación total finita forman un espacio de Banach con $\norm\nu=|\nu|(\Omega)$. En efecto, si $\sum_n\norm{\nu_n}<\infty$, defina $\nu(E)=\sum_n\nu_n(E)$. Para conjuntos disjuntos $E_j$, la suma doble es absolutamente convergente porque $\sum_n\sum_j|\nu_n(E_j)|\leq\sum_n\norm{\nu_n}$. Se pueden intercambiar las sumas; así $\nu$ es una medida y $\norm{\nu-\sum_{n\leq N}\nu_n}\leq\sum_{n>N}\norm{\nu_n}$. La caracterización anterior da completitud. En un espacio localmente compacto de Hausdorff, las medidas de Borel regulares de variación finita forman un subespacio cerrado: una aproximación en variación traslada las aproximaciones interior y exterior de una medida regular al límite, con un error adicional a lo sumo dos veces la distancia en variación. Por tanto también es de Banach.
+\item En $C^m([a,b])$, $\norm f_{C^m}=\sum_{j=0}^m\norm{f^{(j)}}_\infty$ es completa. Si las derivadas de una sucesión de Cauchy convergen uniformemente a $g_0,\ldots,g_m$, las identidades
+\[
+ f_n^{(j)}(t)-f_n^{(j)}(a)=\int_a^t f_n^{(j+1)}(s)\,ds
+\]
+pasan al límite uniformemente. El teorema fundamental del cálculo da $g_j'=g_{j+1}$. Por tanto $g_0\in C^m$ y la convergencia ocurre en esa norma. Esta norma es adecuada para el espacio de Banach; su eventual uso como \emph{norma de álgebra} exige otra comprobación en el capítulo~\ref{cap:v3-10}.
+\end{enumerate}
+\begin{ejemplo}[La suavidad ilimitada no garantiza completitud]
+En un intervalo con $c$ interior, $h_\eps(t)=\sqrt{(t-c)^2+\eps^2}$ converge uniformemente a $|t-c|$. Para $m\geq1$, integre $h_\eps$ sucesivamente $m$ veces desde $a$, con constantes de integración nulas. Las funciones resultantes son suaves y convergen en $C^m$ a una función cuya derivada $m$-ésima es $|t-c|$, que no es diferenciable en $c$. Así $C^\infty([a,b])$ no es completo con ninguna norma $\norm\cdot_{C^m}$ fija. Para $m=0$ basta la sucesión $h_\eps$.
+\end{ejemplo}
+
+\section{Operadores y duales}
+\begin{teorema}\label{v3:acotacion}
+Para una aplicación lineal $T:X\to Y$ entre espacios normados son equivalentes: continuidad; continuidad en cero; existencia de $C\geq0$ con $\norm{Tx}\leq C\norm x$. Los operadores que satisfacen estas condiciones forman $\Bcal(X,Y)$, con norma
+\[
+ \norm T=\sup_{\norm x\leq1}\norm{Tx}=\inf\{C\geq0:\norm{Tx}\leq C\norm x\ \forall x\}.
+\]
+Si $X\ne\{0\}$, el supremo puede tomarse sobre $\norm x=1$. Si $Y$ es de Banach, $\Bcal(X,Y)$ también lo es.
+\end{teorema}
+\begin{proof}
+La continuidad implica continuidad en cero. Si $\norm{Tx}<1$ cuando $\norm x<\delta$, para $x\ne0$ aplique esa implicación a $\delta x/(2\norm x)$ y obtenga $\norm{Tx}\leq2\norm x/\delta$. Una cota global implica $\norm{Tx-Tz}\leq C\norm{x-z}$ y, por tanto, continuidad. Normalizar $x$ muestra las fórmulas del supremo y del ínfimo. Homogeneidad y desigualdad triangular pasan al supremo; si $\norm T=0$, todo $Tx$ es cero. En el dominio nulo el operador cero tiene norma cero, sin recurrir al supremo sobre una esfera vacía.
+
+Sea $(T_n)$ de Cauchy en norma. Para cada $x$, $(T_nx)$ es de Cauchy en $Y$, de modo que $Tx=\lim_nT_nx$ está definido. La continuidad de las operaciones muestra que $T$ es lineal. Además $\sup_n\norm{T_n}=M<\infty$ implica $\norm{Tx}\leq M\norm x$. Si $\norm{T_n-T_m}<\eps$ para $m,n\geq N$, fijar $n$ y pasar $m\to\infty$ da $\norm{(T_n-T)x}\leq\eps\norm x$. Tomar supremo produce $\norm{T_n-T}\leq\eps$. Así la convergencia es en norma de operador.
+\end{proof}
+\index{operador!acotado}\index{dual!continuo}
+El dual continuo es $X^*=\Bcal(X,\F)$; siempre es de Banach. Si $S:Y\to Z$ es acotado, $\norm{ST}\leq\norm S\norm T$ porque $\norm{STx}\leq\norm S\norm{Tx}$. En particular, $\Bcal(X)=\Bcal(X,X)$ tiene un producto continuo: si $S_n\to S$ y $T_n\to T$, entonces
+\[
+ \norm{S_nT_n-ST}\leq\norm{S_n}\norm{T_n-T}+\norm{S_n-S}\norm T\longrightarrow0.
+\]
+La acotación de $(\norm{S_n})$ procede de su convergencia.
+
+\section{Geometría de Hilbert y proyecciones}
+Un producto interno satisface positividad definida, linealidad en su primera variable y simetría conjugada $\ip xy=\overline{\ip yx}$. Cauchy--Schwarz se obtiene, si $y\ne0$, expandiendo $0\leq\norm{x-\ip xy\,y/\norm y^2}^2$. Resulta $|\ip xy|\leq\norm x\norm y$, y la expansión de $\norm{x+y}^2$ da la desigualdad triangular. Un espacio completo para esta norma es de Hilbert.
+
+\begin{proposicion}[Paralelogramo y polarización]\label{v3:polarizacion}
+Una norma proviene de un producto interno si y solo si
+\[
+ \norm{x+y}^2+\norm{x-y}^2=2\norm x^2+2\norm y^2.
+\]
+El producto interno, cuando existe, es único. En el caso complejo, lineal en la primera variable, es
+\[
+ \ip xy=\frac{\norm{x+y}^2-\norm{x-y}^2}{4}
+ +i\frac{\norm{x+iy}^2-\norm{x-iy}^2}{4}.
+\]
+\end{proposicion}
+\begin{proof}
+La necesidad y la fórmula se verifican expandiendo los cuatro cuadrados. Para la suficiencia, ponga $q(x)=\norm x^2$ y, en el espacio real subyacente, $B(x,y)=(q(x+y)-q(x-y))/4$. Es simétrica, continua, $B(x,x)=q(x)$ y $B(0,y)=0$. Restar dos identidades del paralelogramo da
+\[
+ B(x+z,y)+B(x-z,y)=2B(x,y).
+\]
+Tomar $z=x$ muestra $B(2x,y)=2B(x,y)$. Aplicar la igualdad anterior a $x=(u+v)/2$, $z=(u-v)/2$ da aditividad. La aditividad implica homogeneidad racional; la continuidad la extiende a escalares reales. En el caso real, $B$ es el producto buscado.
+
+En el caso complejo, $q(ix)=q(x)$ implica $B(ix,iy)=B(x,y)$ y $B(ix,y)=-B(x,iy)$. Defina $\ip xy=B(x,y)+iB(x,iy)$. Las identidades anteriores verifican $\ip{ix}y=i\ip xy$ y la simetría conjugada; la bilinealidad real verifica las demás propiedades. También $B(x,ix)=0$, pues $B(x,ix)=-B(ix,x)$, así que $\ip xx=q(x)>0$ si $x\ne0$.
+\end{proof}
+\begin{observacion}[Precisión del repaso original]
+No es correcto afirmar que, de todos los ejemplos anteriores, solo $L^2$ admite producto interno: $\F^m$ con norma euclidiana también lo admite, y espacios de funciones sobre un solo punto son unidimensionales. El criterio exacto es el paralelogramo. Por ejemplo, en $\ell^1$ con $x=e_1$, $y=e_2$ sus dos miembros valen $8$ y $4$.
+\end{observacion}
+
+\begin{teorema}[Proyección ortogonal]\label{v3:proyeccion}
+Si $M$ es un subespacio completo de un espacio con producto interno $X$, todo $x\in X$ admite una única descomposición $x=m+r$, donde $m\in M$, $r\in M^\perp$. Además
+\[
+ \dist(x,M)=\norm{x-m},\qquad
+ \norm{x-u}^2=\norm{x-m}^2+\norm{m-u}^2\quad(u\in M).
+\]
+En Hilbert, esto ocurre exactamente para los subespacios cerrados.
+\end{teorema}
+\begin{proof}
+Ponga $d=\dist(x,M)$ y elija $m_n\in M$ con $\norm{x-m_n}\to d$. Como $(m_n+m_k)/2\in M$, el paralelogramo implica
+\[
+ \norm{m_n-m_k}^2\leq2\norm{x-m_n}^2+2\norm{x-m_k}^2-4d^2\longrightarrow0.
+\]
+La completitud de $M$ da $m_n\to m\in M$, y $\norm{x-m}=d$. Para $u\in M$, $\norm{x-m-tu}^2\geq\norm{x-m}^2$ para todo $t\in\R$. Expandir ese polinomio cuadrático obliga a $\operatorname{Re}\ip{x-m}u=0$; en el caso complejo, reemplazar $u$ por $iu$ obliga también a que la parte imaginaria sea cero. Así $r=x-m\in M^\perp$.
+
+La identidad pitagórica da la fórmula para $u$ y la unicidad: cualquier otro minimizador debe satisfacer $\norm{m-u}=0$. Si todos los vectores admiten la descomposición, $M=(M^\perp)^\perp$ y es cerrado, pues las funcionales $x\mapsto\ip xy$ son continuas. Un cerrado de Hilbert es completo, por lo que el recíproco ya está probado.
+\end{proof}
+\index{proyeccion ortogonal@proyección ortogonal}
+Escribimos $P_Mx=m$. La unicidad verifica que $P_M$ es lineal; Pitágoras da $\norm{P_Mx}\leq\norm x$, y $P_M^2=P_M$. El término \emph{distinguido} de las lecturas equivale a ortogonalmente complementado. La condición correcta exige $m\in M$; y la identidad de distancias es $\dist(x,M)^2=\norm x^2-\norm m^2$, con el cuadrado en la distancia.
+
+Una familia ortonormal $E$ satisface $\ip ef=\delta_{ef}$. Es una base ortonormal si su espacio generado es denso. Zorn da una familia ortonormal maximal; si su espacio generado no fuera denso, la proyección sobre su cierre produciría un vector unitario perpendicular a toda la familia, contradicción. Para un subconjunto finito $F\subseteq E$, Pitágoras da
+\[
+ \sum_{e\in F}|\ip xe|^2\leq\norm x^2.
+\]
+Solo puede haber un número numerable de coeficientes no nulos: para cada $n$, los que tienen módulo al menos $1/n$ forman un conjunto finito. Las sumas de Fourier convergen por completitud y tienen resto perpendicular a $E$, de modo que, si $E$ es total, el resto es cero.
+
+\section{Separabilidad y dimensión algebraica}
+\index{separabilidad}\index{base!de Hamel}
+Una base de Hamel expresa cada vector mediante una combinación \emph{finita}; una familia total solo exige densidad del espacio generado. No debe llamarse base de Schauder a una familia total arbitraria, pues esta última noción exige además expansiones convergentes únicas en un orden dado. Un espacio normado es separable si contiene un conjunto numerable denso, o equivalentemente un subespacio denso de dimensión algebraica a lo sumo numerable. Para ver la equivalencia, tome el espacio generado por el conjunto denso; en la otra dirección use coeficientes racionales, o racionales complejos, en todas las combinaciones finitas de una familia generadora numerable.
+
+El teorema de Baire prohíbe una base de Hamel infinita numerable en un espacio de Banach: si $x_1,x_2,\ldots$ fuera tal base, el espacio sería la unión de los cerrados $\spanop(x_1,\ldots,x_n)$, todos de interior vacío. Son cerrados porque, en dimensión finita, las coordenadas son equivalentes a cualquier norma: la función $a\mapsto\norm{\sum_ja_jx_j}$ tiene mínimo positivo sobre $\max_j|a_j|=1$. Un subespacio con interior no vacío contiene una bola en cero y, por escalamiento, todo el espacio.
+
+Esto \emph{no} prohíbe espacios de Banach separables infinitos dimensionales. $\ell^2$ es uno: las sucesiones de soporte finito con entradas racionales complejas son numerables y densas. La frase contraria en la lectura0 confunde una familia total numerable con una base de Hamel numerable. El mismo cuidado se aplica a los monomios en $C([a,b])$: son linealmente independientes y totales por Weierstrass, pero solo generan algebraicamente los polinomios.
+
+\section{Adjuntos, compacidad y dimensión finita}
+\begin{teorema}[Representación y adjunto de Hilbert]\label{v3:riesz-adjunto}
+Para cada $\varphi\in H^*$ existe un único $y\in H$ tal que $\varphi(x)=\ip xy$ y $\norm\varphi=\norm y$. Para cada $T\in\Bcal(H,K)$ existe un único $T^*\in\Bcal(K,H)$ con $\ip{Tx}y=\ip{x}{T^*y}$; satisface
+\[
+ (\alpha S+\beta T)^*=\bar\alpha S^*+\bar\beta T^*,\quad
+ (UT)^*=T^*U^*,\quad (T^*)^*=T,\quad\norm{T^*}=\norm T.
+\]
+\end{teorema}
+\begin{proof}
+Si $\varphi\ne0$, su núcleo $M$ es cerrado y tiene codimensión uno: si $\varphi(u)=1$, entonces $x-\varphi(x)u\in M$. Elija un vector unitario $e\in M^\perp$. Todo $x$ es $m+\ip xe e$, de modo que $\varphi(x)=\ip xe\varphi(e)=\ip{x}{\overline{\varphi(e)}e}$. Cauchy--Schwarz da la cota de norma, y evaluar en $y/\norm y$ da igualdad. Para $\varphi=0$ tome $y=0$. Si dos vectores representan la misma funcional, evaluar su diferencia en sí misma demuestra unicidad.
+
+Para $y\in K$, aplique lo anterior a $x\mapsto\ip{Tx}y$, cuya norma es a lo sumo $\norm T\norm y$. Su representante es $T^*y$. Las identidades del producto interno y la unicidad muestran que $T^*$ es lineal y acotado. La misma identidad demuestra las tres fórmulas algebraicas. Además
+\[
+ \norm T=\sup_{\norm x\leq1,\,\norm y\leq1}|\ip{Tx}y|
+ =\sup_{\norm x\leq1,\,\norm y\leq1}|\ip{x}{T^*y}|=\norm{T^*}.
+\]
+La igualdad $\norm z=\sup_{\norm y\leq1}|\ip zy|$ se verifica con $y=z/\norm z$ si $z\ne0$ y directamente si $z=0$.
+\end{proof}
+
+\begin{definicion}
+Un operador lineal $T:X\to Y$ es compacto si manda cada sucesión acotada a una sucesión con una subsucesión convergente en $Y$. Equivalentemente, manda conjuntos acotados a conjuntos relativamente compactos. Denotamos su espacio por $\Kcal(X,Y)$.
+\end{definicion}
+\index{operador!compacto}
+La equivalencia usa la caracterización secuencial de compacidad métrica. Todo operador compacto es acotado: de lo contrario existirían $\norm{x_n}\leq1$ con $\norm{Tx_n}>n$, sin subsucesión convergente. Un operador de rango finito es compacto \emph{si es acotado}: su bola imagen es acotada en un espacio finito dimensional y tiene cierre compacto. La continuidad no se deduce del rango finito cuando el dominio es infinito dimensional.
+
+La suma de dos compactos es compacta: primero extraiga una subsucesión para uno y después una subsucesión de esta para el otro. Componer con un operador acotado a cualquiera de los lados conserva compacidad, usando respectivamente la continuidad o la conservación de acotación. Por eso $\Kcal(X)$ es un ideal de $\Bcal(X)$.
+
+\begin{proposicion}\label{v3:aproximacion-compactos}
+Todo operador compacto entre espacios de Hilbert es límite en norma de operadores acotados de rango finito. No es necesario que los espacios sean separables.
+\end{proposicion}
+\begin{proof}
+Sea $T:H\to K$ compacto y $\eps>0$. El cierre de $T(\overline B_H)$ es compacto; elija una red finita $y_1,\ldots,y_m$ de radio $\eps$ y ponga $F=\spanop(y_1,\ldots,y_m)$. Para $\norm x\leq1$, la propiedad de mejor aproximante implica
+\[
+ \norm{Tx-P_FTx}=\dist(Tx,F)\leq\min_j\norm{Tx-y_j}<\eps.
+\]
+Así $P_FT$ tiene rango finito y $\norm{T-P_FT}\leq\eps$. Elegir $\eps=1/n$ produce la sucesión requerida.
+\end{proof}
+
+El encaje $C^1([a,b])\to C([a,b])$ es compacto: la bola unitaria tiene funciones uniformemente acotadas y, por el teorema del valor medio, equicontinuas; Arzelà--Ascoli da la conclusión. Para el operador de Volterra $Vf(t)=\int_0^tf(s)\,ds$ en $L^2([0,1])$, Cauchy--Schwarz da $|Vf(t)|\leq\norm f_2$ y
+\[
+ |Vf(t)-Vf(s)|\leq|t-s|^{1/2}\norm f_2.
+\]
+La bola imagen es relativamente compacta en $C([0,1])$ por Arzelà--Ascoli, y su inclusión continua en $L^2$ conserva esa propiedad. Estos ejemplos tienen rango infinito: las primitivas de monomios distintos siguen siendo linealmente independientes.
+
+\begin{teorema}[Teorema espectral en dimensión finita]\label{v3:espectral-finito}
+Un operador normal en un espacio complejo de Hilbert de dimensión finita admite una base ortonormal de autovectores. Un operador autoadjunto real satisface la misma conclusión con autovalores reales.
+\end{teorema}
+\begin{proof}
+Para un operador normal $A$, expandir cuadrados y usar $A^*A=AA^*$ da $\norm{(A-\lambda I)x}=\norm{(A^*-\bar\lambda I)x}$. Por tanto $Ax=\lambda x$ implica $A^*x=\bar\lambda x$. En dimensión compleja positiva, el polinomio característico tiene una raíz y existe un autovector unitario $e$. Si $x\perp e$, entonces $\ip{Ax}e=\ip{x}{A^*e}=0$ y también $A^*x\perp e$. Así $e^\perp$ reduce a $A$; la restricción sigue siendo normal. Inducción sobre la dimensión da la base ortonormal. Para un autoadjunto real, se puede complejificar el espacio: un autovalor $\lambda$ cumple $\lambda\norm z^2=\ip{Az}z\in\R$. Si $z=u+iv$ es su autovector, al menos uno de $u,v$ es un autovector real no nulo. La misma inducción termina la prueba.
+\end{proof}
+
+\section{Balance de las herramientas}
+La norma controla la continuidad; la completitud permite sumar correcciones; el producto interno convierte la aproximación en perpendicularidad. En adelante preguntaremos cuándo una medición definida en un subespacio puede extenderse, cuándo la imagen de un operador es cerrada y qué impide invertir $T-\lambda I$. Las respuestas exigirán distinguir cuidadosamente las diferentes formas de compacidad y convergencia.

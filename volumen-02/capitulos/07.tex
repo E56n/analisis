@@ -1,0 +1,172 @@
+\chapter{Modos de convergencia de funciones}\label{cap:v2-07}
+
+Una sucesión de funciones puede aproximar bien a su límite en casi todos los puntos y, sin embargo, conservar errores grandes sobre conjuntos que se desplazan. Otra puede tener errores pequeños salvo en conjuntos de medida decreciente, pero visitar cada punto infinitas veces. Este capítulo separa esas situaciones. Las lecturas 14 y 15 de Valencia \cite{valencia2} proporcionan el hilo conductor; los ejemplos adicionales siguen la orientación de Maximenko \cite{maximenkoConvergencias}.
+
+\section{Convergencia en medida y casi en todas partes}\label{lectura:v2-14}
+Trabajamos con funciones medibles finitas, reales o complejas, en $(X,\Acal,\mu)$. Cuando una función es finita casi en todas partes, elegimos un representante finito modificándola en su conjunto excepcional medible.
+\begin{definicion}
+Se dice que $f_n\to f$ \emph{en medida}\index{convergencia!en medida} si para cada $a>0$,
+\[\mu\{x:|f_n(x)-f(x)|>a\}\longrightarrow0.\]
+Se dice que converge \emph{casi uniformemente}\index{convergencia!casi uniforme} si para cada $\eps>0$ existe $A\in\Acal$ tal que $\mu(X\setminus A)<\eps$ y la convergencia restringida a $A$ es uniforme.
+\end{definicion}
+En la primera definición puede reemplazarse $>a$ por $\ge a$: basta comparar los umbrales $a/2$ y $a$. El conjunto excepcional de la convergencia casi uniforme depende de $\eps$, pero, una vez elegido, debe servir para \emph{todos} los umbrales de error de la convergencia uniforme.
+
+\begin{ejemplo}[Dos obstáculos distintos]
+En $\N$ con medida de conteo, $f_n(k)=\ind{\{n,n+1,\ldots\}}(k)$ converge puntualmente a cero. Sin embargo, $\mu\{|f_n|>1/2\}=\infty$ para todo $n$.
+
+En $[0,1)$ enumeremos por bloques los intervalos diádicos
+\[I_{m,j}=[j2^{-m},(j+1)2^{-m}),\qquad 0\le j<2^m,\quad m=1,2,\ldots .\]
+La sucesión de sus indicadores converge en medida a cero, pues las longitudes de los intervalos del bloque $m$ son $2^{-m}$. Cada punto pertenece exactamente a uno de los intervalos de cada bloque; por tanto recibe el valor uno infinitas veces y el valor cero infinitas veces. No hay convergencia puntual en ningún punto. El uso de intervalos semiabiertos evita ambigüedades en extremos diádicos.
+\end{ejemplo}
+
+\begin{teorema}\label{teo:v2-ae-medida}
+Si $\mu(X)<\infty$ y $f_n\to f$ casi en todas partes, entonces $f_n\to f$ en medida.
+\end{teorema}
+\begin{proof}
+Fijemos $a>0$ y pongamos $B_N=\bigcup_{n\ge N}\{|f_n-f|>a\}$. Los conjuntos $B_N$ decrecen; su intersección está contenida en el conjunto nulo donde falla la convergencia puntual. Como $\mu(B_1)\le\mu(X)<\infty$, la continuidad de la medida desde arriba da $\mu(B_N)\to0$. Si $n\ge N$, el conjunto malo para $f_n$ está contenido en $B_N$, y eso prueba la afirmación.
+\end{proof}
+
+\begin{teorema}[Extracción de una subsucesión]\label{teo:v2-medida-ae}
+Si $f_n\to f$ en medida, existe una subsucesión que converge a $f$ casi en todas partes.
+\end{teorema}
+\begin{proof}
+Elegimos inductivamente $n_k>n_{k-1}$ de modo que
+\[\mu\{|f_{n_k}-f|>1/k\}<2^{-k}.
+\]
+La suma de las medidas es finita. Por Borel--Cantelli, casi ningún punto pertenece a infinitos conjuntos de esta lista. En cada punto restante existe $k_0(x)$ tal que $|f_{n_k}(x)-f(x)|\le1/k$ para $k\ge k_0(x)$; esto es precisamente convergencia puntual.
+\end{proof}
+
+\begin{teorema}[Egorov]\label{teo:v2-egorov}\index{Egorov, teorema de}
+En un espacio de medida finita, la convergencia casi en todas partes de funciones medibles finitas implica convergencia casi uniforme.
+\end{teorema}
+\begin{proof}
+Retiramos primero el conjunto nulo $N$ donde falla la convergencia. Para cada entero $k\ge1$, los conjuntos
+\[E_{k,m}=\{x\notin N:\sup_{n\ge m}|f_n(x)-f(x)|>1/k\}
+\]
+decrecen a vacío cuando $m\to\infty$. Su medida tiende a cero por finitud de $\mu(X)$. Dado $\eps>0$, elegimos $m_k$ de manera que $\mu(E_{k,m_k})<\eps2^{-k-1}$. Definimos
+\[A=X\setminus\left(N\cup\bigcup_{k\ge1}E_{k,m_k}\right).
+\]
+Entonces $\mu(X\setminus A)<\eps$. Para comprobar uniformidad, sea $\delta>0$ y elijamos $k$ con $1/k<\delta$. Si $n\ge m_k$, en \emph{todos} los puntos de $A$ se tiene $|f_n-f|\le1/k<\delta$. El conjunto $A$ se construyó antes de elegir este $\delta$, que es el orden correcto de los cuantificadores.
+\end{proof}
+
+\begin{ejemplo}[Concentración gaussiana]
+La sucesión $g_n(x)=n e^{-n^2x^2}$ en $\R$ converge a cero para $x\ne0$. También converge casi uniformemente: dado $\eps>0$, fijemos $0<\eta<\eps/2$ y retiremos $(-\eta,\eta)$. En el complemento,
+\[\sup_{|x|\ge\eta}g_n(x)=n e^{-n^2\eta^2}\longrightarrow0\qquad(n\to\infty).
+\]
+Por sustitución $u=nx$, su integral es la constante positiva $\int_\R e^{-u^2}\,du$, de modo que no converge a cero en media. No necesitamos evaluar esa integral para concluirlo. En el cálculo de \cite{maximenkoConvergencias}, la variable que debe tender a infinito es $n$, manteniendo $\eta$ fijo; hacer $\eta\to0$ no prueba uniformidad en el conjunto elegido.
+\end{ejemplo}
+
+\section{Ejercicios sobre conjuntos excepcionales}
+\begin{ejercicio}[Lectura 14, ejercicio 1]\label{ej:v2-l14-1}
+Demuestre que la convergencia uniforme implica convergencia en medida.
+\end{ejercicio}
+\begin{solucion}
+Para un umbral $a>0$, desde cierto índice se cumple $|f_n(x)-f(x)|<a$ para todo $x$. El conjunto malo es entonces vacío, incluso cuando $\mu(X)=\infty$.
+\end{solucion}
+\begin{ejercicio}[Lectura 14, ejercicio 2]\label{ej:v2-l14-2}
+En $\N$ con medida de conteo, demuestre que converger en medida equivale a converger uniformemente.
+\end{ejercicio}
+\begin{solucion}
+La implicación directa del ejercicio anterior vale en cualquier espacio. Recíprocamente, para $a>0$ la medida del conjunto malo acaba siendo menor que uno. La medida de conteo sólo toma valores enteros no negativos o infinito, por lo que ese conjunto debe ser vacío. Así, $\sup_k|f_n(k)-f(k)|\le a$ desde cierto índice; usar $a=\eps/2$ da la condición uniforme con error $\eps$.
+\end{solucion}
+\begin{ejercicio}[Lectura 14, ejercicio 3]\label{ej:v2-l14-3}
+Si $f_n\to0$ casi en todas partes en $[0,1]$, encuentre números $a_n>0$ con $a_n\to\infty$ y $a_nf_n\to0$ casi en todas partes.
+\end{ejercicio}
+\begin{solucion}
+Para cada $k$ elegimos $N_k$ estrictamente creciente de modo que
+\[m\{\sup_{n\ge N_k}|f_n|>k^{-2}\}<2^{-k}.
+\]
+Esto es posible por continuidad desde arriba, como en Egorov. Definimos $a_n=k$ si $N_k\le n<N_{k+1}$, y $a_n=1$ antes de $N_1$. Borel--Cantelli asegura que casi todo $x$ queda fuera de los conjuntos malos para todos los $k$ suficientemente grandes. En el bloque correspondiente, $|a_nf_n(x)|\le k/k^2=1/k$. Puesto que los índices de bloque tienden a infinito, se obtiene el resultado.
+\end{solucion}
+\begin{ejercicio}[Lectura 14, ejercicio 4]\label{ej:v2-l14-4}
+Suponga $|f_n|\le g\in L^1(\mu)$ y $f_n\to f$ casi en todas partes. Demuestre convergencia casi uniforme sin suponer finita la medida del espacio.
+\end{ejercicio}
+\begin{solucion}
+Retiremos un conjunto nulo común donde fallen las desigualdades o la convergencia. Allí también $|f|\le g$. Sean $E_j=\{g>1/j\}$; Markov da $\mu(E_j)\le j\int g<\infty$. Aplicamos Egorov en cada $E_j$, retirando $N_j\subset E_j$ de medida menor que $\eps2^{-j-1}$. Fuera de $N=\bigcup_jN_j$ y del conjunto nulo inicial, la convergencia es uniforme en cada $E_j$. Para un error $\delta>0$, elegimos $j$ con $2/j<\delta$. Fuera de $E_j$, $|f_n-f|\le2g\le2/j<\delta$ para todo $n$; en $E_j\setminus N$, el error es menor que $\delta$ desde un índice independiente del punto. Como $\mu(N)<\eps$, esto prueba la afirmación. La unión de excepciones se tomó una sola vez; no se cambia al escoger $\delta$.
+\end{solucion}
+
+\section{Sucesiones de Cauchy y existencia de límites}\label{lectura:v2-15}
+\begin{definicion}
+Una sucesión es \emph{de Cauchy en medida}\index{Cauchy!en medida} si, para cada $a>0$,
+\[\lim_{m,n\to\infty}\mu\{|f_m-f_n|>a\}=0.
+\]
+Es \emph{de Cauchy casi uniformemente} si para cada $\eps>0$ existe $A$ con $\mu(X\setminus A)<\eps$ en el que la sucesión es uniformemente de Cauchy.
+\end{definicion}
+\begin{teorema}\label{teo:v2-completitud-medida}
+Toda sucesión de Cauchy en medida tiene un límite medible finito en medida, único salvo igualdad casi en todas partes. Además, tiene una subsucesión que converge casi uniformemente a ese límite.
+\end{teorema}
+\begin{proof}
+Escogemos índices crecientes $n_k$ tales que
+\[\mu(A_k)<2^{-k},\qquad A_k=\{|f_{n_{k+1}}-f_{n_k}|>2^{-k}\}.
+\]
+Para ello basta elegir $n_k$ más allá de un índice de Cauchy que sirva al umbral $2^{-k}$ y error de medida $2^{-k}$, haciendo crecientes esos índices. Pongamos $B_j=\bigcup_{k\ge j}A_k$. Entonces $\mu(B_j)\le2^{1-j}$ y $\mu(\bigcap_jB_j)=0$. Si $x\notin B_j$ y $q>p\ge j$,
+\[|f_{n_q}(x)-f_{n_p}(x)|\le\sum_{k=p}^{q-1}2^{-k}\le2^{1-p}.
+\]
+La completitud de $\R$ o $\C$ produce un límite finito en $X\setminus\bigcap_jB_j$; lo definimos como cero en el conjunto excepcional. Es medible porque el conjunto de convergencia es medible y allí el límite es límite de funciones medibles. Al pasar $q\to\infty$, la misma cota prueba convergencia uniforme en $X\setminus B_j$. Dado $\eps>0$, elegimos $j$ con $2^{1-j}<\eps$; así obtenemos convergencia casi uniforme, y por tanto en medida.
+
+Para toda la sucesión, fijemos $a,\eps>0$. Si $n,n_p$ son suficientemente grandes, la propiedad de Cauchy da $\mu\{|f_n-f_{n_p}|>a/2\}<\eps/2$. Escogiendo además $p$ suficientemente grande obtenemos $\mu\{|f_{n_p}-f|>a/2\}<\eps/2$. La desigualdad triangular y la inclusión de conjuntos malos dan $\mu\{|f_n-f|>a\}<\eps$.
+
+Si $f$ y $g$ son dos límites en medida, para cada $a>0$,
+\[\mu\{|f-g|>a\}\le\mu\{|f-f_n|>a/2\}+\mu\{|f_n-g|>a/2\}\longrightarrow0.
+\]
+La unión sobre $a=1,1/2,1/3,\ldots$ demuestra $f=g$ casi en todas partes.
+\end{proof}
+\begin{proposicion}
+Una sucesión es de Cauchy casi uniformemente si y sólo si converge casi uniformemente a una función medible finita. Tal convergencia implica convergencia casi en todas partes y en medida.
+\end{proposicion}
+\begin{proof}
+Para cada $j$ escojamos $A_j$ con $\mu(X\setminus A_j)<2^{-j}$ donde la sucesión es uniformemente de Cauchy. La completitud del cuerpo escalar da un límite uniforme en $A_j$. Estos límites coinciden en intersecciones, pues son límites de la misma sucesión numérica. La unión de los $A_j$ tiene complemento de medida cero: su medida es menor que $2^{-j}$ para cada $j$. Definiendo el límite puntual allí y cero fuera obtenemos una función medible, con convergencia uniforme en cada $A_j$. Esto prueba convergencia casi uniforme. La implicación inversa es el criterio uniforme de Cauchy. Para una sucesión casi uniformemente convergente se repite la unión de conjuntos buenos con excepciones $2^{-j}$ y se obtiene convergencia casi en todas partes. Finalmente, fijados $a,\eps>0$, en un conjunto bueno de complemento menor que $\eps$ el conjunto malo para el umbral $a$ acaba vacío; por tanto su medida total acaba siendo menor que $\eps$.
+\end{proof}
+
+\section{Ejercicios sobre límites y composición}
+\begin{ejercicio}[Lectura 15, ejercicio 1]\label{ej:v2-l15-1}
+Complete la extracción casi uniforme de una sucesión de Cauchy en medida.
+\end{ejercicio}
+\begin{solucion}
+Con los conjuntos $A_k,B_j$ del teorema \ref{teo:v2-completitud-medida}, fuera de $B_j$ la desigualdad $|f_{n_p}-f|\le2^{1-p}$ vale simultáneamente para todo $p\ge j$. Dado $\eps$, primero fijamos $j$ para que $\mu(B_j)<\eps$; dado después $\delta$, escogemos $p_0\ge j$ con $2^{1-p_0}<\delta$. Para $p\ge p_0$ la cota es uniforme en el conjunto fijo $X\setminus B_j$. Este orden de elecciones completa el argumento solicitado.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 2]\label{ej:v2-l15-2}
+¿La convergencia casi uniforme implica convergencia uniforme fuera de un conjunto nulo?
+\end{ejercicio}
+\begin{solucion}
+No. En $(0,1)$, $f_n=\ind{(0,1/n)}$ converge casi uniformemente a cero: para una excepción de medida $\eps$, retiramos $(0,\eps/2)$, y la sucesión es eventualmente cero en el resto. Pero para cualquier conjunto nulo $N$, el intervalo $(0,1/n)\setminus N$ es no vacío, de modo que $\sup_{(0,1)\setminus N}f_n=1$ para todo $n$.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 3]\label{ej:v2-l15-3}
+Analice $f_n=\ind{[n,n+1]}$ en $\R$ con medida de Lebesgue.
+\end{ejercicio}
+\begin{solucion}
+Cada punto pertenece a lo sumo a dos de estos intervalos, así que $f_n\to0$ puntualmente. El conjunto $\{|f_n|>1/2\}$ tiene medida uno; no hay convergencia en medida y, por la proposición anterior, tampoco casi uniforme.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 4]\label{ej:v2-l15-4}
+Demuestre que toda subsucesión de una sucesión de Cauchy en medida también lo es.
+\end{ejercicio}
+\begin{solucion}
+Dados umbral $a$ y error $\eps$, elijamos $N$ que sirve para todos los índices originales $m,n\ge N$. Si $n_k$ son los índices de la subsucesión, desde cierto $k_0$ se tiene $n_k\ge N$. La misma estimación sirve entonces para cualesquiera $k,l\ge k_0$.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 5]\label{ej:v2-l15-5}
+Caracterice las funciones borelianas $\varphi:\R\to\R$ que preservan convergencia casi en todas partes por composición.
+\end{ejercicio}
+\begin{solucion}
+Toda función continua la preserva, aplicando continuidad a la sucesión numérica en cada punto donde $f_n\to f$. Para la recíproca debemos exigir $\mu(X)>0$, o formular la propiedad para todos los espacios de medida. Sean $t_n\to t$ y tomemos las funciones constantes $f_n=t_n$, $f=t$. La convergencia casi en todas partes de las composiciones obliga a $\varphi(t_n)\to\varphi(t)$: si la sucesión numérica no convergiera, fallaría en todo $X$, que tiene medida positiva. La continuidad secuencial equivale a continuidad en $\R$. Sin la hipótesis $\mu(X)>0$, la recíproca original es falsa: si $\mu$ es la medida cero, cualquier función boreliana preserva la propiedad vacía de converger casi en todas partes.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 6]\label{ej:v2-l15-6}
+Si $\varphi$ es uniformemente continua y $f_n\to f$ uniformemente, pruebe convergencia uniforme de las composiciones.
+\end{ejercicio}
+\begin{solucion}
+Para $\eps>0$ elija $\delta>0$ tal que $|u-v|<\delta$ implique $|\varphi(u)-\varphi(v)|<\eps$. Desde cierto índice la primera desigualdad vale para $u=f_n(x),v=f(x)$ simultáneamente en todos los puntos, y por ello también la segunda.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 7]\label{ej:v2-l15-7}
+Pruebe el resultado anterior para convergencia casi uniforme y para convergencia en medida.
+\end{ejercicio}
+\begin{solucion}
+En el caso casi uniforme aplicamos el ejercicio \ref{ej:v2-l15-6} en cada conjunto bueno, conservando su excepción. En medida, para un umbral $\eps$ elegimos $\delta$ por continuidad uniforme. Entonces
+\[\{|\varphi(f_n)-\varphi(f)|\ge\eps\}\subset\{|f_n-f|\ge\delta\},
+\]
+y la medida del segundo conjunto tiende a cero.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 8]\label{ej:v2-l15-8}
+Si $\varphi$ no es uniformemente continua, construya funciones $f_n\to f$ uniformemente tales que $\varphi(f_n)$ no converja en medida a $\varphi(f)$.
+\end{ejercicio}
+\begin{solucion}
+Existen $\eps_0>0$ y números $a_k,b_k$ con $|a_k-b_k|<1/k$ y $|\varphi(a_k)-\varphi(b_k)|\ge\eps_0$. En $\N$ con medida de conteo definimos $f(k)=a_k$ y $f_n(k)=a_k$ si $k<n$, $f_n(k)=b_k$ si $k\ge n$. Todas las funciones son medibles y $\sup_k|f_n(k)-f(k)|\le1/n$. Sin embargo, el conjunto donde las composiciones difieren al menos $\eps_0$ contiene $\{n,n+1,\ldots\}$ y tiene medida infinita. Esta construcción identifica la función de la continuidad \emph{uniforme}: el mismo control debe funcionar aun cuando los valores $f(k)$ recorran regiones distintas del dominio.
+\end{solucion}

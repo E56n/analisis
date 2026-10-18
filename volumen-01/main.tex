@@ -69,12 +69,18 @@
 \input{portada}
 \hypersetup{pageanchor=true}
 \chapter*{Presentación}
+\markboth{Presentación}{}
 \addcontentsline{toc}{chapter}{Presentación}
 Este volumen desarrolla el primer curso de una colección de cuatro libros de análisis. Su hilo conductor es el paso de la distancia a la estructura lineal y, finalmente, a la geometría del producto interno. La intención es que un estudiante de la mitad de la licenciatura en Matemáticas pueda seguir las pruebas y entender por qué se eligen sus pasos, sin rebajar la precisión de los enunciados.
 
 El punto de partida son las 32 lecturas de \emph{Análisis Matemático 1, Licenciatura en Física y Matemáticas}, de Miguel Ángel Valencia Bucio \cite{valencia}. Las lecturas se integran en seis partes y dieciséis capítulos temáticos. Se conserva la identificación de los ejercicios originales y una tabla final permite localizar el contenido de cada lectura. La autoría de esas lecturas se reconoce expresamente: la organización editorial, las explicaciones ampliadas, las soluciones desarrolladas y las rectificaciones forman esta edición de Eder Said Martinez Ramirez.
 
 Un resultado falso no puede completarse añadiendo pasos a una prueba. Cuando un enunciado necesita una hipótesis o admite un contraejemplo, el texto explica el problema y formula una versión válida. Se distinguen asimismo las erratas matemáticas de las pérdidas de barras, índices o signos ocasionadas por la extracción del PDF. Las soluciones incluyen el enunciado que se utiliza y señalan las correcciones pertinentes.
+
+\section*{Créditos de las ampliaciones y del diseño}
+Los apuntes de Egor Maximenko, profesor de la ESFM del IPN, orientan las ampliaciones sobre espacios cocientes y seminormas, el teorema de Picard, matrices de Gram y proyecciones, y bases de Schauder \cite{max-cociente,max-seminormado,max-picard,max-gram,max-proyeccion,max-schauder}. Cada bloque identifica sus documentos concretos y cada ejercicio adaptado señala su procedencia. La redacción ampliada, las comprobaciones, las soluciones y los ejercicios adicionales elaborados para esta edición se distinguen de los enunciados tomados como punto de partida. El volumen conserva los 206 ejercicios de las lecturas e incorpora 20 ejercicios de ampliación, todos acompañados de solución.
+
+El diseño toma como referencia visual los \emph{Apuntes de Homotopía Estable} del repositorio público de MrPaborru (\url{https://github.com/MrPaborru/Apuntes-Homotop-a-Estable}), combinados con una composición tradicional de libros de matemáticas. El emblema de la ESFM procede de su sitio oficial. Su uso identifica la adscripción académica del autor; esta colección es una edición personal, no una publicación oficial ni una obra avalada por el IPN. Se conserva una paleta inspirada en los colores de la ESFM y una tipografía Latin Modern. Los detalles de procedencia gráfica se documentan también en las fuentes LaTeX.
 
 \section*{Cómo estudiar este volumen}
 Conviene conocer operaciones con conjuntos, cuantificadores, inducción, sucesiones y series reales, cálculo de una variable y álgebra lineal elemental. No se presupone un curso previo de topología ni de análisis funcional. La completitud de los números reales y los resultados básicos del cálculo se usan como conocimientos previos. El lema de Zorn se enuncia cuando interviene como principio de existencia; las construcciones que dependen de él se separan de las construcciones explícitas.
@@ -100,7 +106,7 @@ Rudin \cite{rudin1976} ofrece un desarrollo de topología métrica, sucesiones d
 \bookmarksetup{startatroot}
 \input{notacion}
 \bookmarksetup{startatroot}
-\printindex
+{\small\printindex}
 \bookmarksetup{startatroot}
 \input{referencias}
 \end{document}

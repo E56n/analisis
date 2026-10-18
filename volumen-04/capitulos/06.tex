@@ -1,0 +1,131 @@
+\chapter{Convolución en el espacio euclidiano}\label{cap:v4-06}
+Las estimaciones de convolución no dependen esencialmente de trabajar en una sola variable. Desarrollaremos la lectura 9 en $\R^d$, de modo que el caso original $d=1$ y la ampliación multidimensional compartan una misma prueba. La medida es Lebesgue sin normalización.
+
+\section{Existencia, asociatividad e integrales}\label{lectura:v4-09}
+\index{convolucion@convolución!euclidiana}
+Para funciones medibles definimos $(f*g)(x)=\int_{\R^d}f(y)g(x-y)\,dy$ cuando la integral converge absolutamente. Si converge, el cambio $y=x-z$ prueba $f*g(x)=g*f(x)$. En general la función se define casi en todas partes y representa una clase de equivalencia.
+\begin{teorema}\label{v4:conv-Rn}
+Si $f,g\in L^1(\R^d)$, la convolución pertenece a $L^1$ y
+\[
+ \norm{f*g}_1\leq\norm f_1\norm g_1,\qquad
+ \int_{\R^d}f*g=\left(\int_{\R^d}f\right)\left(\int_{\R^d}g\right).
+\]
+La convolución es bilineal, asociativa y conmutativa; hace de $L^1(\R^d)$ un álgebra de Banach.
+\end{teorema}
+\begin{proof}
+Podemos elegir representantes borelianos de las clases. La aplicación $(x,y)\mapsto(y,x-y)$ es un isomorfismo lineal de determinante de valor absoluto uno, por lo que preserva la medida y los nulos. El integrando es medible también para representantes de Lebesgue. Tonelli y la traslación $z=x-y$ dan
+\[
+ \int_{\R^d}\int_{\R^d}|f(y)g(x-y)|\,dy\,dx
+ =\int_{\R^d}|f(y)|\int_{\R^d}|g(z)|\,dz\,dy
+ =\norm f_1\norm g_1<\infty.
+\]
+Fubini asegura existencia casi en todas partes y medibilidad. La desigualdad triangular integral produce la cota de norma; Fubini sin valores absolutos da la identidad de integrales. Cambiar un representante en un nulo no modifica la clase de la convolución, por el mismo cálculo.
+
+Para tres funciones de $L^1$, la integral triple de $|f(z)g(y-z)h(x-y)|$ sobre $(x,y,z)$ es $\norm f_1\norm g_1\norm h_1$. Casi todo $x$ permite, por tanto, intercambiar las integrales en $y,z$. El cambio $y=z+t$ da
+\[
+ ((f*g)*h)(x)=\int f(z)\int g(t)h(x-z-t)\,dt\,dz=(f*(g*h))(x).
+\]
+Más generalmente, la misma igualdad vale en un punto fijo $x$ si $(|f|*|g|)*|h|(x)<\infty$, con las integrales internas definidas en las secciones pertinentes. La bilinealidad es inmediata y la completitud ya es la de $L^1$. En la fórmula de integrales de la lectura 9 deben figurar integrales sobre $\R$, no sobre $[0,2\pi]$.
+\end{proof}
+
+\section{La desigualdad de Young}
+\index{Young!desigualdad de convolucion@desigualdad de convolución}
+\begin{lema}[Hölder para varios factores]
+Si $p_j\in[1,\infty]$ y $\sum_{j=1}^m1/p_j=1$, entonces $\norm{\prod_j f_j}_1\leq\prod_j\norm{f_j}_{p_j}$.
+\end{lema}
+\begin{proof}
+Los factores de exponente infinito se acotan por su supremo esencial. Para los restantes, después de dividir cada factor por su norma, la desigualdad de Young ponderada da $\prod_j|f_j|\leq\sum_j|f_j|^{p_j}/p_j$. Integrando, el lado derecho vale uno. La desigualdad ponderada se obtiene de la convexidad de la exponencial: $\exp(\sum\theta_j a_j)\leq\sum\theta_j e^{a_j}$, con $\theta_j=1/p_j$ y $a_j=p_j\log|f_j|$; los ceros se tratan por límite. Si alguna norma es cero, el producto se anula casi en todas partes.
+\end{proof}
+\begin{teorema}[Young]\label{v4:young-Rn}
+Sean $p,q,r\in[1,\infty]$ con $1/p+1/q=1+1/r$. Si $f\in L^p(\R^d)$ y $g\in L^q(\R^d)$, entonces
+\[
+ \norm{f*g}_r\leq\norm f_p\norm g_q.
+\]
+La convolución existe absolutamente casi en todas partes; si $r=\infty$, puede definirse en todo punto usando representantes adecuados, mediante Hölder.
+\end{teorema}
+\begin{proof}
+Si $r=\infty$, $q=p'$ y Hölder aplicado a $f(y)$ y $g(x-y)$ da la cota para cada $x$. Si $p=1$ y $r=q<\infty$, Hölder para la medida $|f(y)|dy$ da
+\[
+ |f*g(x)|^q\leq\norm f_1^{q-1}\int|f(y)||g(x-y)|^qdy.
+\]
+Integrar en $x$ y aplicar Tonelli da la conclusión, incluida existencia casi en todas partes. Para $q=1$ se intercambian los factores. El caso $p=q=r=1$ ya está probado.
+
+Queda $1<p,q\leq r<\infty$. Escribimos
+\[
+ |f(y)g(x-y)|=
+ (|f(y)|^p|g(x-y)|^q)^{1/r}
+ |f(y)|^{1-p/r}|g(x-y)|^{1-q/r}.
+\]
+Los exponentes de Hölder son $r$, $(1/p-1/r)^{-1}$ y $(1/q-1/r)^{-1}$; sus recíprocos suman uno. Un factor con exponente de potencia cero se omite. Como $|f|^p,|g|^q\in L^1$, el teorema anterior asegura que su convolución es finita casi en todas partes. Hölder da en esos puntos
+\[
+ |f*g(x)|^r\leq\norm f_p^{r-p}\norm g_q^{r-q}(|f|^p*|g|^q)(x).
+\]
+Integrar y usar la fórmula de la integral de convolución produce $\norm{f*g}_r^r\leq\norm f_p^r\norm g_q^r$. Todos los cambios se han hecho primero sobre integrandos no negativos, por lo que Tonelli justifica también la integrabilidad que se concluye.
+\end{proof}
+En particular, $T_f:g\mapsto f*g$ es lineal y acotado en $L^p$, con $\norm{T_f}\leq\norm f_1$. La igualdad de norma afirmada en la lectura 9 no vale para todos los exponentes. Por ejemplo, para $p=2$, $f=\mathbf1_{[0,1]}-\mathbf1_{[1,2]}$ tiene norma $L^1$ igual a dos, pero Plancherel dará $\norm{T_f}=\sup|\widehat f|<2$: en cada frecuencia la desigualdad triangular es estricta, pues las fases no pueden ser constantes en ambos intervalos con signos opuestos; la transformada es continua y se anula en infinito, por lo que alcanza su máximo y este es estrictamente menor que dos.
+
+\section{Continuidad y comportamiento en infinito}
+\begin{teorema}\label{v4:conv-continuidad}
+Si $1\leq p<\infty$, $f\in L^p(\R^d)$ y $g\in L^{p'}(\R^d)$, entonces $f*g$ es acotada y uniformemente continua. Si $1<p<\infty$, además pertenece a $C_0(\R^d)$.
+\end{teorema}
+\begin{proof}
+Hölder da $|f*g(x)|\leq\norm f_p\norm g_{p'}$ para todo $x$. La continuidad de traslaciones en $L^p$, probada en el ejercicio~\ref{ej:v4-l09-1}, implica
+\[
+ |f*g(x+h)-f*g(x)|\leq\norm g_{p'}\norm{f(\cdot+h)-f}_p\longrightarrow0,
+\]
+uniformemente en $x$. Si $1<p<\infty$, aproximamos $f,g$ en sus respectivas normas por funciones continuas de soporte compacto $u,v$. Hölder da
+\[
+ \norm{f*g-u*v}_\infty\leq\norm{f-u}_p\norm g_{p'}+\norm u_p\norm{g-v}_{p'}.
+\]
+La convolución $u*v$ es continua y se anula fuera de la suma compacta de los soportes. Por ello $f*g$ es límite uniforme de funciones de $C_c$, y pertenece a $C_0$. Para $p=1$, la aproximación de $g\in L^\infty$ por funciones de soporte compacto no está garantizada; el ejemplo $g=1$ explica por qué la conclusión adicional puede fallar.
+\end{proof}
+\begin{ejemplo}
+En $\R$, $\mathbf1_{[0,1]}*\mathbf1_{[0,1]}(x)$ es la longitud de $[0,1]\cap[x-1,x]$. Vale $x$ para $0\leq x\leq1$, $2-x$ para $1\leq x\leq2$, y cero fuera de $[0,2]$. La convolución de dos funciones discontinuas puede así ser continua. En $\R^d$, la convolución de las indicadoras de $[0,1]^d$ es el producto de estas funciones triangulares, por Tonelli.
+\end{ejemplo}
+
+\section{Ejercicios: traslaciones, soportes y aproximación}
+\begin{ejercicio}[Lectura 9, ejercicio 1]\label{ej:v4-l09-1}
+Para $1\leq p<\infty$ y $f\in L^p(\R^d)$, demostrar que $t\mapsto f(\cdot+t)$ y $t\mapsto f(\cdot-t)$ son uniformemente continuas con valores en $L^p$.
+\end{ejercicio}
+\begin{solucion}
+Para $u\in C_c$, con soporte $K$, y $|t|\leq1$, la diferencia $u(\cdot+t)-u$ se anula fuera del compacto $K+\overline{B(0,1)}$. Por continuidad uniforme de $u$, su supremo tiende a cero, y su norma $L^p$ está acotada por ese supremo multiplicado por la medida del compacto elevada a $1/p$. Para $f$ general escojamos $u\in C_c$ con $\norm{f-u}_p<\eps/3$. La invariancia de la norma da
+\[
+ \norm{f(\cdot+t)-f}_p\leq2\norm{f-u}_p+\norm{u(\cdot+t)-u}_p.
+\]
+Así hay continuidad en cero. La norma de la diferencia entre las traslaciones con parámetros $s,t$ es $\norm{f(\cdot+t-s)-f}_p$, que solo depende de $t-s$; esto da continuidad uniforme. El signo opuesto se trata sustituyendo $t$ por $-t$. Se habla de continuidad fuerte para cada $f$, no de continuidad de los operadores en norma de operador.
+\end{solucion}
+\begin{ejercicio}[Lectura 9, ejercicio 2]\label{ej:v4-l09-2}
+Sean $f\in L^1(\R^d)$ y $g$ acotada, con $g(x)\to0$ cuando $|x|\to\infty$. Probar que $f*g(x)\to0$ y mostrar que no puede omitirse una condición de este tipo en un enunciado general.
+\end{ejercicio}
+\begin{solucion}
+Para cada $y$ fijo, $g(x-y)\to0$ cuando $|x|\to\infty$, y $|f(y)g(x-y)|\leq\norm g_\infty|f(y)|$. Convergencia dominada da el límite. Equivalentemente se puede separar una bola que contiene casi toda la integral de $|f|$ y controlar uniformemente $g(x-y)$ dentro de esa bola. Sin la condición, tomemos $g=1$ y $f=\mathbf1_{[0,1]^d}$: $f*g=1$. Esto muestra que la hipótesis no puede simplemente eliminarse; no afirma que sea necesaria para cada pareja particular, pues, por ejemplo, $f=0$ siempre produce límite cero.
+\end{solucion}
+\begin{ejercicio}[Lectura 9, ejercicio 3]\label{ej:v4-l09-3}
+Si $f,g$ tienen soporte compacto y su convolución existe casi en todas partes, demostrar $\supp(f*g)\subseteq\supp f+\supp g$, entendiendo soporte esencial cuando corresponda.
+\end{ejercicio}
+\begin{solucion}
+Sean $K=\supp f$, $L=\supp g$. Elegimos representantes que se anulan fuera de esos conjuntos. Si $x\notin K+L$, no existe $y$ con $y\in K$ y $x-y\in L$, así que $f(y)g(x-y)=0$ para todo $y$ salvo los nulos de elección de representantes. La integral vale cero. El conjunto $K+L$ es compacto por ser la imagen de $K\times L$ bajo la suma continua, y por tanto es cerrado. La convolución se anula en su complemento, lo que demuestra la inclusión. Para clases de funciones no se usan valores arbitrarios asignados sobre nulos para definir el soporte.
+\end{solucion}
+\begin{ejercicio}[Lectura 9, ejercicio 4]\label{ej:v4-l09-4}
+Sea $(k_j)\subset L^1(\R^d)$, con $k_j\geq0$, $\int k_j=1$ y $\int_{|t|\geq\delta}k_j(t)dt\to0$ para cada $\delta>0$. Probar $f*k_j\to f$ en $L^p$ para $1\leq p<\infty$.
+\end{ejercicio}
+\begin{solucion}
+Jensen para la probabilidad $k_j(t)dt$ y Tonelli dan
+\[
+ \norm{f*k_j-f}_p^p\leq\int k_j(t)\norm{f(\cdot-t)-f}_p^pdt.
+\]
+Para $p=1$ basta la desigualdad triangular integral. En $|t|<\delta$, el ejercicio~\ref{ej:v4-l09-1} hace la diferencia menor que cualquier $\eps$ previamente fijado. En el complemento está acotada por $2\norm f_p$. Por tanto el límite superior del lado derecho es a lo sumo $\eps^p$. Hacer $\eps\downarrow0$ prueba el resultado.
+\end{solucion}
+\begin{ejercicio}[Lectura 9, ejercicio 5: continuidad en los puntos del compacto]\label{ej:v4-l09-5}
+Sea $f$ un representante acotado de $L^\infty(\R^d)$ que es continuo, como función definida en $\R^d$, en cada punto de un compacto $K$. Probar que $f*k_j\to f$ uniformemente en $K$. Explicar por qué no basta continuidad de la restricción $f|_K$.
+\end{ejercicio}
+\begin{solucion}
+Dado $\eps>0$, para cada $z\in K$ elegimos $r_z>0$ tal que $|f(w)-f(z)|<\eps/2$ si $|w-z|<r_z$. Una cantidad finita de bolas $B(z,r_z/2)$ cubre $K$. Si $\delta$ es menor que la mitad del mínimo de sus radios y $x\in K$, $|t|<\delta$, podemos elegir un centro de esa cubierta para el que tanto $x$ como $x-t$ están en $B(z,r_z)$. Entonces $|f(x-t)-f(x)|<\eps$. Así
+\[
+ \sup_{x\in K}|f*k_j(x)-f(x)|
+ \leq\eps+2\norm f_\infty\int_{|t|\geq\delta}k_j(t)dt\longrightarrow\eps.
+\]
+Si solo se pide continuidad sobre el subespacio $K$, tomemos $K=\{0\}$ y $f=\mathbf1_{\{0\}}$. La restricción es continua, pero toda convolución es cero y $f(0)=1$. La interpretación de la hipótesis en el enunciado es, por tanto, esencial.
+\end{solucion}
+
+Las traslaciones y las identidades aproximadas han convertido integrales en límites en norma. Una identidad gaussiana permitirá ahora invertir Fourier mediante cálculos explícitos.

@@ -1,0 +1,187 @@
+\chapter{Medidas con signo y medidas complejas}\label{v2:cap12}\label{cap:v2-12}
+\section{Aditividad sin positividad}\label{lectura:v2-24}
+Una integral indefinida $A\mapsto\int_A f\,d\mu$ puede tomar valores negativos o complejos. Sigue siendo aditiva, pero ya no es monótona. Las lecturas 24--26 de \cite{valencia2} explican cómo recuperar una medida positiva que controle todas sus oscilaciones: la variación total. Esta medida será la que determine qué funciones pueden integrarse y qué significa convergencia de medidas.
+\begin{definicion}
+Una \emph{medida con signo} sobre $(X,\Acal)$ es una función $\nu:\Acal\to[-\infty,\infty]$, con $\nu(\varnothing)=0$, numerablemente aditiva sobre familias disjuntas, que no toma simultáneamente los valores $+\infty$ y $-\infty$. Se exige que las sumas correspondientes estén definidas. Una \emph{medida compleja} toma valores en $\C$ y es numerablemente aditiva. En particular, todos sus valores son finitos.\index{medida!con signo}\index{medida!compleja}
+\end{definicion}
+Toda medida positiva es una medida con signo, pero no toda medida positiva es una medida compleja: para ello debe ser finita. La exclusión de los dos infinitos evita sumas indefinidas como $\infty-\infty$; no debe confundirse con la afirmación de que cada medida con signo tiene necesariamente un valor infinito.
+\begin{proposicion}\label{v2:continuidad-signo}
+Para una medida con signo $\nu$:
+\begin{enumerate}
+\item Si $B\subset A$ son medibles y $|\nu(A)|<\infty$, entonces $|\nu(B)|<\infty$.
+\item Si $A_n\uparrow A$, entonces $\nu(A_n)\to\nu(A)$.
+\item Si $A_n\downarrow A$ y algún $\nu(A_n)$ es finito, entonces $\nu(A_n)\to\nu(A)$.
+\end{enumerate}
+Para una medida compleja, sus partes real e imaginaria son medidas con signo finitas, y valen las mismas propiedades de continuidad, sin necesitar una hipótesis adicional de finitud.
+\end{proposicion}
+\begin{proof}
+(i) En $\nu(A)=\nu(B)+\nu(A\setminus B)$ una suma definida solo puede ser finita si ambos términos lo son. (ii) Escribimos $A$ como unión disjunta de $A_1$ y $A_n\setminus A_{n-1}$, $n\ge2$. Las sumas parciales de la serie de aditividad son exactamente $\nu(A_n)$, y la definición de la suma da el límite. (iii) Descartamos los índices iniciales para tener $|\nu(A_1)|<\infty$. Los conjuntos $A_1\setminus A_n$ crecen a $A_1\setminus A$, de modo que (ii) y $\nu(A_n)=\nu(A_1)-\nu(A_1\setminus A_n)$ concluyen. Para medidas complejas, tomar partes real e imaginaria en una serie convergente prueba la aditividad de ambas; sus valores son reales finitos. Aplicamos los resultados anteriores a cada parte.
+\end{proof}
+\begin{ejemplo}[Integral indefinida]
+Si $f\in L^1(\mu)$, la función $\nu_f(A)=\int_A f\,d\mu$ es una medida real con signo o compleja según $f$. Para conjuntos disjuntos $A_n$, los indicadores de sus uniones finitas convergen al de la unión total. Las funciones $f\ind{\cup_{j\le n}A_j}$ están dominadas por $|f|\in L^1$, por lo que convergencia dominada prueba la aditividad numerable. La medida del vacío es cero.
+\end{ejemplo}
+Las medidas con signo finitas forman un espacio vectorial real y las complejas forman uno complejo, con operaciones punto a punto. La aditividad de $a\nu+b\eta$ resulta de pasar al límite en las sumas parciales de las dos series convergentes. Esta restricción a medidas finitas en el caso real evita que una suma de medidas produzca $\infty-\infty$.
+
+\section{Separación de las partes positiva y negativa}\label{lectura:v2-25}
+\begin{definicion}
+Un conjunto medible $P$ es $\nu$-positivo si $\nu(B)\ge0$ para todo $B\subset P$ medible. Análogamente $N$ es $\nu$-negativo si todos sus subconjuntos medibles tienen medida no positiva. Una \emph{descomposición de Hahn} es una partición medible $X=P\mathbin{\dot\cup}N$ de este tipo.\index{descomposicion de Hahn@descomposición de Hahn}
+\end{definicion}
+\begin{lema}\label{v2:subconjunto-positivo}
+Si $0<\nu(A)<\infty$, existe un conjunto $\nu$-positivo $S\subset A$ con $\nu(S)>0$.
+\end{lema}
+\begin{proof}
+Todos los subconjuntos medibles de $A$ tienen medida finita por la proposición \ref{v2:continuidad-signo}. Retiraremos subconjuntos de medida negativa. En la etapa $n$, mientras exista en el resto un conjunto $B$ con $\nu(B)<-1/n$, elegimos uno y lo retiramos. Esta etapa termina tras una cantidad finita de elecciones: si produjera infinitos conjuntos disjuntos de medida menor que $-1/n$, su unión, contenida en $A$, tendría medida $-\infty$ por aditividad, contradiciendo finitud.
+
+La totalidad de los conjuntos retirados, al recorrer $n=1,2,\ldots$, forma una familia numerable disjunta de medidas negativas. Su unión $B$ tiene medida finita y no positiva. Pongamos $S=A\setminus B$. Entonces $\nu(S)=\nu(A)-\nu(B)\ge\nu(A)>0$. Si existiera $D\subset S$ medible con $\nu(D)<0$, podríamos escoger $n$ con $1/n<-\nu(D)$. El conjunto $D$ seguía disponible al terminar la etapa $n$, contradiciendo el criterio de terminación. Así $S$ es positivo.
+\end{proof}
+\begin{teorema}[Hahn]\label{v2:hahn}
+Toda medida con signo admite una descomposición de Hahn. Si $(P,N)$ y $(P',N')$ son dos, entonces para todo $A\in\Acal$,
+$\nu(A\cap P)=\nu(A\cap P')$ y $\nu(A\cap N)=\nu(A\cap N')$.
+\end{teorema}
+\begin{proof}
+Podemos suponer que $\nu$ no toma el valor $+\infty$; en el caso contrario aplicamos el argumento a $-\nu$ e intercambiamos los conjuntos. Sea $\alpha=\sup\{\nu(E):E\text{ es positivo}\}$, inicialmente permitido infinito. Elegimos positivos $P_n$ cuyas medidas se acercan a $\alpha$ y ponemos $P=\bigcup_nP_n$. Una unión numerable de positivos es positiva: se disjunta la familia y se aplica aditividad a cualquier subconjunto medible de la unión. Así $\nu(P)\ge\nu(P_n)$ y $\nu(P)=\alpha$. Como $\nu$ no toma $+\infty$, $\alpha<\infty$.
+
+Si $N=X\setminus P$ no fuera negativo, contendría un $A$ con $0<\nu(A)<\infty$. El lema anterior daría un positivo $S\subset A$ de medida positiva. Entonces $P\cup S$ sería positivo y tendría medida $\alpha+\nu(S)>\alpha$, contradicción. Esto prueba existencia.
+
+Para unicidad, cualquier subconjunto medible de $P\cap N'$ tiene medida a la vez no negativa y no positiva, luego cero. Lo mismo ocurre en $P'\cap N$. Al descomponer $A\cap P$ y $A\cap P'$ según su parte común, sus diferencias tienen medida cero y las medidas coinciden. El argumento para las partes negativas es idéntico.
+\end{proof}
+\begin{definicion}[Jordan y variación real]
+Dada una descomposición de Hahn, definimos
+\[
+ \nu^+(A)=\nu(A\cap P),\qquad \nu^-(A)=-\nu(A\cap N),\qquad |\nu|(A)=\nu^+(A)+\nu^-(A).
+\]
+Son medidas positivas: sus valores son no negativos y la aditividad numerable resulta de la de $\nu$ en cada parte. Además $\nu=\nu^+-\nu^-$, y al menos una de las dos medidas es finita, porque $\nu$ no toma ambos infinitos. La unicidad de Hahn demuestra que estas medidas no dependen de la partición elegida.\index{descomposicion de Jordan@descomposición de Jordan}\index{variacion total@variación total}
+\end{definicion}
+\begin{proposicion}\label{v2:variacion-real}
+Para todo $A\in\Acal$,
+\[
+ |\nu|(A)=\sup\left\{\sum_{j=1}^m|\nu(A_j)|:A=\mathop{\dot\bigcup}_{j=1}^m A_j,\ A_j\in\Acal\right\}.
+\]
+\end{proposicion}
+\begin{proof}
+Para cada partición, $|\nu(A_j)|\le\nu^+(A_j)+\nu^-(A_j)$; al sumar se obtiene la cota $|\nu|(A)$. En la partición formada por $A\cap P$ y $A\cap N$, la suma es exactamente $\nu^+(A)+\nu^-(A)$. El signo en la cota es una suma de las variaciones, nunca su diferencia.
+\end{proof}
+
+\section{Ejercicios resueltos: orden e integración de medidas reales}
+\begin{ejercicio}[Lectura 25, ejercicio 1]\label{ej:v2-l25-1}
+Si $\nu=\nu_1-\nu_2$ con $\nu_1,\nu_2$ positivas y la diferencia definida, demostrar $\nu_1(A)\ge\nu^+(A)$ y $\nu_2(A)\ge\nu^-(A)$.
+\end{ejercicio}
+\begin{solucion}
+En una parte positiva $P$, $\nu^+(A)=\nu(A\cap P)=\nu_1(A\cap P)-\nu_2(A\cap P)\le\nu_1(A\cap P)\le\nu_1(A)$. Si el primer miembro es infinito, la igualdad de la diferencia obliga a $\nu_1(A\cap P)=\infty$ y la desigualdad sigue siendo válida. En una parte negativa $N$ se aplica el mismo argumento a $-\nu$ y se obtiene $\nu^-(A)\le\nu_2(A)$.
+\end{solucion}
+\begin{ejercicio}[Lectura 25, ejercicio 2: rectificación del ínfimo]\label{ej:v2-l25-2}
+Para medidas con signo finitas $\nu_1,\nu_2$, definir
+\[
+ \nu_1\vee\nu_2=\nu_1+(\nu_2-\nu_1)^+,
+ \qquad \nu_1\wedge\nu_2=\nu_1-(\nu_1-\nu_2)^+.
+\]
+(i) Demostrar que la primera es el menor mayorante de ambas en el orden de medidas. (ii) Demostrar que la segunda es el mayor minorante. La lectura escribe $\nu_1-(\nu_2-\nu_1)^+$ para el ínfimo; examinar esa fórmula.
+\end{ejercicio}
+\begin{solucion}
+El orden $\eta\ge\nu$ significa que $\eta-\nu$ es una medida positiva. Escribamos $d=\nu_2-\nu_1=d^+-d^-$. Entonces $\nu_1+d^+\ge\nu_1$ y $(\nu_1+d^+)-\nu_2=d^-\ge0$. Si $\xi\ge\nu_1,\nu_2$, tenemos $d=(\xi-\nu_1)-(\xi-\nu_2)$, una diferencia de positivas. El ejercicio \ref{ej:v2-l25-1} implica $d^+\le\xi-\nu_1$, luego $\nu_1\vee\nu_2\le\xi$.
+
+Aplicamos este resultado a $-\nu_1,-\nu_2$ y cambiamos de signo: el mayor minorante es $-((-\nu_1)\vee(-\nu_2))=\nu_1-(\nu_1-\nu_2)^+$. La fórmula impresa es falsa: sobre un espacio de un punto, con $\nu_1=0$ y $\nu_2=\delta$, daría $-\delta$, mientras que el mayor minorante es cero.
+\end{solucion}
+\begin{ejercicio}[Lectura 25, ejercicio 3]\label{ej:v2-l25-3}
+Si $|\nu(A)|\le\mu(A)$ para todo medible $A$, con $\mu$ positiva, demostrar $|\nu|(A)\le\mu(A)$.
+\end{ejercicio}
+\begin{solucion}
+Para toda partición finita de $A$, $\sum_j|\nu(A_j)|\le\sum_j\mu(A_j)=\mu(A)$. Tomar el supremo sobre las particiones y usar la proposición \ref{v2:variacion-real} da la conclusión, incluso si $\mu(A)=\infty$.
+\end{solucion}
+\begin{ejercicio}[Lectura 25, ejercicio 4]\label{ej:v2-l25-4}
+Demostrar que $\norm\nu=|\nu|(X)$ es una norma sobre el espacio de medidas con signo finitas.
+\end{ejercicio}
+\begin{solucion}
+La descomposición de Hahn muestra que $\nu^+(X)=\nu(P)$ y $\nu^-(X)=-\nu(N)$ son finitos, por tanto la expresión está definida. Si $\norm\nu=0$, para todo $A$ tenemos $|\nu(A)|\le|\nu|(A)\le|\nu|(X)=0$, luego $\nu=0$. El supremo por particiones da $|a\nu|(X)=|a||\nu|(X)$. Para cada partición, $\sum_j|\nu(A_j)+\eta(A_j)|\le\sum_j|\nu(A_j)|+\sum_j|\eta(A_j)|\le\norm\nu+\norm\eta$; tomar supremo prueba la desigualdad triangular.
+\end{solucion}
+\begin{ejercicio}[Lectura 25, ejercicio 5]\label{ej:v2-l25-5}
+Para medidas con signo finitas, demostrar $\norm{\nu_n-\nu}\to0$ si y solo si $\nu_n(A)\to\nu(A)$ uniformemente en $A\in\Acal$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\eta=\nu_n-\nu$. Por una parte $\sup_A|\eta(A)|\le\norm\eta$. Por otra, si $(P,N)$ es una partición de Hahn de $\eta$,
+\[
+ \norm\eta=|\eta(P)|+|\eta(N)|\le2\sup_A|\eta(A)|.
+\]
+Estas dos cotas prueban ambas implicaciones y muestran que las dos formas de medir la convergencia son equivalentes.
+\end{solucion}
+\begin{ejercicio}[Lectura 25, ejercicio 6]\label{ej:v2-l25-6}
+Definir $\int f\,d\nu=\int f\,d\nu^+-\int f\,d\nu^-$ cuando $f$ es integrable para ambas medidas. Demostrar que tales funciones forman un espacio vectorial y decidir si $f\mapsto\int|f|\,d|\nu|$ es una seminorma.
+\end{ejercicio}
+\begin{solucion}
+La condición equivale a $\int|f|\,d|\nu|=\int|f|\,d\nu^++\int|f|\,d\nu^-<\infty$, primero por aditividad para simples y después por convergencia monótona. Es, pues, exactamente $\mathcal L^1(|\nu|)$, un espacio vectorial. La expresión solicitada es su seminorma $L^1$: tiene homogeneidad y desigualdad triangular al integrar las correspondientes desigualdades puntuales. Su núcleo consta de funciones nulas $|\nu|$-casi en todas partes. La integral con signo es lineal y satisface $|\int f\,d\nu|\le\int|f|\,d|\nu|$; las dos integrales que se restan son finitas, por lo que no aparece una indeterminación.
+\end{solucion}
+
+\section{Variación de una medida compleja}\label{lectura:v2-26}
+Si $\nu=\nu_1+i\nu_2$, las dos medidas reales son finitas y tienen sus variaciones de Jordan. Así
+$\nu=\nu_1^+-\nu_1^-+i\nu_2^+-i\nu_2^-$. Esta expresión descompone las partes real e imaginaria en medidas positivas; su suma no es en general la variación total compleja.
+\begin{definicion}
+Para una medida compleja definimos
+\[
+ |\nu|(A)=\sup\left\{\sum_{j=1}^m|\nu(A_j)|:A=\mathop{\dot\bigcup}_{j=1}^mA_j,\ A_j\in\Acal\right\}.
+\]
+\end{definicion}
+\begin{teorema}\label{v2:variacion-compleja}
+La variación $|\nu|$ es una medida positiva finita. Para todo $A\in\Acal$,
+\begin{gather*}
+ |\nu|(A)\le\nu_1^+(A)+\nu_1^-(A)+\nu_2^+(A)+\nu_2^-(A),\\
+ \sup_{B\subset A,\ B\in\Acal}|\nu(B)|\le|\nu|(A)
+ \le4\sup_{B\subset A,\ B\in\Acal}|\nu(B)|,\\
+  \nu_j^\pm(A)\le|\nu|(A).
+\end{gather*}
+En particular, $|\nu(A)|\le|\nu|(X)<\infty$.
+\end{teorema}
+\begin{proof}
+Para cada partición, $|\nu(A_j)|\le|\nu_1(A_j)|+|\nu_2(A_j)|$. Sumando y usando las variaciones reales se obtiene la primera cota, que además prueba finitud, porque las cuatro medidas de Jordan son finitas. No basta, por sí solo, afirmar que cada valor de $\nu$ es un número complejo: hace falta esta cota uniforme para el supremo.
+
+Para aditividad, sea $A=\dot\bigcup_n E_n$. Dada una partición finita $A_1,\ldots,A_m$ de $A$, la aditividad de $\nu$ y la desigualdad triangular dan
+\[
+ \sum_j|\nu(A_j)|\le\sum_n\sum_j|\nu(A_j\cap E_n)|\le\sum_n|\nu|(E_n).
+\]
+Por tanto $|\nu|(A)\le\sum_n|\nu|(E_n)$. Para la cota inversa, fijamos $N$ y elegimos en cada $E_n$, $n\le N$, una partición cuya suma se acerque a $|\nu|(E_n)$. Juntas, con el resto de $A$, forman una partición finita de $A$, de donde $|\nu|(A)\ge\sum_{n\le N}|\nu|(E_n)-\eps$. Hacemos $\eps\downarrow0$ y $N\to\infty$. Esto prueba aditividad numerable.
+
+La partición $B,A\setminus B$ da la primera cota con el supremo. Para la segunda, sean $(P_j,N_j)$ particiones de Hahn de $\nu_j$. La primera cota del enunciado acota $|\nu|(A)$ por
+\[
+ |\nu_1(A\cap P_1)|+|\nu_1(A\cap N_1)|+
+ |\nu_2(A\cap P_2)|+|\nu_2(A\cap N_2)|,
+\]
+y cada término es a lo sumo $\sup_{B\subset A}|\nu(B)|$. Finalmente $\nu_j^+(A)=\nu_j(A\cap P_j)\le|\nu(A\cap P_j)|\le|\nu|(A)$, y lo mismo vale para la parte negativa.
+\end{proof}
+\begin{teorema}\label{v2:medidas-banach}
+El espacio $\mathcal M(X,\Acal;\F)$ de medidas reales finitas o complejas, con $\norm\nu=|\nu|(X)$, es un espacio de Banach.
+\end{teorema}
+\begin{proof}
+Las propiedades de norma se demuestran como en el ejercicio \ref{ej:v2-l25-4}, utilizando particiones. Si $(\nu_n)$ es de Cauchy en variación, entonces $|\nu_n(A)-\nu_m(A)|\le\norm{\nu_n-\nu_m}$; existe $\nu(A)=\lim_n\nu_n(A)$ y la convergencia es uniforme en $A$. Pasar al límite en sumas finitas demuestra aditividad finita y $\nu(\varnothing)=0$.
+
+Si $A_j\downarrow\varnothing$, fijamos $n$ con $\sup_A|\nu_n(A)-\nu(A)|<\eps/2$ y después $j$ con $|\nu_n(A_j)|<\eps/2$. Entonces $|\nu(A_j)|<\eps$. Así $\nu$ es continua en el vacío. Para conjuntos disjuntos $B_j$ con unión $B$, el resto $B\setminus\bigcup_{j\le m}B_j$ decrece al vacío; por aditividad finita, $\nu(B)-\sum_{j\le m}\nu(B_j)$ es su medida y tiende a cero. Por tanto $\nu$ es una medida.
+
+Para una partición finita $A_1,\ldots,A_k$ y $n,m$ grandes, $\sum_j|\nu_n(A_j)-\nu_m(A_j)|\le\eps$. Hacer $m\to\infty$ y tomar después el supremo sobre todas las particiones da $\norm{\nu_n-\nu}\le\eps$. La misma cota, con un $n$ fijo, prueba que $\nu$ tiene variación finita. Este orden de los límites evita intercambiar indebidamente un supremo con una convergencia puntual.
+\end{proof}
+\begin{proposicion}[Integración compleja]\label{v2:integral-compleja}
+Una función medible es integrable respecto a $|\nu|$ si y solo si lo es respecto a las cuatro medidas $\nu_j^\pm$. En ese caso definimos
+\[
+ \int f\,d\nu=\int f\,d\nu_1^+-\int f\,d\nu_1^-+
+ i\int f\,d\nu_2^+-i\int f\,d\nu_2^-.
+\]
+La integral es lineal y $|\int f\,d\nu|\le\int|f|\,d|\nu|$.
+\end{proposicion}
+\begin{proof}
+Las cotas entre medidas del teorema \ref{v2:variacion-compleja} se integran primero para funciones simples no negativas y después para funciones medibles no negativas, mediante aproximación creciente. Aplicadas a $|f|$ prueban la equivalencia de integrabilidad. Para una función simple $s=\sum_jc_j\ind{A_j}$ sobre conjuntos disjuntos, la definición da $\int s\,d\nu=\sum_jc_j\nu(A_j)$ y
+$|\int s\,d\nu|\le\sum_j|c_j||\nu|(A_j)=\int|s|\,d|\nu|$.
+Aproximamos $f$ en $L^1(|\nu|)$ por simples. La misma aproximación converge en las cuatro normas $L^1(\nu_j^\pm)$, por las cotas de medidas; por tanto sus cuatro integrales convergen a las de $f$. Pasando al límite se obtiene la desigualdad. La linealidad resulta de las cuatro integrales ordinarias. Si una función está definida solo casi en todas partes, se elige un representante medible y se extiende por cero sobre un conjunto excepcional medible; la desigualdad asegura independencia del representante.
+\end{proof}
+
+\section{Ejercicios resueltos: continuidad de medidas y norma de la integral}
+\begin{ejercicio}[Lectura 26, ejercicio 1]\label{ej:v2-l26-1}
+Sea $\nu:\Acal\to\C$ finitamente aditiva y nula en el vacío. Demostrar que es una medida si cumple cualquiera de estas condiciones: (i) continuidad sobre sucesiones crecientes; (ii) continuidad sobre sucesiones decrecientes con intersección vacía.
+\end{ejercicio}
+\begin{solucion}
+Si $A_n$ son disjuntos, las uniones finitas $B_m=\bigcup_{n\le m}A_n$ crecen a $B=\bigcup_nA_n$. Bajo (i), $\nu(B)=\lim_m\nu(B_m)=\sum_n\nu(A_n)$. Bajo (ii), los restos $B\setminus B_m$ decrecen al vacío, y la identidad $\nu(B)-\sum_{n\le m}\nu(A_n)=\nu(B\setminus B_m)$ da la misma conclusión. No basta la convergencia de la serie sin una de estas condiciones de continuidad.
+\end{solucion}
+\begin{ejercicio}[Lectura 26, ejercicio 2: excepción de la medida cero]\label{ej:v2-l26-2}
+Demostrar que $I_\nu(f)=\int f\,d\nu$ es un funcional continuo sobre $L^1(|\nu|)$, de norma uno cuando $\nu\ne0$. Determinar su norma si $\nu=0$.
+\end{ejercicio}
+\begin{solucion}
+La proposición \ref{v2:integral-compleja} da $\norm{I_\nu}\le1$. Si $M=|\nu|(X)>0$, elegimos una partición $A_1,\ldots,A_m$ con $\sum_j|\nu(A_j)|>M-\eps$. Tomamos $c_j=\overline{\nu(A_j)}/|\nu(A_j)|$ cuando la medida es no nula y $c_j=1$ en otro caso. La simple $s=\sum_jc_j\ind{A_j}$ tiene $|s|=1$, luego $\norm s_{L^1(|\nu|)}=M$, y $I_\nu(s)=\sum_j|\nu(A_j)|>M-\eps$. Aplicar el funcional a $s/M$ y hacer $\eps\downarrow0$ da norma al menos uno. Para $\nu=0$, $L^1(|\nu|)$ es el espacio cero y el funcional tiene norma cero. La excepción no puede omitirse.
+\end{solucion}
+\section{La variación como medida de control}
+Hahn separa signos; Jordan transforma esa separación en medidas positivas canónicas; la variación total controla todas las particiones a la vez. Con ella, la integración compleja se reduce a integración positiva y el espacio de medidas adquiere una norma completa. La aditividad numerable sigue siendo esencial: en el capítulo sobre el dual de $L^\infty$ veremos qué cambia al conservar únicamente aditividad finita.

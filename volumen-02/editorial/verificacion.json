@@ -1,0 +1,30 @@
+{
+  "fecha": "2026-10-18",
+  "volumen": 2,
+  "paginas_pdf": 127,
+  "sha256_pdf": "0f0fbfeadc54fc9a7846778f6cfef3154f4dfb0da69f7c29134a5cb8b2d80bb0",
+  "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex",
+  "ejercicios_originales": 160,
+  "soluciones": 160,
+  "lecturas": 33,
+  "capitulos": 16,
+  "partes": 6,
+  "enlaces_pdf": 550,
+  "enlaces_internos_invalidos": 0,
+  "etiquetas_duplicadas": 0,
+  "referencias_indefinidas": 0,
+  "overfull": 0,
+  "underfull": 0,
+  "glifos_ausentes": 0,
+  "entradas_indice": 89,
+  "revision_visual": "127 páginas revisadas en hojas de contacto; ampliaciones de índice general, Clarkson, Riesz, cobertura, notación, índice alfabético y referencias. Sin solapamientos o cortes detectados.",
+  "revision_matematica_independiente": {
+    "03_y_06": "Revisión de Carathéodory, extensión, Lebesgue, Steinhaus, medida producto, Tonelli/Fubini y ejercicios. Se aplicó la precisión de σ-finitud y la convención de clase monótona no vacía.",
+    "07_y_08": "Revisión de Egorov, Cauchy en medida, composición, separabilidad, Vitali y Jensen: sin nuevos defectos sustantivos detectados.",
+    "13_15_16": "Lectura independiente de Radon–Nikodym, regularidad y construcción completa de Riesz; raíz revisó además Riesz sobre Cc general."
+  },
+  "advertencias_no_materiales": [
+    "XeLaTeX informa sustitución de tamaño de fuentes matemáticas hasta2.12pt en títulos grandes; no se detectó defecto visual."
+  ],
+  "alcance_examenes": "Los dos exámenes se consultaron, pero no se incorporan al conteo ni se declaran resueltos como listas adicionales."
+}

@@ -149,6 +149,182 @@ La cota inferior es independiente de $z$, de modo que también vale para el ínf
 
 Las operaciones continuas y la caracterización de completitud mediante series describen cualquier espacio normado. El lema de Riesz añade una restricción geométrica: un subespacio cerrado propio no puede aproximar uniformemente todas las direcciones unitarias. Combinaremos ahora esa restricción con las cotas de coordenadas para caracterizar la dimensión finita.
 
+\section{Identificar vectores: espacios cocientes}\label{ampl:cocientes}
+Antes de volver a la dimensión finita estudiaremos otra operación con subespacios: declarar equivalentes dos vectores cuya diferencia pertenece a un subespacio dado. Esta construcción permite ignorar direcciones que no interesa distinguir. También resuelve una dificultad ya encontrada: una integral puede medir cero para una función que no es idénticamente nula. En ese caso hay que identificar primero los objetos que la seminorma no distingue.
+
+La organización de esta ampliación se apoya en los apuntes y la presentación de Maximenko \cite{max-cociente,max-seminormado}. Desarrollamos las verificaciones algebraicas y los pasos con ínfimos; los ejercicios indican cuáles adaptan propuestas de esa fuente. No se requiere todavía la teoría general de operadores.
+\index{espacio!cociente}\index{norma!cociente}\index{seminorma!nucleo@núcleo}
+
+\begin{definicion}
+Si $M$ es un subespacio de un espacio vectorial $V$, escribimos $x\sim y$ cuando $x-y\in M$. La clase de $x$ es $[x]=x+M$, y el conjunto de clases se denota $V/M$. Sus operaciones son
+\[
+ [x]+[y]=[x+y],\qquad \lambda[x]=[\lambda x].
+\]
+\end{definicion}
+La relación es reflexiva porque $0\in M$, simétrica porque $-M=M$ y transitiva porque $M+M=M$. Las operaciones no dependen de los representantes: si $x-x'$, $y-y'\in M$, entonces $(x+y)-(x'+y')\in M$ y $\lambda x-\lambda x'\in M$. Las identidades vectoriales se heredan de $V$. El vector cero del cociente es la clase $[0]=M$, que generalmente contiene muchos vectores de $V$. La aplicación $q:V\to V/M$, $q(x)=[x]$, es lineal, sobreyectiva y tiene núcleo $M$.
+
+\begin{proposicion}[Seminorma del cociente]\label{ampl:cociente-seminorma}
+Sea $p$ una seminorma en $V$ y $M\subset V$ un subespacio. La expresión
+\[
+ \bar p([x])=\inf_{m\in M}p(x-m)
+\]
+define una seminorma en $V/M$. Es una norma si y solo si $M$ es cerrado para la pseudométrica $d_p(x,y)=p(x-y)$. En particular, si $V$ es normado y $M$ es cerrado,
+\[
+ \norm{[x]}_{V/M}=\dist(x,M)
+\]
+es una norma. La proyección $q$ satisface $\bar p(qx-qy)\le p(x-y)$.
+\end{proposicion}
+\begin{proof}
+Los representantes de $[x]$ son exactamente $x-m$, $m\in M$; cambiar $x$ por otro representante no cambia ese conjunto. El ínfimo es finito y no negativo porque $m=0$ es una elección permitida. Para $\eps>0$ elegimos $m,n\in M$ tales que
+\[
+ p(x-m)<\bar p([x])+\eps/2,\qquad
+ p(y-n)<\bar p([y])+\eps/2.
+\]
+Entonces $m+n\in M$ y
+\[
+ \bar p([x+y])\le p(x+y-m-n)
+ <\bar p([x])+\bar p([y])+\eps.
+\]
+Dejar $\eps\downarrow0$ demuestra subaditividad. Para $\lambda\ne0$, al escribir $m=\lambda n$ obtenemos
+\[
+ \bar p([\lambda x])=\inf_{n\in M}|\lambda|p(x-n)
+ =|\lambda|\bar p([x]).
+\]
+Para $\lambda=0$ ambos miembros son cero. Además $\bar p([x])=0$ equivale a que para todo $\eps>0$ exista $m\in M$ con $p(x-m)<\eps$, esto es, a que $x\in\cl M$ en la topología de $d_p$. Por tanto la única clase de seminorma cero es $M$ exactamente cuando $\cl M=M$. Finalmente, elegir $m=0$ en el ínfimo para $[x-y]$ prueba la última desigualdad.
+\end{proof}
+
+\begin{observacion}[El ínfimo no exige un representante óptimo]
+La definición permite encontrar representantes de norma menor que $\norm{[x]}_{V/M}+\eps$ para cada $\eps>0$. No afirma que alguno tenga norma exactamente igual al ínfimo. Esta distinción será esencial en la prueba de completitud y en el ejercicio~\ref{ej:ampl-cocientes-5}.
+\end{observacion}
+
+\begin{proposicion}[Eliminar el núcleo de una seminorma]\label{ampl:nucleo-seminorma}
+Sea $N_p=\{x:p(x)=0\}$. Es un subespacio cerrado para $d_p$, y
+\[
+ \norm{[x]}_{V/N_p}=p(x)
+\]
+está bien definida y es una norma.
+\end{proposicion}
+\begin{proof}
+Si $u,v\in N_p$, entonces $p(\alpha u+\beta v)\le|\alpha|p(u)+|\beta|p(v)=0$; así $N_p$ es subespacio. La desigualdad $|p(x)-p(y)|\le p(x-y)$ prueba continuidad de $p$ respecto de $d_p$, por lo que $N_p=p^{-1}(\{0\})$ es cerrado. Si $n\in N_p$, las desigualdades triangulares en ambos sentidos dan $p(x+n)=p(x)$. Todos los representantes de una clase tienen, por tanto, el mismo valor de $p$, y su ínfimo es ese valor. La proposición anterior demuestra que la seminorma resultante es una norma.
+\end{proof}
+
+\begin{ejemplo}[Una dirección invisible]
+En $\R^2$, $p(s,t)=|s|$ no distingue puntos que difieren verticalmente. Su núcleo es $\{0\}\times\R$. La aplicación $[(s,t)]\mapsto s$ identifica isométricamente el cociente con $\R$. La coordenada vertical se pierde de manera deliberada; no se está afirmando que dos pares originalmente distintos sean iguales en $\R^2$.
+\end{ejemplo}
+
+\begin{teorema}[Completitud del cociente]\label{ampl:cociente-banach}
+Si $V$ es Banach y $M$ es un subespacio cerrado, $V/M$ es Banach con la norma cociente.
+\end{teorema}
+\begin{estrategia}
+Una sucesión de clases no viene con representantes de Cauchy elegidos de antemano. Es más cómodo usar el criterio de series del teorema~\ref{ch19:series}: levantaremos una serie absolutamente convergente a otra en $V$, permitiendo un error sumable al elegir cada representante.
+\end{estrategia}
+\begin{proof}
+Sea $\sum_{n\ge1}A_n$ una serie en $V/M$ con $\sum_n\norm{A_n}_{V/M}<\infty$. Por la propiedad del ínfimo elegimos $x_n\in A_n$ tales que
+\[
+ \norm{x_n}<\norm{A_n}_{V/M}+2^{-n}.
+\]
+Así $\sum_n\norm{x_n}<\infty$, y la completitud de $V$ da $x=\sum_nx_n\in V$. Como $q$ es lineal y $1$-Lipschitz,
+\[
+ \left\|\sum_{n=1}^N A_n-q(x)\right\|_{V/M}
+ \le\left\|\sum_{n=1}^N x_n-x\right\|\longrightarrow0.
+\]
+Toda serie absolutamente convergente del cociente converge. El mismo criterio de series prueba su completitud.
+\end{proof}
+
+\begin{proposicion}[Qué ocurre con las bolas]\label{ampl:cociente-bolas}
+Para $V$ normado, $M$ cerrado y $r>0$,
+\[
+ q(B(x,r))=B(qx,r).
+\]
+En particular, $q$ envía abiertos en abiertos.
+\end{proposicion}
+\begin{proof}
+Si $y\in B(x,r)$, entonces $\norm{qy-qx}\le\norm{y-x}<r$. Recíprocamente, si $\norm{[z]-[x]}<r$, existe $m\in M$ tal que $\norm{z-x-m}<r$. El vector $z-m$ pertenece a $B(x,r)$ y representa la clase $[z]$. Para un abierto $U$ y una clase $qx\in q(U)$, con $x\in U$, existe $r>0$ tal que $B(x,r)\subset U$. La igualdad de bolas da una bola alrededor de $qx$ contenida en $q(U)$; así $q(U)$ es abierto.
+\end{proof}
+
+\section{Ejercicios sobre cocientes y seminormas}
+
+\begin{ejercicio}[Ampliación: una recta como cociente]\label{ej:ampl-cocientes-1}
+En $\R^2$ con la norma euclidiana sea $M=\{(t,t):t\in\R\}$. Calcule la norma de $[(a,b)]$, encuentre el representante de norma mínima y construya una isometría lineal de $\R^2/M$ sobre $\R$. Este ejercicio y su desarrollo son propios de esta edición.
+\end{ejercicio}
+\begin{solucion}
+Para cualquier $t$,
+\[
+ (a-t)^2+(b-t)^2
+ =2\left(t-\frac{a+b}{2}\right)^2+\frac{(a-b)^2}{2}.
+\]
+El mínimo se alcanza únicamente en $t=(a+b)/2$, de modo que
+\[
+ \norm{[(a,b)]}=\frac{|a-b|}{\sqrt2},\qquad
+ (a,b)-\left(\frac{a+b}{2},\frac{a+b}{2}\right)
+ =\left(\frac{a-b}{2},\frac{b-a}{2}\right).
+\]
+La aplicación $T([(a,b)])=(a-b)/\sqrt2$ está bien definida porque restar un vector de $M$ no cambia $a-b$. Es lineal y preserva la norma calculada. Es sobreyectiva, pues $T([(\sqrt2s,0)])=s$; su núcleo es cero porque $a-b=0$ equivale a $(a,b)\in M$. Esto demuestra la isometría, no sólo una coincidencia de dimensiones.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: el límite como coordenada del cociente]\label{ej:ampl-cocientes-2}
+Sean $c$ y $c_0$ los espacios de sucesiones escalares convergentes y convergentes a cero, con la norma uniforme. Demuestre que $c_0$ es cerrado en $c$ y que $[x]\mapsto\lim_nx_n$ es un isomorfismo isométrico de $c/c_0$ sobre $\F$. Adaptación del ejercicio de la presentación \cite{max-seminormado}; la solución se desarrolla aquí.
+\end{ejercicio}
+\begin{solucion}
+Si $x^{(k)}\in c_0$ y $\norm{x^{(k)}-x}_\infty\to0$, dado $\eps>0$ elegimos $k$ con error menor que $\eps/2$ y luego $N$ con $|x^{(k)}_n|<\eps/2$ para $n\ge N$. Entonces $|x_n|<\eps$ para esos índices, así que $x\in c_0$. Esto demuestra cerradura.
+
+Escribamos $L=\lim_nx_n$. Para todo $y\in c_0$, la sucesión $x_n-y_n$ converge a $L$, por lo que $|L|\le\norm{x-y}_\infty$. Tomar ínfimos da $|L|\le\norm{[x]}$. Por otro lado, $y=x-L\mathbf1$ pertenece a $c_0$, y $x-y=L\mathbf1$ tiene norma $|L|$. Así $\norm{[x]}=|L|$. Dos representantes difieren en $c_0$ exactamente cuando tienen el mismo límite; la aplicación indicada está bien definida, es lineal e inyectiva. Las sucesiones constantes producen todos los escalares, luego también es sobreyectiva. En este caso el representante constante alcanza el ínfimo.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: un cociente que pierde toda distancia]\label{ej:ampl-cocientes-3}
+En $\ell^2$ sea $c_{00}$ el subespacio de sucesiones de soporte finito. Pruebe que $\ell^2/c_{00}$ no es el espacio vectorial cero, aunque su seminorma cociente vale cero en todas las clases. Explique por qué esto no contradice el teorema~\ref{ampl:cociente-banach}. Adaptación del contraejemplo propuesto en \cite{max-seminormado}.
+\end{ejercicio}
+\begin{solucion}
+La sucesión $x=(1/n)_{n\ge1}$ pertenece a $\ell^2$ y no a $c_{00}$, así que $[x]\ne[0]$. Para cualquier $u\in\ell^2$, sus truncamientos $u^{(N)}\in c_{00}$ satisfacen
+\[
+ \norm{u-u^{(N)}}_2^2=\sum_{n>N}|u_n|^2\longrightarrow0.
+\]
+De aquí $\inf_{v\in c_{00}}\norm{u-v}_2=0$, y la seminorma de toda clase es cero. El subespacio $c_{00}$ es denso y propio, por lo que no es cerrado. Falta exactamente la hipótesis que haría de la seminorma una norma. Si se divide por $\cl{c_{00}}=\ell^2$, el cociente sí es el espacio cero: identificar todas las distancias nulas elimina las clases algebraicamente distintas que la seminorma era incapaz de separar.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: observar sólo los extremos]\label{ej:ampl-cocientes-4}
+En $C([0,1],\F)$ defina $p(f)=|f(0)|+|f(1)|$. Describa su núcleo y pruebe que el cociente por ese núcleo es isométrico a $\F^2$ con la norma $\norm{(a,b)}_1=|a|+|b|$. Determine si el cociente es completo aunque $p$ no sea una norma. Ejercicio propio de esta edición.
+\end{ejercicio}
+\begin{solucion}
+La desigualdad triangular y la homogeneidad de $p$ se verifican en cada extremo. Su núcleo es
+\[
+ N_p=\{f\in C([0,1]):f(0)=f(1)=0\}.
+\]
+Contiene funciones no nulas, por ejemplo $f(t)=t(1-t)$; por ello $p$ no es una norma. La aplicación $T([f])=(f(0),f(1))$ está bien definida, es lineal y tiene núcleo cero en el cociente. Para cualquier $(a,b)$, la función afín $f(t)=(1-t)a+tb$ tiene esos extremos, de modo que $T$ es sobreyectiva. La proposición~\ref{ampl:nucleo-seminorma} da
+\[
+ \norm{[f]}=p(f)=\norm{T([f])}_1.
+\]
+Finalmente, una sucesión de Cauchy en $\F^2$ para $\norm{\cdot}_1$ es de Cauchy en cada coordenada; los dos límites escalares producen el límite en esa norma. La isometría transporta la completitud al cociente. Los valores interiores de las funciones no son necesarios para recuperar el límite de sus clases.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: norma cociente sin mínimo]\label{ej:ampl-cocientes-5}
+Sea $\varphi:V\to\F$ lineal y no nula, y suponga
+$C=\sup_{\norm v\le1}|\varphi(v)|<\infty$. Pruebe que $M=\ker\varphi$ es cerrado y
+\[
+ \norm{[x]}_{V/M}=\frac{|\varphi(x)|}{C}.
+\]
+Después considere $V=\ell^1$ y $\varphi(x)=\sum_{n\ge1}\frac{n}{n+1}x_n$. Demuestre que $C=1$ y que la clase cuyos representantes satisfacen $\varphi(x)=1$ tiene norma $1$, pero no contiene ningún vector de norma $1$. Ejercicio propio de esta edición.
+\end{ejercicio}
+\begin{solucion}
+La homogeneidad da $|\varphi(v)|\le C\norm v$ para todo $v$, y $C>0$ porque $\varphi\ne0$. La misma desigualdad aplicada a diferencias demuestra continuidad, luego su núcleo es cerrado. Si $m\in M$,
+$|\varphi(x)|=|\varphi(x-m)|\le C\norm{x-m}$; el ínfimo proporciona la cota inferior.
+
+Si $\varphi(x)=0$, la clase es cero y la fórmula está probada. En otro caso elegimos $u_k$ con $\norm{u_k}\le1$ y $|\varphi(u_k)|\to C$, suprimiendo los primeros términos si es necesario para que $\varphi(u_k)\ne0$. Los vectores
+\[
+ v_k=\frac{\varphi(x)}{\varphi(u_k)}u_k
+\]
+satisfacen $\varphi(v_k)=\varphi(x)$, así que representan $[x]$. Sus normas son a lo sumo $|\varphi(x)|/|\varphi(u_k)|$. Al pasar al límite resulta la cota superior y, por tanto, la igualdad.
+
+En $\ell^1$ la serie que define $\varphi$ converge absolutamente y $|\varphi(x)|\le\norm x_1$. Como $\varphi(e_n)=n/(n+1)\to1$, el supremo $C$ es $1$. Para cada $x\ne0$,
+\[
+ |\varphi(x)|\le\sum_n\frac{n}{n+1}|x_n|
+ =\norm x_1-\sum_n\frac{|x_n|}{n+1}<\norm x_1.
+\]
+La última suma es estrictamente positiva porque algún $x_n$ no es cero. Todo representante con $\varphi(x)=1$ tiene, pues, norma mayor que $1$. Sin embargo, $v_n=((n+1)/n)e_n$ satisface $\varphi(v_n)=1$ y $\norm{v_n}_1\downarrow1$. La clase existe, su ínfimo es $1$ y no lo alcanza ningún representante.
+\end{solucion}
+
+Los cocientes permiten medir distancia a un subespacio y las seminormas obligan a precisar qué vectores se identifican. Volvemos ahora a la dimensión finita: allí las coordenadas proporcionan controles que pueden perderse en los espacios de los últimos ejemplos.
+
 \section{Subespacios de dimensión finita y continuidad}\label{lectura:22}\label{sec:nuevo08:finita}
 
 \begin{proposicion}\label{ch22:suma-cerrada}

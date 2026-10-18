@@ -1,0 +1,1181 @@
+{
+  "volumen": 3,
+  "bloque_lecturas": [
+    19,
+    36
+  ],
+  "capitulos": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "autor_edicion": "Eder Said Martinez Ramirez",
+  "total_ejercicios_originales": 95,
+  "total_ejercicios_con_solucion": 95,
+  "alcance": "Lectura íntegra de las transcripciones originales, desarrollo de toda teoría y resolución de cada ejercicio e inciso; enunciados falsos tratados mediante contraejemplo y versión correcta. No se registran como erratas de impresión las barras que pueden haberse perdido en OCR.",
+  "lecturas": [
+    {
+      "lectura": 19,
+      "fuente_local": "tmp/originales/03/lect19.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/17J2_OKANydiG6yQXCGVu94N00nB-DIMV/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 10,
+      "archivo": "capitulos/10.tex",
+      "label_lectura": "lec:v3-19",
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l19-1",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_latex": "Estudie las siguientes álgebras normadas y justifique todos los productos:\n\\begin{enumerate}\n\\item $C^n([a,b])$ con producto puntual y la norma de la lectura 0, $\\norm f_n=\\sum_{k=0}^n\\norm{f^{(k)}}_\\infty$. Determine si esa norma es submultiplicativa y, cuando haga falta, corríjala mediante una norma equivalente.\n\\item $\\ell^1(\\Z)$ con $(x*y)_k=\\sum_{j\\in\\Z}x_jy_{k-j}$.\n\\item $L^1(\\R)$ con $(f*g)(x)=\\int_\\R f(y)g(x-y)\\,dy$, definida casi en todas partes.\n\\end{enumerate}",
+          "solucion_completa": true,
+          "caracteres_solucion": 2632
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l19-2",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v"
+          ],
+          "enunciado_latex": "Sea $A$ un álgebra unitaria. Un inverso izquierdo de $a$ satisface $ba=1$; un inverso derecho satisface $ac=1$. Pruebe:\n\\begin{enumerate}\n\\item Si $a$ tiene inverso izquierdo pero no derecho, posee infinitos inversos izquierdos.\n\\item Si $b$ es inverso izquierdo y $c$ derecho, entonces $b=c$.\n\\item El inverso bilateral, cuando existe, es único y se denota $a^{-1}$.\n\\item Si $a,b$ son invertibles, $\\alpha\\ne0$ y $n\\geq1$, también lo son $ab,\\alpha a,a^n$, y sus inversos son $b^{-1}a^{-1},\\alpha^{-1}a^{-1},(a^{-1})^n$.\n\\item Si $A$ es normada y $b$ es inverso por alguno de los lados, determine la cota inferior correcta para $\\norm b$.\n\\end{enumerate}",
+          "solucion_completa": true,
+          "caracteres_solucion": 983
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l19-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Para $a$ en un álgebra normada unitaria, defina $L_a(x)=ax$. Pruebe que $L_a$ es lineal continuo y que $a\\mapsto L_a$ es lineal, multiplicativo e inyectivo. Deduzca una norma equivalente y submultiplicativa para la que la identidad tiene norma uno.",
+          "solucion_completa": true,
+          "caracteres_solucion": 658
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l19-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $I$ un ideal \\emph{bilateral} cerrado de un álgebra normada $A$. Pruebe que $(a+I)(b+I)=ab+I$ define un producto de álgebra normada sobre $A/I$, con su norma cociente.",
+          "solucion_completa": true,
+          "caracteres_solucion": 783
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l19-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $T:A\\to B$ lineal, continuo y multiplicativo; cuando se exige homomorfismo unital, suponga además $T(1_A)=1_B$. Pruebe que su núcleo es ideal bilateral y su imagen es subálgebra. Precise el significado del primer teorema de isomorfismo $A/\\ker T\\simeq T(A)$ y las hipótesis para que sea un isomorfismo topológico.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1164
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l19-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $X$ localmente compacto Hausdorff y $E\\subset X$. Defina\n\\[\n I(E)=\\{f:f|_E=0\\}.\n\\]\nPruebe que es un ideal en $C_b(X)$, con norma uniforme, y en $C(X)$, con la topología de convergencia uniforme en compactos. Examine la afirmación de que ese ideal es cerrado si y solo si $E$ es cerrado.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1048
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Binomio: (a+b)^n y conmutatividad; no (ab)^n.",
+        "C(X) con norma uniforme requiere acotación; se usa C(K) compacto o C_b(X). C_0(X) es ideal de C_b(X), no de todo C(X); contraejemplo en R.",
+        "Ejercicio 1(i): norma suma de derivadas no submultiplicativa para n>=2; contraejemplo explícito y norma equivalente con factores 1/k!.",
+        "Ejercicio 2: la cota correcta de la norma del inverso es ||1||/||a||; condiciones de escalar no nulo.",
+        "Ejercicio 5: el primer isomorfismo algebraico no asegura inversa topológica; contraejemplo l1 dentro de c0 y condición de imagen cerrada.",
+        "Ejercicio 6: ideal de funciones que se anulan en E es siempre cerrado e igual al asociado a cl(E); no equivale a que E sea cerrado."
+      ]
+    },
+    {
+      "lectura": 20,
+      "fuente_local": "tmp/originales/03/lect20.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1Ys2jkIJ-7adEztSk6RGl4ztBA_OKQQ3G/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 10,
+      "archivo": "capitulos/10.tex",
+      "label_lectura": "lec:v3-20",
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l20-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que la clausura de un ideal izquierdo, derecho o bilateral de un álgebra normada es un ideal del mismo tipo. Examine la conclusión de que todo ideal maximal es cerrado y demuestre la versión válida para álgebras de Banach unitarias.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1165
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l20-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que un álgebra conmutativa unitaria no nula tiene ideales maximales.",
+          "solucion_completa": true,
+          "caracteres_solucion": 531
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l20-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $A$ conmutativa unitaria sobre $\\F$ e $I$ un ideal propio. Determine la relación entre maximalidad de $I$ y el cociente $A/I$. Examine la afirmación de la lectura $I$ maximal si y solo si $A/I\\simeq\\F$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1184
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l20-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Demuestre que $e_0=(\\delta_{0,n})_{n\\in\\Z}$ es la identidad de $\\ell^1(\\Z)$ con el producto de Cauchy.",
+          "solucion_completa": true,
+          "caracteres_solucion": 259
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l20-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $L^1(\\R)$ con convolución no tiene identidad. Si existiera $e\\in L^1$ con $e*f=f$ casi en todas partes para toda $f\\in L^1$, pruebe que la medida $\\mu_e(E)=\\int_E e\\,d\\lambda$ asignaría masa uno a todo intervalo abierto acotado que contiene al origen, y obtenga una contradicción con su continuidad absoluta.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1075
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Maximal significa propio; existencia por Zorn para álgebra unitaria.",
+        "Ejercicio 1: cerradura de ideales maximales requiere completitud; contraejemplo C[z] con norma uniforme en disco e ideal (z-2).",
+        "Ejercicio 3: maximal equivale a cociente campo, no necesariamente al campo base; contraejemplos C como álgebra real y C(t). Caso Banach complejo usa Gelfand–Mazur.",
+        "Se corrigen los términos de la multiplicación de la unitización y el argumento de maximalidad.",
+        "Unitización de c0 y c son isomorfas topológicamente, no mediante una isometría para la norma suma."
+      ]
+    },
+    {
+      "lectura": 21,
+      "fuente_local": "tmp/originales/03/lect21.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1krgsZVlQzaqXGHSC2Lgj5padfhqT0eVS/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 11,
+      "archivo": "capitulos/11.tex",
+      "label_lectura": "lec:v3-21",
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l21-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Demuestre la unicidad de la derivada de Fréchet. Explique por qué la hipótesis de que el dominio sea abierto es necesaria para esa afirmación.",
+          "solucion_completa": true,
+          "caracteres_solucion": 487
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l21-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Determine si el producto interno de un espacio de Hilbert complejo, visto como aplicación $H\\times H\\to\\C$, es diferenciable.",
+          "solucion_completa": true,
+          "caracteres_solucion": 735
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l21-3",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v"
+          ],
+          "enunciado_latex": "Sean $x,y\\in A$. Pruebe: (i) la serie $e^x=\\sum_{n\\ge0}x^n/n!$ converge absolutamente; (ii) si $xy=yx$, entonces $e^{x+y}=e^xe^y$; (iii) $e^x$ es invertible y su inversa es $e^{-x}$; (iv) $e^x=\\lim_n(1+x/n)^n$; (v) la fórmula de producto de Trotter\n\\[\n e^{x+y}=\\lim_{n\\to\\infty}(e^{x/n}e^{y/n})^n\n\\]\nes válida sin suponer que $x$ e $y$ conmuten.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1216
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l21-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $t\\mapsto e^{tx}$ es diferenciable y su derivada es $xe^{tx}=e^{tx}x$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 306
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l21-5",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_latex": "Sea $x\\in\\partial G(A)$. Pruebe: (i) para cada $y\\in G(A)$,\n$\\norm{y^{-1}}\\ge1/\\norm{x-y}$; (ii) $x$ es un divisor topológico de cero por ambos lados, es decir, existen $u_n$ con $\\norm{u_n}=1$ y $xu_n,u_nx\\to0$; (iii) $x$ no tiene inversa izquierda ni derecha.",
+          "solucion_completa": true,
+          "caracteres_solucion": 690
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Derivada del producto no conmutativo: hy+xk; la del inverso es -x^{-1}hx^{-1}.",
+        "Diferenciabilidad implica continuidad con cota (||Df||+1)||h||, también si la derivada es cero.",
+        "Ejercicio 2: producto interno complejo lineal en primer argumento; diferenciabilidad compleja exactamente en (0,y), real en todos los puntos.",
+        "Ejercicio 5: divisor topológico y ausencia de inversas se refieren al elemento x de frontera, no al invertible y."
+      ]
+    },
+    {
+      "lectura": 22,
+      "fuente_local": "tmp/originales/03/lect22.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/18U-IUicazG7JKrD8dFOLbizRFvYHhrBy/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 11,
+      "archivo": "capitulos/11.tex",
+      "label_lectura": "lec:v3-22",
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l22-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $p$ es un polinomio complejo, pruebe $\\sigma(p(x))=p(\\sigma(x))$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 520
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l22-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Para $x\\in A$, $y\\in B$, pruebe $\\sigma_{A\\times B}((x,y))=\\sigma_A(x)\\cup\\sigma_B(y)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 245
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l22-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $\\lambda\\mapsto(x-\\lambda1)^{-1}$ es diferenciable en el resolvente y que su derivada de Fréchet es continua.",
+          "solucion_completa": true,
+          "caracteres_solucion": 371
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l22-4",
+          "incisos_originales": [],
+          "enunciado_latex": "En $C^1([0,1])$ con $\\norm f=\\norm f_\\infty+\\norm{f'}_\\infty$, calcule el radio espectral de $f(t)=t$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 344
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l22-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe $r(xy)=r(yx)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 283
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l22-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $A$ es conmutativa, pruebe\n\\[\n \\sigma(x+y)\\subset\\sigma(x)+\\sigma(y),\\qquad\n \\sigma(xy)\\subset\\sigma(x)\\sigma(y),\n\\]\ny dé ejemplos de contenciones propias.",
+          "solucion_completa": true,
+          "caracteres_solucion": 924
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Definición espectral usa lambda 1-x; se corrigen letras T/x en continuidad espectral.",
+        "Corolario 9 falso en álgebras de Banach generales: inclusión y contraejemplo álgebra del disco en C(T); permanencia C* probada posteriormente.",
+        "No vacuidad requiere campo complejo y álgebra unitaria no nula."
+      ]
+    },
+    {
+      "lectura": 23,
+      "fuente_local": "tmp/originales/03/lect23.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1XkrNKnGp1XhTe2vJPWRVwAp-CsyaPm2l/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 11,
+      "archivo": "capitulos/11.tex",
+      "label_lectura": "lec:v3-23",
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l23-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $T\\in\\Lcal(V)$ y $Tv=\\lambda v$ con $v\\ne0$, pruebe que $f(T)v=f(\\lambda)v$ para toda $f$ holomorfa cerca de $\\sigma(T)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 340
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l23-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $f$ toma el valor cero en algún punto de $\\sigma(x)$, pruebe que $f(x)$ no es invertible.",
+          "solucion_completa": true,
+          "caracteres_solucion": 235
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l23-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Sean $A,B$ álgebras de Banach complejas unitarias y $T:A\\to B$ un homomorfismo \\emph{continuo y unital}. Pruebe $f(Tx)=T(f(x))$ para $f$ holomorfa cerca de $\\sigma_A(x)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 661
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l23-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $e^x=1$, demuestre $\\sigma(x)\\subset2\\pi i\\Z$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 402
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l23-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $f(z)=\\sum_{n\\ge0}a_nz^n$ con radio de convergencia $R>r(x)$. Pruebe $f(x)=\\sum_{n\\ge0}a_nx^n$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 479
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l23-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Para $T\\in\\Lcal(V)$, formule y pruebe la compatibilidad del cálculo holomorfo con el adjunto en el dual. Distinga esta operación del adjunto de Hilbert.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1228
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v3-l23-7",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $I$ un ideal de $A$, no necesariamente cerrado, $x\\in I$, y sea $f$ holomorfa en una vecindad de $\\sigma(x)\\cup\\{0\\}$, con $f(0)=0$. Pruebe $f(x)\\in I$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 549
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Cauchy requiere holomorfía en la región pertinente, no solamente en vecindad de un punto.",
+        "Cálculo se define sobre gérmenes en una vecindad del espectro, con ciclos de frontera; no exige dominio simplemente conexo ni función entera.",
+        "Diferenciabilidad se prueba con resto O(||h||^2), no sólo con convergencia a cero de la parte lineal.",
+        "Ejercicio 3: homomorfismo debe ser continuo y unital; homomorfismo cero y f=1 refutan la versión no unital.",
+        "Ejercicio 6 distingue traspuesto de Banach (sin conjugación de f) y adjunto de Hilbert (f#(z)=conjugado(f(conjugado(z)))).",
+        "Ejercicio 7 precisa dominio de f en cero; ideal no cerrado se trata mediante factorización f(z)=zg(z)."
+      ]
+    },
+    {
+      "lectura": 24,
+      "fuente_local": "tmp/originales/03/lect24.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1noqDj_y_3lDqzf6l07Zaq7fKG8sV4uyz/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 12,
+      "archivo": "capitulos/12.tex",
+      "label_lectura": "lec:v3-24",
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l24-1",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_latex": "Un elemento $a$ es \\emph{cuasinilpotente} si $\\sigma(a)=\\{0\\}$. (i) Pruebe que\n\\[\n J=\\{a\\in A:ab\\text{ es cuasinilpotente para todo }b\\in A\\}\n\\]\nes un ideal cerrado, llamado radical de Jacobson, y que es la intersección de todos los ideales maximales. (ii) Pruebe que todo elemento cuasinilpotente es divisor topológico de cero. (iii) Pruebe $\\ker\\mathcal G=J$. Verifique además que cuasinilpotente no implica nilpotente para el operador de desplazamiento ponderado\n\\[\n T(x_1,x_2,\\ldots)=(0,x_1,x_2/2,x_3/3,\\ldots)\n \\quad\\text{en }\\ell^\\infty.\n\\]",
+          "solucion_completa": true,
+          "caracteres_solucion": 1618
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l24-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que todo carácter de $\\ell^1(\\N_0)$ con convolución de Cauchy es $\\varphi_z$ para un único $z$ con $|z|\\le1$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 666
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l24-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Demuestre que todo carácter es una aplicación abierta.",
+          "solucion_completa": true,
+          "caracteres_solucion": 401
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l24-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe $\\sigma(a+b)\\subset\\sigma(a)+\\sigma(b)$ y $\\sigma(ab)\\subset\\sigma(a)\\sigma(b)$, y dé ejemplos en que ambas inclusiones sean propias.",
+          "solucion_completa": true,
+          "caracteres_solucion": 554
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l24-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $a$ es invertible si y sólo si $\\widehat a$ es invertible en $C(\\Delta(A))$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 432
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l24-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe $r(a)=\\norm{\\widehat a}_\\infty$. Deduzca que $\\mathcal G$ es isométrica si y sólo si $\\norm{a^2}=\\norm a^2$ para cada $a\\in A$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 491
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Carácter es homomorfismo no nulo; continuidad automática y valor uno en identidad.",
+        "Cerradura débil* conserva phi(1)=1 además de multiplicatividad.",
+        "Continuidad de a-hat en débil* procede de evaluaciones; cota Lipschitz de norma dual no basta.",
+        "Caracteres de l1(N0) parametrizados por disco cerrado, incluidos sus puntos de frontera."
+      ]
+    },
+    {
+      "lectura": 25,
+      "fuente_local": "tmp/originales/03/lect25.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1hraUvwDf51iVmjSI1w0fg5lXyf5yazeK/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 13,
+      "archivo": "capitulos/13.tex",
+      "label_lectura": "lec:v3-25",
+      "ejercicios_originales": 8,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l25-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $a=a^*$, pruebe que $e^{ia}$ es unitario.",
+          "solucion_completa": true,
+          "caracteres_solucion": 308
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l25-2",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Para $a$ normal pruebe: (i) existe $\\lambda\\in\\sigma(a)$ con $|\\lambda|=\\norm a$; (ii) si $a^n=0$ para algún $n\\ge1$, entonces $a=0$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 347
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l25-3",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_latex": "Decimos que $a,b$ son unitariamente equivalentes si $b=uau^*$ para algún unitario $u$. Pruebe: (i) ésta es una relación de equivalencia; (ii) preserva normalidad, autoadjunción y positividad; (iii) $\\sigma(uau^*)=\\sigma(a)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 462
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l25-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que los unitarios forman un subgrupo cerrado de $G(A)$. Determine si es necesariamente normal.",
+          "solucion_completa": true,
+          "caracteres_solucion": 494
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l25-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $A$ es conmutativa si y sólo si todos sus elementos son normales.",
+          "solucion_completa": true,
+          "caracteres_solucion": 323
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l25-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que una misma álgebra con involución tiene a lo sumo una norma que la convierta en álgebra $C^*$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 527
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v3-l25-7",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que un álgebra de Banach con involución es $C^*$ si y sólo si $\\norm{a^*a}\\ge\\norm a^2$ para cada $a$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 302
+        },
+        {
+          "numero_original": 8,
+          "label": "ej:v3-l25-8",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Sea $(A_j)_{j\\in J}$ una familia de álgebras $C^*$. Pruebe que son álgebras $C^*$, con operaciones coordenadas y norma del supremo: (i) $\\prod_j^{\\mathrm b}A_j=\\{(a_j):\\sup_j\\norm{a_j}<\\infty\\}$; (ii) $\\bigoplus_j^{c_0}A_j=\\{(a_j):\\text{para cada }\\eps>0,\\ \\{j:\\norm{a_j}\\ge\\eps\\}\\text{ es finito}\\}$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 918
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Se explicitan conjugaciones de escalares e involución f*(t)=conjugado(f(-t)); extracción OCR omite barras.",
+        "C(X) reemplazado por C_b(X) o X compacto para norma supremo.",
+        "L1(R) con convolución no C*: contraejemplo autocorrelación con norma 8/3 frente a 4.",
+        "Prueba radio=norma de normales usa potencias diádicas sin igualdad circular.",
+        "Fuglede se prueba mediante e^{z a*}b e^{-z a*} y conjugación por unitarios; se distinguen z y conjugado(z).",
+        "Unitarios no forman subgrupo normal en general: contraejemplo M2."
+      ]
+    },
+    {
+      "lectura": 26,
+      "fuente_local": "tmp/originales/03/lect26.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1Wv0f6k7S6CtOnJ6WMh6OFmas63QQRD7p/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 13,
+      "archivo": "capitulos/13.tex",
+      "label_lectura": "lec:v3-26",
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l26-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $F:C(\\sigma(a))\\to A$ es un $*$-homomorfismo que extiende el cálculo holomorfo, pruebe $F=C_a$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 416
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l26-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $A$ es conmutativa, $C^*$ y no unitaria, pruebe que $\\Delta(A)$ es localmente compacto Hausdorff y que $\\mathcal G:A\\to C_0(\\Delta(A))$ es un $*$-isomorfismo isométrico.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1230
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l26-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Para un espacio compacto Hausdorff $X$, pruebe que $X$ es totalmente disconexo si y sólo si el subespacio generado por las proyecciones de $C(X)$ es denso.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1581
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l26-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $A$ es una álgebra $C^*$ posiblemente no conmutativa y $a\\in A$ es normal, construya su cálculo funcional continuo que extiende al holomorfo.",
+          "solucion_completa": true,
+          "caracteres_solucion": 708
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l26-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $A$ una álgebra $C^*$ conmutativa unitaria generada por $a_1,\\ldots,a_n$ (algebraicamente y luego por clausura, o como álgebra $C^*$). Pruebe que existe un compacto $X\\subset\\C^n$ y un $*$-isomorfismo $A\\to C(X)$ que envía $a_k$ a la coordenada $z_k$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 681
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l26-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $X$ compacto Hausdorff, $x_0\\in X$, y sea $A$ el conjunto de sucesiones $(f_n)$ acotadas en $C(X)$ tales que $(f_n(x_0))$ converge. Pruebe que $A$ es una álgebra conmutativa unitaria y determine su espacio de caracteres.",
+          "solucion_completa": true,
+          "caracteres_solucion": 3008
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Unitización C* desarrolla definitud, equivalencia de normas y completitud, que no se heredan sin argumento de la norma suma.",
+        "Gelfand preserva adjunto por valores reales de caracteres en autoadjuntos, no sólo por igualdad de conjuntos espectrales.",
+        "Se demuestra Stone–Weierstrass completo para compacto Hausdorff mediante Bernstein, retículo y dos coberturas finitas.",
+        "Cálculo continuo de normal en álgebra no conmutativa usa C*(1,a) y permanencia espectral probada sin positividad circular.",
+        "Ejercicio 4 no unitario: f(a) pertenece a A cuando f(0)=0; en general pertenece a unitización.",
+        "Ejercicio 5 requiere hipótesis C* del contexto; no vale para álgebra conmutativa general.",
+        "Ejercicio 6 incluye caracteres en corona: cociente de Delta(producto acotado C(X)) colapsando límite de colas de evaluaciones en x0; no sólo evaluaciones finitas y un límite."
+      ]
+    },
+    {
+      "lectura": 27,
+      "fuente_local": "tmp/originales/03/lect27.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1nSokObUFCH7f-PSoPtx-CFUoC7B0Jhyq/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 14,
+      "archivo": "capitulos/14.tex",
+      "label_lectura": "lec:v3-27",
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l27-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Para $n\\ge1$ y $a\\ge0$, pruebe que existe un único $b\\ge0$ con $b^n=a$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 331
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l27-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe $\\norm a=\\max(\\norm{a_+},\\norm{a_-})$ para $a=a^*$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 193
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l27-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\pi:A\\to B$ es un $*$-homomorfismo, pruebe $\\norm{\\pi(a)}=\\inf\\{\\norm{a-b}:\\pi(b)=0\\}$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 465
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l27-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que los positivos forman un cono: $a,b\\ge0$ y $t\\ge0$ implican $a+b,ta\\ge0$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 402
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l27-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que todo elemento de $A$ es combinación lineal de elementos unitarios.",
+          "solucion_completa": true,
+          "caracteres_solucion": 445
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l27-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Para $a$ invertible defina $|a|=(a^*a)^{1/2}$. Pruebe que existe un unitario $u$ con $a=u|a|$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 358
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v3-l27-7",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que un $*$-homomorfismo preserva el orden.",
+          "solucion_completa": true,
+          "caracteres_solucion": 176
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Unicidad de raíz cuadrada sólo entre elementos positivos; ±1 refuta unicidad entre autoadjuntos.",
+        "Inversión invierte orden sólo para positivos invertibles; -1<=1 es contraejemplo sin positividad.",
+        "Positividad de b*b demostrada sin circularidad usando cono espectral, partes +/- y comparación de espectros de yy* y y*y.",
+        "Ejercicio 3 prueba contractividad automática e igualdad con norma cociente mediante corte continuo explícito."
+      ]
+    },
+    {
+      "lectura": 28,
+      "fuente_local": "tmp/originales/03/lect28.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1mG-Qoosl1IZGCxAIBSpBbplZ7AqPchun/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 14,
+      "archivo": "capitulos/14.tex",
+      "label_lectura": "lec:v3-28",
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l28-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Examine la afirmación: ``todo funcional lineal hermitiano en un álgebra $C^*$ es continuo''. Dé una demostración si es verdadera o un contraejemplo si es falsa, e indique una hipótesis suficiente válida.",
+          "solucion_completa": true,
+          "caracteres_solucion": 728
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l28-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\norm\\xi=1$ en un espacio de Hilbert $H$, pruebe que $T\\mapsto\\ip{T\\xi}{\\xi}$ es un estado de $\\Lcal(H)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 239
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l28-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\varphi$ es un estado y $u$ unitario, pruebe que $a\\mapsto\\varphi(uau^*)$ es un estado.",
+          "solucion_completa": true,
+          "caracteres_solucion": 216
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l28-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $a$ es normal, pruebe que existe un estado $\\varphi$ con $|\\varphi(a)|=\\norm a$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 172
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l28-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $K$ un conjunto convexo compacto no vacío en un espacio localmente convexo Hausdorff y $\\ell$ un funcional lineal continuo. Pruebe que $\\operatorname{Re}\\ell$ alcanza su máximo en algún punto extremo de $K$. En particular, vale para un compacto convexo de un espacio normado.",
+          "solucion_completa": true,
+          "caracteres_solucion": 522
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l28-6",
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv"
+          ],
+          "enunciado_latex": "Pruebe: (i) $a=0$ si y sólo si todos los estados puros lo anulan; (ii) $a=a^*$ si y sólo si todos los estados puros toman valores reales en $a$; (iii) $a\\ge0$ si y sólo si todos los estados puros toman valores no negativos en $a$; (iv) si $a$ es normal, existe un estado puro $\\varphi$ con $|\\varphi(a)|=\\norm a$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 855
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v3-l28-7",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que, si $A$ es \\emph{conmutativa}, $P(A)=\\Delta(A)$. Explique por qué la hipótesis de conmutatividad no puede omitirse.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1858
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Se restituyen conjugaciones en definición de hermitianidad.",
+        "Ejercicio 1 falso: funcional hermitiano discontinuo construido con base de Hamel; positividad sí implica continuidad.",
+        "Ejercicio 7 requiere conmutatividad; prueba de ambos sentidos y contraejemplo estado vectorial puro en M2 sin caracteres.",
+        "Criterio norma=valor en identidad se prueba con 1+ith y signos de t, corrigiendo cálculos de la sucesión original.",
+        "Krein–Milman se aplica en topología débil* localmente convexa, no en norma del dual."
+      ]
+    },
+    {
+      "lectura": 29,
+      "fuente_local": "tmp/originales/03/lect29.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1laHYbjLCoOEPyLw9sTLNdwgyHW1JEAEW/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 15,
+      "archivo": "capitulos/15.tex",
+      "label_lectura": "lec:v3-29",
+      "ejercicios_originales": 3,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l29-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\alpha>0$, pruebe que $\\pi_\\varphi$ y $\\pi_{\\alpha\\varphi}$ son unitariamente equivalentes. Deduzca la reducción a estados para funcionales positivos no nulos.",
+          "solucion_completa": true,
+          "caracteres_solucion": 611
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l29-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $(\\pi_1\\oplus\\pi_2)(a)(\\xi_1,\\xi_2)=(\\pi_1(a)\\xi_1,\\pi_2(a)\\xi_2)$ es una representación. Si ambas representaciones son cíclicas, determine si su suma debe serlo.",
+          "solucion_completa": true,
+          "caracteres_solucion": 631
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l29-3",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Sea $H$ separable de dimensión infinita, $(e_n)$ una base ortonormal y $\\operatorname{BL}$ un límite de Banach positivo normalizado. Defina\n\\[\n \\varphi(T)=\\operatorname{BL}\\bigl((\\ip{Te_n}{e_n})_{n\\ge1}\\bigr).\n\\]\nPruebe: (i) $\\varphi$ es un estado; (ii) $\\ker\\pi_\\varphi=\\Kcal(H)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 2040
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Adjunto de multiplicador es M_conjugado(f).",
+        "Cociente GNS es espacio vectorial por ideal izquierdo, no necesariamente álgebra.",
+        "Ejercicio 1 reducción a estado requiere funcional positivo no nulo; GNS del cero es espacio cero.",
+        "Ejercicio 3 ambas inclusiones del núcleo se prueban; para no compactos se construye subespacio y testigo V, no basta aproximar compactos por rango finito."
+      ]
+    },
+    {
+      "lectura": 30,
+      "fuente_local": "tmp/originales/03/lect30.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1NVYh7BZXDsZLtK5Zn20vKHiH83EHPu-1/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 15,
+      "archivo": "capitulos/15.tex",
+      "label_lectura": "lec:v3-30",
+      "ejercicios_originales": 3,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l30-1",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Sean $\\mu,\\nu$ medidas positivas finitas regulares de Borel sobre un compacto Hausdorff $X$. Pruebe: (i) $\\pi_\\mu\\oplus\\pi_\\nu$ es cíclica si y sólo si $\\mu\\perp\\nu$; (ii) si son mutuamente singulares, $\\pi_\\mu\\oplus\\pi_\\nu$ es unitariamente equivalente a $\\pi_{\\mu+\\nu}$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1835
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l30-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $A$ es separable y $(\\varphi_n)$ es débil estrella densa en $S(A)$, defina $\\varphi=\\sum_{n\\ge1}2^{-n}\\varphi_n$. Pruebe que $\\pi_\\varphi$ es isométrica y deduzca que $A$ admite una representación cíclica isométrica.",
+          "solucion_completa": true,
+          "caracteres_solucion": 824
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l30-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\pi_\\varphi(a)=0$ para todos los estados puros, pruebe $a=0$. Deduzca que la suma $\\bigoplus_{\\varphi\\in P(A)}\\pi_\\varphi$ es isométrica.",
+          "solucion_completa": true,
+          "caracteres_solucion": 453
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Descomposición cíclica requiere representación unital/no degenerada; en general se añade representación cero en (I-pi(1))H.",
+        "Subespacios cíclicos y suma hilbertiana deben cerrarse; familias ortogonales sólo para vectores distintos.",
+        "En representación fiel ||pi_phi(a)||^2 >= ||pi_phi(a)e_phi||^2, no desigualdad inversa.",
+        "Separabilidad de suma requiere familia numerable; se trata también caso Hilbert de dimensión finita.",
+        "Ejercicio 1 medidas positivas finitas regulares para densidad C(X) y GNS.",
+        "Ejercicio 2 funcional phi=sum 2^-n phi_n, no suma de representaciones."
+      ]
+    },
+    {
+      "lectura": 31,
+      "fuente_local": "tmp/originales/03/lect31.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1-CZ8tKOFYmfHwrh403S7I1wabpj0G3XQ/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 16,
+      "archivo": "capitulos/16.tex",
+      "label_lectura": "lec:v3-31",
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l31-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que $D(F,\\eps)=\\{T:\\norm{T\\xi}<\\eps\\text{ para todo }\\xi\\in F\\}$, con $F\\subset H$ finito y $\\eps>0$, forma una base de vecindades fuertes de cero.",
+          "solucion_completa": true,
+          "caracteres_solucion": 405
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l31-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $T_\\alpha^*T_\\alpha\\to0$ en WOT, pruebe $T_\\alpha\\to0$ en SOT. Si además $\\sup_\\alpha\\norm{T_\\alpha}<\\infty$, pruebe $T_\\alpha^*T_\\alpha\\to0$ en SOT.",
+          "solucion_completa": true,
+          "caracteres_solucion": 207
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l31-3",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Sea $L(x_1,x_2,\\ldots)=(0,x_1,x_2,\\ldots)$ en $\\ell^2$. Pruebe: (i) $L^n\\to0$ en WOT pero no en SOT; (ii) $(L^*)^n\\to0$ en SOT pero no en norma.",
+          "solucion_completa": true,
+          "caracteres_solucion": 474
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l31-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que la bola unitaria cerrada de $\\Lcal(H)$ es WOT-compacta.",
+          "solucion_completa": true,
+          "caracteres_solucion": 779
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l31-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $C\\subset\\Lcal(H)$ es convexo, pruebe que sus clausuras SOT y WOT coinciden.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1060
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v3-l31-6",
+          "incisos_originales": [],
+          "enunciado_latex": "Examine la afirmación: si $T_\\alpha$ son normales y $T_\\alpha\\to T$ fuertemente, entonces $T_\\alpha^*\\to T^*$ fuertemente. Pruebe la versión correcta suponiendo además que $T$ es normal.",
+          "solucion_completa": true,
+          "caracteres_solucion": 957
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v3-l31-7",
+          "incisos_originales": [],
+          "enunciado_latex": "Sean $T_\\alpha,T$ normales, $T_\\alpha\\to T$ en SOT, y $\\norm{T_\\alpha},\\norm T\\le r$. Si $f:\\C\\to\\C$ es continua, pruebe $f(T_\\alpha)\\to f(T)$ en SOT.",
+          "solucion_completa": true,
+          "caracteres_solucion": 788
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Ejercicio 6 falso sin normalidad del límite: unitarios cíclicos finitos convergen fuertemente al shift; se prueba versión con límite normal.",
+        "Ejercicio 7 requiere también límite normal para cálculo continuo y convergencia de adjuntos.",
+        "Redes fuertemente convergentes no se suponen globalmente acotadas sin hipótesis; producto conjunto se prueba con cota explícita."
+      ]
+    },
+    {
+      "lectura": 32,
+      "fuente_local": "tmp/originales/03/lect32.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1_sxkJzocq0DpUMTMRhsIIgIe0zeoszfZ/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 16,
+      "archivo": "capitulos/16.tex",
+      "label_lectura": "lec:v3-32",
+      "ejercicios_originales": 4,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l32-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\mathcal A$ es una subálgebra $C^*$ de $\\Lcal(H)$, pruebe que $\\mathcal A'$ es un álgebra de von Neumann unital.",
+          "solucion_completa": true,
+          "caracteres_solucion": 298
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l32-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\mathcal A_j\\subset\\Lcal(H_j)$ son álgebras de von Neumann unitarias, pruebe que el álgebra de operadores diagonales\n\\[\n \\mathcal M=\\{\\bigoplus_jT_j:T_j\\in\\mathcal A_j,\\ \\sup_j\\norm{T_j}<\\infty\\}\n\\]\nes un álgebra de von Neumann sobre $\\bigoplus_jH_j$. Aclare qué suma de álgebras se utiliza.",
+          "solucion_completa": true,
+          "caracteres_solucion": 773
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l32-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que una álgebra de von Neumann es cerrada en norma y, por tanto, es una álgebra $C^*$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 276
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l32-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que la bola unitaria cerrada de una álgebra de von Neumann es WOT-compacta y SOT-cerrada. Determine si siempre es SOT-compacta.",
+          "solucion_completa": true,
+          "caracteres_solucion": 653
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Positividad significa <Tx,x> >=0, no <=0.",
+        "Polarización incluye pesos i^k; en estimación de Vigier se usa T-T_alpha positivo.",
+        "Doble conmutante requiere I_H o no degeneración; contraejemplo álgebra cero y explicación identidad propia.",
+        "Ejercicio 2 suma significa producto acotado diagonal; c0/algebraica no es cerrada y se da contraejemplo."
+      ]
+    },
+    {
+      "lectura": 33,
+      "fuente_local": "tmp/originales/03/lect33.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1xCLnQjTJyHNOUwUSBlZZOpPIrwZabo1y/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 17,
+      "archivo": "capitulos/17.tex",
+      "label_lectura": "lec:v3-33",
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l33-1",
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "enunciado_latex": "Sea $\\mathcal M$ una álgebra de von Neumann. (i) Si $\\mathcal B\\subset\\mathcal M$ es una subálgebra $C^*$ SOT-cerrada y hereditaria, pruebe que existe una única proyección $P\\in\\mathcal B$ con $\\mathcal B=P\\mathcal M P$. Hereditaria significa que $0\\le a\\le b$, $a\\in\\mathcal M$, $b\\in\\mathcal B$, implica $a\\in\\mathcal B$. (ii) Si $I$ es un ideal bilateral SOT-cerrado, pruebe $I=\\mathcal M P$ para una única proyección $P\\in I\\cap\\mathcal M'$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1349
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l33-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $I_H\\in\\mathcal A$ y $\\mathcal M=\\overline{\\mathcal A}^{\\mathrm{SOT}}$, pruebe que los unitarios de $\\mathcal A$ son SOT-densos en los unitarios de $\\mathcal M$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 593
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l33-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Para una subálgebra $C^*$ $\\mathcal A\\subset\\Lcal(H)$, pruebe la equivalencia entre: (i) ser WOT-cerrada; (ii) tener bola unitaria SOT-cerrada; (iii) tener bola unitaria WOT-cerrada. Si se usa la definición unital de álgebra de von Neumann, suponga también $I_H\\in\\mathcal A$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 596
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l33-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe las versiones de Kaplansky (i) y (ii) para elementos positivos y para contracciones positivas.",
+          "solucion_completa": true,
+          "caracteres_solucion": 591
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l33-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $\\Phi:\\Lcal(H_1)\\to\\Lcal(H_2)$ un $*$-monomorfismo WOT-continuo. Pruebe que lleva álgebras de von Neumann a álgebras de von Neumann en sentido amplio; si $\\Phi$ es unital, la imagen es unital.",
+          "solucion_completa": true,
+          "caracteres_solucion": 585
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Proyección de rango: ker(SS*)=ker(S*), no ker(S); se usan clausuras de rangos y se separa S=0.",
+        "Subálgebra WOT-cerrada puede tener identidad propia P distinta de I_H; convención amplia explícita.",
+        "Continuidad fuerte de funciones continuas acotadas se demuestra por resolventes/localización sin asumir norma acotada de redes.",
+        "Densidad de unitarios usa argumento boreliano del unitario, después de construirlo, no logaritmo continuo inexistente en general.",
+        "Ejercicios 3 y 5 especifican convención amplia o hipótesis unital para identidad ambiente."
+      ]
+    },
+    {
+      "lectura": 34,
+      "fuente_local": "tmp/originales/03/lect34.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1REow0O9H83TqCRrPk-PvOBaTOCSt2CXP/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 17,
+      "archivo": "capitulos/17.tex",
+      "label_lectura": "lec:v3-34",
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l34-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Para una medida espectral $E$ en $X$, pruebe que $f\\mapsto\\int f\\,dE$ es un $*$-homomorfismo de $B^\\infty(X)$ en $\\Lcal(H)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 521
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l34-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que la resolución de la identidad de un operador normal es única.",
+          "solucion_completa": true,
+          "caracteres_solucion": 552
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l34-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $0\\le T\\le I$ pertenece a una álgebra de von Neumann $\\mathcal M$, pruebe que existen proyecciones $P_n\\in\\mathcal M$ con $T=\\sum_{n\\ge1}2^{-n}P_n$ en norma.",
+          "solucion_completa": true,
+          "caracteres_solucion": 613
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l34-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\mathcal M$ es una álgebra de von Neumann unital, pruebe que $T\\in\\mathcal M$ si y sólo si conmuta con todas las proyecciones de $\\mathcal M'$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 488
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l34-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Sea $0\\le T\\le I$. Si todo subespacio cerrado de $H$ contenido en $TH$ tiene dimensión finita, pruebe que $T$ es compacto. Como paso auxiliar, pruebe que $UU^*\\le VV^*$ implica una factorización $U=VW$ con $\\norm W\\le1$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 1306
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Construcción boreliana prueba multiplicatividad con identidades de medidas de coeficientes, preservando conjugaciones.",
+        "B^infty no es subespacio L1 sin medida indicada; integrabilidad se formula respecto a cada medida finita de coeficientes.",
+        "Se demuestran regularidad, proyecciones, aditividad fuerte y unicidad; pertenencia al álgebra mediante conmutante.",
+        "Ejercicio 5 desarrolla factorización de Douglas y aplica hipótesis al rango sin cerrar."
+      ]
+    },
+    {
+      "lectura": 35,
+      "fuente_local": "tmp/originales/03/lect35.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1-_gQL5WkSQhrzzkTmn8O5P4HnH8SthjJ/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 18,
+      "archivo": "capitulos/18.tex",
+      "label_lectura": "lec:v3-35",
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v3-l35-1",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que una subálgebra $C^*$ $\\mathcal A\\subset\\Lcal(H)$ es una álgebra de von Neumann conmutativa maximal si y sólo si $\\mathcal A=\\mathcal A'$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 741
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v3-l35-2",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\mathcal A$ es una subálgebra $C^*$ conmutativa, pruebe que su clausura WOT es una álgebra de von Neumann conmutativa en sentido amplio. Deduzca que el álgebra de von Neumann unital generada por un operador normal es conmutativa.",
+          "solucion_completa": true,
+          "caracteres_solucion": 713
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v3-l35-3",
+          "incisos_originales": [],
+          "enunciado_latex": "Con la notación de esta lectura, pruebe $\\mathcal C'=\\mathcal M_\\mu$. Deduzca que $L^\\infty(\\mu)$ es la clausura débil estrella de $C(X)$.",
+          "solucion_completa": true,
+          "caracteres_solucion": 582
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v3-l35-4",
+          "incisos_originales": [],
+          "enunciado_latex": "Pruebe que todo $*$-isomorfismo preserva los supremos existentes en el orden de los autoadjuntos.",
+          "solucion_completa": true,
+          "caracteres_solucion": 771
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v3-l35-5",
+          "incisos_originales": [],
+          "enunciado_latex": "Si $\\mu,\\nu$ son medidas positivas regulares mutuamente absolutamente continuas sobre $X$, pruebe la identificación canónica $L^\\infty(X,\\mu)=L^\\infty(X,\\nu)$, sin exigir soporte total.",
+          "solucion_completa": true,
+          "caracteres_solucion": 563
+        }
+      ],
+      "correcciones_y_precisiones": [
+        "Medida debe ser finita regular; compacidad sola no hace finita una medida de Borel.",
+        "Densidad con control complejo de norma usa soportes disjuntos, no extensión separada de real/imaginaria sin control.",
+        "Unicidad de clase de medida exige isomorfismo que fija C(X); no todas las medidas de soporte total son equivalentes.",
+        "Aproximación por distancia funciona para cerrados, no para Borel arbitrario; extensión a todos los Borel por sigma-álgebra de indicadores y preservación de supremos.",
+        "Ejercicio 4 sugerencia falsa: supremo de dos elementos incomparables no se aproxima por sucesión creciente dentro del conjunto; prueba correcta por orden-isomorfismo."
+      ]
+    },
+    {
+      "lectura": 36,
+      "fuente_local": "tmp/originales/03/lect36.txt",
+      "fuente_pdf": "https://drive.google.com/file/d/1onnQ2VXL8VjgA58PqQtQZ_6fczu2IBU1/view?usp=drivesdk",
+      "autor_fuente": "Miguel Ángel Valencia Bucio",
+      "capitulo": 18,
+      "archivo": "capitulos/18.tex",
+      "label_lectura": "lec:v3-36",
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "correcciones_y_precisiones": [
+        "H0=cl(Axi) debe ser cerrado para restricción hilbertiana.",
+        "Delta(A) no es necesariamente segundo numerable aunque H sea separable; contraejemplo L∞[0,1] no normoseparable.",
+        "Se obtiene X compacto metrizable usando subálgebra C* normoseparable fuertemente densa, distinguiéndola de A completa.",
+        "Caracterización final es isomorfismo abstracto; equivalencia unitaria de representación original requiere vector cíclico, y se explica multiplicidad."
+      ]
+    }
+  ],
+  "referencias_usadas": [
+    "valencia3",
+    "conway1990",
+    "rudin1991",
+    "murphy1990",
+    "zhu1993",
+    "maxgelfand",
+    "maxcstar",
+    "maxcalculo"
+  ]
+}

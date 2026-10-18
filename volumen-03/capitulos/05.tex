@@ -1,0 +1,325 @@
+\chapter{Espectro, resolvente y modelos concretos}\label{cap:v3-05}
+En dimensión finita, resolver $(T-\lambda I)x=y$ equivale a evitar los valores propios. En dimensión infinita aparecen dos dificultades adicionales: la imagen puede ser densa sin ser todo el espacio, o puede dejar fuera un subespacio detectable por funcionales. La teoría espectral organiza estas posibilidades. En todo el capítulo $X$ será un espacio de Banach complejo \emph{no nulo}; escribiremos $\lambda$ por $\lambda I$ cuando no haya ambigüedad.
+
+\section{Invertibilidad y tipos de espectro}\label{lec:v3-07}
+\fuentelectura{7}{El espectro de un operador}
+\begin{lema}[Serie de Neumann]\label{v3:neumann}\index{Neumann, serie de}
+Si $A\in\Bcal(X)$ y $\norm A<1$, entonces
+\[(I-A)^{-1}=\sum_{n=0}^{\infty}A^n,\qquad
+\norm{(I-A)^{-1}}\le\frac1{1-\norm A}.
+\]
+El conjunto de operadores invertibles es abierto. Si $T$ es invertible y $\norm{S-T}<\norm{T^{-1}}^{-1}$, entonces $S$ es invertible.
+\end{lema}
+\begin{proof}
+La serie converge en el Banach $\Bcal(X)$ porque $\sum\norm{A^n}\le\sum\norm A^n<\infty$. Para $P_n=\sum_{k=0}^nA^k$ se tiene $(I-A)P_n=P_n(I-A)=I-A^{n+1}$. La continuidad del producto y $A^{n+1}\to0$ prueban ambas identidades de inversa; la suma geométrica da la cota. Para la última afirmación, escribimos
+\[S=T[I+T^{-1}(S-T)]
+\]
+y aplicamos lo anterior al segundo factor. El producto de dos operadores invertibles tiene inversa en orden inverso: $(ST)(T^{-1}S^{-1})=I=(T^{-1}S^{-1})(ST)$. Esta verificación también resuelve la demostración propuesta en la proposición 2 original. Finalmente, $1=\norm I\le\norm T\norm{T^{-1}}$.
+\end{proof}
+
+\begin{definicion}\index{espectro}\index{resolvente}\index{espectro!puntual}\index{espectro!continuo}\index{espectro!residual}
+El \emph{resolvente} de $T$ es $\rho(T)=\{\lambda:T-\lambda I\text{ es invertible}\}$ y su \emph{espectro} es $\sigma(T)=\C\setminus\rho(T)$. Usaremos $r(T)$ para el radio espectral, evitando confundirlo con el conjunto $\rho(T)$. El espectro se divide en tres partes disjuntas:
+\begin{itemize}
+\item $\sigma_p(T)$: $T-\lambda I$ no es inyectivo; sus elementos son valores propios.
+\item $\sigma_c(T)$: $T-\lambda I$ es inyectivo, tiene imagen densa y no es suprayectivo.
+\item $\sigma_r(T)$: $T-\lambda I$ es inyectivo y su imagen no es densa.
+\end{itemize}
+\end{definicion}
+Si $T-\lambda I$ fuese biyectivo, su inversa sería acotada por aplicación abierta. Por eso las tres alternativas anteriores agotan el espectro. En dimensión finita inyectividad equivale a suprayectividad; allí todo el espectro es puntual.
+
+\begin{ejemplo}[Multiplicación por la coordenada]\label{v3:mult-coordenada}
+En $L^1[0,1]$, $Mf(t)=tf(t)$ tiene norma uno y
+\[\sigma(M)=\sigma_c(M)=[0,1].
+\]
+La cota $\norm{Mf}_1\le\norm f_1$ es inmediata; los indicadores normalizados de intervalos próximos a uno muestran que la norma es uno. Si $\lambda\notin[0,1]$, la función $(t-\lambda)^{-1}$ es acotada y multiplicar por ella da la inversa. Para cualquier $\lambda$, la igualdad $(t-\lambda)f(t)=0$ casi en todas partes implica $f=0$, pues el posible conjunto excepcional $\{\lambda\}\cap[0,1]$ tiene medida cero. Si $\lambda\in[0,1]$, para $g\in L^1$ definimos
+\[f_\delta(t)=\frac{g(t)}{t-\lambda}\boldsymbol1_{\{|t-\lambda|\ge\delta\}}.
+\]
+Es integrable porque $|f_\delta|\le|g|/\delta$, y $(M-\lambda)f_\delta\to g$ en $L^1$ por convergencia dominada. La imagen es densa. No contiene la función constante uno: su única preimagen formal sería $1/(t-\lambda)$, no integrable incluso si $\lambda$ es un extremo. Así la imagen es propia. Esta prueba desarrolla la aproximación propuesta en la lectura y evita los errores de signos de sus intervalos de corte.
+\end{ejemplo}
+
+\begin{ejemplo}[Corrimiento derecho en $\ell^\infty$]\label{v3:shift-infinito}\index{corrimiento!derecho}
+Sea $R(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$. Entonces $\norm R=1$ y
+\[\sigma(R)=\sigma_r(R)=\{\lambda:|\lambda|\le1\}.
+\]
+El operador $R-\lambda$ es inyectivo: para $\lambda=0$ esto es directo; para $\lambda\ne0$, la primera coordenada y luego las siguientes fuerzan sucesivamente $x_n=0$. Fuera del disco unidad es invertible por Neumann. Si $|\lambda|<1$, la funcional no nula
+\[\phi(y)=\sum_{n\ge1}\lambda^{n-1}y_n
+\]
+es continua y se anula en $\ran(R-\lambda)$, como se comprueba desplazando el índice de una serie absolutamente convergente. Por tanto esa imagen no es densa.
+
+Si $|\lambda|=1$, la ecuación $(R-\lambda)x=y$ determina por inducción
+\[x_n=-\lambda^{-n}\sum_{k=1}^n\lambda^{k-1}y_k.
+\]
+Tomemos $y_k=\lambda^{1-k}$. Si $\norm z_\infty<1/2$ y $(R-\lambda)x=y+z$, entonces
+\[|x_n|=\left|n+\sum_{k=1}^n\lambda^{k-1}z_k\right|
+\ge n-n\norm z_\infty>n/2.
+\]
+No existe tal $x\in\ell^\infty$, y la bola $B(y,1/2)$ no intersecta la imagen. Esto prueba también en la frontera el carácter residual. Los exponentes y el signo de esta recurrencia corrigen las fórmulas de la lectura original.
+\end{ejemplo}
+
+\section{Compacidad del espectro y cálculo polinómico}\label{lec:v3-08}
+\fuentelectura{8}{Propiedades del espectro de un operador}
+\begin{teorema}\label{v3:espectro-compacto}
+El espectro de todo $T\in\Bcal(X)$ es un compacto no vacío, contenido en $\{z:|z|\le\norm T\}$.
+\end{teorema}
+\begin{proof}
+La apertura de los invertibles implica que $\rho(T)$ es abierto. Si $|z|>\norm T$, la factorización $zI-T=z(I-T/z)$ y Neumann dan invertibilidad y
+\[\norm{(zI-T)^{-1}}\le\frac1{|z|-\norm T}.
+\]
+Así el espectro es cerrado y acotado, por tanto compacto. Para la no vacuidad, supongamos que fuera vacío y pongamos $R(z)=(zI-T)^{-1}$ para todo $z$. La identidad de inversas da
+\[R(z)-R(w)=(w-z)R(z)R(w).
+\]
+Además, la expansión de Neumann alrededor de cualquier $w$ prueba que $R(z)\to R(w)$ en norma. Dividiendo la identidad anterior por $z-w$ obtenemos $R'(w)=-R(w)^2$. Para cada $\Phi\in\Bcal(X)^*$, la función escalar $f(z)=\Phi(R(z))$ es entera. La cota anterior la acota fuera de un disco, y la continuidad la acota dentro. Por Liouville es constante, y como $f(z)\to0$ cuando $|z|\to\infty$, es idénticamente cero. Hahn--Banach, aplicado al espacio $\Bcal(X)$, implica $R(z)=0$, imposible porque $R(z)(zI-T)=I\ne0$. La hipótesis $X\ne\{0\}$ es la que asegura esta última desigualdad.
+\end{proof}
+La demostración sólo usa el teorema escalar de Liouville, que se deduce de la fórmula de Cauchy: para una función entera acotada por $M$, $|f'(z)|\le M/R$ en circunferencias de radio arbitrario $R$, luego $f'=0$.
+
+\begin{lema}\label{v3:producto-conmutativo}
+Un producto finito de operadores que conmutan dos a dos es invertible si y sólo si cada factor lo es.
+\end{lema}
+\begin{proof}
+Basta tratar dos factores $A,B$. Una dirección usa $(AB)^{-1}=B^{-1}A^{-1}$. Si $AB$ es invertible, $A$ y $B$ conmutan con $AB$, luego también con $(AB)^{-1}$: de $AC=CA$ se deduce $C^{-1}A=AC^{-1}$ multiplicando por $C^{-1}$ a ambos lados. Así $B(AB)^{-1}$ es a la vez inversa derecha e izquierda de $A$; análogamente $A(AB)^{-1}$ lo es de $B$. La inducción da el caso finito.
+\end{proof}
+
+\begin{teorema}[Aplicación espectral polinómica]\label{v3:espectral-polinomios}\index{aplicación espectral}
+Para todo polinomio complejo $p$, $\sigma(p(T))=p(\sigma(T))$.
+\end{teorema}
+\begin{proof}
+Si $p=c$ es constante, $p(T)=cI$ tiene espectro $\{c\}$, igual a $p(\sigma(T))$ por no vacuidad. Si $p$ tiene grado $m\ge1$, para cada $\mu$ el teorema fundamental del álgebra da
+\[p(z)-\mu=a\prod_{j=1}^m(z-\lambda_j),\qquad a\ne0.
+\]
+Sustituyendo $T$, los factores conmutan. El lema anterior dice que $p(T)-\mu$ es invertible exactamente cuando todos los $T-\lambda_j$ lo son, es decir, cuando ningún punto de $\sigma(T)$ satisface $p(\lambda)=\mu$. Esto equivale a $\mu\notin p(\sigma(T))$ y prueba la igualdad.
+\end{proof}
+
+\begin{teorema}[Espectro y dualidad]\label{v3:espectro-adjunto}
+Para el adjunto de Banach se cumple
+\[\sigma(T')=\sigma(T),\qquad
+\sigma_r(T)\subset\sigma_p(T')\subset\sigma_p(T)\cup\sigma_r(T),\qquad
+\sigma_c(T')\subset\sigma_c(T).
+\]
+\end{teorema}
+\begin{proof}
+Si $A$ es invertible, $A'$ tiene inversa $(A^{-1})'$ por la regla de composición. Si $A'$ es invertible, su imagen densa implica que $A$ es inyectiva, y su núcleo cero implica que $\ran A$ es densa, por el ejercicio~\ref{ej:v3-l04-5}. Además $\ran A'$ es cerrada, así que $\ran A$ es cerrada por el teorema~\ref{v3:rango-cerrado}. Es, pues, todo $X$. Aplicando esto a $A=T-\lambda$ y usando $A'=T'-\lambda$ se obtiene la igualdad de espectros.
+
+Si $\lambda\in\sigma_r(T)$, la imagen no densa de $T-\lambda$ tiene un anulador no nulo; éste es $\ker(T'-\lambda)$, luego $\lambda\in\sigma_p(T')$. A la inversa, un vector no nulo de ese núcleo demuestra que la imagen de $T-\lambda$ no es densa. Por tanto $\lambda$ no puede estar en $\sigma_c(T)$ ni en el resolvente, y pertenece a $\sigma_p(T)\cup\sigma_r(T)$. Finalmente, si $\lambda\in\sigma_c(T')$, la inyectividad de $T'-\lambda$ implica densidad de la imagen de $T-\lambda$, y la densidad de la imagen del primero implica inyectividad del segundo. La igualdad de espectros excluye la suprayectividad, de modo que $\lambda\in\sigma_c(T)$. No se ha confundido el anulador cero con densidad en norma de un subespacio del dual: ese paso, empleado sin hipótesis en la prueba original, se sustituye aquí por rango cerrado.
+\end{proof}
+
+\section{Ejercicios de la lectura 7}
+\begin{ejercicio}\label{ej:v3-l07-1}
+Sea $(a_n)$ acotada y $Dx=(a_nx_n)$ en $\ell^1$. Calcule su espectro.
+\end{ejercicio}
+\begin{solucion}
+$\norm D=\sup_n|a_n|$: una desigualdad se obtiene sumando $|a_nx_n|$, y la otra evaluando en $e_n$. Si $\lambda\notin\cl{\{a_n:n\ge1\}}$, existe $d>0$ con $|a_n-\lambda|\ge d$; la inversa diagonal $y_n\mapsto y_n/(a_n-\lambda)$ es acotada. Si $\lambda=a_n$, $e_n$ es un vector propio. Si $\lambda$ es un punto de la cerradura que no se alcanza, el operador es inyectivo y su imagen contiene todas las sucesiones de soporte finito, por tanto es densa. Hay índices $n_j$ con $|a_{n_j}-\lambda|\to0$, luego $\norm{(D-\lambda)e_{n_j}}_1\to0$; una inversa acotada sería imposible. Así
+\[\sigma(D)=\cl{\{a_n:n\ge1\}},\quad
+\sigma_p(D)=\{a_n:n\ge1\},\quad
+\sigma_c(D)=\sigma(D)\setminus\sigma_p(D),\quad\sigma_r(D)=\varnothing.
+\]
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-2}
+Demuestre que el corrimiento derecho bilateral en $\ell^2(\Z)$ es invertible y determine su inversa.
+\end{ejercicio}
+\begin{solucion}
+Definimos $(Rx)_n=x_{n-1}$ y $(Lx)_n=x_{n+1}$. El cambio de índice en la suma sobre $\Z$ da $\norm{Rx}_2=\norm{Lx}_2=\norm x_2$. Además, $(LRx)_n=x_n=(RLx)_n$ para todo entero $n$, luego $R^{-1}=L$. La ausencia de una primera coordenada distingue este caso del corrimiento unilateral.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-3}
+Para $f\in C[0,1]$, sea $Tg(t)=f(1-t)g(t)$ en $L^1[0,1]$. Pruebe que $\sigma(T)=f([0,1])$ y determine los valores propios.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $a(t)=f(1-t)$. Si $\lambda\notin a([0,1])$, la compacidad da $\min|a-\lambda|>0$ y multiplicar por $(a-\lambda)^{-1}$ es una inversa acotada. Si $\lambda=a(t_0)$, para cada $\eps>0$ la continuidad da un intervalo de medida positiva $E\subset[0,1]$ donde $|a-\lambda|<\eps$. El vector $g=\boldsymbol1_E/|E|$ tiene norma uno y $\norm{(T-\lambda)g}_1\le\eps$; por tanto no existe inversa acotada y $\lambda\in\sigma(T)$. Finalmente, $(a-\lambda)g=0$ admite una solución no nula exactamente cuando $\{t:a(t)=\lambda\}$ tiene medida positiva: si la tiene, sirve su indicador; si no, cualquier solución se anula casi en todas partes. El cambio $t\mapsto1-t$ preserva medida, de modo que la condición también es $|f^{-1}(\{\lambda\})|>0$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-4}
+Los vectores propios asociados a valores propios \emph{distintos} $\lambda_1,\ldots,\lambda_m$ son linealmente independientes.
+\end{ejercicio}
+\begin{solucion}
+Para $m=1$ se usa que un vector propio es no nulo. Por inducción, si $\sum_{j=1}^mc_jv_j=0$, aplicamos $T-\lambda_m$ y obtenemos $\sum_{j<m}c_j(\lambda_j-\lambda_m)v_j=0$. La hipótesis inductiva y la distinción de los valores dan $c_j=0$ para $j<m$; entonces $c_mv_m=0$ da $c_m=0$. La condición ``distintos'' falta en el original: si $T=I$ y repetimos el mismo vector propio dos veces, la conclusión falla.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-5}
+Si $T\in\Bcal(X)$ es invertible, pruebe $\sigma(T^{-1})=\{\lambda^{-1}:\lambda\in\sigma(T)\}$.
+\end{ejercicio}
+\begin{solucion}
+Ni $T$ ni $T^{-1}$ tienen cero en el espectro. Para $\mu\ne0$,
+\[T^{-1}-\mu I=-\mu T^{-1}(T-\mu^{-1}I).
+\]
+El primer factor es invertible, por lo que el producto es invertible exactamente cuando lo es $T-\mu^{-1}I$. Así $\mu\in\sigma(T^{-1})$ equivale a $\mu^{-1}\in\sigma(T)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-6}
+Para el adjunto de Hilbert, pruebe $\sigma(T^*)=\{\cl\lambda:\lambda\in\sigma(T)\}$.
+\end{ejercicio}
+\begin{solucion}
+$A$ es invertible si y sólo si $A^*$ lo es: una dirección usa $(A^{-1})^*$ como inversa y la otra aplica lo mismo a $A^*$, pues $A^{**}=A$. Como $(T-\lambda I)^*=T^*-\cl\lambda I$, la equivalencia da la fórmula. El conjugado es propio de la convención de Hilbert; para $T'$ la igualdad no lleva conjugación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-7}
+Para $L(x_1,x_2,\ldots)=(x_2,x_3,\ldots)$ en $\ell^1$, pruebe (i) $\sigma_p(L)=\{|z|<1\}$; (ii) $\sigma_c(L)=\{|z|=1\}$; (iii) $\sigma_r(L)=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+(i) La ecuación $Lx=\lambda x$ equivale a $x_n=\lambda^{n-1}x_1$. Esta sucesión es no nula y sumable exactamente cuando $x_1\ne0$ y $|\lambda|<1$. (ii) Si $|\lambda|>1$, Neumann da invertibilidad porque $\norm L=1$. El espectro cerrado contiene el disco abierto del inciso (i), por tanto también su frontera. Para $|\lambda|=1$ no hay vectores propios. Bajo el apareamiento $\ell^1$--$\ell^\infty$, el adjunto de $L$ es el corrimiento derecho $R$; $R-\lambda$ es inyectivo, como ya se probó. Por el ejercicio~\ref{ej:v3-l04-5}, la imagen de $L-\lambda$ es densa. Así la frontera es espectro continuo. (iii) Hemos cubierto todo el plano con resolvente, espectro puntual y espectro continuo; no queda espectro residual.
+\end{solucion}
+
+\section{Ejercicios de la lectura 8}
+\begin{ejercicio}\label{ej:v3-l08-1}
+Demuestre que un producto finito de operadores que conmutan dos a dos es invertible si y sólo si cada factor lo es.
+\end{ejercicio}
+\begin{solucion}
+La prueba completa es el lema~\ref{v3:producto-conmutativo}. Explícitamente, si $P=\prod_jT_j$ es invertible, una inversa de $T_i$ es $(\prod_{j\ne i}T_j)P^{-1}$: los factores conmutan con $P$ y con $P^{-1}$, así que el producto a izquierda y derecha con $T_i$ da $I$. Si todos son invertibles, multiplicar sus inversas en orden inverso da una inversa de $P$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-2}
+Pruebe: (i) $T^2=T$ implica $\sigma(T)\subset\{0,1\}$; (ii) $T$ nilpotente implica $\sigma(T)=\{0\}$.
+\end{ejercicio}
+\begin{solucion}
+(i) Aplicación espectral al polinomio $p(z)=z^2-z$ da $p(\sigma(T))=\sigma(0)=\{0\}$; cada punto del espectro satisface $z(z-1)=0$. (ii) Si $T^m=0$, el mismo argumento con $p(z)=z^m$ da $\sigma(T)\subset\{0\}$. La no vacuidad fuerza igualdad. También puede verse que cero debe pertenecer: si $T$ fuera invertible, $T^m=0$ sería invertible, contradicción.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-3}
+Si $T_n\to T$ en norma, $\lambda_n\to\lambda$ y $\lambda_n\in\sigma(T_n)$, pruebe $\lambda\in\sigma(T)$.
+\end{ejercicio}
+\begin{solucion}
+Si $T-\lambda$ fuera invertible, la convergencia $T_n-\lambda_n\to T-\lambda$ y la apertura del conjunto de invertibles harían invertibles a $T_n-\lambda_n$ para $n$ grande. Esto contradice la elección de $\lambda_n$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-4}
+Para los corrimientos unilaterales $L,R$ en $\ell^\infty$, demuestre $\sigma(LR)\ne\sigma(RL)$.
+\end{ejercicio}
+\begin{solucion}
+$LR=I$, luego su espectro es $\{1\}$. En cambio $RL=I-P$, donde $Px=x_1e_1$. Es idempotente, así que su espectro está contenido en $\{0,1\}$. Ambos números son valores propios: $(RL)e_1=0$ y $(RL)e_2=e_2$. Por tanto $\sigma(RL)=\{0,1\}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-5}
+Si $(S\times T)(x,y)=(Sx,Ty)$, pruebe $\sigma(S\times T)=\sigma(S)\cup\sigma(T)$.
+\end{ejercicio}
+\begin{solucion}
+Si ambos $S-\lambda$ y $T-\lambda$ son invertibles, el producto de sus inversas es la inversa acotada de $(S\times T)-\lambda$ con la norma suma. Si este último es biyectivo, resolver las ecuaciones con datos $(u,0)$ y $(0,v)$ demuestra que cada factor es suprayectivo; aplicar su inyectividad a $(x,0)$ y $(0,y)$ demuestra que ambos son inyectivos. Sus inversas son acotadas por aplicación abierta. Por tanto el resolvente del producto es la intersección de los dos resolventes, y tomar complementos da la fórmula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-6}
+Si $T_n\to T$ en norma, para todo $\eps>0$ existe $N$ con $\sigma(T_n)\subset\sigma(T)+B(0,\eps)$ cuando $n\ge N$.
+\end{ejercicio}
+\begin{solucion}
+Las normas $\norm{T_n}$ están acotadas, digamos por $M$, luego todos sus espectros están en el disco cerrado de radio $M$. Si la conclusión fallara, habría una subsucesión $n_j$ y $\lambda_j\in\sigma(T_{n_j})$ con $\dist(\lambda_j,\sigma(T))\ge\eps$. Por compacidad del disco, alguna subsucesión converge a $\lambda$. El ejercicio~\ref{ej:v3-l08-3} da $\lambda\in\sigma(T)$, mientras que la continuidad de la distancia da $\dist(\lambda,\sigma(T))\ge\eps$, contradicción. Ésta es semicontinuidad superior del espectro como conjunto; no afirma que cada punto espectral persista cerca bajo cualquier perturbación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-7}
+Todo compacto no vacío $K\subset\C$ es el espectro de un operador acotado en un espacio de Banach.
+\end{ejercicio}
+\begin{solucion}
+El compacto métrico $K$ tiene una sucesión densa $(a_n)$: para cada $m$ tomamos una $1/m$-red finita y enumeramos su unión, repitiendo puntos si la unión es finita. En $\ell^2$, sea $Dx=(a_nx_n)$. Es acotado, con $\norm D=\sup|a_n|$. Fuera de $K$, la distancia positiva da una inversa diagonal acotada. Si $\lambda\in K$, para cada $j$ elegimos $n_j$ con $|a_{n_j}-\lambda|<1/j$; entonces $\norm{(D-\lambda)e_{n_j}}<1/j$. Si hubiese inversa acotada, tendríamos $1\le\norm{(D-\lambda)^{-1}}/j$, absurdo. Por tanto $\sigma(D)=K$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-8}
+Los operadores acotados inyectivos con imagen cerrada forman un abierto de $\Bcal(X)$.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio~\ref{ej:v3-l03-4}, esas propiedades equivalen a una cota inferior $\norm{Tx}\ge c\norm x$ con $c>0$. Si $\norm{S-T}<c$, entonces
+\[\norm{Sx}\ge\norm{Tx}-\norm{(S-T)x}\ge(c-\norm{S-T})\norm x.
+\]
+La constante positiva prueba inyectividad de $S$; además, si $Sx_n$ converge, la cota hace de $x_n$ una sucesión de Cauchy, cuyo límite $x$ satisface $Sx_n\to Sx$. Así la imagen de $S$ es cerrada y toda esa bola alrededor de $T$ tiene la propiedad.
+\end{solucion}
+
+\section{Radio espectral y crecimiento de potencias}\label{lec:v3-09}
+\fuentelectura{9}{El radio espectral}
+\begin{definicion}\index{radio espectral}
+Definimos $r(T)=\max\{|\lambda|:\lambda\in\sigma(T)\}$. El máximo existe por compacidad y $0\le r(T)\le\norm T$. Un operador con $r(T)=0$ se llama \emph{cuasinilpotente}.
+\end{definicion}
+Un nilpotente no nulo muestra que la desigualdad con la norma puede ser estricta: en los polinomios de grado a lo sumo $m$, la derivada tiene potencia $m+1$ igual a cero, aunque no es el operador cero si $m\ge1$.
+
+\begin{teorema}[Fórmula de Gelfand]\label{v3:gelfand-radio}\index{Gelfand!fórmula del radio}
+Para $T\in\Bcal(X)$,
+\[r(T)=\lim_{n\to\infty}\norm{T^n}^{1/n}.
+\]
+\end{teorema}
+\begin{proof}
+Aplicación espectral da $\lambda^n\in\sigma(T^n)$ para $\lambda\in\sigma(T)$; luego $r(T)\le\norm{T^n}^{1/n}$ para todo $n$. Falta la cota para el límite superior.
+
+Sea $D=\{z:|z|<1/r(T)\}$, interpretado como $\C$ si $r(T)=0$. Para $z\ne0$ en $D$, $1/z\notin\sigma(T)$ y $I-zT$ es invertible. En $z=0$ también lo es. El mismo argumento local de Neumann usado para el resolvente muestra que $z\mapsto(I-zT)^{-1}$ es holomorfa en norma en $D$. Para cada $\Phi\in\Bcal(X)^*$, la función escalar
+\[g_\Phi(z)=\Phi((I-zT)^{-1})
+\]
+es holomorfa allí. Cerca de cero, Neumann da $g_\Phi(z)=\sum_{n\ge0}\Phi(T^n)z^n$. Por unicidad de los coeficientes de Taylor y el teorema de expansión de una función holomorfa en un disco, esta serie converge para todo $z\in D$. Este último hecho se obtiene de la fórmula de Cauchy en cualquier circunferencia compactamente contenida en $D$; no se presupone convergencia de una serie de operadores fuera del disco $|z|<1/\norm T$.
+
+Fijemos $z\in D\setminus\{0\}$. La convergencia escalar implica que $(z^n\Phi(T^n))_n$ es acotada para cada $\Phi$. En el Banach $\Bcal(X)^*$ consideramos las funcionales $F_n(\Phi)=\Phi(z^nT^n)$, cuya norma es $\norm{z^nT^n}$ por la inserción isométrica en el bidual. Acotación uniforme proporciona $C_z<\infty$ con $|z|^n\norm{T^n}\le C_z$. Por tanto
+\[\limsup_n\norm{T^n}^{1/n}\le |z|^{-1}.
+\]
+Si $r(T)>0$, hacemos $|z|\uparrow1/r(T)$; si $r(T)=0$, hacemos $|z|\to\infty$. En ambos casos el límite superior es a lo sumo $r(T)$, y la cota inicial concluye. Aquí las funcionales actúan sobre $\Bcal(X)$, no sobre $X$; además el argumento correcto es $I-zT$, dos precisiones necesarias en la prueba original.
+\end{proof}
+
+\begin{ejemplo}[Cuasinilpotente que no es nilpotente]
+En $\ell^\infty$, sea $Tx=(0,x_1,x_2/2,x_3/3,\ldots)$. Por inducción,
+\[(T^nx)_k=\begin{cases}0,&k\le n,\\
+\displaystyle\frac{x_{k-n}}{(k-1)(k-2)\cdots(k-n)},&k>n.
+\end{cases}
+\]
+El denominador mínimo es $n!$, alcanzado cuando $k=n+1$. Así $\norm{T^n}\le1/n!$ y la igualdad se alcanza en $e_1$, pues $T^ne_1=e_{n+1}/n!$. Además $(n!)^{1/n}\to\infty$: al menos $\lfloor n/2\rfloor$ factores son mayores o iguales que $n/2$. La fórmula de Gelfand da $r(T)=0$, de modo que $\sigma(T)=\{0\}$. El operador es inyectivo y su imagen tiene primera coordenada cero, por tanto cero es residual. Ninguna potencia es cero, como muestra la misma fórmula en $e_1$.
+\end{ejemplo}
+
+\section{Ejercicios de la lectura 9}
+\begin{ejercicio}\label{ej:v3-l09-1}
+Si $ST=TS$, pruebe $r(ST)\le r(S)r(T)$ y $r(S+T)\le r(S)+r(T)$.
+\end{ejercicio}
+\begin{solucion}
+La primera se deduce de $(ST)^n=S^nT^n$ y $\norm{(ST)^n}^{1/n}\le\norm{S^n}^{1/n}\norm{T^n}^{1/n}$ al tomar límites. Para la segunda, elijamos $a>r(S)$ y $b>r(T)$. La fórmula de Gelfand permite constantes $C,D\ge1$ con $\norm{S^n}\le Ca^n$ y $\norm{T^n}\le Db^n$ para todos $n\ge0$: para $n$ grande basta la definición de límite y para los finitísimos restantes aumentamos las constantes. El binomio, válido por conmutatividad, da
+\[\norm{(S+T)^n}\le\sum_{k=0}^n\binom nk Ca^kDb^{n-k}=CD(a+b)^n.
+\]
+Tomando raíces, límites y después $a\downarrow r(S)$, $b\downarrow r(T)$ obtenemos la segunda desigualdad. No hay igualdad general en la primera: las matrices diagonales $S=\operatorname{diag}(1,0)$ y $T=\operatorname{diag}(0,1)$ conmutan, tienen radio uno y producto cero. Este ejemplo también corrige el ejercicio 19 de la colección complementaria de problemas de $C^*$-álgebras de Maximenko \cite{maxproblemas}, que enuncia una igualdad excesiva.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-2}
+Pruebe $r(T^m)=r(T)^m$ para todo entero $m\ge1$.
+\end{ejercicio}
+\begin{solucion}
+Por aplicación espectral, $\sigma(T^m)=\{\lambda^m:\lambda\in\sigma(T)\}$. Tomar el máximo del módulo da $r(T^m)=\max_{\lambda\in\sigma(T)}|\lambda|^m=r(T)^m$, porque la función $t\mapsto t^m$ es creciente en los no negativos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-3}
+Para una matriz compleja $A$ con la norma de operador euclídea, pruebe $\norm A^2=r(A^*A)$.
+\end{ejercicio}
+\begin{solucion}
+La matriz $B=A^*A$ es autoadjunta y positiva: $\ip{Bx}{x}=\norm{Ax}^2\ge0$. Por el teorema espectral finito del capítulo~\ref{cap:v3-01}, tiene una base ortonormal de vectores propios con valores $\lambda_j\ge0$. Para $x=\sum_jc_je_j$ unitario,
+\[\norm{Ax}^2=\ip{Bx}{x}=\sum_j\lambda_j|c_j|^2\le\max_j\lambda_j.
+\]
+La igualdad se alcanza en un vector propio correspondiente al máximo. Así $\norm A^2=\max_j\lambda_j=r(B)$. La norma euclídea es necesaria para esta relación con la traspuesta conjugada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-4}
+Demuestre que $T\mapsto r(T)$ es semicontinua superior para la norma de operadores.
+\end{ejercicio}
+\begin{solucion}
+Si $T_n\to T$, por el ejercicio~\ref{ej:v3-l08-6}, dado $\eps>0$ y $n$ grande todo $\lambda\in\sigma(T_n)$ está a distancia menor que $\eps$ de algún $\mu\in\sigma(T)$. Entonces $|\lambda|\le|\mu|+\eps\le r(T)+\eps$. Tomando máximos y límite superior se obtiene $\limsup_n r(T_n)\le r(T)+\eps$; como $\eps$ es arbitrario, $\limsup_n r(T_n)\le r(T)$, que es la semicontinuidad superior en este espacio métrico.
+\end{solucion}
+
+\section{Ampliación: multiplicadores y corrimientos bilaterales}
+La siguiente formulación desarrolla el modelo presentado por \textbf{Gerardo Ramos Vázquez}, \emph{Los operadores de multiplicación en espacios de medida $\sigma$-finita} \cite{ramos2018}, alojado en el sitio de Egor Maximenko. La atribución corresponde al autor de esa presentación; las demostraciones y ejercicios siguientes son desarrollos de esta edición.
+
+\begin{teorema}\label{v3:multiplicadores}\index{operador!de multiplicación}\index{rango esencial}
+Sea $(\Omega,\mu)$ un espacio de medida $\sigma$-finito con $L^2(\mu)\ne\{0\}$ y $a\in L^\infty(\mu)$. El operador $M_af=af$ satisface
+\[\norm{M_a}=\norm a_\infty,\quad M_a^*=M_{\cl a},\quad
+\sigma(M_a)=\operatorname{essran}(a),
+\]
+donde $\lambda\in\operatorname{essran}(a)$ significa que $\mu\{|a-\lambda|<\eps\}>0$ para todo $\eps>0$. Sus valores propios son los $\lambda$ con $\mu\{a=\lambda\}>0$; el resto del espectro es continuo y el residual es vacío.
+\end{teorema}
+\begin{proof}
+La desigualdad $\norm{af}_2\le\norm a_\infty\norm f_2$ da una cota. Si $0<c<\norm a_\infty$, el conjunto $\{|a|>c\}$ tiene medida positiva. Por $\sigma$-finitud contiene un subconjunto $E$ de medida positiva finita. El vector $f=\boldsymbol1_E/\sqrt{\mu(E)}$ tiene norma uno y $\norm{M_af}_2\ge c$. Al hacer $c\uparrow\norm a_\infty$ se obtiene la igualdad; si la norma es cero no hace falta este paso. La fórmula del adjunto se deduce de
+$\int af\cl g\,d\mu=\int f\cl{\cl a g}\,d\mu$.
+
+Si $\lambda$ no está en el rango esencial, $|a-\lambda|\ge\eps$ casi en todas partes para algún $\eps>0$, y $M_{1/(a-\lambda)}$ es una inversa acotada. Si está, los conjuntos $\{|a-\lambda|<1/n\}$ contienen subconjuntos $E_n$ de medida positiva finita. Sus indicadores normalizados $f_n$ satisfacen $\norm{(M_a-\lambda)f_n}_2\le1/n$, lo que excluye una inversa acotada. Esto prueba la igualdad de espectros.
+
+La ecuación $(a-\lambda)f=0$ equivale a que $f$ esté soportada, salvo conjuntos nulos, en $\{a=\lambda\}$. Por $\sigma$-finitud existe allí un indicador integrable no nulo exactamente cuando ese conjunto tiene medida positiva. Si su medida es cero, el operador es inyectivo; además $\ker(M_a-\lambda)^*=\ker M_{\cl a-\cl\lambda}=0$, de modo que su imagen es densa. Si $\lambda$ está en el espectro, esa imagen no es todo el espacio y el punto es continuo. Por ello nunca aparece espectro residual.
+\end{proof}
+
+\begin{ejercicio}[Complemento: norma y espectro de una proyección]\label{ej:v3-ampl-multiplicador}
+Sea $E\subset\Omega$ medible y suponga que $E$ y su complemento tienen medida positiva. Determine norma, espectro y espacios propios de $M_{\boldsymbol1_E}$ en $L^2(\mu)$.
+\end{ejercicio}
+\begin{solucion}
+El rango esencial de $\boldsymbol1_E$ es $\{0,1\}$, su norma esencial es uno y ambas fibras tienen medida positiva. Por tanto la norma del operador es uno y ambos puntos del espectro son propios. El espacio propio de uno es $\{f:f=0\text{ casi en todas partes fuera de }E\}$; el de cero es $\{f:f=0\text{ casi en todas partes en }E\}$. Son ortogonales, y $f=\boldsymbol1_Ef+\boldsymbol1_{\Omega\setminus E}f$ prueba que su suma es todo $L^2$.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: espectro del corrimiento bilateral]\label{ej:v3-ampl-shift}
+Para $R$ en $\ell^2(\Z)$ del ejercicio~\ref{ej:v3-l07-2}, pruebe $\sigma(R)=\sigma_c(R)=\{|z|=1\}$.
+\end{ejercicio}
+\begin{solucion}
+Si $|\lambda|>1$, Neumann da inversa. Si $|\lambda|<1$, la factorización $R-\lambda=R(I-\lambda R^{-1})$ y $\norm{R^{-1}}=1$ también la da. Para $|\lambda|=1$ y $N\ge1$, definamos $x^{(N)}_n=\lambda^{-n}/\sqrt{2N+1}$ si $|n|\le N$ y cero fuera. Su norma es uno. En $(R-\lambda)x^{(N)}$ se cancelan todas las coordenadas interiores y quedan sólo dos extremos de módulo $1/\sqrt{2N+1}$, de modo que su norma es $\sqrt{2/(2N+1)}\to0$. Esto prueba que $\lambda$ es espectral. La ecuación $Rx=\lambda x$ fuerza $x_n=\lambda^{-n}x_0$ para todos los enteros, que no es cuadrado-sumable salvo que $x_0=0$; no hay valores propios. El adjunto es $R^{-1}$ y tampoco tiene valores propios en la circunferencia, por la misma recurrencia. La imagen de $R-\lambda$ es, pues, densa y el espectro es continuo. Este desarrollo amplía los ejercicios sobre corrimientos de Maximenko \cite{maxshift}.
+\end{solucion}
+
+Los modelos de multiplicación y corrimiento muestran que conocer el conjunto espectral no basta para conocer el operador: el mismo disco puede tener espectro puntual o residual según el espacio y la dirección del corrimiento. La fórmula de Gelfand añade una información cuantitativa, el crecimiento asintótico de las potencias. En el siguiente capítulo la compacidad reducirá gran parte de la teoría espectral a espacios propios de dimensión finita.

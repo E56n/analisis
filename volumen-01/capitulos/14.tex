@@ -358,6 +358,192 @@ Si $H$ es Hilbert y $S\subset H$, entonces
 Un vector perpendicular a $S$ es perpendicular a todas sus combinaciones lineales y a sus límites, por continuidad del producto interno. Por tanto, con $M=\cl{\spanop S}$ se tiene $S^{\perp}=M^{\perp}$. Como $M$ es cerrado en Hilbert, es complementado y el teorema anterior da $(M^{\perp})^{\perp}=M$.
 \end{proof}
 
+\section{Calcular una proyección sin ortonormalizar}\label{ampl:gram}
+El teorema de proyección garantiza un mejor aproximante, pero no siempre lo expresa en las coordenadas que tenemos disponibles. Si un subespacio está generado por monomios, datos experimentales u otras funciones sencillas, conviene poder trabajar directamente con esa lista. La matriz de Gram convierte la condición de ortogonalidad del error en un sistema de ecuaciones lineales.
+
+Esta ampliación utiliza \cite{max-gram,max-proyeccion} como orientación. Las demostraciones se escriben con la convención del volumen: el producto interno es lineal en el primer argumento. Las fórmulas complejas dependen de esa convención; no basta con copiar una matriz sin comprobar dónde aparecen los conjugados.
+\index{Gram, matriz de}\index{ecuaciones normales}\index{minimos cuadrados@mínimos cuadrados}
+
+\begin{definicion}
+Para una lista $a_1,\ldots,a_m$ de vectores de un espacio con producto interno, su \emph{matriz de Gram} será
+\[
+ G=(G_{ij})_{i,j=1}^m,\qquad G_{ij}=\ip{a_j}{a_i}.
+\]
+Para una matriz compleja, $A^*$ denota su transpuesta conjugada. Los vectores de coeficientes se escriben como columnas.
+\end{definicion}
+
+\begin{proposicion}\label{ampl:gram-positiva}
+La matriz $G$ es hermitiana y semidefinida positiva. Es definida positiva, y por tanto invertible, si y solo si $a_1,\ldots,a_m$ son linealmente independientes. Para cada columna $c=(c_j)$,
+\[
+ c^*Gc=\left\|\sum_{j=1}^mc_ja_j\right\|^2.
+\]
+\end{proposicion}
+\begin{proof}
+La simetría conjugada da $\overline{G_{ji}}=\overline{\ip{a_i}{a_j}}=\ip{a_j}{a_i}=G_{ij}$, luego $G^*=G$. Además,
+\[
+ c^*Gc=\sum_{i,j}\overline{c_i}c_j\ip{a_j}{a_i}
+ =\ip{\sum_jc_ja_j}{\sum_ic_ia_i}\ge0.
+\]
+Si la lista es independiente y $c\ne0$, el vector dentro de la norma no es cero, por lo que la expresión es positiva. Si la lista es dependiente, existe $c\ne0$ que produce el vector cero, y la expresión no es estrictamente positiva. Finalmente, para una lista independiente, $Gc=0$ implicaría $c^*Gc=0$ y por tanto $c=0$; una matriz cuadrada con núcleo cero es invertible.
+\end{proof}
+
+\begin{teorema}[Ecuaciones normales de la proyección]\label{ampl:gram-proyeccion}
+Sean $a_1,\ldots,a_m$ linealmente independientes y $M=\spanop\{a_1,\ldots,a_m\}$. Para $u$ en el espacio ambiente defina la columna $\alpha$ por $\alpha_i=\ip{u}{a_i}$. El sistema
+\[
+ Gc=\alpha
+\]
+tiene solución única, y
+\[
+ P_Mu=\sum_{j=1}^mc_ja_j,\qquad
+ \dist(u,M)^2=\norm u^2-\alpha^*G^{-1}\alpha.
+\]
+No se requiere que el espacio ambiente sea completo.
+\end{teorema}
+\begin{proof}
+Por la proposición anterior existe $c=G^{-1}\alpha$. Sea $p=\sum_jc_ja_j$. Para cada $i$,
+\[
+ \ip{u-p}{a_i}=\alpha_i-\sum_jc_j\ip{a_j}{a_i}
+ =\alpha_i-(Gc)_i=0.
+\]
+Si $v=\sum_id_ia_i\in M$, entonces
+$\ip{u-p}{v}=\sum_i\overline{d_i}\ip{u-p}{a_i}=0$. El residuo es ortogonal a todo $M$, de modo que el teorema~\ref{ch30:caracterizacion} prueba que $p$ es el único mejor aproximante. El argumento sólo usó sumas finitas y un sistema invertible, por lo que no necesita completitud ambiente.
+
+Como $G$ es hermitiana, también lo es $G^{-1}$: al tomar adjuntos en $GG^{-1}=I$ se obtiene $(G^{-1})^*G=I$. Por ello,
+\[
+ \norm p^2=c^*Gc=(G^{-1}\alpha)^*G(G^{-1}\alpha)
+ =\alpha^*G^{-1}\alpha.
+\]
+La descomposición $u=p+(u-p)$ es ortogonal. Pitágoras da la fórmula del error.
+\end{proof}
+
+En la práctica se resuelve $Gc=\alpha$; escribir $G^{-1}$ en una fórmula no obliga a calcular todas las entradas de la inversa. Cuando la lista ya es ortonormal, $G=I$ y recuperamos $c_i=\ip{u}{a_i}$. La matriz de Gram registra precisamente lo que cambia cuando las direcciones no son ortogonales.
+
+\begin{ejemplo}[Matrices y ajuste por mínimos cuadrados]
+En $\F^n$ con el producto interno usual, reúna los vectores $a_j$ como columnas de una matriz $A$ de tamaño $n\times m$. Entonces
+\[
+ G=A^*A,\qquad \alpha=A^*u.
+\]
+En efecto, la entrada $(i,j)$ de $A^*A$ es $\sum_k\overline{(a_i)_k}(a_j)_k=\ip{a_j}{a_i}$. Las ecuaciones normales son $A^*Ac=A^*u$ y minimizan $\norm{u-Ac}_2^2$. Si las columnas son independientes, la proyección queda expresada por
+\[
+ P_Mu=A(A^*A)^{-1}A^*u.
+\]
+La fórmula es una aplicación finita del teorema anterior; no presupone todavía la teoría del adjunto de un operador entre espacios de Hilbert.
+\end{ejemplo}
+
+\section{Ejercicios sobre Gram y mejores aproximaciones}
+Los ejercicios siguientes son elaboraciones propias de esta edición. El último desarrolla también el problema sobre rango de Gram propuesto en \cite{max-gram}; las soluciones y las aplicaciones concretas se presentan aquí completas.
+
+\begin{ejercicio}[Ampliación: aproximar una parábola por una recta]\label{ej:ampl-gram-1}
+En $C([0,1],\R)$ con $\ip fg=\int_0^1f(t)g(t)\,dt$, encuentre el polinomio $a+bt$ que minimiza $\int_0^1(t^2-a-bt)^2\,dt$. Calcule el error mínimo y verifique directamente la ortogonalidad del residuo.
+\end{ejercicio}
+\begin{solucion}
+Para $a_1=1$, $a_2=t$ y $u=t^2$, los momentos $\int_0^1t^k\,dt=1/(k+1)$ dan
+\[
+ G=\begin{pmatrix}1&1/2\\1/2&1/3\end{pmatrix},\qquad
+ \alpha=\begin{pmatrix}1/3\\1/4\end{pmatrix}.
+\]
+El sistema es $a+b/2=1/3$, $a/2+b/3=1/4$. Restar la mitad de la primera ecuación a la segunda da $b/12=1/12$, luego $b=1$ y $a=-1/6$. Así $p(t)=t-1/6$. El residuo $r=t^2-t+1/6$ satisface
+\[
+ \int_0^1r=\frac13-\frac12+\frac16=0,\qquad
+ \int_0^1tr=\frac14-\frac13+\frac1{12}=0.
+\]
+Es perpendicular a $1$ y a $t$, y por linealidad a cualquier recta. El error cuadrático mínimo es
+\[
+ \norm{u-p}^2=\frac15-\alpha^*\begin{pmatrix}-1/6\\1\end{pmatrix}
+ =\frac15-\left(-\frac1{18}+\frac14\right)=\frac1{180}.
+\]
+La distancia, sin elevar al cuadrado, es $1/\sqrt{180}$. Aunque $C([0,1])$ no es completo para esta norma integral, la proyección sobre un subespacio de dimensión finita existe.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: dónde va el conjugado]\label{ej:ampl-gram-2}
+En $\C^2$, con $\ip xy=x_1\overline{y_1}+x_2\overline{y_2}$, proyecte $u=(1,1)$ sobre la recta compleja generada por $a=(1,i)$. Compruebe la norma del error y explique por qué usar $\ip au/\norm a^2$ como coeficiente daría una respuesta incorrecta.
+\end{ejercicio}
+\begin{solucion}
+La matriz de Gram tiene una sola entrada $G=\norm a^2=2$. El dato es $\alpha=\ip ua=1-i$, luego
+\[
+ c=\frac{1-i}{2},\qquad p=ca=\left(\frac{1-i}{2},\frac{1+i}{2}\right).
+\]
+El residuo es $r=((1+i)/2,(1-i)/2)$ y
+\[
+ \ip ra=\frac{1+i}{2}-i\frac{1-i}{2}=0,\qquad
+ \norm r^2=\frac{|1+i|^2+|1-i|^2}{4}=1.
+\]
+Si se usa $c'=(1+i)/2$, entonces
+$\ip{u-c'a}{a}=(1-i)-2c'=-2i\ne0$. El problema no es una elección estética de notación: con producto interno lineal en la primera entrada, el coeficiente que se extrae de $\ip{ca}{a}$ es $c$, y por eso la ecuación correcta es $c\norm a^2=\ip ua$.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: tres datos y dos parámetros]\label{ej:ampl-gram-3}
+Ajuste una recta $y=a+bt$ a los datos $(0,1)$, $(1,2)$ y $(2,2)$ minimizando la suma de los cuadrados de los tres errores. Calcule los parámetros, los valores ajustados y el error mínimo. Explique por qué el problema tiene una solución única aunque ninguna recta pase por los tres datos.
+\end{ejercicio}
+\begin{solucion}
+Las columnas $a_1=(1,1,1)$ y $a_2=(0,1,2)$ son independientes. Con $u=(1,2,2)$,
+\[
+ G=\begin{pmatrix}3&3\\3&5\end{pmatrix},\qquad
+ \alpha=\begin{pmatrix}5\\6\end{pmatrix}.
+\]
+Restar las ecuaciones $3a+3b=5$ y $3a+5b=6$ da $b=1/2$, y después $a=7/6$. Los valores ajustados son
+\[
+ p=\left(\frac76,\frac53,\frac{13}6\right),\qquad
+ r=u-p=\left(-\frac16,\frac13,-\frac16\right).
+\]
+El residuo tiene suma cero y producto con $(0,1,2)$ igual a $1/3-2/6=0$. Su norma cuadrada es $1/36+1/9+1/36=1/6$. Para cualquier otro ajuste $v$ en el mismo plano, Pitágoras da $\norm{u-v}^2=1/6+\norm{p-v}^2$, estrictamente mayor salvo si $v=p$. La independencia de las columnas asegura que $p$ corresponde a un único par $(a,b)$. Los datos no son colineales porque las pendientes entre puntos consecutivos son $1$ y $0$; la proyección responde al problema de aproximación aun cuando el de interpolación sea imposible.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: cambiar de base sin cambiar la proyección]\label{ej:ampl-gram-4}
+Sea $a_1,\ldots,a_m$ una lista independiente y $C=(C_{ij})$ una matriz invertible. Defina $b_j=\sum_i a_iC_{ij}$. Pruebe que las matrices de Gram y los datos de proyección satisfacen $G_b=C^*G_aC$ y $\alpha_b=C^*\alpha_a$, y relacione las coordenadas del mismo vector proyectado. Ilustre el resultado con $a_1=(1,0)$, $a_2=(1,\eps)$, $\eps>0$, y $u=(0,1)$ en $\R^2$.
+\end{ejercicio}
+\begin{solucion}
+Por linealidad en la primera entrada y conjugación en la segunda,
+\[
+ \ip{b_j}{b_i}=\sum_{k,l}C_{kj}\overline{C_{li}}\ip{a_k}{a_l}
+ =(C^*G_aC)_{ij}.
+\]
+Asimismo $\ip u{b_i}=\sum_l\overline{C_{li}}\ip u{a_l}=(C^*\alpha_a)_i$. Si $c$ resuelve $G_ac=\alpha_a$ y $d=C^{-1}c$, entonces
+\[
+ G_bd=C^*G_aCC^{-1}c=C^*\alpha_a=\alpha_b.
+\]
+Además $\sum_jd_jb_j=\sum_i(Cd)_ia_i=\sum_ic_ia_i$. Las coordenadas cambian, pero el vector proyectado es el mismo.
+
+En el ejemplo,
+\[
+ G=\begin{pmatrix}1&1\\1&1+\eps^2\end{pmatrix},\qquad
+ \alpha=\begin{pmatrix}0\\\eps\end{pmatrix},\qquad
+ c=\begin{pmatrix}-1/\eps\\1/\eps\end{pmatrix}.
+\]
+La proyección es todo $u$, pues las dos columnas generan $\R^2$. Sin embargo, sus coordenadas crecen cuando $\eps\downarrow0$ y se cancelan en la primera componente. Tomando la base $b_1=a_1$, $b_2=(a_2-a_1)/\eps=(0,1)$, obtenemos $G_b=I$ y coordenadas $(0,1)$. El fenómeno distingue la geometría del subespacio de la calidad de las coordenadas elegidas para describirlo.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: listas dependientes y coeficientes no únicos]\label{ej:ampl-gram-5}
+Permita ahora que $a_1,\ldots,a_m$ sean dependientes. Defina $A:\F^m\to V$ por $Ac=\sum_jc_ja_j$. Pruebe que $\ker G=\ker A$, que $\operatorname{rango}G=\dim\spanop\{a_j\}$ y que $Gc=\alpha$ sigue teniendo soluciones para $\alpha_i=\ip u{a_i}$. Muestre que todas producen el mismo mejor aproximante. Calcule el sistema para $a_1=1$, $a_2=t$, $a_3=1+t$ y $u=t^2$, con producto integral en $[0,1]$.
+\end{ejercicio}
+\begin{solucion}
+Si $Ac=0$, entonces $(Gc)_i=\ip{Ac}{a_i}=0$ para cada $i$. Recíprocamente, si $Gc=0$, la identidad $\norm{Ac}^2=c^*Gc$ implica $Ac=0$. Por el teorema de rango y nulidad en el dominio finito $\F^m$,
+\[
+ \operatorname{rango}G=m-\dim\ker G
+ =m-\dim\ker A=\dim\operatorname{im}A.
+\]
+Para una matriz hermitiana, $\operatorname{im}G=(\ker G)^\perp$: la inclusión se obtiene de $z^*Gv=(Gz)^*v=0$ si $Gz=0$, y ambos subespacios tienen dimensión $m-\dim\ker G$. Si $z\in\ker G=\ker A$, entonces
+\[
+ z^*\alpha=\sum_i\overline{z_i}\ip u{a_i}=\ip u{Az}=0.
+\]
+Por tanto $\alpha\in(\ker G)^\perp=\operatorname{im}G$, y el sistema tiene solución. Dos soluciones difieren en $\ker G=\ker A$, así que dan el mismo vector $Ac$. El cálculo del teorema~\ref{ampl:gram-proyeccion} prueba que $u-Ac$ es perpendicular a cada $a_i$ y a su espacio generado; por ello ese vector es el mejor aproximante único.
+
+En el ejemplo,
+\[
+ G=\begin{pmatrix}
+ 1&1/2&3/2\\1/2&1/3&5/6\\3/2&5/6&7/3
+ \end{pmatrix},\qquad
+ \alpha=\begin{pmatrix}1/3\\1/4\\7/12\end{pmatrix}.
+\]
+El núcleo de $A$ está generado por $(-1,-1,1)$, pues $c_1+c_2t+c_3(1+t)=0$ equivale a $c_1+c_3=c_2+c_3=0$. Una solución es $(-1/6,1,0)$ por el ejercicio~\ref{ej:ampl-gram-1}. Todas son
+\[
+ c=(-1/6-s,\,1-s,\,s),\qquad s\in\R,
+\]
+y todas representan $t-1/6$. La dependencia hace singular a Gram y elimina la unicidad de las coordenadas, pero no la unicidad del vector proyectado.
+\end{solucion}
+
+La fórmula de Gram concreta la proyección en subespacios finitos. Los ejercicios que siguen vuelven a la geometría general, donde intervienen conjuntos convexos, complementos ortogonales y familias que pueden ser infinitas.
+
 \section{Ejercicios de proyección y complementos ortogonales}
 
 \begin{ejercicio}[Lectura 30, ejercicio 1]\label{ej:lectura-30-1}

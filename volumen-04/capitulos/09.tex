@@ -1,0 +1,175 @@
+\chapter{La topología de un grupo}\label{cap:v4-09}
+En un grupo topológico, conocer lo que ocurre cerca de la identidad permite trasladar esa información a todos los puntos. Esta homogeneidad explica los resultados de separación y la construcción de cocientes. No se presupone Hausdorff hasta que se indique; los capítulos de medida de Haar sí trabajarán con grupos localmente compactos y de Hausdorff.
+
+\section{Operaciones continuas y vecindades}\label{lectura:v4-15}
+\index{grupo!topologico@topológico}\index{vecindad!de la identidad}
+\begin{definicion}
+Un grupo topológico es un grupo $G$ con una topología para la cual $(x,y)\mapsto xy$ y $x\mapsto x^{-1}$ son continuas. Su identidad se denota $e$. Para subconjuntos, $AB=\{ab:a\in A,b\in B\}$ y $A^{-1}=\{a^{-1}:a\in A\}$. El conjunto $AA$ se distingue de $\{a^2:a\in A\}$.
+\end{definicion}
+Todo grupo discreto es topológico porque todas las aplicaciones desde un espacio discreto son continuas y el producto finito de espacios discretos es discreto. Los grupos aditivos $\R^d$, $\C$ y el grupo multiplicativo $\T$ con sus topologías usuales son ejemplos, por continuidad de sus operaciones. El producto cartesiano de grupos topológicos, con operaciones coordenadas y topología producto, es otro grupo topológico: una aplicación al producto es continua si lo son todas sus coordenadas.
+\begin{proposicion}
+Las traslaciones $x\mapsto ax$, $x\mapsto xa$ y la inversión son homeomorfismos. Si $\mathcal V$ es una base de vecindades abiertas de $e$, los conjuntos $aV$, $a\in G$, $V\in\mathcal V$, forman una base de la topología; lo mismo ocurre con $Va$.
+\end{proposicion}
+\begin{proof}
+Cada traslación es continua por continuidad del producto con un factor fijo, y su inversa es la traslación por $a^{-1}$. La inversión es su propia inversa. Si $O$ es abierto y $a\in O$, $a^{-1}O$ es una vecindad abierta de $e$; contiene algún $V\in\mathcal V$, y $a\in aV\subset O$. El argumento derecho es idéntico usando $Oa^{-1}$.
+\end{proof}
+Una traslación individual no es, en general, un homomorfismo de grupos: no manda $e$ en $e$. Lo que sí forma una representación es la acción sobre funciones $L_af(x)=f(a^{-1}x)$, para la cual $L_aL_b=L_{ab}$.
+\begin{proposicion}
+Si $A$ es abierto, $AB$ y $BA$ son abiertos para todo $B$. Si $A,B$ son compactos, $AB$ es compacto. Si $A$ es compacto y $B$ cerrado, $AB$ y $BA$ son cerrados.
+\end{proposicion}
+\begin{proof}
+$AB=\bigcup_{b\in B}Ab$ es unión de abiertos trasladados, y de modo similar para $BA$. El producto de dos compactos es compacto, y $AB$ es su imagen continua bajo multiplicación.
+
+Sea $x\notin AB$. Para cada $a\in A$, $a^{-1}x\notin B$. Como $B$ es cerrado y $(u,v)\mapsto u^{-1}v$ es continua, existen abiertos $U_a\ni a$, $V_a\ni x$ con $U_a^{-1}V_a\subseteq G\setminus B$. Una cantidad finita $U_{a_1},\ldots,U_{a_r}$ cubre $A$. Entonces $V=\bigcap_jV_{a_j}$ es una vecindad de $x$ disjunta de $AB$: si $v=ab$, escogemos $j$ con $a\in U_{a_j}$, lo que daría $b=a^{-1}v\notin B$. Así el complemento es abierto. Para $BA$ se usa la aplicación $(v,u)\mapsto vu^{-1}$.
+\end{proof}
+\begin{proposicion}\label{v4:vecindades-grupo}
+Toda vecindad $U$ de $e$ contiene una vecindad abierta simétrica $V=V^{-1}$. Puede escogerse además con $VV\subset U$, e incluso con $\overline V\subset U$. Para cada compacto $K\subset G$ y vecindad $U$ de $e$, existe una vecindad $V$ de $e$ tal que $xVx^{-1}\subset U$ para todo $x\in K$.
+\end{proposicion}
+\begin{proof}
+Si $W$ es abierta y $e\in W\subset U$, entonces $W\cap W^{-1}$ es abierta y simétrica. Por continuidad de multiplicación en $(e,e)$, existen vecindades $A,B$ con $AB\subset U$; tomar una vecindad simétrica dentro de $A\cap B$ da $VV\subset U$. Si $x\in\overline V$, la vecindad $xV$ de $x$ corta $V$, así que $xu=v$ para algunos $u,v\in V$. Entonces $x=vu^{-1}\in VV\subset U$.
+
+Para la uniformidad de conjugación, elijamos una vecindad simétrica $W$ con $WWW\subset U$. Los abiertos $Wx$, $x\in K$, cubren $K$; bastan $Wx_1,\ldots,Wx_r$. Sea $V=\bigcap_jx_j^{-1}Wx_j$. Si $x=wx_j\in K$, con $w\in W$, entonces $xVx^{-1}\subset wWw^{-1}\subset WWW\subset U$.
+\end{proof}
+\begin{teorema}[Construcción por una base en la identidad]\label{v4:base-identidad}
+Sea $G$ un grupo y $\mathcal V$ una familia no vacía de subconjuntos que contienen $e$, dirigida por refinamiento de intersecciones finitas. Supongamos:
+\begin{enumerate}
+\item para cada $U\in\mathcal V$ existe $V\in\mathcal V$ con $VV\subset U$;
+\item para cada $U\in\mathcal V$ existe $V\in\mathcal V$ con $V^{-1}\subset U$;
+\item para cada $U\in\mathcal V$ y $x\in U$ existe $V\in\mathcal V$ con $xV\subset U$;
+\item para cada $U\in\mathcal V$ y $x\in G$ existe $V\in\mathcal V$ con $xVx^{-1}\subset U$.
+\end{enumerate}
+Entonces los conjuntos $xU$ forman una base de una topología de grupo y $\mathcal V$ es una base de vecindades abiertas de $e$.
+\end{teorema}
+\begin{proof}
+Todos los puntos están cubiertos porque $x\in xU$. Si $z\in xU\cap yV$, (iii) proporciona $A,B\in\mathcal V$ con $(x^{-1}z)A\subset U$ y $(y^{-1}z)B\subset V$. Elegimos $W\subset A\cap B$ en la familia, y entonces $zW\subset xU\cap yV$. Esto prueba el axioma de base.
+
+Para continuidad del producto en $(x,y)$, consideremos una vecindad básica $xyU$. Escojamos $W$ con $WW\subset U$, $A$ con $y^{-1}Ay\subset W$ y $B\subset W$. Entonces
+\[
+ (xA)(yB)=xy(y^{-1}Ay)B\subset xyWW\subset xyU.
+\]
+Para inversión, dada $x^{-1}U$, combinamos (ii) y (iv) para escoger $A$ con $xA^{-1}x^{-1}\subset U$. Se obtiene $(xA)^{-1}=x^{-1}(xA^{-1}x^{-1})\subset x^{-1}U$. Las operaciones son continuas. Las propiedades (i)--(iv) son necesarias para una base abierta real, por continuidad y por definición de abierto. La condición (iii) exige $x\in U$: pedirla para todo $x\in G$, como en la lectura 15, forzaría $U=G$.
+\end{proof}
+
+\section{Separación, subgrupos y cocientes}\label{lectura:v4-16}
+\index{grupo!cociente}\index{subgrupo!abierto}
+\begin{proposicion}
+Para un grupo topológico son equivalentes: ser $T_1$, ser Hausdorff y que $\{e\}$ sea cerrado. La clausura de un subgrupo es un subgrupo, y todo subgrupo abierto es cerrado.
+\end{proposicion}
+\begin{proof}
+Si $\{e\}$ es cerrado, todos los puntos lo son por traslación, y el espacio es $T_1$. Si es $T_1$ y $x\ne y$, elegimos una vecindad $U$ de $e$ que no contenga $xy^{-1}$, y una vecindad abierta simétrica $V$ con $VV\subset U$. Los abiertos $Vx,Vy$ son disjuntos: una igualdad $vx=wy$ daría $xy^{-1}=v^{-1}w\in VV$. Así es Hausdorff. La implicación Hausdorff a puntos cerrados es general.
+
+Si $H$ es subgrupo y $x,y\in\overline H$, la continuidad de $(u,v)\mapsto uv^{-1}$ implica que toda vecindad de $xy^{-1}$ contiene algún $hk^{-1}$ con $h,k\in H$: se eligen vecindades de $x,y$ cuyo producto con inversión esté en ella. Por tanto $xy^{-1}\in\overline H$. Si $H$ es abierto, todas sus clases izquierdas son abiertas; su complemento es unión de las clases distintas de $H$, luego también es abierto.
+\end{proof}
+Para un subgrupo $H\leq G$, el conjunto $G/H$ de clases izquierdas lleva la topología cociente: $O\subset G/H$ es abierto si y solo si $q^{-1}(O)$ es abierto en $G$. Es la topología \emph{más fina} que hace continua a $q$; la descripción como «más gruesa» en el original está invertida.
+\begin{teorema}\label{v4:cociente-topologico}
+La proyección $q:G\to G/H$ es abierta. La acción $G\times G/H\to G/H$, $(x,yH)\mapsto xyH$, es continua y abierta. El cociente es $T_1$, y de hecho Hausdorff, si y solo si $H$ es cerrado; es discreto si y solo si $H$ es abierto. Si $H$ es normal, $G/H$ es un grupo topológico.
+\end{teorema}
+\begin{proof}
+Si $U$ es abierto en $G$, $q^{-1}(q(U))=UH=\bigcup_{h\in H}Uh$ es abierto, luego $q(U)$ es abierto. La aplicación $\mathrm{id}_G\times q$ es continua, abierta y sobreyectiva, por lo que es una aplicación cociente. La composición de la acción con ella es $q\circ m$, donde $m$ es multiplicación en $G$; es continua, y la propiedad cociente prueba continuidad de la acción. Para un abierto básico $U\times V$, su imagen es $\bigcup_{x\in U}xV$, abierta, porque cada traslación del cociente es un homeomorfismo.
+
+La preimagen del punto $xH$ es $xH$, de modo que todos los puntos son cerrados exactamente cuando $H$ lo es; el mismo argumento con abiertos caracteriza discreción. Si $H$ es cerrado y $xH\ne yH$, la continuidad de $(u,v)\mapsto v^{-1}u$ y $y^{-1}x\notin H$ dan abiertos $U\ni x$, $V\ni y$ con $V^{-1}U\cap H=\varnothing$. Sus imágenes abiertas por $q$ son disjuntas, pues compartir una clase produciría $v^{-1}u\in H$. Esto prueba Hausdorff sin exigir normalidad.
+
+Si $H$ es normal, las operaciones algebraicas del cociente están bien definidas. La aplicación $q\times q$ es abierta, sobreyectiva y continua, por tanto cociente. La identidad $m_{G/H}\circ(q\times q)=q\circ m_G$ prueba continuidad del producto; la identidad correspondiente para inversión y el carácter cociente de $q$ prueban continuidad de la inversa.
+\end{proof}
+
+\section{La componente de la identidad}
+\index{componente!de la identidad}\index{grupo!totalmente disconexo}
+\begin{teorema}
+La componente conexa $G^\circ$ de $e$ es un subgrupo normal cerrado, y $G/G^\circ$ es Hausdorff y totalmente disconexo.
+\end{teorema}
+\begin{proof}
+La imagen de $G^\circ$ por inversión es conexa y contiene $e$, luego está contenida en $G^\circ$. Si $x\in G^\circ$, $xG^\circ$ es conexo y contiene $e$ porque $x^{-1}\in G^\circ$; así $xG^\circ\subset G^\circ$. Esto prueba que es subgrupo. Para todo $a\in G$, la conjugación manda $G^\circ$ a un conexo que contiene $e$, por lo que $aG^\circ a^{-1}\subset G^\circ$. La conjugación inversa da igualdad. Las componentes conexas son cerradas, así que el teorema anterior hace Hausdorff al cociente.
+
+Para la última afirmación usaremos el siguiente hecho: una aplicación abierta y sobreyectiva con fibras conexas tiene preimagen conexa de todo conjunto conexo. En efecto, si la preimagen de $S$ se separara en dos abiertos relativos $A,B$, cada fibra, por conexidad, estaría entera en uno de ellos. Sus imágenes serían disjuntas, no vacías y abiertas en $S$: si $A=O\cap q^{-1}(S)$, entonces $q(A)=q(O)\cap S$. Eso separaría $S$.
+
+Las fibras de $q:G\to G/G^\circ$ son las clases conexas $xG^\circ$. Si $S$ es un subconjunto conexo del cociente que contiene la identidad, su preimagen es conexa y contiene $G^\circ$, por lo que está contenida en la componente $G^\circ$. Entonces $S$ es un punto. Las traslaciones llevan este resultado a cualquier punto del cociente.
+\end{proof}
+
+\section{Ejercicios de estructuras topológicas}
+\begin{ejercicio}[Lectura 15, ejercicio 1]\label{ej:v4-l15-1}
+Demostrar que basta exigir continuidad de $(x,y)\mapsto xy^{-1}$ para obtener un grupo topológico.
+\end{ejercicio}
+\begin{solucion}
+Si producto e inversión son continuos, su composición lo es. Recíprocamente, restringir la aplicación dada a $\{e\}\times G$ prueba continuidad de $y\mapsto y^{-1}$. Componer después $(x,y)\mapsto(x,y^{-1})$ con la aplicación dada produce $xy$, que también es continua.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 2]\label{ej:v4-l15-2}
+Probar que un grupo infinito con la topología cofinita no es un grupo topológico.
+\end{ejercicio}
+\begin{solucion}
+La topología cofinita es $T_1$ porque los puntos son cerrados, pero no es Hausdorff: dos abiertos no vacíos tienen complementos finitos y, al ser infinito el conjunto, deben intersectarse. En un grupo topológico $T_1$ implica Hausdorff, contradicción.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 3]\label{ej:v4-l15-3}
+Sea $P=\prod_{\chi\in\operatorname{Hom}(\Z,\T)}\T$ y $j(n)=(\chi(n))_\chi$. Probar: (i) $P$ es un grupo topológico compacto; (ii) $j$ es un monomorfismo; (iii) la topología que induce sobre $\Z$ no es discreta.
+\end{ejercicio}
+\begin{solucion}
+(i) Las operaciones coordenadas son continuas en la topología producto. Cada factor es compacto y Tychonoff hace compacto al producto. (ii) Cada coordenada de $j$ es un homomorfismo, luego $j$ lo es. Si $n\ne0$, el carácter $\chi(k)=e^{i\pi k/n}$ satisface $\chi(n)=-1\ne1$, por lo que $j(n)\ne j(0)$.
+
+(iii) Una vecindad básica de $j(0)$ restringe solo un número finito de caracteres $\chi_1,\ldots,\chi_r$. Dado un arco suficientemente pequeño alrededor de uno en cada coordenada, dividamos el círculo en $M$ arcos de longitud $2\pi/M$, con $M$ tan grande que el cociente de dos puntos del mismo arco caiga en los arcos pedidos. Entre los $M^r+1$ puntos $(\chi_1(k),\ldots,\chi_r(k))$, $0\leq k\leq M^r$, dos están en el mismo producto de arcos por el principio del palomar. Si sus índices son $p<q$, el entero no nulo $q-p$ tiene todas sus imágenes en las vecindades de uno. Así ninguna vecindad de $j(0)$ lo aísla y el subgrupo no es discreto.
+\end{solucion}
+\begin{ejercicio}[Lectura 15, ejercicio 4]\label{ej:v4-l15-4}
+Construir la topología profinita de un grupo $G$ a partir de sus subgrupos normales de índice finito.
+\end{ejercicio}
+\begin{solucion}
+Esos subgrupos forman una base de vecindades de la identidad; la base de toda la topología está formada por sus clases, no solo por los subgrupos. Una intersección finita sigue siendo normal y de índice finito: el mapa al producto finito de cocientes tiene esa intersección como núcleo. Cada $N$ satisface $NN=N$, $N^{-1}=N$, $xN=N$ si $x\in N$, y $xNx^{-1}=N$ para todo $x$. Se verifican las condiciones del teorema~\ref{v4:base-identidad}. La topología es Hausdorff exactamente cuando la intersección de esos subgrupos es $\{e\}$; no se presupone esta propiedad para un grupo arbitrario.
+\end{solucion}
+
+\section{Ejercicios de subgrupos y compacidad}
+\begin{ejercicio}[Lectura 16, ejercicio 1]\label{ej:v4-l16-1}
+Probar que un subgrupo $H$ es abierto si y solo si tiene interior no vacío.
+\end{ejercicio}
+\begin{solucion}
+Si $H$ es abierto, contiene a $e$ y su interior no es vacío. Si $x\in U\subset H$ con $U$ abierto, $x^{-1}U$ es una vecindad abierta de $e$ contenida en $H$. Las traslaciones $h(x^{-1}U)$, $h\in H$, son abiertas, están en $H$ y lo cubren. Así $H$ es abierto.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v4-l16-2}
+Sea $\mathcal A$ una familia no vacía de vecindades de $e$, dirigida por refinamiento, tal que para cada $U$ hay miembros $V,W$ con $VV\subset U$ y $W^{-1}\subset U$. Probar que $H=\bigcap_{U\in\mathcal A}U$ es un subgrupo cerrado.
+\end{ejercicio}
+\begin{solucion}
+La identidad pertenece a todos los miembros. Si $x,y\in H$, para cada $U$ elegimos $V$ con $VV\subset U$; entonces $xy\in U$. La propiedad de inversión implica de la misma forma $x^{-1}\in U$ para todo $U$. Por tanto $H$ es subgrupo.
+
+Para cerradura, fijemos $U$ y escojamos $V$ con $VV\subset U$. Si $x\in\overline V$, la vecindad $xV^{-1}$ corta $V$, de modo que $xv^{-1}=w$ para algunos $v,w\in V$, y $x=wv\in VV\subset U$. Así $\overline H\subset\overline V\subset U$ para todo $U$, luego $\overline H\subset H$.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v4-l16-3}
+Bajo las hipótesis anteriores, si para cada $U\in\mathcal A$ y $x\in G$ existe $V\in\mathcal A$ con $x^{-1}Vx\subset U$, probar que $H$ es normal.
+\end{ejercicio}
+\begin{solucion}
+Para $h\in H$, $h\in V$ implica $x^{-1}hx\in U$. Como esto vale para todo $U$, $x^{-1}Hx\subset H$. Aplicar la misma inclusión a $x^{-1}$ da la igualdad.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v4-l16-4}
+Probar que un subgrupo es discreto en su topología de subespacio si y solo si tiene un punto aislado.
+\end{ejercicio}
+\begin{solucion}
+Si $\{h\}$ es abierto en $H$, la traslación por $kh^{-1}$, homeomorfismo de $H$, muestra que $\{k\}$ es abierto para todo $k\in H$. Por tanto todo subconjunto es unión de abiertos unipuntuales. La implicación inversa es parte de la definición de discreto.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v4-l16-5}
+Si $G$ es Hausdorff y $H$ un subgrupo compacto, demostrar que $q:G\to G/H$ es cerrada.
+\end{ejercicio}
+\begin{solucion}
+Para $F\subset G$ cerrado, $q^{-1}(q(F))=FH$ es cerrado por la proposición sobre producto de cerrado y compacto. Por la definición de topología cociente, una parte del cociente es cerrada exactamente cuando su preimagen es cerrada. Así $q(F)$ es cerrado.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v4-l16-6}
+Si $H\leq G$ y $U\cap H$ es cerrado en $G$ para alguna vecindad $U$ de $e$, probar que $H$ es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Escojamos una vecindad abierta $V\subset U$. Entonces $\overline H\cap V\subset\overline{H\cap U}=H\cap U$: cualquier vecindad de un punto de $\overline H\cap V$, al intersectarla con $V$, todavía corta $H$. Si $x\in\overline H$, la vecindad $xV^{-1}$ corta $H$; sea $h=xv^{-1}\in H$ con $v\in V$. Entonces $h^{-1}x=v\in\overline H\cap V\subset H$, pues $\overline H$ es subgrupo. Se concluye $x=h(h^{-1}x)\in H$.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 7]\label{ej:v4-l16-7}
+Probar que $\overline{\{e\}}$ es un subgrupo normal.
+\end{ejercicio}
+\begin{solucion}
+Es subgrupo por el resultado de clausura de subgrupos. Cada conjugación es un homeomorfismo y fija $e$, de modo que manda $\overline{\{e\}}$ exactamente en $\overline{\{e\}}$. Por tanto es normal. El cociente por este subgrupo es Hausdorff por el teorema~\ref{v4:cociente-topologico}.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 8]\label{ej:v4-l16-8}
+Si $F$ es compacto y $O$ es abierto con $F\subset O$, hallar una vecindad $V$ de $e$ con $FV\cup VF\subset O$.
+\end{ejercicio}
+\begin{solucion}
+Para cada $x\in F$, continuidad de multiplicación en $(x,e)$ proporciona abiertos $A_x\ni x$ y $V_x\ni e$ con $A_xV_x\subset O$. Extraemos una cubierta finita de $F$ por los $A_x$ y tomamos la intersección $V_1$ de los $V_x$ correspondientes; entonces $FV_1\subset O$. Repetimos en $(e,x)$ para obtener $V_2F\subset O$. La vecindad $V=V_1\cap V_2$ cumple ambas inclusiones.
+\end{solucion}
+\begin{ejercicio}[Lectura 16, ejercicio 9]\label{ej:v4-l16-9}
+Si $F$ es una vecindad compacta y abierta de $e$, probar que contiene un subgrupo compacto y abierto, que también es cerrado en $G$.
+\end{ejercicio}
+\begin{solucion}
+El ejercicio anterior con $O=F$ proporciona una vecindad $V$ con $FV\subset F$. Escojamos una vecindad abierta simétrica $W\subset V$. Como $e\in F$, por inducción $W^n\subset F$ para todo $n\geq1$: si $W^n\subset F$, entonces $W^{n+1}\subset FV\subset F$. El conjunto $H=\bigcup_{n\geq1}W^n$ es subgrupo, porque $W$ contiene $e$, es simétrico y $W^nW^m=W^{n+m}$. Es abierto por ser unión de abiertos; todo subgrupo abierto es cerrado. Al ser cerrado en el compacto $F$, es compacto. Así $H\subset F$ tiene las tres propiedades.
+\end{solucion}
+
+\paragraph{Entrada a la integración invariante.}
+Las vecindades pequeñas, los soportes compactos y los cocientes abiertos son las herramientas topológicas de la construcción de Haar. La local compacidad añadirá funciones continuas que localizan la integración sin perder invariancia por traslación.

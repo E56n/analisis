@@ -1,0 +1,301 @@
+\chapter{El teorema de representación de Riesz}\label{v2:cap16}\label{cap:v2-16}
+\section{Funciones que se anulan en el infinito}\label{lectura:v2-33}
+La dualidad de $L^p$ convierte funcionales en funciones integrables. Al sustituir las funciones medibles por funciones continuas, el objeto que representa una funcional es una medida. La topología decide qué medidas aparecen: son precisamente las medidas de Borel regulares y de variación finita. Desarrollamos la lectura 33 de \cite{valencia2} y completamos la demostración de suprayectividad que allí queda anunciada. A lo largo del capítulo, $X$ es localmente compacto y Hausdorff; no suponemos que sea metrizable ni $\sigma$-compacto.
+
+\begin{definicion}
+Una función $f:X\to\F$ \emph{se anula en el infinito} si, para cada $\eps>0$, existe un compacto $K\subset X$ tal que $|f(x)|<\eps$ para $x\notin K$. El espacio $C_0(X)$ consta de las funciones continuas con esta propiedad.\index{funcion@función!que se anula en el infinito}\index{espacio!C0@$C_0(X)$}
+\end{definicion}
+Para una función continua, la condición equivale a que $\{x:|f(x)|\ge\eps\}$ sea compacto para todo $\eps>0$: este conjunto es cerrado y está contenido en el compacto de la definición. Recíprocamente, dicho conjunto sirve como $K$. En un espacio compacto, $C_0(X)=C(X)$. En $\R$, una función continua pertenece a $C_0(\R)$ exactamente cuando tiende a cero al alejarse hacia ambos extremos. En un espacio discreto, la condición dice que sólo un número finito de valores puede tener módulo mayor o igual que un $\eps$ dado.
+
+\begin{teorema}\label{v2:c0-banach}
+Con la norma uniforme, $C_0(X)$ es un espacio de Banach y $C_c(X)$ es denso en él.
+\end{teorema}
+\begin{proof}
+Primero, toda $f\in C_0(X)$ es acotada: fuera de algún compacto tiene módulo menor que uno, y sobre ese compacto es acotada por continuidad. Por tanto $C_0(X)\subset C_b(X)$, donde $C_b(X)$ denota las funciones continuas acotadas. Esta precisión evita usar una norma uniforme finita sobre todas las funciones continuas de un espacio no compacto.
+
+Si $f,g\in C_0(X)$ y $a,b\in\F$, para $\eps>0$ elegimos compactos fuera de los cuales $|f|<\eps/[2(1+|a|)]$ y $|g|<\eps/[2(1+|b|)]$. Fuera de su unión, que es compacta porque toda cubierta abierta tiene subcubiertas finitas de cada uno de los dos compactos, se tiene $|af+bg|<\eps$. Así $C_0(X)$ es un subespacio.
+
+El espacio $C_b(X)$ es completo: una sucesión de Cauchy uniforme tiene límites puntuales, la condición de Cauchy prueba convergencia uniforme hacia el límite, y un límite uniforme de funciones continuas es continuo. Si $f_n\in C_0(X)$ y $\norm{f_n-f}_\infty\to0$, fijamos $n$ con $\norm{f_n-f}_\infty<\eps/2$ y un compacto $K$ fuera del cual $|f_n|<\eps/2$. Entonces $|f|<\eps$ fuera de $K$. Esto muestra que $C_0(X)$ es cerrado en $C_b(X)$ y, por ello, completo.
+
+Finalmente, sea $f\in C_0(X)$. Elegimos $K$ compacto con $|f|<\eps$ fuera de $K$. La proposición \ref{v2:topologia-lch} proporciona $h\in C_c(X)$ con $0\le h\le1$ y $h=1$ en $K$. Entonces $hf\in C_c(X)$, y
+\[
+|f-hf|=|f|(1-h)=0\quad\text{en }K,\qquad |f-hf|\le |f|<\eps\quad\text{fuera de }K.
+\]
+Luego $\norm{f-hf}_\infty\le\eps$. Además $C_c(X)\subset C_0(X)$, porque fuera del soporte la función vale cero.
+\end{proof}
+
+\section{Las medidas regulares de variación finita}
+\begin{definicion}
+Una medida real finita o compleja $\nu$ sobre $\Bcal(X)$ es \emph{regular} si para cada $A\in\Bcal(X)$ y cada $\eps>0$ existen un compacto $K$ y un abierto $U$, con $K\subset A\subset U$, tales que
+\[
+ |\nu(B)|<\eps\quad\text{para todo Borel }B\subset U\setminus K.
+\]
+Escribimos $M_r(X)$ para el espacio de estas medidas y $\norm{\nu}=|\nu|(X)$.\index{medida!regular compleja}
+\end{definicion}
+La condición debe controlar todos los subconjuntos de $U\setminus K$: pedir sólo que $|\nu(U\setminus K)|$ sea pequeño permitiría cancelaciones entre masas de signos o fases diferentes.
+
+\begin{proposicion}\label{v2:medidas-regulares-banach}
+Una medida finita real o compleja $\nu$ es regular si y sólo si su variación $|\nu|$ es una medida positiva regular. Con la norma de variación, $M_r(X)$ es un espacio de Banach.
+\end{proposicion}
+\begin{proof}
+Si $|\nu|$ es regular, su finitud y la proposición \ref{v2:regular-interior-sigma} permiten elegir $K\subset A\subset U$ con $|\nu|(U\setminus K)<\eps$. Para $B\subset U\setminus K$ tenemos $|\nu(B)|\le |\nu|(B)<\eps$.
+
+Recíprocamente, tomemos los $K,U$ de la definición para $\eps/4$. La estimación de variación del capítulo \ref{v2:cap12}, aplicada a la restricción a $U\setminus K$, da
+\[
+ |\nu|(U\setminus K)\le 4\sup_{B\subset U\setminus K}|\nu(B)|\le\eps.
+\]
+Como $|\nu|$ es finita, esto implica a la vez aproximación interior por $K$ y exterior por $U$ para cada Borel $A$. En particular cumple la definición de regularidad positiva del capítulo anterior.
+
+La suma de dos medidas regulares es regular. En efecto, elegimos $K_1,K_2\subset A\subset U_1,U_2$ para cada medida y usamos $K=K_1\cup K_2$, $U=U_1\cap U_2$; el nuevo hueco está contenido en ambos huecos anteriores. La desigualdad triangular controla la suma. La estabilidad por escalares es inmediata, ajustando la tolerancia.
+
+El espacio de todas las medidas finitas es completo por el teorema \ref{v2:medidas-banach}. Si $\nu_n\to\nu$ en variación y cada $\nu_n$ es regular, fijamos $n$ con $\norm{\nu-\nu_n}<\eps/2$. Para $A$ elegimos $K,U$ que hagan $|\nu_n(B)|<\eps/2$ en todo Borel $B\subset U\setminus K$. Entonces
+\[
+ |\nu(B)|\le |(\nu-\nu_n)(B)|+|\nu_n(B)|<\eps.
+\]
+Así $M_r(X)$ es un subespacio cerrado del espacio completo de medidas.
+\end{proof}
+
+\begin{lema}[Forma polar de una medida]\label{v2:polar-medida}
+Para una medida finita real o compleja $\nu$ existe una función medible $h$ tal que $|h|=1$ $|\nu|$-casi en todas partes y
+\[
+ \nu(A)=\int_A h\,d|\nu|,\qquad
+ \int f\,d\nu=\int fh\,d|\nu|\quad(f\in L^1(|\nu|)).
+\]
+\end{lema}
+\begin{proof}
+Si $|\nu|(A)=0$, también $\nu(A)=0$. Puesto que $|\nu|$ es finita, Radon--Nikodym proporciona $h\in L^1(|\nu|)$ con $\nu=h|\nu|$. La identidad de variación \ref{v2:densidad-variacion} muestra que $|\nu|=|h|\,|\nu|$. Por unicidad de densidades, $|h|=1$ casi en todas partes. La identidad de integrales vale primero para simples y después para toda función integrable por aproximación en $L^1(|\nu|)$. Si se desea $|h|=1$ en todos los puntos, se redefine $h$ como uno en el conjunto nulo excepcional.
+\end{proof}
+
+\begin{teorema}\label{v2:riesz-isometria}
+Cada $\nu\in M_r(X)$ determina una funcional continua
+\[
+ T_\nu:C_0(X)\longrightarrow\F,\qquad T_\nu(f)=\int_X f\,d\nu,
+\]
+y $\norm{T_\nu}=|\nu|(X)$.
+\end{teorema}
+\begin{proof}
+Toda $f\in C_0(X)$ es acotada y Borel medible, de modo que pertenece a $L^1(|\nu|)$ porque $|\nu|(X)<\infty$. Además,
+\[
+ |T_\nu(f)|\le\int|f|\,d|\nu|\le\norm f_\infty |\nu|(X).
+\]
+Falta mostrar que esta cota se alcanza arbitrariamente bien sobre la bola unidad. Escribimos $\nu=h|\nu|$ como en el lema anterior. En el caso complejo debemos aproximar $\overline h$, porque $\overline h\,h=1$; aproximar $h$ no eliminaría su fase.
+
+Por la densidad de $C_c(X)$ en $L^1(|\nu|)$, hay $u\in C_c(X)$ con $\int|u-\overline h|\,d|\nu|$ tan pequeño como se quiera. Sustituimos $u$ por $g=P\circ u$, donde
+\[
+ P(z)=\frac{z}{\max\{1,|z|\}}.
+\]
+La aplicación $P$ es continua, fija el disco unidad y vale cero en cero; por eso $g\in C_c(X)$ y $\norm g_\infty\le1$. Para $|w|\le1$,
+\[
+ |P(z)-w|\le |P(z)-z|+|z-w|\le2|z-w|,
+\]
+pues $|P(z)-z|=(|z|-1)^+\le |z-w|$. Podemos, por tanto, asegurar $\int|g-\overline h|\,d|\nu|<\eps$. Entonces
+\[
+ |\nu|(X)=\int\overline h\,d\nu
+ \le\left|\int g\,d\nu\right|+\eps
+ \le\norm{T_\nu}+\eps.
+\]
+Al hacer $\eps\downarrow0$ obtenemos la igualdad de normas. En el caso real, la misma proyección es el recorte al intervalo $[-1,1]$.
+\end{proof}
+
+\section{El módulo de una funcional}
+Para representar una funcional compleja, conviene dominarla por una funcional positiva. La siguiente construcción cumple exactamente ese propósito.
+\begin{lema}\label{v2:modulo-funcional}
+Sea $\varphi\in C_0(X)^*$. Para $f\in C_0(X)$, $f\ge0$, definimos
+\[
+ I(f)=\sup\{|\varphi(g)|:g\in C_0(X),\ |g|\le f\}.
+\]
+Entonces $I$ se extiende de manera única a una funcional lineal positiva y continua de $C_0(X)$, y $\norm I=\norm\varphi$.
+\end{lema}
+\begin{proof}
+La familia del supremo contiene a cero y, si $|g|\le f$, se tiene $|\varphi(g)|\le\norm\varphi\,\norm f_\infty$. Así $I(f)$ es finito. Cambiar $g$ por $ag$, con $a>0$, prueba $I(af)=aI(f)$; para $a=0$ la igualdad es inmediata.
+
+Demostremos la aditividad en el cono positivo. Dados $f_1,f_2\ge0$ y $\eps>0$, elegimos $g_j$ con $|g_j|\le f_j$ y $|\varphi(g_j)|>I(f_j)-\eps/2$. Multiplicamos cada $g_j$ por un escalar de módulo uno que haga $\varphi(g_j)$ real y no negativo. Esto no cambia su módulo. Como $|g_1+g_2|\le f_1+f_2$, resulta
+\[
+ I(f_1)+I(f_2)-\eps<\varphi(g_1+g_2)\le I(f_1+f_2).
+\]
+Para la desigualdad contraria, tomemos $g$ con $|g|\le f_1+f_2$ y pongamos
+\[
+ g_j(x)=\begin{cases}
+ g(x)\dfrac{f_j(x)}{f_1(x)+f_2(x)},&f_1(x)+f_2(x)>0,\\[4pt]
+ 0,&f_1(x)+f_2(x)=0.
+ \end{cases}
+\]
+Estas funciones son continuas donde el denominador es positivo. En sus ceros, la cota $|g_j|\le f_j$ demuestra continuidad porque $f_j$ también se anula allí. Además $g_j\in C_0(X)$, $|g_j|\le f_j$ y $g=g_1+g_2$. Por tanto $|\varphi(g)|\le I(f_1)+I(f_2)$. Tomando supremo y dejando $\eps\downarrow0$, concluimos $I(f_1+f_2)=I(f_1)+I(f_2)$.
+
+Para una función real definimos $I(f)=I(f^+)-I(f^-)$. La definición es compatible con cualquier escritura $f=a-b$, $a,b\ge0$: de $a-b=c-d$ sigue $a+d=b+c$, y la aditividad positiva da $I(a)-I(b)=I(c)-I(d)$. Esta observación demuestra la aditividad y homogeneidad real de la extensión. Para funciones complejas ponemos $I(u+iv)=I(u)+iI(v)$; la linealidad compleja se verifica usando la linealidad real y $i(u+iv)=-v+iu$.
+
+La positividad implica monotonicidad. Si $g$ es complejo, elegimos $\alpha$ de módulo uno tal que $\alpha I(g)=|I(g)|$. Como $\operatorname{Re}(\alpha g)\le|g|$,
+\[
+ |I(g)|=I(\operatorname{Re}(\alpha g))\le I(|g|)
+ \le\norm\varphi\,\norm g_\infty.
+\]
+En el caso real basta elegir un signo. Así $\norm I\le\norm\varphi$. A la inversa, la propia definición da $|\varphi(g)|\le I(|g|)\le\norm I\,\norm g_\infty$, luego $\norm\varphi\le\norm I$. La extensión es única porque toda función real es diferencia de dos funciones positivas y toda función compleja tiene partes real e imaginaria.
+\end{proof}
+
+\section{Construir una medida a partir de una funcional positiva}
+La parte central del argumento consiste en obtener una medida a partir de los valores de $I$ sobre funciones que caben dentro de un abierto. Presentamos todos los pasos: definir primero el tamaño de los abiertos, construir una medida exterior, comprobar la medibilidad de Borel y recuperar las integrales.
+
+\begin{teorema}[Representación positiva sobre $C_c$]\label{v2:riesz-positivo-general}\index{Riesz--Markov, teorema de}
+Sea $I:C_c(X)\to\F$ una funcional lineal positiva, es decir, $I(f)\ge0$ cuando $f$ es real y no negativa. Existe una única medida positiva $\mu$ sobre $\Bcal(X)$, finita sobre compactos, exteriormente regular en todos los Borel e interiormente regular en los abiertos, tal que
+\[
+ I(f)=\int_X f\,d\mu\qquad(f\in C_c(X)).
+\]
+Además, $\mu$ es interiormente regular en cada Borel de medida finita y, más generalmente, en cada Borel de medida $\sigma$-finita. No se exige que $I$ sea acotada para la norma uniforme sobre todo $C_c(X)$ ni que $\mu(X)$ sea finita.
+\end{teorema}
+\begin{proof}
+Para un abierto $U$ definimos
+\[
+ m(U)=\sup\{I(f):f\in C_c(X),\ 0\le f\le1,\ \supp f\subset U\}.
+\]
+Se tiene $0\le m(U)\le\infty$, $m(\varnothing)=0$ y monotonía. La positividad proporciona las cotas locales que sustituirán una norma global: si $K$ es compacto y $h\in C_c(X)$ satisface $h\ge0$ y $h=1$ sobre $K$, entonces
+\[
+ 0\le I(f)\le I(h)\qquad(0\le f\le1,\ \supp f\subset K).
+\]
+Si $V$ es abierto con cerradura compacta, elegimos una función de corte igual a uno sobre $\cl V$, y obtenemos $m(V)<\infty$. Todo compacto tiene una vecindad de esta clase por la proposición \ref{v2:topologia-lch}.
+
+Si $U\subset\bigcup_{n\ge1}U_n$, cada compacto $\supp f\subset U$ queda cubierto por un número finito de los $U_n$. La partición de la unidad de la proposición \ref{v2:particion-compacta}, agrupando los términos correspondientes al mismo abierto si fuera necesario, escribe $f=\sum_j f\theta_j$, donde $0\le f\theta_j\le1$ y cada soporte está contenido en su abierto. De aquí
+\[
+ I(f)\le\sum_{n\ge1}m(U_n),\qquad m(U)\le\sum_{n\ge1}m(U_n).
+\]
+Si $U,V$ son abiertos disjuntos, funciones admisibles $f,g$ sobre ellos satisfacen $f+g\le1$. Al aproximar ambos supremos obtenemos $m(U\cup V)\ge m(U)+m(V)$; la desigualdad contraria procede de la subaditividad anterior.
+
+Definamos ahora, para cualquier subconjunto $A\subset X$,
+\[
+ \mu^*(A)=\inf\{m(U):A\subset U,\ U\text{ abierto}\}.
+\]
+Ésta es una medida exterior. Sólo requiere explicación la subaditividad numerable: dados $A_n$ y $\eps>0$, si $\sum_n\mu^*(A_n)<\infty$, tomamos abiertos $U_n\supset A_n$ con $m(U_n)<\mu^*(A_n)+\eps2^{-n}$. Entonces
+\[
+ \mu^*\Bigl(\bigcup_n A_n\Bigr)\le m\Bigl(\bigcup_nU_n\Bigr)
+ \le\sum_nm(U_n)\le\sum_n\mu^*(A_n)+\eps.
+\]
+Si la suma es infinita, la desigualdad es inmediata. Además $\mu^*(U)=m(U)$ para todo abierto $U$, por monotonía de $m$. Para cada compacto $K$, una vecindad $V$ de cerradura compacta da $\mu^*(K)\le m(V)<\infty$.
+
+Necesitamos la identidad
+\begin{equation}\label{v2:riesz-interior-abiertos}
+ m(U)=\sup\{\mu^*(K):K\subset U,\ K\text{ compacto}\}.
+\end{equation}
+Una desigualdad es monotonía. Para la otra, si $f$ es admisible y $K=\supp f$, todo abierto $V\supset K$ admite a $f$ entre sus funciones de prueba. Luego $I(f)\le m(V)$ y, tomando ínfimo, $I(f)\le\mu^*(K)$. El supremo sobre $f$ prueba la identidad.
+
+Verifiquemos que todo abierto $U$ satisface el criterio de Carathéodory. Si $\mu^*(E)=\infty$, la desigualdad
+$\mu^*(E)\ge\mu^*(E\cap U)+\mu^*(E\setminus U)$ es automática, y la inversa siempre es subaditividad. Basta, pues, considerar $E$ de medida exterior finita. Al tomar el ínfimo que define $\mu^*(E)$, podemos restringirnos a abiertos $V\supset E$ con $m(V)<\infty$. Fijemos uno de ellos y $\eps>0$. Por \eqref{v2:riesz-interior-abiertos} elegimos $K\subset V\cap U$ compacto con
+\[
+ \mu^*(K)\ge m(V\cap U)-\eps\ge\mu^*(E\cap U)-\eps.
+\]
+Si $V\cap U$ es vacío, se toma $K=\varnothing$. Existe un abierto $W$ con $K\subset W\subset\cl W\subset V\cap U$ y $\cl W$ compacto. Los abiertos $W$ y $V\setminus\cl W$ son disjuntos y están contenidos en $V$. Por ello,
+\begin{align*}
+ m(V)&\ge m(W)+m(V\setminus\cl W)\\
+ &\ge\mu^*(K)+\mu^*(E\setminus U)\\
+ &\ge\mu^*(E\cap U)+\mu^*(E\setminus U)-\eps.
+\end{align*}
+Hemos usado $E\setminus U\subset V\setminus\cl W$. Tomando ínfimo en $V$ y después $\eps\downarrow0$ obtenemos la desigualdad no trivial del criterio; la otra es subaditividad. Así todos los abiertos, y por consiguiente todos los Borel, son $\mu^*$-medibles.
+
+Sea $\mu$ la restricción a los Borel. Es una medida finita sobre compactos, exteriormente regular por construcción e interiormente regular en abiertos por \eqref{v2:riesz-interior-abiertos}. La proposición \ref{v2:regular-interior-sigma} prueba regularidad interior en los Borel de medida $\sigma$-finita, incluidos los de medida finita. Esta conclusión no afirma regularidad interior de todos los Borel cuando su medida es infinita y no $\sigma$-finita.
+
+Probemos $I(f)=\int f\,d\mu$ para $f\in C_c(X)$ no negativa. Sea $K=\supp f$; su medida es finita y todas las funciones que siguen se anulan fuera de $K$. Fijemos $\delta>0$ y un entero $n$ con $n\delta\ge\norm f_\infty$. Escribamos $U_j=\{f>j\delta\}$. Para $1\le j\le n$, elegimos funciones admisibles $h_j$ en $U_j$ cuyos valores $I(h_j)$ aproximen $m(U_j)=\mu(U_j)$. Punto a punto,
+\[
+ \delta\sum_{j=1}^n h_j\le f,
+\]
+porque sólo pueden contribuir los índices con $j\delta<f(x)$ y cada sumando es a lo sumo uno. La positividad y la aproximación arbitraria de los supremos dan
+\[
+ I(f)\ge\delta\sum_{j=1}^n\mu(U_j).
+\]
+La función simple $\delta\sum_{j=1}^n\ind{U_j}$ queda entre $f-\delta$ y $f$, por lo que el lado derecho es al menos $\int f\,d\mu-\delta\mu(K)$. Al hacer $\delta\downarrow0$ obtenemos $I(f)\ge\int f\,d\mu$.
+
+Para la desigualdad contraria, consideremos las funciones continuas
+\[
+ \psi_j=\min\{1,\max\{(f-j\delta)/\delta,0\}\},\qquad 0\le j\le n-1.
+\]
+Tienen soporte compacto y $f=\delta\sum_{j=0}^{n-1}\psi_j$. Elegimos $h\in C_c(X)$ no negativa e igual a uno sobre $K$. La primera satisface $I(\psi_0)\le I(h)$ por positividad. Para $j\ge1$, su soporte está contenido en el compacto $\{f\ge j\delta\}\subset U_{j-1}$, así que $I(\psi_j)\le\mu(U_{j-1})$. En consecuencia,
+\begin{align*}
+ I(f)&\le\delta I(h)+\delta\sum_{k=0}^{n-2}\mu(U_k)\\
+ &\le\int f\,d\mu+\delta\bigl(I(h)+\mu(K)\bigr).
+\end{align*}
+La última desigualdad se sigue de $\delta\sum_{k=0}^{n-2}\ind{U_k}\le f+\delta\ind K$; una suma vacía se interpreta como cero. Haciendo otra vez $\delta\downarrow0$ obtenemos la igualdad.
+
+Las partes positiva y negativa, y luego las partes real e imaginaria, extienden la identidad a $C_c(X)$. Estas integrales son finitas porque las funciones son acotadas y tienen soporte de medida finita.
+
+Finalmente, si $\lambda$ es otra medida positiva finita sobre compactos y con las regularidades indicadas que representa a $I$, entonces para todo abierto $U$ se tiene
+\[
+ \lambda(U)=\sup\left\{\int f\,d\lambda:f\in C_c(X),\ 0\le f\le1,\ \supp f\subset U\right\}.
+\]
+La desigualdad $\ge$ es inmediata; la otra se obtiene aproximando $U$ por compactos y usando una función de corte que sea uno sobre cada compacto. Por tanto $\lambda(U)=m(U)=\mu(U)$ para todo abierto. La regularidad exterior determina los valores sobre todos los Borel y prueba $\lambda=\mu$.
+\end{proof}
+
+\begin{corolario}[Representación positiva sobre $C_0$]\label{v2:riesz-positivo}
+Si $I$ es una funcional lineal positiva y continua sobre $C_0(X)$, la medida del teorema anterior es finita y satisface
+\[
+ I(f)=\int f\,d\mu\qquad(f\in C_0(X)).
+\]
+Es la única medida positiva finita regular con esta propiedad.
+\end{corolario}
+\begin{proof}
+Restringimos $I$ a $C_c(X)$. En la construcción anterior, cada función admisible para $m(X)$ tiene norma uniforme a lo sumo uno; luego $\mu(X)=m(X)\le\norm I<\infty$. La representación vale sobre $C_c(X)$ por el teorema. Si $f_n\in C_c(X)$ converge uniformemente a $f\in C_0(X)$, entonces $I(f_n)\to I(f)$ por continuidad y
+$|\int(f_n-f)\,d\mu|\le\norm{f_n-f}_\infty\mu(X)\to0$. La densidad del teorema \ref{v2:c0-banach} prueba la identidad en todo $C_0(X)$. La unicidad ya vale en $C_c(X)$. Además, como todos los Borel tienen medida finita, la regularidad interior se extiende a todos ellos.
+\end{proof}
+
+\section{La representación completa del dual}
+\begin{teorema}[Riesz--Markov para $C_0(X)$]\label{v2:riesz-c0}
+Para un espacio localmente compacto Hausdorff $X$, la aplicación
+\[
+ M_r(X)\longrightarrow C_0(X)^*,\qquad
+ \nu\longmapsto T_\nu,\quad T_\nu(f)=\int_X f\,d\nu,
+\]
+es un isomorfismo lineal isométrico. En particular, toda funcional continua admite una única representación mediante una medida de Borel regular de variación finita.\index{teorema!de representacion de Riesz@de representación de Riesz}\index{dual!de C0@$C_0(X)$}
+\end{teorema}
+\begin{proof}
+La linealidad y la isometría ya están demostradas. Sea $\varphi\in C_0(X)^*$. El lema \ref{v2:modulo-funcional} proporciona una funcional positiva $I$ tal que
+\[
+ |\varphi(g)|\le I(|g|)\qquad(g\in C_0(X)).
+\]
+Por el teorema anterior, $I$ está representada por una medida positiva finita regular $\mu$. En consecuencia,
+\[
+ |\varphi(g)|\le\int|g|\,d\mu\qquad(g\in C_c(X)).
+\]
+Esta desigualdad tiene dos consecuencias. Primero, $\varphi(g)$ sólo depende de la clase de $g$ en $L^1(\mu)$: si $g=0$ casi en todas partes, la cota da $\varphi(g)=0$. Segundo, como $C_c(X)$ es denso en $L^1(\mu)$ por el teorema \ref{v2:cc-denso-lp}, la funcional se extiende de manera única a una funcional continua de $L^1(\mu)$ de norma a lo sumo uno. La extensión se obtiene tomando límites de $\varphi(g_n)$ cuando $g_n\to f$ en $L^1$; la desigualdad anterior prueba tanto la existencia como la independencia de la aproximación.
+
+La medida $\mu$ es finita, por tanto localizable. La representación del dual de $L^1$, teorema \ref{v2:dual-l1-general}, proporciona $h\in L^\infty(\mu)$, $\norm h_\infty\le1$, con
+\[
+ \varphi(g)=\int gh\,d\mu\qquad(g\in C_c(X)).
+\]
+Definamos $\nu=h\mu$. Es una medida finita real o compleja y $|\nu|=|h|\mu$. Es regular: para $K\subset A\subset U$ elegidos mediante la regularidad de $\mu$,
+\[
+ |\nu|(U\setminus K)=\int_{U\setminus K}|h|\,d\mu
+ \le\mu(U\setminus K),
+\]
+y el último término puede hacerse arbitrariamente pequeño. Por densidad de $C_c(X)$ en $C_0(X)$, la identidad $\varphi(g)=T_\nu(g)$ se extiende a todo $C_0(X)$.
+
+Si dos medidas regulares representan la misma funcional, su diferencia representa la funcional cero. La igualdad de normas del teorema \ref{v2:riesz-isometria} implica que la variación de esa diferencia es cero, y por tanto las medidas son iguales.
+\end{proof}
+\begin{observacion}
+El teorema \ref{v2:riesz-positivo-general} permite funcionales positivas sobre $C_c(X)$ sin acotación uniforme global y medidas de masa infinita; el corolario \ref{v2:riesz-positivo} identifica el caso acotado sobre $C_0(X)$ con medidas finitas. En el primero, sobre un espacio localmente compacto Hausdorff general, no se debe afirmar regularidad interior de todos los Borel sin hipótesis adicionales. Las distinciones del capítulo \ref{v2:cap15} siguen siendo necesarias.
+\end{observacion}
+
+\section{Ejercicio resuelto: una obstrucción a la reflexividad}
+\begin{ejercicio}[Lectura 33, ejercicio 1]\label{ej:v2-l33-1}
+Suponga que existe una medida de Borel regular real o compleja $\mu$ tal que $\mu(\{x\})=0$ para todo $x\in X$ y $0<|\mu|(X)<\infty$. Demuestre que $C_0(X)$ no es reflexivo. Considere la funcional sobre medidas dada por $\Phi(\nu)=\sum_{x\in X}\nu(\{x\})$.
+\end{ejercicio}
+\begin{solucion}
+Primero hay que dar sentido a la suma, que puede estar indexada por un conjunto no numerable. Para cualquier conjunto finito $F\subset X$,
+\[
+ \sum_{x\in F}|\nu(\{x\})|=\sum_{x\in F}|\nu|(\{x\})\le|\nu|(X).
+\]
+En particular, para cada $n$ sólo hay un número finito de puntos con $|\nu(\{x\})|\ge1/n$; de otro modo las sumas finitas superarían cualquier cota. La unión de estos conjuntos finitos contiene todos los puntos con masa no nula, así que éstos son a lo sumo numerables. La serie de sus masas converge absolutamente y define $\Phi(\nu)$, independientemente del orden. La desigualdad anterior prueba
+\[
+ |\Phi(\nu)|\le\sum_x|\nu(\{x\})|\le\norm\nu.
+\]
+La linealidad se obtiene sumando sobre la unión numerable de los soportes atómicos de las medidas involucradas. Así $\Phi\in M_r(X)^*$.
+
+Supongamos que $C_0(X)$ fuera reflexivo. Mediante la identificación isométrica $C_0(X)^*=M_r(X)$, la funcional $\Phi$ pertenecería al bidual y estaría representada por evaluación en alguna $f\in C_0(X)$:
+\[
+ \Phi(\nu)=\int f\,d\nu\qquad(\nu\in M_r(X)).
+\]
+Cada medida de Dirac $\delta_x$ es regular, y $\Phi(\delta_x)=1$. Sustituyéndola en la identidad obtenemos $f(x)=1$ para todo $x\in X$.
+
+Ahora usemos la medida positiva $\lambda=|\mu|$, que es regular y no nula. En un singleton, la definición de variación da $\lambda(\{x\})=|\mu(\{x\})|=0$. Por ello $\Phi(\lambda)=0$. Sin embargo, la representación y $f\equiv1$ darían
+\[
+ 0=\Phi(\lambda)=\int f\,d\lambda=\lambda(X)>0,
+\]
+una contradicción. Usar $|\mu|$ es esencial para esta última contradicción: la masa total de una medida compleja no nula puede ser cero por cancelación.
+\end{solucion}
+
+El recorrido del volumen termina con dos representaciones complementarias. En $L^p$, la norma y la medida de partida determinan densidades que representan funcionales. En $C_0(X)$, la continuidad y el comportamiento en el infinito permiten reconstruir la medida misma. Las aproximaciones por simples, los teoremas de convergencia, la variación, Radon--Nikodym y la regularidad intervienen aquí con una función precisa, y las hipótesis que las conectan quedan visibles en la demostración.

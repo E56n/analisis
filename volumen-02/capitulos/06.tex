@@ -1,0 +1,139 @@
+\chapter{Medidas producto, Tonelli y Fubini}\label{cap:v2-06}
+Una integral iterada no es, por definición, una integral en un producto. Su igualdad requiere demostrar medibilidad de las secciones y justificar el intercambio de operaciones. Desarrollamos la lectura 11 y el teorema complejo de la lectura 12 de Valencia Bucio \cite{valencia2}.
+
+\section{Rectángulos, secciones y clases monótonas}\label{lectura:v2-11}
+\begin{definicion}\index{medida!producto}\index{seccion de un conjunto@sección de un conjunto}
+Para espacios medibles $(X,\Acal)$ y $(Y,\Bcal)$, la $\sigma$-álgebra producto es $\Acal\otimes\Bcal=\sigma\{A\times B:A\in\Acal,B\in\Bcal\}$. Para $E\subseteq X\times Y$ definimos $E_x=\{y:(x,y)\in E\}$ y $E^y=\{x:(x,y)\in E\}$. Para una función $F$ se definen análogamente $F_x(y)=F(x,y)$ y $F^y(x)=F(x,y)$.
+\end{definicion}
+\begin{lema}\label{lema:v2-secciones}
+Las secciones de conjuntos medibles en la $\sigma$-álgebra producto son medibles. Las secciones de funciones medibles son medibles.
+\end{lema}
+\begin{proof}
+Para $x$ fijo, la familia de conjuntos $E$ con $E_x\in\Bcal$ contiene los rectángulos, pues $(A\times B)_x$ es $B$ si $x\in A$ y vacío en otro caso. Además $(E^c)_x=(E_x)^c$ y $(\bigcup_nE_n)_x=\bigcup_n(E_n)_x$; por ello esta familia es una $\sigma$-álgebra y contiene $\Acal\otimes\Bcal$. Para funciones reales o extendidas, $\{F_x>t\}=\{F>t\}_x$; para funciones complejas se aplican las partes real e imaginaria. El argumento para las otras secciones es idéntico intercambiando los factores.
+\end{proof}
+\begin{definicion}\index{clase monotona@clase monótona}
+Una clase monótona es una familia no vacía estable bajo uniones crecientes numerables e intersecciones decrecientes numerables. La menor clase monótona que contiene una familia $\mathcal G$ se denota $M(\mathcal G)$.
+\end{definicion}
+\begin{teorema}[Clase monótona]\label{teo:v2-clasemonotona}
+Si $\mathcal R$ es un álgebra, entonces $M(\mathcal R)=\sigma(\mathcal R)$.
+\end{teorema}
+\begin{proof}
+Escriba $\mathcal M=M(\mathcal R)$. Toda $\sigma$-álgebra es una clase monótona, así que $\mathcal M\subseteq\sigma(\mathcal R)$. La familia $\{E\in\mathcal M:E^c\in\mathcal M\}$ es una clase monótona: los complementos intercambian uniones crecientes e intersecciones decrecientes. Contiene $\mathcal R$, luego por minimalidad coincide con $\mathcal M$. Así $\mathcal M$ es estable bajo complementos.
+
+Fije $A\in\mathcal R$. La familia $\{E\in\mathcal M:E\cap A\in\mathcal M\}$ es monótona y contiene $\mathcal R$, por lo que es toda $\mathcal M$. Ahora fije $E\in\mathcal M$. La familia $\{F\in\mathcal M:E\cap F\in\mathcal M\}$ es monótona y, por el paso anterior, contiene $\mathcal R$; nuevamente coincide con $\mathcal M$. Hemos probado estabilidad bajo intersecciones binarias. Como $X\in\mathcal R$, $\mathcal M$ es un álgebra. Una unión numerable de sus elementos es el límite creciente de sus uniones finitas, luego también pertenece a $\mathcal M$. Por tanto $\mathcal M$ es una $\sigma$-álgebra que contiene $\mathcal R$, y la minimalidad de $\sigma(\mathcal R)$ da la inclusión restante.
+\end{proof}
+
+\section{Construcción de la medida producto}
+\begin{proposicion}\label{prop:v2-producto}
+Existe una medida $\pi$ en $\Acal\otimes\Bcal$ con $\pi(A\times B)=\mu(A)\nu(B)$. Si $\mu,\nu$ son $\sigma$-finitas, esta medida es única y también es $\sigma$-finita.
+\end{proposicion}
+\begin{proof}
+En el álgebra de uniones finitas de rectángulos, defina $v(E)=\sum_j\mu(A_j)\nu(B_j)$ usando una partición rectangular disjunta de $E$. Una partición común en ambos factores prueba independencia de representación y aditividad finita, como en el capítulo \ref{cap:v2-03}. También
+\[v(E)=\int_X\nu(E_x)\,d\mu(x),\]
+pues $\nu(E_x)=\sum_j\ind{A_j}(x)\nu(B_j)$; si algún coeficiente es infinito, la igualdad se obtiene truncándolo y aplicando convergencia monótona.
+
+Si $E=\bigcup_nE_n$ es disjunta y todos esos conjuntos pertenecen al álgebra, sus secciones son disjuntas y $\nu(E_x)=\sum_n\nu((E_n)_x)$. Beppo Levi da $v(E)=\sum_nv(E_n)$. Así $v$ es premedida y el teorema \ref{teo:v2-extension} produce la medida producto.
+
+Para unicidad, primero suponga finitos los dos factores. Dos medidas que coinciden en rectángulos coinciden en el álgebra de sus uniones finitas disjuntas. La familia donde coinciden es una clase monótona: para uniones crecientes se usa continuidad por abajo, y para intersecciones decrecientes se usa finitud de la medida total. El teorema \ref{teo:v2-clasemonotona} da igualdad en toda la $\sigma$-álgebra producto. Si los factores son $\sigma$-finitos, elija $X_n\uparrow X$, $Y_n\uparrow Y$ de medida finita. Las restricciones a $X_n\times Y_n$ coinciden por el caso finito; continuidad por abajo sobre esos rectángulos prueba unicidad global. Esos mismos rectángulos muestran $\sigma$-finitud de $\pi$.
+\end{proof}
+
+\begin{lema}\label{lema:v2-cavalieri}
+Si los factores son $\sigma$-finitos y $E\in\Acal\otimes\Bcal$, las funciones $x\mapsto\nu(E_x)$, $y\mapsto\mu(E^y)$ son medibles y
+\[\pi(E)=\int_X\nu(E_x)\,d\mu(x)=\int_Y\mu(E^y)\,d\nu(y).\]
+\end{lema}
+\begin{proof}
+Suponga primero $\mu(X),\nu(Y)<\infty$. La propiedad vale en rectángulos y, por aditividad, en su álgebra. La familia de conjuntos que la satisfacen es una clase monótona. En efecto, para $E_n\uparrow E$, las secciones crecen y continuidad por abajo de $\nu$ implica $\nu((E_n)_x)\uparrow\nu(E_x)$; los límites son medibles y convergencia monótona identifica sus integrales con $\lim_n\pi(E_n)=\pi(E)$. Si $E_n\downarrow E$, continuidad por arriba se aplica a las secciones porque $\nu(Y)<\infty$; las funciones están dominadas por la constante integrable $\nu(Y)$ en el espacio finito $X$. Convergencia dominada prueba la misma igualdad. La otra dirección de integración se trata igual. El teorema de clase monótona concluye el caso finito.
+
+En el caso $\sigma$-finito, use los rectángulos $X_n\times Y_n$ de la prueba anterior. Las funciones
+\[h_n(x)=\ind{X_n}(x)\nu(E_x\cap Y_n)\]
+son medibles por el caso finito, extendidas por cero, y crecen a $\nu(E_x)$. Su integral vale $\pi(E\cap(X_n\times Y_n))$. Convergencia monótona y continuidad por abajo de $\pi$ dan la primera igualdad global; intercambiar factores da la segunda.
+\end{proof}
+
+\section{Integrar por secciones}
+A partir de esta sección y en los ejercicios sobre integrales iteradas suponemos que ambos factores son $\sigma$-finitos. El ejercicio \ref{ej:v2-l11-5} abandona expresamente esta hipótesis para mostrar por qué no puede omitirse. La construcción de la medida producto de la sección anterior no necesitaba esa suposición para su existencia.
+\begin{teorema}[Tonelli]\label{teo:v2-tonelli}\index{Tonelli, teorema de}
+Sean $\mu,\nu$ $\sigma$-finitas. Si $F:X\times Y\to[0,\infty]$ es medible, las integrales de sus secciones son funciones medibles y
+\[\int_{X\times Y}F\,d\pi=\int_X\left(\int_YF(x,y)\,d\nu(y)\right)d\mu(x)
+=\int_Y\left(\int_XF(x,y)\,d\mu(x)\right)d\nu(y).\]
+Se permiten valores infinitos.
+\end{teorema}
+\begin{proof}
+Para indicadores es el lema \ref{lema:v2-cavalieri}; para simples no negativas es su combinación lineal finita. Tome simples $S_n\uparrow F$. Para cada $x$, convergencia monótona en $Y$ da $\int(S_n)_x\,d\nu\uparrow\int F_x\,d\nu$. El límite es medible. Convergencia monótona en $X$ y en $X\times Y$ da
+\[\int_X\int_YF\,d\nu d\mu=\lim_n\int_X\int_YS_n\,d\nu d\mu
+=\lim_n\int_{X\times Y}S_n\,d\pi=\int_{X\times Y}F\,d\pi.\]
+El argumento con los factores invertidos prueba la otra igualdad.
+\end{proof}
+\begin{teorema}[Fubini real y complejo]\label{teo:v2-fubini}\index{Fubini, teorema de}
+Sean $\mu,\nu$ medidas $\sigma$-finitas. Si $F:X\times Y\to\F$ es medible y $\int|F|\,d\pi<\infty$, entonces sus secciones son integrables casi en todas partes en el factor correspondiente. Las integrales interiores, definidas como cero en los conjuntos excepcionales, son integrables y satisfacen las igualdades de Tonelli.
+\end{teorema}
+\begin{proof}
+Tonelli aplicado a $|F|$ muestra que $H(x)=\int_Y|F_x|\,d\nu$ es medible y tiene integral finita. Por ello $H(x)<\infty$ fuera de un conjunto medible nulo: allí $F_x$ es integrable. Si $F$ es real, aplique Tonelli a $F^+,F^-$ y reste; ambas integrales globales son finitas, así que las restas son legítimas. La función interior $f(x)=\int F_x\,d\nu$ es medible al ser la diferencia de las integrales positivas en la zona donde son finitas, extendida por cero en su complemento nulo. Además $|f(x)|\le H(x)$, luego es integrable. Para $F$ compleja se aplica lo anterior a $\Re F$ e $\Im F$ y se combinan sus integrales usando linealidad compleja. Intercambiar los factores completa la conclusión.
+\end{proof}
+\begin{observacion}[Productos completados]
+Los enunciados anteriores se refieren a la $\sigma$-álgebra producto. Si se completa la medida producto, una función medible para la completación tiene un representante medible para el producto e igual casi en todas partes. Esto se comprueba primero para conjuntos, escribiendo cada conjunto de la completación como un medible más una modificación dentro de un nulo, y después para funciones mediante aproximaciones simples. Tonelli aplicado al nulo que contiene la discrepancia muestra que sus secciones son nulas para casi todo punto del otro factor. Por ello las conclusiones de Fubini se conservan, con secciones entendidas casi en todas partes y con medidas de los factores completadas. No debe afirmarse que todas las secciones de un conjunto de la completación son necesariamente medibles en las $\sigma$-álgebras originales.
+\end{observacion}
+
+\section{Ejercicios sobre productos e integrales iteradas}
+\begin{ejercicio}[Lectura 11, ejercicio 1]\label{ej:v2-l11-1}
+Pruebe que una intersección no vacía de clases monótonas es una clase monótona.
+\end{ejercicio}
+\begin{solucion}
+Una sucesión creciente de conjuntos de la intersección pertenece a cada clase por separado. Su unión pertenece a cada una por estabilidad monótona, luego pertenece a la intersección. El mismo razonamiento vale para intersecciones decrecientes. La condición de que la intersección no sea vacía corresponde a la convención de llamar clase monótona solamente a familias no vacías.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 2: Tonelli--Hobson]\label{ej:v2-l11-2}
+Pruebe que una función \emph{medible} $F$ en el producto es integrable si y solo si una de las integrales iteradas de $|F|$ es finita.
+\end{ejercicio}
+\begin{solucion}
+Tonelli da igualdad de ambas integrales iteradas de $|F|$ con $\int_{X\times Y}|F|\,d\pi$, admitiendo infinito. La finitud de cualquiera equivale, por definición, a integrabilidad de $F$ y fuerza finitud de las otras dos. La medibilidad de $F$ es una hipótesis indispensable que no debe suprimirse del enunciado.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 3]\label{ej:v2-l11-3}
+Para $a_{m,n}=1$ si $m=n$, $a_{m,n}=-1$ si $m+1=n$ y cero en los demás casos, calcule las dos sumas iteradas.
+\end{ejercicio}
+\begin{solucion}
+Fijado $m$, la fila tiene $1$ en $n=m$ y $-1$ en $n=m+1$, luego $\sum_na_{m,n}=0$ y $\sum_m\sum_na_{m,n}=0$. Fijado $n=1$, la columna tiene solamente $a_{1,1}=1$; para $n\ge2$, la columna tiene $-1$ en $m=n-1$ y $1$ en $m=n$, por lo que suma cero. Así $\sum_n\sum_ma_{m,n}=1$. La suma de los valores absolutos es infinita, pues cada fila aporta $2$; Fubini no es aplicable a esta función en $\N^2$ con conteo.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 4]\label{ej:v2-l11-4}
+Si $f\in L^1(X)$ y $g\in L^1(Y)$, pruebe integrabilidad de $h(x,y)=f(x)g(y)$ y $\int h=(\int f)(\int g)$.
+\end{ejercicio}
+\begin{solucion}
+Las funciones $f\circ\mathrm{pr}_X$ y $g\circ\mathrm{pr}_Y$ son medibles, pues sus preimágenes de niveles son rectángulos; su producto también lo es. Tonelli aplicado a $|h|=|f(x)||g(y)|$ da
+\[\int|h|\,d\pi=\int_X|f(x)|\left(\int_Y|g|\,d\nu\right)d\mu
+=\|f\|_1\|g\|_1<\infty.\]
+Fubini y homogeneidad de la integral dan después
+\[\int h\,d\pi=\int_X f(x)\left(\int_Y g\,d\nu\right)d\mu
+=\left(\int_X f\,d\mu\right)\left(\int_Y g\,d\nu\right),\]
+para funciones reales o complejas.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 5]\label{ej:v2-l11-5}
+En $X=Y=[0,1]$ con borelianos, tome Lebesgue en $X$ y conteo en $Y$. Para la diagonal $D=\{(x,x):x\in[0,1]\}$, pruebe medibilidad y desigualdad de sus integrales iteradas por secciones.
+\end{ejercicio}
+\begin{solucion}
+La diagonal es cerrada en el cuadrado y es medible para la $\sigma$-álgebra producto: los rectángulos abiertos de extremos racionales forman una base numerable, de modo que los borelianos del cuadrado son generados por rectángulos borelianos. Cada sección $D_x=\{x\}$ tiene medida de conteo $1$, mientras $D^y=\{y\}$ tiene medida de Lebesgue cero. Por tanto
+\[\int_X\mu_c(D_x)\,d\lambda(x)=1,\qquad\int_Y\lambda(D^y)\,d\mu_c(y)=0.\]
+El conteo en un conjunto no numerable no es $\sigma$-finito: todo conjunto de medida finita es finito y una unión numerable de finitos no cubre $[0,1]$. Esta es la hipótesis que falla.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 6: convolución]\label{ej:v2-l11-6}\index{convolucion@convolución}
+Sean $f,g\in L^1(\R)$. Pruebe: (i) $(x,y)\mapsto f(x-y)g(y)$ es Lebesgue-medible en $\R^2$; (ii) $(f*g)(x)=\int_\R f(x-y)g(y)\,dy$ existe casi en todas partes; (iii) $\|f*g\|_1\le\|f\|_1\|g\|_1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Primero tome representantes borelianos $f_0,g_0$ iguales a $f,g$ fuera de nulos. Su existencia se deduce de la representación de conjuntos Lebesgue-medibles como borelianos más nulos y de aproximaciones simples. La función $f_0(x-y)g_0(y)$ es boreliana, porque $(x,y)\mapsto x-y$ y la proyección a $y$ son continuas. Si $N$ es un boreliano nulo que contiene las discrepancias de $f$, el conjunto $\{(x,y):x-y\in N\}$ es boreliano y nulo: por Tonelli, su sección en $x$ para cada $y$ es $N+y$, de medida cero. Análogamente, $\{(x,y):y\in M\}$ es nulo cuando $M$ contiene las discrepancias de $g$; se comprueba primero en franjas acotadas y se toma una unión numerable. Fuera de la unión de estos nulos, el producto original coincide con el boreliano, luego es Lebesgue-medible por completitud.
+
+(ii) Tonelli e invariancia por traslaciones dan
+\[\int_{\R^2}|f(x-y)g(y)|\,dx\,dy
+=\int_\R|g(y)|\left(\int_\R|f(x-y)|\,dx\right)dy
+=\|f\|_1\|g\|_1<\infty.\]
+La igualdad $\int|f(x-y)|\,dx=\int|f|$ se prueba primero en indicadores mediante invariancia de la medida, luego en simples y finalmente por convergencia monótona. Fubini en el producto completado implica que la sección en $y$ es integrable para casi todo $x$. Esto define $f*g$ casi en todas partes; se pone cero en el conjunto excepcional. Se corrige el diferencial $d\lambda(x)$ del original por $dy$, pues $y$ es la variable interior.
+
+(iii) La desigualdad triangular interior da $|f*g(x)|\le\int|f(x-y)g(y)|\,dy$. Integrar y usar la igualdad anterior prueba la cota. Fubini también da
+\[\int_\R(f*g)(x)\,dx=\left(\int_\R f\right)\left(\int_\R g\right).\]
+El dominio de esta última integral es $\R$, no $\R^2$.
+\end{solucion}
+\begin{observacion}[Conmutatividad y asociatividad]
+Conmutatividad resulta del cambio $y\mapsto x-y$ en la integral; esta sustitución preserva Lebesgue por la invariancia bajo reflexión y traslación, probada primero en indicadores y extendida por aproximación simple. Para asociatividad, la integral del valor absoluto de $f(x-y-z)g(y)h(z)$ en $\R^3$ es $\|f\|_1\|g\|_1\|h\|_1$ por Tonelli. Fubini permite cambiar el orden y efectuar las traslaciones interiores, dando $f*(g*h)=(f*g)*h$ casi en todas partes. La estimación triple justifica el intercambio; las igualdades son de clases $L^1$ y no necesariamente en cada punto de representantes arbitrarios.
+\end{observacion}
+\begin{ejercicio}[Lectura 11, ejercicio 7]\label{ej:v2-l11-7}
+Si $A,B\in\Acal\otimes\Bcal$ y $\nu(A_x)=\nu(B_x)$ para casi todo $x$, pruebe $\pi(A)=\pi(B)$.
+\end{ejercicio}
+\begin{solucion}
+El lema \ref{lema:v2-cavalieri} identifica las medidas de $A,B$ con las integrales de sus funciones de medidas de secciones. Estas son no negativas, medibles e iguales casi en todas partes; la invariancia de la integral no negativa bajo esa igualdad implica que sus integrales son iguales, incluso si valen infinito.
+\end{solucion}

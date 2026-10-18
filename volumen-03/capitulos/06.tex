@@ -1,0 +1,236 @@
+\chapter{Operadores compactos y descomposición espectral}\label{cap:v3-06}
+La compacidad conserva una parte del comportamiento de las matrices: fuera de cero, el espectro está formado por valores propios de multiplicidad finita. Para operadores normales en Hilbert, los espacios propios son ortogonales y permiten reconstruir el operador mediante una serie convergente en norma. Desarrollaremos primero la alternativa de Fredholm en Banach y después la geometría que hace posible esa reconstrucción.
+
+\section{Espectro de un compacto en Banach}\label{lec:v3-10}
+\fuentelectura{10}{El espectro de un operador compacto}
+\begin{lema}[Riesz]\label{v3:riesz-lema}
+Si $M$ es un subespacio cerrado propio de un espacio normado $X$ y $0<\theta<1$, existe $x\in X$ con $\norm x=1$ y $\dist(x,M)>\theta$.
+\end{lema}
+\begin{proof}
+Elijamos $y\notin M$ y $d=\dist(y,M)>0$. Por la definición de ínfimo, existe $m\in M$ con $\norm{y-m}<d/\theta$. Para $x=(y-m)/\norm{y-m}$ y $z\in M$,
+\[\norm{x-z}=\frac{\norm{y-(m+\norm{y-m}z)}}{\norm{y-m}}
+\ge\frac d{\norm{y-m}}>\theta.
+\]
+\end{proof}
+Aplicándolo sucesivamente a spans finitos se obtiene, en un espacio de dimensión infinita, una sucesión unitaria cuyos términos distan entre sí más de $1/2$. Por tanto la bola unidad no es relativamente compacta y la identidad no es compacta.
+
+\begin{proposicion}\label{v3:compacto-cero}
+Si $X$ es un Banach complejo de dimensión infinita y $K\in\Kcal(X)$, entonces $0\in\sigma(K)$. Para cada $\eps>0$ hay sólo un número finito de valores propios \emph{distintos} de módulo al menos $\eps$. Cada espacio propio correspondiente a un valor propio no nulo tiene dimensión finita.
+\end{proposicion}
+\begin{proof}
+Si $K$ fuera invertible, $I=K^{-1}K$ sería compacto, contradiciendo el lema anterior. Supongamos que existen valores propios distintos $\lambda_n$ con $|\lambda_n|\ge\eps$, y escojamos vectores propios $v_n$. Son linealmente independientes por el ejercicio~\ref{ej:v3-l07-4}. Sea $M_n=\spanop(v_1,\ldots,v_n)$. Por Riesz, podemos elegir $x_n\in M_n$ unitario con $\dist(x_n,M_{n-1})>1/2$ para $n\ge2$, y cualquier $x_1$ unitario en $M_1$. Como $(K-\lambda_n)M_n\subset M_{n-1}$,
+\[K(x_n/\lambda_n)=x_n+z_n,\qquad z_n\in M_{n-1}.
+\]
+Si $n>m$, entonces $x_m+z_m-z_n\in M_{n-1}$, y
+$\norm{K(x_n/\lambda_n)-K(x_m/\lambda_m)}>1/2$. Esto contradice compacidad porque $\norm{x_n/\lambda_n}\le1/\eps$.
+
+Si $E_\lambda=\ker(K-\lambda)$ fuese infinito-dimensional para $\lambda\ne0$, su bola unidad no sería relativamente compacta, mientras que $K|_{E_\lambda}=\lambda I$ la haría relativamente compacta. Por tanto su dimensión es finita. El requisito $\lambda\ne0$ falta en el corolario original y es indispensable: el operador cero tiene núcleo infinito-dimensional.
+\end{proof}
+
+\begin{proposicion}\label{v3:compacto-rango}
+Si $K$ es compacto y $\lambda\ne0$, la imagen de $A=K-\lambda I$ es cerrada y existe $C>0$ tal que
+\[\dist(x,\ker A)\le C\norm{Ax}\qquad(x\in X).
+\]
+\end{proposicion}
+\begin{proof}
+Si no existiese esa constante, en el cociente $X/\ker A$ encontraríamos clases de norma uno cuyas imágenes bajo $A$ tienden a cero. Elijamos representantes $x_n$ con $\dist(x_n,\ker A)=1$, $\norm{x_n}\le2$ y $Ax_n\to0$. Por compacidad, pasando a una subsucesión, $Kx_n\to y$. Como $\lambda x_n=Kx_n-Ax_n$, se tiene $x_n\to x=y/\lambda$. La continuidad de $A$ implica $Ax=0$, pero la continuidad de la función distancia da $\dist(x,\ker A)=1$, contradicción.
+
+Para ver el cierre de la imagen, sea $Ax_n\to y$. La cota permite reemplazar cada $x_n$ por $u_n$ en la misma clase con $\norm{u_n}\le C\norm{Ax_n}+1$, de modo que $(u_n)$ es acotada y $Au_n=Ax_n$. Alguna subsucesión satisface $Ku_n\to z$; entonces $u_n\to(z-y)/\lambda=:u$, y por continuidad $Au=y$. Así $y\in\ran A$.
+\end{proof}
+
+\begin{proposicion}\label{v3:compacto-sobreyectivo}
+Si $K$ es compacto, $\lambda\ne0$ y $K-\lambda I$ es suprayectivo, entonces es inyectivo.
+\end{proposicion}
+\begin{proof}
+Supongamos $A=K-\lambda I$ suprayectivo y elijamos $x_0\ne0$ en $\ker A$. Podemos construir $x_{j+1}$ con $Ax_{j+1}=x_j$. Entonces $A^jx_j=x_0\ne0$ y $A^{j+1}x_j=0$; los subespacios cerrados $N_j=\ker A^j$ forman una cadena estrictamente creciente. Por Riesz elegimos $u_j\in N_j$ unitario con $\dist(u_j,N_{j-1})>1/2$. Para $j>i$, $Au_j-Au_i-\lambda u_i\in N_{j-1}$, por lo cual
+\[\norm{Ku_j-Ku_i}
+=\norm{\lambda u_j+(Au_j-Au_i-\lambda u_i)}>|\lambda|/2.
+\]
+Las imágenes de la sucesión acotada $(u_j)$ no tienen subsucesión de Cauchy, contradicción.
+\end{proof}
+
+\begin{teorema}[Alternativa de Fredholm]\label{v3:fredholm}\index{Fredholm, alternativa de}
+Para $K\in\Kcal(X)$ y $\lambda\ne0$, $K-\lambda I$ es inyectivo si y sólo si es suprayectivo. Además
+\[\ker(K-\lambda I)\ne0\quad\Longleftrightarrow\quad\ker(K'-\lambda I)\ne0.
+\]
+Por tanto todo punto no nulo del espectro de $K$ es un valor propio.
+\end{teorema}
+\begin{proof}
+Ya probamos que suprayectividad implica inyectividad. Sea ahora $A=K-\lambda I$ inyectivo. Por rango cerrado y la identidad de anuladores,
+\[\ran A'=(\ker A)^\perp=X^*.
+\]
+Por Schauder, $K'$ es compacto; aplicando a $K'-\lambda I=A'$ la proposición anterior, su suprayectividad implica que es inyectivo. La identidad $\ker A'=(\ran A)^\perp$ da densidad de $\ran A$, y ésta es cerrada por la proposición~\ref{v3:compacto-rango}; así es todo $X$. Hemos probado la equivalencia.
+
+Si $\ker A\ne0$, $A$ no es suprayectivo. Como su imagen es cerrada propia, Hahn--Banach da un anulador no nulo, o sea $\ker A'\ne0$. Si $\ker A'\ne0$ pero $\ker A=0$, el primer párrafo haría invertible a $A$, y por tanto a $A'$, contradicción. Finalmente, si $\lambda\ne0$ no es un valor propio, $A$ es biyectivo y su inversa es acotada; así $\lambda$ está en el resolvente.
+\end{proof}
+En consecuencia, los puntos espectrales no nulos son a lo sumo numerables y su único posible punto de acumulación es cero: para cada $m$, sólo hay un número finito de ellos fuera de $B(0,1/m)$. Si son infinitos, una enumeración sin repeticiones converge a cero. La imagen de $K-\lambda I$ también admite la descripción de compatibilidad
+\[y\in\ran(K-\lambda I)\quad\Longleftrightarrow\quad
+\phi(y)=0\text{ para toda }\phi\in\ker(K'-\lambda I),
+\]
+porque está cerrada y es el preanulador de ese núcleo. Esto concreta las condiciones necesarias para resolver una ecuación no invertible.
+
+\section{Ejercicios de Fredholm}
+\begin{ejercicio}\label{ej:v3-l10-1}
+La lectura afirma, para $S$ acotado y $K$ compacto, que (i) $\dim\ker(S+K)<\infty$ y (ii) $\codim\ran(S+K)<\infty$. Examine el enunciado y pruebe una versión válida.
+\end{ejercicio}
+\begin{solucion}
+Ambos incisos son falsos sin una hipótesis sobre $S$: en un espacio infinito-dimensional, $S=K=0$ tiene núcleo de dimensión infinita e imagen $\{0\}$ de codimensión infinita. Una versión suficiente y natural exige que $S$ sea invertible. Entonces
+\[S+K=S(I+S^{-1}K),
+\]
+donde $C=S^{-1}K$ es compacto. (i) El núcleo de $I+C$ es el espacio propio de $C$ para $-1$, de dimensión finita por la proposición~\ref{v3:compacto-cero}. Es también el núcleo de $S+K$. (ii) La imagen de $I+C$ es cerrada y su anulador es $\ker(I+C')$, de dimensión finita. Para un subespacio cerrado $M$, $(X/M)^*\cong M^\perp$; si ese dual es finito-dimensional, $X/M$ también lo es, pues un conjunto linealmente independiente de $n$ vectores admite $n$ funcionales biortogonales por Hahn--Banach. Por tanto la codimensión es finita. La biyección $S$ preserva codimensión y cierre, dando el inciso (ii) para $S+K$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l10-2}
+Si $K$ es compacto y $r(K)>0$, existe un valor propio de módulo $r(K)$.
+\end{ejercicio}
+\begin{solucion}
+La compacidad no vacía de $\sigma(K)$ asegura que el máximo del módulo se alcanza en algún $\lambda\in\sigma(K)$. Como $|\lambda|=r(K)>0$, el teorema~\ref{v3:fredholm} afirma que ese punto es un valor propio.
+\end{solucion}
+
+\begin{ejercicio}[Segunda alternativa de Fredholm]\label{ej:v3-l10-3}
+Para $\lambda\ne0$, demuestre que o bien $(K-\lambda)x=y$ tiene una única solución para cada $y$, o bien $K'\phi=\lambda\phi$ tiene una solución no nula.
+\end{ejercicio}
+\begin{solucion}
+Si $\ker(K'-\lambda)=0$, el teorema de Fredholm da $\ker(K-\lambda)=0$ y suprayectividad de $K-\lambda$. Existe entonces una única solución para cada dato. Si ese núcleo del adjunto no es cero, obtenemos la segunda alternativa. No pueden ocurrir ambas: si $K-\lambda$ es invertible, también lo es su adjunto, cuyo núcleo debe ser cero. Para un dato particular en la segunda alternativa, la condición de solvencia es que lo anulen todas las soluciones de la ecuación adjunta, como muestra la fórmula previa a los ejercicios.
+\end{solucion}
+
+\begin{ejercicio}[Tercera alternativa de Fredholm]\label{ej:v3-l10-4}
+Para $\lambda\ne0$, pruebe $\dim\ker(K-\lambda)=\dim\ker(K'-\lambda)$.
+\end{ejercicio}
+\begin{solucion}
+Pongamos $A=K-\lambda$, $n=\dim\ker A$, $m=\dim\ker A'$, ambos finitos. Elijamos una base $x_1,\ldots,x_n$ de $\ker A$ y funcionales continuas $f_i$ con $f_i(x_j)=\delta_{ij}$. Sea $\psi_1,\ldots,\psi_m$ una base de $\ker A'$. Existen $y_1,\ldots,y_m\in X$ con $\psi_i(y_j)=\delta_{ij}$: el mapeo $x\mapsto(\psi_i(x))$ es suprayectivo sobre $\C^m$, pues de lo contrario una combinación lineal no nula de sus coordenadas se anularía en su imagen y contradice la independencia de las $\psi_i$.
+
+Supongamos $n<m$ y definamos $F x=\sum_{i=1}^nf_i(x)y_i$. Si $(A+F)x=0$, aplicar $\psi_j$ para $j\le n$ da $f_j(x)=0$, luego $Ax=0$. Escribiendo $x$ en la base del núcleo se obtiene $x=0$. Pero $\psi_{n+1}$ se anula en la imagen de $A+F$, así que este operador no es suprayectivo. Contradice Fredholm, porque $A+F=(K+F)-\lambda I$ y $K+F$ es compacto.
+
+Supongamos ahora $n>m$ y definamos $F x=\sum_{i=1}^mf_i(x)y_i$. Este operador $A+F$ no es inyectivo, pues anula $x_{m+1}$. Sin embargo es suprayectivo. Dado $z\in X$, el vector $z_0=z-\sum_{i=1}^m\psi_i(z)y_i$ es anulado por todas las $\psi_i$, luego pertenece a $\ran A$. Escojamos $u$ con $Au=z_0$ y pongamos
+\[x=u+\sum_{i=1}^m[\psi_i(z)-f_i(u)]x_i.
+\]
+Entonces $Ax=z_0$ y $f_i(x)=\psi_i(z)$, por lo que $(A+F)x=z$. Esto vuelve a contradecir Fredholm. Los argumentos incluyen los casos $n=0$ o $m=0$ interpretando las sumas vacías como cero. Por tanto $n=m$. En la perturbación finita se necesitan los vectores $y_i$ que detectan el conúcleo, no los $x_i$ del núcleo usados en la primera sugerencia original.
+\end{solucion}
+
+\section{La geometría de un compacto normal}\label{lec:v3-11}
+\fuentelectura{11}{El teorema espectral}
+El corrimiento ponderado $Tx=(0,x_1,x_2/2,\ldots)$ del capítulo anterior es compacto: truncando después de la coordenada $N+1$ se obtiene un operador de rango finito $T_N$ y $\norm{T-T_N}\le1/(N+1)$. Un límite en norma de compactos es compacto, pues para cada tolerancia una aproximación compacta proporciona una red finita de la imagen de la bola. Este operador no tiene valores propios y su espectro es $\{0\}$. Por ello necesitaremos normalidad para una descomposición en vectores propios.
+
+\begin{lema}\label{v3:normal-nucleos}
+Si $T$ es normal, $\norm{Tx}=\norm{T^*x}$ y
+\[\ker(T-\lambda I)=\ker(T^*-\cl\lambda I).
+\]
+Los espacios propios de valores distintos son ortogonales, y cada uno es invariante tanto bajo $T$ como bajo $T^*$.
+\end{lema}
+\begin{proof}
+Por adjunción, $\norm{Tx}^2=\ip{T^*Tx}{x}$ y $\norm{T^*x}^2=\ip{TT^*x}{x}$; normalidad da igualdad. También $T-\lambda I$ es normal, y aplicar esa igualdad a él prueba la identidad de núcleos. Si $Tv=\lambda v$ y $Tw=\mu w$, entonces $T^*w=\cl\mu w$ y
+\[\lambda\ip vw=\ip{Tv}w=\ip v{T^*w}=\mu\ip vw.
+\]
+Para $\lambda\ne\mu$, esto fuerza $\ip vw=0$. La identidad de núcleos da además las dos invariancias. Obsérvese el conjugado: un valor propio de $T$ corresponde a su conjugado para $T^*$.
+\end{proof}
+
+\begin{lema}[Norma de un autoadjunto]\label{v3:norma-cuadratica}
+Para $A=A^*$ acotado en un Hilbert,
+\[\norm A=\sup_{\norm x=1}|\ip{Ax}x|.
+\]
+\end{lema}
+\begin{proof}
+Denotemos por $c$ el supremo. Cauchy--Schwarz da $c\le\norm A$. La forma cuadrática $q(x)=\ip{Ax}x$ es real y satisface $|q(x)|\le c\norm x^2$. Por expansión,
+\[4\Re\ip{Au}v=q(u+v)-q(u-v).
+\]
+Si $u,v$ son unitarios, paralelogramo da
+\[|\Re\ip{Au}v|\le\frac c4(\norm{u+v}^2+\norm{u-v}^2)=c.
+\]
+Multiplicando $u$ por un escalar de módulo uno que haga real no negativa a $\ip{Au}v$, obtenemos $|\ip{Au}v|\le c$. Tomando el supremo en los vectores unitarios $v$ y después $u$, resulta $\norm A\le c$. La resta de las dos formas cuadráticas, y no su suma, es la identidad necesaria en este paso.
+\end{proof}
+
+\begin{proposicion}[Subsucesiones débiles en Hilbert]\label{v3:hilbert-subsucesion}
+Toda sucesión acotada $(x_n)$ en un Hilbert tiene una subsucesión $(x_{n_j})$ y un vector $x$ tales que $\ip{x_{n_j}}y\to\ip xy$ para todo $y$. Si $\norm{x_n}\le1$, entonces $\norm x\le1$.
+\end{proposicion}
+\begin{proof}
+Sea $M=\cl{\spanop\{x_n:n\ge1\}}$, que es separable porque las combinaciones finitas con coeficientes racionales complejos forman un denso numerable. Aplicando Gram--Schmidt a una sucesión densa se obtiene una base ortonormal finita o numerable $(e_k)$ de $M$. Cada sucesión escalar $\ip{x_n}{e_k}$ es acotada. La selección sucesiva de subsucesiones y una diagonal produce una subsucesión en la que todas las coordenadas convergen, digamos a $a_k$. Si $\norm{x_n}\le C$, Bessel y el paso al límite en sumas finitas dan $\sum_{k=1}^m|a_k|^2\le C^2$ para todo $m$. Así $x=\sum_ka_ke_k$ existe y $\norm x\le C$. Para un vector en el span finito de los $e_k$, la convergencia de apareamientos es inmediata. Para un $y\in M$ arbitrario, aproximamos por ese span; el error es a lo sumo $2C$ veces la distancia de la aproximación. Si $y\in H$, lo descomponemos en $P_My+(I-P_M)y$; la segunda parte es ortogonal a todos los $x_n$ y a $x$. Esto prueba la afirmación sin presuponer separabilidad de $H$ ni los teoremas posteriores de compacidad débil. El caso de una sucesión unitaria sólo garantiza que el límite esté en la bola \emph{cerrada}.
+\end{proof}
+
+\begin{teorema}\label{v3:normal-valor-propio}
+Todo operador compacto normal \emph{no nulo} tiene un valor propio no nulo. Si es autoadjunto, uno de $\norm T$ y $-\norm T$ es un valor propio.
+\end{teorema}
+\begin{proof}
+Primero sea $T=T^*\ne0$. Por el lema de la norma, existe una sucesión unitaria $x_n$ con $|\ip{Tx_n}{x_n}|\to\norm T$. Pasando a una subsucesión, los valores reales convergen a $\lambda=\norm T$ o $\lambda=-\norm T$. Entonces
+\[\norm{(T-\lambda)x_n}^2
+=\norm{Tx_n}^2-2\lambda\ip{Tx_n}{x_n}+\lambda^2
+\le\norm T^2-2\lambda\ip{Tx_n}{x_n}+\lambda^2\longrightarrow0.
+\]
+Por compacidad, una subsucesión de $Tx_n$ converge a $y$; como $\lambda\ne0$, esa misma subsucesión de $x_n$ converge a $x=y/\lambda$. Tiene norma uno y $(T-\lambda)x=0$.
+
+Para $T$ normal, escribamos $T=A+iB$, donde $A=(T+T^*)/2$, $B=(T-T^*)/(2i)$ son compactos autoadjuntos y conmutan. Al menos uno es no nulo. Si $B=0$, el caso anterior termina la prueba. Si $B\ne0$, tiene un valor propio real $\beta\ne0$. Su espacio propio $E_\beta$ es finito-dimensional y es $A$-invariante porque $AB=BA$. La restricción autoadjunta de $A$ a él tiene un vector propio $x\ne0$, $Ax=\alpha x$, por el teorema espectral finito. Entonces $Tx=(\alpha+i\beta)x$, con $\alpha+i\beta\ne0$. La hipótesis $T\ne0$, ausente en el enunciado original, es indispensable.
+\end{proof}
+Si $T$ es compacto, todos los puntos no nulos de $\sigma(T^*T)$ son valores propios; para un vector propio unitario, su valor es $\ip{T^*Tx}x=\norm{Tx}^2\ge0$. Como cero también es no negativo, $\sigma(T^*T)\subset[0,\infty)$. De igual modo, para $T$ compacto autoadjunto, sus valores propios son reales porque $\ip{Tx}x$ es real, y $\sigma(T)\subset\R$. Esto prueba la proposición 2 de la lectura.
+
+\begin{teorema}[Espectral para compactos normales]\label{v3:espectral-compacto}\index{teorema espectral!compactos normales}
+Sea $T$ compacto normal en $H$. Enumeremos sus valores propios distintos no nulos como $(\lambda_j)$, una lista finita o numerable, y sea $P_j$ la proyección ortogonal sobre $E_{\lambda_j}$. Entonces
+\[H=\ker T\oplus\bigoplus_j E_{\lambda_j},\qquad
+Tx=\sum_j\lambda_jP_jx.
+\]
+La suma de espacios es una suma ortogonal \emph{cerrada}. En el caso infinito, $\lambda_j\to0$ y la serie de operadores converge en norma, con
+\[\norm{T-\sum_{j=1}^NP_j\lambda_j}=\sup_{j>N}|\lambda_j|.
+\]
+\end{teorema}
+\begin{proof}
+Los espacios propios son ortogonales y reducen a $T$ por el lema~\ref{v3:normal-nucleos}. Sea $M$ la cerradura de su suma. Tanto $M$ como $M^\perp$ son invariantes bajo $T,T^*$: para $x\in M^\perp$, $y\in M$, se tiene $\ip{Tx}y=\ip x{T^*y}=0$, y análogamente para $T^*x$. La restricción a $M^\perp$ es compacta normal. Si fuera no nula, el teorema anterior produciría allí un vector propio de valor no nulo, que pertenecería a $M$ y a $M^\perp$, contradicción. Por tanto $M^\perp\subset\ker T$. Recíprocamente, el núcleo es ortogonal a cada espacio propio no nulo por el lema, así que $\ker T\subset M^\perp$. Esto da la descomposición.
+
+Para $x=x_0+\sum_jP_jx$, la continuidad de $T$ da la fórmula de la serie. Por ortogonalidad,
+\[\norm{\sum_{j>N}\lambda_jP_jx}^2
+=\sum_{j>N}|\lambda_j|^2\norm{P_jx}^2
+\le\bigl(\sup_{j>N}|\lambda_j|\bigr)^2\norm x^2.
+\]
+Evaluar en un vector unitario de cada espacio propio restante da la cota inversa para la norma. La proposición~\ref{v3:compacto-cero} implica $\lambda_j\to0$ si la lista es infinita, y con ello la convergencia en norma. Si no hay valores propios no nulos, el argumento demuestra $T=0$.
+\end{proof}
+La descomposición autoadjunta y el control exacto del resto amplían las notas de Maximenko \cite{maxcompactos}. La prueba anterior incluye el caso normal complejo, la multiplicidad y la posible dimensión no numerable del núcleo, sin exigir una base numerable de todo $H$.
+
+\section{Ejercicios de descomposición espectral}
+\begin{ejercicio}\label{ej:v3-l11-1}
+Si $a_n\to0$, pruebe que $D(x_n)=(a_nx_n)$ en $\ell^\infty$ es compacto y $\sigma(D)=\{a_n:n\ge1\}\cup\{0\}$.
+\end{ejercicio}
+\begin{solucion}
+Sea $D_N$ la misma diagonal con ceros después de $N$. Tiene rango finito y $\norm{D-D_N}=\sup_{n>N}|a_n|\to0$, así que $D$ es compacto. Fuera de la cerradura de los $a_n$, la inversa diagonal está acotada; cada $a_n$ es un valor propio. Cero pertenece al espectro porque el espacio es infinito-dimensional y $D$ es compacto. Como la única posible acumulación de la sucesión es cero, su cerradura es exactamente el conjunto indicado. También puede comprobarse directamente que los vectores $e_n$ impiden una inversa acotada en cero si ningún $a_n$ se anula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-2}
+Para un operador normal, demuestre que los espacios propios de dos valores distintos son ortogonales.
+\end{ejercicio}
+\begin{solucion}
+Si $Tv=\lambda v$, $Tw=\mu w$, normalidad implica $T^*w=\cl\mu w$ mediante $\norm{(T^*-\cl\mu)w}=\norm{(T-\mu)w}=0$. Por tanto $\lambda\ip vw=\ip{Tv}w=\ip v{T^*w}=\mu\ip vw$. Si $\lambda\ne\mu$, el producto interno se anula. Esto desarrolla todos los pasos del lema~\ref{v3:normal-nucleos} en el caso pedido.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-3}
+Para $T\in\Bcal(H)$ son equivalentes: (i) $T$ compacto; (ii) $T^*T$ compacto; (iii) $T^*$ compacto.
+\end{ejercicio}
+\begin{solucion}
+(i)$\Rightarrow$(ii) usa que componer un compacto con un acotado da un compacto. (i)$\Leftrightarrow$(iii) se deduce de Schauder y la identificación de Riesz, o de aplicar una dirección a $T^*$ y usar $T^{**}=T$. Para (ii)$\Rightarrow$(i), sea $(x_n)$ acotada, $\norm{x_n}\le C$. Elegimos una subsucesión para la que $T^*Tx_n$ converge. Para dos términos de ella, poniendo $u=x_n-x_m$,
+\[\norm{Tu}^2=\ip{T^*Tu}u\le\norm{T^*Tu}\norm u\le2C\norm{T^*Tx_n-T^*Tx_m}.
+\]
+Así $(Tx_n)$ es de Cauchy y converge por completitud de $H$. Éste es el criterio secuencial de compacidad del operador.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-4}
+Si $(e_n)$ es ortonormal y $T$ compacto, demuestre $Te_n\to0$ en norma.
+\end{ejercicio}
+\begin{solucion}
+Bessel implica $\ip{e_n}z\to0$ para todo $z\in H$, porque sus módulos cuadrados forman una serie convergente. Así $\ip{Te_n}y=\ip{e_n}{T^*y}\to0$. Si las normas $\norm{Te_n}$ no tendieran a cero, habría una subsucesión con normas al menos $\eps>0$; por compacidad, una subsucesión adicional convergería en norma a $v$. Sus apareamientos convergen tanto a $\ip vy$ como a cero para todo $y$, luego $v=0$, contradiciendo la cota de normas.
+\end{solucion}
+
+\begin{ejercicio}[Volterra]\label{ej:v3-l11-5}\index{Volterra, operador de}
+En $L^2[0,1]$ sea $(Vf)(x)=\int_0^xf(t)\,dt$. Pruebe (i) que es compacto; (ii) que $(V^*g)(t)=\int_t^1g(x)\,dx$; (iii) que $M_a=\{f:f=0\text{ casi en todas partes en }[0,a]\}$ es $V$-invariante para $0\le a\le1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Cauchy--Schwarz da $|Vf(x)|\le\norm f_2$ y
+\[|Vf(x)-Vf(y)|\le|x-y|^{1/2}\norm f_2.
+\]
+La imagen de la bola unidad es uniformemente acotada y equicontinua en $C[0,1]$. Por Arzelà--Ascoli su cerradura allí es compacta; la inclusión continua $C[0,1]\hookrightarrow L^2[0,1]$ preserva compacidad, de modo que $V$ es compacto.
+
+(ii) Para $f,g\in L^2$, la integral doble de $|f(t)g(x)|$ sobre el triángulo $0\le t\le x\le1$ está acotada por $\norm f_1\norm g_1\le\norm f_2\norm g_2$, así que Fubini es aplicable. Entonces
+\[\ip{Vf}g=\int_0^1\int_0^x f(t)\cl{g(x)}\,dt\,dx
+=\int_0^1 f(t)\overline{\int_t^1g(x)\,dx}\,dt.
+\]
+Esto identifica el adjunto, cuya fórmula define un operador acotado por la misma estimación de Cauchy--Schwarz.
+
+(iii) Si $f=0$ casi en todas partes en $[0,a]$, para todo $x\le a$ la integral $\int_0^xf$ es cero. Por tanto $Vf\in M_a$. Estos subespacios son cerrados porque son núcleos del multiplicador continuo por $\boldsymbol1_{[0,a]}$. La clasificación de \emph{todos} los subespacios invariantes de Volterra, mencionada sin prueba en la lectura, es un resultado adicional que no se usa aquí; el ejercicio sólo solicita esta invariancia.
+\end{solucion}
+
+El teorema espectral convierte un compacto normal en una diagonal ortogonal y controla el error al truncarla. Para compactos generales esa diagonalización falla, como mostró el corrimiento ponderado. El sustituto correcto será la descomposición en valores singulares, que conserva dos familias ortonormales y permite medir cuán rápidamente decae la acción del operador.

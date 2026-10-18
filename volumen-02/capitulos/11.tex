@@ -1,0 +1,187 @@
+\chapter{El espacio \texorpdfstring{$L^\infty$}{L infinito} y la dualidad de \texorpdfstring{$L^1$}{L1}}\label{v2:cap11}\label{cap:v2-11}
+\section{Una cota que ignora conjuntos nulos}\label{lectura:v2-22}
+La norma uniforme cambia si se modifica una función en un solo punto. Para trabajar con clases módulo igualdad casi en todas partes se necesita una cota esencial. Las lecturas 22 y 23 de \cite{valencia2} muestran que esta modificación produce un Banach, pero también que la representación de su dual depende de propiedades de la medida que no aparecen para $1<p<\infty$.
+\begin{definicion}
+Una función medible $f:X\to\F$ es esencialmente acotada si $\mu(\{|f|>M\})=0$ para algún $M<\infty$. Definimos
+\[
+ \norm f_\infty=\inf\{M\ge0:\mu(\{|f|>M\})=0\}.
+\]
+El espacio de estas funciones es $\mathcal L^\infty$; su cociente por igualdad casi en todas partes es $L^\infty$.\index{supremo esencial}
+\end{definicion}
+Siempre $\norm f_\infty\le\sup_X|f|$. La desigualdad puede ser estricta: la función de Thomae en $[0,1]$, igual a $1/q$ en los racionales irreducibles $a/q$ y cero en irracionales, tiene supremo uno y supremo esencial cero para Lebesgue. En cambio, para una función continua en $\R$ ambos supremos coinciden: si $|f(x_0)|>a$, la continuidad mantiene $|f|>a$ en un intervalo abierto de medida positiva.
+\begin{proposicion}\label{v2:linfty-cota}
+Si $f\in\mathcal L^\infty$, entonces $|f|\le\norm f_\infty$ casi en todas partes. La aplicación $\norm{\cdot}_\infty$ es una seminorma sobre $\mathcal L^\infty$, cuyo núcleo son las funciones nulas casi en todas partes; induce una norma sobre $L^\infty$.
+\end{proposicion}
+\begin{proof}
+Para cada $n$ elegimos una cota esencial $M_n<\norm f_\infty+1/n$. Fuera de la unión numerable de los conjuntos nulos $\{|f|>M_n\}$ se cumple $|f|\le M_n$ para todo $n$, y al pasar al límite $|f|\le\norm f_\infty$. Por ello $|f+g|\le\norm f_\infty+\norm g_\infty$ fuera de un conjunto nulo, lo que da la desigualdad triangular. También $\norm{\alpha f}_\infty\le|\alpha|\norm f_\infty$; para $\alpha\ne0$ se aplica la misma desigualdad a $f=\alpha^{-1}(\alpha f)$ y se obtiene igualdad. El caso $\alpha=0$ se trata directamente. Finalmente, norma cero equivale a $\mu(\{|f|>0\})=0$. Todas estas afirmaciones son invariantes al cambiar el representante en un conjunto medible nulo.
+\end{proof}
+\begin{teorema}\label{v2:linfty-banach}
+$L^\infty$ es un espacio de Banach. Las funciones simples son densas en su norma.
+\end{teorema}
+\begin{proof}
+Sea $(f_n)$ de Cauchy y elijamos representantes. Quitamos el conjunto nulo que es unión de todos los conjuntos
+\[
+ \{|f_n|>\norm{f_n}_\infty\},\qquad
+ \{|f_n-f_m|>\norm{f_n-f_m}_\infty\},\quad n,m\in\N.
+\]
+En su complemento, la sucesión es uniformemente de Cauchy y uniformemente acotada, porque las normas de una sucesión de Cauchy están acotadas. Tiene allí un límite uniforme $f$, que extendemos por cero al conjunto excepcional. Es medible como límite de las funciones medibles modificadas por cero en ese conjunto. La cota uniforme prueba $f\in\mathcal L^\infty$. Para $n,m$ grandes, $|f_n-f_m|\le\eps$ fuera del conjunto excepcional; al hacer $m\to\infty$, queda $|f_n-f|\le\eps$ allí. Por tanto $\norm{f_n-f}_\infty\le\eps$.
+
+Para densidad, modificamos primero un representante para que $|f|\le M$ en todo $X$. Dividimos el intervalo $[-M,M]$, o el cuadrado $[-M,M]^2$ en el caso complejo, en una cantidad finita de celdas de diámetro menor que $\eps$. Sus preimágenes son medibles; asignamos a cada una un valor de la celda. La función simple resultante $s$ cumple $|f-s|<\eps$ en todo $X$. Es necesario aproximar el valor de $f$, no solamente $|f|$, para conservar los signos y argumentos complejos.
+\end{proof}
+
+\section{Ejercicios resueltos: tamaño esencial y límites de exponentes}
+\begin{ejercicio}[Lectura 22, ejercicio 1]\label{ej:v2-l22-1}
+Demostrar $\norm f_\infty=\inf\{\sup_{x\in A}|f(x)|:A\in\Acal,\ \mu(X\setminus A)=0\}$.
+\end{ejercicio}
+\begin{solucion}
+Para cada conjunto con complemento nulo, su supremo es una cota esencial, luego es al menos $\norm f_\infty$. A la inversa, el conjunto $A=\{|f|\le\norm f_\infty\}$ tiene complemento nulo por la proposición \ref{v2:linfty-cota} y el supremo allí es a lo sumo esa norma. Si $A$ es vacío usamos el supremo cero para el recorrido vacío de una función no negativa; esto solo afecta al espacio de medida nula.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 2]\label{ej:v2-l22-2}
+Demostrar que $L^\infty\subset L^1$ si y solo si $\mu(X)<\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si la medida es finita, $\int|f|\le\norm f_\infty\mu(X)<\infty$. Recíprocamente, la función constante uno siempre pertenece a $L^\infty$. Si también pertenece a $L^1$, entonces $\mu(X)=\int1<\infty$.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 3]\label{ej:v2-l22-3}
+Demostrar que $L^\infty(\R)$ con medida de Lebesgue no es separable, aunque esta medida sea separable.
+\end{ejercicio}
+\begin{solucion}
+Para $0<t<1$, sea $f_t=\ind{(0,t)}$. Si $s<t$, las funciones difieren en uno sobre $(s,t)$, de medida positiva, luego $\norm{f_t-f_s}_\infty=1$. Las bolas de radio $1/3$ alrededor de los $f_t$ son disjuntas. Un conjunto denso debe tocar todas ellas; al asignar un punto distinto a cada bola tendría que ser incontable. Por tanto no existe un conjunto denso numerable.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:v2-l22-4}
+Si $f\in L^p$, $1\le p\le\infty$, y $g\in L^\infty$, demostrar $fg\in L^p$ y $\norm{fg}_p\le\norm f_p\norm g_\infty$.
+\end{ejercicio}
+\begin{solucion}
+Fuera de un conjunto nulo, $|fg|\le\norm g_\infty|f|$. Para $p<\infty$ elevamos a $p$, integramos y tomamos la raíz. Para $p=\infty$ usamos también $|f|\le\norm f_\infty$ casi en todas partes. Si alguna norma es cero, el producto se anula casi en todas partes y la conclusión sigue siendo válida.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:v2-l22-5}
+Si $\mu(X)<\infty$, demostrar que $f\in L^\infty$ equivale a: (i) $f\in L^p$ para todo $1\le p<\infty$; (ii) $\sup_{p\ge1}\norm f_p<\infty$. En tal caso, demostrar $\lim_{p\to\infty}\norm f_p=\norm f_\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si $M=\norm f_\infty<\infty$, entonces $\norm f_p\le M\mu(X)^{1/p}$ y los factores están acotados por $\max\{1,\mu(X)\}$. Sea $0<a<M$. El conjunto $E=\{|f|>a\}$ tiene medida positiva, de modo que $\norm f_p\ge a\mu(E)^{1/p}$. Como $0<\mu(E)<\infty$, el límite inferior es al menos $a$, y al hacer $a\uparrow M$ se obtiene la igualdad de límites. Los casos $M=0$ y $\mu(X)=0$ son inmediatos.
+
+Recíprocamente, si todas las normas son a lo sumo $C$ y $\mu(\{|f|>C+\eps\})>0$, la misma cota inferior implicaría $\liminf_p\norm f_p\ge C+\eps$, contradicción. Por tanto $|f|\le C$ casi en todas partes y $f\in L^\infty$. Las dos condiciones se necesitan conjuntamente.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 6]\label{ej:v2-l22-6}
+Si $f\in L^p(\R)$ para todo $p\ge p_0\ge1$ y además $f\in L^\infty(\R)$, ¿se cumple $\norm f_p\to\norm f_\infty$?
+\end{ejercicio}
+\begin{solucion}
+Sí, y basta $f\in L^{p_0}\cap L^\infty$. Si $M=\norm f_\infty>0$ y $p\ge p_0$,
+\[
+ \norm f_p^p\le M^{p-p_0}\norm f_{p_0}^{p_0},
+\]
+por lo que el límite superior es a lo sumo $M$. Para $0<a<M$, el conjunto $E=\{|f|>a\}$ tiene medida positiva y finita, pues $a^{p_0}\mu(E)\le\norm f_{p_0}^{p_0}$. La cota $\norm f_p\ge a\mu(E)^{1/p}$ da el límite inferior $M$. Si $M=0$ no hay nada que probar. El argumento vale en cualquier espacio de medida.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 7]\label{ej:v2-l22-7}
+Si una sucesión $x$ pertenece a $\ell^p$ para todo $p\ge p_0\ge1$, ¿se cumple $\norm x_p\to\norm x_\infty$?
+\end{ejercicio}
+\begin{solucion}
+Sí. La pertenencia a $\ell^{p_0}$ implica acotación, ya que $|x_n|^{p_0}\le\sum_k|x_k|^{p_0}$. Se aplica el ejercicio \ref{ej:v2-l22-6} con medida de conteo. También puede verse la cota inferior directamente: para cada $n$, $\norm x_p\ge|x_n|$; se toma primero límite inferior en $p$ y después supremo en $n$.
+\end{solucion}
+
+\section{Los emparejamientos de los extremos}\label{lectura:v2-23}
+Hölder en los extremos es el ejercicio \ref{ej:v2-l22-4} con $p=1$. Define aplicaciones lineales contractivas
+\[
+ \Phi:L^\infty\longrightarrow(L^1)^*,\quad\Phi(g)(f)=\int fg\,d\mu,
+ \qquad
+ \Psi:L^1\longrightarrow(L^\infty)^*,\quad\Psi(f)(g)=\int fg\,d\mu.
+\]
+En general no son ambas isometrías sobreyectivas. Los siguientes ejemplos separan tres dificultades distintas.
+\begin{ejemplo}[Pérdida de inyectividad de $\Phi$]
+En $\N$, definimos $\mu(A)=\#A$ si $1\notin A$ y $\mu(A)=\infty$ si $1\in A$. Es una medida: un conjunto que contiene $1$ tiene en cualquier partición disjunta exactamente una pieza que lo contiene, y fuera de $1$ se trata de conteo. Una función integrable debe anularse en $1$ y satisfacer $\sum_{n\ge2}|f(n)|<\infty$; por ello $L^1$ es isométrico a $\ell^1$ tras eliminar la primera coordenada. El único conjunto nulo es el vacío, así que $L^\infty=\ell^\infty$. Sin embargo, $g=\ind{\{1\}}$ tiene norma uno y $\Phi(g)=0$.
+\end{ejemplo}
+\begin{ejemplo}[Pérdida de sobreyectividad de $\Phi$]
+En $X=(0,1)$ tomamos la $\sigma$-álgebra numerable-conumerable y medida de conteo. Toda función medible es constante fuera de un conjunto numerable, por el argumento del ejercicio \ref{ej:v2-l21-4}. Una función integrable tiene soporte numerable: para cada $n$, el conjunto donde $|f|\ge1/n$ debe ser finito. Por tanto
+\[
+ \varphi(f)=\sum_{x\in(0,1)}x f(x)
+\]
+está bien definida y $|\varphi(f)|\le\norm f_1$. El producto $x f(x)$ es medible porque está soportado en un conjunto numerable. Si $\varphi(f)=\int fg$ para una $g$ medible esencialmente acotada, al probar con $f=\ind{\{x\}}$ obtenemos $g(x)=x$ para todo $x$. Esa función no es medible para esta $\sigma$-álgebra, contradicción.
+\end{ejemplo}
+\begin{ejemplo}[Pérdida de sobreyectividad de $\Psi$]\label{v2:limite-extendido}
+En el subespacio $c\subset\ell^\infty$ de sucesiones convergentes, el funcional $x\mapsto\lim_nx_n$ tiene norma uno. Hahn--Banach lo extiende a un funcional $L\in(\ell^\infty)^*$ de norma uno. Si $L(x)=\sum_nx_ny_n$ para algún $y\in\ell^1$, al evaluar en cada vector canónico $e_n$ se obtiene $y_n=L(e_n)=0$. Pero $L(1,1,\ldots)=1$, contradicción. Así la extensión existe, pero no está representada por una sucesión sumable.
+\end{ejemplo}
+
+\section{Semifinitud y localizabilidad}
+\begin{definicion}
+La medida $\mu$ es \emph{semifinita} si cada conjunto medible de medida infinita contiene uno de medida positiva finita. Un \emph{supremo esencial} de una familia $\mathcal E\subset\Acal$ es un $H\in\Acal$ tal que $\mu(E\setminus H)=0$ para todo $E\in\mathcal E$, y tal que cualquier $G$ con esa propiedad satisface $\mu(H\setminus G)=0$. La medida es \emph{localizable} si es semifinita y toda familia de conjuntos medibles admite un supremo esencial.\index{medida!semifinita}\index{medida!localizable}
+\end{definicion}
+\begin{proposicion}\label{v2:sigma-localizable}
+Toda medida $\sigma$-finita es localizable.
+\end{proposicion}
+\begin{proof}
+Escribamos $X=\bigcup_n E_n$ con $E_n$ disjuntos y de medida finita. Si $\mu(A)>0$, algún $A\cap E_n$ tiene medida positiva; si $\mu(A)=\infty$, esta observación da el subconjunto de medida positiva finita que requiere semifinitud. Definimos una medida finita
+\[
+ \lambda(B)=\sum_{n\ge1}\frac{2^{-n}}{1+\mu(E_n)}\mu(B\cap E_n).
+\]
+Tiene exactamente los mismos conjuntos nulos que $\mu$.
+
+Dada $\mathcal E$, sea $\alpha$ el supremo de las medidas $\lambda$ de uniones numerables de miembros de $\mathcal E$, incluyendo la unión vacía. Elegimos uniones $H_n$ que se acerquen a $\alpha$ y ponemos $H=\bigcup_nH_n$. Sigue siendo una unión numerable de miembros de $\mathcal E$ y $\lambda(H)=\alpha$. Para $E\in\mathcal E$, $H\cup E$ es otra unión admisible, luego $\lambda(E\setminus H)=0$. Si $G$ contiene esencialmente a cada miembro, la unión numerable que forma $H$ satisface $\lambda(H\setminus G)=0$. Como los conjuntos nulos coinciden, $H$ es el supremo esencial para $\mu$.
+\end{proof}
+\begin{proposicion}\label{v2:l1-isometria}
+$\Phi:L^\infty\to(L^1)^*$ es una isometría si y solo si $\mu$ es semifinita. Además $\Psi:L^1\to(L^\infty)^*$ siempre es una isometría.
+\end{proposicion}
+\begin{proof}
+Si $\mu$ es semifinita y $0<a<\norm g_\infty$, el conjunto $\{|g|>a\}$ tiene medida positiva y contiene un $B$ de medida positiva finita. La función
+$f=\mu(B)^{-1}\ind B\,\overline g/|g|$ tiene norma $L^1$ uno y $\int fg=\mu(B)^{-1}\int_B|g|>a$. Haciendo $a\uparrow\norm g_\infty$ obtenemos la isometría. Si falla semifinitud, hay un $A$ de medida infinita cuyos subconjuntos medibles de medida finita son nulos. Para $f\in L^1$, cada $A\cap\{|f|\ge1/n\}$ es finito en medida y por tanto nulo; así $f=0$ casi en todas partes en $A$. Se sigue $\Phi(\ind A)=0$ aunque $\norm{\ind A}_\infty=1$.
+
+Para $f\in L^1$, la función $g=\overline f/|f|$ donde $f\ne0$, y cero en los demás puntos, tiene norma esencial a lo sumo uno y satisface $\int fg=\int|f|$. Esto da $\norm{\Psi(f)}\ge\norm f_1$; Hölder da la otra desigualdad.
+\end{proof}
+La afirmación completa es que $\Phi$ es una isometría sobreyectiva exactamente cuando $\mu$ es localizable. La demostración, incluida la necesidad de localizabilidad, se dará en el teorema \ref{v2:dual-l1-general}, una vez construidas las derivadas de Radon--Nikodym. Aquí ya se han probado sus ingredientes relativos a la norma y se han visto por qué no puede omitirse una condición sobre la medida.
+
+\section{Ejercicios resueltos: funcionales y propiedades de la medida}
+\begin{ejercicio}[Lectura 23, ejercicio 1]\label{ej:v2-l23-1}
+Si $\mu$ es semifinita y $g$ es medible con $fg\in L^1$ para todo $f\in L^1$, demostrar $g\in L^\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si $g$ no fuera esencialmente acotada, podemos escoger números $\alpha_n\ge2^n$, estrictamente crecientes, tales que cada estrato $\{\alpha_n<|g|\le\alpha_{n+1}\}$ tenga medida positiva. En efecto, el supernivel $\{|g|>\alpha_n\}$ tiene medida positiva y es unión de sus intersecciones con $\{|g|\le m\}$, pues $g$ es finita; alguna intersección tiene medida positiva. Podemos aumentar el extremo superior para asegurar además $\alpha_{n+1}\ge2^{n+1}$. Por semifinitud elegimos en cada estrato un $A_n$ de medida positiva finita. Son disjuntos. La función
+\[
+ f=\sum_n\frac{\ind{A_n}}{\alpha_n\mu(A_n)}
+\]
+es medible y $\int|f|=\sum_n\alpha_n^{-1}<\infty$, mientras que $\int|fg|\ge\sum_n1=\infty$. Esto contradice la hipótesis.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 2]\label{ej:v2-l23-2}
+Para $f\in L^1$, construir $g\in L^\infty$ con $\norm g_\infty\le1$ y $\int fg=\norm f_1$.
+\end{ejercicio}
+\begin{solucion}
+Tomamos $g(x)=\overline{f(x)}/|f(x)|$ si $f(x)\ne0$ y $g(x)=0$ en los ceros. Es medible, tiene módulo a lo sumo uno y satisface $f(x)g(x)=|f(x)|$ en todo punto. Integrar produce la igualdad, también cuando $f=0$ casi en todas partes.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 3]\label{ej:v2-l23-3}
+Si $\mu$ es semifinita y $g\in L^\infty$, demostrar
+\[
+ \norm g_\infty=\sup_{\norm f_1\le1}\left|\int fg\,d\mu\right|
+ =\sup_{\norm f_1\le1}\norm{fg}_1.
+\]
+En el caso real se puede omitir el valor absoluto en el primer supremo; en el caso complejo un supremo de números complejos sin orden no está definido.
+\end{ejercicio}
+\begin{solucion}
+Hölder acota ambos supremos por $\norm g_\infty$. Para $0<a<\norm g_\infty$, la función de prueba de la proposición \ref{v2:l1-isometria} tiene norma uno y satisface $\int fg=\norm{fg}_1>a$. Al hacer $a\uparrow\norm g_\infty$ se obtienen las dos igualdades. Si la norma de $g$ es cero, todos los valores son cero.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 4]\label{ej:v2-l23-4}
+Dar un espacio de medida finita y una $g\in L^\infty$ tal que $\norm{fg}_1<\norm g_\infty$ para toda $f\in L^1$ con $\norm f_1\le1$.
+\end{ejercicio}
+\begin{solucion}
+En $(0,1)$ con Lebesgue, sea $g(x)=x$. Su norma esencial es uno. Si $f\ne0$ en $L^1$, entonces $(1-x)|f(x)|$ es positiva en un conjunto de medida positiva y su integral es estrictamente positiva. Por ello $\int x|f|<\int|f|\le1$. Si $f=0$, la desigualdad también es estricta. El supremo del ejercicio anterior puede existir sin ser un máximo.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 5]\label{ej:v2-l23-5}
+Para un conjunto arbitrario $I$ con todas sus partes medibles y medida de conteo, demostrar $(\ell^1(I))^*\cong\ell^\infty(I)$ isométricamente.
+\end{ejercicio}
+\begin{solucion}
+Si $\varphi\in(\ell^1(I))^*$, ponemos $g(i)=\varphi(e_i)$. Como $\norm{e_i}_1=1$, $|g(i)|\le\norm\varphi$. Cada $f\in\ell^1(I)$ tiene soporte numerable, porque cada conjunto $\{|f|\ge1/n\}$ es finito. Sus sumas parciales sobre ese soporte convergen en norma $\ell^1$; por continuidad,
+$\varphi(f)=\sum_{i\in I}f(i)g(i)$. Toda función en $I$ es medible, de modo que $g\in\ell^\infty(I)$. La norma del funcional es $\sup_i|g(i)|$, por Hölder y las pruebas $e_i$ multiplicadas por fases. La unicidad se obtiene evaluando otra vez en $e_i$.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 6]\label{ej:v2-l23-6}
+Supóngase $\mu$ $\sigma$-finita y $\varphi\in(L^1)^*$. Para cada $A$ de medida positiva finita supóngase dada $g_A\in L^\infty(A)$ que representa a $\varphi$ sobre funciones soportadas en $A$. Demostrar: (i) $g_A=g_B$ casi en todas partes en $A\cap B$; (ii) existe $g\in L^\infty(X)$ que representa a $\varphi$ en todo $L^1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Para toda $h\in L^1(A\cap B)$, extendida por cero, $\int h(g_A-g_B)=0$. Si $u=g_A-g_B$, podemos tomar $h=\ind{A\cap B}\overline u/|u|$ en los ceros con valor cero, pues la intersección tiene medida finita. Se obtiene $\int|u|=0$. Esto también cubre el caso de intersección nula.
+
+(ii) Elijamos una partición medible $X=\bigcup_n E_n$ con medidas finitas y pongamos $g=g_{E_n}$ en cada pieza de medida positiva, y cero en las piezas nulas. El punto (i) asegura compatibilidad con cualquier otro representante local. La isometría en cada espacio de medida finita implica $\norm{g_{E_n}}_\infty\le\norm\varphi$; la unión numerable de las excepciones sigue siendo nula, luego $\norm g_\infty\le\norm\varphi$. Para $F_n=\bigcup_{j\le n}E_j$, la aditividad da $\varphi(f\ind{F_n})=\int_{F_n}fg$. Como $f\ind{F_n}\to f$ en $L^1$ y $|fg|\le\norm\varphi|f|$, al pasar al límite queda $\varphi(f)=\int fg$.
+\end{solucion}
+\begin{ejercicio}[Lectura 23, ejercicio 7]\label{ej:v2-l23-7}
+Sean $(X,\Acal,\mu)$, $(Y,\mathcal B,\nu)$ y $\phi:X\to Y$ medible, con $\mu(\phi^{-1}(A))=\nu(A)$ para todo $A\in\mathcal B$. Demostrar que $T_\phi(g)=g\circ\phi$ define una isometría lineal de $L^\infty(Y)$ en $L^\infty(X)$.
+\end{ejercicio}
+\begin{solucion}
+Para $a\ge0$, $\{|g\circ\phi|>a\}=\phi^{-1}(\{|g|>a\})$, así que ambos superniveles tienen la misma medida. Las cotas esenciales admisibles coinciden exactamente, y por tanto las normas son iguales. Si dos representantes de $g$ difieren en un conjunto nulo, sus composiciones difieren en una preimagen nula por la misma hipótesis; el operador está bien definido sobre clases. La composición respeta suma y multiplicación por escalares. La igualdad de normas implica inyectividad.
+\end{solucion}
+\section{Qué distingue a los exponentes extremos}
+$L^\infty$ conserva el control uniforme después de eliminar un único conjunto nulo común a los datos numerables de una prueba. Su dual, sin embargo, contiene funcionales que no son integrales contra funciones de $L^1$. En la dirección contraria, semifinitud permite detectar la norma mediante funciones integrables y localizabilidad permitirá pegar representaciones construidas en conjuntos de medida finita.

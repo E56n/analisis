@@ -1,0 +1,25 @@
+{
+  "fecha": "2026-10-18",
+  "paginas": 131,
+  "capitulos": 16,
+  "ejercicios": 99,
+  "soluciones": 99,
+  "labels_duplicados": [],
+  "referencias_internas_pendientes": [],
+  "citas_sin_bibliografia": [],
+  "overfull": 0,
+  "glifos_ausentes": 0,
+  "errores_latex": 0,
+  "sha256_pdf": "31030d210e38ac6baf87279747b0e89f91b1e9e7b10a89a0629132f438b1f279",
+  "revision_visual": "131 páginas revisadas con Poppler; 1–74 por editor IV,75–131 por agente01_06; portada y Pontryagin adicionalmente por root. Últimos ajustes tipográficos en05/08 y notación verificados de nuevo.",
+  "aprobacion_matematica_independiente": "Root aprobó07–08 y16 íntegros;10–11 de root. Bloque14–16 revisado y compilado aisladamente por agente01_06.",
+  "paginas_con_menos_de_65_palabras": [
+    1,
+    7,
+    29,
+    39,
+    52,
+    75,
+    97
+  ]
+}

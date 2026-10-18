@@ -1,0 +1,167 @@
+\chapter{Integración y espacios periódicos}\label{cap:v4-02}
+La elección de una medida fija las constantes de las fórmulas de Fourier. En la recta usaremos la medida de Lebesgue $dx$; en el círculo usaremos la medida de probabilidad $dm(t)=dt/(2\pi)$. Primero precisaremos los cambios de variable y los espacios de funciones en los que se interpretarán las series.
+
+\section{Medida de Lebesgue y aproximación}\label{lectura:v4-02}
+\index{Lebesgue!medida}\index{funcion@función!escalonada}
+La construcción de Lebesgue parte de la longitud de intervalos semiabiertos y extiende ese volumen mediante medida exterior y el criterio de Carathéodory. Recordamos del volumen II la convergencia monótona, la convergencia dominada, Tonelli--Fubini, Hölder, Radon--Nikodym y la completitud de los espacios $L^p$. Aquí desarrollamos las consecuencias específicas que necesitaremos.
+\begin{proposicion}
+La medida de Lebesgue es invariante por traslaciones y regular. Toda medida de Borel regular, finita en compactos e invariante por traslaciones sobre $\R$ es $c\,dx$, con $c\geq0$.
+\end{proposicion}
+\begin{proof}
+Trasladar una cubierta numerable por intervalos no altera la suma de sus longitudes. Aplicando esto en las dos direcciones se obtiene invariancia de la medida exterior; el criterio de Carathéodory muestra que también se preservan los conjuntos medibles. La regularidad por abiertos se obtiene tomando cubiertas cuya longitud total se aproxima a la medida exterior. Para conjuntos de medida finita, se obtiene regularidad interior por compactos aplicando esa aproximación al complemento dentro de un intervalo y truncando después la recta. Para conjuntos de medida infinita se trunca primero; esto da regularidad interior en todos los conjuntos de Lebesgue medibles.
+
+Sea ahora $\nu$ una medida con las propiedades enunciadas. Cada punto tiene la misma masa $a$. Si $a>0$, un compacto con infinitos puntos tendría medida infinita; así $a=0$. Definamos $c=\nu([0,1])$. La aditividad y la invariancia dan $\nu([0,q])=cq$ para $q\geq0$ racional. Aproximando una longitud real por racionales desde abajo y arriba, la continuidad de la medida da $\nu([a,b])=c(b-a)$. Las medidas coinciden en los intervalos y, por unicidad de extensión en cada intervalo acotado, en todos los borelianos; una unión numerable de intervalos acotados cubre $\R$. La afirmación se refiere a medidas borelianas; sus completaciones coinciden cuando $c>0$.
+\end{proof}
+\begin{teorema}\label{v4:densidad-escalonadas}
+Para $1\leq p<\infty$, las combinaciones lineales finitas de indicadoras de intervalos acotados son densas en $L^p(\R)$. Si $f$ es Riemann-integrable en $[a,b]$, su extensión por cero es Lebesgue-integrable y las dos integrales coinciden.
+\end{teorema}
+\begin{proof}
+Las funciones simples con soporte de medida finita son densas en $L^p$: se trunca primero $f$ en espacio y en altura y se aproxima su rango mediante una malla finita. Basta aproximar $\mathbf1_A$, con $|A|<\infty$. Dado $\eta>0$, la regularidad proporciona un abierto $O\supset A$ con $|O\setminus A|<\eta/2$ y $|O|<\infty$. Todo abierto de $\R$ es unión numerable de intervalos abiertos disjuntos: cada componente contiene un racional, de modo que hay a lo sumo una cantidad numerable. Si $O=\bigcup_{j\geq1}I_j$, elegimos $r$ con $|O\setminus\bigcup_{j\leq r}I_j|<\eta/2$. El conjunto $B=\bigcup_{j\leq r}I_j$ satisface $|A\triangle B|<\eta$, y
+\[
+ \norm{\mathbf1_A-\mathbf1_B}_p^p=|A\triangle B|<\eta.
+\]
+La desigualdad triangular permite combinar estas aproximaciones para una función simple. No se exige que una unión finita de intervalos cerrados contenga $A$: esa afirmación, usada en la lectura original, es falsa para conjuntos densos de medida pequeña.
+
+Para una función real Riemann-integrable existen funciones escalonadas inferiores y superiores $u_n\leq f\leq v_n$ cuyas integrales difieren en menos de $1/n$. Sus integrales de Lebesgue son las sumas de Darboux correspondientes. El conjunto donde $\limsup u_n<\liminf v_n$ tiene medida cero tras escoger una sucesión con errores sumables; equivalemente puede aplicarse el criterio de Lebesgue para integrabilidad de Riemann, probado en el volumen II. Por completitud de la medida, $f$ es medible y, por comparación, su integral coincide con el valor común de las integrales de Darboux. Para funciones complejas se aplica el argumento a las partes real e imaginaria.
+\end{proof}
+
+\section{Intervalos y cambios de variable}
+En un intervalo no degenerado $I$ escribimos
+\[
+ \norm f_{p,I}=\left(\frac1{|I|}\int_I|f|^p\,dx\right)^{1/p}
+ \quad(1\leq p<\infty),\qquad
+ \norm f_{\infty,I}=\operatorname*{ess\,sup}_{I}|f|.
+\]
+Las funciones medibles se consideran iguales cuando coinciden casi en todas partes. Con estas normas, $L^p(I)$ es Banach; multiplicar la medida por la constante $|I|^{-1}$ no modifica las demostraciones de completitud. Para $1<p<\infty$, el dual se identifica con $L^{p'}(I)$ mediante $g\mapsto[f\mapsto |I|^{-1}\int_I f\overline g]$, donde $p'=p/(p-1)$.
+\begin{proposicion}
+Si $I=[a,b]$, $J=[c,d]$ y $T(x)=c+\alpha(x-a)$, con $\alpha=|J|/|I|>0$, entonces
+\[
+ \int_J f(y)\,dy=\alpha\int_I f(T(x))\,dx.
+\]
+La composición $f\mapsto f\circ T$ es una isometría sobreyectiva entre los espacios $L^p$ normalizados, también para $p=\infty$.
+\end{proposicion}
+\begin{proof}
+Extendamos la fórmula afín a toda la recta. Las preimágenes de intervalos tienen longitud dividida entre $\alpha$. Por aproximación mediante cubiertas, $|T^{-1}(E)|=\alpha^{-1}|E|$ para todo conjunto medible $E$; en particular las preimágenes de nulos son nulas. Un conjunto de Lebesgue medible difiere de un boreliano en un nulo, por lo que $f\circ T$ es medible. La identidad integral vale primero para indicadoras, después para funciones simples, luego para funciones no negativas por convergencia monótona y finalmente para funciones integrables complejas por descomposición en cuatro partes no negativas. Aplicándola a $|f|^p$ se obtiene la igualdad de normas; para $p=\infty$, las desigualdades esenciales se preservan porque los nulos se preservan en ambas direcciones. La composición con $T^{-1}$ es la inversa.
+\end{proof}
+
+\section{Ejercicios sobre el cambio de variable}
+\begin{observacion}[Hipótesis y derivada correctas]
+En los cuatro ejercicios de la lectura 2, $\varphi'\ne0$ asegura que $\varphi$ es estrictamente monótona, pero no que sea sobreyectiva sobre $\R$ ni que $\varphi'$ sea creciente. Escribiremos $J=\varphi(\R)$, un intervalo abierto, y demostraremos
+\[
+ \int_J f(y)\,dy=\int_\R f(\varphi(x))|\varphi'(x)|\,dx.
+\]
+Si se desea integrar sobre toda $\R$ en ambos lados, se añade $J=\R$; si se omite el valor absoluto, se exige $\varphi'>0$. Por ejemplo, $\varphi(x)=e^x$ muestra que la sobreyectividad no se deduce de $\varphi'\ne0$.
+\end{observacion}
+\begin{ejercicio}[Lectura 2, ejercicio 1]\label{ej:v4-l02-1}
+Sea $\varphi\in C^1(\R)$ con $\varphi'(x)\ne0$ para todo $x$, y sea $f$ Lebesgue-medible en $J$. Probar que $f\circ\varphi$ es Lebesgue-medible.
+\end{ejercicio}
+\begin{solucion}
+La continuidad de $\varphi'$ y el teorema del valor intermedio muestran que tiene signo constante. El teorema del valor medio hace a $\varphi$ estrictamente monótona; su inversa $\psi:J\to\R$ es $C^1$ y $\psi'(y)=1/\varphi'(\psi(y))$. En cada subintervalo compacto de $J$, esa derivada es acotada, así que $\psi$ es Lipschitz. Una aplicación $L$-Lipschitz manda conjuntos nulos en nulos: una cubierta por intervalos de longitud total $<\eps/L$ produce una cubierta imagen de longitud total $<\eps$. Agotando $J$ por compactos, concluimos que $\varphi^{-1}(N)=\psi(N)$ es nulo si $N$ es nulo. La preimagen de un boreliano es boreliana por continuidad. Descomponer cada conjunto medible en un boreliano y una modificación nula prueba el resultado.
+\end{solucion}
+\begin{ejercicio}[Lectura 2, ejercicio 2]\label{ej:v4-l02-2}
+Definir $\mu(A)=\int_\R\mathbf1_A(\varphi(x))\,dx$ para conjuntos medibles $A\subseteq\R$. Probar que $\mu$ es una medida absolutamente continua respecto de Lebesgue.
+\end{ejercicio}
+\begin{solucion}
+La igualdad $\mu(A)=|\varphi^{-1}(A\cap J)|$ prueba $\mu(\varnothing)=0$. Para conjuntos disjuntos $A_j$, sus preimágenes son disjuntas; la aditividad numerable de Lebesgue, o la convergencia monótona aplicada a las indicadoras, da $\mu(\bigcup_j A_j)=\sum_j\mu(A_j)$. Si $|A|=0$, el ejercicio anterior da $|\varphi^{-1}(A)|=0$, luego $\mu\ll dx$. Es $\sigma$-finita: los conjuntos $\varphi([-n,n])$ tienen medida $2n$ y cubren $J$, mientras que $\R\setminus J$ tiene medida $\mu$ nula.
+\end{solucion}
+\begin{ejercicio}[Lectura 2, ejercicio 3: derivada de la medida imagen]\label{ej:v4-l02-3}
+Hallar la derivada de Radon--Nikodym de $\mu$. Corregir la afirmación original $d\mu/dx=\varphi'$.
+\end{ejercicio}
+\begin{solucion}
+La derivada correcta es
+\[
+ h(y)=\frac{\mathbf1_J(y)}{|\varphi'(\varphi^{-1}(y))|}.
+\]
+Para $[a,b]\subset J$, la monotonía y el teorema fundamental del cálculo aplicados a $\psi=\varphi^{-1}$ dan
+\[
+ \mu([a,b])=|\psi(b)-\psi(a)|=\int_a^b|\psi'(y)|\,dy=\int_a^b h(y)\,dy.
+\]
+La unicidad de medidas en cada intervalo compacto, seguida de agotamiento de $J$, extiende la igualdad a todos los borelianos; ambas medidas son completas sobre los conjuntos de Lebesgue medibles, pues se anulan en los nulos. Fuera de $J$ ambas son cero. Así $h=d\mu/dx$. Con $\varphi(x)=2x$ se obtiene $h=1/2$, no $2$, lo que ya refuta la fórmula original.
+\end{solucion}
+\begin{ejercicio}[Lectura 2, ejercicio 4]\label{ej:v4-l02-4}
+Completar la demostración del cambio de variable, con las hipótesis corregidas anteriores.
+\end{ejercicio}
+\begin{solucion}
+Por la definición de medida imagen, primero para indicadoras y después por aproximación simple,
+\[
+ \int_\R q(\varphi(x))\,dx=\int_J q(y)h(y)\,dy
+\]
+para toda $q\geq0$ medible. Apliquemos esto a $q(y)=|f(y)|\,|\varphi'(\psi(y))|$. Resulta
+\[
+ \int_\R |f(\varphi(x))|\,|\varphi'(x)|\,dx=\int_J|f(y)|\,dy<\infty.
+\]
+La misma identidad para las partes positivas y negativas de las partes real e imaginaria de $f$ da la fórmula buscada. Así se prueban a la vez la integrabilidad del integrando transformado y la igualdad, sin presuponer el cambio de variable que se quería demostrar.
+\end{solucion}
+
+\section{El círculo como espacio de medida}\label{lectura:v4-03}
+\index{circulo@círculo}\index{espacio!Lp periodico@Lp periódico}
+Identificamos $\T$ con $\R/(2\pi\Z)$. Una función medible de $\T$ se representa por una función $2\pi$-periódica en $\R$, y
+\[
+ \int_\T f\,dm=\frac1{2\pi}\int_0^{2\pi}f(t)\,dt.
+\]
+La integral es independiente del intervalo de longitud $2\pi$ elegido: al partir un intervalo trasladado en el extremo del período y trasladar una de las partes, se obtiene la misma integral. Cualquier intervalo se reduce a ese caso quitando un múltiplo entero del período. La restricción al intervalo semiabierto $[0,2\pi)$ es una biyección entre funciones periódicas y funciones sobre ese intervalo; la extensión periódica de una función medible es medible porque se define por traslaciones sobre una partición numerable.
+\begin{proposicion}[Transporte de seminormas]
+Si $T:V\to W$ es lineal y sobreyectivo y $p$ es una seminorma en $W$, entonces $p_T(v)=p(Tv)$ es la única seminorma que hace a $T$ isométrica. Si $N_W=\{p=0\}$ y $N_V=T^{-1}(N_W)$, la aplicación inducida $V/N_V\to W/N_W$ es un isomorfismo isométrico. Una forma sesquilineal no negativa en $W$ se transporta mediante $(u,v)\mapsto\ip{Tu}{Tv}$.
+\end{proposicion}
+\begin{proof}
+La homogeneidad y la desigualdad triangular se conservan al componer con una aplicación lineal. La condición de isometría exige exactamente $p_T(v)=p(Tv)$, lo que prueba unicidad. El mapa cociente está bien definido porque dos representantes difieren en $N_V$ exactamente cuando sus imágenes difieren en $N_W$; es inyectivo, sobreyectivo e isométrico por esas definiciones. La forma transportada tiene cuadrado de seminorma $p_T^2$ y es única por polarización. En el original debe leerse $T^{-1}(N_W)$, no $T^{-1}(W)$.
+\end{proof}
+En consecuencia, $L^p(\T)$ es Banach y es separable para $p<\infty$: las funciones escalonadas con extremos racionales y valores racionales complejos forman un conjunto denso numerable. Para $p=2$ es Hilbert con
+\[
+ \ip fg=\int_\T f\overline g\,dm.
+\]
+El producto interno es lineal en su primer argumento. La periodicidad permite pasar de igualdad casi en todas partes en un período a igualdad casi en todas partes en $\R$, tomando una unión numerable de conjuntos nulos trasladados.
+
+\section{Ortogonalidad y coeficientes que desaparecen}
+\index{Riemann--Lebesgue, lema de}\index{familia!total}
+Una familia $A$ de un espacio normado es \emph{completa} si $\overline{\operatorname{span}A}=V$. Una familia de funcionales es \emph{total} si el único vector que todos anulan es cero. En Hilbert identificamos un vector $a$ con el funcional $x\mapsto\ip xa$.
+\begin{proposicion}
+En Hilbert, una familia de vectores es completa si y solo si es total.
+\end{proposicion}
+\begin{proof}
+Si su espacio generado es denso y $x$ es ortogonal a sus elementos, por linealidad y continuidad es ortogonal a todo el espacio, en particular a sí mismo. Recíprocamente, sea $M=\overline{\operatorname{span}A}$. Si $M\ne H$, la proyección ortogonal de un vector $x\notin M$ deja un residuo no nulo $x-P_Mx\in M^\perp$, que anula a toda la familia. Esto contradice totalidad.
+\end{proof}
+\begin{teorema}[Riemann--Lebesgue en el círculo]\label{v4:rl-circulo}
+Si $f\in L^1(\T)$, entonces $\widehat f(n)=\int_\T f(t)e^{-int}\,dm(t)\to0$ cuando $|n|\to\infty$. Además $|\widehat f(n)|\leq\norm f_1$.
+\end{teorema}
+\begin{proof}
+Para un intervalo $I=(a,b)$ y $n\ne0$,
+\[
+ \int_I e^{-int}\,dt=\frac{e^{-inb}-e^{-ina}}{-in},
+\]
+cuyo módulo es a lo sumo $2/|n|$. Por linealidad, los coeficientes de toda función escalonada tienden a cero. Dada $f$, aproximémosla por una escalonada $g$ con $\norm{f-g}_1<\eps$. Como $|e^{-int}|=1$,
+\[
+ |\widehat f(n)|\leq\norm{f-g}_1+|\widehat g(n)|<\eps+|\widehat g(n)|.
+\]
+Tomando límite superior y luego $\eps\downarrow0$ se obtiene el resultado. La cota de la norma se deduce directamente de la desigualdad triangular integral. Esto también prueba el caso $L^2$ de la lectura, pues $\norm f_1\leq\norm f_2$ en un espacio de probabilidad.
+\end{proof}
+\begin{proposicion}
+Las funciones $e_n(t)=e^{int}$, $n\in\Z$, forman una familia ortonormal en $L^2(\T)$.
+\end{proposicion}
+\begin{proof}
+Su producto interno es $(2\pi)^{-1}\int_0^{2\pi}e^{i(n-k)t}\,dt$. Vale uno si $n=k$; si $n\ne k$, la primitiva $e^{i(n-k)t}/(i(n-k))$ toma el mismo valor en los extremos, así que la integral es cero. La completitud de esta familia se probará después de estudiar Fejér.
+\end{proof}
+
+\section{Ejercicios sobre familias totales}
+\begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:v4-l03-1}
+Sea $1<p<\infty$ y sea $A\subset L^p(X,\mu)$. Demostrar que $A$ es completa en $L^p$ si y solo si los funcionales $g\mapsto\int_X a\overline g\,d\mu$, $a\in A$, son totales en $L^{p'}$.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es completa y $g\in L^{p'}$ satisface $\int a\overline g=0$ para todo $a\in A$, Hölder permite extender esa identidad al cierre del espacio generado. En particular se puede tomar $a=|g|^{p'-2}g$ (cero donde $g=0$), que pertenece a $L^p$ porque $(p'-1)p=p'$; obtenemos $\int|g|^{p'}=0$.
+
+Recíprocamente, si el cierre $M$ del espacio generado es propio, Hahn--Banach produce un funcional continuo no nulo de $L^p$ que se anula en $M$. Por la representación del dual de $L^p$, válida para $1<p<\infty$, ese funcional tiene la forma $a\mapsto\int a\overline g$ para algún $g\in L^{p'}$ no nulo. Contradice totalidad. Aquí se usan, con el alcance de medida correspondiente, los teoremas de dualidad desarrollados en el volumen II; en particular cubren los espacios de Lebesgue de este volumen.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 2: normalización real]\label{ej:v4-l03-2}
+Establecer Riemann--Lebesgue y ortogonalidad para los senos y cosenos. Precisar su normalización ortonormal.
+\end{ejercicio}
+\begin{solucion}
+Las identidades $\cos nt=(e_n+e_{-n})/2$ y $\sin nt=(e_n-e_{-n})/(2i)$ expresan los coeficientes reales como combinaciones de coeficientes complejos; por el teorema~\ref{v4:rl-circulo}, tienden a cero. La ortogonalidad de los exponenciales da, para $n,k\geq1$,
+\[
+ \ip{\cos nt}{\cos kt}=\ip{\sin nt}{\sin kt}=\tfrac12\delta_{nk},
+ \qquad\ip{\sin nt}{\cos kt}=0.
+\]
+Ambos tipos son ortogonales a la constante $1$, cuya norma es uno. Por tanto la familia ortonormal correcta es $\{1\}\cup\{\sqrt2\cos nt,\sqrt2\sin nt:n\geq1\}$. Los senos y cosenos sin esos factores son ortogonales, pero no ortonormales con la medida elegida.
+\end{solucion}
+
+\paragraph{Hacia la reconstrucción.}
+La ortogonalidad proporciona coeficientes y cotas; por sí sola no asegura que los coeficientes reconstruyan todas las funciones. El siguiente capítulo desarrolla los núcleos que harán posible esa reconstrucción y distinguirá cuidadosamente convergencia puntual, uniforme y en norma.

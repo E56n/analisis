@@ -1,0 +1,220 @@
+\chapter{Topologías de operadores y doble conmutante}\label{cap:v3-16}
+
+La convergencia en norma controla simultáneamente todos los vectores unitarios. A menudo sólo se necesita controlar cada vector por separado, o incluso cada coeficiente de un producto interno. Estas exigencias definen topologías diferentes. El teorema del doble conmutante mostrará que el cierre en una de ellas puede reconocerse mediante una condición puramente algebraica de conmutación.
+
+\section{Convergencia fuerte y débil del operador}\label{lec:v3-31}
+\fuentelectura{31}{Las topologías del operador}
+
+Para $\xi,\eta\in H$, las funciones $p_\xi(T)=\norm{T\xi}$ y $q_{\xi,\eta}(T)=|\ip{T\xi}{\eta}|$ son seminormas: la homogeneidad absoluta y la desigualdad triangular se siguen de las de la norma y del módulo. Ambas familias separan operadores, porque $T\xi\ne0$ puede detectarse tomando $\eta=T\xi$.
+
+\begin{definicion}
+La \emph{topología fuerte del operador} (TFO, o SOT) es la generada por las seminormas $p_\xi$; la \emph{topología débil del operador} (TDO, o WOT) es la generada por $q_{\xi,\eta}$. Para una red,
+\[
+ T_\alpha\xrightarrow{\mathrm{SOT}}T\iff T_\alpha\xi\to T\xi\quad(\xi\in H),
+\]
+\[
+ T_\alpha\xrightarrow{\mathrm{WOT}}T\iff
+ \ip{T_\alpha\xi}{\eta}\to\ip{T\xi}{\eta}\quad(\xi,\eta\in H).
+\]
+\end{definicion}
+\index{topología!fuerte del operador}\index{topología!débil del operador}
+
+Las desigualdades $\norm{(T_\alpha-T)\xi}\le\norm{T_\alpha-T}\norm\xi$ y $|\ip{(T_\alpha-T)\xi}{\eta}|\le\norm{(T_\alpha-T)\xi}\norm\eta$ dan
+\[
+ \text{convergencia en norma}\ \Longrightarrow\ \text{SOT}\ \Longrightarrow\ \text{WOT}.
+\]
+WOT es convergencia puntual débil porque, por Riesz, todos los funcionales continuos de $H$ son productos internos con un vector fijo. En dimensión finita, probar los coeficientes de una matriz basta para controlar su norma y las tres topologías coinciden. Los ejercicios con el desplazamiento mostrarán que en dimensión infinita las implicaciones son estrictas.
+
+\begin{proposicion}\label{v3:operaciones-topologias}
+La suma y la multiplicación por escalares son continuas en SOT y WOT. El producto de operadores es continuo en cada variable por separado en ambas topologías. La adjunción es continua en WOT. El producto es conjuntamente continuo en SOT para redes cuyos factores izquierdos están uniformemente acotados en norma.
+\end{proposicion}
+\begin{proof}
+Las desigualdades de las seminormas prueban la continuidad de la suma. Para escalares $\lambda_\alpha\to\lambda$ y operadores $T_\alpha\to T$, escriba
+$\lambda_\alpha T_\alpha-\lambda T=\lambda_\alpha(T_\alpha-T)+(\lambda_\alpha-\lambda)T$ y use que los escalares están eventualmente acotados. Para un operador fijo $S$, en SOT se tiene $\norm{S(T_\alpha-T)\xi}\le\norm S\norm{(T_\alpha-T)\xi}$ y $(T_\alpha-T)S\xi\to0$. En WOT se usan $\ip{S(T_\alpha-T)\xi}{\eta}=\ip{(T_\alpha-T)\xi}{S^*\eta}$ y la misma fórmula con $S\xi$. La identidad $\ip{T_\alpha^*\xi}{\eta}=\overline{\ip{T_\alpha\eta}{\xi}}$ prueba la continuidad del adjunto.
+
+Finalmente, si $S_\alpha\to S$ y $T_\alpha\to T$ fuertemente, con $\norm{S_\alpha}\le M$, entonces
+\[
+ \norm{(S_\alpha T_\alpha-ST)\xi}
+ \le M\norm{(T_\alpha-T)\xi}+\norm{(S_\alpha-S)T\xi}\to0.
+\]
+Una sucesión fuertemente convergente está uniformemente acotada por Banach--Steinhaus. Para redes arbitrarias no se debe suponer sin prueba una cota uniforme de todas sus normas; por eso se explicita aquí la hipótesis.
+\end{proof}
+
+\begin{teorema}[Dual continuo común]\label{v3:dual-sot-wot}
+Para un funcional lineal $\Phi:\Lcal(H)\to\C$ son equivalentes: ser WOT-continuo; ser SOT-continuo; y admitir una expresión
+\[
+ \Phi(T)=\sum_{k=1}^n\ip{T\xi_k}{\eta_k}
+\]
+con un número finito de vectores $\xi_k,\eta_k\in H$.
+\end{teorema}
+\begin{proof}
+Una suma finita de coeficientes es WOT-continua, y WOT-continuidad implica SOT-continuidad porque SOT es más fina. Suponga ahora continuidad fuerte. Existe una vecindad básica de cero, determinada por $\xi_1,\ldots,\xi_n$ y un $\delta>0$, en la que $|\Phi|<1$. Por homogeneidad se obtiene
+\[
+ |\Phi(T)|\le C\max_k\norm{T\xi_k}
+ \le C\left(\sum_k\norm{T\xi_k}^2\right)^{1/2}
+\]
+para algún $C$. Si el máximo es cero, todos los múltiplos de $T$ están en la vecindad y necesariamente $\Phi(T)=0$; si es positivo, se escala $T$ para entrar en ella. Así se cubren ambos casos de la desigualdad.
+
+En el subespacio $E=\{(T\xi_1,\ldots,T\xi_n):T\in\Lcal(H)\}\subset H^n$, defina $\ell(T\xi_1,\ldots,T\xi_n)=\Phi(T)$. La cota asegura que está bien definida y es continua. Se extiende a $\overline E$ por completitud de $\C$. Riesz representa esa extensión mediante un vector $(\eta_1,\ldots,\eta_n)\in\overline E\subset H^n$, y produce la expresión requerida.
+\end{proof}
+
+\section{Ejercicios sobre convergencia de operadores}
+
+\begin{ejercicio}\label{ej:v3-l31-1}
+Pruebe que $D(F,\eps)=\{T:\norm{T\xi}<\eps\text{ para todo }\xi\in F\}$, con $F\subset H$ finito y $\eps>0$, forma una base de vecindades fuertes de cero.
+\end{ejercicio}
+\begin{solucion}
+Por definición de la topología generada por seminormas, una vecindad básica es una intersección finita $\bigcap_{j=1}^n\{T:p_{\xi_j}(T)<\eps_j\}$. El conjunto $D(\{\xi_1,\ldots,\xi_n\},\min_j\eps_j)$ está contenido en ella. A su vez, cada $D(F,\eps)$ es una intersección finita de esos abiertos. Por tanto ambas familias generan las mismas vecindades. Las vecindades en $T_0$ se obtienen por traslación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-2}
+Si $T_\alpha^*T_\alpha\to0$ en WOT, pruebe $T_\alpha\to0$ en SOT. Si además $\sup_\alpha\norm{T_\alpha}<\infty$, pruebe $T_\alpha^*T_\alpha\to0$ en SOT.
+\end{ejercicio}
+\begin{solucion}
+Para cada $\xi$, $\norm{T_\alpha\xi}^2=\ip{T_\alpha^*T_\alpha\xi}{\xi}\to0$. Bajo la cota uniforme $M$, se tiene $\norm{T_\alpha^*T_\alpha\xi}\le M\norm{T_\alpha\xi}\to0$, que prueba la segunda afirmación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-3}
+Sea $L(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ en $\ell^2$. Pruebe: (i) $L^n\to0$ en WOT pero no en SOT; (ii) $(L^*)^n\to0$ en SOT pero no en norma.
+\end{ejercicio}
+\begin{solucion}
+(ii) Primero, $\norm{(L^*)^nx}^2=\sum_{k>n}|x_k|^2\to0$. Sin embargo, $(L^*)^ne_{n+1}=e_1$, así cada operador tiene norma uno. (i) La identidad $\ip{L^nx}{y}=\ip x{(L^*)^ny}$ y Cauchy--Schwarz dan convergencia débil a cero. Como $L$ es isométrico, $\norm{L^nx}=\norm x$ para todo $n$; ningún vector no nulo converge a cero en norma bajo esas potencias. Este ejemplo también muestra que la adjunción no es SOT-continua: $(L^*)^n\to0$ fuertemente pero sus adjuntos $L^n$ no.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-4}
+Pruebe que la bola unitaria cerrada de $\Lcal(H)$ es WOT-compacta.
+\end{ejercicio}
+\begin{solucion}
+Para cada par $\xi,\eta$, sea $D_{\xi,\eta}=\{z:|z|\le\norm\xi\norm\eta\}$. Tychonoff hace compacto el producto de todos estos discos. La aplicación $T\mapsto(\ip{T\xi}{\eta})_{\xi,\eta}$ identifica la bola con el conjunto de familias $b(\xi,\eta)$ que son sesquilineales y satisfacen $|b(\xi,\eta)|\le\norm\xi\norm\eta$. Las identidades de sesquilinealidad son condiciones cerradas coordenada a coordenada, de modo que ese conjunto es cerrado en el producto. Recíprocamente, Riesz aplicado a $\eta\mapsto\overline{b(\xi,\eta)}$, o a la forma sesquilineal acotada, produce un único operador $T$ con norma a lo sumo uno y esos coeficientes; la linealidad en $\xi$ asegura que el operador es lineal. La topología inducida del producto es exactamente WOT. Así la bola es compacta.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-5}
+Si $C\subset\Lcal(H)$ es convexo, pruebe que sus clausuras SOT y WOT coinciden.
+\end{ejercicio}
+\begin{solucion}
+La clausura SOT está contenida en la WOT porque SOT es más fina. Si $T$ no pertenece a la clausura SOT de $C$, existen $\xi_1,\ldots,\xi_n$ y $\eps>0$ tales que ningún $S\in C$ satisface simultáneamente $\norm{(S-T)\xi_j}<\eps$. Defina $J(S)=(S\xi_1,\ldots,S\xi_n)\in H^n$. Entonces $J(T)$ está fuera de la clausura normada del conjunto convexo $J(C)$, pues su distancia a cada punto de éste es al menos $\eps$. La separación de Hahn--Banach en el espacio normado $H^n$ proporciona un funcional real continuo que separa estrictamente $J(T)$ de esa clausura. Es la parte real de un funcional complejo lineal continuo; por Riesz, éste tiene la forma $(v_1,\ldots,v_n)\mapsto\sum_j\ip{v_j}{\eta_j}$. Por tanto el separador compuesto con $J$ es la parte real de $\sum_j\ip{S\xi_j}{\eta_j}$, que es WOT-continuo. Su semiespacio abierto separa $T$ de $C$, así $T$ tampoco pertenece a la clausura WOT. Esto prueba la inclusión inversa usando sólo separación en espacios normados. El argumento funciona también para convexos reales, como el conjunto de autoadjuntos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-6}
+Examine la afirmación: si $T_\alpha$ son normales y $T_\alpha\to T$ fuertemente, entonces $T_\alpha^*\to T^*$ fuertemente. Pruebe la versión correcta suponiendo además que $T$ es normal.
+\end{ejercicio}
+\begin{solucion}
+La afirmación sin la hipótesis adicional es falsa. En $\ell^2$, sea $U_n$ el unitario que permuta cíclicamente $e_1,\ldots,e_n$, enviando $e_k$ a $e_{k+1}$ para $k<n$ y $e_n$ a $e_1$, y fija los demás vectores de la base. Para cada vector de soporte finito, $U_nx=Lx$ cuando $n$ es grande; la cota uniforme $\norm{U_n}=1$ extiende esta convergencia a todo $\ell^2$. Así $U_n\to L$ fuertemente. Pero $U_n^*e_1=e_n$ no converge en norma a $L^*e_1=0$.
+
+Si $T$ también es normal, WOT-continuidad de la adjunción da $T_\alpha^*\xi\rightharpoonup T^*\xi$. La normalidad implica $\norm{T_\alpha^*\xi}=\norm{T_\alpha\xi}\to\norm{T\xi}=\norm{T^*\xi}$. En un Hilbert, convergencia débil más convergencia de normas implica convergencia en norma, como se ve al expandir
+$\norm{T_\alpha^*\xi-T^*\xi}^2$. Esto prueba la versión corregida, también para redes. El desplazamiento muestra precisamente por qué no puede deducirse que el límite fuerte de normales sea normal.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-7}
+Sean $T_\alpha,T$ normales, $T_\alpha\to T$ en SOT, y $\norm{T_\alpha},\norm T\le r$. Si $f:\C\to\C$ es continua, pruebe $f(T_\alpha)\to f(T)$ en SOT.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio anterior, los adjuntos también convergen fuertemente. La continuidad conjunta del producto para familias uniformemente acotadas prueba por inducción la convergencia fuerte de cada polinomio $p(T_\alpha,T_\alpha^*)$ hacia $p(T,T^*)$. Stone--Weierstrass aproxima $f$ uniformemente sobre el disco compacto $|z|\le r$ por un polinomio en $z,\overline z$. Para un vector $\xi$,
+\[
+ \norm{(f(T_\alpha)-f(T))\xi}
+ \le2\norm{f-p}_{\infty,\,|z|\le r}\norm\xi
+ +\norm{(p(T_\alpha,T_\alpha^*)-p(T,T^*))\xi}.
+\]
+Primero haga pequeño el primer término eligiendo $p$ y después el segundo haciendo avanzar la red. La normalidad del límite es necesaria para que $f(T)$ tenga este significado y para la convergencia de adjuntos; no estaba incluida explícitamente en la lectura original.
+\end{solucion}
+
+\section{Redes monótonas de operadores}\label{lec:v3-32}
+\fuentelectura{32}{El teorema del doble conmutador}
+
+Recordemos que $T\ge0$ significa $\ip{T\xi}{\xi}\ge0$ para todo $\xi$, con signo \emph{no negativo}. Una red autoadjunta es creciente si $\alpha\le\beta$ implica $T_\alpha\le T_\beta$, y está acotada superiormente si existe un autoadjunto $S$ con $T_\alpha\le S$ para todo $\alpha$.
+
+\begin{teorema}[Vigier]\label{v3:vigier}
+Una red creciente de operadores autoadjuntos converge en SOT si y sólo si está acotada superiormente. Su límite es su supremo en el orden de los autoadjuntos.
+\end{teorema}
+\begin{proof}
+Si $T_\alpha\to T$ fuertemente, para cada $\alpha$ y $\beta\ge\alpha$ se tiene $\ip{(T_\beta-T_\alpha)\xi}{\xi}\ge0$. Pasar al límite en $\beta$ da $T_\alpha\le T$. El límite es autoadjunto porque los coeficientes conservan la simetría hermitiana.
+
+Recíprocamente, fije $\alpha_0$ y trabaje en la cola $\alpha\ge\alpha_0$. Al restar $T_{\alpha_0}$ podemos suponer $0\le T_\alpha\le S$ con $S\ge0$. Entonces $\norm{T_\alpha}\le M=\norm S$. Para cada $\xi$, los números $\ip{T_\alpha\xi}{\xi}$ crecen y están acotados, por lo que convergen. La identidad de polarización, con nuestra convención lineal en la primera variable,
+\[
+ \ip{T_\alpha\xi}{\eta}
+ =\frac14\sum_{k=0}^3 i^k\ip{T_\alpha(\xi+i^k\eta)}{\xi+i^k\eta},
+\]
+proporciona un límite $b(\xi,\eta)$. Las identidades sesquilineales y la cota $|b(\xi,\eta)|\le M\norm\xi\norm\eta$ pasan al límite, así Riesz define un operador $T$ autoadjunto con esos coeficientes y $\norm T\le M$. Además $0\le T-T_\alpha\le M1$. Por cálculo continuo, para $D=T-T_\alpha$ se tiene $D^2\le MD$; luego
+\[
+ \norm{(T-T_\alpha)\xi}^2\le M\ip{(T-T_\alpha)\xi}{\xi}\longrightarrow0.
+\]
+Así la convergencia es fuerte. Cualquier otra cota superior $R$ satisface $\ip{(R-T)\xi}{\xi}=\lim_\alpha\ip{(R-T_\alpha)\xi}{\xi}\ge0$, por lo que $T\le R$. Volver a sumar $T_{\alpha_0}$ da la conclusión para la red original. El signo del último producto interno debe ser $T-T_\alpha$, no su opuesto.
+\end{proof}
+
+\begin{proposicion}\label{v3:limites-proyecciones}
+Un límite fuerte de proyecciones ortogonales es una proyección. Si $(P_\alpha)$ es creciente, converge fuertemente a la proyección sobre $\overline{\bigcup_\alpha P_\alpha H}$; si es decreciente, converge a la proyección sobre $\bigcap_\alpha P_\alpha H$.
+\end{proposicion}
+\begin{proof}
+Las proyecciones tienen norma a lo sumo uno. Si $P_\alpha\to P$ fuertemente, los coeficientes dan $P=P^*$ y la continuidad fuerte del producto bajo esa cota da $P^2=P$. Para proyecciones, $P\le Q$ equivale a $PH\subset QH$: la inclusión da $QP=PQ=P$; recíprocamente, si $P\le Q$ y $P\xi=\xi$, entonces $\norm\xi^2\le\ip{Q\xi}{\xi}\le\norm\xi^2$, de donde $(I-Q)\xi=0$. Una red creciente está acotada por $I$, así Vigier da una proyección límite. Su imagen contiene cada $P_\alpha H$ y, porque $P_\alpha\xi\to P\xi$, está contenida en la clausura de su unión. Para una red decreciente aplique el resultado a $I-P_\alpha$ y tome complementos ortogonales.
+\end{proof}
+
+\section{El doble conmutante}
+
+\begin{definicion}
+Para $\mathcal S\subset\Lcal(H)$, su \emph{conmutante} es
+\[
+ \mathcal S'=\{T:TS=ST\text{ para todo }S\in\mathcal S\}.
+\]
+Su doble conmutante es $\mathcal S''=(\mathcal S')'$. Una \emph{álgebra de von Neumann unital sobre $H$} es una subálgebra autoadjunta de $\Lcal(H)$ que contiene $I_H$ y es WOT-cerrada.
+\end{definicion}
+\index{conmutante}\index{algebra de von Neumann@álgebra de von Neumann}
+
+El conmutante siempre es una subálgebra que contiene $I$, y $\mathcal S\subset\mathcal S''$. Si $\mathcal S$ es estable bajo adjuntos, también lo es $\mathcal S'$: tome adjuntos de $TS^*=S^*T$. Los conmutantes son SOT y WOT cerrados, porque para $S$ fijo el mapa $T\mapsto TS-ST$ es continuo en ambas topologías.
+
+\begin{teorema}[Doble conmutante de von Neumann]\label{v3:doble-conmutante}
+Si $\mathcal A\subset\Lcal(H)$ es una subálgebra autoadjunta que contiene $I_H$, entonces
+\[
+ \overline{\mathcal A}^{\mathrm{SOT}}
+ =\overline{\mathcal A}^{\mathrm{WOT}}=\mathcal A''.
+\]
+En particular, para tal subálgebra son equivalentes ser SOT-cerrada, ser WOT-cerrada y ser igual a su doble conmutante.
+\end{teorema}
+\begin{proof}
+Como $\mathcal A''$ es cerrado y contiene a $\mathcal A$, basta aproximar fuertemente cada $T\in\mathcal A''$ por elementos de $\mathcal A$. Fije primero un vector $\xi$ y sea $K=\overline{\mathcal A\xi}$. Es un subespacio reductor para $\mathcal A$, pues ésta es autoadjunta. La proyección $P_K$ conmuta con todos sus elementos, ya que éstos preservan tanto $K$ como $K^\perp$. Así $P_K\in\mathcal A'$. Como $I\in\mathcal A$, $\xi\in K$ y $P_K\xi=\xi$. Entonces $P_KT\xi=TP_K\xi=T\xi$, de modo que $T\xi\in K$. Podemos aproximar $T\xi$ por $S\xi$ con $S\in\mathcal A$.
+
+Falta aproximar simultáneamente un número finito de vectores con \emph{el mismo} operador. Para $\xi_1,\ldots,\xi_n$, trabaje en $H^n$ con la amplificación diagonal $S^{(n)}=\operatorname{diag}(S,\ldots,S)$. Si una matriz de operadores $R=(R_{ij})$ conmuta con todos los $S^{(n)}$, cada entrada $R_{ij}$ conmuta con todos los $S\in\mathcal A$, así $R_{ij}\in\mathcal A'$. Por tanto $T$ conmuta con cada entrada y $T^{(n)}\in(\mathcal A^{(n)})''$. El argumento de un vector aplicado a $\xi=(\xi_1,\ldots,\xi_n)$ produce $S\in\mathcal A$ con
+\[
+ \sum_{k=1}^n\norm{(T-S)\xi_k}^2<\eps^2.
+\]
+En particular, $\norm{(T-S)\xi_k}<\eps$ para cada $k$. Éstas son exactamente las vecindades básicas de SOT, así $T$ pertenece a la clausura fuerte. La igualdad entre las dos clausuras también resulta del ejercicio~\ref{ej:v3-l31-5}, porque un álgebra es convexa.
+\end{proof}
+
+La condición $I_H\in\mathcal A$ no puede omitirse sin reemplazarla por no degeneración y ajustar el argumento: para $\mathcal A=\{0\}$, su clausura es cero, pero $\mathcal A''=\C I$. Algunas convenciones llaman también álgebras de von Neumann a las subálgebras autoadjuntas WOT-cerradas con identidad propia $P\ne I_H$. En el capítulo siguiente veremos que esa identidad siempre es una proyección y que el teorema anterior se aplica al restringir la acción a $PH$. Indicaremos cuándo se usa esta convención más amplia.
+
+\section{Ejercicios sobre conmutantes y clausuras}
+
+\begin{ejercicio}\label{ej:v3-l32-1}
+Si $\mathcal A$ es una subálgebra $C^*$ de $\Lcal(H)$, pruebe que $\mathcal A'$ es un álgebra de von Neumann unital.
+\end{ejercicio}
+\begin{solucion}
+Contiene $I$, es una subálgebra y es autoadjunta porque $\mathcal A$ lo es. Para cada $S\in\mathcal A$, la ecuación $TS=ST$ define un cerrado WOT. Su intersección sobre todos los $S$ es $\mathcal A'$, así es WOT-cerrada. No se necesita que $\mathcal A$ contenga la identidad para esta afirmación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-2}
+Si $\mathcal A_j\subset\Lcal(H_j)$ son álgebras de von Neumann unitarias, pruebe que el álgebra de operadores diagonales
+\[
+ \mathcal M=\{\bigoplus_jT_j:T_j\in\mathcal A_j,\ \sup_j\norm{T_j}<\infty\}
+\]
+es un álgebra de von Neumann sobre $\bigoplus_jH_j$. Aclare qué suma de álgebras se utiliza.
+\end{ejercicio}
+\begin{solucion}
+El producto acotado coordenado es un álgebra $C^*$ y actúa diagonalmente con norma $\sup_j\norm{T_j}$. Contiene la identidad. Si una red de sus operadores converge en WOT a $T$, todos los coeficientes entre componentes diferentes siguen siendo cero, así $T$ es diagonal. Sus compresiones $T_j$ son límites WOT de elementos de $\mathcal A_j$, luego pertenecen a ellas; además $\norm{T_j}\le\norm T$. Por tanto $T\in\mathcal M$ y el álgebra es WOT-cerrada.
+
+La notación de suma directa aquí significa \emph{producto acotado diagonal}. La suma algebraica, ni en general la suma $c_0$, es WOT-cerrada. Por ejemplo, las proyecciones de soporte finito en $\bigoplus_{n\ge1}\C=\ell^2$ pertenecen al álgebra diagonal $c_0$ y convergen fuertemente a $I$, que no pertenece a $c_0$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-3}
+Pruebe que una álgebra de von Neumann es cerrada en norma y, por tanto, es una álgebra $C^*$.
+\end{ejercicio}
+\begin{solucion}
+Una red convergente en norma converge en WOT. Si sus elementos pertenecen al álgebra WOT-cerrada, el límite también pertenece a ella. Así es normocerrada en el álgebra de Banach $\Lcal(H)$, por lo que es completa; hereda la involución y la identidad $C^*$ de los operadores.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-4}
+Pruebe que la bola unitaria cerrada de una álgebra de von Neumann es WOT-compacta y SOT-cerrada. Determine si siempre es SOT-compacta.
+\end{ejercicio}
+\begin{solucion}
+La bola del álgebra es la intersección de un cerrado WOT con la bola WOT-compacta de $\Lcal(H)$, y por tanto es WOT-compacta. Es WOT-cerrada porque los compactos en un Hausdorff son cerrados; luego también es SOT-cerrada. No siempre es SOT-compacta. En $\Lcal(\ell^2)$ considere $T_n\xi=\ip\xi{e_1}e_n$. Todos tienen norma uno, pero $T_ne_1=e_n$. Si la bola fuera SOT-compacta, su imagen por la evaluación continua $T\mapsto Te_1$ sería compacta en norma y contendría la sucesión ortonormal, imposible porque sus términos están a distancia $\sqrt2$ unos de otros. En dimensión finita, en cambio, las tres topologías coinciden y la bola sí es compacta.
+\end{solucion}
+
+El doble conmutante identifica el cierre de un álgebra mediante sus simetrías de conmutación. Todavía falta controlar las normas de los operadores aproximantes. El teorema de Kaplansky hará posible esa mejora y preparará la extensión del cálculo continuo a funciones borelianas. Referencias complementarias: \cite{conway1990,murphy1990,zhu1993}.

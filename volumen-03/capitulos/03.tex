@@ -1,0 +1,254 @@
+\chapter{Convexidad, separación y funciones sublineales}\label{cap:v3-03}
+La separación geométrica necesita transformar un conjunto en una función sublineal. La funcional de Minkowski realiza ese paso, pero solo conserva la simetría cuando el conjunto la posee. Desarrollaremos las pruebas de separación antes del teorema del rango cerrado, para que este último pueda utilizar una herramienta ya demostrada. Cerraremos con una segunda construcción de extensiones por funcionales minimales y con la corrección de su fórmula auxiliar.
+
+\section{La funcional de Minkowski}\label{lec:v3-05}
+\fuentelectura{05}{Forma geométrica del teorema de Hahn--Banach}
+Toda convexidad y toda desigualdad de esta sección se entienden sobre el cuerpo real. En un espacio complejo se pasa al espacio real subyacente y luego se representa una funcional real $g$ como la parte real de $\varphi(x)=g(x)-ig(ix)$. La comprobación de linealidad compleja es la misma del teorema~\ref{v3:hb-norma}.
+
+\begin{proposicion}\label{v3:subnivel}
+Para una funcional sublineal $p$ y $U_p=\{x:p(x)<1\}$, el conjunto $U_p$ es convexo y
+\[
+ tU_p=\{x:p(x)<t\}\quad(t>0),\qquad
+ y+U_p=\{x:p(x-y)<1\}.
+\]
+Si $p\geq0$ y $f$ es lineal real no nula, entonces $f\leq p$ equivale a $f^{-1}(1)\cap U_p=\varnothing$. Si además $p$ es continua, $f\leq p$ implica que $f$ es continua.
+\end{proposicion}
+\begin{proof}
+Para $x,y\in U_p$ y $0<t<1$, $p(tx+(1-t)y)\leq tp(x)+(1-t)p(y)<1$; en los extremos el resultado es inmediato. Las dos identidades se obtienen usando homogeneidad positiva y la definición de traslación.
+
+Si $f\leq p$, un vector con $f(x)=1$ no puede satisfacer $p(x)<1$. Recíprocamente, si $f(x)>p(x)\geq0$, entonces $f(x)>0$ y $u=x/f(x)$ satisface $f(u)=1$, $p(u)<1$, contradicción. Para continuidad, dado $\eps>0$ elija $\delta>0$ tal que $\norm x<\delta$ implique simultáneamente $p(x)<\eps$ y $p(-x)<\eps$. Entonces $-p(-x)\leq f(x)\leq p(x)$ y $|f(x)|<\eps$. No se puede sustituir esta doble cota por $|f(x)|\leq p(x)$ cuando $p$ no es simétrica.
+\end{proof}
+
+\begin{teorema}[Funcional de calibración o de Minkowski]\label{v3:minkowski}
+Sea $A$ convexo en un espacio normado real $X$, con $0\in\interior A$. Defina
+\[
+ p_A(x)=\inf\{t>0:x\in tA\}.
+\]
+Entonces $p_A$ es finita, no negativa, sublineal y continua. Se cumplen
+\[
+ \interior A=\{p_A<1\},\qquad \cl A=\{p_A\leq1\},\qquad
+ \partial A=\{p_A=1\},\qquad X\setminus\cl A=\{p_A>1\}.
+\]
+La homogeneidad garantizada es $p_A(tx)=tp_A(x)$ para $t\geq0$; si $A=-A$, también $p_A(tx)=|t|p_A(x)$ para escalares reales.
+\end{teorema}
+\index{Minkowski, funcional de}\index{funcional!de calibracion@de calibración}
+\begin{proof}
+Elija $r>0$ con $B(0,r)\subseteq A$. Para $t>\norm x/r$, $x/t\in A$, así que $0\leq p_A(x)\leq\norm x/r$. Para $s>0$, el cambio $t=su$ en el ínfimo da $p_A(sx)=sp_A(x)$; para $s=0$ ambos miembros son cero.
+
+Si $x\in aA$, $y\in bA$ con $a,b>0$, entonces
+\[
+ \frac{x+y}{a+b}=\frac a{a+b}\frac xa+\frac b{a+b}\frac yb\in A.
+\]
+Por ello $p_A(x+y)\leq a+b$. Elija $a,b$ en sus conjuntos definitorios a distancias arbitrariamente pequeñas de los ínfimos, para obtener subaditividad. Esta y la cota anterior dan
+\[
+ p_A(x)-p_A(y)\leq p_A(x-y)\leq\norm{x-y}/r,
+\]
+y al intercambiar $x,y$ se prueba continuidad Lipschitz.
+
+Si $p_A(x)<1$, existe $0<t<1$ con $x=ta$, $a\in A$. Por convexidad,
+\[
+ x+(1-t)B(0,r)=ta+(1-t)B(0,r)\subseteq A,
+\]
+de modo que $x$ es interior. Si $x$ es interior y $x\ne0$, existe $s>1$ cercano a uno con $sx\in A$; luego $p_A(x)\leq1/s<1$. Para $x=0$ ya sabemos $p_A(0)=0$. Si $x\in\cl A$, la continuidad y $p_A\leq1$ en $A$ dan $p_A(x)\leq1$. Si $p_A(x)\leq1$, entonces $p_A(tx)<1$ para $0<t<1$; los puntos $tx\in\interior A$ convergen a $x$, así que $x\in\cl A$. Las fórmulas de frontera y exterior se siguen de las dos primeras. Finalmente $A=-A$ da $p_A(-x)=p_A(x)$ y con ello homogeneidad absoluta.
+\end{proof}
+\begin{observacion}[Una simetría que no puede suponerse]
+Para $A=(-1,2)\subseteq\R$, $p_A(x)=x/2$ si $x\geq0$ y $p_A(x)=-x$ si $x<0$. Así $p_A(1)=1/2$ y $p_A(-1)=1$. La homogeneidad absoluta afirmada sin simetría en la lectura5 necesita corregirse; las demás caracterizaciones geométricas anteriores no requieren esa simetría.
+\end{observacion}
+
+\section{Separación por hiperplanos}
+\begin{teorema}[Separación con interior]\label{v3:separacion-interior}
+Sean $A,B$ convexos no vacíos disjuntos, con $\interior A\ne\varnothing$. Existe una funcional real continua no nula $f$ tal que
+\[
+ f(a)\leq f(b)\quad(a\in A,b\in B).
+\]
+Para $a\in\interior A$ la desigualdad es estricta.
+\end{teorema}
+\begin{proof}
+El conjunto $C=\interior A-B$ es abierto y convexo, no vacío y no contiene cero. Elija $c_0\in C$ y ponga $U=C-c_0$, $z=-c_0$. Entonces $U$ es abierto, convexo, contiene cero y no contiene $z$. Por el teorema anterior $p_U(z)\geq1$. En $\R z$ defina $h(tz)=t$. Si $t\geq0$, $h(tz)=t\leq tp_U(z)$; si $t<0$, $h(tz)<0\leq p_U(tz)$. Hahn--Banach extiende $h$ a $f\leq p_U$. La continuidad se obtiene usando las cotas para $x$ y $-x$, y $f(z)=1$ asegura que $f\ne0$.
+
+Para $c\in C$, $c-c_0\in U$ y $f(c)=f(c-c_0)+f(c_0)<1-1=0$. Por tanto $f(a)<f(b)$ si $a\in\interior A$, $b\in B$. Falta incluir los puntos restantes de $A$. Elija $a_0\in\interior A$ y $r>0$ con $B(a_0,r)\subseteq A$. Para $a\in A$ y $0<t\leq1$, el vector $a_t=(1-t)a+ta_0$ tiene la bola $B(a_t,tr)$ contenida en $A$; por tanto $a_t\in\interior A$. Como $a_t\to a$, la continuidad da $f(a)\leq f(b)$.
+\end{proof}
+
+\begin{teorema}[Separación estricta]\label{v3:separacion-estricta}
+Si $A,B$ son convexos no vacíos disjuntos, $A$ es compacto y $B$ cerrado, existe una funcional real continua $f$ con
+\[
+ \sup_{a\in A}f(a)<\inf_{b\in B}f(b).
+\]
+En el caso complejo, las desigualdades se expresan mediante $\operatorname{Re}\varphi$ para una funcional compleja continua $\varphi$.
+\end{teorema}
+\begin{proof}
+La función $a\mapsto\dist(a,B)$ es continua, positiva en $A$ y alcanza su mínimo $d>0$ en el compacto $A$. Elija $0<r<d$ y ponga $U=A+B(0,r)$. Es abierto, convexo y disjunto de $B$. El teorema anterior da $f\ne0$ con $f(u)\leq f(b)$ para $u\in U$, $b\in B$. Para $a\in A$, tome el supremo sobre $\norm h<r$ en $f(a+h)\leq f(b)$; resulta
+\[
+ f(a)+r\norm f\leq f(b).
+\]
+El supremo de $f(h)$ sobre esa bola es $r\norm f$ por la definición de la norma y la posibilidad de cambiar el signo de $h$. Tomando supremo en $a$ e ínfimo en $b$ se obtiene un salto de tamaño al menos $r\norm f>0$. La conversión compleja se explicó al inicio del capítulo.
+\end{proof}
+\index{separacion@separación!de conjuntos convexos}
+\begin{corolario}[Separación absoluta de un conjunto balanceado]\label{v3:separacion-balanceada}
+Sea $A\ne\varnothing$ convexo y balanceado en un espacio real o complejo: $\lambda A\subseteq A$ si $|\lambda|\leq1$. Si $x\notin\cl A$, existen $\varphi\in X^*$ y $\alpha>0$ tales que
+\[
+ |\varphi(a)|<\alpha<|\varphi(x)|\quad(a\in A).
+\]
+\end{corolario}
+\begin{proof}
+Separe estrictamente $\cl A$ del compacto $\{x\}$. En el caso complejo obtenga $\sup_A\operatorname{Re}\varphi<\operatorname{Re}\varphi(x)$. Como $A$ es balanceado, para cada $a$ todas sus rotaciones de módulo uno están en $A$, y $\sup_A\operatorname{Re}\varphi=\sup_A|\varphi|$. En el caso real basta cambiar el signo. Este supremo es no negativo porque $0\in A$. Elija $\alpha$ estrictamente entre el supremo y $\operatorname{Re}\varphi(x)\leq|\varphi(x)|$.
+\end{proof}
+
+\section{Ejercicios resueltos: calibración y convexidad}
+\begin{ejercicio}[Lectura5, ejercicio1]\label{ej:v3-l05-1}
+Calcule la funcional de calibración de la bola abierta unitaria de un espacio normado real.
+\end{ejercicio}
+\begin{solucion}
+Para $t>0$, $x\in tB(0,1)$ equivale a $\norm x<t$. El ínfimo de esos $t$ es $\norm x$, también para $x=0$. Así $p_{B(0,1)}=\norm\cdot$.
+\end{solucion}
+\begin{ejercicio}[Lectura5, ejercicio2]\label{ej:v3-l05-2}
+Demuestre que $f(x)=\tfrac12\norm x^2$ es convexa.
+\end{ejercicio}
+\begin{solucion}
+Para $0\leq t\leq1$ y $a,b\geq0$,
+\[
+ (ta+(1-t)b)^2\leq ta^2+(1-t)b^2,
+\]
+pues la diferencia es $t(1-t)(a-b)^2$. Aplicar primero la desigualdad triangular a $tx+(1-t)y$ y después esta desigualdad con $a=\norm x$, $b=\norm y$ da la convexidad, tras dividir entre dos.
+\end{solucion}
+\begin{ejercicio}[Lectura5, ejercicio3, incisos(i)--(ii)]\label{ej:v3-l05-3}
+Un espacio es estrictamente convexo si $\norm{u+v}<2$ para vectores unitarios \emph{distintos} $u,v$. (i) Pruebe la equivalencia con $\norm{(u+v)/2}<1$. (ii) Pruebe la equivalencia con la convexidad estricta de $x\mapsto\tfrac12\norm x^2$, también entendida para puntos distintos.
+\end{ejercicio}
+\begin{solucion}
+Excluir $u=v$ es indispensable: en ese caso $\norm{u+v}=2$. (i) La homogeneidad da $\norm{(u+v)/2}=\norm{u+v}/2$, de donde se obtiene la equivalencia.
+
+(ii) Si $f$ es estrictamente convexa, aplíquela al punto medio de dos vectores unitarios distintos: $\norm{(u+v)/2}^2<1$. Recíprocamente, primero extienda la desigualdad del punto medio a cualquier $0<t<1$ para unitarios distintos. Si $t\leq1/2$,
+\[
+ tu+(1-t)v=2t\frac{u+v}{2}+(1-2t)v,
+\]
+y la norma es menor que $2t+(1-2t)=1$; si $t>1/2$, intercambie $u,v$. Para $x\ne y$, si $\norm x\ne\norm y$, la segunda desigualdad de la solución anterior es estricta. Si sus normas coinciden y son positivas, aplique la desigualdad recién obtenida a los vectores normalizados. El único caso restante, normas ambas cero, implicaría $x=y$ y está excluido. Así $f$ es estrictamente convexa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio4: teorema del sándwich, incisos(i)--(iv)]\label{ej:v3-l05-4}
+Sea $p:X\to\R$ sublineal, $S\subseteq X$ no vacío y $f:S\to\R$ con $f\leq p$ en $S$. Defina
+\[
+ g(x)=\inf_{s\in S,\,t\geq0}\{p(x+ts)-tf(s)\}.
+\]
+Pruebe: (i) $g$ es real, $g\leq p$ y el mismo ínfimo se obtiene con $t>0$; (ii) para una funcional lineal $h$, $h\leq g$ equivale a $h\leq p$ en $X$ y $h\geq f$ en $S$; (iii) si $S$ es convexo y $f$ cóncava, $g$ es sublineal; (iv) bajo esas hipótesis existe una funcional lineal entre las dos cotas. Examine también $S=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+(i) La subaditividad da $p(ts)\leq p(x+ts)+p(-x)$; como $f(s)\leq p(s)$,
+\[
+ p(x+ts)-tf(s)\geq-p(-x)+t(p(s)-f(s))\geq-p(-x).
+\]
+Tomar $t=0$ da la cota superior $g(x)\leq p(x)$. Para un $s\in S$ fijo, las dos estimaciones
+\[
+ p(x)-tp(-s)\leq p(x+ts)\leq p(x)+tp(s)
+\]
+implican $p(x+ts)-tf(s)\to p(x)$ cuando $t\downarrow0$. Por tanto excluir $t=0$ no altera el ínfimo.
+
+(ii) Si $h\leq g$, entonces $h\leq p$. Además $g(-s)\leq p(0)-f(s)=-f(s)$, así que $-h(s)\leq-f(s)$. En la otra dirección,
+\[
+ h(x)=h(x+ts)-th(s)\leq p(x+ts)-tf(s);
+\]
+tomar ínfimo demuestra $h\leq g$.
+
+(iii) El cambio $t=\lambda u$, para $\lambda>0$, da $g(\lambda x)=\lambda g(x)$ y las cotas de(i) dan $g(0)=0$. Para subaditividad, elija $s_1,s_2\in S$ y $t_1,t_2>0$. Ponga $t=t_1+t_2$ y $s=(t_1s_1+t_2s_2)/t\in S$. La concavidad implica $tf(s)\geq t_1f(s_1)+t_2f(s_2)$, de modo que
+\[
+ g(x+y)\leq[p(x+t_1s_1)-t_1f(s_1)]+[p(y+t_2s_2)-t_2f(s_2)].
+\]
+Elija independientemente los dos corchetes a distancia menor que $\eps/2$ de $g(x)$ y $g(y)$; resulta $g(x+y)\leq g(x)+g(y)+\eps$. Dejar $\eps\downarrow0$ prueba la afirmación.
+
+(iv) Extienda la funcional cero del subespacio $\{0\}$ dominada por $g$, usando Hahn--Banach. La extensión $h\leq g$ satisface ambas cotas por(ii). Si $S=\varnothing$, la fórmula original tiene ínfimo vacío, que no es real; por eso(i) necesita la condición añadida. La conclusión(iv) sigue siendo cierta en ese caso, aplicando Hahn--Banach directamente a $p$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio5: separación de un abierto]\label{ej:v3-l05-5}
+Examine si en la separación estricta puede sustituirse ``$A$ compacto'' por ``$A$ abierto'' manteniendo la misma conclusión.
+\end{ejercicio}
+\begin{solucion}
+No. En $\R$, tome $A=(-\infty,0)$ y $B=\{0\}$. Toda funcional es $f(t)=ct$. Si $c>0$, $\sup_Af=0=\inf_Bf$; si $c<0$, el supremo sobre $A$ es infinito; si $c=0$, no hay desigualdad estricta. Ambos conjuntos cumplen las hipótesis propuestas.
+
+La conclusión válida es la separación punto a punto: existe $f\ne0$ con $f(a)<f(b)$ para todo $a\in A$, $b\in B$. La prueba ya está en el teorema~\ref{v3:separacion-interior}, pues ahora $A=\interior A$. El ejemplo demuestra por qué pasar de desigualdades estrictas individuales a una desigualdad estricta entre supremo e ínfimo requiere una hipótesis adicional.
+\end{solucion}
+\begin{ejercicio}[Lectura5, ejercicio6]\label{ej:v3-l05-6}
+Si $H$ es un hiperplano afín cerrado real, pruebe que $H=f^{-1}(\alpha)$ para alguna $f\in X^*\setminus\{0\}$ y $\alpha\in\R$. Describa los lados y sus cierres.
+\end{ejercicio}
+\begin{solucion}
+Escriba $H=x_0+M$, donde $M$ es cerrado y tiene codimensión uno. Elija $u\notin M$; la funcional de distancia da $f|_M=0$, $f(u)\ne0$. Como $M$ tiene codimensión uno, $\ker f=M$. Por tanto $H=\{x:f(x)=f(x_0)\}$. Los lados son $\{f>\alpha\}$ y $\{f<\alpha\}$, abiertos por continuidad. Sus cierres son $\{f\geq\alpha\}$ y $\{f\leq\alpha\}$: una inclusión sigue por continuidad; para la otra, si $f(x)=\alpha$, añada o reste $u/n$ eligiendo el signo que haga $f(u)>0$. Así cada punto del hiperplano se aproxima desde ambos lados.
+\end{solucion}
+\begin{ejercicio}[Lectura5, ejercicio7: teorema del soporte]\label{ej:v3-l05-7}
+El original supone que $A$ es conexo, con interior no vacío, y pide un hiperplano cerrado por cada $x\notin\interior A$ que deje a $A$ en un semiespacio cerrado. Examine esa hipótesis y pruebe la versión válida.
+\end{ejercicio}
+\begin{solucion}
+La conexión es insuficiente. El anillo $A=\{y\in\R^2:1\leq\norm y_2\leq2\}$ es conexo, tiene interior no vacío y $0\notin\interior A$. Ninguna recta por cero deja a todo el anillo de un mismo lado: para cualquier funcional no nula $f$, el anillo contiene puntos $y,-y$ con $f(y)>0>f(-y)$.
+
+La hipótesis correcta es \emph{convexidad}. Separe el abierto convexo $\interior A$ del punto $x$ por el teorema~\ref{v3:separacion-interior}: existe $f\ne0$ con $f(a)<f(x)$ para todo $a\in\interior A$. La prueba de ese teorema mostró $A\subseteq\cl{\interior A}$; por continuidad $f(a)\leq f(x)$ para todo $a\in A$. El hiperplano $H=\{f=f(x)\}$ pasa por $x$ y el semiespacio cerrado $\{f\leq f(x)\}$ contiene a $A$. En un espacio complejo se usa la parte real de una funcional compleja, es decir, un hiperplano real de soporte.
+\end{solucion}
+\begin{ejercicio}[Lectura5, ejercicio8]\label{ej:v3-l05-8}
+Demuestre que un convexo cerrado de un espacio normado real no nulo es la intersección de los semiespacios cerrados que lo contienen.
+\end{ejercicio}
+\begin{solucion}
+Sea primero $A$ no vacío y distinto de $X$. Para cada $x\notin A$, la separación estricta entre $\{x\}$ y $A$ produce $f$ y $c$ con $f(a)\leq c<f(x)$ para todo $a\in A$, tras cambiar el signo si es necesario. Así un semiespacio cerrado contiene $A$ y excluye $x$. La intersección de todos los semiespacios que contienen $A$ no puede contener ningún punto externo; la otra inclusión es inmediata.
+
+Si $A=X$, la intersección de la familia vacía de semiespacios propios se interpreta como $X$. Si $A=\varnothing$ y $X\ne\{0\}$, elija una funcional no nula $f$; los semiespacios $\{f\leq0\}$ y $\{f\geq1\}$ son disjuntos, y ambos contienen el vacío. En el espacio nulo no existen hiperplanos propios: para su conjunto vacío el enunciado literal requiere excluir ese caso o admitir semiespacios degenerados definidos por funcionales nulas. Esa es la razón de la precisión en el enunciado.
+\end{solucion}
+
+\section{Funcionales minimales y una segunda extensión}\label{lec:v3-06}
+\fuentelectura{06}{Más sobre funcionales sublineales}
+Las funcionales sublineales reales forman un cono ordenado por la comparación punto a punto. Una funcional $p$ es minimal si la única sublineal $q\leq p$ es $p$ misma.
+\begin{proposicion}\label{v3:l06-p1}
+Para una funcional sublineal $p$ son equivalentes: (i) $p$ es lineal; (ii) $p(x)+p(-x)=0$ para todo $x$; (iii) $p(x)+p(-x)\leq0$ para todo $x$.
+\end{proposicion}
+\begin{proof}
+La linealidad implica(ii), y(ii) implica(iii). Siempre $0=p(0)\leq p(x)+p(-x)$, así que(iii) implica(ii). Si(ii) vale, entonces
+\[
+ p(x)\leq p(x+y)+p(-y)=p(x+y)-p(y),
+\]
+lo cual, junto con subaditividad, da aditividad. La homogeneidad positiva y $p(-x)=-p(x)$ dan homogeneidad para todos los escalares reales. Así(ii) implica(i), completando también la prueba propuesta en la lectura.
+\end{proof}
+
+\begin{observacion}[Corrección de la funcional auxiliar]
+La fórmula original toma el ínfimo simultáneamente sobre $t\geq0$ y $w\in X$. Sin embargo,
+\[
+ \inf_{t\geq0,\,w\in X}\{p(x+tw)-tp(w)\}=-p(-x).
+\]
+La desigualdad $\geq$ procede de subaditividad y la igualdad se alcanza tomando $t=1$, $w=-x$. Para $p(x)=|x|$ en $\R$ el resultado es $-|x|$, que no es subaditivo: su valor en $1+(-1)$ es cero, mayor que $-2$. El teorema auxiliar original es falso. La corrección que conserva el método consiste en fijar la dirección $w$ antes de tomar el ínfimo.
+\end{observacion}
+\begin{lema}\label{v3:auxiliar-fija}
+Para una dirección fija $w\in X$, defina
+\[
+ q_w(x)=\inf_{t\geq0}\{p(x+tw)-tp(w)\}.
+\]
+Entonces $q_w$ es sublineal, $-p(-x)\leq q_w(x)\leq p(x)$ y $q_w(-w)=-p(w)$.
+\end{lema}
+\begin{proof}
+La cota inferior se obtiene de $tp(w)\leq p(x+tw)+p(-x)$, y la superior tomando $t=0$. En particular la función es real. El cambio $t=\alpha s$ demuestra homogeneidad positiva; para $x=0$ todos los términos del ínfimo son cero. Para $s,t\geq0$,
+\[
+ q_w(x+y)\leq p(x+y+(s+t)w)-(s+t)p(w)
+ \leq[p(x+sw)-sp(w)]+[p(y+tw)-tp(w)].
+\]
+Los parámetros $s,t$ son independientes, así que elegir aproximantes a ambos ínfimos prueba subaditividad. Para $x=-w$, la cota inferior da $q_w(-w)\geq-p(w)$, y tomar $t=1$ da la desigualdad inversa.
+\end{proof}
+\begin{teorema}\label{v3:minimales}
+Las funcionales sublineales minimales son exactamente las lineales. Toda funcional sublineal domina alguna funcional lineal.
+\end{teorema}
+\begin{proof}
+Si $p$ es lineal y $q\leq p$ es sublineal, entonces $p(x)=-p(-x)\leq-q(-x)\leq q(x)\leq p(x)$, por lo que $q=p$. Si $p$ es minimal, el lema da $p=q_w$ para cada dirección $w$. Evaluar en $-w$ produce $p(-w)=-p(w)$, y la proposición anterior demuestra linealidad.
+
+Para la existencia, considere $\mathcal P=\{q:q\text{ sublineal},q\leq p\}$, no vacío porque contiene $p$. Si $\mathcal C$ es una cadena no vacía, cada $q\in\mathcal C$ satisface $-p(-x)\leq-q(-x)\leq q(x)$; por tanto $h(x)=\inf_{q\in\mathcal C}q(x)$ es real. Es positivamente homogénea y $h(0)=0$. Dados $x,y$ y $\eps>0$, elija $q_1,q_2$ con $q_1(x)<h(x)+\eps/2$, $q_2(y)<h(y)+\eps/2$. Como la familia es una cadena, el menor de $q_1,q_2$ pertenece a ella y sirve simultáneamente para las dos cotas. Su subaditividad da $h(x+y)\leq h(x)+h(y)+\eps$. Así $h$ es sublineal y es una cota inferior en $\mathcal P$. La cadena vacía tiene la cota $p$. Zorn, aplicado al orden inverso, da un elemento minimal de $\mathcal P$; también es minimal entre todas las sublineales porque cualquier funcional menor sigue estando dominada por $p$. Es lineal por lo ya probado.
+\end{proof}
+
+\begin{proposicion}[Segunda prueba de Hahn--Banach]\label{v3:hb-minimal}
+Si $f:M\to\R$ es lineal y $f\leq p$ en $M$, la función
+\[
+ q(x)=\inf_{m\in M}\{p(x-m)+f(m)\}
+\]
+es sublineal, satisface $q\leq p$ en $X$ y $q=f$ en $M$. Una funcional lineal dominada por $q$ extiende a $f$.
+\end{proposicion}
+\begin{proof}
+La desigualdad $-f(m)=f(-m)\leq p(-m)\leq p(x-m)+p(-x)$ da $q(x)\geq-p(-x)$. Tomar $m=0$ da $q\leq p$. Si $x\in M$, entonces $f(x)=f(x-m)+f(m)\leq p(x-m)+f(m)$ y tomar $m=x$ da igualdad $q(x)=f(x)$.
+
+La homogeneidad se obtiene cambiando $m=\alpha n$ para $\alpha>0$, y $q(0)=f(0)=0$. Para $x,y$ elija aproximantes $m,n\in M$ a los dos ínfimos; use
+\[
+ p(x+y-m-n)+f(m+n)\leq p(x-m)+f(m)+p(y-n)+f(n)
+\]
+y haga tender a cero el error de aproximación. Así $q$ es sublineal. El teorema de minimalidad produce una funcional lineal $F\leq q$. En $M$, $F\leq f$, y aplicar esa desigualdad a $-m$ da $F\geq f$. Por tanto $F|_M=f$ y $F\leq p$ en todo $X$.
+\end{proof}
+
+\section{Alcance de la separación}
+La separación débil entre conjuntos no equivale a una distancia positiva entre sus imágenes. La compacidad de uno y la cerradura del otro producen esa distancia; la apertura produce desigualdades estrictas punto a punto. La funcional de Minkowski reúne estas ideas y permite verificar cada hipótesis. Su construcción, y la corrección de la auxiliar en dirección fija, muestran cómo una fórmula de ínfimos puede conservar unas propiedades y perder otras si se cambian sus parámetros.

@@ -1,0 +1,325 @@
+\chapter{Álgebras \texorpdfstring{$C^*$}{C*} y cálculo funcional continuo}\label{cap:v3-13}
+
+El adjunto de un operador no es una operación auxiliar: vincula su estructura algebraica con su norma. La identidad $\norm{a^*a}=\norm a^2$ recoge ese vínculo y tiene consecuencias muy fuertes: determina la norma, permite reconocer el espectro de elementos normales y convierte un álgebra conmutativa en un espacio de funciones continuas.
+
+\section{Involución e identidad \texorpdfstring{$C^*$}{C*}}\label{lec:v3-25}
+\fuentelectura{25}{Álgebras C*}
+
+\begin{definicion}
+Una involución en un álgebra compleja $A$ es una operación $a\mapsto a^*$ tal que
+\[
+ (\alpha a+\beta b)^*=\overline\alpha a^*+\overline\beta b^*,\quad
+ (ab)^*=b^*a^*,\quad (a^*)^*=a.
+\]
+Una \emph{álgebra $C^*$} es un álgebra de Banach con involución que satisface $\norm{a^*a}=\norm a^2$ para todo $a$. No se exige identidad multiplicativa.
+\end{definicion}
+\index{algebra C*@$C^*$-álgebra}\index{involucion@involución}
+
+La segunda propiedad se llama \emph{antimultiplicatividad}: invierte el orden del producto; no afirma $ab=-ba$. Las conjugaciones de los escalares son indispensables en la primera propiedad.
+
+\begin{proposicion}\label{v3:involucion-isometrica}
+La involución de un álgebra $C^*$ es isométrica. Si existe identidad, $1^*=1$ y $\norm1=1$ en el álgebra no nula. Además $(a^{-1})^*=(a^*)^{-1}$ para todo invertible.
+\end{proposicion}
+\begin{proof}
+Para $a\ne0$, $\norm a^2=\norm{a^*a}\le\norm{a^*}\norm a$, de donde $\norm a\le\norm{a^*}$. Aplicar esto a $a^*$ da la desigualdad inversa. De $a1=a=1a$ y la sobreyectividad de la involución se obtiene que $1^*$ también es identidad, luego coincide con $1$. La identidad $C^*$ da $\norm1=\norm1^2$, y la norma no es cero. Aplicar la involución a $aa^{-1}=a^{-1}a=1$ prueba la fórmula de inversas.
+\end{proof}
+
+\begin{ejemplo}
+$\C$, $C(K)$ para $K$ compacto Hausdorff, $C_b(X)$ y $C_0(X)$ para $X$ localmente compacto Hausdorff, y $L^\infty(\mu)$ son álgebras $C^*$ con conjugación puntual. La identidad de norma se reduce a $\norm{|f|^2}_\infty=\norm f_\infty^2$. En un espacio no compacto, $C(X)$ completo, sin restricción de acotación, no lleva en general una norma del supremo finita; ésa es la corrección necesaria al ejemplo original. En $\Lcal(H)$, el adjunto de Hilbert satisface $\norm{T^*T}=\norm T^2$ y proporciona el ejemplo no conmutativo fundamental.
+
+El álgebra de convolución $L^1(\R)$ tiene involución $f^*(t)=\overline{f(-t)}$. Es conjugada lineal e involutiva, y
+\[
+ (f*g)^*(t)=\int_{\R}\overline{f(s)g(-t-s)}\,ds
+ =\int_{\R}\overline{g(-u)}\,\overline{f(u-t)}\,du
+ =(g^**f^*)(t)
+\]
+casi en todas partes, por el cambio $u=t+s$. No es un álgebra $C^*$ con la norma $L^1$. Para $f=\mathbf1_{[0,1]}-\mathbf1_{[1,2]}$, $\norm f_1^2=4$, mientras su autocorrelación $f^**f$ es par y vale $2-3t$ en $0\le t\le1$, $t-2$ en $1\le t\le2$ y cero para $t>2$. Integrando su valor absoluto se obtiene $\norm{f^**f}_1=8/3<4$.
+\end{ejemplo}
+
+\begin{definicion}
+Un elemento es \emph{normal} si $a^*a=aa^*$, \emph{autoadjunto} si $a=a^*$, \emph{unitario} si $a^*a=aa^*=1$, \emph{positivo} si tiene la forma $b^*b$, y \emph{proyección} si $p=p^*=p^2$.
+\end{definicion}
+
+Todo autoadjunto y todo unitario es normal; todo $b^*b$ es autoadjunto y toda proyección es positiva porque $p=p^*p$. La equivalencia entre esta definición algebraica de positividad y la condición espectral $\sigma(a)\subset[0,\infty)$ se demostrará en el capítulo siguiente, sin utilizarla anticipadamente aquí.
+
+\subsection{Norma y espectro de elementos normales}
+Por ahora suponemos que $A$ es unitaria. La unitización que construiremos después extenderá las afirmaciones espectrales al caso no unitario.
+
+\begin{proposicion}\label{v3:normal-radio-norma}
+Se tiene $\sigma(a^*)=\overline{\sigma(a)}$. Si $a$ es normal, $r(a)=\norm a$. Si $u$ es unitario, $\sigma(u)\subset\mathbb T$; si $a$ es autoadjunto, $\sigma(a)\subset\R$.
+\end{proposicion}
+\begin{proof}
+La fórmula de inversas muestra que $a-\lambda1$ es invertible si y sólo si $a^*-\overline\lambda1$ lo es. Para $a=a^*$, la identidad $C^*$ implica $\norm{a^2}=\norm a^2$, y al iterar se obtiene $\norm{a^{2^n}}=\norm a^{2^n}$. La fórmula de Gelfand da $r(a)=\norm a$. Si $a$ es normal,
+\[
+ \norm{a^2}^2=\norm{(a^*)^2a^2}
+ =\norm{(a^*a)^2}=\norm{a^*a}^2=\norm a^4.
+\]
+Las potencias de $a$ siguen siendo normales, y la misma iteración demuestra $r(a)=\norm a$.
+
+Si $u$ es unitario, $\norm u^2=\norm1=1$ y también $\norm{u^{-1}}=1$. Para $\lambda\in\sigma(u)$, las cotas espectrales de $u$ y $u^{-1}$ dan $|\lambda|\le1$ y $|\lambda|^{-1}\le1$, de donde $|\lambda|=1$. Si $a=a^*$, la convergencia en norma de la serie exponencial y la continuidad de la involución dan $(e^{ia})^*=e^{-ia}=(e^{ia})^{-1}$. Así $e^{ia}$ es unitario. El mapeo espectral implica $|e^{i\lambda}|=1$ para $\lambda\in\sigma(a)$; como ese módulo es $e^{-\operatorname{Im}\lambda}$, necesariamente $\operatorname{Im}\lambda=0$.
+\end{proof}
+
+\begin{teorema}[Fuglede]\label{v3:fuglede}
+Si $a$ es normal y $ab=ba$ en un álgebra $C^*$ unitaria, entonces $a^*b=ba^*$.
+\end{teorema}
+\begin{proof}
+La función $F(z)=e^{za^*}be^{-za^*}$ es entera con valores en $A$, como se ve multiplicando sus series localmente uniformes. Como $b$ conmuta con $a$, conmuta con todas sus potencias y exponenciales. Además $a$ conmuta con $a^*$. Por tanto
+\[
+ F(z)=e^{za^*-\overline z a}\,b\,e^{-za^*+\overline z a}.
+\]
+El exponente $za^*-\overline z a$ es antiautoadjunto: su adjunto es su negativo. Su exponencial es unitaria, porque la serie y la involución dan adjunto igual a la exponencial opuesta. En consecuencia $\norm{F(z)}\le\norm b$ para todo $z$. Liouville vectorial implica que $F$ es constante. Derivar en cero da $0=F'(0)=a^*b-ba^*$.
+
+Todo elemento también admite una descomposición única $c=h+ik$ con $h,k$ autoadjuntos, dada por $h=(c+c^*)/2$ y $k=(c-c^*)/(2i)$. La normalidad de $c$ equivale a $hk=kh$, como se verifica desarrollando $c^*c-cc^*=2i(hk-kh)$. Estas identidades explican la separación en partes autoadjuntas empleada en la prueba original; la demostración anterior evita ambigüedades entre $z$ y $\overline z$.
+\end{proof}
+
+\section{Ejercicios sobre la estructura \texorpdfstring{$C^*$}{C*}}
+
+\begin{ejercicio}\label{ej:v3-l25-1}
+Si $a=a^*$, pruebe que $e^{ia}$ es unitario.
+\end{ejercicio}
+\begin{solucion}
+La involución pasa al límite de la serie por ser isométrica, así $(e^{ia})^*=\sum(-ia)^n/n!=e^{-ia}$. Las exponenciales de $ia$ y $-ia$ multiplican a $1$ en ambos órdenes. Por tanto $(e^{ia})^*e^{ia}=e^{ia}(e^{ia})^*=1$. Si $A$ no es unitaria, la exponencial y la afirmación se entienden en su unitización.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-2}
+Para $a$ normal pruebe: (i) existe $\lambda\in\sigma(a)$ con $|\lambda|=\norm a$; (ii) si $a^n=0$ para algún $n\ge1$, entonces $a=0$.
+\end{ejercicio}
+\begin{solucion}
+(i) El módulo alcanza su máximo en el espectro compacto no vacío, y ese máximo es $r(a)=\norm a$. (ii) La nilpotencia implica $r(a)=\lim_k\norm{a^k}^{1/k}=0$. La normalidad convierte esa igualdad en $\norm a=0$. Sin normalidad la conclusión es falsa: la matriz $\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$ es nilpotente y no nula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-3}
+Decimos que $a,b$ son unitariamente equivalentes si $b=uau^*$ para algún unitario $u$. Pruebe: (i) ésta es una relación de equivalencia; (ii) preserva normalidad, autoadjunción y positividad; (iii) $\sigma(uau^*)=\sigma(a)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La identidad prueba reflexividad; si $b=uau^*$, entonces $a=u^*bu$; y si $c=vbv^*$, entonces $c=(vu)a(vu)^*$, con $vu$ unitario. (ii) Para $b=uau^*$ se tiene $b^*=ua^*u^*$, $b^*b=ua^*au^*$ y $bb^*=uaa^*u^*$; las dos primeras propiedades se conservan. Si $a=c^*c$, entonces $b=(cu^*)^*(cu^*)$, y es positivo. (iii) $b-\lambda1=u(a-\lambda1)u^*$; ese elemento es invertible exactamente cuando lo es $a-\lambda1$, porque los factores externos son invertibles.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-4}
+Pruebe que los unitarios forman un subgrupo cerrado de $G(A)$. Determine si es necesariamente normal.
+\end{ejercicio}
+\begin{solucion}
+El producto de unitarios es unitario y la inversa de $u$ es $u^*$. Si $u_n\to u$ en norma, la continuidad del producto y de la involución da $u^*u=uu^*=1$; el grupo unitario es incluso cerrado en $A$. No tiene por qué ser normal en $G(A)$. En $M_2(\C)$, tome
+\[
+ u=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ s=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+\]
+Entonces $sus^{-1}=\left(\begin{smallmatrix}0&2\\1/2&0\end{smallmatrix}\right)$ y $(sus^{-1})^*(sus^{-1})=\operatorname{diag}(1/4,4)\ne I$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-5}
+Pruebe que $A$ es conmutativa si y sólo si todos sus elementos son normales.
+\end{ejercicio}
+\begin{solucion}
+La implicación directa es inmediata. Recíprocamente, si $h,k$ son autoadjuntos, la normalidad de $h+ik$ y el desarrollo al final de la prueba de Fuglede dan $hk=kh$. Cada elemento es combinación compleja lineal de dos autoadjuntos; distribuir los productos muestra entonces que cualesquiera dos elementos de $A$ conmutan.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-6}
+Pruebe que una misma álgebra con involución tiene a lo sumo una norma que la convierta en álgebra $C^*$.
+\end{ejercicio}
+\begin{solucion}
+En cualquiera de esas normas, $a^*a$ es autoadjunto, de modo que
+\[
+ \norm a^2=\norm{a^*a}=r(a^*a).
+\]
+El miembro derecho sólo depende de la invertibilidad algebraica de $a^*a-\lambda1$, y no de la norma elegida. Por tanto las dos normas coinciden en cada $a$. En el caso no unitario se usa la unitización algebraica $A\oplus\C$, que es la misma para ambas normas; el teorema siguiente garantiza una norma $C^*$ en ella y permite aplicar el mismo argumento sin suponer de antemano que las normas originales sean equivalentes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-7}
+Pruebe que un álgebra de Banach con involución es $C^*$ si y sólo si $\norm{a^*a}\ge\norm a^2$ para cada $a$.
+\end{ejercicio}
+\begin{solucion}
+La necesidad es inmediata. Para la suficiencia, si $a\ne0$,
+$\norm a^2\le\norm{a^*a}\le\norm{a^*}\norm a$, así $\norm a\le\norm{a^*}$. Sustituyendo $a$ por $a^*$ se obtiene la igualdad de normas. Por tanto $\norm{a^*a}\le\norm{a^*}\norm a=\norm a^2$, que junto con la hipótesis da la identidad $C^*$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-8}
+Sea $(A_j)_{j\in J}$ una familia de álgebras $C^*$. Pruebe que son álgebras $C^*$, con operaciones coordenadas y norma del supremo: (i) $\prod_j^{\mathrm b}A_j=\{(a_j):\sup_j\norm{a_j}<\infty\}$; (ii) $\bigoplus_j^{c_0}A_j=\{(a_j):\text{para cada }\eps>0,\ \{j:\norm{a_j}\ge\eps\}\text{ es finito}\}$.
+\end{ejercicio}
+\begin{solucion}
+(i) Las operaciones preservan la acotación y la norma es submultiplicativa. Una sucesión de Cauchy converge coordenada a coordenada en los espacios completos $A_j$; la cota de Cauchy uniforme pasa al límite y prueba convergencia en la norma del supremo hacia una familia acotada. La involución coordenada es isométrica y
+$\norm{a^*a}=\sup_j\norm{a_j^*a_j}=\sup_j\norm{a_j}^2=\norm a^2$.
+
+(ii) La condición dada implica acotación: fuera del conjunto finito correspondiente a $\eps=1$, las normas son menores que uno, y dentro hay un máximo finito. Sumas, productos y adjuntos conservan la condición; para productos, use $\norm{a_jb_j}\le\norm a\norm{b_j}$. Es un subespacio cerrado del producto acotado: si $a^{(n)}\to a$ uniformemente, elija $n$ con $\norm{a-a^{(n)}}<\eps/2$; entonces $\{j:\norm{a_j}\ge\eps\}\subset\{j:\norm{a_j^{(n)}}\ge\eps/2\}$, que es finito. Por tanto es completo y hereda la identidad $C^*$.
+\end{solucion}
+
+\section{Adjuntar una identidad compatible con el adjunto}\label{lec:v3-26}
+\fuentelectura{26}{El cálculo funcional continuo}
+
+Un $*$-homomorfismo es una aplicación compleja lineal, multiplicativa y que conserva la involución. Cuando se precisa preservación de la identidad se dice \emph{unital}. Más adelante veremos que entre álgebras $C^*$ la continuidad de un $*$-homomorfismo es automática.
+
+\begin{teorema}[Unitización $C^*$]\label{v3:unitizacion-cstar}
+Si $A$ es una álgebra $C^*$ no unitaria, su unitización algebraica $\widetilde A=A\oplus\C$, con
+\[
+ (a,\lambda)(b,\mu)=(ab+\lambda b+\mu a,\lambda\mu),\qquad
+ (a,\lambda)^*=(a^*,\overline\lambda),
+\]
+es un álgebra $C^*$ unitaria con la norma
+\[
+ \norm{(a,\lambda)}_*=\sup_{\norm z\le1}\norm{az+\lambda z}.
+\]
+La inclusión de $A$ es isométrica y su imagen es un ideal maximal cerrado.
+\end{teorema}
+\begin{proof}
+Las identidades de la involución se verifican coordenada a coordenada; en particular, al conjugar el producto su primera componente es $b^*a^*+\overline\lambda b^*+\overline\mu a^*$, la primera componente de $(b,\mu)^*(a,\lambda)^*$. Sea $L_{(a,\lambda)}z=az+\lambda z$. La norma propuesta es la norma de operador y $L_{xy}=L_xL_y$, de modo que es submultiplicativa.
+
+Primero, para $a\in A$, $\norm{L_a}=\norm a$: la cota superior es inmediata, y si $a\ne0$ se prueba la inferior evaluando en $a^*/\norm a$, pues $\norm{aa^*}=\norm a^2$. Si $L_{(a,\lambda)}=0$ y $\lambda\ne0$, $-a/\lambda$ sería identidad izquierda de $A$. Una identidad izquierda $e$ en un álgebra con involución produce una identidad derecha $e^*$; como $ee^*=e^*$ por la primera propiedad y $ee^*=e$ por la segunda, ambas coinciden y $A$ sería unitaria. Por hipótesis esto es imposible. Si $\lambda=0$, $\norm{L_a}=\norm a$ da $a=0$. Así la norma es definida positiva.
+
+Demostremos las cotas que aseguran completitud. Se tiene
+\[
+ |\lambda|\le\norm{L_{(a,\lambda)}},\qquad
+ \norm a\le2\norm{L_{(a,\lambda)}}.
+\]
+Para la primera, si $\norm{L_a+\lambda I}<|\lambda|$, entonces $L_a=-\lambda[I-(L_a+\lambda I)/\lambda]$ sería invertible en $\Lcal(A)$ por Neumann. Tome $e\in A$ con $ae=a$. Para todo $b\in A$, $a(eb-b)=0$; la inyectividad de $L_a$ implica $eb=b$, contradiciendo que $A$ no tiene identidad. La segunda cota se sigue de $\norm a=\norm{L_a}\le\norm{L_a+\lambda I}+|\lambda|$. Por tanto
+\[
+ \norm{(a,\lambda)}_*\le\norm a+|\lambda|
+ \le3\norm{(a,\lambda)}_*.
+\]
+La norma es equivalente a la norma suma completa, y por ello es completa.
+
+Falta la identidad $C^*$. Para cualquier $v\in A$,
+$\norm v=\sup_{\norm w\le1}\norm{wv}$, por el mismo argumento con $v^*/\norm v$. Si $x=(a,\lambda)$ y $z,w\in A$ tienen norma a lo sumo uno,
+\[
+ \norm{wx^*z}=\norm{z^*xw^*}\le\norm x_*.
+\]
+Tomar primero supremo en $w$ y luego en $z$ prueba $\norm{x^*}_*\le\norm x_*$; aplicar lo mismo a $x^*$ da igualdad. Además
+\[
+ \norm{xz}^2=\norm{z^*x^*xz}\le\norm{z^*}\norm{x^*xz}
+ \le\norm{x^*x}_*\norm z^2.
+\]
+Tomar el supremo sobre $z$ da $\norm x_*^2\le\norm{x^*x}_*$. La desigualdad inversa resulta de submultiplicatividad e isometría de la involución. Finalmente, $A\oplus\{0\}$ es un ideal cerrado y el cociente, identificado con la segunda coordenada, es $\C$, luego es maximal.
+\end{proof}
+
+Para un álgebra no unitaria definimos el espectro de $a\in A$ dentro de $\widetilde A$. El cero siempre pertenece a él, porque la proyección escalar anula $a$ e impide que sea invertible. La norma original no cambia, de modo que las propiedades de elementos normales y autoadjuntos ya probadas se extienden a este caso.
+
+\section{Representación de las álgebras conmutativas}
+
+\begin{lema}[Permanencia espectral $C^*$]\label{v3:permanencia-cstar}
+Si $B\subset A$ es una subálgebra $C^*$ cerrada que contiene la identidad de $A$, entonces $\sigma_B(b)=\sigma_A(b)$ para todo $b\in B$.
+\end{lema}
+\begin{proof}
+Sólo hay que probar que un elemento de $B$ invertible en $A$ tiene su inversa en $B$. Primero suponga $b=b^*$ invertible en $A$. El espectro de $b$ en $A$ es un compacto real que evita cero. Elija $R>\norm b$. Por mapeo espectral polinomial y normalidad,
+\[
+ \norm{1-b^2/R^2}
+ =\max_{t\in\sigma_A(b)}|1-t^2/R^2|<1.
+\]
+La serie de Neumann, cuyos términos pertenecen a $B$, muestra que $(b^2)^{-1}\in B$, y entonces $b^{-1}=b(b^2)^{-1}\in B$. Para $b$ general invertible, $b^*b$ es autoadjunto e invertible en $A$. El caso anterior da $(b^*b)^{-1}\in B$, y $b^{-1}=(b^*b)^{-1}b^*\in B$. No hemos usado positividad espectral de $b^*b$ en esta prueba, por lo que no hay circularidad con el capítulo siguiente.
+\end{proof}
+
+\begin{lema}[Stone--Weierstrass en compacto Hausdorff]\label{v3:stone-weierstrass}
+Si $K$ es compacto Hausdorff y $\mathcal B\subset C(K,\C)$ es una subálgebra que contiene constantes, separa puntos y es estable bajo conjugación, entonces es uniformemente densa en $C(K,\C)$.
+\end{lema}
+\begin{proof}
+Primero justificamos la herramienta de aproximación usada en la prueba. Para $h\in C([0,1],\R)$, los polinomios de Bernstein
+\[
+ B_nh(t)=\sum_{k=0}^nh(k/n)\binom nk t^k(1-t)^{n-k}
+\]
+convergen uniformemente a $h$. En efecto, los pesos son no negativos y suman uno; su promedio de $k/n$ es $t$ y su promedio de $(k/n-t)^2$ es $t(1-t)/n\le1/(4n)$, identidades que se obtienen diferenciando el binomio. Dado $\delta>0$, divida la suma del error entre $|k/n-t|<\delta$ y su complemento. La primera parte se acota por el módulo de continuidad $\omega_h(\delta)$; la suma de pesos de la segunda es a lo sumo $1/(4n\delta^2)$, de modo que
+\[
+ \norm{B_nh-h}_\infty\le\omega_h(\delta)+\frac{\norm h_\infty}{2n\delta^2}.
+\]
+Primero elija $\delta$ y después $n$. Por cambio afín, toda función continua real de un intervalo compacto, en particular $|t|$, admite aproximación polinomial uniforme.
+
+Sea $\mathcal R$ la parte real de $\mathcal B$, es decir, sus elementos reales. Es una subálgebra real con constantes que separa puntos: si un elemento complejo distingue dos puntos, su parte real o su parte imaginaria también los distingue, y ambas pertenecen a $\mathcal B$ por estabilidad bajo conjugación. Su clausura uniforme $\overline{\mathcal R}$ es estable bajo valor absoluto: para $g$ en ella, aproxime $|t|$ por polinomios en un intervalo que contiene el rango de $g$, y evalúelos en $g$. Por tanto es estable bajo máximos y mínimos finitos, mediante $\max(g,h)=(g+h+|g-h|)/2$ y la fórmula análoga para el mínimo.
+
+Fije $f\in C(K,\R)$ y $\eps>0$. Para $x,y\in K$ existe $a_{x,y}\in\mathcal R$ con $a_{x,y}(x)=f(x)$ y $a_{x,y}(y)=f(y)$: si $x\ne y$, una función que los separa se ajusta mediante una transformación afín; si coinciden, basta una constante. Para $x$ fijo, los abiertos $\{t:a_{x,y}(t)>f(t)-\eps\}$ cubren $K$ al variar $y$. Elija un subcubrimiento finito y sea $g_x$ el máximo de las correspondientes funciones. Entonces $g_x\in\overline{\mathcal R}$, $g_x>f-\eps$ en todo $K$ y $g_x(x)=f(x)$. Los abiertos $\{t:g_x(t)<f(t)+\eps\}$ cubren $K$ al variar $x$. Elija otro subcubrimiento finito y tome el mínimo $g$ de esas funciones $g_x$. Se tiene $f-\eps<g<f+\eps$ en todo $K$, y $g\in\overline{\mathcal R}$. Como esta clausura es cerrada y $\eps$ es arbitrario, $f\in\overline{\mathcal R}$. Finalmente aproxime por separado las partes real e imaginaria de una función compleja. Ningún paso utiliza una métrica en $K$.
+\end{proof}
+
+\begin{teorema}[Gelfand para álgebras $C^*$ conmutativas]\label{v3:gelfand-cstar}
+Si $A$ es conmutativa y unitaria, $\mathcal G:A\to C(\Delta(A))$ es un $*$-isomorfismo isométrico sobreyectivo.
+\end{teorema}
+\begin{proof}
+Todos los elementos son normales, por lo que $\norm{\widehat a}_\infty=r(a)=\norm a$. Así la imagen es cerrada: una sucesión de imágenes de Cauchy procede de una sucesión de Cauchy en el espacio completo $A$. Si $h=h^*$, cada carácter satisface $\varphi(h)\in\sigma(h)\subset\R$. Para $a=h+ik$ con $h,k$ autoadjuntos, se obtiene
+$\varphi(a^*)=\varphi(h)-i\varphi(k)=\overline{\varphi(a)}$. Esto prueba que la imagen es estable bajo conjugación; la igualdad de conjuntos espectrales conjugados, por sí sola, no habría probado esta igualdad punto por punto.
+
+La imagen contiene las constantes, porque $\widehat1=1$, y separa caracteres distintos, porque dos funcionales distintos difieren en algún $a$. El lema~\ref{v3:stone-weierstrass} implica que es densa, y al ser cerrada es todo $C(\Delta(A))$.
+\end{proof}
+
+\begin{proposicion}[Generadores y coordenadas]\label{v3:generador-espectro}
+Si un álgebra de Banach conmutativa unitaria es la clausura de los polinomios en $a$, entonces $\varphi\mapsto\varphi(a)$ es un homeomorfismo de $\Delta(A)$ sobre $\sigma_A(a)$. Lo mismo ocurre si $A$ es $C^*$, conmutativa y unitaria, y está generada como álgebra $C^*$ unitaria por un elemento $a$.
+\end{proposicion}
+\begin{proof}
+La aplicación es continua por la topología débil estrella y sobreyectiva por la descripción del espectro mediante caracteres. Si dos caracteres coinciden en $a$, coinciden en sus potencias, en todos los polinomios y, por continuidad, en su clausura. En el caso $C^*$ también coinciden en $a^*$ porque preservan conjugación, así que coinciden en todos los polinomios en $a,a^*$ y en su clausura. En ambos casos se obtiene una biyección continua de un compacto sobre un Hausdorff, cuya inversa es continua porque las imágenes de cerrados son compactas y por tanto cerradas.
+\end{proof}
+
+\begin{teorema}[Cálculo funcional continuo]\label{v3:calculo-continuo}
+Sea $a$ normal en un álgebra $C^*$ unitaria $A$. Existe un único $*$-homomorfismo unital
+\[
+ C_a:C(\sigma_A(a))\longrightarrow A,\qquad f\longmapsto f(a),
+\]
+que envía la función coordenada $z$ a $a$. Es isométrico, su imagen es $C^*(1,a)$, extiende el cálculo holomorfo y cumple
+\[
+ \sigma_A(f(a))=f(\sigma_A(a)).
+\]
+\end{teorema}
+\begin{proof}
+La subálgebra $B=C^*(1,a)$, clausura de los polinomios en $a,a^*$, es conmutativa porque $a$ es normal. La permanencia espectral da $\sigma_B(a)=\sigma_A(a)$. Por la proposición anterior, $\tau:\Delta(B)\to\sigma_A(a)$, $\tau(\varphi)=\varphi(a)$, es un homeomorfismo. Defina $C_a(f)=\mathcal G_B^{-1}(f\circ\tau)$. Cada factor es un $*$-isomorfismo isométrico, por lo que se obtienen todas las propiedades algebraicas y de norma, incluida la imagen.
+
+Si $f$ es holomorfa cerca del espectro, su integral calculada en $B$ coincide con la calculada en $A$: los resolventes pertenecen a $B$ por permanencia y son las mismas inversas. La transformada de Gelfand de esa integral es $f\circ\widehat a=f\circ\tau$, de modo que coincide con $C_a(f)$. Esta prueba evita necesitar una versión adicional del teorema de Runge. La unicidad se debe a que cualquier $*$-homomorfismo unital $F$ que envía $z$ a $a$ envía $\overline z$ a $a^*$ y coincide en los polinomios en $z,\overline z$; éstos son densos por Stone--Weierstrass. Para justificar el paso al límite sin suponer continuidad de antemano, una inversa se conserva bajo $F$, de modo que $\sigma(F(f))\subset\sigma(f)$. El elemento $F(f)$ es normal, porque $f$ conmuta con su conjugado y $F$ conserva productos y adjuntos. Por tanto $\norm{F(f)}=r(F(f))\le r(f)=\norm f_\infty$. Así $F$ es contractivo y la igualdad sobre el conjunto denso se extiende a todo el dominio.
+
+Finalmente, la isomorfía con $C(\sigma(a))$ da el espectro de $f(a)$ dentro de $B$ como $f(\sigma(a))$. La permanencia espectral lo identifica con su espectro en $A$.
+\end{proof}
+
+\section{Ejercicios sobre funciones continuas y caracteres}
+
+\begin{ejercicio}\label{ej:v3-l26-1}
+Si $F:C(\sigma(a))\to A$ es un $*$-homomorfismo que extiende el cálculo holomorfo, pruebe $F=C_a$.
+\end{ejercicio}
+\begin{solucion}
+La extensión implica $F(1)=1$ y $F(z)=a$; preservar el adjunto implica $F(\overline z)=a^*$. Por multiplicatividad y linealidad coincide con $C_a$ en cada polinomio en $z,\overline z$. Estos polinomios contienen las constantes, separan puntos del compacto $\sigma(a)$ y son estables bajo conjugación; Stone--Weierstrass los hace densos. La continuidad de ambas aplicaciones da la igualdad en toda función continua.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-2}
+Si $A$ es conmutativa, $C^*$ y no unitaria, pruebe que $\Delta(A)$ es localmente compacto Hausdorff y que $\mathcal G:A\to C_0(\Delta(A))$ es un $*$-isomorfismo isométrico.
+\end{ejercicio}
+\begin{solucion}
+Sea $K=\Delta(\widetilde A)$. La proyección escalar $\chi_\infty(a,\lambda)=\lambda$ es un carácter. Cada carácter no nulo $\varphi$ de $A$ se extiende de manera única a $\widetilde\varphi(a,\lambda)=\varphi(a)+\lambda$. Recíprocamente, un carácter de $\widetilde A$ distinto de $\chi_\infty$ se restringe a un carácter no nulo de $A$. Las fórmulas de evaluación prueban que esta biyección identifica la topología débil estrella de $\Delta(A)$ con la de $K\setminus\{\chi_\infty\}$, que es localmente compacta Hausdorff.
+
+La representación unitaria $\widetilde A\simeq C(K)$ lleva $A=\ker\chi_\infty$ al ideal de funciones que se anulan en $\chi_\infty$. Restringirlas a $K\setminus\{\chi_\infty\}$ identifica ese ideal con $C_0$ de dicho espacio: si $f(\chi_\infty)=0$, los conjuntos $\{|f|\ge\eps\}$ son compactos y evitan ese punto; recíprocamente, una función que se anula en infinito se extiende continuamente por cero, porque fuera de un compacto su módulo es menor que cualquier $\eps$. Todos estos mapas preservan productos, adjuntos y normas. El punto $\chi_\infty$ no es aislado: si lo fuera, su complemento sería compacto abierto y el indicador de ese complemento correspondería a una identidad de $A$, contradicción.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-3}
+Para un espacio compacto Hausdorff $X$, pruebe que $X$ es totalmente disconexo si y sólo si el subespacio generado por las proyecciones de $C(X)$ es denso.
+\end{ejercicio}
+\begin{solucion}
+Una proyección de $C(X)$ toma sólo los valores $0,1$, por lo que es el indicador de un conjunto abierto y cerrado. Recordemos por qué en un compacto Hausdorff totalmente disconexo estos conjuntos separan puntos. Para $x\in X$, sea $Q_x$ la intersección de sus vecindades abiertas y cerradas. Afirmamos que $Q_x$ es conexo. Si se separara en dos compactos no vacíos $P,Q$, elija abiertos disjuntos $U,V$ que los contengan. Cada punto del compacto $X\setminus(U\cup V)$ es excluido por alguna vecindad abierta y cerrada de $x$; una intersección finita de ellas da un conjunto $C$ abierto y cerrado con $Q_x\subset C\subset U\cup V$. Los conjuntos $C\cap U$ y $C\cap V$ son abiertos y cerrados en $X$, y el que contiene a $x$ excluiría una parte de $Q_x$, contradicción. Así $Q_x$ es conexo y, por total desconexión, $Q_x=\{x\}$. Para $y\ne x$ existe entonces un conjunto abierto y cerrado que contiene a $x$ y no a $y$.
+
+Los indicadores de esos conjuntos separan puntos. Su espacio generado es un álgebra (el producto de dos indicadores es el indicador de la intersección), contiene las constantes y es estable bajo conjugación; Stone--Weierstrass da densidad. Recíprocamente, una proyección es constante en cualquier subconjunto conexo, porque su imagen continua está en $\{0,1\}$. Si dos puntos distintos pertenecieran a un mismo subconjunto conexo, todas las combinaciones de proyecciones y sus límites uniformes tendrían iguales valores allí. Esto contradice que las funciones continuas de un compacto Hausdorff separan puntos. Por tanto toda componente conexa es un singleton.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-4}
+Si $A$ es una álgebra $C^*$ posiblemente no conmutativa y $a\in A$ es normal, construya su cálculo funcional continuo que extiende al holomorfo.
+\end{ejercicio}
+\begin{solucion}
+En el caso unitario la construcción completa está en el teorema~\ref{v3:calculo-continuo}: se trabaja en $C^*(1,a)$, que es conmutativa, y la permanencia espectral asegura que se usa el espectro correcto. Si $A$ no tiene identidad, se realiza la construcción en $\widetilde A$. Para $f(0)=0$, el elemento $f(a)$ pertenece a $A$: la proyección escalar aplicada al cálculo continuo vale $f(0)$, primero para polinomios en $z,\overline z$ y luego por continuidad. Así el cálculo con valores en $A$ tiene como dominio natural $\{f\in C(\sigma_{\widetilde A}(a)):f(0)=0\}$. Las funciones con $f(0)\ne0$ dan en general elementos de la unitización. Esta precisión es necesaria si el enunciado no supone identidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-5}
+Sea $A$ una álgebra $C^*$ conmutativa unitaria generada por $a_1,\ldots,a_n$ (algebraicamente y luego por clausura, o como álgebra $C^*$). Pruebe que existe un compacto $X\subset\C^n$ y un $*$-isomorfismo $A\to C(X)$ que envía $a_k$ a la coordenada $z_k$.
+\end{ejercicio}
+\begin{solucion}
+Defina $\tau:\Delta(A)\to\C^n$ por $\tau(\varphi)=(\varphi(a_1),\ldots,\varphi(a_n))$ y sea $X=\tau(\Delta(A))$. La continuidad de las coordenadas hace a $X$ compacto. Si dos caracteres coinciden en los generadores, coinciden en todos sus polinomios, en los adjuntos cuando éstos se incluyen, y por continuidad en todo $A$. Por ello $\tau$ es inyectiva y es un homeomorfismo sobre $X$. El isomorfismo buscado es $a\mapsto\widehat a\circ\tau^{-1}$. Evaluarlo en un generador da exactamente $z_k$. La hipótesis $C^*$ procede del contexto de la lista y no puede suprimirse: una álgebra de Banach conmutativa general puede tener radical no nulo y no ser isomorfa a un espacio $C(X)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-6}
+Sea $X$ compacto Hausdorff, $x_0\in X$, y sea $A$ el conjunto de sucesiones $(f_n)$ acotadas en $C(X)$ tales que $(f_n(x_0))$ converge. Pruebe que $A$ es una álgebra conmutativa unitaria y determine su espacio de caracteres.
+\end{ejercicio}
+\begin{solucion}
+Con la norma $\norm f=\sup_n\norm{f_n}_\infty$, el producto acotado $B=\prod_{n\ge1}^{\mathrm b}C(X)$ es un álgebra $C^*$ conmutativa unitaria. La aplicación $q:B\to\ell^\infty$, $q(f)=(f_n(x_0))$, es un $*$-homomorfismo contractivo. Como el espacio $c$ de sucesiones convergentes es cerrado en $\ell^\infty$, $A=q^{-1}(c)$ es una subálgebra $C^*$ cerrada y contiene a la identidad. La cerradura de $c$ se verifica directamente: una aproximación uniforme por una sucesión convergente hace que la sucesión límite sea de Cauchy en sus índices.
+
+Para describir todos los caracteres, incluidos los que no son evaluaciones en una coordenada finita, sea $K=\Delta(B)$ y defina $\gamma_n\in K$ por $\gamma_n(f)=f_n(x_0)$. Considere el compacto no vacío
+\[
+ F=\bigcap_{N\ge1}\overline{\{\gamma_n:n\ge N\}}^{\,K}.
+\]
+Es no vacío por la propiedad de intersección finita en el compacto $K$. Afirmamos que, bajo $B\simeq C(K)$, la subálgebra $A$ corresponde exactamente a las funciones continuas constantes sobre $F$. Si $f_n(x_0)\to L$, todo punto de adherencia de las colas tiene valor $L$ por continuidad. Recíprocamente, si $\widehat f=L$ en $F$ y la sucesión no convergiera a $L$, habría $\eps>0$ e infinitos índices con $|\gamma_n(f)-L|\ge\eps$. Las clausuras de las colas de esa subsucesión tendrían un punto común en $F$ donde, por cerradura de la desigualdad, el valor se alejaría de $L$ al menos $\eps$, contradicción.
+
+Sea $K/F$ el espacio que identifica todos los puntos de $F$ en un único punto y deja distintos los demás. Es compacto Hausdorff: la relación de equivalencia es el conjunto cerrado diagonal unido a $F\times F$; alternativamente, la normalidad de $K$ separa el cerrado $F$ de cualquier punto exterior y permite construir vecindades disjuntas en el cociente. Las funciones continuas constantes en $F$ son exactamente las funciones que descienden a $K/F$. En consecuencia
+\[
+ \boxed{\ \Delta(A)\simeq K/F,\qquad K=\Delta\!\left(\prod_{n\ge1}^{\mathrm b}C(X)\right).\ }
+\]
+Esta descripción es concreta en términos de la compactificación de Stone--Čech: $B=C_b(\N\times X)$, con $\N$ discreto, así $K=\beta(\N\times X)$, y $F$ es el resto en infinito de la copia $\N\times\{x_0\}$. Por tanto se colapsa \emph{sólo ese resto} a un punto. El carácter del punto colapsado es $f\mapsto\lim_n f_n(x_0)$; cada $(n,x)$ da el carácter $f\mapsto f_n(x)$, y pueden existir otros caracteres en el resto no colapsado.
+
+Para justificar la última advertencia, si $x_1\ne x_0$, elija $g\in C(X)$ con $g(x_0)=0$, $g(x_1)=1$. Toda sucesión escalar acotada $(c_n)$ produce $(c_ng)\in A$. Para un ultrafiltro libre $\mathcal U$ sobre $\N$, la fórmula $f\mapsto\lim_{n\to\mathcal U}f_n(x_1)$ es un carácter, porque los límites de ultrafiltro de sucesiones acotadas respetan sumas y productos. Distintos ultrafiltros se distinguen con sucesiones indicadoras y, por tanto, con elementos $(c_ng)$ de $A$. En cambio, si $X=\{x_0\}$, $A=c$ y el cociente se reduce a $\N\cup\{\infty\}$, la compactificación por un punto.
+\end{solucion}
+
+La norma ya permite evaluar cualquier función continua del espectro de un elemento normal. En particular, funciones reales no negativas y raíces cuadradas producirán una estructura de orden. Ese paso será la base para estudiar funcionales positivos y construir representaciones por operadores. Como apoyo adicional véanse \cite{maxcstar,maxcalculo,murphy1990,zhu1993}.

@@ -1,0 +1,273 @@
+\chapter{Construcción y extensión de medidas}\label{cap:v2-03}
+La longitud está definida inicialmente en intervalos, pero queremos medir uniones, intersecciones y límites de conjuntos. La construcción siguiente separa dos problemas: asignar un tamaño exterior a \emph{todo} subconjunto y determinar en qué conjuntos ese tamaño es aditivo. Desarrollamos las lecturas 4--6 de Valencia Bucio \cite{valencia2}. La organización de Carathéodory por lemas y conjuntos de prueba también se inspira en Maximenko \cite{maximenkoCaratheodory}; aquí se justifican los pasos que allí se proponen como ejercicios.
+
+\section{Medidas exteriores y conjuntos que separan la medida}\label{lectura:v2-04}
+\begin{definicion}\index{medida!exterior}
+Una medida exterior es una función $\mu^*:\mathcal P(X)\to[0,\infty]$ nula en vacío, monótona y numerablemente subaditiva. Un conjunto $E\subseteq X$ es \emph{Carathéodory-medible} si
+\[\mu^*(T)=\mu^*(T\cap E)+\mu^*(T\setminus E)\qquad(T\subseteq X).\]
+Denotamos por $\Mcal_{\mu^*}$ a la familia de esos conjuntos.
+\end{definicion}
+Siempre vale la desigualdad $\le$ por subaditividad. Por tanto basta probar la desigualdad inversa. El conjunto $T$ es arbitrario: no se presupone medible, pues precisamente estamos construyendo la familia medible.
+
+\begin{ejemplo}
+La función que vale $0$ en vacío y $1$ en conjuntos no vacíos es una medida exterior. Si una unión es no vacía, al menos un término lo es y la suma de tamaños es al menos $1$. Otra medida exterior vale $0$ en los conjuntos numerables y $1$ en los no numerables: una unión numerable de numerables es numerable, y si la unión no lo es, al menos un término no lo es. Ninguna es aditiva sobre conjuntos disjuntos en general.
+\end{ejemplo}
+\begin{lema}
+Si $\mu^*(E)=0$, entonces $E\in\Mcal_{\mu^*}$. La familia $\Mcal_{\mu^*}$ es estable bajo complementos.
+\end{lema}
+\begin{proof}
+Para todo $T$, $\mu^*(T\cap E)+\mu^*(T\setminus E)\le0+\mu^*(T)$. Junto con la subaditividad esto da igualdad. Cambiar $E$ por $E^c$ solamente intercambia los dos sumandos de la condición, por lo que preserva medibilidad. En particular, también es medible cualquier conjunto de complemento exterior nulo.
+\end{proof}
+\begin{teorema}[Carathéodory]\label{teo:v2-carath}\index{Caratheodory, teorema de@Carathéodory, teorema de}
+La familia $\Mcal_{\mu^*}$ es una $\sigma$-álgebra y $\mu^*|_{\Mcal_{\mu^*}}$ es una medida completa.
+\end{teorema}
+\begin{proof}
+El vacío es medible por el lema; también lo es $X$. Si $E,F$ son medibles, parta primero $T$ mediante $E$ y después $T\setminus E$ mediante $F$:
+\[\mu^*(T)=\mu^*(T\cap E)+\mu^*((T\setminus E)\cap F)+\mu^*(T\setminus(E\cup F)).\]
+Los dos primeros conjuntos cubren $T\cap(E\cup F)$, por lo que su suma de tamaños es al menos el tamaño de esa unión. Así obtenemos la desigualdad que prueba medibilidad de $E\cup F$. Con los complementos, esto muestra que $\Mcal_{\mu^*}$ es un álgebra.
+
+Sean ahora $E_j$ medibles disjuntos y $E=\bigcup_jE_j$. Por inducción,
+\[\mu^*(T)=\sum_{j=1}^m\mu^*(T\cap E_j)+\mu^*\left(T\setminus\bigcup_{j=1}^mE_j\right).\]
+El paso inductivo divide el último resto mediante $E_{m+1}$; la disjunción hace que la parte que se extrae sea exactamente $T\cap E_{m+1}$. Como $T\setminus E$ está contenido en ese resto,
+\[\mu^*(T)\ge\sum_{j=1}^m\mu^*(T\cap E_j)+\mu^*(T\setminus E).\]
+Al tomar el supremo sobre $m$ y usar subaditividad,
+\[\mu^*(T)\ge\sum_{j=1}^\infty\mu^*(T\cap E_j)+\mu^*(T\setminus E)
+\ge\mu^*(T\cap E)+\mu^*(T\setminus E).\]
+Por tanto $E$ es medible. Una unión numerable arbitraria se convierte en disjunta mediante el ejercicio \ref{ej:v2-l01-2}; así la familia es una $\sigma$-álgebra. Tomando $T=E$ en la desigualdad anterior resulta $\mu^*(E)\ge\sum_j\mu^*(E_j)$; la desigualdad opuesta ya es subaditividad. Esto prueba aditividad numerable.
+
+Finalmente, si $N$ es medible con medida cero y $A\subseteq N$, la monotonía da $\mu^*(A)=0$ y el lema prueba que $A$ es medible. Esta es la completitud. La prueba nunca resta cantidades infinitas.
+\end{proof}
+
+\section{Ejercicios sobre medidas exteriores}
+\begin{ejercicio}[Lectura 4, ejercicio 1]\label{ej:v2-l04-1}
+Pruebe que la medida obtenida por Carathéodory es completa.
+\end{ejercicio}
+\begin{solucion}
+Si $A\subseteq N$, $N\in\Mcal_{\mu^*}$ y $\mu^*(N)=0$, entonces $0\le\mu^*(A)\le\mu^*(N)=0$. Para todo $T$, $\mu^*(T\cap A)+\mu^*(T\setminus A)\le\mu^*(A)+\mu^*(T)=\mu^*(T)$. La desigualdad inversa es subaditividad; así $A$ satisface el criterio de medibilidad.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 2]\label{ej:v2-l04-2}
+Pruebe que $\rho(A)=\inf_{B\subseteq A}[\mu^*(B)+\nu^*(A\setminus B)]$ es una medida exterior si $\mu^*,\nu^*$ lo son.
+\end{ejercicio}
+\begin{solucion}
+Se tiene $\rho(\varnothing)=0$. Si $A\subseteq C$ y $D\subseteq C$, la elección $B=A\cap D$ da
+\[\rho(A)\le\mu^*(A\cap D)+\nu^*(A\setminus D)\le\mu^*(D)+\nu^*(C\setminus D).\]
+Tomar ínfimo en $D$ prueba monotonía. Para la subaditividad basta considerar $\sum_n\rho(A_n)<\infty$, pues en otro caso la desigualdad es automática. Fije $\eps>0$ y elija $B_n\subseteq A_n$ con
+\[\mu^*(B_n)+\nu^*(A_n\setminus B_n)<\rho(A_n)+\eps2^{-n}.\]
+Sea $A=\bigcup_nA_n$ y $B=\bigcup_nB_n$. Entonces $A\setminus B\subseteq\bigcup_n(A_n\setminus B_n)$, y
+\[\rho(A)\le\mu^*(B)+\nu^*(A\setminus B)
+\le\sum_n[\mu^*(B_n)+\nu^*(A_n\setminus B_n)]<\sum_n\rho(A_n)+\eps.\]
+Haga $\eps\downarrow0$. La elección aproximada del ínfimo evita suponer que existe una partición óptima.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 3]\label{ej:v2-l04-3}
+Si $Y\subseteq X$, pruebe que (i) $\mu^*|_{\mathcal P(Y)}$ es una medida exterior sobre $Y$; (ii) $E\cap Y$ es medible para esta medida exterior si $E$ es $\mu^*$-medible.
+\end{ejercicio}
+\begin{solucion}
+(i) Vacío, inclusiones y uniones numerables de subconjuntos de $Y$ son las mismas operaciones vistas dentro de $X$; por ello se heredan los tres axiomas. (ii) Para $T\subseteq Y$, $T\cap(E\cap Y)=T\cap E$ y $T\setminus(E\cap Y)=T\setminus E$. La igualdad de Carathéodory para $E$ es exactamente la igualdad requerida en $Y$.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 4]\label{ej:v2-l04-4}
+Si $R\subseteq X\times Y$ es una relación, pruebe que $\rho(A)=\mu^*(R^{-1}(A))$ es una medida exterior en $Y$.
+\end{ejercicio}
+\begin{solucion}
+Aquí $R^{-1}(A)=\{x:\exists y\in A, (x,y)\in R\}$. La preimagen de vacío es vacía, las inclusiones se preservan y $R^{-1}(\bigcup_nA_n)=\bigcup_nR^{-1}(A_n)$. Aplicar monotonía y subaditividad de $\mu^*$ prueba los axiomas. No se usa una identidad de complementos: para relaciones generales esa identidad puede fallar.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 5]\label{ej:v2-l04-5}
+Si $E$ es $\mu^*$-medible, pruebe $\mu^*(E\cap A)+\mu^*(E\cup A)=\mu^*(E)+\mu^*(A)$ para todo $A\subseteq X$.
+\end{ejercicio}
+\begin{solucion}
+Dividir $A$ mediante $E$ da $\mu^*(A)=\mu^*(A\cap E)+\mu^*(A\setminus E)$. Dividir $E\cup A$ mediante $E$ da $\mu^*(E\cup A)=\mu^*(E)+\mu^*(A\setminus E)$. Sustituir la segunda igualdad en el lado izquierdo y reagrupar los tres términos no negativos produce la primera. No se cancela ningún infinito.
+\end{solucion}
+
+\section{De un anillo a una medida}\label{lectura:v2-05}
+\begin{definicion}\index{anillo de conjuntos}\index{premedida}\index{volumen}
+Un anillo de conjuntos es una familia no vacía estable bajo uniones finitas y diferencias; contiene vacío e intersecciones finitas. Es un $\sigma$-anillo si también contiene las uniones numerables. Un \emph{volumen} en un anillo es una función $v$ no negativa, nula en vacío y finitamente aditiva. Se llama \emph{premedida} si es numerablemente aditiva siempre que la unión disjunta considerada pertenezca al anillo.
+\end{definicion}
+Las álgebras son anillos que contienen $X$. Los subconjuntos acotados de un espacio métrico forman un anillo; si el espacio es no acotado, no forman un $\sigma$-anillo, pues una unión numerable de bolas puede ser no acotada. Si el espacio es acotado, en cambio, constituyen toda $\mathcal P(X)$: la salvedad corrige el ejemplo 3(ii) de la lectura 5.
+
+Las uniones finitas de rectángulos de dos anillos forman un anillo: se usan $ (A\times B)\cap(C\times D)=(A\cap C)\times(B\cap D)$ y
+\[(A\times B)\setminus(C\times D)=((A\setminus C)\times B)\mathbin{\dot\cup}((A\cap C)\times(B\setminus D)).\]
+Una partición finita común de los factores convierte toda representación en rectángulos disjuntos. Si los factores llevan volúmenes, la suma de los productos de sus volúmenes es independiente de la partición: al refinar, la distributividad y la aditividad finita preservan la suma. Esto define el volumen producto.
+
+\begin{observacion}[Otra corrección sobre anillos]
+Las uniones numerables de intervalos $(a,b]$ no forman, en general, el $\sigma$-anillo afirmado en el ejemplo 3(iv) de la lectura 5. La estabilidad bajo diferencias falla, pues
+\[(0,2]\setminus\bigcup_{n\ge2}(1,2-1/n]= (0,1]\cup\{2\}.
+\]
+El punto aislado $2$ no puede cubrirse por intervalos $(a,b]$ contenidos en ese conjunto. La familia segura para la construcción es el anillo de \emph{uniones finitas} de intervalos semiabiertos; su $\sigma$-álgebra generada es $\Bcal(\R)$.
+\end{observacion}
+
+\begin{proposicion}\label{prop:v2-volumen}
+Un volumen es monótono y finitamente subaditivo. Si $A_1,\ldots,A_m\subseteq B$ son disjuntos, $\sum_jv(A_j)\le v(B)$. Para una premedida, $B\subseteq\bigcup_nA_n$ implica $v(B)\le\sum_nv(A_n)$.
+\end{proposicion}
+\begin{proof}
+Parta $B$ en los $A_j$ y el resto para la primera desigualdad. Para conjuntos no disjuntos, disjunte una cubierta finita y aplique monotonía a sus piezas. En el caso numerable defina $D_n=(B\cap A_n)\setminus\bigcup_{j<n}A_j$. Son elementos del anillo, disjuntos, y su unión es $B$, que pertenece al anillo. Por la premedida,
+$v(B)=\sum_nv(D_n)\le\sum_nv(A_n)$.
+\end{proof}
+\begin{teorema}[Extensión de una premedida]\label{teo:v2-extension}
+Si $v$ es una premedida en un anillo $\mathcal R$, defina
+\[v^*(E)=\inf\left\{\sum_nv(R_n):R_n\in\mathcal R, E\subseteq\bigcup_nR_n\right\},\]
+con ínfimo del conjunto vacío igual a infinito. Entonces $v^*$ es una medida exterior, cada $R\in\mathcal R$ es $v^*$-medible y $v^*(R)=v(R)$. En consecuencia, la restricción a $\sigma(\mathcal R)$ extiende $v$.
+\end{teorema}
+\begin{proof}
+Cubrir vacío mediante vacíos prueba $v^*(\varnothing)=0$. Toda cubierta de un conjunto también cubre sus subconjuntos, lo que prueba monotonía. Para $E=\bigcup_jE_j$, si $\sum_jv^*(E_j)=\infty$ no hay nada que probar. De otro modo, para cada $j$ elija una cubierta $(R_{j,k})_k$ con suma menor que $v^*(E_j)+\eps2^{-j}$. La familia doble es numerable y cubre $E$, de modo que $v^*(E)\le\sum_jv^*(E_j)+\eps$. Hacer $\eps\downarrow0$ prueba subaditividad.
+
+Para $R\in\mathcal R$, la cubierta $R,\varnothing,\ldots$ da $v^*(R)\le v(R)$; toda cubierta numerable da la desigualdad inversa por la proposición \ref{prop:v2-volumen}. Para probar medibilidad de $R$, fije $E\subseteq X$ y una cubierta $(R_n)$ de $E$. Las familias $(R_n\cap R)$ y $(R_n\setminus R)$ cubren $E\cap R$ y $E\setminus R$ respectivamente, luego
+\[v^*(E\cap R)+v^*(E\setminus R)\le\sum_n[v(R_n\cap R)+v(R_n\setminus R)]=\sum_nv(R_n).\]
+Tomar ínfimo prueba la desigualdad de Carathéodory, aun si no existe una cubierta de suma finita. El teorema \ref{teo:v2-carath} completa la extensión.
+\end{proof}
+\begin{observacion}
+La observación 7 de la lectura 5 utiliza el ínfimo sobre \emph{un solo conjunto} del anillo que contiene a $E$. Esa fórmula no siempre es una medida exterior: en el anillo de los subconjuntos finitos de $\N$, con el volumen idénticamente cero, asignaría cero a cada singleton e infinito a $\N$. Fallaría la subaditividad numerable. Las cubiertas numerables de la fórmula anterior reparan la construcción.
+\end{observacion}
+En un espacio métrico no acotado, los conjuntos acotados o de complemento acotado forman un álgebra. Asignarles respectivamente $0$ y una constante $\alpha>0$ define un volumen: dos conjuntos coacotados no pueden ser disjuntos, y añadir un acotado a otro acotado sigue dando uno acotado. No es premedida: las coronas obtenidas de una cubierta creciente por bolas tienen volumen cero, mientras su unión $X$ tiene volumen $\alpha$.
+
+\section{Ejercicios sobre premedidas}
+\begin{ejercicio}[Lectura 5, ejercicio 1]\label{ej:v2-l05-1}
+Si $v(X)=1$ y $\sum_{k=1}^nv(A_k)>n-1$, pruebe que $\bigcap_{k=1}^nA_k\ne\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+La intersección es finita; el índice infinito del original es una errata. Si fuera vacía, $X=\bigcup_{k=1}^nA_k^c$, luego
+\[1=v(X)\le\sum_{k=1}^nv(A_k^c)=n-\sum_{k=1}^nv(A_k)<1,\]
+contradicción. Se usó $v(A_k^c)=1-v(A_k)$, una resta de cantidades finitas.
+\end{solucion}
+\begin{ejercicio}[Lectura 5, ejercicio 2]\label{ej:v2-l05-2}
+Pruebe que un volumen es premedida si y solo si $v(B)\le\sum_nv(A_n)$ para toda cubierta $B\subseteq\bigcup_nA_n$ con $B,A_n$ en el anillo.
+\end{ejercicio}
+\begin{solucion}
+La necesidad se probó disjuntando $B\cap A_n$ en la proposición \ref{prop:v2-volumen}. Para la suficiencia, si $B=\bigcup_nA_n$ es una unión disjunta perteneciente al anillo, la hipótesis da $v(B)\le\sum_nv(A_n)$. La monotonía fuerte da $\sum_{n\le m}v(A_n)\le v(B)$ para cada $m$; tomar supremo en $m$ da la otra desigualdad.
+\end{solucion}
+\begin{ejercicio}[Lectura 5, ejercicio 3]\label{ej:v2-l05-3}
+Pruebe que un volumen en un álgebra es premedida si y solo si es continuo por abajo, siempre que la unión creciente pertenezca al álgebra.
+\end{ejercicio}
+\begin{solucion}
+La salvedad es necesaria para que $v(\bigcup_nA_n)$ esté definida. Si $v$ es premedida y $A_n\uparrow A$ en el álgebra, disjunte mediante $D_1=A_1$, $D_n=A_n\setminus A_{n-1}$. Entonces $v(A)=\sum_nv(D_n)=\lim_nv(A_n)$. Recíprocamente, para una sucesión disjunta cuya unión $A$ pertenece al álgebra, sus uniones parciales $B_m$ crecen a $A$. La continuidad da $v(A)=\lim_mv(B_m)=\sum_nv(A_n)$.
+\end{solucion}
+\begin{ejercicio}[Lectura 5, ejercicio 4]\label{ej:v2-l05-4}
+Si $v(X)<\infty$, pruebe que una partición de $X$ por elementos del álgebra de volumen estrictamente positivo es a lo sumo numerable.
+\end{ejercicio}
+\begin{solucion}
+Para $m\ge1$, considere los bloques de volumen al menos $1/m$. Si hubiera arbitrariamente muchos, podríamos elegir $N>m v(X)$ distintos y la monotonía fuerte daría $N/m\le v(X)$, contradicción. Hay, pues, solamente una cantidad finita de ellos. Todo bloque positivo pertenece a una de esas familias, porque algún $1/m$ es menor o igual que su volumen. La partición es unión numerable de familias finitas. Basta aditividad finita.
+\end{solucion}
+
+\section{Longitud y medida de Lebesgue}\label{lectura:v2-06}\index{Lebesgue, medida de}
+\begin{lema}[El volumen de cajas es una premedida]\label{lema:v2-cajas}
+En $\R^d$, las uniones finitas disjuntas de cajas semiabiertas acotadas $\prod_{j=1}^d[a_j,b_j)$ forman un anillo. La regla que asigna a cada caja $\prod_j(b_j-a_j)$ y suma sobre una partición finita define una premedida.
+\end{lema}
+\begin{proof}
+Dados finitos conjuntos de este tipo, corte cada eje por todos los extremos que aparecen. Los productos de los intervalos resultantes forman una partición finita común. Toda intersección y diferencia es unión de celdas de esa partición. La distributividad del producto muestra que la suma de los volúmenes de las celdas de una caja es su volumen; esto prueba independencia de representación y aditividad finita.
+
+Para la subaditividad numerable, suponga que una caja $Q$ está cubierta por cajas $Q_n$ y que la suma de sus volúmenes es finita. Dado $\eps>0$, agrande ligeramente cada $Q_n$ a una caja abierta $U_n$ de volumen menor que $v(Q_n)+\eps2^{-n}$; esto es posible por continuidad del producto de longitudes. Dentro de $Q$ tome una caja compacta $K$ obtenida apartando una distancia $\delta$ de sus caras. Una subfamilia finita de los $U_n$ cubre $K$. La subaditividad finita, verificada con la misma partición por extremos y válida también para cajas cerradas o abiertas, da
+\[v(K)\le\sum_nv(U_n)<\sum_nv(Q_n)+\eps.\]
+Al hacer $\delta\downarrow0$ y después $\eps\downarrow0$, resulta $v(Q)\le\sum_nv(Q_n)$. Para una unión finita disjunta $R$ de cajas, aplique este argumento a cada caja y a las intersecciones de la cubierta con ella; la suma finita de los volúmenes de esas intersecciones no excede el volumen de cada conjunto de la cubierta. Obtenemos $v(R)\le\sum_nv(R_n)$ en el anillo. El ejercicio \ref{ej:v2-l05-2} prueba que $v$ es premedida.
+\end{proof}
+\begin{definicion}
+La medida exterior de Lebesgue $\lambda_d^*$ es la medida exterior inducida por esta premedida. La $\sigma$-álgebra de Lebesgue $\Lcal_d$ consta de sus conjuntos Carathéodory-medibles; $\lambda_d=\lambda_d^*|_{\Lcal_d}$. En dimensión uno escribimos $\lambda$ y $\Lcal$.
+\end{definicion}
+La definición mediante cubiertas por intervalos compactos de las lecturas 4 y 6 produce la misma medida exterior: un semiabierto está contenido en su cierre de igual longitud, y cada intervalo compacto admite una ampliación semiabierta cuya longitud adicional es menor que cualquier tolerancia prefijada. Asignando a la ampliación $n$ un error $\eps2^{-n}$ y sumando se obtienen las dos desigualdades entre ínfimos. El mismo argumento permite cubiertas por abiertos.
+
+\begin{teorema}\label{teo:v2-lebesgue-prop}
+La medida de Lebesgue es completa, mide cada caja por su volumen, contiene todos los borelianos y es invariante bajo traslaciones. Para todo conjunto Lebesgue-medible $A\subseteq\R^d$,
+\[\lambda_d(A)=\inf_{U\supseteq A, U\text{ abierto}}\lambda_d(U)
+=\sup_{K\subseteq A, K\text{ compacto}}\lambda_d(K).\]
+Su restricción a los borelianos es la única medida que asigna a cada caja semiabierta su volumen.
+\end{teorema}
+\begin{proof}
+Completitud y volumen de las cajas se siguen de los teoremas \ref{teo:v2-carath} y \ref{teo:v2-extension}. Las cajas semiabiertas generan los borelianos: cualquier caja abierta es unión numerable de cajas semiabiertas interiores y las cajas abiertas de extremos racionales forman una base numerable. Toda caja del anillo es medible; así lo es su $\sigma$-álgebra generada.
+
+Trasladar una cubierta por cajas preserva los volúmenes y cubre el conjunto trasladado, luego $\lambda_d^*(A+t)\le\lambda_d^*(A)$; trasladando por $-t$ obtenemos igualdad. Para probar medibilidad de $A+t$, aplique el criterio de $A$ al conjunto $T-t$ y traslade sus dos partes. Por tanto la traslación preserva también $\Lcal_d$.
+
+Para regularidad exterior, si $\lambda_d(A)<\infty$, cubra $A$ por cajas de suma menor que $\lambda_d(A)+\eps/2$, y amplíe cada una a una caja abierta con aumento menor que $\eps2^{-n-1}$. Su unión abierta $U$ satisface $\lambda_d(U)<\lambda_d(A)+\eps$. Si la medida es infinita, todo superset tiene medida infinita y la igualdad es inmediata.
+
+Para regularidad interior, si $A$ es acotado elija una caja compacta $C\supseteq A$. La regularidad exterior de $C\setminus A$ proporciona un abierto $U\supseteq C\setminus A$ con $\lambda_d(U)<\lambda_d(C\setminus A)+\eps$. Entonces $K=C\setminus U$ es compacto y contenido en $A$. Como $C\subseteq K\cup U$,
+\[\lambda_d(K)\ge\lambda_d(C)-\lambda_d(U)>\lambda_d(A)-\eps.\]
+Todas las cantidades restadas son finitas. Para $A$ no acotado, aplique este resultado a $A\cap[-n,n]^d$ y use continuidad por abajo; esto cubre también $\lambda_d(A)=\infty$.
+
+Por último, si $\nu$ coincide con el volumen en cajas, toda cubierta de un boreliano $A$ por cajas da $\nu(A)\le\sum_nv(Q_n)$ y, al tomar ínfimo, $\nu(A)\le\lambda_d(A)$. Si $A\subseteq C$ para una caja de volumen finito, aplique la misma desigualdad a $C\setminus A$. De
+\[\nu(A)+\nu(C\setminus A)=\nu(C)=\lambda_d(C)=\lambda_d(A)+\lambda_d(C\setminus A)\]
+y las dos desigualdades resulta igualdad en ambas. Un conjunto boreliano arbitrario se agota mediante intersecciones con cajas crecientes, y continuidad por abajo concluye $\nu(A)=\lambda_d(A)$.
+\end{proof}
+\begin{teorema}[Steinhaus]\label{teo:v2-steinhaus}\index{Steinhaus, teorema de}
+Si $A\subseteq\R$ es Lebesgue-medible y $\lambda(A)>0$, entonces $A-A$ contiene una vecindad de cero.
+\end{teorema}
+\begin{proof}
+Por regularidad interior existe un compacto $K\subseteq A$ con $0<\lambda(K)<\infty$. Por regularidad exterior existe un abierto $U\supseteq K$ con $\lambda(U)<2\lambda(K)$. La función continua $x\mapsto\dist(x,U^c)$ es positiva en $K$ y alcanza un mínimo positivo $\delta$; $U^c$ es no vacío porque $U$ tiene medida finita. Si $|t|<\delta$, entonces $K+t\subseteq U$. Si $K$ y $K+t$ fueran disjuntos, la invariancia por traslación daría $2\lambda(K)=\lambda(K\cup(K+t))\le\lambda(U)$, contradicción. Por tanto existen $x,y\in K$ con $x=y+t$, y $t=x-y\in K-K\subseteq A-A$.
+\end{proof}
+
+\section{Ejercicios sobre conjuntos de Lebesgue}
+\begin{ejercicio}[Lectura 6, ejercicio 1]\label{ej:v2-l06-1}
+Pruebe que todo abierto de $\R$ es unión numerable disjunta de intervalos semiabiertos.
+\end{ejercicio}
+\begin{solucion}
+Las componentes de un abierto son intervalos abiertos disjuntos. Cada una contiene un racional y componentes distintas contienen racionales distintos, así que hay a lo sumo una cantidad numerable. En cada intervalo $I$ elija una sucesión estrictamente creciente $(x_k)_{k\in\Z}$ que tienda a sus extremos cuando $k\to\pm\infty$. Se puede obtener tomando la imagen de los enteros por un homeomorfismo creciente $\R\to I$. Entonces $I=\bigcup_{k\in\Z}[x_k,x_{k+1})$, unión disjunta. La unión de las familias numerables correspondientes a las componentes sigue siendo numerable.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 2]\label{ej:v2-l06-2}
+Pruebe que el conjunto ternario de Cantor tiene medida cero.
+\end{ejercicio}
+\begin{solucion}
+La etapa $n$ consiste en $2^n$ intervalos cerrados de longitud $3^{-n}$; su medida es $(2/3)^n$. El conjunto de Cantor es su intersección decreciente. Como la primera etapa tiene medida finita, continuidad por arriba da $\lambda(C)=\lim_n(2/3)^n=0$.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 3]\label{ej:v2-l06-3}
+Pruebe la equivalencia entre la condición de medida cero mediante cubiertas de intervalos y medida de Lebesgue cero.
+\end{ejercicio}
+\begin{solucion}
+La condición utilizada es: para cada $\eps>0$, $A$ admite una cubierta \emph{numerable} de intervalos abiertos cuya suma de longitudes es menor que $\eps$. Esta condición implica $\lambda^*(A)=0$; por Carathéodory todo conjunto exterior nulo es medible, luego $\lambda(A)=0$. Recíprocamente, la definición de $\lambda^*$ y la ampliación de intervalos con errores sumables producen esa cubierta. Si se exigieran solamente cubiertas \emph{finitas}, se obtendría el contenido de Jordan nulo, una noción distinta: $\Q\cap[0,1]$ es Lebesgue-nulo y no tiene contenido de Jordan cero.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 4]\label{ej:v2-l06-4}
+Pruebe que $A\subseteq\R$ es Lebesgue-medible si y solo si $A=B\cup Z$, con $B$ de tipo $F_\sigma$ y $Z$ nulo.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es medible, para cada $m,n$ elija por regularidad interior un compacto $K_{m,n}\subseteq A\cap[-m,m]$ tal que $\lambda((A\cap[-m,m])\setminus K_{m,n})<1/n$. Sea $B=\bigcup_{m,n}K_{m,n}$. Es $F_\sigma$ y está contenido en $A$. Para cada $m$, $\lambda((A\setminus B)\cap[-m,m])\le1/n$ para todo $n$, luego vale cero; la unión numerable prueba que $Z=A\setminus B$ es nulo. Recíprocamente, $B$ es boreliano, $Z$ es medible por completitud y su unión es medible.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 5]\label{ej:v2-l06-5}
+Pruebe $\lambda^*(A+t)=\lambda^*(A)$ para todo subconjunto $A\subseteq\R$.
+\end{ejercicio}
+\begin{solucion}
+Toda cubierta $A\subseteq\bigcup_n[a_n,b_n]$ se transforma en una cubierta $A+t\subseteq\bigcup_n[a_n+t,b_n+t]$ con la misma suma de longitudes. Tomando ínfimo se obtiene $\lambda^*(A+t)\le\lambda^*(A)$. Aplique lo mismo a $A+t$ y a la traslación $-t$ para obtener la desigualdad inversa. No se presupone medibilidad.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 6]\label{ej:v2-l06-6}
+Sea $\nu$ una medida boreliana en $\R$, finita en acotados e invariante bajo traslaciones, con $\nu(\R)>0$. Pruebe $\nu=\alpha\lambda$ en borelianos para algún $\alpha>0$.
+\end{ejercicio}
+\begin{solucion}
+Todos los singletons tienen el mismo valor $c$. Colocar arbitrariamente muchos puntos distintos en $[0,1]$ da $Nc\le\nu([0,1])<\infty$, luego $c=0$. Sea $\alpha=\nu([0,1))$. Si fuera cero, las traslaciones enteras de ese intervalo cubrirían $\R$ con medida cero, contradicción. Dividir $[0,1)$ en $q$ partes iguales y trasladarlas prueba $\nu([0,1/q))=\alpha/q$; unir $p$ de ellas da $\nu([0,p/q))=\alpha p/q$. Para $t>0$, aproximaciones racionales crecientes o decrecientes y monotonía dan $\nu([0,t))=\alpha t$. Las traslaciones extienden la fórmula a cualquier intervalo semiabierto. La unicidad del teorema \ref{teo:v2-lebesgue-prop} aplicada a $\nu/\alpha$ concluye la prueba.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 7: Smith--Volterra--Cantor]\label{ej:v2-l06-7}\index{Smith--Volterra--Cantor, conjunto de}
+En la etapa $n\ge1$, retire de cada uno de los $2^{n-1}$ intervalos restantes su intervalo central abierto de longitud $4^{-n}$. Pruebe que la intersección $C$ es cerrada, no vacía, sin interior ni puntos aislados, y tiene medida $1/2$.
+\end{ejercicio}
+\begin{solucion}
+La longitud total retirada hasta la etapa $n$ es $\sum_{j=1}^n2^{j-1}4^{-j}=\frac12(1-2^{-n})$. Los $2^n$ intervalos restantes tienen igual longitud
+\[\ell_n=2^{-n}\left(\frac12+2^{-n-1}\right)>0.\]
+La longitud $4^{-(n+1)}$ retirada en el paso siguiente es menor que $\ell_n$, así que la construcción está bien definida. Los conjuntos $C_n$ son compactos no vacíos y anidados; sus extremos exteriores $0,1$ permanecen, de modo que $C$ es no vacío y cerrado. Continuidad por arriba da $\lambda(C)=\lim_n\lambda(C_n)=1/2$.
+
+Como $\ell_n\to0$, ningún intervalo abierto no vacío puede estar contenido en todos los $C_n$: un intervalo conexo contenido en $C_n$ tendría que estar dentro de una sola componente, cuya longitud es $\ell_n$. Así $C$ tiene interior vacío. Dado $x\in C$, los dos extremos de la componente de $C_n$ que contiene a $x$ permanecen en $C$; uno de ellos es distinto de $x$ y dista a lo sumo $\ell_n$. Por tanto ningún punto es aislado.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 8]\label{ej:v2-l06-8}
+Construya un boreliano $A$ tal que $0<\lambda(A\cap I)<\lambda(I)$ para todo intervalo abierto acotado no vacío $I$.
+\end{ejercicio}
+\begin{solucion}
+Enumere los intervalos abiertos de extremos racionales como $(I_n)$. Inductivamente elija compactos $K_n,H_n\subseteq I_n$, de medida positiva e interior vacío, todos disjuntos entre sí. En el paso $n$, la unión finita de los compactos anteriores es cerrada con interior vacío: su complemento es abierto denso, como se verifica intersectando sucesivamente abiertos densos. Por ello $I_n$ contiene dos pequeños intervalos disjuntos que evitan esa unión. Dentro de ellos coloque copias afines del conjunto del ejercicio \ref{ej:v2-l06-7}. Esto realiza el paso inductivo.
+
+Sea $A=\bigcup_nK_n$, un $F_\sigma$. Cualquier $I$ contiene algún $I_n$. Entonces $K_n\subseteq A\cap I$ da positividad, mientras $H_n\subseteq I\setminus A$ da $\lambda(A\cap I)\le\lambda(I)-\lambda(H_n)<\lambda(I)$. La referencia al ejercicio 5 en la sugerencia original debe apuntar a la construcción del ejercicio 7.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 9]\label{ej:v2-l06-9}
+Construya $A_n\subseteq[0,1]$ decrecientes, con $\lambda^*(A_n)=1$ y $\bigcap_nA_n=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+Elija una base de Hamel $B$ de $\R$ sobre $\Q$ y puntos distintos $b_1,b_2,\ldots\in B$. Defina $B_n=B\setminus\{b_{n+1},b_{n+2},\ldots\}$ y $V_n=\operatorname{span}_{\Q}B_n$. Cada $V_n$ es propio, $V_n\uparrow\R$, porque cada combinación lineal utiliza finitos vectores de la base. Si un conjunto medible $E\subseteq V_n$ tuviera medida positiva, Steinhaus daría una vecindad de cero contenida en $E-E\subseteq V_n$. Cualquier subespacio racional que contiene una vecindad de cero es todo $\R$: dado $x$, elija un entero $m$ grande con $x/m$ en esa vecindad y multiplique por $m$. Contradicción. Así todo subconjunto medible de $V_n$ es nulo.
+
+Ponga $A_n=[0,1]\setminus V_n$. Decrecen y su intersección es vacía. Si $\lambda^*(A_n)<1$, existe un abierto $U\supseteq A_n$ con $\lambda(U)<1$; esto se obtiene ampliando una cubierta de suma menor que $1$. El compacto $[0,1]\setminus U$ estaría contenido en $V_n$ y tendría medida al menos $1-\lambda(U)>0$, contradicción. Como $A_n\subseteq[0,1]$, concluimos $\lambda^*(A_n)=1$. Esta construcción utiliza elección para la base de Hamel y muestra que la continuidad por arriba falla para medidas exteriores en conjuntos arbitrarios.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 10]\label{ej:v2-l06-10}
+Defina la medida de Lebesgue en $\R^d$; pruebe allí medibilidad boreliana, regularidad y unicidad por volúmenes de cajas, así como las versiones multidimensionales de los ejercicios 4, 5 y 6.
+\end{ejercicio}
+\begin{solucion}
+La definición mediante el volumen de cajas, la prueba de que este es premedida y las tres propiedades pedidas están desarrolladas en el lema \ref{lema:v2-cajas} y el teorema \ref{teo:v2-lebesgue-prop}, cuyas pruebas se hicieron para $d$ arbitrario.
+
+Para la versión del ejercicio 4, sustituya $[-m,m]$ por $[-m,m]^d$ y elija compactos $K_{m,n}\subseteq A\cap[-m,m]^d$ con error menor que $1/n$. Su unión es $F_\sigma$ y el resto es nulo por el mismo argumento de agotamiento; la recíproca usa completitud. Para el ejercicio 5, trasladar una caja preserva todas sus longitudes, de modo que la correspondencia biyectiva de cubiertas da invariancia de $\lambda_d^*$, incluso en conjuntos no medibles.
+
+Para el ejercicio 6, sea $\nu$ boreliana, invariante bajo traslaciones, finita en acotados y no nula. Defina $\alpha=\nu([0,1)^d)$. Sus traslaciones enteras cubren $\R^d$, por lo que $\alpha>0$. Dividir el cubo en $q^d$ subcubos trasladados da medida $\alpha/q^d$ a cada uno. Una caja con lados racionales $p_j/q$ es unión disjunta de $\prod_jp_j$ de esos subcubos, luego tiene medida $\alpha\prod_j(p_j/q)$. Aproximando desde dentro y fuera los lados reales por racionales y usando monotonía, toda caja semiabierta tiene medida $\alpha$ por su volumen. La unicidad ya probada da $\nu=\alpha\lambda_d$ en los borelianos. Así se han probado todos los incisos, no solamente definido la medida.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 11]\label{ej:v2-l06-11}
+Pruebe que $\lambda_2$ es invariante bajo isometrías del plano.
+\end{ejercicio}
+\begin{solucion}
+Sea $T$ una transformación ortogonal. La medida boreliana $\nu(A)=\lambda_2(TA)$ es invariante bajo traslaciones, pues $T(A+t)=TA+Tt$, y es finita en acotados. Es no nula, así que por el ejercicio \ref{ej:v2-l06-10} existe $c>0$ con $\nu=c\lambda_2$. El disco abierto unitario $D$ satisface $TD=D$ y $0<\lambda_2(D)<\infty$, porque contiene un cuadrado de lado positivo y está contenido en un cuadrado acotado. Por tanto $\lambda_2(D)=c\lambda_2(D)$ y $c=1$.
+
+Para pasar de borelianos a conjuntos Lebesgue-medibles, escriba $A=B\cup Z$, con $B$ boreliano y $Z$ nulo. Un nulo está contenido en un boreliano nulo: interseque abiertos que lo cubren con medidas que tienden a cero. Su imagen por $T$ es boreliana nula, luego $TZ$ es Lebesgue-medible nulo por completitud. Así $\lambda_2(TA)=\lambda_2(A)$. Toda isometría euclidiana es la composición de una transformación ortogonal y una traslación; la invariancia de ambas demuestra el resultado. En particular se obtiene la invariancia bajo reflexiones sugerida en el original.
+\end{solucion}

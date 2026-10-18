@@ -1,0 +1,1363 @@
+{
+  "volumen": 2,
+  "alcance": "Lecturas18–33, capítulos09–16. Se conservan enunciados e incisos originales extraídos y se explican las rectificaciones. Exámenes excluidos.",
+  "total_ejercicios_originales": 62,
+  "total_ejercicios_resueltos": 62,
+  "lecturas": [
+    {
+      "lectura": 18,
+      "fuente": "AnM2-LFM-lect18.pdf",
+      "texto_local": "tmp/originales/02/lect18.txt",
+      "capitulos": [
+        9
+      ],
+      "etiqueta_lectura": "lectura:v2-18",
+      "temas": [
+        "Funciones Lp, estructura vectorial, seminorma y nulidad",
+        "Young y caso de igualdad",
+        "Hölder y Cauchy–Schwarz",
+        "Minkowski",
+        "Inclusión con medida finita y constante explícita"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–3",
+          "contenido_desarrollado": "Funciones Lp, estructura vectorial, seminorma y nulidad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4",
+          "contenido_desarrollado": "Young y caso de igualdad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5–6",
+          "contenido_desarrollado": "Hölder y Cauchy–Schwarz",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "7",
+          "contenido_desarrollado": "Minkowski",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "8",
+          "contenido_desarrollado": "Inclusión con medida finita y constante explícita",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-1",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que en la desigualdad de Young se tiene la igualdad si y solo si a\np = bq\n."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-2",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre la siguiente generalizaci´on de la desigualdad de Young: Sean a, b > 0 dos n´umeros\nreales, y sean p, q ∈ ]1, +∞[ tales que 1/p + 1/q = 1. Entonces\nab ≤ min\nt>0\nÅ\nt\npap\np\n+\nt\n−q\nb\nq\nq\nã\n."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-3",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean p, q ∈ [1, +∞[. Si f ∈ Lp(X) y f ∈ Lq(X), pruebe que f ∈ Lr(X) para todo r que est´a entre\np y q. Deduzca que para toda funci´on medible f el conjunto {p ∈ [1, +∞[ : f ∈ Lp(X)} es un intervalo\n(posiblemente vac´ıo)."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-4",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Bajo las hip´otesis del teorema 8, demuestre que para toda f ∈ Lq(X) se tiene\nkfkp ≤ kfkq.\nSugerencia: Use la desigualdad de H¨older o la desigualdad de Jensen."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l18-5",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean p, q ∈ [1, +∞[, con p < q.\n(i) Demuestre que `\np ⊆ `q\n.\n(ii) D´e un ejemplo de una sucesi´on x ∈ `\nq que no est´e en `p\n.\n(iii) D´e un ejemplo de una sucesi´on x ∈ `∞ que converge a cero tal que x 6∈ `\np para todo n´umero real\np ≥ 1."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-6",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que la funci´on\nhf|gi =\nZ\nX\nfg dµ\nes una funci´on sesquilineal de L\n2\n(X) que satisface hf|fi = 0 si y solo si f = 0 c.t.p. en X."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-7",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean p < q en [1, +∞[. Suponga que f ∈ Lp(X) ∩ Lq(X). Demuestre que la funci´on\nr 7→ kfkr\nes una funci´on convexa en [p, q]."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l18-8",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Suponga µ(X) < +∞, y sea f : X → F una funci´on medible. Para cada n ∈ N sea\nEn = {x ∈ X : n − 1 ≤ |f(x| < n)}.\n3Sea p ∈ [1, +∞[. Demuestre que f ∈ Lp\n(X) si y solo si\nX∞\nn=1\nn\npµ(En) < +∞."
+        },
+        {
+          "numero_original": 9,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l18-9",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Considere el espacio ]0, +∞[ con la σ-´algebra y medida de Lebesgue. Sea f :]0, +∞[→ R la funci´on\nf(x) = x\n−1/2\n(1 + | log(x)|)\n−1\n.\nDemuestre que f ∈ Lp(]0, +∞[) si y solo si p = 2."
+        }
+      ],
+      "correcciones": [
+        "Ejercicio7: convexidad de r↦||f||r falsa; contraejemplo 2^(-1/r) y versión de interpolación/log-convexidad en1/r probada.",
+        "Ejercicio6: se explicita conjugación necesaria en el producto sesquilineal complejo."
+      ]
+    },
+    {
+      "lectura": 19,
+      "fuente": "AnM2-LFM-lect19.pdf",
+      "texto_local": "tmp/originales/02/lect19.txt",
+      "capitulos": [
+        9
+      ],
+      "etiqueta_lectura": "lectura:v2-19",
+      "temas": [
+        "Cociente por igualdad casi por doquier y completitud mediante series absolutamente sumables",
+        "Densidad de simples y separabilidad",
+        "Convergencia en p-promedio, uniforme, dominada y en medida",
+        "Vitali: convergencia en medida, continuidad uniforme de integrales y concentración finita",
+        "L2 como Hilbert y aproximación finito-dimensional de operadores compactos"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "Cociente por igualdad casi por doquier y completitud mediante series absolutamente sumables",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3–4",
+          "contenido_desarrollado": "Densidad de simples y separabilidad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5–8",
+          "contenido_desarrollado": "Convergencia en p-promedio, uniforme, dominada y en medida",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "9",
+          "contenido_desarrollado": "Vitali: convergencia en medida, continuidad uniforme de integrales y concentración finita",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "10",
+          "contenido_desarrollado": "L2 como Hilbert y aproximación finito-dimensional de operadores compactos",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 2,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l19-1",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea p ∈ ]1, +∞[. Considere R con la σ-´algebra y la medida de Lebesgue. Para cada x ∈ R y para\ncada funci´on f : R → F definimos la funci´on fx : R → F como fx(t) = f(t − x).Demuestre que para toda\nf ∈ Lp(R) y para todo x0 ∈ R se tiene\nlimx→x0kfx − fx0kp = 0."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l19-2",
+          "archivo": "capitulos/09.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que para todo p ∈ ]1, +∞[ distinto de 2 la norma de L\np\n(X) no proviene de ning´un\nproducto interno.\nSugerencia: Puede usar el ejercicio 3 de la lectura 29 del curso de An´alisis Matem´atico 1."
+        }
+      ],
+      "correcciones": [
+        "Teorema7: dominación por g∈L1 insuficiente para Lp; se exige g∈Lp y se da contraejemplo.",
+        "Ejercicio2: Lp puede ser Hilbert para p≠2 si sólo hay un átomo; se precisa existencia de dos conjuntos disjuntos positivos finitos y se da el contraejemplo de dimensión1.",
+        "Completitud: se separan representantes/cociente y potencias de normas; no se reproduce la errata u_k/v_k de la fuente complementaria."
+      ]
+    },
+    {
+      "lectura": 20,
+      "fuente": "AnM2-LFM-lect20.pdf",
+      "texto_local": "tmp/originales/02/lect20.txt",
+      "capitulos": [
+        10
+      ],
+      "etiqueta_lectura": "lectura:v2-20",
+      "temas": [
+        "Encaje isométrico de Lq en el dual de Lp",
+        "Desigualdades escalares de Clarkson para p mayor o igual que2",
+        "Desigualdades escalares para 1<p<=2 con desarrollo binomial justificado",
+        "Ambas desigualdades de Clarkson; desigualdad inversa de Minkowski como paso auxiliar"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1",
+          "contenido_desarrollado": "Encaje isométrico de Lq en el dual de Lp",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "2–3",
+          "contenido_desarrollado": "Desigualdades escalares de Clarkson para p mayor o igual que2",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4–5",
+          "contenido_desarrollado": "Desigualdades escalares para 1<p<=2 con desarrollo binomial justificado",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "6",
+          "contenido_desarrollado": "Ambas desigualdades de Clarkson; desigualdad inversa de Minkowski como paso auxiliar",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "correcciones": [
+        "Series binomiales sólo usadas con convergencia absoluta en el intervalo abierto; extremos comprobados directamente."
+      ]
+    },
+    {
+      "lectura": 21,
+      "fuente": "AnM2-LFM-lect21.pdf",
+      "texto_local": "tmp/originales/02/lect21.txt",
+      "capitulos": [
+        10
+      ],
+      "etiqueta_lectura": "lectura:v2-21",
+      "temas": [
+        "Alcance de la norma mediante Clarkson",
+        "Lema de McShane, real y complejo",
+        "Diferenciación de la norma e identificación de la densidad",
+        "Representación isométrica del dual y reflexividad"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1",
+          "contenido_desarrollado": "Alcance de la norma mediante Clarkson",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "2",
+          "contenido_desarrollado": "Lema de McShane, real y complejo",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3",
+          "contenido_desarrollado": "Diferenciación de la norma e identificación de la densidad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4",
+          "contenido_desarrollado": "Representación isométrica del dual y reflexividad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l21-1",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea p ∈ ]1, +∞[. Suponga que existen A, B ∈ X tales que 0 < µ(A), µ(B) < +∞. Demuestre que\npara cualesquiera f, g ∈ L\np\n(X) de normas no cero se tiene\n2\n−|2−p|/p ≤\n∥f + g∥\n2\np + ∥f − g∥\n2\np\n2(∥f∥\n2\np + ∥g∥\n2\np\n)\n≤ 2\n|2−p|/p\n.\nAdem´as, d´e dos funciones f, g ∈ L\np\n(X) tales que se tenga la igualdad en las desigualdades anteriores."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "i",
+            "x",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l21-2",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea 1 < p < +∞, y sea f : X → F una funci´on medible tal que:\n3(i) El conjunto {x ∈ X : f(x) ̸= 0} es de medida σ-finita.\n(ii) fg ∈ L\n1\n(X) para toda g ∈ L\np\n(X).\nDemuestre que f ∈ L\np\n∗\n(X).\nSugerencia: Construya una sucesi´on {fn}∞\nn=1 tal que:\n( i) Para todo n ∈ N el conjunto {x ∈ X : fn(x) ̸= 0} es de medida finita.\n( ii) La sucesi´on {|fn|}∞\nn=1 es creciente y converge a |f| en todo X.\nLuego use el teorema de convergencia mon´otona, el principio de acotaci´on uniforme y el teorema 1 de la\nlectura 20."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l21-3",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea 1 < p < +∞. Suponga que µ es semifinita, es decir, para todo A ∈ X tal que µ(A) = +∞\nexiste B ∈ X tal que B ⊆ A y 0 < µ(B) < +∞ (ejemplos de estas medidas son las medidas σ-finitas). Sea\nf : X → F una funci´on medible tal que fg ∈ L\n1\n(X) para toda g ∈ L\np\n(X). Demuestre que f ∈ L\np\n∗\n(X).\nSugerencia: Para todo n ∈ N sea An = {x ∈ X : |f(x)| ≥ 1/n}. Si µ(An) = +∞ para alg´un n ∈ N,\nencuentre un conjunto medible B ⊆ An de medida σ-finita tal que µ(B) = +∞; luego use el ejercicio\nanterior con la funci´on fχB para obtener una contradicci´on."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l21-4",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Considere el espacio de medida (R, X, µ), donde X = {A ⊆ R : |A| ≤ ℵ0 o |X \\ A| ≤ ℵ0} y\n∀ A ∈ X\nÇ\nµ(A) = ®\n0 si A es a lo sumo numerable\n1 si X \\ A es a lo sumo numerableå\nDemuestre que, en este espacio de medida, el ejercicio 1 no se cumple para todo 1 < p < +∞."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "v",
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l21-5",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea V un espacio normado. Decimos que la sucesi´on {vn}∞\nn=1 converge d´ebilmente a un vector v ∈ V\nsi para toda φ ∈ V\n∗\nla sucesi´on {φ(vn)}∞\nn=1 converge a φ(v). Si V y W son dos espacios de Banach,\ndecimos que una transformaci´on lineal continua T : V → W es completamente continua si para toda\nsucesi´on {vn}∞\nn=1 en V que converge d´ebilmente al vector v la sucesi´on {T vn}∞n=1 converge en W a T v.\nDemuestre lo siguiente:\n(i) Toda transformaci´on lineal compacta es completamente continua.\n(ii) Si V es reflexivo, entonces toda transformaci´on lineal completamente continua es compacta.\nUn resultado debido a Edward Odell establece que toda transformaci´on lineal completamente continua de\nun espacio de Banach V es compacta si y solo si V no contiene a ℓ\n1\ncomo subespacio."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l21-6",
+          "archivo": "capitulos/10.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea 1 < p < +∞, suponga que µ es σ-finita, y sea k : X × X → F una funci´on medible (con respecto\na X ⊗ X) tal que\nα =\nZ\nX\nÅZ\nX\n|k(x, y)|\np\ndµ(x)\nãp\n∗/p\ndµ(y) < +∞.\nDemuestre que el operador lineal K : L\np\n(X) → L\np\n(X) dado por\n∀ f ∈ L\np\n(X) ∀ x ∈ X\nÅ\nKf(x) = Z\nX\nk(x, y)f(y) dµ(y)\nã\nes compacto y ∥K∥ ≤ α\n1/p∗\n.\nSugerencia: Demuestre que K es completamente continuo."
+        }
+      ],
+      "correcciones": [
+        "Ejercicio1: alcanzar ambos extremos requiere dos conjuntos disjuntos de medida positiva finita; mera existencia de dos conjuntos no basta.",
+        "Ejercicio4: lo que falla es alcanzar los extremos para p≠2, no las desigualdades; se analiza también p=2.",
+        "Ejercicio6: integral del núcleo se define casi por doquier, no necesariamente en cada punto; se prueba existencia y compacidad.",
+        "McShane y maximización: fases conjugadas correctas; derivación bajo integral mediante cocientes medibles, sin selección medible no justificada de puntos del valor medio.",
+        "Comentario atribuido a Odell se conserva como comentario de la lectura y no como teorema utilizado o nueva atribución bibliográfica."
+      ]
+    },
+    {
+      "lectura": 22,
+      "fuente": "AnM2-LFM-lect22.pdf",
+      "texto_local": "tmp/originales/02/lect22.txt",
+      "capitulos": [
+        11
+      ],
+      "etiqueta_lectura": "lectura:v2-22",
+      "temas": [
+        "Acotación esencial, supremo esencial y diferencia respecto del supremo puntual",
+        "Propiedades de seminorma y cociente L∞",
+        "Completitud con un único conjunto excepcional numerable",
+        "Densidad de simples acotadas mediante cuadrícula del recorrido"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "Acotación esencial, supremo esencial y diferencia respecto del supremo puntual",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3–4",
+          "contenido_desarrollado": "Propiedades de seminorma y cociente L∞",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5",
+          "contenido_desarrollado": "Completitud con un único conjunto excepcional numerable",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "6",
+          "contenido_desarrollado": "Densidad de simples acotadas mediante cuadrícula del recorrido",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l22-1",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ L∞(X). Demuestre que\n∥f∥∞ = inf ßsup\nx∈A\n|f(x)| : A ∈ X, µ(X \\ A) = 0™."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l22-2",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que L∞(X) ⊆ L\n1\n(X) si y solo si µ(X) < +∞."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l22-3",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Pruebe que L∞(R) no es separable. Este contraejemplo muestra que, si µ es separable, no nece\u0002sariamente L∞(X) es separable.\nSugerencia: Considere todos los intervalos de R."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l22-4",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ L\np\n(X), con 1 ≤ p ≤ +∞, y sea g ∈ L∞(X). Demuestre que fg ∈ L\np\n(X) y\n∥fg∥p ≤ ∥f∥p∥g∥∞."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l22-5",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Suponga µ(X) < +∞. Demuestre que una funci´on medible f : X → F pertenece a L∞(X) si y\nsolo si:\n(i) f ∈ L\np\n(X) para todo p ≥ 1.\n(ii) El supremo sup{∥f∥p : 1 ≤ p < +∞} es finito.\nEn este caso, demuestre que ∥f∥∞ = lim p→+∞∥f∥p."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l22-6",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ L\np\n(R) para todo p ≥ p0 en [1, +∞[. Si f ∈ L∞(R), ¿se tiene lim p→+∞∥f∥p = ∥f∥∞? Justi\u0002fique."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l22-7",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ ℓ\np para todo p ≥ p0 en [1, +∞[. ¿Se tiene lim p→+∞\n∥f∥p = ∥f∥∞? Justifique."
+        }
+      ],
+      "correcciones": [
+        "La aproximación simple se hace sobre los valores reales/complejos, no sólo sobre sus módulos."
+      ]
+    },
+    {
+      "lectura": 23,
+      "fuente": "AnM2-LFM-lect23.pdf",
+      "texto_local": "tmp/originales/02/lect23.txt",
+      "capitulos": [
+        11
+      ],
+      "etiqueta_lectura": "lectura:v2-23",
+      "temas": [
+        "Hölder en los extremos L1 y L∞",
+        "Las dos aplicaciones canónicas y sus tres contraejemplos de inyectividad/sobreyectividad",
+        "Semifinitud, localizabilidad y prueba de que σ-finita implica localizable",
+        "Isometría si y sólo si semifinitud; representación completa remitida al capítulo14"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1",
+          "contenido_desarrollado": "Hölder en los extremos L1 y L∞",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "2",
+          "contenido_desarrollado": "Las dos aplicaciones canónicas y sus tres contraejemplos de inyectividad/sobreyectividad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3–4",
+          "contenido_desarrollado": "Semifinitud, localizabilidad y prueba de que σ-finita implica localizable",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5",
+          "contenido_desarrollado": "Isometría si y sólo si semifinitud; representación completa remitida al capítulo14",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l23-1",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida semifinita, y sea g : X → F una funci´on medible tal que\nfg ∈ L\n1\n(X) para toda f ∈ L\n1\n(X). Demuestre que g ∈ L∞(X).\nSugerencia: Suponga g 6∈ L∞(X). Demuestre que existe una sucesi´on estrictamente creciente {αn}∞\nn=1 de\nn´umeros reales positivos y una sucesi´on {An}∞\nn=1 de conjuntos medibles tales que\nX∞\nn=1\n1\nαn\n< +∞, ∀ n ∈ N (0 < µ(An) < +∞), ∀ x ∈ An (αn < |g(x)| ≤ αn+1).\n3Considere la funci´on f =\nP∞\nn=1\n(αnµ(An))−1χAn\n."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l23-2",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ L\n1\n(X). Demuestre que existe una funci´on g ∈ L∞(X) tal que kgk∞ ≤ 1 y R\nX\nfg dµ = kfk1."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l23-3",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida semifinita. Pruebe que para toda g ∈ L∞(X)\nkgk∞ = supßZ\nX\nfg dµ : f ∈ L\n1\n(X), kfk1 ≤ 1\n™\n= sup \bkfgk1 : f ∈ L\n1\n(X), kfk1 ≤ 1"
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l23-4",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "D´e un ejemplo de un espacio de medida finita y una funci´on g ∈ L∞(X) tal que kfgk1 < kgk∞ para\ntoda f ∈ L\n1\n(X) tal que kfk1 ≤ 1."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l23-5",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X,P(X)) un espacio medible con la medida de conteo. Demuestre que `\n1\n(X)\n∗ ' `∞(X).\nSugerencia: Imite la prueba para X = N."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l23-6",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida σ-finita, y sea ϕ ∈ L\n1\n(X)\n∗\n. Suponga que para cada conjunto\nmedible A tal que 0 < µ(A) < +∞ existe una funci´on esencialmente acotada gA : A → F tal que\n∀ f ∈ L\n1\n(A)\nÅ\nϕ(f) = Z\nA\nfg dµã.\nDemuestre lo siguiente:\n(i) Si 0 < µ(A), µ(B) < +∞ y 0 < µ(A ∩ B), entonces gA = gB c.t.p en A ∩ B.\n(ii) Existe una funci´on g ∈ L∞(X) tal que\n∀ f ∈ L\n1\n(X)\nÅ\nϕ(f) = Z\nX\nfg dµã."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l23-7",
+          "archivo": "capitulos/11.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean (X, X, µ) y (Y, Y, ν) dos espacios de medida, y sea ϕ : X → Y una funci´on medible tal que\n∀ A ∈ Y\n\nµ(ϕ\n−1\n(A)) = ν(A)\n\u0001\n.\nDemuestre que g ◦ ϕ ∈ L∞(X) para toda g ∈ L∞(Y ). M´as a´un, pruebe que la funci´on Tϕ : g 7→ g ◦ ϕ\nes una isometr´ıa lineal de L∞(Y ) en L∞(X)."
+        }
+      ],
+      "correcciones": [
+        "Para funciones complejas, las fórmulas de norma requieren valor absoluto y pruebas con fase conjugada.",
+        "Se distinguen claramente la isometría de L1→L∞* siempre válida y la de L∞→L1* que requiere semifinitud."
+      ]
+    },
+    {
+      "lectura": 24,
+      "fuente": "AnM2-LFM-lect24.pdf",
+      "texto_local": "tmp/originales/02/lect24.txt",
+      "capitulos": [
+        12
+      ],
+      "etiqueta_lectura": "lectura:v2-24",
+      "temas": [
+        "Medidas con signo, restricción de infinitos, aditividad finita y continuidad monótona",
+        "Medidas complejas y continuidad monótona",
+        "Integrales indefinidas como medidas",
+        "Espacios vectoriales de medidas finitas"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–3",
+          "contenido_desarrollado": "Medidas con signo, restricción de infinitos, aditividad finita y continuidad monótona",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4–5",
+          "contenido_desarrollado": "Medidas complejas y continuidad monótona",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "6",
+          "contenido_desarrollado": "Integrales indefinidas como medidas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "7",
+          "contenido_desarrollado": "Espacios vectoriales de medidas finitas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "correcciones": [
+        "Se explicita qué infinito está excluido de una medida con signo y las hipótesis de continuidad desde arriba."
+      ]
+    },
+    {
+      "lectura": 25,
+      "fuente": "AnM2-LFM-lect25.pdf",
+      "texto_local": "tmp/originales/02/lect25.txt",
+      "capitulos": [
+        12
+      ],
+      "etiqueta_lectura": "lectura:v2-25",
+      "temas": [
+        "Conjuntos positivos/negativos y lema de extracción de subconjunto positivo",
+        "Descomposición de Hahn y unicidad módulo nulidad",
+        "Jordan y variación real",
+        "Variación mediante particiones, supremum sobre subconjuntos y finitud"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "Conjuntos positivos/negativos y lema de extracción de subconjunto positivo",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3",
+          "contenido_desarrollado": "Descomposición de Hahn y unicidad módulo nulidad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4–5",
+          "contenido_desarrollado": "Jordan y variación real",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "6",
+          "contenido_desarrollado": "Variación mediante particiones, supremum sobre subconjuntos y finitud",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l25-1",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida con signo sobre (X, X) y sean ν1, ν2 dos medidas sobre (X, X) tales que ν = ν1−ν2.\nDemuestre que ν1(A) ≥ ν\n+(A) y ν2(A) ≥ ν−(A) para todo conjunto medible A ⊆ X."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l25-2",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean ν1, ν2 dos medidas con signo finitas sobre (X, X). Definimos las medidas con signo ν1 ∨ ν2 y\nν1 ∧ ν2 como\nν1 ∨ ν2 = ν1 + (ν2 − ν1)\n+, ν1 ∧ ν2 = ν1 − (ν2 − ν1)+.\n(i) Demuestre que ν1 ∨ ν2 es la menor de todas las medidas con signo finitas ξ tales que ξ(A) ≥ ν1(A)\ny ξ(A) ≥ ν2(A) para todo conjunto medible A de X.\n(ii) D´e una caracterizaci´on de ν1 ∧ ν2 similar a la de ν1 ∨ ν2 y demu´estrela."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l25-3",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida con signo sobre (X, X) y sea µ una medida sobre X tal que |ν(A)| ≤ µ(A) para\ntodo A ∈ X. Demuestre que |ν|(A) ≤ µ(A) para todo A ∈ X."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l25-4",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible, y sea M(X, X, R) el espacio vectorial de todas las medidas con signo\nsobre (X, X) tales que |ν(X)| < +∞. Demuestre que la funci´on\nν 7→ ∥ν∥ = |ν|(X)\nes una norma sobre M(X, X, R)."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l25-5",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {νn}∞\nn=1 una sucesi´on en M(X, X, R), y sea ν ∈ M(X, X, R). Demuestre que limn→∞\n∥νn−ν∥ = 0\nsi y solo si {νn(A)}∞\nn=1 converge a ν(A) uniformemente con respecto a A ∈ X."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l25-6",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida con signo sobre (X, X), y sea f : X → F una funci´on integrable sobre (X, X, ν±).\nDefinimos la integral de f con respecto a ν como\nZ\nX\nf dν =\nZ\nX\nf dν+ −\nZ\nX\nf dν−.\n3Demuestre que el conjunto L\n1\n(X, X, ν) de todas las funciones que son integrables sobre (X, X, ν±) es un\nespacio vectorial. ¿La funci´on\nf 7→\nZ\nX\n|f| d|ν|\nes una seminorma sobre L\n1\n(X, X, ν)? Justifique."
+        }
+      ],
+      "correcciones": [
+        "Ejercicio2: la fórmula impresa del ínfimo tiene el signo intercambiado. Fórmula correcta ν1−(ν1−ν2)^+; contraejemplo con0 y una Dirac a la fórmula impresa."
+      ]
+    },
+    {
+      "lectura": 26,
+      "fuente": "AnM2-LFM-lect26.pdf",
+      "texto_local": "tmp/originales/02/lect26.txt",
+      "capitulos": [
+        12
+      ],
+      "etiqueta_lectura": "lectura:v2-26",
+      "temas": [
+        "Descomposición real/imaginaria y variación compleja con cotas completas",
+        "Completitud del espacio de medidas",
+        "Integración compleja, cotas y compatibilidad con Jordan"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–3",
+          "contenido_desarrollado": "Descomposición real/imaginaria y variación compleja con cotas completas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4",
+          "contenido_desarrollado": "Completitud del espacio de medidas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5–6",
+          "contenido_desarrollado": "Integración compleja, cotas y compatibilidad con Jordan",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 2,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l26-1",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν : X → C una funci´on que satisface ν(∅) = 0 y para cualesquiera conjuntos medibles disjuntos\na pares A1, . . . , An se tiene\nν\n [n\nk=1\nAk\n!\n=\nXn\nk=1\nν(Ak).\nSuponga que para toda sucesi´on creciente {An}∞\nn=1 de conjuntos medibles se tiene\nν\n [∞\nn=1\nAn\n!\n= limn→∞ν(An),\no que para toda sucesi´on decreciente {An}∞\nn=1 tal que T∞\nn=1\nAn = ∅ se tiene\nν\n \\∞\nn=1\nAn\n!\n= limn→∞ν(An).\nDemuestre que ν es una medida compleja."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l26-2",
+          "archivo": "capitulos/12.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida compleja sobre (X, X). Demuestre que la integral R\nX\nf dν es una funcional lineal\ncontinua de L\n1\n(X, X, |ν|) de norma 1."
+        }
+      ],
+      "correcciones": [
+        "Finitud de la variación compleja no se deduce sólo de que ν(A) sea complejo: se demuestra usando cuatro medidas de Jordan.",
+        "Ejercicio2: la norma de la integral es1 si ν≠0 y0 si ν=0."
+      ]
+    },
+    {
+      "lectura": 27,
+      "fuente": "AnM2-LFM-lect27.pdf",
+      "texto_local": "tmp/originales/02/lect27.txt",
+      "capitulos": [
+        13
+      ],
+      "etiqueta_lectura": "lectura:v2-27",
+      "temas": [
+        "Continuidad absoluta nula, epsilon-delta y verdadera continuidad; equivalencias precisas",
+        "Subespacio de medidas verdaderamente continuas y estabilidad por variación",
+        "Medida con densidad, verdadera continuidad e identidad de variación",
+        "Radon–Nikodym constructivo completo y corolario σ-finito"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "Continuidad absoluta nula, epsilon-delta y verdadera continuidad; equivalencias precisas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3",
+          "contenido_desarrollado": "Subespacio de medidas verdaderamente continuas y estabilidad por variación",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4",
+          "contenido_desarrollado": "Medida con densidad, verdadera continuidad e identidad de variación",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5",
+          "contenido_desarrollado": "Radon–Nikodym constructivo completo y corolario σ-finito",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 3,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l27-1",
+          "archivo": "capitulos/13.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que una funci´on ν : X → R finitamente aditiva es absolutamente continua con respecto\na µ si y solo si para todo A ∈ X tal que µ(A) = 0 se tiene ν(A) = 0."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l27-2",
+          "archivo": "capitulos/13.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Si (X, X, µ) es un espacio de medida σ-finita, demuestre que una funci´on finitamente aditiva ν es\nverdaderamente continua con respecto a µ si y solo si ν ∈ Mµ(X, X, R)."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l27-3",
+          "archivo": "capitulos/13.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que Mµ(X, X, R) es un subespacio cerrado de M(X, X, R) para toda medida µ sobre\n(X, X)."
+        }
+      ],
+      "correcciones": [
+        "Ejercicio1 falso para cargas finitamente aditivas: anular conjuntos μ-nulos no implica continuidad epsilon-delta. Contraejemplo mediante extensión positiva del límite y μ({n})=2^(-n); equivalencia correcta para medidas finitas numerablemente aditivas.",
+        "Ejercicio2: se explica la tautología de la notación original y se demuestra la equivalencia sustantiva entre verdadera continuidad, medida finita absolutamente continua y densidad en el caso σ-finito."
+      ]
+    },
+    {
+      "lectura": 28,
+      "fuente": "AnM2-LFM-lect28.pdf",
+      "texto_local": "tmp/originales/02/lect28.txt",
+      "capitulos": [
+        14
+      ],
+      "etiqueta_lectura": "lectura:v2-28",
+      "temas": [
+        "Pegado localizable de funciones medibles por superniveles racionales",
+        "Dual de L1: sobreyectividad equivalente a localizabilidad, ambas direcciones"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1",
+          "contenido_desarrollado": "Pegado localizable de funciones medibles por superniveles racionales",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "2",
+          "contenido_desarrollado": "Dual de L1: sobreyectividad equivalente a localizabilidad, ambas direcciones",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "correcciones": [
+        "El pegado complejo se hace correctamente por partes reales e imaginarias; no se afirma que cambiar sobre nulos convierta una función compleja en real."
+      ]
+    },
+    {
+      "lectura": 29,
+      "fuente": "AnM2-LFM-lect29.pdf",
+      "texto_local": "tmp/originales/02/lect29.txt",
+      "capitulos": [
+        14
+      ],
+      "etiqueta_lectura": "lectura:v2-29",
+      "temas": [
+        "Cargas finitamente aditivas y variación; cotas sobre particiones",
+        "Espacio ba completo y subespacio cerrado de cargas que anulan nulos",
+        "Integral de simples, independencia, extensión uniforme, representante esencial e isometría",
+        "Dual de L∞ como ba que anula conjuntos nulos"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–4",
+          "contenido_desarrollado": "Cargas finitamente aditivas y variación; cotas sobre particiones",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5–7",
+          "contenido_desarrollado": "Espacio ba completo y subespacio cerrado de cargas que anulan nulos",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "8–11",
+          "contenido_desarrollado": "Integral de simples, independencia, extensión uniforme, representante esencial e isometría",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "12",
+          "contenido_desarrollado": "Dual de L∞ como ba que anula conjuntos nulos",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l29-1",
+          "archivo": "capitulos/14.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida finitamente aditiva sobre el espacio medible (X, X) y sea {An}∞\nn=1 una sucesi´on\ndisjunta en X. Demuestre que si la serie P∞\nn=1\nν(An) es convergente, entonces converge a ν\nÅ S∞\nn=1\nAn\nã\n."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l29-2",
+          "archivo": "capitulos/14.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν una medida finitamente aditiva sobre (X, X). Demuestre lo siguiente:\n(i) Para toda funci´on simple ϕ, la integral R\nX\nϕ dν no depende de la representaci´on de ϕ. Es decir, si\nϕ =\nPn\nk=1\nαkχAk, entonces\nZ\nX\nϕ dν =\nXn\nk=1\nαkν(Ak).\n(ii) Para toda funci´on medible acotada f : X → F la integral R\nX\nf dν no depende de la sucesi´on {ϕn}∞\nn=1\nde funciones simples que converja uniformemente a f."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv"
+          ],
+          "etiqueta": "ej:v2-l29-3",
+          "archivo": "capitulos/14.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Medidas cero-uno. Sea X un conjunto no vac´ıo, y sea ν : P(X) → {0, 1} una medida finitamente\naditiva tal que ν(X) = 1. Sea U = {A ⊆ X : ν(A) = 1}. Demuestre lo siguiente (A, B son subconjuntos\nde X):\n(i) ∅ 6∈ U.\n(ii) Si A ∈ U y A ⊆ B, entonces B ∈ U.\n(iii) Si A, B ∈ U, entonces A ∩ B ∈ U.\n(iv) Si A 6∈ U, entonces X \\ A ∈ U.\nUna familia F de subconjuntos de X es llamada un filtro sobre X si satisface las condiciones (i) − (iii).\nDecimos que un filtro U es un ultrafiltro sobre X si para todo subconjunto A de X, o bien A ∈ U o bien\nX \\ A ∈ U. Demuestre que existe una correspondencia biyectiva entre todos los ultrafiltros sobre X y\ntodas las medidas (finitamente aditivas) cero-uno."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l29-4",
+          "archivo": "capitulos/14.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ν ∈ Tµ(X, X). Pruebe que\n∀ f, g ∈ L\n∞(X)\nÅZ\nX\nfg dν =\nZ\nX\nf dν·\nZ\nX\ng dνã\nsi y solo si ν es una medida cero-uno."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv"
+          ],
+          "etiqueta": "ej:v2-l29-5",
+          "archivo": "capitulos/14.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Un ultrafiltro U sobre X es libre si TU = ∅. Un ultrafiltro sobre X que no es libre es llamado fijo\no principal. Demuestre lo siguiente:\n4(i) Si un ultrafiltro U sobre X es fijo, entonces existe x ∈ X tal que U = {A ⊆ X : x ∈ A}.\n(ii) Si X es finito, entonces todo ultrafiltro sobre X es fijo. Si X es infinito, entonces X tiene ultrafiltros\nlibres. Sugerencia: Si X es infinito, use el lema de Zorn sobre la familia de todos los filtros que\ncontienen al filtro F = {A ⊆ X : X \\ A es finito}.\n(iii) Si U es un ultrafiltro libre sobre X y ν es la medida cero-uno asociada a U del ejercicio 3, entonces\nν(A) = 0 para todo conjunto finito A.\n(iv) Si ν es una medida cero-uno asociada a un ultrafiltro libre, entonces para toda sucesi´on x ∈ `∞\nreal-valuada se tiene\nlim inf\nn→∞\nx(n) ≤\nZ\nN\nx dν ≤ lim sup\nn→∞\nx(n).\nDeduzca que si x es convergente, entonces R\nN\nx dν = limn→∞x(n). Sugerencia: Primero demuestre el\nresultado para limn→∞x(n) = 0. Para el caso general, recuerde la definici´on de l´ımite superior y l´ımite\ninferior."
+        }
+      ],
+      "correcciones": [
+        "Ejercicio1: convergencia de la serie de masas no basta para aditividad numerable; contraejemplo de carga límite y criterio de continuidad de colas.",
+        "Ejercicio2: la extensión continua de la integral exige variación acotada.",
+        "Ejercicio4: la multiplicatividad incluye la carga cero; se distingue cero de probabilidad cero-uno."
+      ]
+    },
+    {
+      "lectura": 30,
+      "fuente": "AnM2-LFM-lect30.pdf",
+      "texto_local": "tmp/originales/02/lect30.txt",
+      "capitulos": [
+        13
+      ],
+      "etiqueta_lectura": "lectura:v2-30",
+      "temas": [
+        "Singularidad y espacios cerrados de medidas singulares y excepcionales",
+        "Descomposición general de Lebesgue en tres partes, fórmulas extremales positivas, construcción, extensión compleja y unicidad"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–3",
+          "contenido_desarrollado": "Singularidad y espacios cerrados de medidas singulares y excepcionales",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4–8",
+          "contenido_desarrollado": "Descomposición general de Lebesgue en tres partes, fórmulas extremales positivas, construcción, extensión compleja y unicidad",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "correcciones": [
+        "Construcción mediante restricciones a un nulo y un conjunto σ-finito evita inversiones erróneas de conjuntos crecientes/decrecientes y permite comprobar todas las tres partes."
+      ]
+    },
+    {
+      "lectura": 31,
+      "fuente": "AnM2-LFM-lect31.pdf",
+      "texto_local": "tmp/originales/02/lect31.txt",
+      "capitulos": [
+        15
+      ],
+      "etiqueta_lectura": "lectura:v2-31",
+      "temas": [
+        "Borel y regularidad: definición exacta y ejemplos Lebesgue, Dirac y conteo discreto",
+        "Separación de compactos, vecindades relativamente compactas, cortes, extensión compacta y segundo numerabilidad, con pruebas",
+        "Regularidad de Borel finita y regularidad localmente finita segundo numerable",
+        "Regularidad interior de conjuntos de medida σ-finita"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–3",
+          "contenido_desarrollado": "Borel y regularidad: definición exacta y ejemplos Lebesgue, Dirac y conteo discreto",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4",
+          "contenido_desarrollado": "Separación de compactos, vecindades relativamente compactas, cortes, extensión compacta y segundo numerabilidad, con pruebas",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5–6",
+          "contenido_desarrollado": "Regularidad de Borel finita y regularidad localmente finita segundo numerable",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "7",
+          "contenido_desarrollado": "Regularidad interior de conjuntos de medida σ-finita",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 8,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-1",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean X, Y dos espacios de Hausdorff, y sea f : X → Y una funci´on continua. Demuestre que f es\nBorel-medible."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-2",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff, y sea Y un subespacio de X. Demuestre que\nB(Y ) = {A ⊆ Y : A = B ∩ Y para alg´un B ∈ B(X)}."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-3",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre el lema 5.\nSugerencia: Use que todo abierto de X es cun conjunto Fσ."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-4",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff localmente compacto, sea X una σ-´algebra que contiene a B(X) y\nsea µ una medida regular sobre (X, X). Si A ∈ X es tal que µ(A) es σ-finita, pruebe que para todo ε > 0\nexiste un conjunto abierto U de X que contiene a A tal que µ(U \\ A) < ε.\n3Nota: Considere tambi´en el caso µ(A) = +∞."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-5",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff localmente compacto, sea X una σ-´algebra que contiene a B(X) y sea\nµ una medida regular sobre (X, X). Demuestre que existen conjuntos de Borel E, F tales que E ⊆ A ⊆ F\ny µ(F \\ E) = 0. Deduzca que, si µ es σ-finita, entonces X est´a contenida en la completaci´on de B(X)\nbajo la restricci´on de µ a B(X)."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-6",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff localmente compacto, sea X una σ-´algebra que contiene a B(X) y\nsea µ una medida regular sobre (X, X). Demuestre que la completaci´on de µ es regular."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l31-7",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff localmente compacto, y sea µ una medida regular sobre X. Suponga\nµ({x}) = 0 para todo x ∈ X. Demuestre que para todo conjunto de Borel B de medida finita y para\ntodo α ∈ ]0, µ(B)[ existe un subconjunto A de B tal que µ(A) = α."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "i",
+            "x",
+            "iv",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l31-8",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff compacto. Definimos la σ-´algebra de Baire como la σ-´algebra B0(X)\nm´as peque˜na que hace a todas las funciones continuas de X en R medibles. Los elementos de B0(X) son\nllamados conjuntos de Baire. Una medida de Baire sobre X es una medida finita sobre (X, B0(X)).\nDemuestre lo siguiente:\n(i) B0(X) es la σ-´algebra generada por los conjuntos Gδ que son cerrados en X. Sugerencia: Demuestre\nque para toda f : X → R continua y para todo α ∈ R el conjunto {x ∈ X : f(x) ≤ α} es un cerrado\nGδ; luego use la proposici´on 4, punto (iv) para probar que todo cerrado Gδ es de esta forma.\n(ii) Si X es segundo numerable, entonces B0(X) = B(X)."
+        }
+      ],
+      "correcciones": [
+        "No se afirma que todo LCH sea normal: normalidad y Tietze se prueban en compactos Hausdorff mediante compactificación unipuntual.",
+        "Ejercicio5: la aproximación Borel módulo nulos se prueba para A de medida σ-finita; contraejemplo explícito al alcance general usando R×D y un subconjunto no Borel de Cantor.",
+        "La regularidad interior sobre todos los Borel no se afirma sin finitud/σ-finitud apropiada."
+      ]
+    },
+    {
+      "lectura": 32,
+      "fuente": "AnM2-LFM-lect32.pdf",
+      "texto_local": "tmp/originales/02/lect32.txt",
+      "capitulos": [
+        15
+      ],
+      "etiqueta_lectura": "lectura:v2-32",
+      "temas": [
+        "Densidad de Cc en Lp y fallo para L∞",
+        "Lusin por densidad, Egorov y extensión compacta",
+        "Localizabilidad estricta: corrección de definición, σ-finita implica estricta, estricta implica localizable",
+        "Descomposición por compactos de soporte pleno: teorema probado en el ámbito σ-compacto completado; contraejemplo al alcance general impreso"
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "Densidad de Cc en Lp y fallo para L∞",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3",
+          "contenido_desarrollado": "Lusin por densidad, Egorov y extensión compacta",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "4–6",
+          "contenido_desarrollado": "Localizabilidad estricta: corrección de definición, σ-finita implica estricta, estricta implica localizable",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "7",
+          "contenido_desarrollado": "Descomposición por compactos de soporte pleno: teorema probado en el ámbito σ-compacto completado; contraejemplo al alcance general impreso",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l32-1",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio de Hausdorff, sea X una σ-´algebra que contiene a B(X) y sea µ una medida regular\nsobre (X, X). Si A ∈ X es tal que µ(A) es σ-finita, demuestre que\nµ(A) = sup{µ(K) : K es compacto y K ⊆ A}."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l32-2",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Fije ε > 0 arbitrario. Sea {xn}∞\nn=1 una enumeraci´on de Q ∩ [0, 1], sea An = ]xn − ε/2\nn, xn + ε/2n[,\ny sea\nF = [0, 1] \\\n[∞\nn=1\nAn.\nDemuestre que la funci´on χQ∩[0,1] es continua en F y µ(F) ≥ 1 − 2ε."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l32-3",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que la funci´on h en el teorema de Luzin puede elegirse de tal forma que khk∞ ≤ kfk∞\n(aqu´ı es la norma uniforme, no la norma del supremo esencial).\nSugerencia: Considere la funci´on ϕ(z) = min{|z|, kfk∞}sgn(z) de C en C."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l32-4",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio localmente compacto de Hausdorff, sea µ una medida de Borel regular sobre X.\nPruebe que la uni´on de todos los conjuntos abiertos de X que tienen medida cero es un conjunto abierto\nque tiene medida cero.\nSea X un espacio localmente compacto de Hausdorff, y sea µ una medida de Borel regular sobre X. Se\ndefine el soporte de µ como el complemento del m´aximo conjunto abierto de X que tiene medida cero. El\nsoporte de µ se denota como supp(µ). Si µ es una medida con signo o compleja regular sobre (X, B(X)),\nel soporte de µ como el conjunto supp(|µ|)."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "x"
+          ],
+          "etiqueta": "ej:v2-l32-5",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio localmente compacto de Hausdorff, sea µ una medida de Borel regular sobre X, y\nsea x ∈ X. Demuestre que x ∈ X est´a en supp(µ) si y solo si para toda f ∈ C00(X) tal que f(x) > 0 se\ntiene R\nX\nf dµ > 0."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l32-6",
+          "archivo": "capitulos/15.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un espacio discreto infinito no numerable, y sea X su compactificaci´on unipuntual. De\u0002muestre que no existe ninguna medida de Borel regular sobre X cuyo soporte sea X.\nSugerencia: Recuerde que en X, los abiertos son todos los abiertos de X y los complementos en X de los\nconjuntos compactos de X."
+        }
+      ],
+      "correcciones": [
+        "Definición4: exigir suma de masas sólo para conjuntos finitos en medida permite espacios no semifinitos; contraejemplo y definición corregida con identidad para todos los medibles.",
+        "Teorema7: alcance general falso bajo la convención exteriormente regular de estas lecturas. Se conserva como cuestión de alcance, se da contraejemplo R×D, y se demuestra íntegramente la versión σ-compacta con medida completada.",
+        "Ejercicio5: se añade f≥0; f(x)>0 por sí solo permite cancelación de la integral. Se da contraejemplo firmado y criterio correcto."
+      ]
+    },
+    {
+      "lectura": 33,
+      "fuente": "AnM2-LFM-lect33.pdf",
+      "texto_local": "tmp/originales/02/lect33.txt",
+      "capitulos": [
+        16
+      ],
+      "etiqueta_lectura": "lectura:v2-33",
+      "temas": [
+        "C0, estructura vectorial, completitud y densidad de Cc",
+        "Regularidad de medidas complejas equivalente a la de variación y completitud",
+        "Forma polar e isometría del encaje de medidas regulares en C0*",
+        "Módulo de una funcional, aditividad positiva, extensión y norma",
+        "Prueba completa añadida de representación positiva: medida exterior, criterio de Carathéodory, regularidad y recuperación de la integral; representación compleja y unicidad",
+        "Riesz positivo general para funcional arbitraria sobre Cc, con medida finita sobre compactos y regularidad exacta; caso C0 acotado como corolario."
+      ],
+      "resultados_originales": [
+        {
+          "numeracion_fuente": "1–2",
+          "contenido_desarrollado": "C0, estructura vectorial, completitud y densidad de Cc",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "3–4",
+          "contenido_desarrollado": "Regularidad de medidas complejas equivalente a la de variación y completitud",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "5",
+          "contenido_desarrollado": "Forma polar e isometría del encaje de medidas regulares en C0*",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "6",
+          "contenido_desarrollado": "Módulo de una funcional, aditividad positiva, extensión y norma",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        },
+        {
+          "numeracion_fuente": "continuación anunciada",
+          "contenido_desarrollado": "Prueba completa añadida de Riesz positivo general sobre Cc: cotas locales, medida exterior posiblemente infinita, criterio de Carathéodory, regularidad exterior de Borel e interior en abiertos y conjuntos σ-finitos, recuperación de integrales; corolario C0, representación compleja y unicidad.",
+          "estado": "desarrollado y demostrado; véanse correcciones de alcance cuando proceden"
+        }
+      ],
+      "ejercicios_originales": 1,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l33-1",
+          "archivo": "capitulos/16.tex",
+          "estado": "resuelto íntegramente; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Suponga que existe unan medida de Borel regular µ tal que µ({x}) = 0 para todo x ∈ X y\n0 < |µ|(X) < +∞. Demuestre que C0(X) no es reflexivo.\nSugerencia: Considere la funci´on Φ : M(X, B(X)) → F dada por Φ(ν) = P\nx∈X\nν({x})."
+        }
+      ],
+      "correcciones": [
+        "C0 es subespacio cerrado de C_b, no del conjunto sin restricción de todas las funciones continuas con una supuesta norma uniforme finita.",
+        "La forma polar requiere aproximar el conjugado de h para medir la norma en el caso complejo.",
+        "Se corrigen los signos/desigualdades y las fases del argumento del módulo de una funcional, y se prueba continuidad de los sumandos en sus ceros.",
+        "Se completa la suprayectividad que la lectura deja anunciada: construcción positiva y reducción compleja rigurosas.",
+        "La contradicción del ejercicio usa |μ|, porque una medida compleja no nula puede tener masa total cero."
+      ]
+    }
+  ],
+  "verificacion": {
+    "etiquetas_originales_unicas": true,
+    "soluciones_completas": 62,
+    "lecturas_sin_ejercicios_explicitos": [
+      20,
+      24,
+      28,
+      30
+    ],
+    "notas": "Los resultados remitidos a ejercicio dentro de la teoría también se demuestran; no se contabilizan como ejercicios nuevos. Lectura33 completa la demostración de Riesz que la fuente aplaza.",
+    "revision_independiente": [
+      {
+        "revisor": "agente coordinador raíz",
+        "bloque": "capítulo16, teorema positivo general sobre Cc",
+        "resultado": "Revisada íntegra la construcción de abiertos, Carathéodory, recuperación de integrales y unicidad; sin lagunas centrales detectadas."
+      },
+      {
+        "revisor": "coordinador del volumenII",
+        "bloque": "capítulo13 Radon–Nikodym y capítulo15 topología/regularidad",
+        "resultado": "Revisión matemática independiente favorable, sin errores sustantivos adicionales detectados."
+      }
+    ]
+  }
+}

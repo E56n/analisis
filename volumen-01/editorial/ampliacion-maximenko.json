@@ -1,0 +1,332 @@
+{
+  "estado": "ampliacion completa, compilada y revisada visualmente",
+  "fecha": "2026-10-18",
+  "archivos_editados": [
+    "capitulos/08.tex",
+    "capitulos/11.tex",
+    "capitulos/14.tex",
+    "capitulos/15.tex",
+    "referencias.tex",
+    "editorial/ampliacion-maximenko.json"
+  ],
+  "preservacion": {
+    "ejercicios_originales_volumen": 206,
+    "ejercicios_nuevos": 20,
+    "ejercicios_totales": 226,
+    "soluciones_totales": 226,
+    "etiquetas_originales_conservadas": true,
+    "enunciados_originales_conservados": true,
+    "unica_modificacion_matematica_en_ejercicio_original": {
+      "etiqueta": "ej:lectura-31-4",
+      "detalle": "Se armoniza G_ij=<u_j,u_i> y se intercambia la descripción de operaciones de fila/columna para mantener la convención lineal en el primer argumento; el determinante, la fórmula de distancia y toda la solución de Müntz permanecen."
+    }
+  },
+  "capitulos": {
+    "08": {
+      "tema": "cocientes",
+      "teoria": [
+        "Construcción algebraica y buena definición de operaciones",
+        "Seminorma cociente y criterio de norma: subespacio cerrado",
+        "Cociente por núcleo de seminorma",
+        "Completitud del cociente de Banach mediante series",
+        "Imagen de bolas y carácter abierto de la proyección"
+      ],
+      "ejercicios_originales_preservados": 9,
+      "ejercicios_nuevos": 5,
+      "ejercicios_totales": 14,
+      "soluciones_totales": 14,
+      "etiquetas_originales_preservadas": 29,
+      "etiquetas_nuevas": [
+        "ampl:cocientes",
+        "ampl:cociente-seminorma",
+        "ampl:nucleo-seminorma",
+        "ampl:cociente-banach",
+        "ampl:cociente-bolas",
+        "ej:ampl-cocientes-1",
+        "ej:ampl-cocientes-2",
+        "ej:ampl-cocientes-3",
+        "ej:ampl-cocientes-4",
+        "ej:ampl-cocientes-5"
+      ],
+      "ejercicios": [
+        {
+          "etiqueta": "ej:ampl-cocientes-1",
+          "tema": "Recta diagonal en R²"
+        },
+        {
+          "etiqueta": "ej:ampl-cocientes-2",
+          "tema": "c/c0 y límite de sucesiones"
+        },
+        {
+          "etiqueta": "ej:ampl-cocientes-3",
+          "tema": "Cociente no separado ℓ²/c00"
+        },
+        {
+          "etiqueta": "ej:ampl-cocientes-4",
+          "tema": "Seminorma de valores en los extremos de una función"
+        },
+        {
+          "etiqueta": "ej:ampl-cocientes-5",
+          "tema": "Hipernúcleo de funcional y distancia no alcanzada"
+        }
+      ],
+      "palabras_anadidas_aproximadas": 1680
+    },
+    "11": {
+      "tema": "picard",
+      "teoria": [
+        "Picard global en intervalo compacto, con valores R^d y Lipschitz global en el estado",
+        "Prueba por norma exponencial ponderada",
+        "Prueba por potencia contractiva y factorial",
+        "Convergencia de todas las iteraciones y error explícito"
+      ],
+      "ejercicios_originales_preservados": 8,
+      "ejercicios_nuevos": 5,
+      "ejercicios_totales": 13,
+      "soluciones_totales": 13,
+      "etiquetas_originales_preservadas": 25,
+      "etiquetas_nuevas": [
+        "ampl:picard",
+        "ampl:picard-teorema",
+        "ampl:picard-equivalencia",
+        "ampl:picard-constante",
+        "ampl:picard-factorial",
+        "ampl:picard-error",
+        "ej:ampl-picard-1",
+        "ej:ampl-picard-2",
+        "ej:ampl-picard-3",
+        "ej:ampl-picard-4",
+        "ej:ampl-picard-5"
+      ],
+      "ejercicios": [
+        {
+          "etiqueta": "ej:ampl-picard-1",
+          "tema": "Ecuación lineal no homogénea e iteraciones explícitas"
+        },
+        {
+          "etiqueta": "ej:ampl-picard-2",
+          "tema": "Ecuación no lineal y comparación de dos cotas"
+        },
+        {
+          "etiqueta": "ej:ampl-picard-3",
+          "tema": "Dependencia de datos y perturbación de la ecuación"
+        },
+        {
+          "etiqueta": "ej:ampl-picard-4",
+          "tema": "Versión local y explosión para u prima igual a u al cuadrado"
+        },
+        {
+          "etiqueta": "ej:ampl-picard-5",
+          "tema": "Falta de unicidad sin Lipschitz local"
+        }
+      ],
+      "palabras_anadidas_aproximadas": 1877
+    },
+    "14": {
+      "tema": "gram",
+      "teoria": [
+        "Gram con producto interno lineal en el primer argumento",
+        "Positividad, independencia e invertibilidad",
+        "Ecuaciones normales y fórmula del error",
+        "Proyección finita sin completitud ambiente"
+      ],
+      "ejercicios_originales_preservados": 14,
+      "ejercicios_nuevos": 5,
+      "ejercicios_totales": 19,
+      "soluciones_totales": 19,
+      "etiquetas_originales_preservadas": 31,
+      "etiquetas_nuevas": [
+        "ampl:gram",
+        "ampl:gram-positiva",
+        "ampl:gram-proyeccion",
+        "ej:ampl-gram-1",
+        "ej:ampl-gram-2",
+        "ej:ampl-gram-3",
+        "ej:ampl-gram-4",
+        "ej:ampl-gram-5"
+      ],
+      "ejercicios": [
+        {
+          "etiqueta": "ej:ampl-gram-1",
+          "tema": "Aproximación de t² por una recta en norma integral"
+        },
+        {
+          "etiqueta": "ej:ampl-gram-2",
+          "tema": "Proyección compleja y posición del conjugado"
+        },
+        {
+          "etiqueta": "ej:ampl-gram-3",
+          "tema": "Regresión con tres datos y dos parámetros"
+        },
+        {
+          "etiqueta": "ej:ampl-gram-4",
+          "tema": "Cambio de base y coordenadas casi dependientes"
+        },
+        {
+          "etiqueta": "ej:ampl-gram-5",
+          "tema": "Listas dependientes, rango, núcleo y unicidad de la proyección"
+        }
+      ],
+      "palabras_anadidas_aproximadas": 1393
+    },
+    "15": {
+      "tema": "schauder",
+      "teoria": [
+        "Definición y unicidad de expansiones ordenadas",
+        "Independencia y totalidad",
+        "Bases coordenadas en ℓp y c0",
+        "Bases ortonormales numerables como Schauder y permanencia bajo permutación"
+      ],
+      "ejercicios_originales_preservados": 7,
+      "ejercicios_nuevos": 5,
+      "ejercicios_totales": 12,
+      "soluciones_totales": 12,
+      "etiquetas_originales_preservadas": 15,
+      "etiquetas_nuevas": [
+        "ampl:schauder",
+        "ampl:schauder-independencia",
+        "ampl:schauder-coordenadas",
+        "ampl:schauder-ortonormal",
+        "ej:ampl-schauder-1",
+        "ej:ampl-schauder-2",
+        "ej:ampl-schauder-3",
+        "ej:ampl-schauder-4",
+        "ej:ampl-schauder-5"
+      ],
+      "ejercicios": [
+        {
+          "etiqueta": "ej:ampl-schauder-1",
+          "tema": "Base de c, coeficientes y cotas"
+        },
+        {
+          "etiqueta": "ej:ampl-schauder-2",
+          "tema": "Lista independiente y total que no es Schauder"
+        },
+        {
+          "etiqueta": "ej:ampl-schauder-3",
+          "tema": "Separabilidad necesaria y obstrucción en ℓ∞"
+        },
+        {
+          "etiqueta": "ej:ampl-schauder-4",
+          "tema": "Transporte por isomorfismo e inversa mediante serie"
+        },
+        {
+          "etiqueta": "ej:ampl-schauder-5",
+          "tema": "Base sumante de c0 y permutación que destruye la propiedad"
+        }
+      ],
+      "palabras_anadidas_aproximadas": 1968
+    }
+  },
+  "fuentes": [
+    {
+      "clave": "max-cociente",
+      "autor": "Egor Maximenko",
+      "titulo": "Espacio cociente de un espacio normado",
+      "url": "https://esfm.egormaximenko.com/analysis/quotient_space_of_normed_space_es.pdf",
+      "consultado": "2026-10-18"
+    },
+    {
+      "clave": "max-seminormado",
+      "autor": "Egor Maximenko",
+      "titulo": "El cociente de espacios normados o seminormados",
+      "url": "https://esfm.egormaximenko.com/analysis/normed_spaces_quotient_presentation_es.pdf",
+      "consultado": "2026-10-18"
+    },
+    {
+      "clave": "max-picard",
+      "autor": "Egor Maximenko",
+      "titulo": "Teorema de Picard sobre la existencia y unicidad de solución de EDO con condiciones iniciales",
+      "url": "https://esfm.egormaximenko.com/numer/Picard_theorem_es.pdf",
+      "consultado": "2026-10-18"
+    },
+    {
+      "clave": "max-gram",
+      "autor": "Egor Maximenko",
+      "titulo": "Matriz de Gram",
+      "url": "https://esfm.egormaximenko.com/analysis/Gram_matrix_es.pdf",
+      "consultado": "2026-10-18"
+    },
+    {
+      "clave": "max-proyeccion",
+      "autor": "Egor Maximenko",
+      "titulo": "El cálculo de la proyección ortogonal en términos de una base no ortogonal",
+      "url": "https://esfm.egormaximenko.com/analysis/orthogonal_projection_in_terms_of_a_nonorthogonal_basis_es.pdf",
+      "consultado": "2026-10-18"
+    },
+    {
+      "clave": "max-schauder",
+      "autor": "Egor Maximenko",
+      "titulo": "Bases de Schauder",
+      "url": "https://esfm.egormaximenko.com/analysis/Schauder_bases_es.pdf",
+      "consultado": "2026-10-18"
+    }
+  ],
+  "creditos": {
+    "teoria": "Orientación temática y estrategias atribuidas localmente a Maximenko; redacción, pasos intermedios y soluciones desarrollados en esta edición.",
+    "ejercicios_adaptados": [
+      "ej:ampl-cocientes-2",
+      "ej:ampl-cocientes-3",
+      "ej:ampl-schauder-1",
+      "ej:ampl-schauder-3"
+    ],
+    "ejercicio_con_parte_adaptada": {
+      "etiqueta": "ej:ampl-gram-5",
+      "detalle": "Problema de rango de Gram inspirado en la propuesta final de Matriz de Gram; solvencia del sistema, lista dependiente concreta y solución desarrolladas aquí."
+    },
+    "otros_ejercicios": "Elaboraciones propias de esta edición; indicadas localmente."
+  },
+  "precisiones": [
+    "Picard elimina acotación global de f del apunte fuente: sobre intervalo compacto, cada composición con una curva continua es integrable, y Lipschitz global permite ambas pruebas.",
+    "Las estimaciones integrales se parametrizan por distancia desde t0 para cubrir t<t0 sin error de orientación.",
+    "Gram usa G_ij=<a_j,a_i> coherente con producto interno lineal primero.",
+    "Las bases de Schauder son sucesiones ordenadas; no se confunden con bases ortonormales no numerables ni se afirma que separabilidad sea suficiente."
+  ],
+  "notacion_nueva_para_indice": [
+    {
+      "simbolo": "V/M, [x]=x+M, q",
+      "significado": "Espacio cociente, clase y proyección canónica",
+      "referencia": "ampl:cocientes"
+    },
+    {
+      "simbolo": "p, bar p, N_p",
+      "significado": "Seminorma, seminorma cociente y núcleo de seminorma",
+      "referencia": "ampl:nucleo-seminorma"
+    },
+    {
+      "simbolo": "||u||_beta",
+      "significado": "Norma uniforme ponderada por exp(-beta|t-t0|)",
+      "referencia": "ampl:picard-equivalencia"
+    },
+    {
+      "simbolo": "S, u_n",
+      "significado": "Operador de Picard y aproximaciones sucesivas",
+      "referencia": "ampl:picard-teorema"
+    },
+    {
+      "simbolo": "G, alpha, c, A*",
+      "significado": "Matriz de Gram, vector de productos internos, coeficientes y transpuesta conjugada",
+      "referencia": "ampl:gram"
+    },
+    {
+      "simbolo": "b_n*, S_N",
+      "significado": "Funcionales coordenados y operador de sumas parciales de una base de Schauder",
+      "referencia": "ampl:schauder"
+    }
+  ],
+  "verificacion": {
+    "referencias_internas_faltantes": [],
+    "etiquetas_duplicadas": [],
+    "entornos_balanceados": true,
+    "citas_con_bibitem": true,
+    "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=/tmp/vol1-maximenko-build main.tex",
+    "pdf": "/tmp/vol1-maximenko-build/main.pdf",
+    "paginas_pdf": 221,
+    "errores": 0,
+    "overfull": 0,
+    "referencias_indefinidas": 0,
+    "underfull_hbox": 5,
+    "detalle_avisos": "Los cinco avisos corresponden a párrafos anteriores a la ampliación, incluida la sección original de Riesz-Fischer.",
+    "qa_visual": "Contactos de páginas físicas104–109,153–161,187–192,195–201,220–221: sin cortes ni solapes; cierres de capítulo con espacio blanco normal."
+  }
+}

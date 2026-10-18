@@ -1,0 +1,202 @@
+\chapter{El álgebra de convolución de un grupo}\label{cap:v4-12}
+La medida de Haar permite repetir la definición de convolución sin coordenadas. La ausencia de conmutatividad distingue el orden de los factores; la posible diferencia entre medidas izquierda y derecha introduce la función modular. Mantendremos visibles ambas cuestiones en las pruebas y en los ejercicios.
+
+\section{Convolución e involución}\label{lectura:v4-22}
+\index{convolucion@convolución!en grupos}\index{algebra@álgebra!L1 de un grupo}
+Sea $G$ localmente compacto y Hausdorff, con medida de Haar izquierda $\mu$. Escribimos $dx=d\mu(x)$, y fijamos $\int h(xa)dx=\Delta(a)^{-1}\int h(x)dx$. Las clases $L^p$ se toman respecto de la completación de Haar. Para $f,g\in L^1(G)$ ponemos
+\begin{equation}\label{v4-l24-d:algebra}
+ (f*g)(x)=\int_Gf(y)g(y^{-1}x)dy,\qquad
+ f^*(x)=\Delta(x^{-1})\overline{f(x^{-1})}.
+\end{equation}
+Recordamos la fórmula de inversión de Haar:
+\begin{equation}\label{v4-l24-eq:inv}
+ \int_Gh(x^{-1})\Delta(x^{-1})dx=\int_Gh(x)dx.
+\end{equation}
+En un grupo abeliano $\Delta=1$. En $\R^d$ recuperamos la convolución aditiva; en $\T$ usamos Haar de masa uno; en un grupo discreto con medida de conteo obtenemos $(a*b)(x)=\sum_y a(y)b(y^{-1}x)$. La suma puede tener índices no numerables, pero una función de $\ell^1$ tiene soporte numerable: para cada $n$ solo hay finitos términos de módulo al menos $1/n$, y la unión de esos conjuntos contiene todos los términos no nulos.
+
+\begin{teorema}\label{v4:conv-grupo}\label{v4-l24-p:banach}
+La convolución existe casi en todas partes y hace de $L^1(G)$ un álgebra de Banach con involución isométrica. En particular,
+\[
+ \norm{f*g}_1\leq\norm f_1\norm g_1,\quad
+ \norm{f^*}_1=\norm f_1,\quad
+ (f*g)^*=g^**f^*.
+\]
+\end{teorema}
+\begin{proof}
+Primero precisemos la cuestión de medida para grupos que no son $\sigma$-compactos. Cada función de $L^1$ tiene, salvo un nulo, soporte contenido en una unión numerable de compactos: se aproxima en $L^1$ por funciones de $C_c(G)$ y se elige una subsucesión con errores sumables. Una vecindad relativamente compacta y esa colección numerable de compactos generan un subgrupo abierto $\sigma$-compacto. En él la medida es $\sigma$-finita y se pueden aplicar Tonelli y Fubini ordinarios. Fuera de ese subgrupo las funciones elegidas y su convolución se anulan. Esto no afirma que el soporte topológico de todo representante sea $\sigma$-compacto.
+
+Para representantes borelianos, $(y,x)\mapsto f(y)g(y^{-1}x)$ es medible. La transformación $(y,x)\mapsto(y,y^{-1}x)$ preserva la medida producto en el subgrupo anterior: integrar primero en $x$ y usar invariancia izquierda prueba la identidad para indicadoras y después para no negativas. Por ello sus preimágenes de nulos son nulas, y el argumento se extiende a representantes de la medida completada. Tonelli da
+\[
+ \int_G\int_G|f(y)g(y^{-1}x)|dydx
+ =\int_G|f(y)|\int_G|g(z)|dzdy=\norm f_1\norm g_1.
+\]
+Fubini y la desigualdad triangular producen existencia, integrabilidad y la cota de norma. También prueban independencia de representantes y $\int f*g=(\int f)(\int g)$.
+
+Para asociatividad, la integral triple absoluta es $\norm f_1\norm g_1\norm h_1$. El cambio $y=zt$ y Fubini dan
+\[
+ ((f*g)*h)(x)=\int\int f(z)g(z^{-1}y)h(y^{-1}x)dzdy
+ =\int f(z)\int g(t)h(t^{-1}z^{-1}x)dtdz.
+\]
+La última expresión es $f*(g*h)(x)$ casi en todas partes. La bilinealidad es inmediata y la completitud es la de $L^1$.
+
+La fórmula~\eqref{v4-l24-eq:inv} aplicada a $|f|$ prueba $\norm{f^*}_1=\norm f_1$. La antilinealidad y $f^{**}=f$ se obtienen de la conjugación y $\Delta(x^{-1})\Delta(x)=1$. Finalmente,
+\begin{align*}
+ (g^**f^*)(x)
+ &=\int\Delta(y^{-1})\overline{g(y^{-1})}\Delta(x^{-1}y)\overline{f(x^{-1}y)}dy\\
+ &=\Delta(x^{-1})\int\overline{g(y^{-1})}\,\overline{f(x^{-1}y)}dy\\
+ &=\Delta(x^{-1})\int\overline{f(z)}\,\overline{g(z^{-1}x^{-1})}dz=(f*g)^*(x),
+\end{align*}
+donde en la última línea usamos $y=xz$. Las identidades se interpretan casi en todas partes.
+\end{proof}
+
+\section{Traslaciones y aproximaciones de la identidad}
+\index{identidad!aproximada en un grupo}\index{red!de Dirac}
+Definimos $L_af(x)=f(a^{-1}x)$ y $R_af(x)=f(xa)$. Un cambio de variable da
+\[
+ L_a(f*g)=(L_af)*g,\qquad R_a(f*g)=f*(R_ag),\qquad
+ \norm{L_af}_1=\norm f_1,\quad\norm{R_af}_1=\Delta(a)^{-1}\norm f_1.
+\]
+\begin{lema}\label{v4-l24-l:translation}
+Para cada $f\in L^1(G)$, $a\mapsto L_af$ es continua en norma. También lo es $a\mapsto\widetilde R_af$, donde $\widetilde R_af(x)=\Delta(a)^{-1}f(xa^{-1})$; estos últimos operadores son isometrías de $L^1$.
+\end{lema}
+\begin{proof}
+Para $f\in C_c$ y $a$ en una vecindad compacta de $e$, los soportes de $f$ y de sus traslaciones quedan dentro de un compacto fijo. La continuidad conjunta, seguida de un recubrimiento finito de ese compacto, muestra que las diferencias tienden uniformemente a cero. Multiplicar la cota uniforme por la medida finita del compacto da continuidad en $L^1$. Para $f$ general, aproximamos por $g\in C_c$ y usamos
+\[
+ \norm{L_af-f}_1\leq2\norm{f-g}_1+\norm{L_ag-g}_1.
+\]
+En un punto distinto de $e$ se usa la ley de las traslaciones. Para $\widetilde R_a$, el mismo argumento usa continuidad de $\Delta$ y
+$\norm{\widetilde R_af}_1=\Delta(a)^{-1}\Delta(a)\norm f_1=\norm f_1$.
+\end{proof}
+\begin{definicion}
+Una red de Dirac es una red $(k_\alpha)\subset L^1(G)$ con $k_\alpha\geq0$, $\int k_\alpha=1$ y, para \emph{cada} vecindad $U$ de $e$,
+\[
+ \int_{G\setminus U}k_\alpha(x)dx\longrightarrow0.
+\]
+La condición de la lectura 22 que permite elegir alguna vecindad $U$ para cada $\eps$ es insuficiente: tomar $U=G$ la haría vacía de contenido.
+\end{definicion}
+\begin{teorema}\label{v4:dirac-grupo}
+Para una red de Dirac y $f\in L^1(G)$, $k_\alpha*f\to f$ y $f*k_\alpha\to f$ en $L^1$.
+\end{teorema}
+\begin{proof}
+Por Tonelli,
+\[
+ \norm{k_\alpha*f-f}_1\leq\int k_\alpha(y)\norm{L_yf-f}_1dy.
+\]
+La norma de la diferencia es pequeña en una vecindad de $e$ y está acotada por $2\norm f_1$ en todo $G$. La concentración de masa da el límite. Para el otro lado, el cambio $z=y^{-1}x$ y la fórmula de inversión dan
+\[
+ f*k_\alpha(x)=\int k_\alpha(z)\Delta(z)^{-1}f(xz^{-1})dz
+ =\int k_\alpha(z)\widetilde R_zf(x)dz.
+\]
+La misma estimación con $\widetilde R_z$ prueba el segundo límite. El factor modular no puede omitirse en este paso.
+\end{proof}
+\begin{lema}\label{v4-l24-l:approx}
+Existe una red $(e_U)\subset C_c(G)$, indexada por vecindades simétricas relativamente compactas de $e$ ordenadas por inclusión inversa, tal que
+\[
+ e_U\geq0,\quad\supp e_U\subset U,\quad e_U^*=e_U,
+ \quad\int e_U=\norm{e_U}_1=1.
+\]
+Es una identidad aproximada por ambos lados.
+\end{lema}
+\begin{proof}
+La local compacidad y la forma local de Urysohn proporcionan $h\in C_c(G)$ no negativa, no nula y apoyada en $U$. Su integral $a$ es positiva porque Haar da medida positiva a todo abierto no vacío. Sea $e_U=(h+h^*)/(2a)$. La involución preserva positividad e integral por~\eqref{v4-l24-eq:inv}, y $\supp h^*\subset U^{-1}=U$. Así se verifican las propiedades. Si $U$ se hace más pequeña que una vecindad fijada, el soporte queda dentro de ella, de modo que es una red de Dirac. El teorema anterior concluye.
+Además se obtiene la cota útil
+\begin{equation}\label{v4-l24-eq:approxbound}
+ \norm{e_U*f-f}_1\leq\sup_{y\in U}\norm{L_yf-f}_1.
+\end{equation}
+\end{proof}
+\begin{teorema}
+El álgebra $L^1(G)$ es conmutativa si y solo si el grupo $G$ es abeliano.
+\end{teorema}
+\begin{proof}
+Si $G$ es abeliano, $\Delta=1$ y el cambio $z=y^{-1}x$ transforma $f*g$ en $g*f$. Recíprocamente, sea conmutativa el álgebra. Para cada $a\in G$, los operadores de convolución por $L_ae_U$ son contracciones en $L^1$ y convergen fuertemente a $L_a$, porque $(L_ae_U)*f=L_a(e_U*f)\to L_af$. Todos esos operadores conmutan por hipótesis. Pasar a límites fuertes, primero en uno de los índices y después en el otro, usando sus cotas uniformes, da $L_aL_b=L_bL_a$, es decir, $L_{ab}=L_{ba}$.
+
+La acción izquierda sobre $L^1$ es fiel: si $z\ne w$, podemos escoger $f\in C_c$ con $f(e)=1$ y $f(w^{-1}z)=0$ por separación local. En el punto $z$, $L_zf=1$ y $L_wf=0$; por continuidad difieren en un abierto de medida positiva. Por tanto $L_z\ne L_w$. Aplicar esto a $z=ab,w=ba$ prueba que $ab=ba$.
+\end{proof}
+
+\section{Ejercicios: modularidad y convolución}
+\begin{ejercicio}[Lectura 22, ejercicio 1: Young con factor modular]\label{ej:v4-l22-1}
+Sean $1/p+1/q=1+1/r$, con exponentes en $[1,\infty]$. Probar la versión válida en un grupo general:
+\[
+ \norm{f*g}_r\leq\norm f_p\norm{\Delta^{-1/p'}g}_q.
+\]
+En un grupo unimodular se reduce a la desigualdad usual. Explicar por qué la versión sin peso no vale siempre.
+\end{ejercicio}
+\begin{solucion}
+Pongamos $h=\Delta^{-1/p'}g$. Para $r<\infty$ escribimos, con $z=y^{-1}x$,
+\[
+ |f(y)g(z)|=(|f(y)|^p|h(z)|^q)^{1/r}
+ |f(y)|^{1-p/r}|h(z)|^{1-q/r}\Delta(z)^{1/p'}.
+\]
+Aplicamos Hölder con recíprocos $1/r$, $1/p-1/r$ y $1/q-1/r=1/p'$. Para el tercer factor, el cambio $y=xz^{-1}$ da
+\[
+ \int |h(y^{-1}x)|^q\Delta(y^{-1}x)dy=\int|h(z)|^qdz.
+\]
+Así
+\[
+ |f*g(x)|^r\leq\norm f_p^{r-p}\norm h_q^{r-q}(|f|^p*|h|^q)(x).
+\]
+El teorema~\ref{v4:conv-grupo}, seguido de integración, da la cota. Los factores de potencia cero se omiten. El caso $p=1$ se obtiene directamente por Jensen para $|f|/\norm f_1$; el caso $r=\infty$ es Hölder con el mismo cambio de variable y $q=p'$. De este modo se cubren los extremos sin dividir entre exponentes nulos.
+
+El peso es real, no un artificio de la prueba. Para $1<p<\infty$ y $a$ con $\Delta(a)<1$, sean $g_U=L_ae_U$, de norma $L^1$ uno. Para $f\in C_c$ no nula, el cambio de variable anterior y continuidad de traslaciones muestran
+\[
+ f*g_U\longrightarrow\Delta(a)^{-1}f(\cdot a^{-1})\quad\text{en }L^p.
+\]
+Su norma límite es $\Delta(a)^{-1/p'}\norm f_p>\norm f_p$. La desigualdad sin peso, con $q=1,r=p$, fallaría para $U$ suficientemente pequeña. La convergencia se verifica expresando la integral como promedio de las funciones $\Delta(au)^{-1}f(\cdot u^{-1}a^{-1})$, $u\in U$, que convergen en $L^p$ a la función indicada; sobre una vecindad fija de $e$, las normas y factores modulares están uniformemente acotados.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 2]\label{ej:v4-l22-2}
+Si $G$ es discreto, demostrar que $L^1(G)$ tiene unidad.
+\end{ejercicio}
+\begin{solucion}
+Por invariancia, todos los puntos tienen una misma masa $c>0$; es finita porque los puntos son compactos y positiva porque son abiertos. La función $u=c^{-1}\mathbf1_{\{e\}}$ satisface $u*f=f$ directamente en la suma de convolución. También $f*u=f$, pues solo contribuye el término $y=x$, de masa $c$. Con medida de conteo $c=1$ y la unidad es $\delta_e$. No se confunde esta función con una masa puntual como medida en un grupo no discreto.
+\end{solucion}
+\begin{proposicion}[El recíproco anunciado en la lectura]\label{v4:luno-unitaria}
+Si $L^1(G)$ tiene unidad, $G$ es discreto.
+\end{proposicion}
+\begin{proof}
+Primero, si $\mu(\{e\})=c>0$, una vecindad de clausura compacta tiene a lo sumo $\mu(K)/c$ puntos: de lo contrario contendría subconjuntos finitos con medida arbitrariamente grande. Esa vecindad es finita y abierta; quitando sus otros puntos, cerrados por Hausdorff, obtenemos que $\{e\}$ es abierto. Así $G$ es discreto.
+
+Supongamos, para obtener una contradicción, que $G$ no es discreto y que $u\in L^1(G)$ es unidad. Entonces $\mu(\{e\})=0$. Por regularidad exterior y continuidad absoluta de la integral de $|u|$, hay una vecindad abierta $V$ de $e$ con $\int_V|u|<1$. Elijamos $\phi\in\Cc(G)$ con $0\le\phi\le1$, $\phi(e)=1$ y soporte contenido en $V^{-1}$; la existencia de estos cortes se probó al preparar Haar. La identidad $u*\phi=\phi$ en $L^1$ vale en cada punto: ambos lados tienen representantes continuos, por continuidad de convolución de $L^1$ con una función continua de soporte compacto, y una función continua cero casi en todas partes es cero en todas partes porque todo abierto no vacío tiene medida positiva. Evaluando en $e$,
+\[
+1=\left|\int_Gu(y)\phi(y^{-1})dy\right|\le\int_V|u(y)|dy<1,
+\]
+contradicción. La continuidad utilizada también se obtiene directamente por convergencia uniforme de las traslaciones de $\phi$, dominando la diferencia por $|u|$ multiplicado por el error uniforme.
+\end{proof}
+\begin{ejercicio}[Lectura 22, ejercicio 3: control de soportes]\label{ej:v4-l22-3}
+Para $f\in C(G)$, demostrar que $e_U*f$ y $f*e_U$ existen en todo punto y convergen puntualmente a $f$, usando la red con soportes $\supp e_U\subset U$. Mostrar que, para una red de Dirac arbitraria, no basta que cada núcleo tenga soporte compacto.
+\end{ejercicio}
+\begin{solucion}
+En la primera convolución, la variable de integración está en $\supp e_U$; en la segunda, está en $x(\supp e_U)^{-1}$. Son compactos y $f$ es acotada en ellos, así que ambas integrales existen. Para $x$ fijo,
+\[
+ |e_U*f(x)-f(x)|\leq\sup_{y\in U}|f(y^{-1}x)-f(x)|\longrightarrow0.
+\]
+Para la otra convolución usamos
+\[
+ f*e_U(x)=\int e_U(z)\Delta(z)^{-1}f(xz^{-1})dz.
+\]
+La función de $z$ dentro del promedio es continua y vale $f(x)$ en $e$; el mismo argumento prueba su límite.
+
+La concentración de masa sola no controla una función no acotada. En $\R$, sea $f(x)=e^{x^2}$, sea $b$ una función suave no negativa de integral uno apoyada en $[-1,1]$, y sea $h_n$ una identidad aproximada de soporte $[-1/n,1/n]$. Entonces $k_n=(1-1/n)h_n+n^{-1}b(\cdot-n)$ es una sucesión de Dirac, cada término de soporte compacto, pero
+\[
+ (k_n*f)(0)\geq n^{-1}e^{(n-1)^2}\longrightarrow\infty.
+\]
+Por tanto se corrige el enunciado usando soportes que se contraen, condición que cumple la red construida en este capítulo.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:v4-l22-4}
+Si $f\in L^1(G)$ y $g\in L^\infty(G)$, probar que $f*g$ está definida en todo punto, es acotada y satisface $\norm{L_a(f*g)-f*g}_\infty\to0$ cuando $a\to e$.
+\end{ejercicio}
+\begin{solucion}
+Elijamos un representante acotado de $g$. Entonces la integral absoluta es a lo sumo $\norm f_1\norm g_\infty$ para cada $x$. Otro representante equivalente da la misma integral: inversión y traslaciones preservan nulos porque el factor modular es positivo. La identidad $L_a(f*g)=(L_af)*g$ da
+\[
+ \norm{L_a(f*g)-f*g}_\infty\leq\norm{L_af-f}_1\norm g_\infty\longrightarrow0.
+\]
+Esta es la continuidad uniforme por traslaciones izquierdas que se afirma; en particular implica continuidad ordinaria. En un grupo no abeliano conviene especificar la uniformidad utilizada en lugar de intercambiar sin explicación izquierda y derecha.
+\end{solucion}
+\begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:v4-l22-5}
+Si $f,g\in C_c(G)$, demostrar $\supp(f*g)\subseteq\supp f\,\supp g$ y que $f*g\in C_c(G)$.
+\end{ejercicio}
+\begin{solucion}
+Si $x$ no pertenece al producto de soportes, no puede ocurrir simultáneamente $y\in\supp f$ y $y^{-1}x\in\supp g$; el integrando es cero. El producto de soportes es compacto por continuidad de multiplicación. La convolución es continua por el ejercicio anterior, pues $g$ es acotada y $f\in L^1$. Así se anula fuera de un compacto y pertenece a $C_c$.
+\end{solucion}
+
+\paragraph{Los operadores que produce la convolución.}
+La unidad puede faltar en $L^1(G)$, pero la red $(e_U)$ permite aproximar su acción. Esa red hará posible reconstruir operadores del grupo a partir de una representación del álgebra, que es el objetivo del capítulo siguiente.

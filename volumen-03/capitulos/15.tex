@@ -1,0 +1,221 @@
+\chapter{La construcción GNS y representaciones fieles}\label{cap:v3-15}
+
+Un estado asigna números a los elementos de un álgebra. La construcción de Gelfand--Naimark--Segal recupera, a partir de esos números, un espacio de Hilbert y una acción del álgebra. La idea es considerar los elementos del álgebra como vectores y declarar que su producto interno es el valor del estado en un producto adecuado. Primero se eliminan los vectores de longitud cero y después se completa el espacio.
+
+\section{De un funcional positivo a un espacio de Hilbert}\label{lec:v3-29}
+\fuentelectura{29}{La construcción GNS 1}
+
+\begin{definicion}
+Una representación de una álgebra $C^*$ $A$ es un $*$-homomorfismo $\pi:A\to\Lcal(H)$, donde $H$ es un espacio de Hilbert. Es \emph{fiel} si es inyectiva. Es \emph{cíclica} si existe $e\in H$ con $\overline{\pi(A)e}=H$.
+\end{definicion}
+\index{representación!cíclica}\index{construcción GNS}
+
+Para un álgebra unitaria, una representación cíclica en un espacio no nulo es automáticamente unital: $\pi(1)$ actúa como identidad en el conjunto denso $\pi(A)e$ y por continuidad en todo $H$. Una representación general puede ser degenerada; lo señalaremos expresamente al estudiar sumas directas.
+
+\begin{ejemplo}
+Un carácter es una representación en $\C$. Si $X$ es compacto Hausdorff y $\mu$ es una medida de Borel positiva finita y regular, la multiplicación
+\[
+ M_f:L^2(\mu)\to L^2(\mu),\qquad M_fg=fg,
+\]
+define una representación de $C(X)$. En efecto $\norm{fg}_2\le\norm f_\infty\norm g_2$, $M_{fg}=M_fM_g$, $M_1=I$, y
+$\ip{M_fg}{h}=\int fg\overline h\,d\mu=\ip g{M_{\overline f}h}$; luego $M_f^*=M_{\overline f}$. La conjugación es necesaria en la fórmula del adjunto.
+\end{ejemplo}
+
+Una forma sesquilineal no negativa $[\cdot,\cdot]$ es lineal en la primera variable, conjugada lineal en la segunda, satisface $[v,w]=\overline{[w,v]}$ y $[v,v]\ge0$. La demostración de Cauchy--Schwarz del lema~\ref{v3:cs-positivo} sólo utiliza estas propiedades, así vale también si existen vectores no nulos de longitud cero. En particular, $[v,v]=0$ implica $[v,w]=0$ para todo $w$.
+
+\begin{teorema}[Gelfand--Naimark--Segal]\label{v3:gns}
+Sea $\varphi$ un funcional positivo en una álgebra $C^*$ unitaria $A$. Existen un espacio de Hilbert $H_\varphi$, una representación cíclica $\pi_\varphi$ y un vector cíclico $e_\varphi$ tales que
+\[
+ \varphi(a)=\ip{\pi_\varphi(a)e_\varphi}{e_\varphi},
+ \qquad \norm{e_\varphi}^2=\varphi(1),\qquad
+ \norm{\pi_\varphi(a)}\le\norm a.
+\]
+\end{teorema}
+\begin{proof}
+La forma $[a,b]=\varphi(b^*a)$ es sesquilineal, hermitiana y no negativa por las propiedades de un funcional positivo. Defina
+\[
+ N_\varphi=\{a\in A:\varphi(a^*a)=0\}.
+\]
+Por Cauchy--Schwarz, todo elemento de $N_\varphi$ es ortogonal para esta forma a todos los elementos de $A$. Esto prueba que $N_\varphi$ es un subespacio: al expandir el cuadrado de una combinación lineal de dos elementos nulos, todos los términos son cero. Es cerrado porque $a\mapsto\varphi(a^*a)$ es continuo.
+
+Además es ideal izquierdo. En efecto $c^*c\le\norm c^21$ implica
+\[
+ 0\le a^*c^*ca\le\norm c^2a^*a.
+\]
+Si $a\in N_\varphi$, aplicar $\varphi$ da $\varphi((ca)^*(ca))=0$. En general no es ideal bilateral, por lo que el cociente siguiente es un espacio vectorial, no un álgebra cociente.
+
+En $V_\varphi=A/N_\varphi$ defina
+\[
+ \ip{[a]}{[b]}_\varphi=\varphi(b^*a).
+\]
+Si se cambian los representantes, la diferencia es suma de términos con un factor nulo en una de las variables de la forma, y Cauchy--Schwarz los anula. Por ello está bien definido. Es positivo definido: $\norm{[a]}_\varphi^2=0$ equivale exactamente a $a\in N_\varphi$, es decir, $[a]=0$. Complete este espacio prehilbertiano para obtener $H_\varphi$; el producto interno se extiende por continuidad, pues Cauchy--Schwarz controla los límites de ambas variables.
+
+Para $c\in A$ defina inicialmente $\pi_\varphi(c)[a]=[ca]$. Está bien definido porque $N_\varphi$ es ideal izquierdo. La desigualdad de orden anterior da
+\[
+ \norm{\pi_\varphi(c)[a]}_\varphi^2
+ =\varphi(a^*c^*ca)\le\norm c^2\varphi(a^*a)
+ =\norm c^2\norm{[a]}_\varphi^2.
+\]
+Así se extiende de forma única a un operador acotado de $H_\varphi$. Las identidades de linealidad y multiplicación se comprueban en las clases: $\pi_\varphi(cd)[a]=[cda]=\pi_\varphi(c)\pi_\varphi(d)[a]$, y se extienden por densidad. Para el adjunto,
+\[
+ \ip{\pi_\varphi(c)[a]}{[b]}_\varphi
+ =\varphi(b^*ca)
+ =\ip{[a]}{\pi_\varphi(c^*)[b]}_\varphi.
+\]
+Por densidad, $\pi_\varphi(c)^*=\pi_\varphi(c^*)$. Finalmente tome $e_\varphi=[1]$. Entonces $\pi_\varphi(A)e_\varphi=V_\varphi$ es denso, su norma cuadrada es $\varphi(1)$ y $\ip{\pi_\varphi(a)e_\varphi}{e_\varphi}=\varphi(a)$. Si $\varphi=0$, el espacio construido es el espacio cero, caso que también satisface las fórmulas.
+\end{proof}
+
+\begin{teorema}[Unicidad de la construcción]\label{v3:unicidad-gns}
+Si $(\pi,H,e)$ es cíclica y $\varphi(a)=\ip{\pi(a)e}{e}$, existe un único unitario $U:H_\varphi\to H$ con $Ue_\varphi=e$ y $U\pi_\varphi(a)=\pi(a)U$ para todo $a$.
+\end{teorema}
+\begin{proof}
+Defina $U_0[a]=\pi(a)e$. La identidad
+\[
+ \norm{\pi(a)e}^2=\ip{\pi(a^*a)e}{e}
+ =\varphi(a^*a)=\norm{[a]}_\varphi^2
+\]
+prueba simultáneamente que está bien definido y que es isométrico. Su imagen es $\pi(A)e$, densa en $H$. La extensión isométrica a la completación tiene imagen cerrada (por completitud) y densa, luego es sobreyectiva y unitaria. En las clases, $U_0\pi_\varphi(c)[a]=\pi(ca)e=\pi(c)U_0[a]$; la continuidad da la identidad en todo el espacio. Para una representación cíclica $\pi(1)=I$, de modo que $Ue_\varphi=e$. Cualquier unitario con estas propiedades coincide en el conjunto denso de vectores $\pi_\varphi(a)e_\varphi$, lo que prueba unicidad.
+\end{proof}
+
+\section{Ejercicios sobre representaciones cíclicas}
+
+\begin{ejercicio}\label{ej:v3-l29-1}
+Si $\alpha>0$, pruebe que $\pi_\varphi$ y $\pi_{\alpha\varphi}$ son unitariamente equivalentes. Deduzca la reducción a estados para funcionales positivos no nulos.
+\end{ejercicio}
+\begin{solucion}
+Los espacios nulos coinciden, pero la norma de una clase en el segundo cociente es $\sqrt\alpha$ veces la primera. Por ello $U[a]_\varphi=\alpha^{-1/2}[a]_{\alpha\varphi}$ es una isometría sobre el cociente denso y se extiende a un unitario de las completaciones. Además $U\pi_\varphi(c)[a]=\alpha^{-1/2}[ca]_{\alpha\varphi}=\pi_{\alpha\varphi}(c)U[a]$. Si $\varphi\ne0$, $\varphi(1)=\norm\varphi>0$ y $\varphi/\varphi(1)$ es un estado. El funcional cero es una excepción necesaria a la última frase del enunciado original: su GNS actúa en el espacio cero y no es equivalente a la representación de un estado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l29-2}
+Pruebe que $(\pi_1\oplus\pi_2)(a)(\xi_1,\xi_2)=(\pi_1(a)\xi_1,\pi_2(a)\xi_2)$ es una representación. Si ambas representaciones son cíclicas, determine si su suma debe serlo.
+\end{ejercicio}
+\begin{solucion}
+La suma hilbertiana tiene producto interno suma y es completa porque cada componente de una sucesión de Cauchy converge. El operador diagonal es acotado, con norma $\max(\norm{\pi_1(a)},\norm{\pi_2(a)})$; la cota superior se obtiene sumando cuadrados y la inferior probando vectores apoyados en una sola componente. Linealidad, producto y adjunto se verifican coordenada a coordenada. La suma no tiene por qué ser cíclica: para $A=\C$, tome ambas representaciones escalares en $\C$, que son cíclicas. La suma actúa por $\lambda I$ en $\C^2$, y la órbita de cualquier vector está contenida en una recta, que no es densa en $\C^2$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l29-3}
+Sea $H$ separable de dimensión infinita, $(e_n)$ una base ortonormal y $\operatorname{BL}$ un límite de Banach positivo normalizado. Defina
+\[
+ \varphi(T)=\operatorname{BL}\bigl((\ip{Te_n}{e_n})_{n\ge1}\bigr).
+\]
+Pruebe: (i) $\varphi$ es un estado; (ii) $\ker\pi_\varphi=\Kcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La sucesión de coeficientes está acotada por $\norm T$. La linealidad compleja del límite de Banach (extendido desde sucesiones reales por partes real e imaginaria) da linealidad de $\varphi$. Si $T\ge0$, todos los coeficientes son no negativos y su límite de Banach también. En $I$ la sucesión es constantemente uno, así $\varphi(I)=1$.
+
+(ii) Si $T$ es compacto y $S\in\Lcal(H)$, los vectores $Se_n$ convergen débilmente a cero y están acotados. Un operador compacto los envía a una sucesión que converge en norma a cero: de lo contrario una subsucesión con normas separadas de cero tendría una subsucesión convergente en norma, cuyo límite débil tendría que ser cero. Así $\norm{TSe_n}\to0$, y
+\[
+ \norm{\pi_\varphi(T)\pi_\varphi(S)e_\varphi}^2
+ =\varphi(S^*T^*TS)=\operatorname{BL}(\norm{TSe_n}^2)=0.
+\]
+La ciclicidad implica $\pi_\varphi(T)=0$.
+
+Para la recíproca construiremos un testigo cuando $T$ no es compacto. Se tiene
+\[
+ d:=\inf_{E\subset H\text{ finito dimensional}}
+ \norm{T|_{E^\perp}}>0.
+\]
+Si el ínfimo fuera cero, $TP_E$, de rango finito, aproximaría a $T$ en norma, haciendo a $T$ compacto. Elija $0<\delta<d$. Por inducción, elija vectores unitarios $\xi_n$ ortogonales a todos los $\xi_j$ y $T^*T\xi_j$ anteriores, con $\norm{T\xi_n}\ge\delta$. Es posible porque sólo se imponen un número finito de condiciones y la norma de la restricción de $T$ al complemento correspondiente supera $\delta$. Los vectores $T\xi_n$ son ortogonales entre sí, pues $\ip{T\xi_n}{T\xi_j}=\ip{\xi_n}{T^*T\xi_j}=0$.
+
+La aplicación $Ve_n=\xi_n$ se extiende a una isometría $V:H\to H$. En particular $\norm{TVe_n}\ge\delta$ para todo $n$, y
+\[
+ \varphi(V^*T^*TV)=\operatorname{BL}(\norm{T\xi_n}^2)\ge\delta^2.
+\]
+Si $\pi_\varphi(T)=0$, el miembro izquierdo sería $\norm{\pi_\varphi(T)\pi_\varphi(V)e_\varphi}^2=0$, contradicción. Así ningún operador no compacto pertenece al núcleo. La prueba requiere más que observar que los compactos son límites de operadores de rango finito: esa observación sólo proporciona una de las inclusiones.
+\end{solucion}
+
+\section{Sumas directas y representación universal}\label{lec:v3-30}
+\fuentelectura{30}{La construcción GNS 2}
+
+Para una familia $(H_j)_{j\in J}$, su suma hilbertiana es
+\[
+ \bigoplus_{j\in J}H_j
+ =\{(\xi_j):\sum_j\norm{\xi_j}^2<\infty\},
+ \quad\ip\xi\eta=\sum_j\ip{\xi_j}{\eta_j}.
+\]
+La suma de cantidades no negativas se define como el supremo de las sumas finitas. Una familia de cuadrados sumable tiene soporte a lo sumo numerable: para cada $n$ sólo hay finitos términos al menos $1/n$, y la unión de esos conjuntos contiene todo el soporte no nulo. Cauchy--Schwarz para sumas finitas y paso al límite dan convergencia absoluta del producto interno. Este espacio es la completación de las familias de soporte finito: truncar una familia sumable aproxima en norma, y una sucesión de Cauchy se resuelve coordenada a coordenada con control uniforme de las colas.
+
+\begin{proposicion}
+Si $\pi_j:A\to\Lcal(H_j)$ son representaciones, los operadores diagonales $\pi(a)(\xi_j)=(\pi_j(a)\xi_j)$ definen una representación $\pi=\bigoplus_j\pi_j$, y
+\[
+ \norm{\pi(a)}=\sup_j\norm{\pi_j(a)}\le\norm a.
+\]
+\end{proposicion}
+\begin{proof}
+La contractividad de cada $*$-homomorfismo da
+$\sum_j\norm{\pi_j(a)\xi_j}^2\le\norm a^2\sum_j\norm{\xi_j}^2$, así el operador está bien definido y es acotado. Las identidades de linealidad y producto valen en cada coordenada. La identidad de adjuntos se obtiene sumando $\ip{\pi_j(a)\xi_j}{\eta_j}=\ip{\xi_j}{\pi_j(a^*)\eta_j}$, con series absolutamente convergentes. La igualdad de normas se prueba como en la suma de dos representaciones, ensayando vectores apoyados en una sola coordenada para obtener la cota inferior.
+\end{proof}
+
+\begin{teorema}[Descomposición en representaciones cíclicas]\label{v3:descomposicion-ciclica}
+Toda representación unital de $A$ es unitariamente equivalente a una suma hilbertiana de representaciones cíclicas. Para una representación no unital, la afirmación se aplica a $\pi(1)H$ y queda además una representación cero en $(I-\pi(1))H$.
+\end{teorema}
+\begin{proof}
+Si $\xi\ne0$, el espacio $H_\xi=\overline{\pi(A)\xi}$ es invariante bajo cada $\pi(a)$ y bajo su adjunto $\pi(a^*)$. Por ello su complemento ortogonal también es invariante: si $\eta\perp H_\xi$ y $v\in H_\xi$, $\ip{\pi(a)\eta}{v}=\ip\eta{\pi(a^*)v}=0$. Se dice que $H_\xi$ es \emph{reductor}.
+
+Considere familias de vectores no nulos cuyos espacios cíclicos son mutuamente ortogonales para vectores distintos, ordenadas por inclusión. La unión de una cadena sigue teniendo esa propiedad, porque cualquier par de sus vectores aparece junto en un miembro de la cadena. Zorn produce una familia maximal $(\xi_j)$. Sea $K=\overline{\sum_jH_{\xi_j}}$. Si $K^\perp\ne0$, un vector $\eta\ne0$ allí generaría un espacio cíclico contenido en $K^\perp$, pues $K$ es reductor. Como $\pi(1)=I$, ese espacio contiene a $\eta$ y es no nulo, contradiciendo maximalidad. Así $K=H$.
+
+La suma de vectores define una isometría de la suma algebraica de los $H_{\xi_j}$ sobre un subespacio denso de $H$, y se extiende a un unitario de la suma hilbertiana. Las restricciones $\pi_j(a)=\pi(a)|_{H_{\xi_j}}$ son representaciones porque los subespacios son reductores; el unitario entrelaza la suma con $\pi$. Para el caso general, $p=\pi(1)$ es una proyección y $\pi(a)=p\pi(a)p$. La restricción a $pH$ es unital y la de $(I-p)H$ es cero. Omitir ese sumando haría falso el enunciado para una representación cero en un espacio no nulo.
+\end{proof}
+
+\begin{teorema}[Gelfand--Naimark: representación fiel]\label{v3:gelfand-naimark}
+Toda álgebra $C^*$ unitaria admite una representación isométrica. Si es separable, puede representarse isométricamente en un espacio de Hilbert separable.
+\end{teorema}
+\begin{proof}
+Tome un subconjunto débil estrella denso $F\subset S(A)$; se puede tomar todo $S(A)$. Defina $\pi=\bigoplus_{\varphi\in F}\pi_\varphi$. La contractividad da $\norm{\pi(a)}\le\norm a$. Como $\norm{e_\varphi}=1$,
+\[
+ \norm{\pi(a)}^2\ge\norm{\pi_\varphi(a)}^2
+ \ge\norm{\pi_\varphi(a)e_\varphi}^2=\varphi(a^*a).
+\]
+La segunda desigualdad tiene este sentido, inverso al que aparece en una línea de la lectura original. Un estado realiza el máximo espectral del positivo $a^*a$, de modo que $\sup_{\psi\in S(A)}\psi(a^*a)=\norm{a^*a}=\norm a^2$. La continuidad débil estrella de la evaluación y la densidad de $F$ hacen que el mismo supremo se obtenga sobre $F$. Así $\norm{\pi(a)}\ge\norm a$, y se obtiene igualdad.
+
+Si $A$ es separable, la bola dual y su cerrado $S(A)$ son compactos metrizables en la topología débil estrella, con la métrica construida mediante una sucesión densa de elementos de $A$. Un compacto métrico es separable: elija, para cada $n$, una red finita de radio $1/n$ y reúna sus centros. Por tanto $F$ puede ser numerable. Cada $H_\varphi$ es separable porque el mapa continuo $a\mapsto[a]$ lleva un subconjunto numerable denso de $A$ a uno denso en $V_\varphi$, y éste es denso en $H_\varphi$. La suma \emph{numerable} de espacios de Hilbert separables es separable: use combinaciones finitas con coeficientes racionales complejos de sus respectivos conjuntos densos.
+\end{proof}
+
+Todo Hilbert separable de dimensión infinita es unitariamente isomorfo a $\ell^2$ mediante sus coordenadas respecto de una base ortonormal numerable. Si la representación anterior tiene dimensión finita, puede repetirse una cantidad numerable de veces para obtener una representación isométrica en un Hilbert isomorfo a $\ell^2$. Así toda álgebra $C^*$ unitaria separable no nula puede realizarse como una subálgebra de operadores de $\ell^2$.
+
+\begin{ejemplo}[La construcción para una medida]
+Para un estado $\varphi(f)=\int_Xf\,d\mu$ de $C(X)$, con $\mu$ probabilidad regular de Borel,
+\[
+ N_\varphi=\{f\in C(X):f=0\ \mu\text{-casi en todas partes}\},
+ \qquad\norm{[f]}_\varphi^2=\int|f|^2\,d\mu.
+\]
+La completación es $L^2(\mu)$ y $\pi_\varphi(f)=M_f$, con vector cíclico $1$. Para justificar la densidad utilizada, las funciones simples son densas en $L^2$; por regularidad, cada indicador de Borel se aproxima en $L^2$ por una función continua entre cero y uno: elija compacto $K\subset E\subset U$ abierto con $\mu(U\setminus K)$ pequeño, y una función continua igual a uno en $K$ y cero fuera de $U$. Su error cuadrático está acotado por $\mu(U\setminus K)$. La representación universal de $C(X)$ reúne estas multiplicaciones para todos sus estados, es decir, para todas sus probabilidades regulares.
+\end{ejemplo}
+
+\section{Ejercicios sobre medidas y fidelidad}
+
+\begin{ejercicio}\label{ej:v3-l30-1}
+Sean $\mu,\nu$ medidas positivas finitas regulares de Borel sobre un compacto Hausdorff $X$. Pruebe: (i) $\pi_\mu\oplus\pi_\nu$ es cíclica si y sólo si $\mu\perp\nu$; (ii) si son mutuamente singulares, $\pi_\mu\oplus\pi_\nu$ es unitariamente equivalente a $\pi_{\mu+\nu}$.
+\end{ejercicio}
+\begin{solucion}
+Si $\mu\perp\nu$, elija un Borel $E$ que soporte a $\mu$ y cuyo complemento soporte a $\nu$. La aplicación
+\[
+ U:L^2(\mu+\nu)\to L^2(\mu)\oplus L^2(\nu),\qquad
+ Uh=(h,h)
+\]
+es isométrica porque las normas cuadradas suman. Es sobreyectiva: dado $(f,g)$, la función $h=\mathbf1_Ef+\mathbf1_{X\setminus E}g$ tiene las restricciones requeridas, independientemente de los representantes fuera de sus soportes. Además entrelaza las multiplicaciones. Como $1$ es cíclico en $L^2(\mu+\nu)$ por densidad de $C(X)$, se obtiene (ii) y la suficiencia de (i).
+
+Para la necesidad, sea $\lambda=\mu+\nu$, $p=d\mu/d\lambda$, $q=d\nu/d\lambda$, de modo que $p,q\ge0$ y $p+q=1$ casi en todas partes. Identifique $L^2(\mu)$ con el subespacio de $L^2(\lambda)$ soportado en $\{p>0\}$ mediante $f\mapsto\sqrt p f$; la inversa es división por $\sqrt p$ en ese conjunto. Haga lo mismo para $\nu$. Si las medidas no son singulares, el conjunto $D=\{p>0,q>0\}$ tiene medida positiva: si tuviera medida cero, los soportes medibles $\{p>0\}$ y su complemento demostrarían singularidad.
+
+Considere cualquier candidato a vector cíclico, identificado con $(u,v)$ en los dos subespacios de $L^2(\lambda)$. Si $(u,v)$ se anula en un subconjunto $E\subset D$ de medida positiva, el vector $(\mathbf1_E,0)$ es no nulo y ortogonal a toda su órbita. En otro caso, el vector
+\[
+ w=\mathbf1_D\frac{(\overline v,-\overline u)}{1+|u|+|v|}
+\]
+es no nulo, pertenece a la suma de los dos subespacios y es ortogonal a $(fu,fv)$ para todo $f\in C(X)$, porque el integrando del producto interno es $f(uv-vu)/(1+|u|+|v|)=0$. Su pertenencia a $L^2$ se sigue de la acotación y de que $\lambda$ es finita. Ningún vector es, pues, cíclico. Las hipótesis de finitud y regularidad explicitan las necesarias para la representación GNS y la densidad de funciones continuas empleadas aquí.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l30-2}
+Si $A$ es separable y $(\varphi_n)$ es débil estrella densa en $S(A)$, defina $\varphi=\sum_{n\ge1}2^{-n}\varphi_n$. Pruebe que $\pi_\varphi$ es isométrica y deduzca que $A$ admite una representación cíclica isométrica.
+\end{ejercicio}
+\begin{solucion}
+La serie converge en norma de $A^*$ porque cada estado tiene norma uno. Su suma es positiva y vale $\sum2^{-n}=1$ en la identidad, así es un estado. Si $\varphi(a^*a)=0$, todos los sumandos $2^{-n}\varphi_n(a^*a)$ son no negativos y deben ser cero. Por densidad y continuidad de la evaluación, todos los estados anulan $a^*a$, lo que implica $a^*a=0$ y $a=0$. El estado es, por tanto, fiel en los positivos. Si $\pi_\varphi(a)=0$, entonces $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$, así $a=0$. La representación es inyectiva, y todo $*$-homomorfismo inyectivo es isométrico por la proposición~\ref{v3:homomorfismo-cstar-norma}. Por construcción es cíclica. La serie del enunciado original debe sumar los funcionales $\varphi_n$, no las representaciones $\pi_{\varphi_n}$, cuyos espacios de Hilbert son diferentes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l30-3}
+Si $\pi_\varphi(a)=0$ para todos los estados puros, pruebe $a=0$. Deduzca que la suma $\bigoplus_{\varphi\in P(A)}\pi_\varphi$ es isométrica.
+\end{ejercicio}
+\begin{solucion}
+Para cada estado puro, $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$. Como los estados puros separan elementos, $a^*a=0$ y $a=0$. Esto prueba inyectividad de la suma y, por la proposición~\ref{v3:homomorfismo-cstar-norma}, isometría. También se obtiene directamente: existe un estado puro que realiza $\norm{a^*a}=\norm a^2$, y la norma de la correspondiente componente de la suma es al menos $\norm a$ al evaluarla en su vector cíclico unitario.
+\end{solucion}
+
+Ya podemos estudiar cualquier álgebra $C^*$ concreta o abstracta mediante operadores en un espacio de Hilbert. Para reconocer qué propiedades dependen de cerrar una familia de operadores en norma y cuáles dependen de su acción sobre vectores, introduciremos ahora las topologías fuerte y débil del operador. Las construcciones de este capítulo se desarrollan también en \cite{murphy1990,zhu1993,conway1990}.

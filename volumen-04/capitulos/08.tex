@@ -1,0 +1,188 @@
+\chapter{Plancherel, invariancia y muestreo}\label{cap:v4-08}
+La integral de Fourier no está definida absolutamente para toda función de $L^2$. La identidad de Plancherel permite extenderla por continuidad, mientras que la inversión determina su rango. Esta extensión transforma problemas de traslación en problemas de multiplicación y conduce a una reconstrucción concreta de funciones de banda limitada.
+
+\section{La extensión unitaria}\label{lectura:v4-13}
+\index{Plancherel, teorema de}\index{Fourier!transformada unitaria}
+\begin{teorema}[Plancherel en $\R^d$]\label{v4:plancherel}
+Si $f\in L^1(\R^d)\cap L^2(\R^d)$, entonces $\widehat f\in L^2$ y $\norm{\widehat f}_2=(2\pi)^{d/2}\norm f_2$. Por tanto
+\[
+ \mathcal Ff=(2\pi)^{-d/2}\widehat f
+\]
+se extiende de manera única a un operador unitario de $L^2(\R^d)$ sobre sí mismo. Su inversa y adjunto es la extensión de
+\[
+ \mathcal F^{-1}g(x)=(2\pi)^{-d/2}\int g(\xi)e^{-ix\cdot\xi}d\xi.
+\]
+\end{teorema}
+\begin{proof}
+Sea $f^*(x)=\overline{f(-x)}$ y $g=f*f^*$. Por Young, $g\in L^1$; por el teorema~\ref{v4:conv-continuidad}, $g\in C_0$, y $g(0)=\int|f|^2$. Además $\widehat g=|\widehat f|^2$, aun sin saber que esta última función sea integrable. La fórmula gaussiana ya demostrada da
+\[
+ (g*H_t)(0)=(2\pi)^{-d}\int |\widehat f(\xi)|^2e^{-t|\xi|^2}d\xi.
+\]
+La izquierda tiende a $g(0)$ porque $g$ es continua y acotada. Al tomar $t=1/n$, el integrando de la derecha crece hacia $|\widehat f|^2$; convergencia monótona prueba simultáneamente su integrabilidad y la identidad de normas. No se aplica inversión a $g$ antes de probar que su transformada es integrable.
+
+El subespacio $L^1\cap L^2$ es denso en $L^2$: truncar una función en espacio y altura produce funciones de ese subespacio que convergen por dominada. Para $f_n\to f$ en $L^2$, la igualdad de normas hace a $(\mathcal Ff_n)$ de Cauchy. Su límite define $\mathcal Ff$, es independiente de la aproximación y conserva la norma. Repetir la construcción con signo negativo define otra isometría $V$.
+
+Si $f,g\in L^1\cap L^2$, Fubini da $\ip{\mathcal Ff}g=\ip f{Vg}$: la integral doble absoluta se controla por $\norm f_1\norm g_1$. Por densidad, $V=\mathcal F^*$ en todo $L^2$. Como ambas aplicaciones son isometrías, $\mathcal F^*\mathcal F=I$ y $V^*V=I$. La segunda identidad es $\mathcal F\mathcal F^*=I$, luego $\mathcal F$ es sobreyectiva y $V$ su inversa.
+\end{proof}
+La identidad de producto interno es $\ip{\mathcal Ff}{\mathcal Fg}=\ip fg$. Si se conserva la notación no normalizada $\widehat f=(2\pi)^{d/2}\mathcal Ff$ para clases de $L^2$, se escribe
+\[
+ \int|f|^2=(2\pi)^{-d}\int|\widehat f|^2.
+\]
+No alternaremos esas dos normalizaciones bajo un mismo símbolo, como ocurre en algunos pasos de la lectura 13. Las fórmulas de traslación y modulación pasan a $L^2$ aproximando por $L^1\cap L^2$ y usando continuidad de los operadores implicados.
+\begin{ejemplo}
+Para $f=\mathbf1_{[-1,1]}$, $\widehat f(\xi)=2\sin\xi/\xi$. Plancherel da $4\int_\R\sin^2\xi/\xi^2\,d\xi=2\pi\cdot2$, es decir,
+\[
+ \int_\R\frac{\sin^2\xi}{\xi^2}d\xi=\pi.
+\]
+La transformada no está en $L^1$, pero sí en $L^2$; este es precisamente el tipo de situación que justifica la extensión.
+\end{ejemplo}
+
+\section{Ejercicios de Plancherel}
+\begin{ejercicio}[Lectura 13, ejercicio 1]\label{ej:v4-l13-1}
+Para $t\in\R$, demostrar
+\[
+ \int_{-1}^1\frac{\sin(t-y)}{t-y}dy
+ =\int_{-1}^1\frac{\sin y}{y}e^{iyt}dy,
+\]
+prolongando los cocientes por continuidad en cero.
+\end{ejercicio}
+\begin{solucion}
+Sean $f=\mathbf1_{[-1,1]}$ y $g(x)=e^{itx}f(x)$. Entonces $\widehat f(y)=2\sin y/y$ y $\widehat g(y)=\widehat f(y+t)=2\sin(y+t)/(y+t)$. La transferencia bilineal del ejercicio~\ref{ej:v4-l10-1} da $\int f\widehat g=\int\widehat f g$. Dividimos entre dos y cambiamos $y$ por $-y$ en la integral izquierda para obtener la fórmula.
+\end{solucion}
+\begin{ejercicio}[Lectura 13, ejercicio 2]\label{ej:v4-l13-2}
+Calcular la transformada de $f(x)=e^{-|x|}$ y la integral $\int_\R t^2/(1+t^2)^2\,dt$.
+\end{ejercicio}
+\begin{solucion}
+Separar las dos semirrectas da
+\[
+ \widehat f(\xi)=\int_0^\infty e^{-x}(e^{ix\xi}+e^{-ix\xi})dx
+ =\frac1{1-i\xi}+\frac1{1+i\xi}=\frac2{1+\xi^2}.
+\]
+La función $f$ es localmente absolutamente continua y $f'(x)=-\sgn(x)e^{-|x|}$ casi en todas partes. Por ello $\widehat{f'}(\xi)=-2i\xi/(1+\xi^2)$. Además $\norm{f'}_2^2=2\int_0^\infty e^{-2x}dx=1$. Plancherel da $4\int\xi^2/(1+\xi^2)^2d\xi=2\pi$, así que la integral es $\pi/2$.
+\end{solucion}
+\begin{ejercicio}[Lectura 13, ejercicio 3]\label{ej:v4-l13-3}
+Para $a>0$ sean $p_a(x)=a/[\pi(x^2+a^2)]$ y $s_a(x)=\sin(ax)/(\pi x)$. Probar $p_a*p_b=p_{a+b}$ y $s_a*s_b=s_{\min(a,b)}$.
+\end{ejercicio}
+\begin{solucion}
+La misma integración del ejercicio anterior da $\widehat{e^{-a|x|}}(\xi)=2a/(a^2+\xi^2)$. La inversión, aplicable porque ambas funciones son integrables, implica $\widehat{p_a}(\xi)=e^{-a|\xi|}$. Por el teorema de convolución y unicidad en $L^1$, $\widehat{p_a*p_b}=e^{-(a+b)|\xi|}=\widehat{p_{a+b}}$.
+
+La función $s_a$ no pertenece a $L^1$, de modo que no se puede aplicar el mismo argumento sin modificación. Es la transformada inversa no normalizada de $\mathbf1_{[-a,a]}$, y pertenece a $L^2$. Hölder asegura que $s_a*s_b(x)$ existe para todo $x$. Aplicando Parseval al producto interno que expresa esa convolución,
+\[
+ (s_a*s_b)(x)=\frac1{2\pi}\int_{\R}\mathbf1_{[-a,a]}(\xi)\mathbf1_{[-b,b]}(\xi)e^{-ix\xi}d\xi
+ =\frac{\sin(\min(a,b)x)}{\pi x}.
+\]
+Para justificar la identidad de producto interno, escribimos la convolución como $\ip{s_a}{\overline{s_b(x-\cdot)}}$ y usamos las fórmulas de reflexión y traslación de Fourier en $L^2$. Ambas funciones son reales y pares, lo que deja el signo indicado. En $x=0$ se toman los límites continuos.
+\end{solucion}
+\begin{ejercicio}[Lectura 13, ejercicio 4]\label{ej:v4-l13-4}
+Demostrar, para $a,b>0$,
+\[
+ \int_\R\frac{\sin(at)\sin(bt)}{t^2}dt=\pi\min(a,b),\qquad
+ \int_\R\frac{t^2}{(t^2+a^2)(t^2+b^2)}dt=\frac\pi{a+b}.
+\]
+\end{ejercicio}
+\begin{solucion}
+Evaluar $s_a*s_b=s_{\min(a,b)}$ en cero da la primera integral, pues $s_a,s_b$ son pares y $s_c(0)=c/\pi$. Para $a\ne b$,
+\[
+ \frac{t^2}{(t^2+a^2)(t^2+b^2)}
+ =\frac1{b^2-a^2}\left(\frac{b^2}{t^2+b^2}-\frac{a^2}{t^2+a^2}\right).
+\]
+Como $\int(t^2+c^2)^{-1}dt=\pi/c$, integrar da $\pi(b-a)/(b^2-a^2)=\pi/(a+b)$. Para $b\to a$, dominada se aplica tomando $b\in[a/2,3a/2]$ y dominando por una constante multiplicada por $(t^2+a^2)^{-1}$; se obtiene el caso $a=b$. En particular $a=b=1$ reproduce el ejercicio~\ref{ej:v4-l13-2}. La referencia final al ejercicio 1 en el original debe apuntar al ejercicio 2.
+\end{solucion}
+
+\section{Subespacios invariantes por traslación}\label{lectura:v4-14}
+\index{subespacio!invariante por traslacion@invariante por traslación}\index{multiplicador!de Fourier}
+\begin{teorema}\label{v4:subespacios-invariantes}
+Para un conjunto medible $A\subseteq\R^d$, sea
+\[
+ H_A=\{f\in L^2(\R^d):\mathcal Ff=0\text{ casi en todas partes en }A\}.
+\]
+Entonces $H_A$ es cerrado e invariante bajo todas las traslaciones; $H_A=H_B$ si y solo si $A\triangle B$ es nulo; y todo subespacio \emph{cerrado} invariante bajo traslaciones es de esa forma.
+\end{teorema}
+\begin{proof}
+El espacio de funciones que se anulan en $A$ es el núcleo del operador acotado $g\mapsto\mathbf1_Ag$, por lo que es cerrado. Su preimagen bajo la aplicación unitaria $\mathcal F$ es $H_A$. Las traslaciones se convierten en multiplicación por $e^{-ia\cdot\xi}$; multiplicar por ese factor no cambia el conjunto de ceros, lo que prueba invariancia.
+
+Si $A\triangle B$ es nulo, las condiciones de anulación coinciden. Recíprocamente, si los espacios coinciden y $|B\setminus A|>0$, alguna intersección $(B\setminus A)\cap[-n,n]^d$ tiene medida positiva y finita. Su indicadora pertenece al espacio de funciones que se anulan en $A$, pero no al que se anula en $B$, contradicción. Se intercambian $A,B$ para concluir igualdad módulo nulos.
+
+Sea ahora $H$ cerrado e invariante por todas las traslaciones, y $W=\mathcal F(H)$. Entonces $W$ es cerrado e invariante por multiplicación por todos los caracteres, incluidas sus inversas. Su ortogonal $W^\perp$ también es invariante: si $u\in W$, $v\in W^\perp$, entonces $\ip{e^{ia\cdot\xi}v}u=\ip v{e^{-ia\cdot\xi}u}=0$. Para esos $u,v$, la función $u\overline v$ pertenece a $L^1$ por Hölder y
+\[
+ \int e^{ia\cdot\xi}u(\xi)\overline{v(\xi)}d\xi=0\quad(a\in\R^d).
+\]
+La unicidad de Fourier en $L^1$ implica $u\overline v=0$ casi en todas partes.
+
+Por separabilidad de $L^2(\R^d)$, el subespacio $W$ tiene una sucesión densa $(u_j)$. Sea $E=\bigcup_j\{u_j\ne0\}$. Todo elemento de $W$ se anula fuera de $E$: esto es cierto para $u_j$ y pasa al límite en $L^2$ por continuidad de multiplicación por $\mathbf1_{E^c}$. Para cada $v\in W^\perp$, las identidades $u_j\overline v=0$, reunidas fuera de una unión numerable de nulos, implican que $v=0$ en $E$ casi en todas partes. Si $g$ está apoyada en $E$, descomponemos $g=w+v$ con $w\in W$, $v\in W^\perp$. Tanto $g$ como $w$ se anulan fuera de $E$, así que $v$ también; pero $v$ se anula en $E$, luego $v=0$. Por tanto $W=L^2(E)$, y $H=H_{E^c}$.
+\end{proof}
+La proyección ortogonal sobre $H_A$ es $\mathcal F^{-1}M_{\mathbf1_{A^c}}\mathcal F$. Así la descripción mediante proyecciones de la lectura original se concreta en un multiplicador indicador. La palabra «cerrado» no puede omitirse: $\Sscr(\R)$ es un subespacio propio, denso e invariante por traslaciones de $L^2$, y no puede ser ninguno de los espacios cerrados $H_A$. La lectura 14 no contiene ejercicios numerados.
+
+\section{Banda limitada y núcleo reproductor}
+\index{banda limitada}\index{nucleo@núcleo!reproductor}\index{Paley--Wiener!espacio de}
+Este complemento sigue el desarrollo de Lozano Vite y Maximenko~\cite{lozanoMaximenkoPaleyWiener}. Sea $a>0$ y
+\[
+ PW_a=\{f\in L^2(\R):\mathcal Ff=0\text{ casi en todas partes fuera de }[-a,a]\}.
+\]
+Toda clase de este espacio tiene un representante continuo canónico: si $g=\mathcal Ff$ está apoyada en $[-a,a]$, Hölder da $\norm g_1\leq\sqrt{2a}\norm g_2$, y se define
+\[
+ f(x)=\frac1{\sqrt{2\pi}}\int_{-a}^ag(\xi)e^{-ix\xi}d\xi.
+\]
+La integral representa la clase inversa en $L^2$, es continua y pertenece a $C_0$. En adelante $PW_a$ consta de esos representantes, con norma $L^2$.
+\begin{proposicion}\label{v4:rkhs-pw}
+La evaluación en $y$ es un funcional continuo de $PW_a$, representado por
+\[
+ K_y(x)=\frac{\sin(a(x-y))}{\pi(x-y)},\qquad K_y(y)=\frac a\pi.
+\]
+Se tiene $f(y)=\ip f{K_y}$ y $\norm f_\infty\leq\sqrt{a/\pi}\norm f_2$.
+\end{proposicion}
+\begin{proof}
+Por Cauchy--Schwarz en la integral inversa,
+\[
+|f(y)|\leq(2\pi)^{-1/2}\sqrt{2a}\norm g_2=\sqrt{a/\pi}\norm f_2.
+\]
+La función $K_y$ es la inversa unitaria de $(2\pi)^{-1/2}\mathbf1_{[-a,a]}(\xi)e^{iy\xi}$, pues integrar el exponencial da la fórmula seno. Por Parseval,
+\[
+ \ip f{K_y}=\frac1{\sqrt{2\pi}}\int_{-a}^ag(\xi)e^{-iy\xi}d\xi=f(y).
+\]
+Su norma al cuadrado es $\norm{\mathcal FK_y}_2^2=(2\pi)^{-1}2a=a/\pi$. Este espacio es, por definición, un espacio de Hilbert con núcleo reproductor. La norma es la raíz cuadrada de la integral de $|f|^2$; no debe omitirse esa raíz.
+\end{proof}
+
+\section{Reconstrucción por muestras}
+\index{muestreo!teorema de Whittaker--Shannon}\index{sinc}
+Definimos $\operatorname{sinc}(t)=\sin(\pi t)/(\pi t)$ para $t\ne0$, con valor uno en cero.
+\begin{teorema}[Whittaker--Shannon en $L^2$]\label{v4:muestreo}
+Para $f\in PW_a$,
+\[
+ f(x)=\sum_{k\in\Z}f\left(\frac{k\pi}a\right)
+ \operatorname{sinc}\left(\frac{ax}\pi-k\right),
+ \qquad
+ \norm f_2^2=\frac\pi a\sum_{k\in\Z}\left|f\left(\frac{k\pi}a\right)\right|^2.
+\]
+Las sumas simétricas convergen en $L^2$ y uniformemente en toda $\R$.
+\end{teorema}
+\begin{proof}
+El cambio lineal de variable desde el círculo muestra que
+\[
+ \phi_k(\xi)=(2a)^{-1/2}e^{ik\pi\xi/a},\quad k\in\Z,
+\]
+es una base ortonormal de $L^2([-a,a],d\xi)$. Aplicando la inversa unitaria de Fourier obtenemos la base ortonormal
+\[
+ e_k(x)=\sqrt{\frac a\pi}\operatorname{sinc}\left(\frac{ax}\pi-k\right)
+ =\sqrt{\frac\pi a}\,K_{k\pi/a}(x)
+\]
+de $PW_a$. La propiedad reproductora da $\ip f{e_k}=\sqrt{\pi/a}\,f(k\pi/a)$. La expansión en esa base y Parseval proporcionan las dos fórmulas del enunciado, con convergencia en norma. Si $r_N$ es el residuo de la suma parcial, todavía pertenece a $PW_a$; por la proposición anterior,
+\[
+ \norm{r_N}_\infty\leq\sqrt{a/\pi}\norm{r_N}_2\longrightarrow0.
+\]
+Por tanto la convergencia es uniforme en toda la recta, no únicamente en intervalos compactos. La demostración utiliza Plancherel y una base ortonormal; no requiere el teorema de Carleson.
+\end{proof}
+\begin{ejercicio}[Complemento: cambio de ancho de banda]\label{ej:v4-ampl-muestreo}
+En la convención $\widehat f(\nu)=\int f(x)e^{2\pi ix\nu}dx$, resolver el ejercicio de Lozano Vite y Maximenko que sustituye la banda $[-1/2,1/2]$ por $[-b,b]$: hallar la separación entre muestras, el núcleo y Parseval.
+\end{ejercicio}
+\begin{solucion}
+La frecuencia angular de nuestra convención es $\xi=2\pi\nu$, de modo que $a=2\pi b$. Sustituir en el teorema anterior da separación $1/(2b)$ y
+\[
+ f(x)=\sum_{k\in\Z}f\left(\frac{k}{2b}\right)\operatorname{sinc}(2bx-k),\qquad
+ \norm f_2^2=\frac1{2b}\sum_k\left|f\left(\frac{k}{2b}\right)\right|^2.
+\]
+El núcleo es $K_y(x)=2b\operatorname{sinc}(2b(x-y))$ y la norma de evaluación es $\sqrt{2b}$. Con $b=1/2$ recuperamos muestras enteras y núcleo $\operatorname{sinc}(x-y)$. La distancia entre muestras depende de la banda y de la convención de frecuencia; no debe trasladarse una fórmula sin ajustar ambas.
+\end{solucion}
+
+\paragraph{Del espacio euclidiano al grupo.}
+Traslación, medida invariante, caracteres y convolución han aparecido en cada construcción. Los capítulos siguientes abstraen esas cuatro estructuras. El trabajo previo en $\R^d$, $\T$ y los grupos finitos servirá para comprobar las constantes y reconocer los casos concretos de la teoría general.

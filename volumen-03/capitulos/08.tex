@@ -1,0 +1,267 @@
+\chapter{Topologías débiles, redes y convergencia}\label{cap:v3-08}
+Una topología débil observa vectores mediante funcionales: exige convergencia de todas las mediciones escalares, pero permite perder control sobre la norma. Las redes sirven para describir esa topología cuando las sucesiones no bastan. Desarrollaremos cuidadosamente la diferencia entre ambas, porque varias afirmaciones válidas para sucesiones dejan de serlo para redes.
+
+\section{Topologías generadas por aplicaciones}\label{lec:v3-13}
+\fuentelectura{13}{La topología débil}
+\begin{definicion}\index{topología!inicial}
+Sea $E$ un conjunto y $f_i:E\to Y_i$ una familia de aplicaciones a espacios topológicos. La \emph{topología inicial} de esta familia es la topología con menos abiertos que hace continuas a todas las $f_i$.
+\end{definicion}
+\begin{proposicion}\label{v3:topologia-inicial}
+Los conjuntos $f_i^{-1}(U)$, con $U\subset Y_i$ abierto, forman una subbase para la topología inicial. Las intersecciones finitas de esos conjuntos, incluyendo la intersección vacía $E$, forman una base. Si los $Y_i$ son Hausdorff y la familia separa puntos, la topología inicial es Hausdorff.
+\end{proposicion}
+\begin{proof}
+La familia de intersecciones finitas cubre $E$ porque incluye $E$, y la intersección de dos de sus elementos sigue siendo una intersección finita. Por tanto sus uniones forman una topología. En ella son abiertos todos los $f_i^{-1}(U)$, así que cada $f_i$ es continua. Cualquier otra topología que haga continuas a todas las aplicaciones debe contener esos conjuntos, sus intersecciones finitas y sus uniones; por ello contiene a la construida. Si $x\ne y$, existe $i$ con $f_i(x)\ne f_i(y)$. En $Y_i$ hay abiertos disjuntos alrededor de esos dos valores; sus preimágenes son abiertos disjuntos que separan $x$ e $y$.
+\end{proof}
+La topología producto en $\prod_iY_i$ es, por definición, la topología inicial de las proyecciones coordenadas. Sus abiertos básicos sólo imponen condiciones en un número finito de coordenadas, aunque el producto tenga infinitos factores.
+
+\section{Topologías débil y débil estrella}
+\begin{definicion}\label{v3:topologia-debil}\index{topología!débil}
+En un espacio normado $X$, la topología \emph{débil} $\sigma(X,X^*)$ es la topología inicial de las funcionales continuas $X^*$. En el dual $X^*$, la topología \emph{débil estrella} $\sigma(X^*,X)$ es la topología inicial de las evaluaciones $\phi\mapsto\phi(x)$, con $x\in X$.
+\end{definicion}
+\label{v3:topologia-debil-estrella}\index{topología!débil estrella}
+Hahn--Banach asegura que $X^*$ separa puntos de $X$, y dos funcionales distintas difieren en algún vector. Por tanto ambas topologías son Hausdorff. La topología de la norma en $X$ es más fina que la débil, porque todas las funcionales usadas ya son continuas en norma. En $X^*$, la topología de norma es más fina que la débil $\sigma(X^*,X^{**})$, y ésta es más fina que la débil estrella, pues las evaluaciones $J_Xx$ son sólo algunas de las funcionales de $X^{**}$.
+
+\begin{proposicion}\label{v3:vecindades-debiles}
+Una base de vecindades débiles de cero es
+\[D(F,\eps)=\{x:|\phi(x)|<\eps\text{ para toda }\phi\in F\},
+\qquad F\subset X^*\text{ finito},\quad\eps>0.
+\]
+Una base en un punto $x_0$ se obtiene trasladando estos conjuntos por $x_0$. En el dual, las vecindades débiles estrella se obtienen intercambiando los papeles de vectores y funcionales.
+\end{proposicion}
+\begin{proof}
+Una vecindad inicial de cero contiene una intersección finita $\bigcap_{j=1}^m\phi_j^{-1}(U_j)$ con $0\in U_j$ abierto en $\F$. Cada $U_j$ contiene una bola escalar de radio $\eps_j>0$. Tomando $\eps=\min_j\eps_j$ obtenemos un $D(F,\eps)$ contenido en la vecindad. Cada uno de estos conjuntos es débilmente abierto por su definición. La igualdad $\phi(x-x_0)=\phi(x)-\phi(x_0)$ demuestra la afirmación sobre traslaciones. La misma prueba con evaluaciones da la versión débil estrella. Sobre $\C$ se usan discos $|z|<\eps$, no intervalos reales.
+\end{proof}
+Los conjuntos $D(F,\eps)$ son convexos y balanceados. La suma es continua en estas topologías porque $D(F,\eps/2)+D(F,\eps/2)\subset D(F,\eps)$; la multiplicación escalar también lo es, al estimar cada una de las finitísimas funcionales. Así obtenemos espacios vectoriales topológicos localmente convexos.
+
+\section{Ejercicios de topologías iniciales}
+\begin{ejercicio}\label{ej:v3-l13-1}
+Suponga que una topología $\tau$ en $E$ tiene la propiedad: para toda aplicación $g:Z\to E$ desde un espacio topológico, $g$ es continua si y sólo si cada $f_i\circ g$ lo es. Pruebe que $\tau$ es la topología inicial de las $f_i$.
+\end{ejercicio}
+\begin{solucion}
+Tomando $g$ igual a la identidad de $(E,\tau)$ en sí mismo, la hipótesis implica que cada $f_i$ es continua para $\tau$. Por minimalidad, la topología inicial $\tau_0$ está contenida en $\tau$. Ahora tome $Z=(E,\tau_0)$ y $g$ la identidad hacia $(E,\tau)$. Todas las composiciones $f_i\circ g$ son continuas por construcción, así que $g$ es continua y $\tau\subset\tau_0$. Las dos inclusiones dan igualdad. A la inversa, en la topología inicial, la continuidad de todas las composiciones hace abiertas las preimágenes bajo $g$ de los abiertos subbásicos y, por uniones e intersecciones finitas, de todos los abiertos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-2}
+Si la topología inicial de una familia es Hausdorff, demuestre que la familia separa puntos.
+\end{ejercicio}
+\begin{solucion}
+Si dos puntos distintos $x,y$ tuvieran $f_i(x)=f_i(y)$ para todo $i$, pertenecerían exactamente a los mismos abiertos subbásicos. Lo mismo ocurriría para intersecciones finitas y uniones, por tanto para todos los abiertos. No podrían tener vecindades abiertas disjuntas, contradiciendo Hausdorff. Esta dirección ni siquiera requiere que los espacios de llegada sean Hausdorff.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-3}
+Demuestre que los conjuntos $D^*(S,1)=\{\phi:|\phi(x)|<1\text{ para todo }x\in S\}$, con $S\subset X$ finito, forman una base de vecindades débiles estrella de cero.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:vecindades-debiles} da primero los conjuntos con tolerancia arbitraria $\eps>0$. Pero
+\[D^*(\{x_1,\ldots,x_m\},\eps)
+=D^*(\{x_1/\eps,\ldots,x_m/\eps\},1),
+\]
+por linealidad de cada $\phi$. Por tanto fijar el radio en uno no reduce la familia de vecindades necesarias. Cada conjunto indicado es abierto por ser una intersección finita de preimágenes de discos bajo evaluaciones.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-4}
+En dimensión infinita, las topologías débil y de norma no coinciden.
+\end{ejercicio}
+\begin{solucion}
+Toda vecindad débil de cero contiene un $D(F,\eps)$, donde $F=\{\phi_1,\ldots,\phi_m\}$. El mapeo lineal $x\mapsto(\phi_1(x),\ldots,\phi_m(x))$ desde un espacio infinito-dimensional a $\F^m$ tiene núcleo no nulo. Si $u\ne0$ pertenece a él, toda la recta $\{tu:t\in\F\}$ está en $D(F,\eps)$, que por ello no es acotado. La bola unidad abierta en norma no puede contener ninguna vecindad débil de cero; por tanto no es débilmente abierta. En dimensión finita las coordenadas de una base son funcionales continuas y las dos topologías sí coinciden.
+\end{solucion}
+
+\section{Redes, subredes y puntos de acumulación}\label{lec:v3-14}
+\fuentelectura{14}{Redes}
+\begin{definicion}\label{v3:redes}\index{red}\index{subred}
+Un conjunto dirigido es un conjunto no vacío $A$ parcialmente ordenado en el que cualesquiera dos elementos tienen una cota superior común. Una \emph{red} es una aplicación $\alpha\mapsto x_\alpha$ desde un conjunto dirigido a un conjunto $E$. Está \emph{eventualmente} en $B\subset E$ si existe $\alpha_0$ con $x_\alpha\in B$ para todo $\alpha\ge\alpha_0$. Está \emph{frecuentemente} en $B$ si para todo $\alpha_0$ existe $\alpha\ge\alpha_0$ con $x_\alpha\in B$.
+\end{definicion}
+Ejemplos de conjuntos dirigidos son $\N$ con su orden usual, los enteros positivos ordenados por divisibilidad (el producto es una cota común) y las vecindades de un punto ordenadas por \emph{inclusión inversa} (la intersección es una cota común). Una sucesión es una red, pero el conjunto de índices de una red no tiene por qué ser numerable.
+
+Un conjunto de índices es \emph{cofinal} si contiene algún índice posterior a cada índice dado. Un conjunto superior no vacío contiene una cola y permite describir la eventualidad. Es necesario excluir el conjunto vacío al usar esa descripción: de lo contrario cualquier red estaría ``eventualmente'' en cualquier conjunto por vacuidad, un defecto de la definición original.
+
+La red converge a $x$ si está eventualmente en cada vecindad de $x$; $x$ es un punto de acumulación de la red si ésta está frecuentemente en cada vecindad suya. Una \emph{subred} tiene la forma $y_\beta=x_{a(\beta)}$, donde $a:B\to A$ satisface: para todo $\alpha_0\in A$ existe $\beta_0\in B$ tal que $a(\beta)\ge\alpha_0$ cuando $\beta\ge\beta_0$. No exigimos que $a$ sea inyectiva ni monótona. Toda propiedad eventual de una red pasa a sus subredes, directamente por esta condición.
+
+\begin{lema}\label{v3:subred-familia}
+Sea $\mathcal F$ una familia no vacía de subconjuntos tal que, dados $F,G\in\mathcal F$, existe $H\in\mathcal F$ con $H\subset F\cap G$. Si una red está frecuentemente en cada elemento de $\mathcal F$, tiene una subred que está eventualmente en todos ellos.
+\end{lema}
+\begin{proof}
+Considere $B=\{(\alpha,F):F\in\mathcal F,\ x_\alpha\in F\}$, ordenado por
+\[(\alpha,F)\preceq(\beta,G)\quad\Longleftrightarrow\quad
+\alpha\le\beta\text{ y }G\subset F.
+\]
+Es no vacío por frecuencia. Dados dos pares, elija $H$ contenido en la intersección de sus conjuntos y un índice posterior a los dos índices. Por frecuencia en $H$, hay un índice aún posterior $\gamma$ con $x_\gamma\in H$; el par $(\gamma,H)$ es una cota común. La proyección $a(\alpha,F)=\alpha$ satisface la condición de subred: para cualquier $\alpha_0$, la frecuencia permite hallar un par con primer índice posterior a $\alpha_0$, y todos los pares posteriores conservan esa propiedad. Finalmente, fijado $F\in\mathcal F$, hay un par $(\alpha,F)$; después de él los conjuntos del segundo componente están contenidos en $F$, y sus valores de la red pertenecen a $F$.
+\end{proof}
+
+\begin{proposicion}\label{v3:acumulacion-subred}
+Un punto es de acumulación de una red si y sólo si alguna subred converge a él.
+\end{proposicion}
+\begin{proof}
+Si es de acumulación, el lema anterior se aplica a sus vecindades, cerradas bajo intersección finita, y produce una subred eventualmente en cada una. Recíprocamente, si $x_{a(\beta)}\to x$, dados una vecindad $U$ de $x$ y un índice $\alpha_0$, la condición de subred asegura $a(\beta)\ge\alpha_0$ eventualmente y la convergencia asegura $x_{a(\beta)}\in U$ eventualmente. Una cota común de ambos umbrales da un índice con las dos propiedades. Así la red original está frecuentemente en $U$.
+\end{proof}
+
+\begin{teorema}\label{v3:compacto-redes}
+Un espacio topológico es compacto si y sólo si toda red tiene una subred convergente.
+\end{teorema}
+\begin{proof}
+Si el espacio es compacto y $(x_\alpha)$ es una red, las cerraduras de sus colas $C_\alpha=\cl{\{x_\beta:\beta\ge\alpha\}}$ tienen la propiedad de intersección finita: una cola posterior a finitísimos índices está contenida en todas ellas. La compacidad implica $\bigcap_\alpha C_\alpha\ne\varnothing$. Un punto de esta intersección tiene toda vecindad intersectando cada cola, por tanto es de acumulación y admite una subred convergente.
+
+En sentido contrario, sea $\mathcal F$ una familia de cerrados con la propiedad de intersección finita. Su familia $\mathcal G$ de intersecciones finitas no vacías está dirigida por inclusión \emph{inversa}. Elijamos $x_G\in G$ para cada $G\in\mathcal G$. Por hipótesis una subred converge a algún $x$. Para cada $F\in\mathcal F$, la red original está eventualmente en $F$, y también la subred. Un límite de una red eventualmente contenida en un cerrado pertenece a ese cerrado: si no, el complemento abierto contendría eventualmente la red y contradiría la eventual pertenencia al cerrado. Así $x\in\bigcap\mathcal F$, y el criterio de intersección finita prueba compacidad. Las colas deben cerrarse en la primera dirección, y el orden de la segunda es inverso, precisiones que no deben perderse en la notación.
+\end{proof}
+
+\section{Filtros y redes universales}\index{filtro}\index{ultrafiltro}\index{red!universal}
+Un \emph{filtro} $\mathcal U$ en $E$ es una familia no vacía de subconjuntos que no contiene $\varnothing$, es cerrada bajo intersecciones finitas y contiene todo superconjunto de cualquiera de sus miembros. Es un \emph{ultrafiltro} si para todo $B\subset E$, uno de $B$ y $E\setminus B$ pertenece a $\mathcal U$. No pueden pertenecer ambos, porque su intersección es vacía.
+
+\begin{lema}\label{v3:ultrafiltro-existencia}
+Todo filtro está contenido en un ultrafiltro. Toda red tiene una subred universal, es decir, una subred que para cada $B\subset E$ está eventualmente en $B$ o eventualmente en su complemento.
+\end{lema}
+\begin{proof}
+Ordenemos por inclusión los filtros que contienen al filtro dado. La unión de una cadena es un filtro: para dos miembros se elige un filtro de la cadena que contenga a ambos, y allí se toman sus intersecciones. Zorn da uno maximal $\mathcal U$. Si ni $B$ ni su complemento pertenecieran a él, todo $U\in\mathcal U$ intersectaría $B$; de lo contrario $U\subset E\setminus B$ forzaría que el complemento perteneciera al filtro. Las intersecciones $U\cap B$ generarían entonces un filtro propio estrictamente mayor, contradicción. Así el maximal es ultrafiltro.
+
+Los conjuntos en los que una red está eventualmente forman un filtro: la intersección de dos eventualidades se obtiene tomando una cota común de sus umbrales; el vacío no puede contener una cola. Extiéndalo a un ultrafiltro $\mathcal U$. La red está frecuentemente en cada $U\in\mathcal U$, pues toda imagen de una cola pertenece al filtro inicial y su intersección con $U$ no puede ser vacía. El lema~\ref{v3:subred-familia} produce una subred eventualmente en todo $U\in\mathcal U$. Para cada $B$, el ultrafiltro contiene $B$ o su complemento; por tanto la subred es universal.
+\end{proof}
+Una red universal que tiene un punto de acumulación converge a él: cada vecindad es visitada frecuentemente, así que la universalidad impide que la red esté eventualmente en su complemento y obliga a la eventualidad dentro de la vecindad.
+
+\section{Ejercicios de redes y filtros}
+\begin{ejercicio}\label{ej:v3-l14-1}
+En un espacio Hausdorff, una red convergente tiene límite único.
+\end{ejercicio}
+\begin{solucion}
+Si convergiera a $x\ne y$, elija vecindades abiertas disjuntas $U,V$ de esos puntos. La red estaría eventualmente en cada una, por tanto eventualmente en su intersección vacía al tomar una cota común de los dos umbrales, imposible. También vale el recíproco mencionado en la lectura: si $x\ne y$ no admiten vecindades disjuntas, dirija los pares $(U,V)$ de vecindades por inclusión inversa y elija $z_{U,V}\in U\cap V$. Esa red converge simultáneamente a $x$ e $y$, contradiciendo unicidad de límites.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-2}
+Para $A\subset E$, pruebe: (i) $x$ es interior a $A$ si y sólo si ninguna red en $E\setminus A$ converge a $x$; (ii) $x\in\cl A$ si y sólo si alguna red en $A$ converge a $x$.
+\end{ejercicio}
+\begin{solucion}
+(ii) Si una red en $A$ converge a $x$, toda vecindad de $x$ contiene algún término y, por tanto, intersecta $A$. Recíprocamente, si toda vecindad $U$ de $x$ intersecta $A$, elija $x_U\in A\cap U$ y ordene las vecindades por inclusión inversa. Dada una vecindad $V$, después del índice $V$ todos los $U$ están contenidos en $V$, luego $x_U\in V$. La red converge a $x$.
+
+(i) Si $x$ tiene una vecindad contenida en $A$, ninguna red íntegramente en el complemento puede estar eventualmente en ella. Si $x$ no es interior, toda vecindad intersecta el complemento, o sea $x\in\cl{E\setminus A}$. El inciso (ii) construye entonces una red en ese complemento convergente a $x$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-3}
+Una aplicación $f:E\to Y$ es continua si y sólo si preserva los límites de todas las redes.
+\end{ejercicio}
+\begin{solucion}
+Si es continua y $x_\alpha\to x$, la preimagen de cualquier vecindad de $f(x)$ es una vecindad de $x$, de modo que $f(x_\alpha)\to f(x)$. Si no es continua en $x$, existe una vecindad abierta $V$ de $f(x)$ tal que ninguna vecindad $U$ de $x$ está contenida en $f^{-1}(V)$. Elija $x_U\in U\setminus f^{-1}(V)$; la red dirigida por inclusión inversa converge a $x$, pero sus imágenes nunca pertenecen a $V$, así que no convergen a $f(x)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-4}
+Un espacio topológico es compacto si y sólo si toda red universal converge.
+\end{ejercicio}
+\begin{solucion}
+En un compacto, cualquier red tiene un punto de acumulación por el teorema~\ref{v3:compacto-redes}; si es universal, la observación posterior al lema~\ref{v3:ultrafiltro-existencia} muestra que converge a ese punto. Recíprocamente, cada red tiene una subred universal por ese lema. Si todas las universales convergen, toda red tiene una subred convergente y el teorema~\ref{v3:compacto-redes} da compacidad. Así se justifica también la existencia de subredes universales, que la lectura sólo menciona.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-5}
+Pruebe que los conjuntos en los que una red está eventualmente forman un filtro. Recíprocamente, dado un filtro $\mathcal F$, pruebe que elegir $x_F\in F$ define una red.
+\end{ejercicio}
+\begin{solucion}
+El conjunto total pertenece a la familia de eventualidades y el vacío no. Si la red está eventualmente en $F$ y $F\subset G$, está eventualmente en $G$. Si está eventualmente en $F$ y $G$, después de una cota común de los umbrales está en $F\cap G$. Éstos son los axiomas del filtro. A la inversa, ordene $\mathcal F$ por inclusión inversa. Es un conjunto dirigido porque $F\cap G\in\mathcal F$ y está contenido en ambos. Cada miembro es no vacío, por lo que puede elegirse $x_F\in F$; la aplicación $F\mapsto x_F$ es una red. Su filtro de eventualidades contiene a $\mathcal F$, aunque para elecciones arbitrarias no tiene por qué ser exactamente igual a él.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-6}
+Un filtro converge a $x$ cuando contiene todas las vecindades de $x$. Pruebe que una red converge a $x$ si y sólo si su filtro de eventualidades converge a $x$.
+\end{ejercicio}
+\begin{solucion}
+Por definición, una vecindad $U$ pertenece al filtro de eventualidades exactamente cuando la red está eventualmente en $U$. Exigir esto para todas las vecindades de $x$ es precisamente exigir convergencia de la red a $x$. La frase ``converge a $x$'' completa la omisión verbal del enunciado original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-7}
+Si $y_\beta=x_{a(\beta)}$ es una subred, su filtro de eventualidades contiene al de la red original.
+\end{ejercicio}
+\begin{solucion}
+Si $x_\alpha\in F$ para todos los $\alpha\ge\alpha_0$, la condición de subred proporciona $\beta_0$ con $a(\beta)\ge\alpha_0$ para $\beta\ge\beta_0$. Para esos índices, $y_\beta=x_{a(\beta)}\in F$. Así toda eventualidad de la red original es una eventualidad de la subred, que es exactamente la inclusión de filtros pedida.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-8}
+Una red es universal si y sólo si su filtro asociado es un ultrafiltro. Deduzca: (i) todo filtro está contenido en un ultrafiltro; (ii) un espacio es compacto si y sólo si todo ultrafiltro converge.
+\end{ejercicio}
+\begin{solucion}
+La equivalencia traduce literalmente la definición: para cada $B$, la red es eventualmente en $B$ o en su complemento si y sólo si uno de ellos pertenece al filtro de eventualidades. Para (i), el argumento de Zorn del lema~\ref{v3:ultrafiltro-existencia} da una extensión maximal y demuestra que decide cada subconjunto; ésa es la extensión requerida. También puede construirse la red seleccionada del ejercicio~\ref{ej:v3-l14-5} y tomar una subred universal: su ultrafiltro de eventualidades contiene al filtro inicial por el ejercicio~\ref{ej:v3-l14-7}.
+
+(ii) En un compacto, sea $\mathcal U$ un ultrafiltro y elijamos la red $x_U\in U$ ordenada por inclusión inversa. Su filtro de eventualidades contiene a $\mathcal U$ y, por maximalidad del ultrafiltro, es igual a él. La red es universal y converge por el ejercicio~\ref{ej:v3-l14-4}; el ejercicio~\ref{ej:v3-l14-6} da convergencia de $\mathcal U$. Recíprocamente, si todo ultrafiltro converge, el filtro asociado a cualquier red universal converge, así que esa red converge; el ejercicio~\ref{ej:v3-l14-4} da compacidad.
+\end{solucion}
+
+\section{Convergencia débil y el papel de la acotación}\label{lec:v3-15}
+\fuentelectura{15}{Convergencia débil}
+\begin{proposicion}\label{v3:convergencia-debil}
+Una red $x_\alpha$ converge débilmente a $x$, escrito $x_\alpha\rightharpoonup x$, si y sólo si $\phi(x_\alpha)\to\phi(x)$ para toda $\phi\in X^*$. Una red $\phi_\alpha$ converge débil estrella a $\phi$ si y sólo si $\phi_\alpha(x)\to\phi(x)$ para todo $x\in X$.
+\end{proposicion}
+\begin{proof}
+La convergencia en la topología inicial implica convergencia de todas las aplicaciones que la generan, por continuidad. Para el recíproco, una vecindad básica sólo impone finitísimas desigualdades. La convergencia de cada coordenada da un umbral para cada una, y la dirección del conjunto de índices permite tomar una cota común para todos ellos, por inducción finita. Después de esa cota se cumplen simultáneamente las desigualdades y la red está en la vecindad. El mismo razonamiento vale para las evaluaciones del dual.
+\end{proof}
+La convergencia en norma implica la débil porque $|\phi(x_\alpha-x)|\le\norm\phi\norm{x_\alpha-x}$. La recíproca falla: en $L^1[0,2\pi]$, $f_n(t)=1+\cos(nt)$ converge débilmente a uno por Riemann--Lebesgue, probado en el ejercicio~\ref{ej:v3-l15-1}, y por la identificación $L^1{}^*=L^\infty$. En efecto, cada $g\in L^\infty$ pertenece también a $L^1$ en este intervalo finito y $\int g\cos(nt)\to0$. Sin embargo
+\[\norm{f_n-1}_1=\frac1n\int_0^{2\pi n}|\cos u|\,du=4,
+\]
+pues hay $n$ períodos de integral cuatro. Por tanto no hay convergencia en norma.
+
+\begin{proposicion}\label{v3:debil-acotacion-secuencias}
+Una \emph{sucesión} débilmente convergente en un espacio normado es acotada en norma. Una sucesión débil estrella convergente en $X^*$ es acotada si $X$ es Banach. Para cualquier \emph{red} débilmente convergente,
+\[\norm x\le\liminf_\alpha\norm{x_\alpha},
+\]
+y para cualquier red débil estrella convergente, $\norm\phi\le\liminf_\alpha\norm{\phi_\alpha}$.
+\end{proposicion}
+\begin{proof}
+Si $x_n\rightharpoonup x$, para cada $\psi\in X^*$ la sucesión escalar $\psi(x_n)$ converge y es acotada. Aplicamos acotación uniforme a las evaluaciones $J_Xx_n$ sobre el Banach $X^*$; sus normas son $\norm{x_n}$, por Hahn--Banach. En el caso débil estrella aplicamos acotación uniforme directamente a las funcionales $\phi_n$ sobre el Banach $X$.
+
+Para la semicontinuidad con redes, fijemos $\psi\in X^*$ de norma a lo sumo uno. Dado $\eps>0$, eventualmente $|\psi(x)|\le|\psi(x_\alpha)|+\eps\le\norm{x_\alpha}+\eps$. Esto implica $|\psi(x)|\le\liminf_\alpha\norm{x_\alpha}+\eps$, donde $\liminf_\alpha a_\alpha=\sup_{\alpha_0}\inf_{\alpha\ge\alpha_0}a_\alpha$. Haciendo $\eps\downarrow0$ y tomando el supremo en $\psi$, obtenemos la desigualdad. La versión débil estrella usa de igual modo $|\phi(x)|=\lim|\phi_\alpha(x)|$ para cada $\norm x\le1$, y toma el supremo en $x$.
+\end{proof}
+
+\begin{ejemplo}[Una red débilmente convergente sin cota eventual]\label{v3:red-debil-no-acotada}
+En un espacio normado infinito-dimensional $X$, dirijamos los pares $(F,n)$, donde $F\subset X^*$ es finito y $n\ge1$, mediante inclusión de $F$ y orden usual de $n$. Para cada $F$, la intersección $\bigcap_{\phi\in F}\ker\phi$ contiene un vector unitario $u_F$, por el argumento del ejercicio~\ref{ej:v3-l13-4}. Definamos $x_{F,n}=nu_F$. Para cada $\phi$, después de incluirla en $F$ se tiene $\phi(x_{F,n})=0$; así $x_{F,n}\rightharpoonup0$. Pero $\norm{x_{F,n}}=n\to\infty$, de modo que ni siquiera existe una cola acotada en norma. Esto refuta el inciso (i) de la proposición 4 original para redes y la necesidad de acotación global del teorema 5 original.
+
+Incluso una red escalar convergente puede tener un conjunto total de valores no acotado: en $\N^2$ con orden producto, sea $a_{m,n}=n$ si $m=1$ y cero si $m\ge2$. Converge a cero, pero sus valores incluyen todos los enteros positivos. Por tanto el argumento ``converge, luego su rango es acotado'', válido para sucesiones, no se traslada a redes.
+\end{ejemplo}
+
+\begin{proposicion}[Comprobar convergencia en un conjunto total]\label{v3:total-debil}
+Sea $D\subset X^*$ con span denso en norma. Para una red \emph{acotada en norma}, $x_\alpha\rightharpoonup x$ equivale a $\phi(x_\alpha)\to\phi(x)$ para cada $\phi\in D$. Para sucesiones, la convergencia débil equivale a la conjunción de acotación en norma y convergencia en $D$. Análogamente, en una red normoacotada de $X^*$ basta comprobar la convergencia débil estrella en un conjunto cuyo span sea normodenso en $X$.
+\end{proposicion}
+\begin{proof}
+La necesidad de las evaluaciones es inmediata; para sucesiones, la necesidad de acotación es la proposición anterior. Para la suficiencia, sea $C=\sup_\alpha\norm{x_\alpha-x}<\infty$. Si $C=0$ no hay nada que probar. Dada $\psi\in X^*$ y $\eps>0$, elija $\phi\in\spanop D$ con $\norm{\psi-\phi}<\eps/(2C)$. La convergencia para cada elemento de $D$ implica la de cada combinación finita, de modo que eventualmente $|\phi(x_\alpha-x)|<\eps/2$. Entonces
+\[|\psi(x_\alpha-x)|\le\norm{\psi-\phi}\norm{x_\alpha-x}+|\phi(x_\alpha-x)|<\eps.
+\]
+La prueba débil estrella intercambia vectores y funcionales, con una cota uniforme de las normas de las funcionales. También basta una cota en alguna cola, pues la convergencia sólo depende de las colas.
+\end{proof}
+Si ``base'' significa base de Hamel de $X^*$, cada funcional ya es una combinación \emph{finita} de elementos de la base; en ese caso la convergencia de las evaluaciones basta para redes sin ninguna acotación. La formulación con conjunto total normodenso cubre también las bases topológicas y hace explícito dónde se necesita la estimación uniforme.
+
+\begin{proposicion}\label{v3:operador-debil-continuo}
+Para una aplicación lineal $T:X\to Y$ entre Banach son equivalentes: (i) $T$ es acotada; (ii) es continua de $\sigma(X,X^*)$ a $\sigma(Y,Y^*)$; (iii) lleva redes débilmente convergentes a cero en redes débilmente convergentes a cero.
+\end{proposicion}
+\begin{proof}
+(i)$\Rightarrow$(ii): para $\psi\in Y^*$, $\psi\circ T\in X^*$; la propiedad universal de la topología inicial da continuidad. (ii)$\Rightarrow$(iii) es conservación de límites. Para (iii)$\Rightarrow$(i), si $x_n\to0$ en norma, también converge débilmente a cero; por (iii), $Tx_n\rightharpoonup0$. Es una \emph{sucesión}, por lo que sus normas están acotadas. El ejercicio~\ref{ej:v3-l15-3}, demostrado abajo, implica que $T$ es continuo. Este argumento sólo utiliza la acotación secuencial válida, sin recurrir a la afirmación falsa para redes.
+\end{proof}
+
+\section{Ejercicios de convergencia débil}
+\begin{ejercicio}[Riemann--Lebesgue]\label{ej:v3-l15-1}
+Para $f\in L^1[0,2\pi]$, pruebe $\int_0^{2\pi}f(t)\cos(nt)\,dt\to0$.
+\end{ejercicio}
+\begin{solucion}
+Las funciones $\cos(nt)/\sqrt\pi$, $n\ge1$, son ortonormales en $L^2[0,2\pi]$: la identidad $2\cos(nt)\cos(mt)=\cos((n-m)t)+\cos((n+m)t)$ y la integral de un coseno de frecuencia entera no nula dan ortogonalidad y norma cuadrada $\pi$. Si $g\in L^2$, Bessel implica que los coeficientes $\int g(t)\cos(nt)\,dt$ tienden a cero. Dado $f\in L^1$ y $\eps>0$, elija una función continua $g$ con $\norm{f-g}_1<\eps/2$; esa densidad se obtiene aproximando funciones simples por continuas mediante regularidad de la medida de Lebesgue. Como $g\in L^2$, para $n$ grande su coeficiente tiene módulo menor que $\eps/2$. Entonces
+\[\left|\int f\cos(nt)\right|\le\norm{f-g}_1+\left|\int g\cos(nt)\right|<\eps.
+\]
+El factor correcto es $\cos(nt)$; el enunciado original imprime $\cos(t)$, cuya integral no depende de $n$ y en general no es cero, como muestra $f(t)=\cos t$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-2}
+Si $K$ es compacto Hausdorff y $f_n,f\in C(K)$, pruebe que $f_n\rightharpoonup f$ si y sólo si $(f_n)$ es uniformemente acotada y $f_n(x)\to f(x)$ para cada $x\in K$.
+\end{ejercicio}
+\begin{solucion}
+Si hay convergencia débil, la proposición~\ref{v3:debil-acotacion-secuencias} da $\sup_n\norm{f_n}_\infty<\infty$. Las evaluaciones $\delta_x:g\mapsto g(x)$ son funcionales continuas, así que $f_n(x)\to f(x)$.
+
+Recíprocamente, por el teorema de representación de Riesz para $C(K)$, toda funcional es integración respecto de una medida de Borel regular finita real o compleja $\mu$. Si $\norm{f_n}_\infty\le C$, también $|f(x)|\le C$ por el límite puntual. Así $|f_n-f|\le2C$, integrable respecto de la variación total finita $|\mu|$. Convergencia dominada da
+\[\left|\int(f_n-f)\,d\mu\right|\le\int|f_n-f|\,d|\mu|\longrightarrow0.
+\]
+Por tanto todas las funcionales convergen y la sucesión converge débilmente. Se usa aquí la representación de medidas desarrollada en el volumen II; también puede consultarse \cite{rudin1991}. La hipótesis de que el límite puntual $f$ sea continuo es parte del enunciado y no se deduce de la mera acotación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-3}
+Una aplicación lineal entre espacios normados es continua si y sólo si lleva toda sucesión que converge a cero en una sucesión acotada.
+\end{ejercicio}
+\begin{solucion}
+Si $T$ es continua, $x_n\to0$ implica $Tx_n\to0$, y toda sucesión convergente es acotada. Si $T$ no es continua, no existe una cota global de operador. Para cada $n$ escoja $u_n$ unitario con $\norm{Tu_n}>n^3$. Entonces $x_n=u_n/n$ tiene norma $1/n\to0$, pero $\norm{Tx_n}>n^2$, que no es acotada. Esto prueba el contrapositivo sin requerir completitud.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-4}
+Todo conjunto convexo cerrado en norma es débilmente cerrado.
+\end{ejercicio}
+\begin{solucion}
+Si $C$ es vacío o todo el espacio, es inmediato. Para $x\notin C$, el teorema de separación estricta entre el compacto $\{x\}$ y el convexo cerrado $C$ da una funcional continua real $f$ y un real $a$ con $f(x)>a\ge\sup_{c\in C}f(c)$, cambiando el signo si fuera necesario. En un espacio complejo, $f=\Re\phi$ para una funcional compleja continua $\phi$, por la conversión probada en el capítulo~\ref{cap:v3-03}. El conjunto $\{y:\Re\phi(y)>a\}$, o $\{y:f(y)>a\}$ en el caso real, es débilmente abierto, contiene a $x$ y no intersecta $C$. Por tanto el complemento de $C$ es débilmente abierto. No se necesita que una bola cerrada sea compacta en dimensión infinita: separar el punto de $C$ evita esa confusión.
+\end{solucion}
+
+Las redes recuperan la relación entre cierre, continuidad y compacidad en topologías que no son métricas. A la vez exigen respetar la distinción entre una cola y el conjunto completo de valores, y entre acotación secuencial y acotación de redes. Con estas precisiones, podemos abordar la compacidad débil estrella de la bola del dual y los criterios de reflexividad del capítulo siguiente.

@@ -11,7 +11,7 @@ Una \emph{base de Hamel} es un conjunto linealmente independiente cuyo espacio g
 Un conjunto es \emph{total} si el cierre de su espacio generado es todo el espacio. Una \emph{base ortonormal} de un espacio con producto interno es un conjunto ortonormal total. En el espacio cero, la base ortonormal es el conjunto vacío.
 \end{definicion}
 \index{base!de Hamel}\index{conjunto total}
-La independencia lineal de un conjunto ortonormal se verifica tomando productos internos: si $\sum_{j=1}^{n}\alpha_je_j=0$, el producto con $e_k$ da $\alpha_k=0$. No conviene llamar simplemente «base» a cualquier conjunto independiente total: sin ortogonalidad, estas condiciones no garantizan un desarrollo en serie con coeficientes únicos. Una base de Schauder incorpora precisamente propiedades adicionales de convergencia y unicidad. En este capítulo siempre escribiremos \emph{base ortonormal} cuando nos refiramos a la noción analítica.
+La independencia lineal de un conjunto ortonormal se verifica tomando productos internos: si $\sum_{j=1}^{n}\alpha_je_j=0$, el producto con $e_k$ da $\alpha_k=0$. No conviene llamar simplemente «base» a cualquier conjunto independiente total: sin ortogonalidad, estas condiciones no garantizan un desarrollo en serie con coeficientes únicos. Una base de Schauder incorpora precisamente propiedades adicionales de convergencia y unicidad. Distinguiremos siempre las expresiones \emph{base de Hamel}, \emph{base de Schauder} y \emph{base ortonormal}.
 
 \begin{teorema}\label{ch31:existencia}
 Todo espacio de Hilbert tiene una base ortonormal.
@@ -25,6 +25,147 @@ Sea $M=\cl{\spanop E}$. Es un subespacio cerrado de Hilbert, por lo que tiene pr
 \]
 tiene norma uno y es perpendicular a cada miembro de $E$. Por tanto $E\cup\{e\}$ es ortonormal, contradiciendo la maximalidad. La normalización es necesaria: el residuo $r$ no tiene, en general, norma uno. Así $M=H$ y $E$ es una base ortonormal. Para $H=\{0\}$, el mismo argumento da $E=\varnothing$.
 \end{proof}
+
+\section{Bases de Schauder: coordenadas mediante series}\label{ampl:schauder}
+Una lista de vectores puede aproximar todo el espacio mediante combinaciones finitas sin proporcionar una receta coherente de coordenadas. En una expansión en serie no se permite escoger de nuevo todos los coeficientes cada vez que aumenta la precisión: las sumas parciales deben proceder de una misma lista de coeficientes. Esta es la exigencia adicional que formaliza Schauder.
+
+La definición y los ejemplos de sucesiones de esta sección se apoyan en Maximenko \cite{max-schauder}. Desarrollamos las pruebas y añadimos ejemplos que separan independencia, densidad, convergencia y dependencia del orden. No se afirma que todo espacio separable tenga una base de Schauder; la separabilidad es aquí una condición necesaria, no un criterio suficiente.
+\index{base!de Schauder}\index{sumas parciales!operador de}\index{base!condicional}
+
+\begin{definicion}
+Una sucesión $(b_n)_{n\ge1}$ en un espacio normado $V$ es una \emph{base de Schauder} si para cada $x\in V$ existe una única sucesión de escalares $(a_n)$ tal que
+\[
+ x=\lim_{N\to\infty}\sum_{n=1}^Na_nb_n
+\]
+en la norma de $V$. Se escriben $a_n=b_n^*(x)$ y
+$S_Nx=\sum_{n=1}^Nb_n^*(x)b_n$. El orden de $(b_n)$ forma parte de la definición. En dimensión finita se utiliza la versión finita, que coincide con una base algebraica.
+\end{definicion}
+
+La convergencia significa $\norm{x-S_Nx}\to0$, no sólo convergencia coordenada a coordenada en algún modelo particular. Las aplicaciones $b_n^*$ y $S_N$ son lineales: las sumas de dos expansiones convergentes dan una expansión de la suma, y su unicidad obliga a sumar los coeficientes; el argumento para multiplicación por escalares es el mismo. No usaremos aquí un teorema general sobre continuidad de estos funcionales: en los ejemplos que la requieren obtendremos cotas explícitas.
+
+\begin{proposicion}\label{ampl:schauder-independencia}
+Una base de Schauder es linealmente independiente y total.
+\end{proposicion}
+\begin{proof}
+Si $\sum_{n=1}^Na_nb_n=0$ con algún coeficiente no nulo, al añadir coeficientes cero después de $N$ obtenemos una expansión del vector cero distinta de la expansión con todos los coeficientes nulos. Esto contradice unicidad. Además, cada vector es límite de sus sumas parciales, que pertenecen al espacio generado algebraicamente por los $b_n$. Por ello el cierre de ese espacio generado es todo $V$.
+\end{proof}
+
+\begin{proposicion}[Bases coordenadas]\label{ampl:schauder-coordenadas}
+Los vectores coordenados $e_n$ forman una base de Schauder de $\ell^p$ para $1\le p<\infty$ y de $c_0$ con su norma uniforme. Sus coeficientes son las coordenadas del vector. No forman una base de Schauder de $\ell^\infty$.
+\end{proposicion}
+\begin{proof}
+Para $x\in\ell^p$, las sumas parciales $S_Nx=\sum_{n=1}^Nx_ne_n$ satisfacen
+\[
+ \norm{x-S_Nx}_p^p=\sum_{n>N}|x_n|^p\longrightarrow0.
+\]
+En $c_0$, $\norm{x-S_Nx}_\infty=\sup_{n>N}|x_n|\to0$ por la definición de convergencia a cero. Para probar unicidad, la evaluación en una coordenada $k$ es continua porque $|x_k-y_k|\le\norm{x-y}_p$ o $\norm{x-y}_\infty$. Una serie $\sum a_ne_n$ que converge a $x$ tiene, desde su suma parcial número $k$, coordenada $k$ igual a $a_k$, de modo que $a_k=x_k$.
+
+En $\ell^\infty$, cualquier combinación finita de $e_n$ se anula a partir de un índice. Su distancia a la sucesión constante $\mathbf1$ es al menos $1$. Así la lista ni siquiera es total en $\ell^\infty$ y no puede ser base de Schauder.
+\end{proof}
+
+\begin{proposicion}[El caso ortonormal]\label{ampl:schauder-ortonormal}
+Si una base ortonormal de un espacio con producto interno puede enumerarse como $(e_n)_{n\ge1}$, esa enumeración es una base de Schauder. Los coeficientes son $\ip{x}{e_n}$. Toda permutación de la enumeración tiene la misma propiedad.
+\end{proposicion}
+\begin{proof}
+Sea $p_N=\sum_{n=1}^N\ip{x}{e_n}e_n$. El residuo $x-p_N$ es perpendicular a $e_1,\ldots,e_N$, de modo que $p_N$ es el mejor aproximante en su espacio generado. Dado $\eps>0$, la totalidad proporciona una combinación finita $v$ de los $e_n$ con $\norm{x-v}<\eps$. Para $N$ suficientemente grande, $v$ pertenece al espacio generado por $e_1,\ldots,e_N$; entonces $\norm{x-p_N}\le\norm{x-v}<\eps$. Esto prueba convergencia sin suponer completitud adicional del ambiente.
+
+Si $x=\lim_N\sum_{n=1}^Na_ne_n$, tomar producto interno con $e_k$ y usar su continuidad da $\ip{x}{e_k}=a_k$. La expansión es única. Después de una permutación, toda combinación finita sigue estando contenida en alguna suma inicial suficientemente larga, y el mismo argumento funciona. Para familias ortonormales no numerables se usan sumas sobre conjuntos finitos; la definición secuencial de Schauder no debe aplicarse sin esta distinción.
+\end{proof}
+
+\section{Ejercicios sobre coordenadas, densidad y orden}
+
+\begin{ejercicio}[Ampliación: una base para las sucesiones convergentes]\label{ej:ampl-schauder-1}
+En el espacio $c$ con la norma uniforme pruebe que $(\mathbf1,e_1,e_2,\ldots)$ es una base de Schauder. Determine los coeficientes, el error de las sumas parciales y cotas para los funcionales coordenados. Este ejercicio adapta la propuesta de encontrar una base de $c$ en \cite{max-schauder}; la construcción y la solución se desarrollan aquí.
+\end{ejercicio}
+\begin{solucion}
+Para $x\in c$, escriba $L=\lim_nx_n$. Definimos
+\[
+ P_Nx=L\mathbf1+\sum_{n=1}^N(x_n-L)e_n.
+\]
+En las primeras $N$ coordenadas, $P_Nx$ coincide con $x$; en las restantes vale $L$. Por ello
+$\norm{x-P_Nx}_\infty=\sup_{n>N}|x_n-L|\to0$.
+
+Si una expansión con coeficiente inicial $a_0$ y coeficientes posteriores $a_n$ converge a $x$, la función límite de sucesiones $\ell:c\to\F$, $\ell(y)=\lim_ky_k$, es continua porque $|\ell(y)|\le\norm y_\infty$. Aplicada a cada suma parcial da $a_0$, luego $a_0=L$. Después, evaluar en la coordenada $n$ da $x_n=a_0+a_n$, así que $a_n=x_n-L$. Hemos probado unicidad, no sólo encontrado una representación.
+
+Los funcionales satisfacen $|a_0|\le\norm x_\infty$ y $|a_n|\le2\norm x_\infty$. Además $\norm{P_Nx}_\infty\le\norm x_\infty$, pues $|L|\le\norm x_\infty$ y todas las demás coordenadas de $P_Nx$ son coordenadas de $x$. La componente constante recoge precisamente la información que desaparece al pasar al cociente $c/c_0$ del ejercicio~\ref{ej:ampl-cocientes-2}.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: independencia y totalidad no bastan]\label{ej:ampl-schauder-2}
+En $\ell^2$ defina $b_1=e_1$ y $b_n=e_1+n^{-1}e_n$ para $n\ge2$. Pruebe que la lista es linealmente independiente y total, pero no es una base de Schauder. Examine el vector $x=(0,1/2,1/3,\ldots)$. Ejercicio propio de esta edición.
+\end{ejercicio}
+\begin{solucion}
+Si una combinación finita $\sum_{n=1}^Na_nb_n$ es cero, su coordenada $k\ge2$ es $a_k/k$, luego $a_k=0$ para $2\le k\le N$. Su primera coordenada deja entonces $a_1=0$. La lista es independiente. Además $e_1=b_1$ y $e_n=n(b_n-b_1)$ para $n\ge2$. Su espacio generado contiene todos los vectores coordenados y, por tanto, es denso en $\ell^2$.
+
+El vector indicado pertenece a $\ell^2$. Si tuviera una expansión convergente $x=\sum_na_nb_n$, evaluar en la coordenada $k\ge2$ obligaría a $a_k/k=1/k$, es decir, $a_k=1$. La primera coordenada de la suma parcial número $N$ sería $a_1+N-1$, que no converge al valor $0$ de $x$. La convergencia en $\ell^2$ implica convergencia de cada coordenada, así que hemos obtenido una contradicción. Aunque pueden elegirse combinaciones finitas que aproximen $x$, sus coeficientes no se ensamblan en una expansión ordenada fija.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: separabilidad y una obstrucción]\label{ej:ampl-schauder-3}
+Pruebe que todo espacio con base de Schauder es separable. Demuestre después directamente que $\ell^\infty$ no es separable y concluya que no admite ninguna base de Schauder numerable, no sólo que su lista coordenada falla. La primera implicación y esta aplicación desarrollan la discusión de \cite{max-schauder}.
+\end{ejercicio}
+\begin{solucion}
+Sea $(b_n)$ una base. Considere las combinaciones finitas de los $b_n$ con coeficientes racionales, o racionales complejos en el caso complejo. Forman un conjunto numerable $D$: para cada longitud hay un producto finito de conjuntos numerables, y después se toma una unión numerable. Dado $x$ y $\eps>0$, elija una suma parcial $s_N$ con $\norm{x-s_N}<\eps/2$. Aproximamos sus coeficientes $a_j$ por racionales $q_j$ de modo que
+\[
+ \sum_{j=1}^N|a_j-q_j|\norm{b_j}<\eps/2.
+\]
+La desigualdad triangular da un elemento de $D$ a distancia menor que $\eps$ de $x$. Así $D$ es denso.
+
+En $\ell^\infty$, las sucesiones con valores en $\{0,1\}$ forman un conjunto no numerable: una supuesta lista se contradice cambiando el dígito diagonal. Dos sucesiones distintas de ese conjunto tienen distancia uniforme $1$, por lo que las bolas abiertas de radio $1/3$ centradas en ellas son disjuntas. Si existiera un conjunto denso numerable, cada una de esas bolas contendría uno de sus elementos; elegir el primero de una enumeración produciría una inyección del conjunto no numerable de centros en $\N$, contradicción. Así $\ell^\infty$ no es separable y la primera parte descarta cualquier base de Schauder secuencial.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: transportar una base a otra]\label{ej:ampl-schauder-4}
+Sea $T:V\to W$ una biyección lineal con $\norm{Tx}\le C\norm x$ y $\norm{T^{-1}y}\le D\norm y$. Demuestre que una base de Schauder $(b_n)$ de $V$ se transforma en la base $(Tb_n)$ de $W$. Aplique el resultado en $\ell^2$ a $T=I+\lambda R$, donde $R(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ y $|\lambda|<1$. Construya la inversa y calcule los coeficientes de la base $e_n+\lambda e_{n+1}$. Ejercicio propio de esta edición.
+\end{ejercicio}
+\begin{solucion}
+Para $y\in W$, expanda $x=T^{-1}y=\sum_na_nb_n$. La cota de $T$ permite pasar al límite: $y=\sum_na_nTb_n$. Si otra lista de coeficientes produjera $y$, aplicar $T^{-1}$, que también es continua por su cota, daría otra expansión de $x$, contradiciendo unicidad.
+
+En $\ell^2$, $R$ es una isometría, pues insertar un cero no cambia la suma de cuadrados. Para cada $x$ la serie
+\[
+ Ux=\sum_{k=0}^{\infty}(-\lambda)^kR^kx
+\]
+converge absolutamente en norma, ya que la suma de normas es a lo sumo $\norm x_2/(1-|\lambda|)$. La completitud de $\ell^2$ garantiza su existencia. Sumar series y multiplicar por escalares muestra linealidad, y $\norm{Ux}_2\le\norm x_2/(1-|\lambda|)$ muestra continuidad. En las sumas finitas se verifica
+\[
+ (I+\lambda R)\sum_{k=0}^N(-\lambda)^kR^k
+ =I-(-\lambda R)^{N+1}.
+\]
+El resto aplicado a $x$ tiene norma $|\lambda|^{N+1}\norm x_2\to0$. Como los factores conmutan, la misma identidad vale en el orden inverso. Pasando al límite obtenemos $TU=UT=I$, de modo que $U=T^{-1}$.
+
+Las coordenadas $a_n$ de $x$ respecto de $Te_n=e_n+\lambda e_{n+1}$ son las coordenadas de $Ux$. En la coordenada $n$ sólo contribuyen $k=0,\ldots,n-1$, por lo que
+\[
+ a_n=\sum_{k=0}^{n-1}(-\lambda)^k x_{n-k}.
+\]
+Hemos construido una base de Schauder sin ortogonalidad: si $\lambda\ne0$, el producto de dos vectores consecutivos de la lista es $\lambda$, que no se anula. La convergencia y unicidad provienen aquí de un cambio de coordenadas continuo con inversa continua.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: una base cuyo orden importa]\label{ej:ampl-schauder-5}
+En $c_0$ con norma uniforme, sea $s_n=e_1+\cdots+e_n$. Pruebe que $(s_n)$ es una base de Schauder, calcule sus coeficientes y la norma del operador de suma parcial. Usando $x_n=(-1)^{n-1}/n$, construya una permutación de esta base que deje de ser base de Schauder. Ejercicio propio de esta edición.
+\end{ejercicio}
+\begin{solucion}
+Ponga $a_n=x_n-x_{n+1}$. La suma parcial $P_Nx=\sum_{n=1}^Na_ns_n$ tiene, para $k\le N$, coordenada
+\[
+ \sum_{n=k}^N(x_n-x_{n+1})=x_k-x_{N+1},
+\]
+y para $k>N$ tiene coordenada cero. Por tanto
+\[
+ \norm{x-P_Nx}_\infty
+ =\max\{|x_{N+1}|,\sup_{k>N}|x_k|\}
+ =\sup_{k>N}|x_k|\longrightarrow0.
+\]
+La diferencia entre las coordenadas $k$ y $k+1$ de una combinación de los $s_n$ es exactamente el coeficiente de $s_k$, si ese vector aparece, y cero en caso contrario. Como ambas evaluaciones son continuas, cualquier expansión convergente de $x$ obliga a ese coeficiente a ser $x_k-x_{k+1}$. Esto prueba unicidad.
+
+La fórmula de $P_Nx$ da $\norm{P_Nx}_\infty\le2\norm x_\infty$. Para obtener igualdad, tome un vector de soporte finito con $x_1=1$, $x_{N+1}=-1$ y las otras coordenadas cero. Tiene norma $1$ y la primera coordenada de $P_Nx$ es $2$. Por tanto $\norm{P_N}=2$ para todo $N\ge1$.
+
+Para el vector especificado,
+\[
+ a_n=(-1)^{n-1}\left(\frac1n+\frac1{n+1}\right).
+\]
+La suma de los términos positivos diverge a $+\infty$ y la de los valores absolutos de los negativos también diverge: cada una domina una subserie armónica sobre índices pares o impares. Construimos una permutación así: en la etapa $k$, añadimos al menos el siguiente término positivo aún no utilizado, y cuantos positivos adicionales sean necesarios para que la suma escalar supere $k$; después añadimos el siguiente término negativo aún no utilizado. La divergencia positiva permite completar cada etapa. Se usa todo término positivo, porque se añade al menos uno por etapa en su orden, y todo negativo, porque se añade exactamente uno por etapa en su orden. Es, pues, una permutación de todos los índices.
+
+Justo antes de cada término negativo hay una suma parcial escalar mayor que $k$. En la correspondiente serie de vectores $\sum a_{\pi(n)}s_{\pi(n)}$, la primera coordenada de toda suma parcial es precisamente esa suma escalar, puesto que cada $s_j$ tiene primera coordenada $1$. Las sumas parciales no pueden converger en norma.
+
+Falta descartar una expansión con otros coeficientes después de permutar la lista. El argumento de la diferencia entre las coordenadas $k$ y $k+1$ sigue funcionando: una vez que aparece $s_k$, esa diferencia de las sumas parciales es su coeficiente y ningún otro vector la modifica. Cualquier expansión convergente de $x$ debe asignar a $s_k$ el mismo $a_k$ calculado antes. Por tanto, para esta permutación, $x$ no tiene expansión convergente y la lista permutada no es base de Schauder. La ortogonalidad del caso anterior evitaba exactamente este problema de orden.
+\end{solucion}
+
+Hamel describe representaciones finitas; Schauder añade límites ordenados de una expansión única; una base ortonormal permite además medir el error con cuadrados de coeficientes. Desarrollaremos ahora esta última ventaja, que conduce a Parseval y a Riesz--Fischer.
 
 \section{Coordenadas y teorema de Riesz--Fischer}
 \begin{teorema}[Parseval y expansión]\label{ch31:parseval}
@@ -153,7 +294,7 @@ Si en la reducción se consideran únicamente $m\geq1$, todavía es suficiente: 
 \]
 Así la convención para $\N$ no altera esta reducción, pero la suma $\sum1/n_k$ exige exponentes positivos.
 
-\emph{La fórmula de Gram.} Para vectores independientes $u_1,\dots,u_k$, sea $G=(\ip{u_i}{u_j})$ y sea $u$ otro vector. Restar del último vector su proyección $p$ sobre $\spanop(u_1,\dots,u_k)$ equivale a operaciones de filas y columnas que no cambian el determinante de Gram: se resta a la última fila la combinación correspondiente y a la última columna su conjugada. El último vector queda $r=u-p$, perpendicular a todos los anteriores. La nueva matriz es diagonal por bloques, con bloques $G$ y $\norm r^{2}$. Por ello
+\emph{La fórmula de Gram.} Para vectores independientes $u_1,\dots,u_k$, sea $G=(\ip{u_j}{u_i})$, con la convención de la sección~\ref{ampl:gram}, y sea $u$ otro vector. Restar del último vector su proyección $p$ sobre $\spanop(u_1,\dots,u_k)$ equivale a operaciones de filas y columnas que no cambian el determinante de Gram: se resta a la última columna la combinación correspondiente y a la última fila su conjugada. El último vector queda $r=u-p$, perpendicular a todos los anteriores. La nueva matriz es diagonal por bloques, con bloques $G$ y $\norm r^{2}$. Por ello
 \[
  \dist(u,\spanop(u_1,\dots,u_k))^{2}
  =\frac{\det\operatorname{Gram}(u_1,\dots,u_k,u)}{\det G}.

@@ -1,0 +1,164 @@
+\chapter{Radon--Nikodym y descomposición de Lebesgue}\label{v2:cap13}\label{cap:v2-13}
+\section{Cuándo una medida tiene densidad}\label{lectura:v2-27}
+Si $f\in L^1(\mu)$, la integral indefinida $\nu_f(A)=\int_A f\,d\mu$ es una medida finita. El problema inverso consiste en recuperar $f$ a partir de $\nu_f$. Sobre espacios generales, anularse en conjuntos nulos no garantiza que una medida finita provenga de una densidad integrable: puede haber una parte que no se detecta en ningún conjunto de medida $\mu$ finita. Las lecturas 27 y 30 de \cite{valencia2} estudian precisamente esta dificultad.
+\begin{definicion}
+Para una función finitamente aditiva $\nu:\Acal\to\F$, distinguimos:
+\begin{enumerate}
+\item \emph{Continuidad absoluta en conjuntos nulos}: $\mu(A)=0$ implica $\nu(A)=0$; escribimos $\nu\ll\mu$.
+\item \emph{Continuidad absoluta uniforme}: para cada $\eps>0$ existe $\delta>0$ tal que $\mu(A)<\delta$ implica $|\nu(A)|<\eps$.
+\item \emph{Continuidad verdadera}: para cada $\eps>0$ existen $F\in\Acal$, $\mu(F)<\infty$, y $\delta>0$ tales que $\mu(B\cap F)<\delta$ implica $|\nu(B)|<\eps$ para todo $B\in\Acal$.
+\end{enumerate}
+La lectura denomina continuidad absoluta a (ii). Para medidas finitas numerablemente aditivas, (i) y (ii) coinciden; para funciones solamente finitamente aditivas pueden diferir.\index{continuidad absoluta de medidas}\index{continuidad verdadera}
+\end{definicion}
+\begin{lema}\label{v2:absoluta-equivalencia}
+Si $\nu$ es una medida finita real o compleja, entonces $\nu\ll\mu$ equivale a continuidad absoluta uniforme. Además $\nu\ll\mu$ equivale a $|\nu|\ll\mu$.
+\end{lema}
+\begin{proof}
+Si $\mu(A)=0$, todo subconjunto medible de $A$ es nulo; por tanto, si $\nu\ll\mu$, todas las sumas de particiones que definen $|\nu|(A)$ son cero. La implicación inversa se sigue de $|\nu(A)|\le|\nu|(A)$.
+
+La continuidad uniforme implica anulación sobre nulos haciendo $\eps\downarrow0$. Para la otra dirección, si falla la condición uniforme, existen $\eps>0$ y conjuntos $A_n$ con $\mu(A_n)<2^{-n}$ pero $|\nu(A_n)|\ge\eps$. Sean $B_m=\bigcup_{n\ge m}A_n$ y $N=\bigcap_m B_m$. Entonces $\mu(B_m)\le2^{1-m}$, luego $\mu(N)=0$ y $|\nu|(N)=0$. Por continuidad decreciente de la medida finita $|\nu|$, $|\nu|(B_m)\to0$, contradiciendo $|\nu|(B_m)\ge|\nu(A_m)|\ge\eps$.
+\end{proof}
+\begin{proposicion}\label{v2:verdadera-caracterizacion}
+Una función finitamente aditiva real o compleja $\nu$ es verdaderamente continua si y solo si:
+\begin{enumerate}
+\item es una medida finita y $\nu\ll\mu$;
+\item para cada $A$ con $\nu(A)\ne0$, existe $F$ de medida $\mu$ finita con $\nu(A\cap F)\ne0$.
+\end{enumerate}
+Equivalentemente, es una medida finita absolutamente continua y existe un conjunto $S$ de medida $\mu$ $\sigma$-finita tal que $|\nu|(X\setminus S)=0$.
+\end{proposicion}
+\begin{proof}
+Supongamos continuidad verdadera. Implica continuidad absoluta uniforme, pues $\mu(B\cap F)\le\mu(B)$. Si $\nu(A)\ne0$, elegimos el control verdadero con $\eps<|\nu(A)|$. Entonces $|\nu(A\setminus F)|<\eps$, de modo que $\nu(A\cap F)=\nu(A)-\nu(A\setminus F)\ne0$.
+
+Para aditividad numerable, sean $A_n$ disjuntos y $A=\bigcup_nA_n$. Dado $\eps>0$, elegimos $F,\delta$ como en la definición. Puesto que $\mu(F)<\infty$, las colas satisfacen $\mu(F\cap\bigcup_{n>m}A_n)\to0$. Por aditividad finita,
+\[
+ \left|\nu(A)-\sum_{n\le m}\nu(A_n)\right|
+ =\left|\nu\left(\bigcup_{n>m}A_n\right)\right|<\eps
+\]
+para $m$ grande. Así $\nu$ es una medida. Sus valores son finitos por el codominio $\F$, y por el capítulo anterior tiene variación finita.
+
+Recíprocamente, supongamos (i)--(ii). Sea $\alpha=\sup\{|\nu|(F):\mu(F)<\infty\}$. Elegimos conjuntos crecientes $F_n$ de medida finita con $|\nu|(F_n)\to\alpha$ y ponemos $S=\bigcup_nF_n$. Si $B\subset X\setminus S$ y $\nu(B)\ne0$, (ii) proporciona un $F$ de medida finita con $\nu(B\cap F)\ne0$, luego $|\nu|(F\setminus S)>0$. Para $n$ grande,
+$|\nu|(F_n\cup(F\setminus S))=|\nu|(F_n)+|\nu|(F\setminus S)>\alpha$, contradicción. Por tanto $\nu$ se anula en todos los subconjuntos medibles de $X\setminus S$, es decir, $|\nu|(X\setminus S)=0$.
+
+Dado $\eps>0$, elegimos $n$ con $|\nu|(S\setminus F_n)<\eps/2$. El lema \ref{v2:absoluta-equivalencia} da $\delta>0$ para que $\mu(E)<\delta$ implique $|\nu(E)|<\eps/2$. Si $\mu(B\cap F_n)<\delta$, entonces
+\[
+ |\nu(B)|\le|\nu(B\cap F_n)|+|\nu|(S\setminus F_n)+|\nu|(X\setminus S)<\eps.
+\]
+Esto es continuidad verdadera. Finalmente, si existe tal $S=\bigcup_nF_n$ con $F_n$ crecientes de medida finita, la misma estimación prueba continuidad verdadera; además, $\nu(A)=\lim_n\nu(A\cap F_n)$ demuestra (ii).
+\end{proof}
+\begin{proposicion}\label{v2:verdaderas-subespacio}
+Las medidas finitas verdaderamente continuas forman un subespacio cerrado $\mathcal M_\mu\subset\mathcal M(X,\Acal;\F)$. Si $\nu\in\mathcal M_\mu$, también pertenecen a él $|\nu|$ y las medidas de Jordan de sus partes real e imaginaria.
+\end{proposicion}
+\begin{proof}
+Para una combinación lineal se toma la unión de los dos conjuntos de control finito y el mínimo de sus umbrales, ajustando $\eps$ a los coeficientes. Para variación, si $\mu(B\cap F)<\delta$, la misma desigualdad se cumple para todo subconjunto $C\subset B$. La cota $|\nu|(B)\le4\sup_{C\subset B}|\nu(C)|$ prueba continuidad verdadera de $|\nu|$, empezando con $\eps/4$. Las partes de Jordan están dominadas por $|\nu|$ y tienen la misma propiedad. Si $\norm{\nu_j-\nu}\to0$, elegimos $j$ con esa norma menor que $\eps/2$ y aplicamos el control verdadero de $\nu_j$ con $\eps/2$; entonces $|\nu(B)|\le\norm{\nu-\nu_j}+|\nu_j(B)|<\eps$. Esto demuestra cerradura.
+\end{proof}
+\begin{proposicion}\label{v2:densidad-variacion}
+Para $f\in L^1(\mu)$, la medida $\nu_f(A)=\int_A f\,d\mu$ pertenece a $\mathcal M_\mu$ y
+\[
+ |\nu_f|(A)=\int_A|f|\,d\mu,\qquad \norm{\nu_f}=\norm f_1.
+\]
+La aplicación $f\mapsto\nu_f$ es lineal e inyectiva sobre clases casi en todas partes.
+\end{proposicion}
+\begin{proof}
+La integral de $|f|$ es uniformemente pequeña en conjuntos de medida pequeña y se concentra en conjuntos de medida finita, como se probó en Vitali. Elegimos $F$ con $\int_{X\setminus F}|f|<\eps/2$ y $\delta$ para el control en $B\cap F$. Entonces $|\nu_f(B)|\le\int_{B\cap F}|f|+\int_{X\setminus F}|f|<\eps$.
+
+Para toda partición de $A$, $\sum_j|\int_{A_j}f|\le\int_A|f|$, luego $|\nu_f|(A)\le\int_A|f|$. Si $s$ es simple integrable, su partición por valores muestra igualdad, pues en cada pieza la fase es constante. Elegimos simples $s_n\to f$ en $L^1$. La desigualdad ya probada da $\norm{\nu_f-\nu_{s_n}}\le\norm{f-s_n}_1$. Por la desigualdad triangular, $\norm{\nu_f}\ge\norm{s_n}_1-\norm{f-s_n}_1\to\norm f_1$. Así hay igualdad en $X$, y aplicando el mismo argumento a $f\ind A$ se obtiene en todo $A$. La igualdad de normas prueba inyectividad sobre $L^1$.
+\end{proof}
+
+\section{Construcción de la derivada}
+\begin{teorema}[Radon--Nikodym en la forma general de las lecturas]\label{v2:radon-nikodym}\index{Radon--Nikodym, teorema de}
+Una función finitamente aditiva $\nu:\Acal\to\F$ es verdaderamente continua con respecto a $\mu$ si y solo si existe $f\in L^1(\mu)$ tal que
+\[
+ \nu(A)=\int_A f\,d\mu\qquad(A\in\Acal).
+\]
+La clase de $f$ es única; se denota $d\nu/d\mu$.\index{teorema de Radon--Nikodym}
+\end{teorema}
+\begin{proof}
+Una dirección es la proposición anterior. Para la otra, comencemos con $\nu\ge0$. La caracterización de continuidad verdadera garantiza que es una medida positiva finita. Si $\nu=0$, tomamos $f=0$.
+
+\emph{Un primer fragmento de densidad.} Si $\nu\ne0$, existe un conjunto $A$ de medida $\mu$ finita con $\nu(A)>0$. Como $\nu\ll\mu$, también $\mu(A)>0$. Pongamos $c=\nu(A)/(2\mu(A))$ y $\eta=\nu-c\mu_A$, donde $\mu_A(B)=\mu(A\cap B)$. Es una medida con signo finita y $\eta(A)=\nu(A)/2>0$. Sea $(P,N)$ una partición de Hahn para $\eta$. Entonces $\eta(A\cap P)>0$, pues $\eta(A\cap N)\le0$. En particular $\nu(A\cap P)>0$, y por continuidad absoluta $\mu(A\cap P)>0$. Para $\psi=c\ind{A\cap P}$ tenemos $\int\psi>0$ y, para todo $B$,
+\[
+ \int_B\psi=c\mu(A\cap B\cap P)\le\nu(B\cap P)\le\nu(B).
+\]
+
+\emph{Aproximar una densidad maximal.} Sea $\mathcal S_\nu$ el conjunto de simples no negativas $s$ con $\int_Bs\,d\mu\le\nu(B)$ para todo $B$. Contiene cero. Si $s,t$ pertenecen a él, también $\max\{s,t\}$: dividimos cada $B$ en $B\cap\{s\ge t\}$ y su complemento y aplicamos las dos desigualdades. Sea $\alpha=\sup_{s\in\mathcal S_\nu}\int s\le\nu(X)<\infty$. Elijamos $s_n$ aproximando el supremo y sustituyámoslas por sus máximos sucesivos. Así $s_n\uparrow f$ y convergencia monótona da $\int f=\alpha$ y $\int_B f\le\nu(B)$. El conjunto donde el límite es infinito es medible y nulo; definimos $f=0$ allí para obtener un representante finito sin modificar integrales.
+
+La medida residual $\rho=\nu-\nu_f$ es positiva y verdaderamente continua, por la proposición \ref{v2:verdaderas-subespacio}. Si no fuera cero, el primer paso daría una simple $\psi\ge0$ con $\int\psi>0$ y $\int_B\psi\le\rho(B)$. Entonces $s_n+\psi\in\mathcal S_\nu$ para todo $n$. Para $n$ suficientemente grande, $\int s_n+\int\psi>\alpha$, contradicción. Por tanto $\rho=0$ y $\nu=\nu_f$.
+
+Para una medida real con signo, aplicamos el caso positivo a $\nu^+,\nu^-$, que son verdaderamente continuas, y restamos sus densidades. Para una compleja aplicamos el procedimiento a las cuatro medidas de Jordan y combinamos las densidades con coeficientes $1,-1,i,-i$. La unicidad y la igualdad de normas se siguen de la proposición \ref{v2:densidad-variacion}.
+\end{proof}
+\begin{corolario}\label{v2:rn-sigmafinita}
+Si $\mu$ es $\sigma$-finita y $\nu$ es una medida finita real o compleja, entonces $\nu\ll\mu$ si y solo si $\nu$ tiene una densidad en $L^1(\mu)$.
+\end{corolario}
+\begin{proof}
+En la caracterización de continuidad verdadera podemos tomar $S=X$, que es $\sigma$-finito. Aplicamos el teorema. La implicación desde una densidad a la anulación sobre nulos es inmediata de la integral.
+\end{proof}
+
+\section{Ejercicios resueltos: hipótesis de continuidad absoluta}
+\begin{ejercicio}[Lectura 27, ejercicio 1: aditividad numerable necesaria]\label{ej:v2-l27-1}
+Examinar la afirmación original: para una función solamente finitamente aditiva, continuidad absoluta uniforme equivale a anularse en conjuntos $\mu$-nulos. Dar la versión correcta.
+\end{ejercicio}
+\begin{solucion}
+La implicación uniforme $\Rightarrow$ anulación en nulos siempre vale. La recíproca es falsa. En $\N$, pongamos $\mu(\{n\})=2^{-n}$; su único conjunto nulo es el vacío. Sea $L$ una extensión de norma uno del límite sobre sucesiones convergentes, construida por Hahn--Banach en el ejemplo \ref{v2:limite-extendido}, y trabajemos en el caso real. Es positiva: si $0\le x\le1$, entonces $L(x)=1-L(1-x)\ge1-\norm{1-x}_\infty\ge0$; por homogeneidad lo mismo vale para cualquier sucesión no negativa acotada. Definamos $\nu(A)=L(\ind A)$. Es finitamente aditiva, positiva y se anula sobre el único conjunto $\mu$-nulo. Sin embargo, para $A_m=\{m,m+1,\ldots\}$, tenemos $\mu(A_m)\to0$ y $\nu(A_m)=1$, porque su indicador converge a uno como sucesión de la variable $n$. No hay continuidad uniforme. La versión correcta para medidas finitas numerablemente aditivas es el lema \ref{v2:absoluta-equivalencia}, cuya prueba está desarrollada arriba.
+\end{solucion}
+\begin{ejercicio}[Lectura 27, ejercicio 2: aclaración de notación]\label{ej:v2-l27-2}
+Si $\mu$ es $\sigma$-finita, caracterizar las funciones finitamente aditivas verdaderamente continuas. La lectura pide que esto equivalga a pertenecer a $\mathcal M_\mu$, espacio que ella misma había definido mediante continuidad verdadera.
+\end{ejercicio}
+\begin{solucion}
+Con esa definición de $\mathcal M_\mu$, la equivalencia literal es inmediata y no necesita $\sigma$-finitud. El contenido adicional válido bajo $\sigma$-finitud es el siguiente: son exactamente las medidas finitas numerablemente aditivas que se anulan sobre los conjuntos $\mu$-nulos, y exactamente las integrales indefinidas de funciones $L^1$. La necesidad de aditividad numerable y continuidad absoluta fue probada en la proposición \ref{v2:verdadera-caracterizacion}. Para suficiencia, escribimos $X=\bigcup_nF_n$ con $F_n$ crecientes de medida finita. Como $|\nu|$ es finita, $|\nu|(X\setminus F_n)\to0$; combinando esta cota con la continuidad absoluta uniforme se obtiene el control verdadero. El teorema \ref{v2:radon-nikodym} da la última equivalencia.
+\end{solucion}
+\begin{ejercicio}[Lectura 27, ejercicio 3]\label{ej:v2-l27-3}
+Demostrar que $\mathcal M_\mu$ es un subespacio cerrado de $\mathcal M(X,\Acal;\R)$ para cualquier medida $\mu$.
+\end{ejercicio}
+\begin{solucion}
+La estabilidad lineal se obtiene uniendo los conjuntos de control de dos medidas y tomando el mínimo de sus umbrales. Para cerradura, si $\nu_n\to\nu$ en variación y $\eps>0$, elegimos $n$ con $\norm{\nu-\nu_n}<\eps/2$. Tomamos $F,\delta$ que controlen $\nu_n$ con error $\eps/2$. Si $\mu(B\cap F)<\delta$, entonces $|\nu(B)|\le|\nu(B)-\nu_n(B)|+|\nu_n(B)|<\eps$. El conjunto $F$ sigue teniendo medida finita y no depende de $B$. Por tanto $\nu\in\mathcal M_\mu$.
+\end{solucion}
+
+\section{Singularidad y las tres partes de una medida}\label{lectura:v2-30}
+\begin{definicion}
+Dos medidas positivas, con signo o complejas son \emph{mutuamente singulares}, $\eta\perp\nu$, si existe $N\in\Acal$ con $|\eta|(N)=0$ y $|\nu|(X\setminus N)=0$; para una medida positiva su variación es ella misma. La relación es simétrica, reemplazando $N$ por su complemento. Fijada $\mu\ge0$, definimos
+\begin{align*}
+ \mathcal M_\mu^*&=\{\nu\in\mathcal M:\nu\ll\mu,\ \nu(F)=0\text{ si }\mu(F)<\infty\},\\
+ \mathcal M_\mu^\perp&=\{\nu\in\mathcal M:\nu\perp\mu\}.
+\end{align*}
+\end{definicion}
+\begin{proposicion}\label{v2:singulares-cerrados}
+Estos dos conjuntos son subespacios cerrados. La singularidad de dos medidas equivale a la de sus variaciones. En el caso real equivale a la singularidad de cada una de las dos partes de Jordan de la primera con cada parte de la segunda; en el caso complejo se exige la condición para todos los pares de sus cuatro componentes positivas.
+\end{proposicion}
+\begin{proof}
+Para $\mathcal M_\mu^*$ las condiciones son identidades sobre conjuntos determinados y pasan al límite, porque $|\nu_n(A)-\nu(A)|\le\norm{\nu_n-\nu}$. También se preservan por combinaciones lineales. Si $\nu_n\perp\mu$, elegimos conjuntos nulos $N_n$ que concentran sus variaciones. La unión $N=\bigcup_nN_n$ es nula y $|\nu|(X\setminus N)\le\norm{\nu-\nu_n}\to0$, pues $\nu_n$ se anula allí con toda su variación. La misma unión, para dos medidas, prueba estabilidad lineal de las singulares.
+
+La equivalencia con las variaciones es parte de la definición y de la caracterización de los conjuntos donde una medida y todas sus restricciones se anulan. Si las variaciones son singulares, cada componente de Jordan, dominada por su variación, también lo es frente a todas las componentes de la otra medida. Recíprocamente, supongamos que unas familias finitas positivas $\alpha_i,\beta_j$ son singulares por pares. Para cada $i,j$ elegimos $N_{ij}$ con $\alpha_i(N_{ij})=0$ y $\beta_j(X\setminus N_{ij})=0$. Ponemos $N_j=\bigcap_iN_{ij}$ y $N=\bigcup_jN_j$. Entonces todas las $\alpha_i$ se anulan en $N$ y todas las $\beta_j$ se concentran en $N$. Las cotas de las variaciones por las sumas de componentes dan la singularidad de las medidas originales. Esto explicita que se requieren \emph{todos} los pares de signos y componentes.
+\end{proof}
+\begin{teorema}[Descomposición de Lebesgue general]\label{v2:lebesgue-descomposicion}\index{descomposicion de Lebesgue@descomposición de Lebesgue}
+Para cualquier medida positiva $\mu$,
+\[
+ \mathcal M(X,\Acal;\F)=\mathcal M_\mu\oplus\mathcal M_\mu^*\oplus\mathcal M_\mu^\perp.
+\]
+Es decir, toda medida finita se descompone de manera única como $\nu=\nu_c+\nu_e+\nu_s$, donde $\nu_c$ tiene densidad $L^1(\mu)$, $\nu_e$ es absolutamente continua pero se anula en todo conjunto de medida $\mu$ finita, y $\nu_s$ es singular.
+\end{teorema}
+\begin{proof}
+\emph{Construcción para $\nu\ge0$ finita.} Consideremos las funciones de conjuntos que aparecen en la lectura:
+\[
+ \nu_s(A)=\sup_{\mu(F)=0}\nu(A\cap F),\qquad
+ \nu_t(A)=\sup_{\mu(F)<\infty}\nu(A\cap F).
+\]
+Demostraremos a la vez que son medidas y que se obtienen por restricción a conjuntos fijos. Para la primera, elegimos nulos $N_j$ con $\nu(N_j)$ acercándose al supremo $\nu_s(X)$ y ponemos $N=\bigcup_jN_j$. Entonces $\mu(N)=0$ y $\nu(N)=\nu_s(X)$. Si $F$ es nulo, también lo es $F\cup N$, por lo que $\nu(F\setminus N)=0$. Así $\nu(A\cap F)\le\nu(A\cap N)$ para todo $F$ nulo, y tomando $F=N$ obtenemos $\nu_s(A)=\nu(A\cap N)$.
+
+Para la segunda, elegimos conjuntos crecientes $F_j$ de medida finita con $\nu(F_j)\to\nu_t(X)$ y ponemos $S=\bigcup_jF_j$. Si $F$ tiene medida finita, también la tiene $F\cup F_j$, de modo que $\nu(F\setminus S)=0$ al pasar al límite. Por tanto $\nu_t(A)\le\nu(A\cap S)$. La desigualdad inversa se sigue de $\nu(A\cap S)=\lim_j\nu(A\cap F_j)\le\nu_t(A)$. Podemos agregar $N$ a cada $F_j$ sin cambiar su finitud de medida; así suponemos $N\subset S$.
+
+En particular, $\nu_s,\nu_t$ son medidas positivas, pues son restricciones de $\nu$. Definimos
+\[
+ \nu_c=\nu\big|_{S\setminus N}=\nu_t-\nu_s,\qquad
+ \nu_e=\nu\big|_{X\setminus S}=\nu-\nu_t.
+\]
+La medida $\nu_s$ es singular, concentrada en $N$. Si $F$ es $\mu$-nulo, la maximalidad de $N$ da $\nu(F\setminus N)=0$, luego $\nu_c\ll\mu$. Está concentrada en el conjunto $\sigma$-finito $S$, así que es verdaderamente continua por la proposición \ref{v2:verdadera-caracterizacion}. Por construcción $\nu_e(F)=0$ para todo $F$ de medida $\mu$ finita; en particular se anula sobre nulos y pertenece a $\mathcal M_\mu^*$. La suma de las tres restricciones es $\nu$.
+
+\emph{Medidas reales y complejas.} Descomponemos las cuatro medidas positivas de Jordan por el procedimiento anterior y reunimos sus partes con los coeficientes $1,-1,i,-i$. La estabilidad lineal de los tres subespacios prueba existencia en general.
+
+\emph{Unicidad.} Si una medida es a la vez absolutamente continua y singular, su variación está concentrada en un conjunto $\mu$-nulo donde también debe anularse; por tanto es cero. De dos descomposiciones se sigue primero $\nu_s=\nu_s'$, pues su diferencia es singular y coincide con una medida absolutamente continua. Queda $\nu_c-\nu_c'=\nu_e'-\nu_e$. El lado izquierdo se concentra en una unión numerable $S=\bigcup_jF_j$ de conjuntos de medida finita; el derecho se anula en todos los subconjuntos medibles de cada $F_j$, y por aditividad numerable se anula en todos los subconjuntos de $S$. Fuera de $S$ el lado izquierdo se anula. Así ambos lados son cero, y coinciden las otras dos partes. Esto demuestra que la suma es directa.
+\end{proof}
+\begin{observacion}[El caso habitual y la parte invisible]
+Si $\mu$ es $\sigma$-finita, $\mathcal M_\mu^*=\{0\}$: una medida de ese espacio se anula sobre cada pieza de una cobertura numerable de medida finita, y por aditividad se anula en todo conjunto. Se recupera la descomposición usual en una parte con densidad y una parte singular. Para ver que el término adicional puede existir, tome $X$ de un punto, $\mu(X)=\infty$ y $\nu(X)=1$. El único conjunto $\mu$-nulo o de medida finita es el vacío. Así $\nu\in\mathcal M_\mu^*$, pero ninguna función de $L^1(\mu)$ puede producirla: toda función integrable debe anularse en el punto.
+\end{observacion}
+\section{Densidad, singularidad y detección local}
+La derivada de Radon--Nikodym representa exactamente la parte que es absolutamente continua y se concentra en regiones de medida finita numerablemente reunidas. La descomposición general identifica por separado la masa singular y la masa que ningún conjunto de medida finita puede detectar. Esta distinción será decisiva para representar funcionales sobre $L^1$ en espacios localizables.

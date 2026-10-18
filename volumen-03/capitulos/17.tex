@@ -1,0 +1,265 @@
+\chapter{Densidad de Kaplansky y cálculo funcional boreliano}\label{cap:v3-17}
+
+El cierre fuerte de un álgebra de operadores contiene límites que el cierre en norma no detecta. Las proyecciones sobre rangos cerrados y las funciones indicadoras de conjuntos espectrales son ejemplos centrales. Este capítulo demuestra cómo aparecen y cómo aproximar operadores del cierre sin perder el control de sus normas.
+
+\section{Proyecciones de soporte e identidad propia}\label{lec:v3-33}
+\fuentelectura{33}{Propiedades de las álgebras de von Neumann}
+
+Cuando no se exija contener $I_H$, llamaremos álgebra de von Neumann \emph{en sentido amplio} a una subálgebra autoadjunta WOT-cerrada de $\Lcal(H)$. Tendrá una identidad propia que es una proyección; restringida al rango de esa proyección, será un álgebra de von Neumann unital en el sentido del capítulo anterior.
+
+\begin{teorema}[Proyección de soporte]\label{v3:proyeccion-soporte}
+Si $0\le T\le I$, la sucesión creciente $T^{1/n}$ converge fuertemente a la proyección sobre $\overline{TH}$. En consecuencia, una álgebra de von Neumann que contiene a $S$ contiene la proyección sobre $\overline{SH}$.
+\end{teorema}
+\begin{proof}
+Para $0\le t\le1$, $t^{1/n}$ crece con $n$ y está entre cero y uno. El cálculo continuo traslada estas desigualdades a operadores, y Vigier da un límite fuerte autoadjunto $P$. Por la cota uniforme, $T^{2/n}=(T^{1/n})^2\to P^2$ fuertemente. La subsucesión de índices pares tiene límite $P$, porque $T^{2/(2n)}=T^{1/n}\to P$. La unicidad de límite implica $P=P^2$.
+
+Si $T\xi=0$, todo polinomio en $T$ sin término constante anula $\xi$. Aproximar $t^{1/n}$ uniformemente por tales polinomios muestra $T^{1/n}\xi=0$, y luego $P\xi=0$. Recíprocamente, $0\le T\le P$ porque la sucesión creciente comienza en $T$; si $P\xi=0$, entonces $0\le\ip{T\xi}{\xi}\le\ip{P\xi}{\xi}=0$, y $\norm{T^{1/2}\xi}^2=0$, de donde $T\xi=0$. Así $\ker P=\ker T$, y $PH=(\ker T)^\perp=\overline{TH}$.
+
+Para $S\ne0$, aplique lo anterior a $T=SS^*/\norm{SS^*}$. Sus raíces pertenecen al álgebra, incluso si ésta carece de $I_H$, porque las funciones de raíces se anulan en cero. El límite pertenece por cerradura fuerte. Finalmente $\ker(SS^*)=\ker S^*$, pues $\ip{SS^*\xi}{\xi}=\norm{S^*\xi}^2$; por tanto $\overline{SS^*H}=\overline{SH}$. Para $S=0$, la proyección es cero. Se necesitan estas clausuras de rangos y el núcleo de $S^*$, no el de $S$.
+\end{proof}
+
+\begin{teorema}\label{v3:identidad-propia}
+Toda subálgebra autoadjunta WOT-cerrada $\mathcal M\subset\Lcal(H)$ tiene una identidad propia $P$, que es la proyección sobre $\overline{\mathcal M H}$.
+\end{teorema}
+\begin{proof}
+Como es convexa, $\mathcal M$ también es SOT-cerrada. Considere los subconjuntos finitos $F$ de sus proyecciones y, para cada uno, la proyección $P_F$ sobre el rango cerrado de $\sum_{Q\in F}Q$. El teorema anterior asegura $P_F\in\mathcal M$. Su rango es la clausura de la suma de los rangos de los $Q\in F$: los complementos ortogonales coinciden porque
+$\ker(\sum Q)=\bigcap\ker Q$, como se ve de $\ip{(\sum Q)\xi}{\xi}=\sum\norm{Q\xi}^2$.
+
+La red $P_F$, ordenada por inclusión de los conjuntos finitos, es creciente y está acotada por $I$. Converge fuertemente a una proyección $P\in\mathcal M$ que domina todas las proyecciones de $\mathcal M$. Para $T\in\mathcal M$, la proyección sobre $\overline{TH}$ pertenece a $\mathcal M$, así $PT=T$. Aplicando esto a $T^*$ y tomando adjuntos se obtiene $TP=T$. De aquí $\mathcal M H\subset PH$, mientras $P\in\mathcal M$ da $PH\subset\mathcal M H$; en particular $PH=\overline{\mathcal M H}$. El mismo argumento incluye $\mathcal M=0$, con $P=0$.
+\end{proof}
+
+\section{Funciones acotadas y convergencia fuerte}
+
+\begin{teorema}\label{v3:funcion-acotada-sot}
+Si $f:\R\to\C$ es continua y acotada y $T_\alpha,T$ son autoadjuntos con $T_\alpha\to T$ fuertemente, entonces $f(T_\alpha)\to f(T)$ fuertemente. No se requiere una cota uniforme previa para $\norm{T_\alpha}$.
+\end{teorema}
+\begin{proof}
+Para $z=i$ o $z=-i$, los resolventes de un autoadjunto satisfacen $\norm{(zI-T_\alpha)^{-1}}\le1$, por el cálculo continuo sobre un espectro real. La identidad resolvente da
+\[
+ (zI-T_\alpha)^{-1}-(zI-T)^{-1}
+ =(zI-T_\alpha)^{-1}(T_\alpha-T)(zI-T)^{-1}.
+\]
+Al aplicarla a un vector fijo, el miembro derecho tiende a cero en norma. Así las funciones $r_\pm(t)=(\pm i-t)^{-1}$ tienen la propiedad requerida.
+
+Dentro de $C_0(\R)$, las funciones con esa propiedad forman una subálgebra estable bajo conjugación y cerrada en norma uniforme. La estabilidad de productos se sigue de la continuidad fuerte conjunta para factores uniformemente acotados, pues $\norm{f(T_\alpha)}\le\norm f_\infty$. La estabilidad bajo conjugación se obtiene porque los operadores $f(T_\alpha)$ y $f(T)$ son normales y se aplica el ejercicio~\ref{ej:v3-l31-6}; también puede comprobarse primero en los generadores y luego por clausura. Para la cerradura uniforme se usa el argumento de tres términos con una aproximación uniforme y un vector fijo. Las funciones $r_+,r_-$ separan puntos, no se anulan simultáneamente y son conjugadas entre sí. Stone--Weierstrass en la compactificación por un punto de $\R$ implica que generan densamente $C_0(\R)$. Por tanto todas las funciones de $C_0(\R)$ tienen la propiedad.
+
+Finalmente tome $f\in C_b(\R)$ y elija $g\in C_c(\R)$ igual a uno en un intervalo que contenga $\sigma(T)$. Entonces $g(T)=I$, $g(T_\alpha)\to I$ fuertemente y $(fg)(T_\alpha)\to(fg)(T)=f(T)$ fuertemente. Para cada $\xi$,
+\[
+ \norm{(f(T_\alpha)-f(T))\xi}
+ \le\norm f_\infty\norm{(I-g(T_\alpha))\xi}
+ +\norm{((fg)(T_\alpha)-f(T))\xi}\to0.
+\]
+Esta localización controla las posibles normas grandes de los $T_\alpha$ sin suponer que la red completa sea acotada.
+\end{proof}
+
+\begin{teorema}[Densidad de Kaplansky]\label{v3:kaplansky}
+Sea $\mathcal A$ una subálgebra $C^*$ de $\Lcal(H)$ y $\mathcal M=\overline{\mathcal A}^{\mathrm{SOT}}$. Entonces:
+\begin{enumerate}[label=(\roman*)]
+\item $\mathcal A_{\mathrm{sa}}$ es SOT-densa en $\mathcal M_{\mathrm{sa}}$;
+\item su bola unitaria autoadjunta es SOT-densa en la bola unitaria autoadjunta de $\mathcal M$;
+\item la bola unitaria de $\mathcal A$ es SOT-densa en la bola unitaria de $\mathcal M$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+Primero, $\mathcal M$ es también la clausura WOT porque $\mathcal A$ es convexa. La continuidad WOT del adjunto y la continuidad por separado del producto muestran que esa clausura es una subálgebra autoadjunta: para el producto se aproxima primero un factor de $\mathcal M$ manteniendo el otro en $\mathcal A$, y después se aproxima el segundo. Por tanto $\mathcal M$ es una álgebra de von Neumann en sentido amplio.
+
+(i) Si $T=T^*\in\mathcal M$, una red $S_\alpha\in\mathcal A$ converge a $T$ en WOT. Entonces $(S_\alpha+S_\alpha^*)/2\to T$ en WOT. El conjunto real convexo $\mathcal A_{\mathrm{sa}}$ tiene iguales clausuras fuerte y débil, por lo que $T$ pertenece a su clausura fuerte.
+
+(ii) Sea $T=T^*$, $\norm T\le1$, y elija una red autoadjunta $T_\alpha\in\mathcal A$ que converge fuertemente a $T$ por (i). La función continua
+\[
+ f(t)=\begin{cases}t,&|t|\le1,\\1/t,&|t|>1\end{cases}
+\]
+pertenece a $C_0(\R)$, satisface $f(0)=0$, es real y tiene norma uno. Por el teorema anterior $f(T_\alpha)\to f(T)=T$ fuertemente. Los aproximantes son autoadjuntos, tienen norma a lo sumo uno y pertenecen a $\mathcal A$; la condición $f(0)=0$ asegura pertenencia aun cuando $\mathcal A$ no contenga $I_H$.
+
+(iii) El álgebra $M_2(\mathcal A)$ es una subálgebra $C^*$ de $\Lcal(H\oplus H)$ y es SOT-densa en $M_2(\mathcal M)$. Para justificar esta densidad, una vecindad fuerte impone un número finito de pruebas sobre vectores de $H\oplus H$; basta aproximar las cuatro entradas en los correspondientes conjuntos finitos de componentes y sumar las estimaciones. Para una contracción $T\in\mathcal M$, el operador
+\[
+ S=\begin{pmatrix}0&T\\T^*&0\end{pmatrix}
+\]
+es autoadjunto y tiene norma $\norm T\le1$, porque $S^2=\operatorname{diag}(TT^*,T^*T)$. Por (ii) en el álgebra de matrices, existen contracciones autoadjuntas $S_\alpha\in M_2(\mathcal A)$ que convergen fuertemente a $S$. Sus entradas $(1,2)$ pertenecen a la bola de $\mathcal A$ y convergen fuertemente a $T$, pues se obtienen aplicando a vectores $(0,\xi)$ y proyectando a la primera componente.
+\end{proof}
+
+\section{Medidas espectrales e integración}\label{lec:v3-34}
+\fuentelectura{34}{El cálculo funcional boreliano}
+
+\begin{definicion}
+Sea $X$ compacto Hausdorff. Una \emph{medida espectral} $E$ en $X$ con valores en $\Lcal(H)$ asigna una proyección ortogonal $E(B)$ a cada Borel $B$, con $E(\varnothing)=0$, $E(X)=I$, $E(B\cap C)=E(B)E(C)$, y tal que
+$E_{\xi,\eta}(B)=\ip{E(B)\xi}{\eta}$ es una medida compleja regular para cada $\xi,\eta\in H$.
+\end{definicion}
+\index{medida espectral}\index{cálculo funcional!boreliano}
+
+Si $(B_n)$ son disjuntos, las proyecciones $E(B_n)$ son ortogonales entre sí. La aditividad escalar y el producto interno dan
+\[
+ E\Bigl(\bigcup_nB_n\Bigr)\xi=\sum_nE(B_n)\xi
+\]
+con convergencia en norma: la norma cuadrada de la cola es $E_{\xi,\xi}$ de la unión de la cola y tiende a cero. Así la aditividad es fuerte, no en general en norma de operadores. El ejemplo modelo es $E(B)g=\mathbf1_Bg$ en $L^2(X,\mu)$ para una medida positiva finita regular.
+
+El espacio $B^\infty(X)$ de funciones borelianas acotadas, con norma del supremo puntual y conjugación, es una álgebra $C^*$. Una sucesión uniforme de Cauchy converge uniformemente a una función acotada, que es boreliana como límite puntual; esto prueba completitud, y la identidad $C^*$ es puntual. Aquí no se identifican funciones casi iguales: no hay una medida escalar única fijada de antemano.
+
+\begin{proposicion}\label{v3:integral-espectral}
+Para una medida espectral $E$, existe un $*$-homomorfismo unital contractivo
+\[
+ \Phi_E:B^\infty(X)\to\Lcal(H),\qquad f\mapsto\int_Xf\,dE,
+\]
+caracterizado por
+$\ip{\Phi_E(f)\xi}{\eta}=\int_X f\,dE_{\xi,\eta}$.
+\end{proposicion}
+\begin{proof}
+Si $f=\sum_{j=1}^mc_j\mathbf1_{B_j}$ con $B_j$ disjuntos, defina $\Phi_E(f)=\sum_jc_jE(B_j)$. La ortogonalidad de los rangos da
+\[
+ \norm{\Phi_E(f)\xi}^2=\sum_j|c_j|^2\norm{E(B_j)\xi}^2
+ \le\norm f_\infty^2\norm\xi^2.
+\]
+Refinar dos particiones a sus intersecciones demuestra que la definición no depende de la representación simple y que preserva productos, sumas y adjuntos. Toda función boreliana acotada se aproxima uniformemente por funciones simples, particionando su rango acotado en cuadrados pequeños. La cota anterior permite definir $\Phi_E(f)$ como límite en norma; las propiedades algebraicas pasan al límite.
+
+Para identificar los coeficientes, note que la variación total de $E_{\xi,\eta}$ es a lo sumo $\norm\xi\norm\eta$. En una partición finita,
+\begin{align*}
+ \sum_j|\ip{E(B_j)\xi}{\eta}|
+ &=\sum_j|\ip{E(B_j)\xi}{E(B_j)\eta}|\\
+ &\le\Bigl(\sum_j\norm{E(B_j)\xi}^2\Bigr)^{1/2}
+ \Bigl(\sum_j\norm{E(B_j)\eta}^2\Bigr)^{1/2}
+ \le\norm\xi\norm\eta.
+\end{align*}
+La fórmula de coeficientes vale para funciones simples y pasa al límite uniforme usando esta cota. En particular la forma sesquilineal $\int f\,dE_{\xi,\eta}$ es continua y determina un único operador, como exige la definición por formas.
+\end{proof}
+
+\begin{teorema}[Resolución espectral de un operador normal]\label{v3:espectral-borel}
+Si $T\in\Lcal(H)$ es normal, existe una única medida espectral regular $E$ sobre $K=\sigma(T)$ tal que
+\[
+ T=\int_K z\,dE(z).
+\]
+La aplicación $f\mapsto f(T)=\int f\,dE$ extiende el cálculo continuo a $B^\infty(K)$. Si una álgebra de von Neumann unital contiene a $T$, contiene a cada $f(T)$.
+\end{teorema}
+\begin{proof}
+Para $\xi,\eta\in H$, el funcional $f\mapsto\ip{f(T)\xi}{\eta}$ de $C(K)$ tiene norma a lo sumo $\norm\xi\norm\eta$. Riesz--Markov produce una única medida compleja regular $\mu_{\xi,\eta}$ que lo representa, con variación total acotada por ese mismo producto. La unicidad implica que estas medidas dependen sesquilinealmente de $\xi,\eta$, y $\mu_{\eta,\xi}=\overline{\mu_{\xi,\eta}}$. Además $\mu_{\xi,\xi}$ es positiva, porque $f(T)\ge0$ para $f\ge0$ continua.
+
+Para $f$ boreliana acotada, la fórmula $b_f(\xi,\eta)=\int f\,d\mu_{\xi,\eta}$ define una forma sesquilineal acotada por $\norm f_\infty\norm\xi\norm\eta$. Riesz produce un operador $\Psi(f)$ con esos coeficientes. Es lineal y contractivo; extiende el cálculo continuo por unicidad y conserva adjuntos porque $\mu_{\eta,\xi}=\overline{\mu_{\xi,\eta}}$.
+
+Detallamos la multiplicatividad, donde no basta extender formalmente una identidad de funciones continuas. Para $g\in C(K)$, la unicidad de medidas, probando contra funciones continuas, da
+\[
+ \mu_{g(T)\xi,\eta}=g\mu_{\xi,\eta}
+ =\mu_{\xi,g(T)^*\eta}.
+\]
+Por tanto, para cualquier $f\in B^\infty(K)$,
+\[
+ \Psi(f)g(T)=\Psi(fg)=g(T)\Psi(f).
+\]
+Ahora, al probar la medida $\mu_{\Psi(f)\xi,\eta}$ contra una función continua $g$, se obtiene
+\[
+ \int g\,d\mu_{\Psi(f)\xi,\eta}
+ =\ip{g(T)\Psi(f)\xi}{\eta}
+ =\int gf\,d\mu_{\xi,\eta}.
+\]
+La medida $f\mu_{\xi,\eta}$ es regular y finita; en el compacto métrico $K\subset\C$, toda medida de Borel finita es regular. Riesz y unicidad dan $\mu_{\Psi(f)\xi,\eta}=f\mu_{\xi,\eta}$. Para $h$ boreliana acotada,
+\[
+ \ip{\Psi(h)\Psi(f)\xi}{\eta}
+ =\int h\,d\mu_{\Psi(f)\xi,\eta}
+ =\int hf\,d\mu_{\xi,\eta}
+ =\ip{\Psi(hf)\xi}{\eta}.
+\]
+Así $\Psi$ es multiplicativa en todas las funciones borelianas acotadas.
+
+Defina $E(B)=\Psi(\mathbf1_B)$. Las identidades de indicadores y el $*$-homomorfismo prueban que son proyecciones, que se multiplican por intersección y que $E(K)=I$. Sus medidas de coeficientes son precisamente $\mu_{\xi,\eta}$, por definición, así satisfacen regularidad y aditividad. La integral espectral de cualquier $f$ tiene los mismos coeficientes que $\Psi(f)$ y coincide con ella; en particular $T=\Psi(z)=\int z\,dE$.
+
+Para la pertenencia a una álgebra de von Neumann $\mathcal M$ que contiene a $T$, sea $S\in\mathcal M'$. Como $S$ conmuta con $T,T^*$, conmuta con el cálculo continuo. La igualdad de coeficientes para funciones continuas implica $\mu_{S\xi,\eta}=\mu_{\xi,S^*\eta}$; integrar cualquier función boreliana acotada da $\Psi(f)S=S\Psi(f)$. Por el doble conmutante, $\Psi(f)\in\mathcal M''=\mathcal M$.
+
+Finalmente, si $F$ es otra medida espectral en $K$ con integral coordenada $T$, la proposición~\ref{v3:integral-espectral} muestra que su integral coincide con el cálculo continuo en los polinomios en $z,\overline z$, y por Stone--Weierstrass en todo $C(K)$. La unicidad de Riesz implica que sus medidas de coeficientes son $\mu_{\xi,\eta}$; evaluar en cada Borel y en todos los vectores da $F(B)=E(B)$.
+\end{proof}
+
+\begin{corolario}\label{v3:proyecciones-generan}
+El espacio lineal generado por las proyecciones de una álgebra de von Neumann es denso en norma en el álgebra. Todo unitario de una álgebra de von Neumann unital tiene la forma $e^{iS}$ con $S=S^*$ en el álgebra y $\norm S\le\pi$.
+\end{corolario}
+\begin{proof}
+Si $T$ es normal, aproxime uniformemente la función coordenada sobre su espectro por funciones simples borelianas. Sus integrales son combinaciones finitas de proyecciones del álgebra y convergen en norma a $T$. Un elemento general es $H+iK$ con $H,K$ autoadjuntos, y se aproxima cada parte. Para el segundo enunciado, elija una determinación boreliana $\theta:\mathbb T\to[-\pi,\pi]$ del argumento, y ponga $S=\theta(U)$ mediante el cálculo boreliano. Es autoadjunto y su norma es a lo sumo $\pi$. La identidad $e^{iS}=U$ se verifica aproximando la exponencial uniformemente por polinomios sobre $[-\pi,\pi]$ y usando la multiplicatividad del cálculo: el resultado es $(e^{i\theta})(U)=z(U)=U$.
+\end{proof}
+
+\section{Ejercicios sobre álgebras de von Neumann y densidad}
+
+\begin{ejercicio}\label{ej:v3-l33-1}
+Sea $\mathcal M$ una álgebra de von Neumann. (i) Si $\mathcal B\subset\mathcal M$ es una subálgebra $C^*$ SOT-cerrada y hereditaria, pruebe que existe una única proyección $P\in\mathcal B$ con $\mathcal B=P\mathcal M P$. Hereditaria significa que $0\le a\le b$, $a\in\mathcal M$, $b\in\mathcal B$, implica $a\in\mathcal B$. (ii) Si $I$ es un ideal bilateral SOT-cerrado, pruebe $I=\mathcal M P$ para una única proyección $P\in I\cap\mathcal M'$.
+\end{ejercicio}
+\begin{solucion}
+(i) El teorema~\ref{v3:identidad-propia} proporciona la identidad propia $P$ de $\mathcal B$, así $\mathcal B\subset P\mathcal M P$. Si $a\ge0$ pertenece al rincón $P\mathcal M P$, entonces $0\le a\le\norm a P$: se usa la desigualdad de orden en el álgebra con identidad $P$. Como $P\in\mathcal B$, la propiedad hereditaria implica $a\in\mathcal B$. Todo elemento del rincón es combinación de cuatro positivos, al descomponer sus partes real e imaginaria; por tanto todo el rincón pertenece a $\mathcal B$. Una proyección que satisfaga esa igualdad es identidad de $\mathcal B$, así es única.
+
+(ii) Un ideal normocerrado bilateral en un álgebra $C^*$ es autoadjunto. Aquí puede comprobarse directamente: si $x\in I$, entonces $h=x^*x\in I$, y $h(h+\eps1)^{-1}x^*\in I$. Su diferencia con $x^*$ tiene norma cuadrada
+\[
+ \norm{\eps(h+\eps1)^{-1}x^*}^2
+ =\max_{t\in\sigma(h)}\frac{\eps^2t}{(t+\eps)^2}\le\eps/4,
+\]
+de modo que $x^*\in I$. La cerradura SOT implica cerradura en norma, así el argumento se aplica. El teorema de identidad propia da una proyección $P\in I$ con $xP=Px=x$ para $x\in I$. Como $P\in I$, $\mathcal M P\subset I$, y la identidad $x=xP$ da la inclusión inversa. Para $a\in\mathcal M$, tanto $aP$ como $Pa$ están en $I$, por lo que $aP=P(aP)=(Pa)P=Pa$. Así $P\in\mathcal M'$. La unicidad vuelve a ser la de la identidad de $I$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-2}
+Si $I_H\in\mathcal A$ y $\mathcal M=\overline{\mathcal A}^{\mathrm{SOT}}$, pruebe que los unitarios de $\mathcal A$ son SOT-densos en los unitarios de $\mathcal M$.
+\end{ejercicio}
+\begin{solucion}
+Para $U\in\mathcal M$ unitario, el corolario~\ref{v3:proyecciones-generan} proporciona $S=S^*\in\mathcal M$ con $U=e^{iS}$. Por Kaplansky (i), una red $S_\alpha\in\mathcal A_{\mathrm{sa}}$ converge fuertemente a $S$. La función $t\mapsto e^{it}$ es continua y acotada, así el teorema~\ref{v3:funcion-acotada-sot} da $e^{iS_\alpha}\to U$ fuertemente. Cada aproximante es unitario y pertenece a $\mathcal A$ porque ésta contiene la identidad. La existencia de un logaritmo continuo sobre todo el círculo sería falsa; aquí se ha usado explícitamente el argumento \emph{boreliano} ya construido.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-3}
+Para una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$, pruebe la equivalencia entre: (i) ser WOT-cerrada; (ii) tener bola unitaria SOT-cerrada; (iii) tener bola unitaria WOT-cerrada. Si se usa la definición unital de álgebra de von Neumann, suponga también $I_H\in\mathcal A$.
+\end{ejercicio}
+\begin{solucion}
+(i) implica (iii) porque la bola unitaria de $\Lcal(H)$ es WOT-cerrada y se intersecta con $\mathcal A$. (iii) implica (ii) porque SOT es más fina. Si (ii) vale y $\mathcal M$ es la clausura fuerte de $\mathcal A$, Kaplansky hace que la bola de $\mathcal A$ sea fuertemente densa en la de $\mathcal M$. Como ya es cerrada, ambas bolas coinciden. Multiplicar por escalares muestra $\mathcal A=\mathcal M$, y el cierre fuerte de un álgebra autoadjunta es también su cierre débil. Así (i) vale. Sin asumir identidad, estas condiciones caracterizan la noción amplia descrita al inicio del capítulo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-4}
+Pruebe las versiones de Kaplansky (i) y (ii) para elementos positivos y para contracciones positivas.
+\end{ejercicio}
+\begin{solucion}
+Sea $T\in\mathcal M$ positivo. Si $T\ne0$, ponga $R=T/\norm T$, una contracción positiva. Por Kaplansky (i), elija autoadjuntos $S_\alpha\in\mathcal A$ que convergen fuertemente a $R$. La función continua acotada $f(t)=\min(1,\max(0,t))$ satisface $f(0)=0$ y $f(R)=R$. Así $f(S_\alpha)$ son contracciones positivas de $\mathcal A$ que convergen fuertemente a $R$. Escalarlas por $\norm T$ aproxima $T$ por positivos. Si $T=0$, la red constante cero sirve. Si desde el inicio $\norm T\le1$, se aplica directamente la misma función para obtener aproximantes positivos de norma a lo sumo uno.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-5}
+Sea $\Phi:\Lcal(H_1)\to\Lcal(H_2)$ un $*$-monomorfismo WOT-continuo. Pruebe que lleva álgebras de von Neumann a álgebras de von Neumann en sentido amplio; si $\Phi$ es unital, la imagen es unital.
+\end{ejercicio}
+\begin{solucion}
+Un $*$-monomorfismo es isométrico. Por ello $\Phi$ lleva la bola unitaria de $\mathcal M$ exactamente a la bola unitaria de $\Phi(\mathcal M)$. La primera es WOT-compacta y su imagen también, por continuidad. Como WOT es Hausdorff, esa imagen es WOT-cerrada. El ejercicio~\ref{ej:v3-l33-3} implica que $\Phi(\mathcal M)$ es WOT-cerrada. La imagen es una subálgebra $C^*$ porque el isomorfismo isométrico de un espacio completo tiene imagen normocerrada. Su identidad propia es $\Phi(I_{\mathcal M})$; coincide con $I_{H_2}$ cuando se cumplen las hipótesis unitarias correspondientes.
+\end{solucion}
+
+\section{Ejercicios sobre integrales espectrales y compacidad}
+
+\begin{ejercicio}\label{ej:v3-l34-1}
+Para una medida espectral $E$ en $X$, pruebe que $f\mapsto\int f\,dE$ es un $*$-homomorfismo de $B^\infty(X)$ en $\Lcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:integral-espectral} realiza la prueba completa. El punto algebraico clave para indicadores es
+$\Phi_E(\mathbf1_B\mathbf1_C)=E(B\cap C)=E(B)E(C)$; al refinar particiones se obtiene el producto de funciones simples. La aproximación uniforme de funciones borelianas acotadas por simples y la cota $\norm{\Phi_E(f)}\le\norm f_\infty$ permiten pasar al límite en el producto y en la involución. No se requiere aproximación uniforme por funciones continuas, que sería imposible para muchos indicadores.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-2}
+Pruebe que la resolución de la identidad de un operador normal es única.
+\end{ejercicio}
+\begin{solucion}
+Si dos medidas espectrales sobre $\sigma(T)$ integran la coordenada como $T$, sus integrales de $\overline z$ son $T^*$ y, por el ejercicio anterior, coinciden en los polinomios en $z,\overline z$. La densidad de éstos en $C(\sigma(T))$ y la contractividad de las integrales hacen que coincidan en todas las funciones continuas. Para cada $\xi,\eta$, la unicidad de la medida regular de Riesz implica igualdad de las medidas escalares de coeficientes. Por tanto los operadores asignados a cada Borel tienen todos los coeficientes iguales y coinciden.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-3}
+Si $0\le T\le I$ pertenece a una álgebra de von Neumann $\mathcal M$, pruebe que existen proyecciones $P_n\in\mathcal M$ con $T=\sum_{n\ge1}2^{-n}P_n$ en norma.
+\end{ejercicio}
+\begin{solucion}
+Para $0\le t<1$, tome sus dígitos binarios
+$b_n(t)=\lfloor2^nt\rfloor-2\lfloor2^{n-1}t\rfloor\in\{0,1\}$; para $t=1$ defina $b_n(1)=1$ para todo $n$. Son funciones borelianas y
+\[
+ 0\le t-\sum_{n=1}^N2^{-n}b_n(t)\le2^{-N}
+ \quad(0\le t\le1).
+\]
+La elección en los puntos diádicos corresponde a la expansión que termina en ceros, salvo el punto uno, tratado por separado. Defina $P_n=b_n(T)$ mediante el cálculo boreliano. Como $b_n^2=b_n=\overline{b_n}$, son proyecciones, y pertenecen a $\mathcal M$. La contractividad del cálculo da $\norm{T-\sum_{n=1}^N2^{-n}P_n}\le2^{-N}$, que prueba convergencia en norma.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-4}
+Si $\mathcal M$ es una álgebra de von Neumann unital, pruebe que $T\in\mathcal M$ si y sólo si conmuta con todas las proyecciones de $\mathcal M'$.
+\end{ejercicio}
+\begin{solucion}
+La necesidad es la definición de conmutante. Para la suficiencia, el conmutante $\mathcal M'$ es una álgebra de von Neumann. Sus proyecciones generan un subespacio normodenso por el corolario~\ref{v3:proyecciones-generan}. Si $T$ conmuta con todas ellas, conmuta con sus combinaciones lineales y, por continuidad en norma del producto, con todo $\mathcal M'$. Así $T\in\mathcal M''=\mathcal M$. La condición unital evita el fallo del doble conmutante para una representación degenerada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-5}
+Sea $0\le T\le I$. Si todo subespacio cerrado de $H$ contenido en $TH$ tiene dimensión finita, pruebe que $T$ es compacto. Como paso auxiliar, pruebe que $UU^*\le VV^*$ implica una factorización $U=VW$ con $\norm W\le1$.
+\end{ejercicio}
+\begin{solucion}
+Defina inicialmente $C(V^*\xi)=U^*\xi$ en $\operatorname{ran}V^*$. La desigualdad de operadores da $\norm{U^*\xi}^2\le\norm{V^*\xi}^2$, de modo que la definición es independiente del representante y contractiva. Extiéndala a $\overline{\operatorname{ran}V^*}$ por continuidad y por cero en su complemento ortogonal. Entonces $CV^*=U^*$; tomar adjuntos da $U=VC^*$, así $W=C^*$ tiene norma a lo sumo uno. Ésta es la factorización requerida.
+
+Aplique el ejercicio~\ref{ej:v3-l34-3} al positivo $T^2$: existen proyecciones $P_n$ con $T^2=\sum_{n\ge1}2^{-n}P_n$ en norma. Cada sumando satisface $2^{-n}P_n\le T^2$, porque la diferencia es límite de sumas de positivos y el cono positivo es normocerrado. Tome $U=2^{-n/2}P_n$, $V=T$ en la factorización. Se obtiene $\operatorname{ran}P_n\subset\operatorname{ran}T$. El rango de una proyección es cerrado; por hipótesis cada $P_n$ tiene rango finito. Las sumas parciales son compactas y convergen en norma a $T^2$, así $T^2$ es compacto. Finalmente, aproxime $\sqrt t$ uniformemente en $[0,1]$ por polinomios con término constante cero. Los correspondientes polinomios de $T^2$ son compactos y convergen en norma a $(T^2)^{1/2}=T$. Por tanto $T$ es compacto. La hipótesis se refiere al rango sin cerrar: sustituirlo por su clausura daría una condición mucho más fuerte.
+\end{solucion}
+
+El cálculo boreliano añade al álgebra las proyecciones que recortan conjuntos espectrales, y esas proyecciones bastan para aproximar en norma todos sus elementos. En el caso conmutativo este fenómeno tendrá una descripción familiar: multiplicación por funciones esencialmente acotadas. Referencias para ampliar: \cite{conway1990,murphy1990,zhu1993}.

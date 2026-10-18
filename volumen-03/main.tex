@@ -1,0 +1,92 @@
+\documentclass[11pt,letterpaper,oneside,openany]{book}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}[SmallCapsFont={Latin Modern Roman Caps}]
+\setsansfont{Latin Modern Sans}
+\usepackage[provide=*,spanish]{babel}
+\usepackage{microtype}
+\usepackage[margin=26mm,headheight=22pt,headsep=8mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{enumitem,longtable,booktabs,array}
+\usepackage{fancyhdr,emptypage}
+\usepackage{imakeidx}
+\usepackage[hidelinks,unicode,bookmarksnumbered]{hyperref}
+\usepackage{bookmark}
+\hypersetup{pdftitle={Análisis funcional y álgebras de operadores},pdfauthor={Eder Said Martinez Ramirez},pdfsubject={Análisis. Volumen III. Teoría y ejercicios resueltos},pdfkeywords={análisis funcional, espectro, álgebras de Banach, C*, von Neumann}}
+\makeindex[title={Índice alfabético},intoc,options=-s indice.ist]
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\emergencystretch=5em
+\allowdisplaybreaks[1]
+\setlist[enumerate,1]{label=(\roman*),leftmargin=*,itemsep=2pt}
+\setlist[itemize]{leftmargin=*,itemsep=2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposicion}[teorema]{Proposición}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{corolario}[teorema]{Corolario}
+\theoremstyle{definition}
+\newtheorem{definicion}[teorema]{Definición}
+\newtheorem{ejemplo}[teorema]{Ejemplo}
+\newtheorem{ejercicio}{Ejercicio}[chapter]
+\theoremstyle{remark}
+\newtheorem{observacion}[teorema]{Observación}
+\newenvironment{solucion}{\begin{proof}[Solución]}{\end{proof}}
+\newenvironment{estrategia}{\par\noindent\textbf{Estrategia.}\ }{\par}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\interior}[1]{#1^{\circ}}
+\newcommand{\ip}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\Bcal}{\mathcal B}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Kcal}{\mathcal K}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\input{estilo-esfm}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\esssup}{ess\,sup}
+\DeclareMathOperator{\co}{co}
+\newcommand{\fuentelectura}[2]{\par\smallskip\noindent\textit{Fuente: Miguel Ángel Valencia Bucio, lectura #1, «#2» \cite{valencia3}. Desarrollo, soluciones y rectificaciones de esta edición.}\par\smallskip}
+\begin{document}
+\renewcommand{\bibname}{Referencias}
+\frontmatter
+\hypersetup{pageanchor=false}
+\input{portada}
+\hypersetup{pageanchor=true}
+\input{presentacion}
+\hypertarget{indice-general}{}
+\tableofcontents
+\mainmatter
+\input{partes}
+\backmatter
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\bookmarksetup{startatroot}
+\input{cobertura}
+\bookmarksetup{startatroot}
+\input{notacion}
+\bookmarksetup{startatroot}
+{\small\printindex}
+\bookmarksetup{startatroot}
+\input{referencias}
+\end{document}

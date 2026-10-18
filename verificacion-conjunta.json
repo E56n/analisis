@@ -1,0 +1,77 @@
+{
+  "fecha": "2026-10-18",
+  "volumenes": [
+    {
+      "volumen": 1,
+      "paginas_pdf": 221,
+      "bytes": 1308773,
+      "sha256_pdf": "cd3b04ff23c99f1b7c66e27765d7ee74253cf5aa739c03ab2e6bcf7e7ddfb7ff",
+      "capitulos": 16,
+      "ejercicios": 226,
+      "soluciones": 226,
+      "enlaces_pdf": 1005,
+      "enlaces_internos_invalidos": 0,
+      "overfull": 0,
+      "referencias_indefinidas": 0,
+      "glifos_de_reemplazo": 0,
+      "archivo": "volumen-01/main.pdf"
+    },
+    {
+      "volumen": 2,
+      "paginas_pdf": 127,
+      "bytes": 836191,
+      "sha256_pdf": "0f0fbfeadc54fc9a7846778f6cfef3154f4dfb0da69f7c29134a5cb8b2d80bb0",
+      "capitulos": 16,
+      "ejercicios": 160,
+      "soluciones": 160,
+      "enlaces_pdf": 550,
+      "enlaces_internos_invalidos": 0,
+      "overfull": 0,
+      "referencias_indefinidas": 0,
+      "glifos_de_reemplazo": 0,
+      "archivo": "volumen-02/main.pdf"
+    },
+    {
+      "volumen": 3,
+      "paginas_pdf": 176,
+      "bytes": 1094628,
+      "sha256_pdf": "86b635086e628f9d6e2ec948d8fcc270dd6f9879ef8a955c41d7204a72aaa1b8",
+      "capitulos": 18,
+      "ejercicios": 198,
+      "soluciones": 198,
+      "enlaces_pdf": 912,
+      "enlaces_internos_invalidos": 0,
+      "overfull": 0,
+      "referencias_indefinidas": 0,
+      "glifos_de_reemplazo": 0,
+      "archivo": "volumen-03/main.pdf"
+    },
+    {
+      "volumen": 4,
+      "paginas_pdf": 131,
+      "bytes": 860757,
+      "sha256_pdf": "31030d210e38ac6baf87279747b0e89f91b1e9e7b10a89a0629132f438b1f279",
+      "capitulos": 16,
+      "ejercicios": 99,
+      "soluciones": 99,
+      "enlaces_pdf": 600,
+      "enlaces_internos_invalidos": 0,
+      "overfull": 0,
+      "referencias_indefinidas": 0,
+      "glifos_de_reemplazo": 0,
+      "archivo": "volumen-04/main.pdf"
+    }
+  ],
+  "ejercicios_originales": 641,
+  "ejercicios_reconstruccion_24": 8,
+  "ejercicios_complementarios": 34,
+  "ejercicios_con_solucion": 683,
+  "revisiones_independientes": [
+    "I: cuatro ampliaciones y 20 soluciones; créditos, índice y referencias.",
+    "II: capítulos 03, 06, 07, 08, 13, 15 y 16; representación de Riesz sobre Cc en general.",
+    "III: capítulos 01, 06, 07, 09, 13, 16, 17 y 18; correcciones integradas.",
+    "IV: capítulos 07, 08, 10, 11, 14, 15 y 16; Pontryagin e integración en cocientes."
+  ],
+  "paginas_totales": 655,
+  "alcance_sha256": "Hashes de los PDF compilados main.pdf incluidos en este repositorio."
+}

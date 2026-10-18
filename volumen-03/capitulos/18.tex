@@ -1,0 +1,215 @@
+\chapter{Álgebras de multiplicación y el caso conmutativo}\label{cap:v3-18}
+
+Las funciones esencialmente acotadas actúan sobre $L^2$ por multiplicación. Esta acción conserva normas, adjuntos y productos, y convierte la topología débil estrella de $L^\infty$ en la topología débil del operador. Al final veremos que toda álgebra de von Neumann conmutativa sobre un Hilbert separable admite una descripción de este tipo, aunque su representación inicial pueda tener multiplicidades.
+
+\section{Multiplicación en un espacio de medida}\label{lec:v3-35}
+\fuentelectura{35}{L∞(X) como álgebra de von Neumann}
+
+Fijamos un compacto Hausdorff no vacío $X$ y una medida de Borel positiva, \emph{finita y regular} $\mu$, con soporte todo $X$. La última condición equivale a que cada abierto no vacío tenga medida positiva: el complemento de un abierto nulo sería un cerrado propio de medida total, y recíprocamente. La finitud no se deduce de la sola compacidad para una medida de Borel arbitraria; por ejemplo, la medida de conteo en $[0,1]$ tiene masa infinita. Es automática si se parte de una medida de Radon localmente finita sobre un compacto, y aquí la incluimos explícitamente.
+
+Los elementos de $L^\infty(X,\mu)$ son clases de funciones iguales casi en todas partes. Un representante esencialmente acotado puede modificarse en un conjunto nulo para ser acotado en todos los puntos. La dualidad $L^\infty=(L^1)^*$ vale en este espacio finito de medida, y su topología débil estrella es la convergencia de las integrales contra todos los elementos de $L^1$.
+
+\begin{proposicion}\label{v3:multiplicacion-isometrica}
+La aplicación $f\mapsto M_f$, $M_fg=fg$, es un $*$-monomorfismo isométrico de $L^\infty(\mu)$ en $\Lcal(L^2(\mu))$. La inclusión de $C(X)$ en $L^\infty(\mu)$ también es isométrica.
+\end{proposicion}
+\begin{proof}
+La estimación $\norm{fg}_2\le\norm f_\infty\norm g_2$ prueba $\norm{M_f}\le\norm f_\infty$. Si $c<\norm f_\infty$, el conjunto $E=\{|f|>c\}$ tiene medida positiva y finita. Para $g=\mathbf1_E/\sqrt{\mu(E)}$, $\norm g_2=1$ y $\norm{M_fg}_2\ge c$. Dejar $c$ acercarse al supremo esencial da la igualdad. Productos, sumas e identidad se conservan por las operaciones puntuales, y $M_f^*=M_{\overline f}$ por la identidad de productos internos. La isometría implica inyectividad en clases casi iguales.
+
+Si $f\in C(X)$, su máximo absoluto se alcanza. Para cualquier $c<\norm f_{\infty,X}$, el conjunto abierto $\{|f|>c\}$ es no vacío y, por soporte total, tiene medida positiva. Así el supremo esencial coincide con el máximo puntual. En particular, una función continua nula casi en todas partes es nula en todo $X$.
+\end{proof}
+
+Denotaremos $\mathcal C=\{M_f:f\in C(X)\}$ y $\mathcal M_\mu=\{M_f:f\in L^\infty(\mu)\}$.
+
+\begin{teorema}\label{v3:weakstar-wot-multiplicadores}
+La isometría $f\mapsto M_f$ es un homeomorfismo de $L^\infty(\mu)$ con su topología débil estrella sobre $\mathcal M_\mu$ con WOT.
+\end{teorema}
+\begin{proof}
+Cada coeficiente es $\ip{M_fg}{h}=\int f g\overline h\,d\mu$, con $g\overline h\in L^1$ por Cauchy--Schwarz. Recíprocamente, para $k\in L^1$ escriba $k=g\overline h$, donde $h=\sqrt{|k|}$ y $g=\theta\sqrt{|k|}$, con $\theta=k/|k|$ donde $k\ne0$ y cero donde se anula. Ambos están en $L^2$ y el producto es exactamente $k$. Así las pruebas que definen ambas topologías coinciden, para redes arbitrarias y sin restringirlas a una bola.
+\end{proof}
+
+\begin{teorema}[Densidad de funciones continuas]\label{v3:continua-densa-linfty}
+La bola unitaria de $C(X)$ es débil estrella densa en la bola unitaria de $L^\infty(\mu)$. Por tanto $\mathcal C$ es WOT-densa y SOT-densa en $\mathcal M_\mu$.
+\end{teorema}
+\begin{proof}
+Primero sea $s=\sum_{i=1}^nc_i\mathbf1_{E_i}$ una función simple de módulo a lo sumo uno, con $(E_i)$ una partición boreliana de $X$. Fije $g_1,\ldots,g_m\in L^1$ y $\eps>0$. Por regularidad y continuidad absoluta de las integrales, elija compactos disjuntos $K_i\subset E_i$ con
+\[
+ \int_{E_i\setminus K_i}|g_j|\,d\mu<\frac{\eps}{2n}
+ \quad(1\le i\le n,\ 1\le j\le m).
+\]
+La continuidad absoluta significa que una medida suficientemente pequeña hace pequeñas todas esas integrales; la regularidad interior produce los compactos con ese control.
+
+La normalidad de un compacto Hausdorff permite elegir vecindades abiertas disjuntas de los compactos $K_i$ y funciones continuas $0\le u_i\le1$, iguales a uno en $K_i$ y con soportes dentro de esas vecindades. Entonces $h=\sum_i c_i u_i$ satisface $\norm h_\infty\le1$, porque en cada punto hay a lo sumo un sumando no nulo, y $h=s$ en $\bigcup_iK_i$. Por tanto
+\[
+ \left|\int(s-h)g_j\,d\mu\right|
+ \le2\sum_i\int_{E_i\setminus K_i}|g_j|\,d\mu<\eps.
+\]
+Este argumento construye una extensión compleja con control del módulo; extender por separado partes real e imaginaria no daría automáticamente la misma cota uno.
+
+Para una clase $f$ con $\norm f_\infty\le1$, elija un representante de módulo a lo sumo uno y aproxímelo uniformemente por simples con valores en el disco cerrado unitario. El error contra cada $g_j$ está acotado por el error uniforme multiplicado por $\norm{g_j}_1$. Combinando esa aproximación con la construcción anterior se obtiene un elemento de $C(X)$ en cualquier vecindad débil estrella de $f$. La equivalencia de topologías del teorema anterior da densidad WOT de los multiplicadores. Como las bolas son convexas, sus clausuras WOT y SOT coinciden, y se obtiene también la afirmación fuerte.
+\end{proof}
+
+\begin{teorema}[Álgebra maximal conmutativa de multiplicadores]\label{v3:masa-multiplicadores}
+Se tiene $\mathcal M_\mu'=\mathcal M_\mu$. En particular $\mathcal M_\mu$ es una álgebra de von Neumann conmutativa maximal.
+\end{teorema}
+\begin{proof}
+Los multiplicadores conmutan entre sí, así $\mathcal M_\mu\subset\mathcal M_\mu'$. Para la otra inclusión, sea $T\in\mathcal M_\mu'$ y ponga $g=T1\in L^2$; aquí se usa que $\mu$ es finita. Para $f\in L^\infty$,
+\[
+ Tf=T(M_f1)=M_fT1=fg.
+\]
+Afirmamos que $|g|\le\norm T$ casi en todas partes. Si $E=\{|g|>\norm T+\delta\}$ tuviera medida positiva, entonces
+\[
+ \norm{T\mathbf1_E}_2^2=\int_E|g|^2\,d\mu
+ >(\norm T)^2\mu(E),
+\]
+contradiciendo la cota de operador. Así $g\in L^\infty$, y $T=M_g$ sobre el subespacio denso $L^\infty\subset L^2$. La densidad se obtiene truncando cualquier función de $L^2$; por continuidad, $T=M_g$ en todo $L^2$.
+
+El conmutante es WOT-cerrado, por lo que la igualdad prueba que $\mathcal M_\mu$ es de von Neumann. Si otra subálgebra conmutativa la contuviera, cada uno de sus elementos conmutaría con $\mathcal M_\mu$ y por tanto pertenecería a $\mathcal M_\mu'=\mathcal M_\mu$. Esto prueba maximalidad.
+\end{proof}
+
+\section{Cuándo dos medidas dan la misma álgebra sobre \texorpdfstring{$C(X)$}{C(X)}}
+
+\begin{teorema}\label{v3:unicidad-clase-medida}
+Suponga $X$ compacto metrizable y $\mu,\nu$ medidas positivas finitas regulares con soporte $X$. Si un $*$-isomorfismo
+$\Phi:L^\infty(X,\mu)\to L^\infty(X,\nu)$ fija las funciones de $C(X)$, entonces $\mu$ y $\nu$ tienen los mismos conjuntos nulos. Las clases de $L^\infty$ se identifican canónicamente para ambas medidas y, bajo esa identificación, $\Phi$ es la identidad.
+\end{teorema}
+\begin{proof}
+Un $*$-isomorfismo y su inversa preservan el orden. Por tanto preservan todos los supremos e ínfimos que existan: si $a$ es la menor cota superior de un conjunto, su imagen es una cota superior, y cualquier otra cota superior se devuelve por la inversa a una cota superior del conjunto original, que domina a $a$. El argumento para ínfimos es análogo.
+
+Si $K\subset X$ es cerrado no vacío y $d$ induce la topología, las funciones continuas $f_n(x)=\max(0,1-nd(x,K))$ decrecen puntualmente a $\mathbf1_K$. En cada espacio $L^\infty$ su ínfimo de orden es la clase de $\mathbf1_K$: cualquier cota inferior queda debajo de todos los $f_n$ fuera de una unión numerable de nulos y por tanto debajo del límite. Como $\Phi$ fija los $f_n$ y conserva ínfimos,
+\[
+ \Phi([\mathbf1_K]_\mu)=[\mathbf1_K]_\nu.
+\]
+El caso $K=\varnothing$ es inmediato. Esta aproximación no vale para un Borel arbitrario $E$: $d(x,E)=d(x,\overline E)$, de modo que el límite sería $\mathbf1_{\overline E}$, precisión que corrige el argumento original.
+
+Sea $\mathcal D$ la familia de Borel $E$ para los que la igualdad de indicadores vale. Contiene los cerrados, es estable bajo complementos porque $\Phi(1)=1$, y bajo uniones finitas porque $\mathbf1_{E\cup F}=\mathbf1_E+\mathbf1_F-\mathbf1_E\mathbf1_F$. Es estable bajo uniones numerables al escribirlas como supremos de sus uniones finitas y usar la preservación de supremos. Por tanto contiene la $\sigma$-álgebra de Borel generada por los cerrados.
+
+Si $\mu(E)=0$, $[\mathbf1_E]_\mu=0$ y la identidad da $\nu(E)=0$. La inversa de $\Phi$ proporciona la implicación recíproca. Así las nociones de igualdad casi en todas partes y de acotación esencial coinciden. El mapa fija todas las funciones simples y, por isometría y aproximación uniforme por simples, fija cada clase de $L^\infty$.
+\end{proof}
+
+Este resultado no afirma que todas las medidas de soporte total sean equivalentes. Por ejemplo, en $[0,1]$ tanto la medida de Lebesgue como una probabilidad concentrada en un subconjunto numerable denso tienen soporte total, pero son mutuamente singulares. La hipótesis decisiva es la existencia del isomorfismo que fija $C(X)$.
+
+\section{Ejercicios sobre multiplicadores y orden}
+
+\begin{ejercicio}\label{ej:v3-l35-1}
+Pruebe que una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$ es una álgebra de von Neumann conmutativa maximal si y sólo si $\mathcal A=\mathcal A'$.
+\end{ejercicio}
+\begin{solucion}
+Si $\mathcal A=\mathcal A'$, es WOT-cerrada y contiene $I$ porque todo conmutante tiene esas propiedades; además es conmutativa porque está contenida en su conmutante. Cualquier álgebra conmutativa que la contenga está contenida en $\mathcal A'$ y coincide con ella.
+
+Recíprocamente, suponga que es conmutativa maximal. Si $T\in\mathcal A'$, sus partes autoadjuntas $H=(T+T^*)/2$ y $K=(T-T^*)/(2i)$ también pertenecen a $\mathcal A'$, ya que éste es autoadjunto. La álgebra $C^*(\mathcal A,H)$ es conmutativa: $H$ es autoadjunto y conmuta con todos los elementos de $\mathcal A$. Por maximalidad, $H\in\mathcal A$. Lo mismo vale para $K$, y por tanto $T=H+iK\in\mathcal A$. Se obtiene la inclusión inversa a $\mathcal A\subset\mathcal A'$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-2}
+Si $\mathcal A$ es una subálgebra $C^*$ conmutativa, pruebe que su clausura WOT es una álgebra de von Neumann conmutativa en sentido amplio. Deduzca que el álgebra de von Neumann unital generada por un operador normal es conmutativa.
+\end{ejercicio}
+\begin{solucion}
+La clausura $\mathcal M$ es una subálgebra autoadjunta por continuidad WOT del adjunto y continuidad separada del producto, como en Kaplansky. Como $\mathcal A\subset\mathcal A'$ y el conmutante es WOT-cerrado, $\mathcal M\subset\mathcal A'$. Por simetría de la conmutación, esto implica $\mathcal A\subset\mathcal M'$. Al cerrar de nuevo, $\mathcal M\subset\mathcal M'$, lo que significa que es conmutativa. Si $T$ es normal, $C^*(I,T)$ es conmutativa; su clausura WOT es el álgebra de von Neumann unital generada por $T$, pues contiene a $T$ y está contenida en toda álgebra WOT-cerrada unital que lo contenga. Si no se supone $I\in\mathcal A$, la primera conclusión utiliza la convención de identidad propia.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-3}
+Con la notación de esta lectura, pruebe $\mathcal C'=\mathcal M_\mu$. Deduzca que $L^\infty(\mu)$ es la clausura débil estrella de $C(X)$.
+\end{ejercicio}
+\begin{solucion}
+Si un operador conmuta con $\mathcal C$, la continuidad WOT por separado del producto y la densidad de $\mathcal C$ en $\mathcal M_\mu$ implican que conmuta con todos los multiplicadores. Así $\mathcal C'\subset\mathcal M_\mu'=\mathcal M_\mu$. La inclusión contraria es inmediata porque los multiplicadores conmutan. De aquí $\mathcal C''=\mathcal M_\mu$, y el doble conmutante identifica la clausura WOT de $\mathcal C$ con $\mathcal M_\mu$. Bajo el homeomorfismo del teorema~\ref{v3:weakstar-wot-multiplicadores}, esto equivale exactamente a la densidad débil estrella afirmada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-4}
+Pruebe que todo $*$-isomorfismo preserva los supremos existentes en el orden de los autoadjuntos.
+\end{ejercicio}
+\begin{solucion}
+Sea $\Phi:A\to B$ un $*$-isomorfismo y $a=\sup E$ para $E\subset A_{\mathrm{sa}}$. Como $\Phi$ preserva orden, $\Phi(a)$ es cota superior de $\Phi(E)$. Si $b$ es otra cota superior, $\Phi^{-1}(b)$ domina a $E$, de modo que $a\le\Phi^{-1}(b)$ y $\Phi(a)\le b$. Esto prueba la afirmación sin ninguna hipótesis de continuidad de redes.
+
+La sugerencia de construir siempre una sucesión creciente dentro de $E$ que converja al supremo es falsa. En $\C^2$, el conjunto $E=\{(1,0),(0,1)\}$ tiene supremo $(1,1)$, pero sus dos elementos son incomparables; toda sucesión creciente con términos en $E$ es constante y no converge a ese supremo. Además, un álgebra $C^*$ general no tiene supremo para todo conjunto acotado: el resultado sólo afirma preservación de los que existen.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-5}
+Si $\mu,\nu$ son medidas positivas regulares mutuamente absolutamente continuas sobre $X$, pruebe la identificación canónica $L^\infty(X,\mu)=L^\infty(X,\nu)$, sin exigir soporte total.
+\end{ejercicio}
+\begin{solucion}
+La absoluta continuidad mutua significa que ambas medidas tienen exactamente los mismos conjuntos nulos. Por tanto dos funciones representan la misma clase para una medida si y sólo si lo hacen para la otra. Una función está acotada esencialmente por $M$ si $\{|f|>M\}$ es nulo, condición también idéntica para ambas medidas. Así coinciden los conjuntos de clases y sus normas esenciales, y la identificación conserva operaciones e involución. No se afirma que las medidas asignen la misma masa a cada conjunto, ni que las normas $L^p$ con $p<\infty$ coincidan.
+\end{solucion}
+
+\section{Vectores cíclicos y separantes}\label{lec:v3-36}
+\fuentelectura{36}{Caracterización de las álgebras de von Neumann conmutativas}
+
+En el resto del capítulo $H$ es separable. Un vector $\xi$ es \emph{cíclico} para $\mathcal A$ si $\overline{\mathcal A\xi}=H$, y es \emph{separante} si $T\xi=0$, $T\in\mathcal A$, implica $T=0$. La primera propiedad dice que un solo vector genera el espacio; la segunda, que la acción sobre ese vector permite distinguir operadores del álgebra.
+\index{vector!cíclico}\index{vector!separante}
+
+\begin{proposicion}\label{v3:ciclico-separante}
+Si $\mathcal A$ es una subálgebra autoadjunta que contiene $I$, entonces $\xi$ es cíclico para $\mathcal A$ si y sólo si es separante para $\mathcal A'$.
+\end{proposicion}
+\begin{proof}
+Si $\mathcal A\xi$ es denso y $T\in\mathcal A'$ anula $\xi$, entonces $TS\xi=ST\xi=0$ para cada $S\in\mathcal A$. Por continuidad, $T$ anula todo $H$ y es cero. Recíprocamente, sea $K=\overline{\mathcal A\xi}$. Es reductor porque $\mathcal A$ es autoadjunta, así su proyección $P_K$ pertenece a $\mathcal A'$. Como $I\in\mathcal A$, $\xi\in K$, y $(I-P_K)\xi=0$. Si $\xi$ es separante para $\mathcal A'$, se obtiene $I-P_K=0$, así $K=H$.
+\end{proof}
+
+\begin{teorema}\label{v3:separante-abeliana}
+Toda álgebra de von Neumann conmutativa unital sobre un Hilbert separable no nulo tiene un vector separante. Si es maximal conmutativa, tiene un vector cíclico.
+\end{teorema}
+\begin{proof}
+La descomposición en espacios cíclicos del teorema~\ref{v3:descomposicion-ciclica} da vectores unitarios $(\xi_j)$ cuyas clausuras $H_j=\overline{\mathcal A\xi_j}$ son ortogonales y generan $H$. Como los propios $\xi_j$ forman un conjunto ortonormal en un Hilbert separable, la familia es a lo sumo numerable. Para justificarlo, bolas de radio menor que $\sqrt2/2$ alrededor de vectores ortonormales son disjuntas y cada una contiene un punto de un conjunto numerable denso. Enumere la familia y ponga $\xi=\sum_j2^{-j}\xi_j$; la serie converge en norma.
+
+Si $T\in\mathcal A$ y $T\xi=0$, los vectores $T\xi_j$ pertenecen a subespacios mutuamente ortogonales. Por tanto
+$0=\norm{T\xi}^2=\sum_j4^{-j}\norm{T\xi_j}^2$, y cada $T\xi_j=0$. La conmutatividad implica $TS\xi_j=ST\xi_j=0$ para todo $S\in\mathcal A$, así $T$ anula cada $H_j$ y, por densidad de su suma, todo $H$. Entonces $\xi$ es separante. Si $\mathcal A$ es maximal conmutativa, $\mathcal A=\mathcal A'$; la proposición anterior convierte ese vector separante en cíclico.
+\end{proof}
+
+\section{Representación de un álgebra conmutativa cíclica}
+
+\begin{teorema}\label{v3:representacion-abeliana-ciclica}
+Sea $\mathcal A$ una álgebra de von Neumann conmutativa unital sobre un Hilbert $H\ne\{0\}$ y suponga que tiene un vector cíclico. Existen un compacto Hausdorff $X$, una probabilidad regular $\mu$ con soporte $X$ y un unitario $U:H\to L^2(X,\mu)$ tales que
+\[
+ U\mathcal A U^*=\{M_f:f\in L^\infty(X,\mu)\}.
+\]
+Si $H$ es separable, puede elegirse $X$ compacto metrizable.
+\end{teorema}
+\begin{proof}
+Primero construimos una representación usando $X=\Delta(\mathcal A)$, sin afirmar aún metrizabilidad. Sea $\mathcal G:\mathcal A\to C(X)$ el isomorfismo de Gelfand y normalice el vector cíclico $\xi$ para que $\norm\xi=1$. El funcional positivo
+\[
+ f\longmapsto\ip{\mathcal G^{-1}(f)\xi}{\xi}
+\]
+vale uno en la identidad. Riesz--Markov lo representa por una probabilidad regular $\mu$ en $X$.
+
+El vector $\xi$ también es separante para $\mathcal A$, porque es separante para $\mathcal A'$ y $\mathcal A\subset\mathcal A'$. Si un abierto no vacío $V$ tuviera medida cero, elija una función continua no nula $0\le f\le1$ con soporte en $V$; se obtiene separando un punto de $V$ del cerrado $X\setminus V$ por Urysohn. Entonces
+$\norm{\mathcal G^{-1}(\sqrt f)\xi}^2=\int f\,d\mu=0$. La separación obligaría $\mathcal G^{-1}(\sqrt f)=0$ y, por inyectividad, $f=0$, contradicción. Así $\mu$ tiene soporte total.
+
+Defina en el subespacio denso $\mathcal A\xi$ la aplicación $U_0(T\xi)=\mathcal G(T)$. Es isométrica porque
+\[
+ \int_X|\mathcal G(T)|^2\,d\mu
+ =\ip{T^*T\xi}{\xi}=\norm{T\xi}^2.
+\]
+La misma igualdad prueba que es independiente de la elección de $T$. Su imagen es $C(X)$, densa en $L^2(\mu)$ por regularidad; así se extiende a un unitario $U:H\to L^2(\mu)$. Para $S,T\in\mathcal A$,
+\[
+ UTU^*(\mathcal G(S))=UTS\xi=\mathcal G(TS)
+ =\mathcal G(T)\mathcal G(S).
+\]
+Por densidad, $UTU^*=M_{\mathcal G(T)}$.
+
+La conjugación por un unitario es un $*$-isomorfismo y un homeomorfismo para SOT y WOT: las normas de vectores se conservan, y los coeficientes se transforman como
+$\ip{UTU^*g}{h}=\ip{TU^*g}{U^*h}$. Por tanto $U\mathcal A U^*$ es WOT-cerrada. Acabamos de identificarla con los multiplicadores continuos, y éstos son WOT-densos en todos los multiplicadores de $L^\infty$. De aquí la igualdad afirmada.
+
+Para la elección métrica cuando $H$ es separable, se necesita una construcción adicional. La bola unitaria de $\mathcal A$ es WOT-compacta y metrizable: una familia numerable densa de vectores de $H$ proporciona un número numerable de coeficientes que, en una bola acotada, determinan todos los demás por aproximación. Una suma con pesos geométricos de las diferencias truncadas de esos coeficientes define una métrica. Elija una sucesión $(T_n)$ WOT-densa en esa bola y sea $\mathcal B=C^*(I,T_1,T_2,\ldots)$. Es normoseparable, pues los $*$-polinomios en un número finito de generadores con coeficientes racionales complejos forman un conjunto numerable denso. Su clausura WOT, y por convexidad también SOT, es $\mathcal A$.
+
+El mismo vector $\xi$ es cíclico para $\mathcal B$: si $T\in\mathcal A$, la aproximación fuerte por elementos de $\mathcal B$ aproxima $T\xi$. Además es separante para $\mathcal B$, por inclusión en $\mathcal A$. Repita la construcción anterior con $X=\Delta(\mathcal B)$, que ahora es compacto metrizable por separabilidad. Produce una probabilidad de soporte total y un unitario que lleva $\mathcal B$ a los multiplicadores continuos. Tomar clausuras WOT lleva $\mathcal A$ a todos los multiplicadores de $L^\infty(X,\mu)$, como se requería.
+\end{proof}
+
+\begin{observacion}[Dos espacios compactos diferentes]
+El espacio $\Delta(\mathcal A)$ de toda el álgebra de von Neumann no tiene por qué ser segundo numerable, aunque $H$ sea separable. Por ejemplo, $L^\infty([0,1])$ actúa en el Hilbert separable $L^2([0,1])$, pero no es separable en norma: los indicadores $\mathbf1_{[0,t]}$, $0<t<1$, están a distancia uno para parámetros distintos. Si su espacio de Gelfand fuera compacto metrizable, $C(\Delta(\mathcal A))$ sería separable en norma, contradiciendo el isomorfismo de Gelfand. La elección métrica del teorema usa $\Delta(\mathcal B)$ para una subálgebra normoseparable fuertemente densa, no $\Delta(\mathcal A)$.
+\end{observacion}
+
+\section{Caracterización abstracta del caso conmutativo}
+
+\begin{teorema}\label{v3:caracterizacion-abeliana}
+Toda álgebra de von Neumann conmutativa no nula sobre un Hilbert separable es $*$-isomorfa isométricamente a $L^\infty(X,\mu)$ para algún compacto metrizable $X$ y alguna probabilidad regular de soporte $X$.
+\end{teorema}
+\begin{proof}
+Si la identidad propia es $P\ne I_H$, restrinja primero la acción a $PH$. Como todo elemento satisface $T=PTP$, esa restricción es fiel e isométrica; su imagen es WOT-cerrada, pues un límite de operadores restringidos se extiende por cero a $P^\perp H$ y los coeficientes muestran convergencia WOT de las extensiones. Así podemos suponer identidad $I$.
+
+El teorema~\ref{v3:separante-abeliana} da un vector separante $\xi$. Sea $H_0=\overline{\mathcal A\xi}$, subespacio reductor, y defina $\rho(T)=T|_{H_0}$. Es un $*$-homomorfismo: la invariancia de $H_0$ y $H_0^\perp$ permite restringir tanto operadores como adjuntos. Si $\rho(T)=0$, en particular $T\xi=0$, y la separación implica $T=0$. Así $\rho$ es inyectivo y por tanto isométrico.
+
+Su imagen $\mathcal B=\rho(\mathcal A)$ es normocerrada y tiene a $\xi$ como vector cíclico. Es además WOT-cerrada. En efecto, la restricción es WOT-continua, porque sus coeficientes son coeficientes originales con vectores de $H_0$. La imagen de la bola WOT-compacta de $\mathcal A$ es, por isometría, exactamente la bola de $\mathcal B$, que por tanto es WOT-compacta y cerrada. La caracterización de bolas cerradas del ejercicio~\ref{ej:v3-l33-3} demuestra que $\mathcal B$ es una álgebra de von Neumann.
+
+Aplique el teorema~\ref{v3:representacion-abeliana-ciclica} a $\mathcal B$ sobre el Hilbert separable $H_0$. Se obtiene una representación unitaria de $\mathcal B$ como los multiplicadores de $L^\infty(X,\mu)$, con $X$ compacto metrizable y soporte total. Componer esa identificación con $\rho$ produce el $*$-isomorfismo isométrico buscado para $\mathcal A$. Si se desea incluir el álgebra cero, puede representarse tomando el espacio compacto vacío y la medida cero, sin la normalización de probabilidad.
+\end{proof}
+
+La conclusión final es una identificación de álgebras, no necesariamente una equivalencia unitaria de la representación inicial sobre todo $H$ con la representación estándar de multiplicación. Por ejemplo, $f\mapsto M_f\oplus M_f$ actúa en $L^2(\mu)\oplus L^2(\mu)$ y tiene la misma álgebra abstracta $L^\infty(\mu)$, pero para una medida no nula esa representación no es cíclica, como demuestra el ejercicio~\ref{ej:v3-l30-1}. La restricción a un subespacio cíclico generado por un vector separante elimina esa multiplicidad sin perder información algebraica.
+
+El recorrido del volumen termina así en una relación precisa entre tres objetos: álgebras abstractas con norma e involución, operadores sobre espacios de Hilbert y funciones medibles. El cálculo funcional conserva las operaciones; los estados producen representaciones; y las topologías de operadores determinan cuándo aparecen todas las funciones esencialmente acotadas. Para continuar el estudio de las álgebras de von Neumann y de sus representaciones, véanse \cite{conway1990,murphy1990,zhu1993,rudin1991}.

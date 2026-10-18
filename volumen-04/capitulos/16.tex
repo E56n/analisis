@@ -1,0 +1,671 @@
+\chapter{Álgebras del grupo, inversión y dualidad}\label{cap:v4-16}
+La convolución puede estudiarse como una operación entre funciones o como un operador sobre $L^2(G)$. La segunda perspectiva permite completar $L^1(G)$ con una norma distinta y recuperar todas las funciones continuas que se anulan en el infinito del grupo dual. Después construiremos una medida de Haar dual y demostraremos la dualidad de Pontryagin. Así quedará resuelto, con sus dependencias completas, el ejercicio~\ref{ej:v4-l25-2} sobre sucesiones exactas.
+
+Las lecturas 27 y 28 de \cite{valencia4} contienen el núcleo de la construcción. Desarrollamos sus verificaciones, corregimos dos problemas de soporte y de signo en el último teorema, y añadimos el tramo de inversión y dualidad. Como referencia general pueden consultarse los teoremas 4.32 y 4.40 de \cite{folland2016}. Todo el capítulo supone que $G$ es LCA y que se ha fijado una medida de Haar $\mu$. Escribimos
+\[
+ f^*(x)=\overline{f(x^{-1})},\qquad
+ \widehat f(\chi)=\int_G f(x)\chi(x)\,d\mu(x).
+\]
+La unimodularidad permite estas fórmulas sin factores adicionales. Usaremos tres resultados de los volúmenes anteriores: la representación positiva sobre $C_c(X)$ del volumen II, capítulo 16, «El teorema de representación de Riesz»; Stone--Weierstrass del volumen I, capítulo 13, «Extensión y aproximación de funciones continuas»; y Gelfand del volumen III, capítulo 13, «Álgebras $C^*$ y cálculo funcional continuo», incluido allí el ejercicio sobre álgebras no unitarias de la lectura 26. Recordaremos sus conclusiones justo donde intervengan. La prueba de Stone--Weierstrass por interpolaciones y máximos y mínimos utiliza sólo compacidad y separación Hausdorff; por ello vale en los compactos no necesariamente métricos que aparecerán aquí. No se presupone la dualidad de Pontryagin.
+
+En los intercambios de integrales no suponemos segunda numerabilidad. Las identidades se prueban primero para funciones de $C_c$: sobre los productos de compactos pertinentes, Stone--Weierstrass aproxima uniformemente los núcleos continuos por sumas de productos de funciones de cada variable, para las cuales el intercambio es inmediato. Después se pasa a funciones $L^1$ o $L^2$ por sus aproximaciones en norma y las cotas absolutas indicadas en cada prueba. Cada una de esas funciones admite, salvo un conjunto nulo, un representante concentrado en una unión numerable de compactos: tome aproximaciones por $C_c$ y una subsucesión que converja casi en todas partes. Para un número finito de funciones, todos esos compactos están contenidos en un subgrupo abierto sigma compacto: se añade una vecindad compacta de $e$ y se toman todos los productos finitos de esos compactos y sus inversos. En ese subgrupo Haar es sigmafinita y se aplican Tonelli y Fubini; la aproximación previa por núcleos continuos resuelve también la cuestión de las sigma álgebras producto en espacios no metrizables. Esta reducción, compatible con el capítulo de Haar, justifica las aplicaciones siguientes sin restringir el grupo completo.
+
+\section{La representación regular y su norma}\label{lectura:v4-27}
+\index{representacion@representación!regular}\index{algebra@álgebra!reducida de un grupo}
+Para $f\in L^1(G)$ y $u\in L^2(G)$ queremos definir $\lambda(f)u=f*u$. Conviene justificar primero que la integral produce un elemento de $L^2$.
+
+\begin{proposicion}\label{v4:regular-l2}
+La fórmula $\lambda(f)u=f*u$ define un operador lineal acotado en $L^2(G)$, con
+\[
+ \norm{\lambda(f)}\le\norm f_1,
+ \qquad
+ \ip{\lambda(f)u}{v}
+ =\int_G f(y)\ip{L_yu}{v}\,d\mu(y).
+\]
+Además, $\lambda(f*g)=\lambda(f)\lambda(g)$ y $\lambda(f^*)=\lambda(f)^*$.
+\end{proposicion}
+\begin{proof}
+Si $f=0$ no hay nada que demostrar. La desigualdad de Cauchy--Schwarz para la medida $|f(y)|\,d\mu(y)$ da, donde la integral de la derecha es finita,
+\[
+ \left|\int_G f(y)u(y^{-1}x)\,d\mu(y)\right|^2
+ \le\norm f_1\int_G|f(y)|\,|u(y^{-1}x)|^2\,d\mu(y).
+\]
+Por Tonelli e invariancia de Haar, la integral en $x$ del último miembro es $\norm f_1^2\norm u_2^2$. Por tanto la convolución existe absolutamente para casi todo $x$, pertenece a $L^2$ y satisface la cota afirmada. Los representantes distintos casi en todas partes dan el mismo elemento de $L^2$, por la misma estimación.
+
+Para $u,v\in L^2$,
+\[
+ \int_G|f(y)|\int_G|u(y^{-1}x)v(x)|\,d\mu(x)\,d\mu(y)
+ \le\norm f_1\norm u_2\norm v_2.
+\]
+Fubini permite intercambiar las integrales y obtiene la identidad del producto interno. Ésta también construye $\lambda(f)$ mediante el teorema de representación de Riesz del espacio de Hilbert: el funcional conjugado lineal en $v$ está acotado por la cantidad indicada. Ambas construcciones coinciden.
+
+Si $u\in C_c(G)$, las identidades de asociatividad en $L^1$ muestran que
+$(f*g)*u=f*(g*u)$. Ambos miembros también pertenecen a $L^2$ por la cota anterior. La densidad de $C_c$ en $L^2$ y la acotación de los operadores extienden la igualdad a todo $u\in L^2$.
+Finalmente, $L_y^*=L_{y^{-1}}$, y el producto interno es lineal en su primera variable. Por ello
+\[
+ \ip{\lambda(f)u}{v}
+ =\int_G f(y)\ip{u}{L_{y^{-1}}v}\,d\mu(y)
+ =\ip{u}{\lambda(f^*)v}.
+\]
+En la última igualdad se usa inversión en Haar y la conjugación del escalar que entra en la segunda variable. Esto prueba la identidad para el adjunto.
+\end{proof}
+
+\begin{proposicion}\label{v4:regular-fiel}
+El homomorfismo $\lambda:L^1(G)\to\mathcal B(L^2(G))$ es inyectivo.
+\end{proposicion}
+\begin{proof}
+Si $\lambda(f)=0$, entonces $f*\xi=0$ como elemento de $L^2$ para toda $\xi\in C_c(G)$. Esa convolución también es un elemento de $L^1$, y es la misma función casi en todas partes, de modo que es cero en $L^1$. Elija una identidad aproximada $(\xi_U)$ en $C_c(G)$, no negativa y de integral uno. La convergencia $f*\xi_U\to f$ en $L^1$ obliga a $f=0$. No hace falta extraer subredes con convergencia puntual: la convergencia en $L^1$ ya resuelve el argumento.
+\end{proof}
+
+\begin{definicion}
+El \emph{álgebra $C^*$ reducida} de $G$ es
+\[
+ C_r^*(G)=\overline{\lambda(L^1(G))}^{\,\norm{\cdot}_{\mathcal B(L^2)}}.
+\]
+\end{definicion}
+Es un álgebra cerrada de operadores, estable bajo adjuntos, y hereda la identidad $\norm{A^*A}=\norm A^2$. Es conmutativa porque la convolución lo es. La lectura la denota $C^*(G)$; usamos inicialmente el subíndice $r$ para hacer visible la construcción. Al final de la siguiente sección justificaremos que, en grupos abelianos, coincide con el álgebra universal que también suele recibir ese nombre.
+
+\section{El espectro del álgebra del grupo}
+Recordemos el teorema de Gelfand para un álgebra $C^*$ conmutativa $B$: su transformada $A\mapsto\widetilde A$, dada por $\widetilde A(\rho)=\rho(A)$, es un isomorfismo isométrico y preservador del adjunto entre $B$ y $C_0(\Delta(B))$. En particular, si $B\ne0$, su espectro no es vacío y sus caracteres tienen norma uno. Se incluyen aquí álgebras sin unidad.
+
+\begin{lema}[Un criterio de homeomorfismo de espectros]\label{v4:espectros-homeomorfismo}
+Sean $A,B$ álgebras de Banach conmutativas y $T:A\to B$ un homomorfismo continuo. Suponga que cada carácter de $B$ tiene restricción $\rho\circ T\ne0$ y que $T^*: \Delta(B)\to\Delta(A)$, $\rho\mapsto\rho\circ T$, es biyectivo. Entonces $T^*$ es un homeomorfismo.
+\end{lema}
+\begin{proof}
+La continuidad se sigue de $T^*(\rho)(a)=\rho(Ta)$: cada evaluación en $a$ se transforma en una evaluación en $Ta$. Para controlar la inversa añadimos formalmente una unidad a ambas álgebras, incluso si ya tenían una. Los caracteres del álgebra unitalizada $A^+=A\oplus\C$ son
+\[
+ (a,z)\longmapsto\phi(a)+z\quad(\phi\in\Delta(A)),
+ \qquad (a,z)\longmapsto z.
+\]
+En efecto, la restricción a $A$ es un carácter o es cero, y el valor en la nueva unidad debe ser uno. El espectro de $A^+$ es compacto Hausdorff: es un subconjunto cerrado de la bola dual, definido por multiplicatividad y valor uno en la unidad; Banach--Alaoglu da compacidad. Lo mismo ocurre para $B^+$.
+
+El homomorfismo $T^+(a,z)=(Ta,z)$ induce una aplicación continua entre esos compactos. Las hipótesis dicen exactamente que es una biyección, incluyendo el nuevo carácter de restricción cero. Una biyección continua de un compacto a un Hausdorff es un homeomorfismo. Al quitar esos dos caracteres nuevos quedan las topologías originales de $\Delta(B)$ y $\Delta(A)$ y el homeomorfismo buscado.
+\end{proof}
+
+\begin{teorema}\label{v4:cstar-fourier}
+Cada carácter $\chi\in\widehat G$ determina un único carácter de $C_r^*(G)$ cuyo valor en $\lambda(f)$ es $\widehat f(\chi)$. Esto identifica homeomórficamente $\Delta(C_r^*(G))$ con $\widehat G$, y proporciona un isomorfismo isométrico de álgebras $C^*$
+\[
+ C_r^*(G)\simeq C_0(\widehat G),\qquad
+ \norm{\lambda(f)}=\norm{\widehat f}_\infty.
+\]
+En particular, la transformada de Fourier de $L^1(G)$ es inyectiva.
+\end{teorema}
+\begin{proof}
+Un carácter $\rho$ de $C_r^*(G)$ no puede anularse en toda $\lambda(L^1)$, porque este subespacio es denso y $\rho$ es continuo. Por el capítulo~\ref{cap:v4-15}, la restricción es $\widehat f(\chi)$ para algún $\chi\in\widehat G$. Dos caracteres con la misma restricción coinciden por densidad. Falta demostrar que se obtienen todos los $\chi$.
+
+Como $C_r^*(G)\ne0$, elija un carácter $\rho_0$ y sea $\chi_0$ su restricción. Para $\eta\in\widehat G$ la modulación $M_\eta u=\eta u$ es unitaria en $L^2$ y un cálculo directo da
+\[
+ M_\eta\lambda(f)M_\eta^{-1}=\lambda(\eta f).
+\]
+En efecto, $\eta(x)\overline{\eta(y^{-1}x)}=\eta(y)$ en el integrando. Para un carácter arbitrario $\chi$, tome $\eta=\chi\chi_0^{-1}$. Entonces
+\[
+ |\widehat f(\chi)|
+ =|\widehat{\eta f}(\chi_0)|
+ =|\rho_0(\lambda(\eta f))|
+ \le\norm{\lambda(\eta f)}=\norm{\lambda(f)}.
+\]
+Así $\lambda(f)\mapsto\widehat f(\chi)$ es un funcional acotado en el subespacio denso $\lambda(L^1)$. Se extiende de modo único a $C_r^*(G)$. La multiplicatividad pasa al límite porque la multiplicación es continua; la extensión es no nula, pues existe $f\in C_c$ con $\widehat f(\chi)\ne0$. El lema anterior, aplicado a $T=\lambda$, prueba el homeomorfismo de espectros. El teorema de Gelfand produce ahora el isomorfismo con $C_0(\widehat G)$ y la igualdad de normas. Si $\widehat f=0$, entonces $\lambda(f)=0$ y la proposición~\ref{v4:regular-fiel} da $f=0$.
+\end{proof}
+
+\begin{corolario}[Los caracteres separan puntos]\label{v4:caracteres-separan}
+Si $x\ne y$ en $G$, existe $\chi\in\widehat G$ tal que $\chi(x)\ne\chi(y)$.
+\end{corolario}
+\begin{proof}
+Basta tratar $a=y^{-1}x\ne e$. Si $\chi(a)=1$ para todos los caracteres, la fórmula $\widehat{L_af}(\chi)=\chi(a)\widehat f(\chi)$ y la inyectividad anterior implican $L_af=f$ en $L^1$ para toda $f\in C_c$. Ambas funciones son continuas; su igualdad casi en todas partes es igualdad en todos los puntos, porque todo abierto no vacío tiene medida de Haar positiva. Pero existe una función $f\in C_c$ con $f(e)=1$ y $f(a^{-1})=0$: se toma una función de corte apoyada en una vecindad relativamente compacta de $e$ que no contiene $a^{-1}$. Evaluar $L_af=f$ en $e$ contradice esos valores.
+\end{proof}
+
+\begin{observacion}[Por qué las dos álgebras de grupo coinciden aquí]
+Si $\pi$ es cualquier representación unitaria continua de $G$, su forma integrada satisface $\norm{\pi(f)}\le\norm f_1$ y es un homomorfismo que preserva adjuntos. La clausura $B_\pi$ de su imagen es una $C^*$-álgebra conmutativa. Cada carácter de $B_\pi$, restringido a $L^1$, es no nulo por densidad y corresponde a un carácter de $G$. Por Gelfand,
+\[
+ \norm{\pi(f)}
+ =\sup_{\rho\in\Delta(B_\pi)}|\rho(\pi(f))|
+ \le\sup_{\chi\in\widehat G}|\widehat f(\chi)|
+ =\norm{\lambda(f)}.
+\]
+Si $B_\pi=0$ la desigualdad es inmediata. El supremo sobre todas las representaciones unitarias, que define la norma universal, coincide por tanto con la norma regular, pues $\lambda$ es una de esas representaciones integradas. En este capítulo podemos escribir $C^*(G)=C_r^*(G)$. La prueba utiliza la conmutatividad y no afirma esa igualdad para grupos arbitrarios.
+\end{observacion}
+
+\section{Un espacio que controla ambos lados de Fourier}\label{lectura:v4-28}
+\index{convolucion@convolución!de funciones de cuadrado integrable}
+\begin{lema}\label{v4:l2-convolucion-cero}
+Si $u,v\in L^2(G)$, entonces $u*v$ existe absolutamente en cada punto, pertenece a $C_0(G)$ y satisface
+\[
+ \norm{u*v}_\infty\le\norm u_2\norm v_2.
+\]
+\end{lema}
+\begin{proof}
+La inversión y la traslación preservan la norma $L^2$. Por tanto
+\[
+ (u*v)(x)=\ip{u}{L_xv^*}
+\]
+existe para cada $x$ por Cauchy--Schwarz, y satisface la cota uniforme. Si se cambia un representante en un conjunto nulo, su traslación o inversión sigue siendo nula; la integral no depende del representante. La continuidad fuerte de las traslaciones en $L^2$ implica continuidad de esta función de $x$.
+
+Elija $u_n,v_n\in C_c$ con $u_n\to u$ y $v_n\to v$ en $L^2$. Entonces
+\[
+ \norm{u_n*v_n-u*v}_\infty
+ \le\norm{u_n-u}_2\norm{v_n}_2
+       +\norm u_2\norm{v_n-v}_2\longrightarrow0.
+\]
+Cada convolución $u_n*v_n$ tiene soporte compacto, contenido en $\supp(u_n)\supp(v_n)$. Como $C_0(G)$ es cerrado para la norma uniforme, el límite pertenece a $C_0(G)$.
+\end{proof}
+
+Pongamos $D=L^1(G)\cap C_0(G)$. La expresión
+\[
+ \norm f_{0,*}=\max\{\norm f_\infty,\norm{\widehat f}_\infty\}
+ \qquad(f\in D)
+\]
+es una norma: homogeneidad y desigualdad triangular se deducen de las dos normas uniformes, y $\norm f_{0,*}=0$ implica $f=0$ por el primer término. Su completación será $C_0^*(G)$. El símbolo no afirma que este espacio sea un álgebra $C^*$ con esa norma.
+
+\index{espacio!C0 estrella@$C_0^*(G)$}
+Una realización concreta de la completación evita confundir sus elementos:
+\[
+ E=\overline{\{(f,\widehat f):f\in D\}}
+ ^{\,C_0(G)\oplus C_0(\widehat G)},\qquad
+ \norm{(u,h)}=\max\{\norm u_\infty,\norm h_\infty\}.
+\]
+El espacio producto es Banach, y la clausura indicada es precisamente la completación isométrica. Demostraremos que cada una de las dos coordenadas determina la otra.
+
+\begin{proposicion}\label{v4:grafo-fourier-inyectivo}
+Las proyecciones $E\to C_0(G)$ y $E\to C_0(\widehat G)$ son lineales, contractivas e inyectivas. Por ello podemos identificar $E=C_0^*(G)$ con un espacio de funciones $u\in C_0(G)$ y escribir $\widehat u=h$ para su segunda coordenada. Esta notación no presupone que $u$ sea integrable.
+\end{proposicion}
+\begin{proof}
+La linealidad y las cotas son inmediatas de la norma máxima. Sea $(u,h)\in E$ y elija $f_n\in D$ con $f_n\to u$ uniformemente y $\widehat f_n\to h$ uniformemente. Por el teorema~\ref{v4:cstar-fourier}, existe $A\in C_r^*(G)$ con símbolo $h$, y $\lambda(f_n)\to A$ en norma de operadores.
+
+Para $g,\psi\in C_c(G)$, tenemos simultáneamente
+\[
+ \ip{\lambda(f_n)g}{\psi}\longrightarrow\ip{Ag}{\psi},
+ \qquad
+ \int_G(f_n*g)\overline\psi\,d\mu
+ \longrightarrow\int_G(u*g)\overline\psi\,d\mu.
+\]
+La segunda convergencia se sigue de
+$\norm{(f_n-u)*g}_\infty\le\norm{f_n-u}_\infty\norm g_1$
+y de $\psi\in L^1$. Ambas expresiones de partida son iguales, así que $Ag=u*g$ casi en todas partes. Además, $u*g\in C_0$: se aproxima $u$ uniformemente por funciones de $C_c$ y se usa la misma cota. La unicidad local de Riesz--Markov dice inicialmente que las dos funciones coinciden casi en todas partes en cada abierto relativamente compacto. Aquí eso implica igualdad global: $Ag\in L^2$ está concentrada, salvo un conjunto nulo, en una unión numerable de compactos por aproximación mediante $C_c$; la función $u*g\in C_0$ se anula fuera de $\bigcup_{n\ge1}\{|u*g|\ge1/n\}$, también una unión numerable de compactos. Cubrir cada uno de esos compactos por un número finito de abiertos relativamente compactos y tomar la unión numerable de los conjuntos excepcionales completa la justificación. No se usa una afirmación irrestricta de igualdad global para cualesquiera funciones sólo localmente integrables.
+
+Si $u=0$, entonces $Ag=0$ para todo $g\in C_c$, y por densidad $A=0$, luego $h=0$. Si $h=0$, entonces $A=0$ y $u*g=0$ casi en todas partes para todo $g\in C_c$. Por continuidad y soporte pleno de Haar, esa igualdad vale en todos los puntos. Para una identidad aproximada $\xi_U\in C_c$, se tiene $u*\xi_U\to u$ uniformemente, por lo que $u=0$. Para verificar esta última convergencia, obsérvese primero que las traslaciones de una función de $C_c$ son continuas en norma uniforme; se extiende a $C_0$ por aproximación uniforme, y luego se promedia el error de traslación contra $\xi_U$. Así ambas proyecciones tienen núcleo cero.
+\end{proof}
+
+La realización por pares muestra además que $E$ es estable bajo traslación, modulación e involución: esas operaciones preservan $D$, actúan isométricamente sobre las correspondientes coordenadas uniformes, y por continuidad pasan a la clausura. En particular,
+\[
+ \widehat{L_xu}(\chi)=\chi(x)\widehat u(\chi),\quad
+ \widehat{\eta u}(\chi)=\widehat u(\eta\chi),\quad
+ \widehat{u^*}=\overline{\widehat u}
+ \qquad(u\in E).
+\]
+
+\section{Positividad, regularización e identidades aproximadas}
+\index{identidad!aproximada con transformada positiva}
+\begin{lema}\label{v4:dirac-positivo}
+Existe una identidad aproximada $(\xi_U)$ en $C_c(G)$ tal que $\xi_U\ge0$, $\int\xi_U=1$, $\supp\xi_U\subset U$ y $\widehat\xi_U\ge0$.
+\end{lema}
+\begin{proof}
+Los índices son las vecindades $U$ de $e$, ordenadas por inclusión inversa. Elija una vecindad simétrica $W$ con $WW\subset U$. Una función de corte no negativa y no nula, apoyada en $W$, puede reemplazarse por la suma con su reflejo $x\mapsto h(x^{-1})$. Normalizando su integral obtenemos $h_U\in C_c$, $h_U\ge0$, $h_U=h_U^*$ y $\int h_U=1$. Defina $\xi_U=h_U*h_U^*$. El integrando de la convolución es no negativo, su integral total es uno y su soporte está contenido en $WW\subset U$. Además,
+$\widehat\xi_U=|\widehat h_U|^2\ge0$.
+La masa está enteramente en $U$, de modo que estas funciones forman una identidad aproximada.
+\end{proof}
+
+\begin{lema}[Positividad en la identidad]\label{v4:positividad-identidad}
+Si $u\in E$ y $\widehat u$ es real, entonces $u(e)\in\R$. Si $\widehat u\ge0$, entonces $u(e)\ge0$.
+\end{lema}
+\begin{proof}
+En el primer caso $\widehat{u^*}=\overline{\widehat u}=\widehat u$. La inyectividad de la segunda proyección da $u=u^*$; al evaluar en $e$, se obtiene $u(e)=\overline{u(e)}$.
+
+En el segundo caso, el operador $A\in C_r^*(G)$ de símbolo $\widehat u$ es positivo: por Gelfand, la función $\sqrt{\widehat u}\in C_0(\widehat G)$ corresponde a un operador $B$ y $A=B^*B$. Para las funciones $h_U$ del lema anterior,
+\[
+ 0\le\ip{Ah_U}{h_U}
+ =\int_G(u*h_U)(x)\overline{h_U(x)}\,d\mu(x)
+ =(u*h_U*h_U^*)(e)=(u*\xi_U)(e).
+\]
+La identidad intermedia se obtiene por inversión en Haar; todas las integrales son absolutamente convergentes porque $h_U$ tiene soporte compacto y $u$ es acotada. Al pasar al límite uniforme $u*\xi_U\to u$, resulta $u(e)\ge0$.
+\end{proof}
+
+\begin{lema}[Regularizar un operador]\label{v4:regularizacion}
+Se cumplen las siguientes propiedades.
+\begin{enumerate}
+\item Si $f\in L^1(G)$ y $\phi\in C_c(G)$, entonces $f*\phi\in C_0(G)$.
+\item Si $A\in C_r^*(G)$ tiene símbolo $a\in C_0(\widehat G)$ y $\phi,\psi\in C_c(G)$, entonces
+\[
+ u=A(\phi*\psi)\in E\cap L^2(G),\qquad
+ \widehat u=a\widehat\phi\widehat\psi.
+\]
+Existe una sucesión $u_n\in D$ que converge a $u$ tanto en $E$ como en $L^2$.
+\end{enumerate}
+\end{lema}
+\begin{proof}
+Para (i), elija $f_n\in C_c$ con $f_n\to f$ en $L^1$. Como
+$\norm{(f-f_n)*\phi}_\infty\le\norm{f-f_n}_1\norm\phi_\infty$,
+la función $f*\phi$ es límite uniforme de funciones continuas de soporte compacto.
+
+Para (ii), tome $f_n\in L^1$ tales que $\lambda(f_n)\to A$ en norma de operadores y ponga $u_n=f_n*\phi*\psi$. Cada $u_n$ pertenece a $L^1\cap C_0$ y a $L^2$. Por el lema~\ref{v4:l2-convolucion-cero},
+\[
+ \norm{u_n-u_m}_\infty
+ \le\norm{(\lambda(f_n)-\lambda(f_m))\phi}_2\norm\psi_2
+ \le\norm{\lambda(f_n)-\lambda(f_m)}\norm\phi_2\norm\psi_2.
+\]
+Además, $\widehat u_n=\widehat f_n\widehat\phi\widehat\psi$ converge uniformemente a $a\widehat\phi\widehat\psi$. Por tanto $(u_n)$ converge en $E$ a un elemento con ese símbolo. Por otro lado,
+$u_n=\lambda(f_n)(\phi*\psi)\to A(\phi*\psi)$ en $L^2$.
+El límite uniforme y el límite en $L^2$ coinciden casi en todas partes: sus integrales contra cualquier $\theta\in C_c$ coinciden por ambas convergencias. Esto prueba todas las afirmaciones. En particular,
+\[
+ \norm{A(\phi*\psi)}_{0,*}
+ \le\max\{\norm\phi_2\norm\psi_2,
+                 \norm{\widehat\phi\widehat\psi}_\infty\}\norm A.
+\]
+\end{proof}
+
+\begin{proposicion}\label{v4:dirac-tres-espacios}
+Sea $(\xi_\alpha)$ una red de Dirac no negativa, de integral uno, en $C_c(G)$; esto significa que su masa fuera de cada vecindad de $e$ tiende a cero. Entonces
+\[
+ u*\xi_\alpha\to u\text{ en }C_0(G),\qquad
+ A\lambda(\xi_\alpha)\to A\text{ en }C_r^*(G),\qquad
+ v*\xi_\alpha\to v\text{ en }E,
+\]
+para $u\in C_0(G)$, $A\in C_r^*(G)$ y $v\in E$, respectivamente. Además, $\widehat\xi_\alpha\to1$ uniformemente sobre cada compacto de $\widehat G$.
+\end{proposicion}
+\begin{proof}
+Para $u\in C_0$, la continuidad de traslaciones en norma uniforme da
+\[
+ \norm{u*\xi_\alpha-u}_\infty
+ \le\int_G\xi_\alpha(y)\norm{L_yu-u}_\infty\,d\mu(y)\longrightarrow0.
+\]
+Se divide la integral entre una vecindad donde el error es menor que $\eps$ y su complemento, donde es a lo sumo $2\norm u_\infty$ y la masa tiende a cero.
+
+Si $A=\lambda(f)$, la convergencia de identidades aproximadas en $L^1$ da
+$\norm{A\lambda(\xi_\alpha)-A}\le\norm{f*\xi_\alpha-f}_1\to0$.
+Para $A$ general se aproxima por $\lambda(f)$ y se usa $\norm{\lambda(\xi_\alpha)}\le1$; el error adicional es a lo sumo $2\norm{A-\lambda(f)}$. Para $v\in E$, aproximaciones por $D$ muestran que $v*\xi_\alpha\in E$, con símbolo $\widehat v\widehat\xi_\alpha$. Las dos convergencias ya probadas, una para la coordenada función y otra para el operador de símbolo $\widehat v$, implican convergencia en la norma máxima de $E$.
+
+Finalmente, si $K\subset\widehat G$ es compacto, el lema~\ref{v4:dual-equicontinuidad} da una vecindad $U$ de $e$ tal que $|\chi(y)-1|<\eps$ para $\chi\in K$, $y\in U$. Por tanto
+\[
+ \sup_{\chi\in K}|\widehat\xi_\alpha(\chi)-1|
+ \le\eps+2\int_{G\setminus U}\xi_\alpha\,d\mu\longrightarrow\text{a lo sumo }\eps.
+\]
+Como $\eps$ es arbitrario, se obtiene la convergencia uniforme en $K$. No se está afirmando convergencia uniforme en todo el dual.
+\end{proof}
+
+\section{Inversas exactas de funciones de soporte compacto}
+El siguiente paso fortalece el último teorema de la lectura 28. El soporte de una función en $G$ y el de una función en $\widehat G$ viven en espacios distintos; las inclusiones de soporte deben indicar cuál de las dos funciones se considera.
+
+\begin{teorema}\label{v4:inversa-compacta}
+Para toda $\eta\in C_c(\widehat G)$ existe un único $u\in E$ con $\widehat u=\eta$. Este elemento pertenece a $L^2(G)$ y admite aproximaciones por elementos de $D$ simultáneamente en $E$ y en $L^2$.
+\end{teorema}
+\begin{proof}
+Si $\eta=0$, tome $u=0$. En otro caso, $K=\supp\eta$ es compacto. La equicontinuidad de $K$ permite elegir una función $h\in C_c(G)$, no negativa, simétrica, de integral uno y apoyada suficientemente cerca de $e$, para que
+\[
+ |\widehat h(\chi)-1|<\tfrac12\qquad(\chi\in K).
+\]
+En particular, $k=(\widehat h)^2$ no se anula en $K$. Defina
+\[
+ a(\chi)=\begin{cases}
+ \eta(\chi)/k(\chi),&k(\chi)\ne0,\\
+ 0,&k(\chi)=0.
+ \end{cases}
+\]
+Esta función es continua: en el abierto donde $k\ne0$ es un cociente continuo; un punto donde $k=0$ queda fuera del cerrado $K$ y tiene una vecindad donde $\eta=0$, por lo que $a$ es idénticamente cero allí. Además $\supp a\subset K$, de modo que $a\in C_c(\widehat G)$.
+
+Por Gelfand existe $A\in C_r^*(G)$ de símbolo $a$. El lema~\ref{v4:regularizacion}, con $\phi=\psi=h$, da
+$u=A(h*h)\in E\cap L^2$ y
+$\widehat u=a(\widehat h)^2=\eta$, junto con la aproximación simultánea. La unicidad se sigue de la inyectividad de la segunda proyección de $E$.
+\end{proof}
+
+\begin{corolario}[El enunciado de aproximación, corregido]\label{v4:aproximacion-lectura28}
+Si $\eta\in C_c(\widehat G)$ es real y $\eps>0$, existen $f,g\in E\cap L^2$ tales que
+\[
+ \widehat f,\widehat g\in C_c(\widehat G),\qquad
+ \widehat f\le\eta\le\widehat g,\qquad
+ \supp\widehat f,\supp\widehat g\subset\supp\eta,\qquad
+ \norm{f-g}_{0,*}<\eps.
+\]
+Toda $\eta\in C_c(\widehat G)$ es, además, límite uniforme de una sucesión de transformadas de elementos de $E$ cuyos soportes espectrales están contenidos en $\supp\eta$.
+\end{corolario}
+\begin{proof}
+Tome la inversa exacta $u$ del teorema anterior y ponga $f=g=u$. Todas las desigualdades son entonces igualdades, y la norma de la diferencia es cero. Para la última afirmación basta la sucesión constante $\widehat u=\eta$.
+\end{proof}
+
+La prueba original intenta multiplicar una desigualdad por $\eta$ sin suponer $\eta\ge0$; si $\eta$ es negativa, el orden se invierte. También escribe soportes de $f,g$ donde deben figurar soportes de $\widehat f,\widehat g$. La división por un factor no nulo en $K$ resuelve ambos problemas y demuestra un resultado más fuerte. No impone soporte compacto a la inversa $u$: esa conclusión sería falsa, por ejemplo, para muchas funciones de soporte compacto en el dual de $\R$.
+
+\section{Construcción de la medida de Haar dual}
+\index{medida!de Haar dual}
+La existencia abstracta de Haar ya asegura una medida en $\widehat G$, pero todavía no fija su escala respecto de $\mu$. La evaluación de la inversa en $e$ seleccionará exactamente la escala necesaria para Plancherel.
+
+\begin{teorema}\label{v4:haar-dual}
+Existe una medida de Haar $\nu$ en $\widehat G$ tal que, para cada $\eta\in C_c(\widehat G)$, su inversa $u$ del teorema~\ref{v4:inversa-compacta} satisface
+\[
+ u(x)=\int_{\widehat G}\eta(\chi)\overline{\chi(x)}\,d\nu(\chi),
+ \qquad
+ \norm u_2^2=\int_{\widehat G}|\eta(\chi)|^2\,d\nu(\chi).
+\]
+Esta medida queda determinada por la primera identidad en $x=e$.
+\end{teorema}
+\begin{proof}
+Para $\eta\in C_c(\widehat G)$, sea $u$ su inversa única y defina $J(\eta)=u(e)$. La unicidad hace a $J$ lineal, y el lema~\ref{v4:positividad-identidad} lo hace positivo: $\eta\ge0$ implica $J(\eta)\ge0$. El teorema de Riesz--Markov proporciona una medida regular de Borel $\nu$, finita en compactos, con
+\[
+ J(\eta)=\int_{\widehat G}\eta\,d\nu.
+\]
+Para hacer explícita la acotación local exigida en ese teorema, si $K$ es compacto elija $\rho\in C_c$ no negativa con $\rho\ge1$ en $K$. Para $\supp\eta\subset K$, la positividad implica
+$|J(\eta)|\le\norm\eta_\infty J(\rho)$: se multiplica $\eta$ por una fase que vuelva real no negativo su valor bajo $J$ y se compara su parte real con $\norm\eta_\infty\rho$. Así no se está suponiendo que $J$ sea acotado para la norma uniforme en todo $C_c$.
+
+Probemos una identidad que, además, asegura que $\nu$ no es cero. Elija $u_n\in D$ que converjan a $u$ en $E$ y en $L^2$, como permite el teorema~\ref{v4:inversa-compacta}. Las funciones
+$q_n=u_n*u_n^*$ pertenecen a $D$: son integrables por Young y pertenecen a $C_0$ por el lema de convolución $L^2$. Ese mismo lema da
+\[
+ q_n\longrightarrow q=u*u^*\quad\hbox{uniformemente},
+ \qquad
+ \widehat q_n=|\widehat u_n|^2\longrightarrow|\eta|^2
+ \quad\hbox{uniformemente}.
+\]
+Por tanto $q\in E$ y $\widehat q=|\eta|^2$. Al evaluar en $e$,
+\[
+ J(|\eta|^2)=q(e)=\int_G|u(y)|^2\,d\mu(y)=\norm u_2^2.
+\]
+Si $\eta\ne0$, entonces $u\ne0$ por la inyectividad del grafo, y su continuidad y el soporte pleno de Haar implican $\norm u_2>0$. Existen funciones no nulas en $C_c(\widehat G)$; en consecuencia $\nu$ no es la medida cero.
+
+Para $\alpha\in\widehat G$, la función $L_\alpha\eta(\chi)=\eta(\alpha^{-1}\chi)$ es la transformada, en el sentido de $E$, de $\overline\alpha\,u$. Por ello
+$J(L_\alpha\eta)=(\overline\alpha\,u)(e)=u(e)=J(\eta)$.
+La unicidad en Riesz--Markov implica que $\nu$ es invariante bajo traslaciones, es decir, es una medida de Haar.
+
+Finalmente, $L_{x^{-1}}u$ tiene transformada $\chi\mapsto\overline{\chi(x)}\eta(\chi)$, todavía de soporte compacto. Aplicar la definición de $J$ da
+\[
+ u(x)=(L_{x^{-1}}u)(e)
+ =J\bigl(\overline{\chi(x)}\eta(\chi)\bigr)
+ =\int_{\widehat G}\eta(\chi)\overline{\chi(x)}\,d\nu(\chi).
+\]
+La identidad de normas ya se demostró. La unicidad de $\nu$ se sigue de sus integrales contra todas las funciones de $C_c$.
+\end{proof}
+
+\section{Plancherel sin presuponer dualidad}
+\index{teorema!de Plancherel, en grupos LCA}
+Escribimos inicialmente
+\[
+ U\eta(x)=\int_{\widehat G}\eta(\chi)\overline{\chi(x)}\,d\nu(\chi)
+ \qquad(\eta\in C_c(\widehat G)).
+\]
+El teorema anterior dice que $U$ es una isometría de $C_c(\widehat G)$, con su norma $L^2$, en $L^2(G)$. Queda comprobar que no falta una parte del espacio de llegada.
+
+\begin{teorema}[Plancherel e inversión]\label{v4:plancherel-lca}
+La aplicación $U$ se extiende de modo único a un operador unitario
+\[
+ U:L^2(\widehat G,\nu)\longrightarrow L^2(G,\mu).
+\]
+Su inversa $\mathcal F$ coincide con la transformada integral de Fourier en $L^1(G)\cap L^2(G)$, casi en todas partes. En particular,
+\[
+ \norm{\widehat f}_{L^2(\nu)}=\norm f_{L^2(\mu)}
+ \qquad(f\in L^1\cap L^2).
+\]
+Si además $\widehat f\in L^1(\widehat G,\nu)$, entonces
+\[
+ f(x)=\int_{\widehat G}\widehat f(\chi)\overline{\chi(x)}\,d\nu(\chi)
+\]
+para casi todo $x$, y para todo $x$ si se toma el representante continuo del miembro derecho.
+\end{teorema}
+\begin{proof}
+Por densidad de $C_c$ en $L^2(\widehat G)$, la isometría se extiende a todo ese espacio. Su imagen es cerrada. Mostraremos que contiene un subconjunto denso de $L^2(G)$.
+
+Las funciones $z=\phi*\psi$, con $\phi,\psi\in C_c(G)$, tienen envolvente lineal densa en $L^2(G)$. En efecto, $C_c$ es denso en $L^2$, y para $\phi\in C_c$ las convoluciones $\phi*\xi_U$ aproximan $\phi$ en $L^2$. Fijemos una de esas $z$. La identidad aproximada da $\lambda(\xi_U)z\to z$ en $L^2$. Fijado un índice $U$, podemos aproximar $\lambda(\xi_U)$ en norma de operadores por operadores $A$ cuyo símbolo $a$ pertenece a $C_c(\widehat G)$: esto se sigue de $C_r^*(G)\simeq C_0(\widehat G)$ y de la densidad uniforme de $C_c$ en $C_0$. Por regularización,
+\[
+ Az\in E\cap L^2(G),\qquad
+ \widehat{Az}=a\widehat\phi\widehat\psi\in C_c(\widehat G).
+\]
+La unicidad de la inversa compacta implica que $Az=U(a\widehat\phi\widehat\psi)$. Además,
+$\norm{Az-\lambda(\xi_U)z}_2\le\norm{A-\lambda(\xi_U)}\norm z_2$.
+Escogiendo primero $U$ y luego $A$, aproximamos $z$ arbitrariamente por elementos de la imagen de $U$. La imagen, al ser cerrada y densa, es todo $L^2(G)$.
+
+Sea ahora $f\in L^1\cap L^2$ y $\eta\in C_c(\widehat G)$. Por la fórmula integral de $U$ y Fubini,
+\[
+ \ip f{U\eta}_{L^2(G)}
+ =\int_{\widehat G}\widehat f(\chi)\overline{\eta(\chi)}\,d\nu(\chi).
+\]
+La integrabilidad absoluta se justifica por $\norm f_1\norm\eta_1<\infty$. Como $U$ es unitario, el miembro izquierdo es $\ip{\mathcal Ff}\eta$. Así las funciones localmente integrables $\mathcal Ff$ y $\widehat f$ tienen las mismas integrales contra $C_c$. La primera pertenece a $L^2$ y la segunda a $C_0$, por Riemann--Lebesgue; ambas están concentradas, salvo conjuntos nulos, en uniones numerables de compactos. La reducción explicada en la proposición~\ref{v4:grafo-fourier-inyectivo} convierte la igualdad local en igualdad casi en todas partes en todo el dual. Esto demuestra la compatibilidad y Plancherel.
+
+Para justificar la fórmula final, observemos primero que si $k\in L^1(\widehat G)\cap L^2(\widehat G)$, existen $k_n\in C_c(\widehat G)$ con convergencia simultánea en $L^1$ y $L^2$. Se trunca primero la función y su soporte usando integrabilidad; en conjuntos de medida finita, la regularidad de Haar aproxima las funciones simples por funciones continuas de soporte compacto en ambas normas. Entonces $Uk_n\to Uk$ en $L^2$, mientras que las integrales inversas convergen uniformemente porque su diferencia está acotada por $\norm{k_n-k}_1$. Ambos límites coinciden casi en todas partes. Aplique esto a $k=\widehat f$. La integral inversa es continua, pues es límite uniforme de las funciones $Uk_n\in C_0(G)$.
+\end{proof}
+
+\begin{observacion}[Normalizaciones]
+Si $\mu$ se sustituye por $c\mu$, la medida dual compatible es $c^{-1}\nu$. En efecto, la nueva transformada es $c\widehat f$, y
+\[
+ \int_{\widehat G}|c\widehat f|^2\,d(c^{-1}\nu)
+ =c\int_{\widehat G}|\widehat f|^2\,d\nu
+ =\int_G|f|^2\,d(c\mu).
+\]
+La inversión también conserva exactamente sus factores. En $\R^n$, si $d\mu=dx$ y $\chi_\xi(x)=e^{i\xi\cdot x}$, se tiene $d\nu(\xi)=(2\pi)^{-n}d\xi$, por la fórmula de Fourier euclidiana ya probada. La convención unitaria de los primeros capítulos distribuye el factor como $(2\pi)^{-n/2}$ en cada transformación; aquí la transformada directa no tiene factor y la escala se coloca en la medida dual.
+\end{observacion}
+
+\section{Una demostración de la dualidad de Pontryagin}
+\index{dualidad!de Pontryagin}
+La aplicación canónica al doble dual es
+\[
+ \iota_G:G\longrightarrow\widehat{\widehat G},\qquad
+ \iota_G(x)(\chi)=\chi(x).
+\]
+Cada $\iota_G(x)$ es un carácter continuo del dual, porque evaluar en el compacto $\{x\}$ es continuo para la topología compacto-abierta. Es un homomorfismo en $x$ y es inyectiva por la separación de puntos. La dificultad consiste en probar que todo carácter del dual es una evaluación y que se recupera exactamente la topología de $G$.
+
+\begin{lema}\label{v4:regular-dual-multiplicadores}
+Para $k\in L^1(\widehat G,\nu)$ defina
+\[
+ \check k(x)=\int_{\widehat G}k(\chi)\overline{\chi(x)}\,d\nu(\chi).
+\]
+Entonces $\check k\in C_0(G)$ y
+\[
+ U\lambda_{\widehat G}(k)U^{-1}=M_{\check k},
+ \qquad (M_bu)(x)=b(x)u(x).
+\]
+\end{lema}
+\begin{proof}
+Para $k\in C_c(\widehat G)$ ya sabemos que $\check k=Uk\in C_0(G)$. Aproximar un $k\in L^1$ por funciones de $C_c$ y usar
+$\norm{\check k-\check l}_\infty\le\norm{k-l}_1$
+prueba la primera afirmación.
+
+Si $k,\eta\in C_c(\widehat G)$, Fubini y el cambio $\chi=\alpha\beta$ dan
+\begin{align*}
+ U(k*\eta)(x)
+ &=\int_{\widehat G}\int_{\widehat G}
+       k(\alpha)\eta(\alpha^{-1}\chi)\overline{\chi(x)}
+       \,d\nu(\alpha)\,d\nu(\chi)\\
+ &=\left(\int_{\widehat G}k(\alpha)\overline{\alpha(x)}\,d\nu(\alpha)\right)
+   \left(\int_{\widehat G}\eta(\beta)\overline{\beta(x)}\,d\nu(\beta)\right)\\
+ &=\check k(x)U\eta(x).
+\end{align*}
+La integrabilidad absoluta está acotada por $\norm k_1\norm\eta_1$. La densidad de $C_c$ en $L^2(\widehat G)$ extiende la identidad a toda $\eta\in L^2$ para $k\in C_c$. Luego la aproximación en $L^1$ de $k$, junto con las cotas de la representación regular y de $\check k$, extiende la identidad a todo $k\in L^1$.
+\end{proof}
+
+\begin{lema}\label{v4:algebra-inversas-densa}
+La clausura uniforme de $\{\check k:k\in L^1(\widehat G)\}$ es $C_0(G)$. Además, $b\mapsto M_b$ es un isomorfismo isométrico de álgebras $C^*$ de $C_0(G)$ sobre su imagen en $\mathcal B(L^2(G))$.
+\end{lema}
+\begin{proof}
+Para la última afirmación, las identidades de producto y adjunto son puntuales, y $\norm{M_b}\le\norm b_\infty$. Si $0<t<\norm b_\infty$, existe un abierto no vacío donde $|b|>t$. Contiene un conjunto medible $K$ con $0<\mu(K)<\infty$: se toma una vecindad relativamente compacta de un punto dentro de ese abierto, cuya medida es positiva. La función $u=1_K/\sqrt{\mu(K)}$ tiene norma uno y $\norm{M_bu}_2\ge t$. Al hacer $t\uparrow\norm b_\infty$ obtenemos la igualdad de normas. El caso $b=0$ es inmediato.
+
+Sea $B$ la clausura uniforme de las inversas. Es una subálgebra de $C_0(G)$ estable bajo conjugación, porque
+$\check{k*l}=\check k\,\check l$ y $\check{k^*}=\overline{\check k}$, identidades que se verifican por Fubini e inversión de Haar. No se anula en ningún punto: para $x\in G$ tome $h\in C_c(\widehat G)$, $h\ge0$, $\int h=1$, y $k(\chi)=\chi(x)h(\chi)$. Entonces $\check k(x)=1$.
+
+Además $B$ separa puntos. Si $x\ne y$, existe $\chi_0$ con $\chi_0(x)\ne\chi_0(y)$ por el corolario~\ref{v4:caracteres-separan}. La función $d(\chi)=\overline{\chi(x)}-\overline{\chi(y)}$ es continua y no nula cerca de $\chi_0$. Elija $h\ge0$ de soporte compacto en esa vecindad, no nula, y ponga $k=\overline d\,h$. Entonces
+\[
+ \check k(x)-\check k(y)=\int_{\widehat G}|d(\chi)|^2h(\chi)\,d\nu(\chi)>0.
+\]
+La versión localmente compacta de Stone--Weierstrass da $B=C_0(G)$. Para ver de dónde viene esa versión, si $G$ no es compacto se añaden las constantes a $B$ en la compactificación por un punto $G\cup\{\infty\}$. La condición de no anularse separa cada punto de $G$ del punto $\infty$; las otras hipótesis separan los puntos de $G$. Stone--Weierstrass compacto da densidad en $C(G\cup\{\infty\})$ y, al tomar las funciones que valen cero en $\infty$, densidad en $C_0(G)$. Si $G$ es compacto, la misma prueba puede hacerse añadiendo un punto aislado; alternativamente, la versión compacta sin unidad y con la condición de no anulación se deduce de este argumento.
+\end{proof}
+
+\begin{teorema}[Dualidad de Pontryagin]\label{v4:pontryagin}
+Para todo grupo LCA $G$, la aplicación canónica $\iota_G:G\to\widehat{\widehat G}$ es un isomorfismo de grupos topológicos.
+\end{teorema}
+\begin{proof}
+Los dos lemas anteriores identifican, mediante conjugación por el unitario $U$, el álgebra $C_r^*(\widehat G)$ con el álgebra de todos los multiplicadores $M_b$, $b\in C_0(G)$. En efecto, el álgebra regular es la clausura en norma de operadores de los $\lambda_{\widehat G}(k)$; después de conjugar, esa clausura es la clausura de los $M_{\check k}$. Como la norma de multiplicación coincide con la norma uniforme, ésta es exactamente $\{M_b:b\in C_0(G)\}$. Por tanto
+\[
+ C_r^*(\widehat G)\simeq C_0(G)
+\]
+es un isomorfismo isométrico de álgebras $C^*$.
+
+Recordemos con detalle por qué $\Delta(C_0(G))$ es homeomórfico a $G$. En un espacio compacto $X$, todo carácter $\rho$ de $C(X)$ es una evaluación. Si no existiera un cero común de $\ker\rho$, para cada punto habría una función del núcleo no nula allí. Un número finito $f_1,\ldots,f_m$ bastaría para cubrir $X$ por esas regiones de no anulación. Entonces $s=\sum|f_j|^2$ pertenecería al ideal $\ker\rho$ y sería estrictamente positiva. Su inversa $1/s$ sería continua; así $1=s(1/s)$ pertenecería al núcleo, contradicción. Hay por tanto un punto $x$ donde se anulan todas las funciones del núcleo. Como $f-\rho(f)1$ pertenece al núcleo, $\rho(f)=f(x)$ para todo $f$. La separación de puntos da unicidad. La aplicación $x\mapsto\operatorname{ev}_x$ es una biyección continua de compacto a Hausdorff, luego es un homeomorfismo.
+
+Para $G$ no compacto, la unitalización de $C_0(G)$ es $C(G\cup\{\infty\})$; el carácter de evaluación en $\infty$ es el único cuya restricción a $C_0(G)$ es cero. Al quitarlo se obtiene el homeomorfismo $G\simeq\Delta(C_0(G))$. Si $G$ es compacto se aplica directamente el párrafo anterior.
+
+Por otro lado, el teorema~\ref{v4:cstar-fourier}, aplicado al grupo LCA $\widehat G$, identifica $\Delta(C_r^*(\widehat G))$ con $\widehat{\widehat G}$. Bajo estas identificaciones, evaluar el multiplicador $M_{\check k}$ en $x$ produce
+\[
+ \check k(x)=\int_{\widehat G}k(\chi)\overline{\chi(x)}\,d\nu(\chi)
+ =\widehat k\bigl(\iota_G(x)^{-1}\bigr).
+\]
+La densidad de los operadores $\lambda_{\widehat G}(k)$ determina el carácter completo. En consecuencia, el homeomorfismo entre $G$ y $\widehat{\widehat G}$ que acabamos de construir es $x\mapsto\iota_G(x)^{-1}$. La inversión es un homeomorfismo del grupo doble dual, de modo que $\iota_G$ también es un homeomorfismo. Ya sabíamos que es un homomorfismo; queda demostrada la dualidad.
+\end{proof}
+
+El orden de las dependencias importa: primero probamos que los caracteres separan puntos usando el álgebra regular; después construimos Haar dual y Plancherel; sólo entonces usamos el álgebra regular del dual para obtener la sobreyectividad de $\iota_G$. En ningún paso se asumió previamente que un carácter del dual fuera una evaluación.
+
+\section{Aniquiladores, cocientes y extensión de caracteres}
+\index{aniquilador!de un subgrupo}\index{caracter@carácter!extension@extensión}
+Sea $H$ un subgrupo cerrado de $G$. El grupo $H$ y el cociente $G/H$, con sus topologías naturales, son LCA. Definimos su \emph{aniquilador} por
+\[
+ H^\perp=\{\chi\in\widehat G:\chi(h)=1\text{ para todo }h\in H\}.
+\]
+Es un subgrupo cerrado del dual, porque es intersección de los conjuntos cerrados definidos por las evaluaciones $\chi(h)=1$.
+
+\begin{lema}[El dual de un cociente]\label{v4:dual-cociente-encaje}
+Si $q:G\to G/H$ es el cociente, la aplicación
+\[
+ \widehat q:\widehat{G/H}\longrightarrow\widehat G,
+ \qquad\gamma\longmapsto\gamma\circ q,
+\]
+es un isomorfismo de grupos topológicos sobre $H^\perp$.
+\end{lema}
+\begin{proof}
+El carácter $\gamma\circ q$ es trivial en $H$. Recíprocamente, si $\chi\in H^\perp$, la fórmula $\gamma(xH)=\chi(x)$ está bien definida y es un homomorfismo. Es continua por la definición de topología cociente, porque $\gamma\circ q=\chi$ es continua. Esto prueba la biyección algebraica. Si $K\subset G$ es compacto, $q(K)$ es compacto; por tanto la convergencia uniforme en compactos de $G/H$ implica la convergencia uniforme de los caracteres compuestos en $K$, lo cual prueba continuidad de $\widehat q$.
+
+Para la inversa necesitamos levantar compactos. Sea $C\subset G/H$ compacto y elija una vecindad relativamente compacta $V$ de $e$ en $G$. Como $q$ es abierta, los conjuntos $q(xV)$ forman una cubierta abierta de $C$. Un número finito $q(x_1V),\ldots,q(x_mV)$ basta. El conjunto
+\[
+ L=\bigl(x_1\overline V\cup\cdots\cup x_m\overline V\bigr)\cap q^{-1}(C)
+\]
+es compacto y satisface $q(L)=C$: todo punto de $C$ tiene un representante en alguno de los $x_jV$, y luego ese representante está en $L$. En consecuencia,
+\[
+ \sup_{z\in C}|\gamma_1(z)-\gamma_2(z)|
+ =\sup_{x\in L}|(\gamma_1\circ q)(x)-(\gamma_2\circ q)(x)|.
+\]
+La convergencia uniforme en compactos dentro de $H^\perp$ implica la correspondiente convergencia en $\widehat{G/H}$. Esto prueba continuidad de la inversa, sin suponer compacidad de la preimagen completa $q^{-1}(C)$.
+\end{proof}
+
+\begin{proposicion}[Doble aniquilador]\label{v4:doble-aniquilador}
+Bajo la identificación canónica de $G$ con su doble dual,
+\[
+ (H^\perp)^\perp=H.
+\]
+\end{proposicion}
+\begin{proof}
+Si $h\in H$, cada $\chi\in H^\perp$ satisface $\chi(h)=1$, de modo que $h$ pertenece al doble aniquilador. Si $x\notin H$, entonces $q(x)\ne H$ en $G/H$. Los caracteres de este grupo separan puntos, por el corolario~\ref{v4:caracteres-separan}. Existe $\gamma\in\widehat{G/H}$ con $\gamma(q(x))\ne1$. Su composición $\chi=\gamma\circ q$ pertenece a $H^\perp$ pero $\chi(x)\ne1$. Así $x$ no pertenece al doble aniquilador.
+\end{proof}
+
+\begin{teorema}[Extensión y exactitud topológica]\label{v4:dual-exactitud}
+La restricción $r:\widehat G\to\widehat H$, $r(\chi)=\chi|_H$, es sobreyectiva y abierta, y su núcleo es $H^\perp$. Por tanto
+\[
+ \widehat G/H^\perp\simeq\widehat H
+\]
+como grupos topológicos. En particular, todo carácter continuo de un subgrupo cerrado se extiende a un carácter continuo de $G$.
+\end{teorema}
+\begin{proof}
+La restricción es continua, pues un compacto de $H$ también es compacto en $G$, y su núcleo es $H^\perp$ por definición. Sea $Q=\widehat G/H^\perp$ y sea $q_2:\widehat G\to Q$ la aplicación cociente. La restricción induce un homomorfismo continuo e inyectivo
+\[
+ j:Q\longrightarrow\widehat H,
+ \qquad j(\chi H^\perp)=\chi|_H.
+\]
+Todavía no suponemos que $j$ sea sobreyectivo. Consideremos su dual
+$\widehat j:\widehat{\widehat H}\to\widehat Q$, dado por composición. Es continuo porque la imagen de un compacto por $j$ es compacta.
+
+Por el lema~\ref{v4:dual-cociente-encaje}, la aplicación $\widehat{q_2}:\widehat Q\to\widehat{\widehat G}$ identifica $\widehat Q$ homeomórficamente con $(H^\perp)^\perp$. Por la proposición anterior y Pontryagin, ese subgrupo es $\iota_G(H)$ con la topología heredada. Para $h\in H$ y $\chi\in\widehat G$, un cálculo de evaluaciones da
+\[
+ \bigl(\widehat{q_2}\,\widehat j(\iota_H(h))\bigr)(\chi)
+ =\iota_H(h)\bigl(j(q_2(\chi))\bigr)
+ =\chi(h)=\iota_G(h)(\chi).
+\]
+Pontryagin identifica $H$ homeomórficamente con $\widehat{\widehat H}$ y también con $\iota_G(H)$ como subespacio del doble dual de $G$. La identidad anterior, junto con el encaje de $\widehat{q_2}$, demuestra que $\widehat j$ es un isomorfismo de grupos topológicos.
+
+Falta pasar de esa afirmación a $j$, sin inferirla sólo de una biyección de conjuntos. Para cualquier homomorfismo continuo $t:X\to Y$ de grupos LCA se cumple la identidad de naturalidad
+\[
+ \iota_Y\circ t=\widehat{\widehat t}\circ\iota_X.
+\]
+En efecto, ambos miembros evaluados en $\gamma\in\widehat Y$ valen $\gamma(t(x))$. Si $\widehat t$ es un isomorfismo topológico, su dual $\widehat{\widehat t}$ también lo es: el dual de la inversa es la inversa, y ambas aplicaciones son continuas por imágenes compactas. Pontryagin y la identidad de naturalidad implican entonces que $t$ es un isomorfismo topológico. Aplique este argumento a $t=j$. Resulta que $j$ es sobreyectivo y abierto. Finalmente $r=j\circ q_2$ es sobreyectivo y abierto porque lo son sus dos factores. Esto completa la demostración y la dependencia pendiente del ejercicio~\ref{ej:v4-l25-2}.
+\end{proof}
+
+\section{Ejercicios de inversión, soporte y aniquiladores}
+Las lecturas 27 y 28 proponen varias demostraciones dentro de la teoría; todas quedaron desarrolladas en las secciones anteriores. Los cinco ejercicios siguientes son ampliaciones de esta edición y no se atribuyen a los apuntes originales.
+
+\begin{ejercicio}[Ampliación: Fourier en un grupo finito]\label{ej:v4-ampl-16-1}
+Sea $G$ un grupo abeliano finito de orden $N$, con medida de contar. Determine la medida dual de Plancherel y demuestre explícitamente las fórmulas de inversión y Parseval.
+\end{ejercicio}
+\begin{solucion}
+Si $\chi$ es un carácter no trivial, existe $a$ con $\chi(a)\ne1$. Por reordenamiento de la suma,
+\[
+ \sum_{x\in G}\chi(x)=\sum_{x\in G}\chi(ax)
+ =\chi(a)\sum_{x\in G}\chi(x),
+\]
+y la suma es cero. Para el carácter trivial la suma es $N$. Por el ejercicio~\ref{ej:v4-l25-1}, $\widehat G$ tiene $N$ elementos; aplicando la misma identidad en el dual y la separación de puntos, resulta
+\[
+ \sum_{\chi\in\widehat G}\chi(y)\overline{\chi(x)}
+ =\begin{cases}N,&x=y,\\0,&x\ne y.\end{cases}
+\]
+Como $\widehat f(\chi)=\sum_y f(y)\chi(y)$, intercambiar dos sumas finitas da
+\[
+ \frac1N\sum_{\chi\in\widehat G}\widehat f(\chi)\overline{\chi(x)}
+ =\frac1N\sum_y f(y)\sum_\chi\chi(y)\overline{\chi(x)}=f(x).
+\]
+La medida dual es, por tanto, $N^{-1}$ veces la medida de contar. Asimismo,
+\[
+ \frac1N\sum_\chi|\widehat f(\chi)|^2
+ =\frac1N\sum_{x,y}f(x)\overline{f(y)}
+                   \sum_\chi\chi(x)\overline{\chi(y)}
+ =\sum_x|f(x)|^2.
+\]
+Así la normalización inversa y Plancherel se comprueban sin límites ni integrales impropias.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: el aniquilador de una retícula]\label{ej:v4-ampl-16-2}
+Sea $a>0$ y $H=a\Z\subset\R$. Identifique $H^\perp$ usando los caracteres $\chi_\xi(x)=e^{i\xi x}$. Deduzca el dual de $\R/a\Z$ y describa la aplicación de restricción $\widehat\R\to\widehat{a\Z}$, incluyendo su núcleo y su topología.
+\end{ejercicio}
+\begin{solucion}
+Un carácter $\chi_\xi$ es trivial en $a\Z$ si y sólo si $e^{i\xi a}=1$, es decir, si y sólo si $\xi a\in2\pi\Z$. Luego
+\[
+ H^\perp=(2\pi/a)\Z.
+\]
+El lema~\ref{v4:dual-cociente-encaje} identifica el dual de $\R/a\Z$ con esta retícula, que es discreta en $\R$. Sus caracteres son $x+a\Z\mapsto e^{2\pi i n x/a}$.
+
+El grupo $a\Z$ es discreto y está generado por $a$, así que un carácter suyo queda determinado por el valor $z\in\T$ en $a$, y toma el valor $z^n$ en $na$. La restricción, bajo las identificaciones $\widehat\R\simeq\R$ y $\widehat{a\Z}\simeq\T$, es $\xi\mapsto e^{ia\xi}$. Es sobreyectiva, su núcleo es $(2\pi/a)\Z$ y es abierta: la imagen de un intervalo suficientemente corto es un arco abierto, y cualquier abierto es unión de tales intervalos. Por tanto $\R/((2\pi/a)\Z)\simeq\T$ topológicamente, en acuerdo con el teorema de exactitud.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: círculo, enteros y signos]\label{ej:v4-ampl-16-3}
+En $G=\T$ use Haar normalizada $dt/(2\pi)$, con $z=e^{it}$, y caracteres $\chi_n(z)=z^n$. Determine la medida dual en $\Z$ y escriba la inversión de un polinomio trigonométrico. Explique por qué los exponentes en la inversión llevan signo negativo con nuestra convención.
+\end{ejercicio}
+\begin{solucion}
+Para $f(z)=\sum_{m=-M}^M c_mz^m$,
+\[
+ \widehat f(n)=\frac1{2\pi}\int_0^{2\pi}
+              \sum_{m=-M}^M c_me^{i(m+n)t}\,dt=c_{-n},
+\]
+con $c_m=0$ fuera del rango. Por tanto
+$f(z)=\sum_{n\in\Z}\widehat f(n)z^{-n}$, suma finita en este caso. La ortogonalidad de $z^m$ da
+\[
+ \int_\T|f|^2\,d\mu=\sum_m|c_m|^2
+ =\sum_n|\widehat f(n)|^2.
+\]
+En consecuencia la medida dual es la medida de contar. También puede fijarse su escala usando la función constante $1$: su transformada vale uno en $n=0$ y cero en los demás enteros, y ambas normas cuadradas deben valer uno. La invariancia de Haar en el grupo discreto obliga a que todos los puntos tengan esa misma masa. El signo negativo en la inversión es la conjugación del carácter; cambiar el signo de la transformada directa cambiaría el de la inversa.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: positividad espectral y valores negativos]\label{ej:v4-ampl-16-4}
+Muestre con un ejemplo que $\widehat f\ge0$ no implica $f\ge0$ punto por punto. Verifique que el ejemplo sí satisface $f(e)\ge0$ y explique por qué no contradice el lema~\ref{v4:positividad-identidad}.
+\end{ejercicio}
+\begin{solucion}
+Tome $G=\Z$ con medida de contar y
+\[
+ f=2\,1_{\{0\}}-1_{\{1\}}-1_{\{-1\}}.
+\]
+Es una función de soporte finito y, por tanto, pertenece a $L^1(\Z)\cap C_0(\Z)\subset E$. Si identificamos el dual con $\T$ mediante $\chi_z(n)=z^n$, entonces
+\[
+ \widehat f(z)=2-z-z^{-1}=2-2\operatorname{Re}z=|1-z|^2\ge0.
+\]
+Sin embargo, $f(1)=f(-1)=-1$. En la identidad del grupo, $f(0)=2\ge0$, exactamente lo que afirma el lema. La positividad espectral significa que el operador de convolución $\lambda(f)$ es positivo, es decir, $\ip{\lambda(f)u}{u}\ge0$ para todo $u\in\ell^2(\Z)$; no significa que sus coeficientes sean todos no negativos. De hecho, si $S=L_1$, entonces $\lambda(f)=2I-S-S^*=(I-S)^*(I-S)$, lo que verifica la positividad directamente.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: dos soportes que no se confunden]\label{ej:v4-ampl-16-5}
+En $G=\R$ con medida de Lebesgue, sea $\eta(\xi)=\max\{1-|\xi|,0\}$. Calcule su inversa para la medida dual $(2\pi)^{-1}d\xi$. Pruebe que esa inversa pertenece a $L^1\cap L^2\cap C_0$ y que su soporte no es compacto, aunque $\supp\eta=[-1,1]$.
+\end{ejercicio}
+\begin{solucion}
+La simetría elimina la parte imaginaria. Para $x\ne0$, integración por partes da
+\[
+ u(x)=\frac1{2\pi}\int_{-1}^1(1-|\xi|)e^{-i\xi x}\,d\xi
+ =\frac1\pi\int_0^1(1-\xi)\cos(\xi x)\,d\xi
+ =\frac{1-\cos x}{\pi x^2}.
+\]
+En $x=0$ la integral vale $1/(2\pi)$, coincidiendo con el límite porque $(1-\cos x)/x^2\to1/2$. Así $u$ es continua y acotada cerca de cero. Para $|x|\ge1$, $|u(x)|\le2/(\pi x^2)$, lo cual demuestra integrabilidad, integrabilidad del cuadrado y anulación en el infinito. Por la inversión construida, su transformada es $\eta$; la igualdad inicialmente casi en todas partes es igualdad en cada frecuencia porque ambas funciones son continuas. La función $u$ es positiva salvo en los puntos no nulos $2\pi n$ donde se anula. Cada intervalo abierto contiene puntos donde $u>0$, de modo que $\supp u=\R$. Un soporte espectral compacto no es un soporte compacto en la variable original.
+\end{solucion}
+
+La construcción completa enlaza cuatro niveles: una función integrable, su operador de convolución, su símbolo continuo en el dual y su transformación unitaria en $L^2$. La dualidad y la extensión de caracteres son consecuencias de ese enlace, con la topología de cada paso controlada. El ejercicio de exactitud del capítulo~\ref{cap:v4-14} queda así integrado en la teoría demostrada, y los espacios $C_r^*(G)$ y $C_0^*(G)$ conservan sus papeles distintos a lo largo del argumento.

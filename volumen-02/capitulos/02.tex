@@ -1,0 +1,113 @@
+\chapter{Funciones medibles y aproximación topológica}\label{cap:v2-02}
+La medibilidad describe qué información de una función puede expresarse mediante conjuntos medibles. Su definición utiliza preimágenes porque estas respetan complementos y uniones. Este capítulo desarrolla la lectura 3 de Valencia Bucio \cite{valencia2}; la aproximación por funciones simples se retomará al construir la integral.
+
+\section{Conjuntos de nivel y operaciones}\label{lectura:v2-03}
+\begin{definicion}\index{funcion@función!medible}
+Una función $f:X\to\overline\R=[-\infty,\infty]$ es medible si $\{f>a\}\in\Acal$ para cada $a\in\R$. Para funciones reales se utiliza la misma definición, restringiendo el contradominio a $\R$.
+\end{definicion}
+\begin{proposicion}\label{prop:v2-niveles}
+Son equivalentes las condiciones de medibilidad de todas las familias $\{f>a\}$, $\{f\ge a\}$, $\{f<a\}$ y $\{f\le a\}$, al variar $a\in\R$.
+\end{proposicion}
+\begin{proof}
+Las identidades
+\[\{f\ge a\}=\bigcap_{n\ge1}\{f>a-1/n\},\qquad
+\{f>a\}=\bigcup_{n\ge1}\{f\ge a+1/n\}\]
+prueban la equivalencia de las dos primeras condiciones. Por ejemplo, si $f(x)>a$, existe $n$ con $1/n<f(x)-a$, lo que explica la inclusión no inmediata en la segunda identidad. Las otras condiciones se obtienen de $\{f<a\}=X\setminus\{f\ge a\}$ y $\{f\le a\}=X\setminus\{f>a\}$. Se usan uniones e intersecciones numerables, nunca una unión arbitraria de conjuntos medibles.
+\end{proof}
+Las funciones constantes son medibles porque sus conjuntos de nivel son $X$ o $\varnothing$. La indicadora $\ind A$ es medible exactamente cuando $A\in\Acal$: el nivel $\{\ind A>1/2\}$ recupera $A$, y todos los demás niveles son $\varnothing,A$ o $X$. Toda función continua en un espacio topológico es Borel-medible, pues sus preimágenes de abiertos son abiertas.
+
+\begin{teorema}\label{teo:v2-algebra-medibles}
+Si $f,g:X\to\R$ son medibles, también lo son $af+bg$, $fg$ y $|f|$. Los supremos, ínfimos, límites superiores e inferiores de sucesiones de funciones medibles son funciones medibles con valores extendidos. En particular, todo límite puntual real de funciones medibles es medible.
+\end{teorema}
+\begin{proof}
+Para $a>0$, $\{af>t\}=\{f>t/a\}$; para $a<0$ es $\{f<t/a\}$, y para $a=0$ la función es constante. Para la suma usamos
+\[\{f+g>t\}=\bigcup_{r\in\Q}\bigl(\{f>r\}\cap\{g>t-r\}\bigr).\]
+Si $f(x)+g(x)>t$, el intervalo $(t-g(x),f(x))$ contiene un racional $r$, que sitúa a $x$ en el lado derecho. La inclusión inversa se obtiene sumando las dos desigualdades estrictas.
+
+Si $t\ge0$, $\{f^2>t\}=\{f>\sqrt t\}\cup\{f<-\sqrt t\}$; si $t<0$, el conjunto es $X$. Por tanto $f^2$ es medible y la identidad $fg=((f+g)^2-(f-g)^2)/4$ prueba el caso del producto. Para $|f|$ usamos los niveles $\{f>t\}\cup\{f<-t\}$ cuando $t\ge0$, y $X$ cuando $t<0$.
+
+Para una sucesión $(f_n)$,
+\[\{\sup_nf_n>t\}=\bigcup_n\{f_n>t\},\qquad
+\{\inf_nf_n\ge t\}=\bigcap_n\{f_n\ge t\}.\]
+Esto cubre también supremos e ínfimos finitos. Finalmente,
+\[\limsup_nf_n=\inf_m\sup_{n\ge m}f_n,\qquad
+\liminf_nf_n=\sup_m\inf_{n\ge m}f_n,\]
+de modo que basta aplicar dos veces lo anterior. Cuando existe el límite, coincide con el límite inferior.
+\end{proof}
+
+\begin{proposicion}[Valores infinitos]\label{prop:v2-infinitos}
+Una función $f:X\to\overline\R$ es medible si y solo si $A=\{f=\infty\}$ y $B=\{f=-\infty\}$ son medibles y la función real $g$, igual a $f$ en $X\setminus(A\cup B)$ y a cero en $A\cup B$, es medible.
+\end{proposicion}
+\begin{proof}
+Si $f$ es medible, $A=\bigcap_n\{f>n\}$ y $B=\bigcap_n\{f<-n\}$ son medibles. Si $t\ge0$, $\{g>t\}=\{f>t\}\setminus A$; si $t<0$, $\{g>t\}=\{f>t\}\cup B$. Esto prueba que $g$ es medible. Recíprocamente, para $t\ge0$ se tiene $\{f>t\}=\{g>t\}\cup A$ y, para $t<0$, $\{f>t\}=\{g>t\}\setminus B$. Todas estas operaciones preservan medibilidad.
+\end{proof}
+
+\section{Semicontinuidad y aproximaciones continuas}
+\begin{definicion}\index{semicontinuidad}
+Una función real $f$ en un espacio métrico es semicontinua inferior en $x$ si, dado $a<f(x)$, existe una vecindad $U$ de $x$ en la que $f>a$. Es semicontinua superior si, dado $a>f(x)$, existe una vecindad donde $f<a$.
+\end{definicion}
+La semicontinuidad inferior permite saltos hacia abajo en el valor del punto; prohíbe que los valores cercanos estén uniformemente por debajo de ese valor. Su caracterización secuencial es $f(x)\le\liminf_nf(x_n)$ cuando $x_n\to x$: una vecindad para cada $a<f(x)$ prueba una dirección; si la definición falla, elegimos $x_n\in B(x,1/n)$ con $f(x_n)\le a<f(x)$ y contradicimos la otra.
+
+\begin{proposicion}\label{prop:v2-aprox-semicont}
+Toda función real semicontinua inferior en un espacio métrico es límite creciente de funciones continuas reales. Toda función semicontinua superior es límite decreciente de funciones continuas. En un espacio compacto, una función real semicontinua inferior alcanza su mínimo y una semicontinua superior alcanza su máximo.
+\end{proposicion}
+\begin{proof}
+Primero suponga $0<g<1$ y $g$ semicontinua inferior. Defina
+\[g_n(x)=\inf_{y\in X}\bigl(g(y)+n d(x,y)\bigr).\]
+Como la expresión con $y=x$ vale $g(x)$, tenemos $g_n\le g<1$. La desigualdad triangular implica $g_n(x)\le g_n(z)+n d(x,z)$, primero comparando con cada $y$ y después tomando ínfimo; intercambiando $x,z$ vemos que $g_n$ es $n$-Lipschitz. La sucesión es creciente porque aumenta cada expresión dentro del ínfimo. Para probar $g_n(x)>0$, tome $\delta>0$ tal que $g(y)>g(x)/2$ si $d(x,y)<\delta$; fuera de esa bola la expresión es al menos $n\delta$. Así $g_n(x)\ge\min\{g(x)/2,n\delta\}>0$.
+
+Si $0<a<g(x)$, la semicontinuidad da una bola de radio $\delta$ donde $g>a$; para $n\delta\ge a$, también fuera de la bola se tiene $g(y)+nd(x,y)\ge a$. Por ello $g_n(x)\ge a$ y $g_n(x)\uparrow g(x)$. Para una función real general $f$, aplique este argumento a $g=\frac12+\pi^{-1}\arctan f$ y componga $g_n$ con la inversa creciente $t\mapsto\tan(\pi(t-1/2))$. Las funciones resultantes son continuas reales y crecen a $f$. Para semicontinuidad superior se aplica el resultado a $-f$.
+
+En el caso compacto, primero $f$ está acotada inferiormente: las vecindades donde $f>f(x)-1$ cubren $X$, y una subcubierta finita da una cota inferior común. Tome puntos $x_n$ con $f(x_n)\to\inf_Xf$. Una subsucesión converge a $x$, y la caracterización secuencial da $f(x)\le\liminf f(x_n)=\inf_Xf$. La desigualdad inversa es la definición de ínfimo. El máximo se deduce aplicando esto a $-f$.
+\end{proof}
+
+\section{Ejercicios sobre medibilidad y semicontinuidad}
+\begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:v2-l03-1}
+Pruebe que $f:X\to\R$ es medible si y solo si $f^{-1}(U)$ es medible para cada abierto $U\subseteq\R$.
+\end{ejercicio}
+\begin{solucion}
+La condición para abiertos incluye $U=(a,\infty)$, así que implica la definición. Recíprocamente, la preimagen de $(a,b)$ es $\{f>a\}\cap\{f<b\}$. Todo abierto real es unión de los intervalos de extremos racionales contenidos en él. Hay solamente una cantidad numerable de esos intervalos, por lo que su preimagen es medible. Además, $\{B\subseteq\R:f^{-1}(B)\in\Acal\}$ es una $\sigma$-álgebra que contiene los abiertos; contiene por ello todos los borelianos.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 2]\label{ej:v2-l03-2}
+Extienda las propiedades de operaciones, supremos, ínfimos y límites a funciones medibles con valores en $\overline\R$. Precise cuándo las operaciones están definidas.
+\end{ejercicio}
+\begin{solucion}
+Los supremos e ínfimos numerables siempre existen en $\overline\R$; las identidades de niveles del teorema \ref{teo:v2-algebra-medibles} siguen siendo exactas. Por tanto también son medibles los límites superiores e inferiores y cualquier límite puntual extendido.
+
+La suma se permite cuando no aparece $\infty+(-\infty)$; una combinación lineal requiere la misma precaución después de multiplicar por los escalares, con $0f=0$. Para comprobar medibilidad, parta $X$ en los conjuntos donde cada función es real, $+\infty$ o $-\infty$. Son nueve piezas medibles por la proposición \ref{prop:v2-infinitos}. En la pieza donde ambas son finitas se usa el álgebra de funciones reales; en cada una de las demás, una suma definida vale un infinito de signo determinado o una función medible multiplicada por un escalar finito. Las preimágenes de niveles son uniones finitas de las correspondientes preimágenes en las piezas.
+
+Para el producto adoptamos $0\cdot(\pm\infty)=0$. Subdividimos las piezas anteriores según los signos y los conjuntos de ceros. En cada pieza el producto es real medible, cero o un infinito de signo fijo. Por la misma razón es medible. El valor absoluto transforma ambas infinitudes en $+\infty$ y conserva la medibilidad. Estas afirmaciones no autorizan a escribir una suma indeterminada: si $f=\infty$ y $g=-\infty$ en un punto, $f+g$ no es una función allí sin una convención adicional explícita.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 3]\label{ej:v2-l03-3}
+Construya $f$ no medible tal que $|f|$ y $f^2$ sean medibles.
+\end{ejercicio}
+\begin{solucion}
+Tome $X=\{a,b\}$ con $\Acal=\{\varnothing,X\}$ y defina $f(a)=1$, $f(b)=-1$. Entonces $\{f>0\}=\{a\}\notin\Acal$, mientras $|f|=f^2=1$ son constantes medibles. Así conocer el tamaño de una función no basta para conocer la medibilidad de su signo.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 4]\label{ej:v2-l03-4}
+Pruebe: (i) continuidad equivale a semicontinuidad superior e inferior; (ii) la función piso es semicontinua superior; (iii) semicontinuidad superior equivale a que todos los conjuntos $\{f<a\}$ sean abiertos, y la inferior a que todos los $\{f>a\}$ sean abiertos; (iv) $A$ es abierto, respectivamente cerrado, si y solo si $\ind A$ es semicontinua inferior, respectivamente superior.
+\end{ejercicio}
+\begin{solucion}
+(i) La continuidad produce simultáneamente vecindades donde $f(x)-\eps<f(y)<f(x)+\eps$. Recíprocamente, interseque las dos vecindades obtenidas de las semicontinuidades con esos umbrales; en la intersección se cumple $|f(y)-f(x)|<\eps$.
+
+(ii) Si $k=\lfloor x\rfloor$, elija una vecindad de $x$ contenida en $(-\infty,k+1)$. En ella $\lfloor y\rfloor\le k<a$ para cualquier $a>\lfloor x\rfloor$. En los enteros hay un salto que impide semicontinuidad inferior, pero no superior.
+
+(iii) Si $f(x)<a$, la definición superior proporciona una vecindad de $x$ contenida en $\{f<a\}$; por tanto ese conjunto es abierto. Recíprocamente, para $a>f(x)$, ese mismo abierto es la vecindad requerida. Para la versión inferior intercambie las desigualdades o aplique el resultado a $-f$.
+
+(iv) Para $0\le t<1$, $\{\ind A>t\}=A$, y los restantes niveles estrictos superiores son $X$ o vacío. Esto prueba la equivalencia con apertura. Para $0<t\le1$, $\{\ind A<t\}=A^c$, y los demás niveles inferiores son $X$ o vacío. Esto prueba la equivalencia con cerradura.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 5]\label{ej:v2-l03-5}
+Si $f:X\to\R$ es medible y $g:\R\to\R$ es semicontinua superior o inferior, pruebe que $g\circ f$ es medible.
+\end{ejercicio}
+\begin{solucion}
+Si $g$ es semicontinua inferior, $\{g>a\}$ es abierto. Entonces $\{g\circ f>a\}=f^{-1}(\{g>a\})$ es medible por el ejercicio \ref{ej:v2-l03-1}. Si es semicontinua superior, use $\{g<a\}$ y la caracterización por niveles inferiores. La continuidad no es necesaria; la medibilidad de $g$ respecto de los borelianos sí es la propiedad pertinente.
+\end{solucion}
+\begin{ejercicio}[Lectura 3, ejercicio 6]\label{ej:v2-l03-6}
+Pruebe que el conjunto de puntos donde una sucesión de funciones reales medibles tiene límite real es medible.
+\end{ejercicio}
+\begin{solucion}
+La completitud de $\R$ identifica convergencia real con la condición de Cauchy. Por ello el conjunto buscado es
+\[E=\bigcap_{r\ge1}\bigcup_{N\ge1}\bigcap_{m,n\ge N}
+\{|f_m-f_n|<1/r\}.\]
+Cada nivel es medible y todas las operaciones son numerables. Si $x\in E$, dado $\eps>0$ tome $r$ con $1/r<\eps$; el correspondiente $N$ prueba Cauchy. La implicación inversa resulta de aplicar Cauchy con $\eps=1/r$. Si se admiten límites extendidos, añada los dos conjuntos medibles $\bigcap_{r\ge1}\bigcup_N\bigcap_{n\ge N}\{f_n>r\}$ y su análogo $\{f_n<-r\}$. Esto distingue explícitamente límite finito de límite infinito.
+\end{solucion}

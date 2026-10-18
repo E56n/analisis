@@ -1,0 +1,180 @@
+\chapter{Series de Fourier y núcleos de sumación}\label{cap:v4-03}
+Una expansión ortogonal es primero una afirmación sobre vectores de un espacio de Hilbert. Evaluarla en un punto requiere argumentos adicionales. En este capítulo esos argumentos se expresan mediante núcleos: Dirichlet para las sumas parciales y Fejér para sus promedios.
+
+\section{Coeficientes y núcleo de Dirichlet}\label{lectura:v4-04}
+\index{Fourier!serie}\index{Dirichlet!nucleo@núcleo}
+Para $f\in L^1(\T)$ definimos
+\[
+ c_n=\widehat f(n)=\int_\T f(t)e^{-int}\,dm(t),\quad
+ S_Nf(x)=\sum_{|n|\leq N}c_ne^{inx}.
+\]
+La notación $\widehat f$ denota aquí la sucesión de coeficientes, no el valor de la serie: no se presupone convergencia. La mera medibilidad no garantiza que los coeficientes existan; la hipótesis $L^1$ sí lo hace. Para $f\in L^2$, Bessel da $\sum_n|c_n|^2\leq\norm f_2^2$, y $S_N$ es la proyección ortogonal sobre el espacio generado por $e_{-N},\ldots,e_N$.
+\begin{proposicion}\label{v4:dirichlet}
+Sea $D_N(t)=\sum_{|n|\leq N}e^{int}$. Entonces
+\[
+ S_Nf(x)=\int_\T f(x-t)D_N(t)\,dm(t),\qquad
+ D_N(t)=\frac{\sin((N+\tfrac12)t)}{\sin(t/2)}\quad(t\notin2\pi\Z).
+\]
+El núcleo es real y par, $\int_\T D_N\,dm=1$ y $\int_0^\pi D_N(t)\,dm(t)=1/2$. Para $0<\delta<\pi$,
+\[
+ \int_{-\delta}^{\delta}D_N(t)\,dm(t)\longrightarrow1.
+\]
+\end{proposicion}
+\begin{proof}
+Sustituimos $c_n$ en la suma finita, intercambiamos suma e integral y cambiamos $t$ por $x-t$; la invariancia de la integral periódica justifica recuperar un período fijo. La suma geométrica proporciona
+\[
+ D_N(t)=e^{-iNt}\frac{1-e^{i(2N+1)t}}{1-e^{it}}
+ =\frac{\sin((N+1/2)t)}{\sin(t/2)}.
+\]
+En los múltiplos de $2\pi$, su valor es $2N+1$, por la definición finita. Los términos con índices opuestos son conjugados y su suma es par. Al integrar los exponenciales solo sobrevive el término constante, y la paridad divide la integral en dos mitades iguales. Finalmente, sobre $[\delta,\pi]$ el cociente $1/\sin(t/2)$ es acotado; Riemann--Lebesgue, aplicado a esa función multiplicada por $e^{it/2}$, muestra que la integral de $D_N$ sobre ese intervalo tiende a cero. Por paridad ocurre lo mismo en $[-\pi,-\delta]$. Restar esas colas de la integral total prueba la última afirmación.
+\end{proof}
+Usamos núcleos sin el factor $1/(2\pi)$ porque integramos contra $dm$. Los núcleos de las lecturas 4--5, cuando se integran contra $dt$, deben contener ese factor; mezclar ambas convenciones alteraría todas las constantes.
+
+\section{Convergencia en puntos regulares}
+\begin{teorema}[Dirichlet para funciones suaves a trozos]\label{v4:dirichlet-puntual}
+Sea $f$ periódica, acotada y $C^1$ a trozos: en un período hay una partición finita en cuyos intervalos abiertos es $C^1$, con límites laterales finitos de $f$ y $f'$. Entonces
+\[
+ S_Nf(x)\longrightarrow\frac{f(x+)+f(x-)}2
+\]
+para todo $x$. En los puntos de continuidad, el límite es $f(x)$.
+\end{teorema}
+\begin{proof}
+La paridad del núcleo permite escribir
+\[
+ S_Nf(x)-\frac{f(x+)+f(x-)}2
+ =\frac1{2\pi}\int_0^\pi
+ \frac{f(x+t)-f(x+)+f(x-t)-f(x-)}{\sin(t/2)}
+ \sin((N+\tfrac12)t)\,dt.
+\]
+Cada diferencia del numerador es $O(t)$ cerca de cero: en cada lado, el valor medio o la integral de una derivada acotada da esa cota. Como $\sin(t/2)/t\to1/2$, el cociente es acotado cerca de cero. En el resto del intervalo es integrable por acotación de $f$ y porque el denominador no se anula. Riemann--Lebesgue, absorbiendo el factor $e^{it/2}$ como antes, hace tender la integral a cero. Los valores asignados a $f$ en sus saltos no intervienen en los coeficientes.
+\end{proof}
+\begin{ejemplo}[La función $|x|$]
+Extendamos periódicamente $f(x)=|x|$ desde $[-\pi,\pi]$. Por paridad,
+\[
+ c_0=\frac\pi2,\quad
+ c_n=\frac1\pi\int_0^\pi x\cos(nx)\,dx
+ =\frac{(-1)^n-1}{\pi n^2}\quad(n\ne0).
+\]
+La integración por partes usa la primitiva $\sin(nx)/n$ y después $\int\sin(nx)\,dx=-\cos(nx)/n$. Por el teorema anterior,
+\[
+ |x|=\frac\pi2-\frac4\pi\sum_{j\geq1}\frac{\cos((2j-1)x)}{(2j-1)^2}.
+\]
+Evaluar en $x=0$ da $\sum_{j\geq1}(2j-1)^{-2}=\pi^2/8$.
+\end{ejemplo}
+
+\section{Ejercicios sobre coeficientes trigonométricos}
+\begin{ejercicio}[Lectura 4, ejercicio 1]\label{ej:v4-l04-1}
+Para $f\in L^1(\T)$, expresar la serie compleja como $a_0/2+\sum_{n\geq1}(a_n\cos nx+b_n\sin nx)$.
+\end{ejercicio}
+\begin{solucion}
+Agrupando únicamente los pares finitos de índices $n,-n$,
+\[
+ c_ne^{inx}+c_{-n}e^{-inx}
+ =(c_n+c_{-n})\cos nx+i(c_n-c_{-n})\sin nx.
+\]
+Por tanto $a_0=2c_0$, $a_n=c_n+c_{-n}$ y $b_n=i(c_n-c_{-n})$. Equivalentemente,
+\[
+ a_n=\frac1\pi\int_0^{2\pi}f(t)\cos nt\,dt,\qquad
+ b_n=\frac1\pi\int_0^{2\pi}f(t)\sin nt\,dt.
+\]
+Estas igualdades describen cada suma parcial y no requieren reordenar una serie infinita convergente.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 2]\label{ej:v4-l04-2}
+Si $f\in L^1(\T)$ es real, probar que sus coeficientes $a_n,b_n$ son reales.
+\end{ejercicio}
+\begin{solucion}
+Las últimas integrales del ejercicio anterior tienen integrandos reales. También $c_{-n}=\overline{c_n}$, por conjugación de la integral; así $a_n=2\Re c_n$ y $b_n=-2\Im c_n$.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 3]\label{ej:v4-l04-3}
+Hallar la serie de $x^2$ en $[-\pi,\pi]$, extendida periódicamente, y deducir $\sum_{n\geq1}n^{-2}=\pi^2/6$.
+\end{ejercicio}
+\begin{solucion}
+La paridad da $b_n=0$ y $a_0=2\pi^2/3$. Para $n\geq1$, dos integraciones por partes dan
+\[
+ \int_0^\pi x^2\cos nx\,dx
+ =-\frac2n\int_0^\pi x\sin nx\,dx
+ =\frac{2\pi(-1)^n}{n^2}.
+\]
+Así $a_n=4(-1)^n/n^2$. La extensión es continua y suave a trozos, luego
+\[
+ x^2=\frac{\pi^2}3+4\sum_{n\geq1}\frac{(-1)^n\cos nx}{n^2}.
+\]
+En $x=\pi$ obtenemos $\pi^2=\pi^2/3+4\sum n^{-2}$, que da la suma solicitada.
+\end{solucion}
+\begin{ejercicio}[Lectura 4, ejercicio 4]\label{ej:v4-l04-4}
+Sea $f$ periódica, continua y $C^1$ a trozos. Si $\sum_{n\in\Z}|c_n|<\infty$, probar que su serie converge a $f$ absoluta y uniformemente.
+\end{ejercicio}
+\begin{solucion}
+Cada término tiene módulo $|c_n|$, independientemente de $x$. El criterio de Weierstrass hace converger la serie absoluta y uniformemente a alguna función $g$. Por el teorema~\ref{v4:dirichlet-puntual}, las mismas sumas parciales convergen puntualmente a $f$. La unicidad del límite en $\C$ da $g=f$. Más adelante la unicidad de los coeficientes permitirá eliminar la hipótesis de suavidad.
+\end{solucion}
+
+\section{Derivación, integración y convergencia uniforme}\label{lectura:v4-05}
+\index{Fourier!derivacion@derivación}\index{Fourier!integracion@integración}
+\begin{proposicion}
+Si $f$ es periódica, continua y $C^1$ a trozos, entonces $\widehat{f'}(n)=in\widehat f(n)$, y su serie de Fourier converge absoluta y uniformemente a $f$.
+\end{proposicion}
+\begin{proof}
+Integrando por partes en cada intervalo de suavidad, los términos de frontera interiores se cancelan porque $f$ es continua, y los extremos del período se cancelan por periodicidad. Queda $\int_\T f'e^{-int}\,dm=in\int_\T fe^{-int}\,dm$. Como $f'$ es acotada a trozos, pertenece a $L^2$. Bessel y Cauchy--Schwarz implican
+\[
+ \sum_{n\ne0}|c_n|
+ \leq\left(\sum_{n\ne0}n^{-2}\right)^{1/2}
+ \left(\sum_{n\ne0}|\widehat{f'}(n)|^2\right)^{1/2}<\infty.
+\]
+El ejercicio~\ref{ej:v4-l04-4} termina la prueba.
+\end{proof}
+\begin{proposicion}[Interpretación de la derivada de la serie]
+Si $f$ es continua y $C^2$ a trozos, la serie formalmente derivada tiene coeficientes $inc_n$ y converge en cada punto al promedio de los límites laterales de $f'$. Donde $f'$ es continua, ese límite es $f'(x)$. Si además $f\in C^1(\T)$ y $f'$ es $C^1$ a trozos, la serie puede derivarse término a término con convergencia uniforme de las derivadas.
+\end{proposicion}
+\begin{proof}
+La proposición anterior identifica $inc_n$ con los coeficientes de $f'$. Aplicar Dirichlet a $f'$ prueba la primera afirmación. Bajo la hipótesis adicional de continuidad de $f'$, su serie converge absoluta y uniformemente por la proposición anterior. El teorema de derivación de series de funciones, usando además convergencia de la serie original en un punto, permite derivar término a término. Sin esa continuidad no se afirma convergencia uniforme de las derivadas. El original escribe $f(x)$ en la conclusión para la serie de $f'$; debe decir $f'(x)$.
+\end{proof}
+\begin{proposicion}
+Si $f$ es periódica y continua a trozos, $F(x)=\int_0^xf(t)\,dt$ es periódica si y solo si $c_0=0$. En ese caso sus coeficientes son $C_n=c_n/(in)$ para $n\ne0$ y $C_0=\int_\T F\,dm$. En general $G(x)=F(x)-c_0x$ es periódica y tiene esos coeficientes no constantes.
+\end{proposicion}
+\begin{proof}
+La diferencia $F(x+2\pi)-F(x)=\int_x^{x+2\pi}f=2\pi c_0$ es independiente de $x$. Además, $F$ es continua y $C^1$ a trozos con $F'=f$ fuera de los puntos de partición. Si $c_0=0$, la fórmula de derivación aplicada a $F$ da $c_n=inC_n$. Si $c_0\ne0$, aplicamos el mismo razonamiento a $G'=f-c_0$, cuya media es cero. La constante se obtiene integrando $F$ o $G$ en un período; no se divide entre $n=0$.
+\end{proof}
+
+\section{Fejér: positividad y aproximación}\label{v4:fejer-seccion}
+\index{Fejer@Fejér!nucleo@núcleo}\index{identidad!aproximada}
+\begin{definicion}
+Para $N\geq1$ definimos
+\[
+ K_N=\frac1N\sum_{j=0}^{N-1}D_j,\qquad
+ \sigma_Nf=\frac1N\sum_{j=0}^{N-1}S_jf=f*K_N,
+\]
+donde en el círculo $f*g(x)=\int_\T f(x-t)g(t)\,dm(t)$.
+\end{definicion}
+\begin{proposicion}\label{v4:fejer-kernel}
+Se tiene
+\[
+ K_N(t)=\sum_{|n|<N}\left(1-\frac{|n|}N\right)e^{int}
+ =\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2
+ =\frac{\sin^2(Nt/2)}{N\sin^2(t/2)}.
+\]
+En particular $K_N\geq0$, $\int_\T K_N\,dm=1$ y, para $\delta\leq|t|\leq\pi$,
+\[
+ K_N(t)\leq\frac1{N\sin^2(\delta/2)}.
+\]
+En $t\in2\pi\Z$, $K_N(t)=N$.
+\end{proposicion}
+\begin{proof}
+El término $e^{int}$ aparece en $D_j$ exactamente cuando $j\geq|n|$, esto es, $N-|n|$ veces. Al multiplicar la suma geométrica por su conjugada, la diferencia $j-k=n$ también aparece $N-|n|$ veces. Esto prueba las dos primeras igualdades; la última se obtiene de la fórmula geométrica. La positividad es un cuadrado; la integral es el coeficiente constante; la cota fuera del origen usa $|\sin(Nt/2)|\leq1$ y $\sin(|t|/2)\geq\sin(\delta/2)$.
+\end{proof}
+Esta elección corrige a la vez el extremo de la suma y los factores del núcleo de la lectura 5. Promediar $S_1,\ldots,S_N$ en lugar de $S_0,\ldots,S_{N-1}$ produce el mismo límite: la diferencia es $(S_N-S_0)/N$, cuyo supremo tiende a cero porque $c_n\to0$ y $N^{-1}\sum_{|n|\leq N}|c_n|\to0$.
+\begin{teorema}[Fejér]\label{v4:fejer-uniforme}
+Si $f$ es continua y periódica, $\sigma_Nf\to f$ uniformemente. Si $f$ es acotada y tiene límites laterales en $x$, entonces $\sigma_Nf(x)\to\tfrac12(f(x+)+f(x-))$. Por tanto los polinomios trigonométricos son uniformemente densos en $C(\T)$.
+\end{teorema}
+\begin{proof}
+Para $f$ continua,
+\[
+ |\sigma_Nf(x)-f(x)|\leq\int_\T|f(x-t)-f(x)|K_N(t)\,dm(t).
+\]
+Dado $\eps>0$, la continuidad uniforme permite elegir $\delta$ para que la diferencia sea $<\eps$ cuando la distancia circular de $t$ al origen sea $<\delta$. Esa parte de la integral es a lo sumo $\eps$, pues el núcleo tiene masa uno. La parte restante es a lo sumo $2\norm f_\infty/[N\sin^2(\delta/2)]$, independientemente de $x$. Esto prueba convergencia uniforme.
+
+En un punto con límites laterales separamos $(-\pi,0)$ y $(0,\pi)$. En cada mitad restamos el límite lateral correspondiente. La masa de cada mitad es $1/2$ por paridad. Cerca de cero la diferencia es pequeña por la definición de límite lateral; lejos de cero es acotada y la masa del núcleo tiende a cero. Así se obtiene el promedio de ambos límites. Finalmente, $\sigma_Nf$ es un polinomio trigonométrico por la fórmula finita del núcleo, y aproxima uniformemente a $f$.
+\end{proof}
+El argumento de identidades aproximadas periódicas sigue también la exposición de Maximenko~\cite{maximenkoPeriodicos}, con normalización e intervalos de integración explicitados. La lectura 5 termina con el título «Ejercicios», sin una lista numerada; sus demostraciones dejadas como ejercicio se han desarrollado en las proposiciones anteriores.
+
+\paragraph{Dos límites distintos.}
+La masa total uno no basta por sí sola para reconstruir una función: Dirichlet cambia de signo, mientras que Fejér es no negativo y concentra su masa cerca del origen. Esta diferencia explica por qué los promedios convergen uniformemente para toda función continua, aunque las sumas parciales ordinarias no tengan esa propiedad.

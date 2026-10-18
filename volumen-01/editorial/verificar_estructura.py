@@ -24,8 +24,13 @@ expected_labels = {f"ej:lectura-{n}-{k}" for n, count in enumerate(EXPECTED, 1)
 actual_labels = {key for key in labels if key.startswith("ej:lectura-")}
 assert actual_labels == expected_labels, (expected_labels - actual_labels,
                                          actual_labels - expected_labels)
-assert body.count(r"\begin{ejercicio}") == sum(EXPECTED) == 206
-assert body.count(r"\begin{solucion}") == 206
+expected_additions = {f"ej:ampl-{topic}-{i}" for topic in
+                      ("cocientes", "picard", "gram", "schauder") for i in range(1, 6)}
+actual_additions = {key for key in labels if key.startswith("ej:ampl-")}
+assert actual_additions == expected_additions, expected_additions ^ actual_additions
+assert sum(EXPECTED) == 206
+assert body.count(r"\begin{ejercicio}") == 206 + len(expected_additions) == 226
+assert body.count(r"\begin{solucion}") == 226
 assert body.count(r"\chapter{") == 16
 assert (ROOT / "partes.tex").read_text().count(r"\parte{") == 6
 for n in range(1, 33):
@@ -41,7 +46,8 @@ bibkeys = set(re.findall(r"\\bibitem(?:\[[^]]*\])?\{([^}]+)\}", text))
 assert citations <= bibkeys, citations - bibkeys
 result = {
     "partes": 6, "capitulos": 16, "lecturas_originales": 32,
-    "ejercicios": 206, "soluciones": 206,
+    "ejercicios_originales": 206, "ejercicios_ampliacion": 20,
+    "ejercicios": 226, "soluciones": 226,
     "entradas_indice": body.count(r"\index{"),
     "etiquetas_duplicadas": duplicates,
     "referencias_internas_faltantes": missing,

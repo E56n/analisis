@@ -1,0 +1,219 @@
+{
+  "estado": "completo; teoría, verificaciones y ejercicios desarrollados",
+  "archivos": [
+    "capitulos/14.tex",
+    "capitulos/15.tex",
+    "capitulos/16.tex"
+  ],
+  "lecturas": [
+    {
+      "lectura": 25,
+      "capitulo": 14,
+      "ancla": "lectura:v4-25",
+      "ejercicios": [
+        "ej:v4-l25-1",
+        "ej:v4-l25-2",
+        "ej:v4-l25-3"
+      ],
+      "incisos": {
+        "1": "Grupo abeliano finito autodual; descomposición cíclica justificada, identificación no canónica.",
+        "2": "Inyectividad, imagen=núcleo, sobreyectividad y ambas condiciones topológicas; dependencia exacta v4:dual-exactitud y v4:dual-cociente-encaje, ambas probadas en capítulo16.",
+        "3": "Los dos isomorfismos producto/suma bajo hipótesis topológicas precisas; explicación de por qué el enunciado irrestricto no está determinado."
+      },
+      "teoria_original": {
+        "1-3": "Definición, operaciones de caracteres y representaciones unitarias de dimensión1.",
+        "4": "v4:dual-topologico: producto de dos grupos, incluyendo topología.",
+        "5(i)-(ii)": "v4:duales-modelos: R, T=R/(2πZ), Z y cíclicos finitos.",
+        "6-7": "v4:compacto-abierta: subbase en C(X), Hausdorff y convergencia uniforme en compactos con redes.",
+        "8": "v4:dual-topologico: continuidad de operaciones.",
+        "9(i)-(ii)": "v4:dual-compacto-discreto: compacto→discreto, discreto→compacto."
+      }
+    },
+    {
+      "lectura": 26,
+      "capitulo": 15,
+      "ancla": "lectura:v4-26",
+      "ejercicios": [],
+      "verificaciones_internas": "Todas integradas en las pruebas; no lista original numerada.",
+      "teoria_original": {
+        "1": "v4:espectro-no-unitario: compacidad Δ(A)∪{0}, local compacidad de Δ(A), norma de caracteres.",
+        "2-3": "v4:gelfand-cero-infinito: definición y homomorfismo contractivo a C0.",
+        "4-6": "v4:fourier-identidades-lca: integral, carácter no nulo, cota y todas las identidades necesarias.",
+        "7": "v4:dual-vecindades-integrales: argumento cuantitativo corregido.",
+        "8": "v4:espectro-luno-biyeccion y v4:dual-espectro-homeomorfismo: biyección/homeomorfismo, incluido paso funcional-integral."
+      },
+      "ampliaciones": [
+        "ej:v4-ampl-15-1",
+        "ej:v4-ampl-15-2",
+        "ej:v4-ampl-15-3"
+      ]
+    },
+    {
+      "lectura": 27,
+      "capitulo": 16,
+      "ancla": "lectura:v4-27",
+      "ejercicios": [],
+      "verificaciones_internas": "Todas integradas en pruebas; no lista original numerada.",
+      "teoria_original": {
+        "1-2": "v4:regular-l2: construcción por convolución y Riesz, Young para todo L2 y producto interno.",
+        "3": "v4:regular-l2 y v4:regular-fiel: linealidad, multiplicación, adjunto, acotación e inyectividad.",
+        "4": "Definición C*r como cierre en B(L2); propiedades C*, conmutatividad y justificación de igualdad con C* universal en LCA.",
+        "5": "v4:espectros-homeomorfismo: continuidad y biyección→homeomorfismo por unitización.",
+        "6-7": "v4:cstar-fourier: espectro C*r=Gdual, isomorfismo C0 y Fourier inyectiva."
+      }
+    },
+    {
+      "lectura": 28,
+      "capitulo": 16,
+      "ancla": "lectura:v4-28",
+      "ejercicios": [],
+      "verificaciones_internas": "Todas integradas en pruebas, incluidas norma y tres convergencias de identidades aproximadas.",
+      "teoria_original": {
+        "1": "v4:dirac-positivo: núcleos h*h*, soporte, positividad, integral uno.",
+        "2": "v4:l2-convolucion-cero: L2*L2⊂C0, existencia en todos los puntos y cota.",
+        "3-4": "Norma máxima, completación como cierre de grafo en C0(G)⊕C0(Gdual).",
+        "5-6": "v4:grafo-fourier-inyectivo: ambas proyecciones contractivas inyectivas, identificación como función/símbolo sin presuponer L1.",
+        "7": "v4:positividad-identidad: transformada real/positiva implica valor real/positivo en e.",
+        "8(i)-(ii)": "v4:regularizacion: L1*Cc⊂C0 y A(φ*ψ)∈E∩L2, símbolo y aproximación simultánea.",
+        "9": "v4:dirac-tres-espacios: convergencias C0,C*r,E y transformadas→1 uniformemente en compactos del dual.",
+        "10(i)-(iii)": "v4:inversa-compacta y v4:aproximacion-lectura28: resultado fortalecido por inversa exacta, con soportes espectrales y problema de signo corregidos.",
+        "11": "Corolario de inversa exacta; sucesión constante satisface aproximación uniforme y soporte espectral."
+      },
+      "ampliaciones": [
+        "ej:v4-ampl-16-1",
+        "ej:v4-ampl-16-2",
+        "ej:v4-ampl-16-3",
+        "ej:v4-ampl-16-4",
+        "ej:v4-ampl-16-5"
+      ]
+    }
+  ],
+  "ampliacion_dualidad": [
+    "Separación de puntos por caracteres desde fidelidad de representación regular.",
+    "Construcción positiva de Haar dual mediante J(η)=inversa(η)(e).",
+    "Plancherel unitario con prueba de densidad de la imagen e identificación con transformada integral.",
+    "Inversión para L1∩L2 con transformada integrable; escalas de Haar y signos.",
+    "Representación regular del dual conjugada por U como multiplicadores sobre L2(G).",
+    "Densidad por Stone–Weierstrass e identificación del espectro C0(G), ambas justificadas.",
+    "Pontryagin completo: la evaluación canónica es isomorfismo topológico, sin invocar dualidad previamente.",
+    "Levantamiento compacto en cocientes, doble aniquilador y restricción abierta/sobreyectiva por naturalidad del bidual."
+  ],
+  "correcciones": [
+    "L25.5: caracteres de R llevan i en el exponente.",
+    "L25.6: la topología compacto-abierta se define sobre C(X), no sobre X.",
+    "L25.7: un abierto intersectado con un compacto no es necesariamente compacto; se usan cerrados Kj.",
+    "L25.9(ii): la hipótesis es G discreto, no Gdual discreto.",
+    "L25ej2: extensión de caracteres continuos y apertura no son pasos elementales; se demuestra teoría completa necesaria en capítulo16.",
+    "L25ej3: se precisan productos de compactos y sumas discretas; se explica falta de topología e ilocal compacidad de R^N.",
+    "L26.1: cerradura del espectro ampliado se prueba mediante ecuaciones multiplicativas.",
+    "L26.3: compacidad de superniveles se prueba en Δ(A)∪{0}, no por ser cerrado en un espacio localmente compacto.",
+    "L26.7: reemplazo de estimación incorrecta que trasladaba por x en lugar de u; funciones de prueba incluyen h y Lxj h.",
+    "L26.8: módulo uno mediante potencias de homomorfismo globalmente acotado; paso a integral de funcional justificado por particiones finitas.",
+    "L27: normas, conjugados y variables de convolución corregidos; fidelidad demostrada en L1, sin subred puntual innecesaria.",
+    "L27: se distingue C*r de C* y se justifica su igualdad específicamente para grupos LCA.",
+    "L28.5: inyectividad de ambas proyecciones necesita identidad aproximada, añadida explícitamente.",
+    "L28.7: la hipótesis de realidad corresponde a la transformada; positividad se demuestra mediante operador B*B.",
+    "L28.9: uniformidad sobre compactos del dual, no sobre todo el dual ni sobre el conjunto de índices.",
+    "L28.10: soportes de f,g y η están en espacios diferentes; se corrige a soportes de sus transformadas. La prueba original multiplica desigualdades por η real sin controlar signo. Una inversa exacta resuelve ambos problemas.",
+    "C0* se presenta como espacio Banach de grafo, sin afirmar indebidamente que su norma máxima sea una norma C*. ",
+    "En grupos no sigma compactos, las igualdades obtenidas probando contra Cc se convierten de locales a globales porque las funciones L2/C0 están concentradas módulo nulos en uniones numerables de compactos; Fubini se justifica por núcleos continuos en compactos y límites Lp."
+  ],
+  "fuentes": [
+    "valencia4",
+    "folland2016"
+  ],
+  "verificacion_bibliografica": {
+    "folland2016": "Segunda edición cotejada: teorema4.32 pp110–111; teorema4.40 y corolario4.42 p113.",
+    "url_pdf_leido": "https://www.researchgate.net/profile/Hayat-Rezgui/post/Harmonic-analysis/attachment/59d654b679197b80779ac290/AS:522628596277248@1501615775603/download/A%2BCourse%2Bin%2BAbstract%2BHarmonic%2BAnalysis.pdf",
+    "refs_web": [
+      "turn94view0",
+      "turn96view0"
+    ]
+  },
+  "creditos": "Teoría de lecturas25–28 atribuida localmente a Valencia Bucio; resultados estándar de dualidad remitidos a Folland verificado; 8 ejercicios complementarios explícitamente propios de esta edición. No atribuirlos a Maximenko.",
+  "notacion": [
+    {
+      "simbolo": "\\widehat G",
+      "significado": "Grupo de caracteres con topología compacto-abierta",
+      "label": "lectura:v4-25"
+    },
+    {
+      "simbolo": "\\Delta(A)",
+      "significado": "Espectro de caracteres continuos no nulos del álgebra A",
+      "label": "lectura:v4-26"
+    },
+    {
+      "simbolo": "\\lambda(f)",
+      "significado": "Operador de convolución f*u sobre L2(G)",
+      "label": "v4:regular-l2"
+    },
+    {
+      "simbolo": "C_r^*(G)",
+      "significado": "Cierre de λ(L1) en norma de operadores; coincide con C* universal en LCA",
+      "label": "lectura:v4-27"
+    },
+    {
+      "simbolo": "C_0^*(G)=E",
+      "significado": "Completación de L1∩C0 para max(norma uniforme f,norma uniforme Fourier f)",
+      "label": "v4:grafo-fourier-inyectivo"
+    },
+    {
+      "simbolo": "\\nu",
+      "significado": "Medida de Haar dual de μ compatible con inversión/Plancherel",
+      "label": "v4:haar-dual"
+    },
+    {
+      "simbolo": "U,\\mathcal F",
+      "significado": "Inversa unitaria L2(dual)→L2(G) y transformada directa",
+      "label": "v4:plancherel-lca"
+    },
+    {
+      "simbolo": "\\check k",
+      "significado": "Integral inversa ∫k(χ)conjugado χ(x)dν",
+      "label": "v4:regular-dual-multiplicadores"
+    },
+    {
+      "simbolo": "\\iota_G",
+      "significado": "Evaluación canónica x↦(χ↦χ(x)) sobre el doble dual",
+      "label": "v4:pontryagin"
+    },
+    {
+      "simbolo": "H^\\perp",
+      "significado": "Aniquilador: caracteres de G triviales en H",
+      "label": "v4:dual-cociente-encaje"
+    }
+  ],
+  "conteos": {
+    "palabras_por_capitulo": {
+      "14": 2610,
+      "15": 1989,
+      "16": 6724
+    },
+    "ejercicios_originales": 3,
+    "ejercicios_ampliacion": 8,
+    "ejercicios_totales": 11,
+    "soluciones": 11,
+    "labels": 52,
+    "labels_duplicados": [],
+    "referencias_locales_sin_destino": []
+  },
+  "prerrequisitos": {
+    "VolI13": "Stone–Weierstrass real y complejo; prueba válida en compacto Hausdorff.",
+    "VolII16": "Representación positiva sobre Cc general: root encargó añadir esta extensión tras detectar que versión previa sólo cubría C0 acotado.",
+    "VolIII09": "Banach–Alaoglu.",
+    "VolIII13": "Gelfand C* conmutativo y caso no unitario (ejercicio lectura26 número2).",
+    "VolIV10-13": "Haar, unimodularidad LCA, identidades aproximadas, continuidad Lp de traslaciones, integración de representaciones."
+  },
+  "validacion": {
+    "compilador": "XeLaTeX",
+    "driver_aislado": "/tmp/vol4-14-16-qa/block.tex",
+    "paginas": 29,
+    "errores": 0,
+    "overfull": 0,
+    "underfull": 0,
+    "referencias_indefinidas_tras_dos_pasadas": 0,
+    "qa_visual": "Inspeccionadas 29 páginas por hojas de contacto y ampliación p4; nueva inspección de páginas13–27 después de precisiones finales. Sin solapes, cortes ni títulos huérfanos.",
+    "pasadas_finales": "XeLaTeX build3 y build4; build4 sin warnings, errores, overfull ni underfull.",
+    "revision_matematica_independiente": "Root revisó íntegro capítulo16 y confirmó estructura sin circularidad. Incorporada su precisión sobre igualdad local/global a.e. y Fubini en grupos generales."
+  }
+}

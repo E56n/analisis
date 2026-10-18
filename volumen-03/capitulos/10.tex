@@ -1,0 +1,325 @@
+\chapter{Álgebras normadas, ideales y adjunción de una identidad}\label{cap:v3-10}
+
+En un espacio normado podemos sumar vectores y tomar límites. Un álgebra añade un producto entre sus elementos: componer operadores, multiplicar funciones o convolucionar señales son ejemplos de esta operación. La desigualdad que relaciona producto y norma permitirá pasar de las identidades algebraicas a las series convergentes. Estudiaremos también qué significa añadir una identidad a un álgebra que no la tiene y qué propiedades sobreviven al tomar un cociente.
+
+Trabajaremos sobre $\F=\R$ o $\C$. Una identidad será bilateral y distinta de cero. Por tanto, cuando hablemos de un álgebra unitaria, excluiremos el álgebra nula. Un ideal maximal será siempre \emph{propio}: omitir esta condición haría maximal a toda el álgebra y destruiría los resultados sobre cocientes.
+
+\section{El producto y su relación con la norma}\label{lec:v3-19}
+\fuentelectura{19}{Álgebras normadas}
+
+\begin{definicion}
+Un álgebra asociativa $A$ sobre $\F$ es un espacio vectorial con un producto bilineal $A\times A\to A$, $(a,b)\mapsto ab$, tal que $(ab)c=a(bc)$. La bilinealidad comprende las dos distributividades y las identidades
+\[
+ (\alpha a)b=\alpha(ab)=a(\alpha b).
+\]
+Es conmutativa si $ab=ba$, y unitaria si existe $1\ne0$ con $1a=a1=a$ para todo $a$. Una \emph{norma de álgebra} satisface $\norm{ab}\leq\norm a\norm b$. Si el espacio normado es completo, hablamos de un álgebra de Banach.
+\end{definicion}
+\index{algebra@álgebra!normada}\index{algebra@álgebra!de Banach}
+
+El nombre ``producto vectorial'' de la lectura significa aquí producto del álgebra; no se refiere al producto cruz de $\R^3$. No exigimos conmutatividad. Las matrices y los operadores proporcionan ejemplos fundamentales en que el orden de los factores importa.
+
+\begin{proposicion}\label{v3:algebra-identidades}
+En toda álgebra se tiene $0a=a0=0$, $(-a)b=a(-b)=-(ab)$ y $(-a)(-b)=ab$. La identidad bilateral, cuando existe, es única. Si $a,b$ conmutan y $n\geq1$, entonces
+\[
+ (a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k.
+\]
+En un álgebra normada, $\norm{a^n}\leq\norm a^n$ para $n\geq1$; si es unitaria, $\norm1\geq1$.
+\end{proposicion}
+\begin{proof}
+La igualdad $0a=(0+0)a=0a+0a$ permite cancelar un sumando y obtener $0a=0$; la otra igualdad se obtiene por la segunda distributividad. Como $(a+(-a))b=0$, los elementos $ab$ y $(-a)b$ son opuestos. Se razona igual en el otro factor, y aplicar dos veces la regla da $(-a)(-b)=ab$. Si $e,e'$ son identidades bilaterales, $e=ee'=e'$.
+
+Para el binomio, el caso $n=1$ es la distributividad. Multiplique la fórmula de $n$ por $a+b$. La conmutación permite escribir $a^{n-k}b^ka=a^{n+1-k}b^k$; después se agrupan los términos de la misma potencia y se usa $\binom nk+\binom n{k-1}=\binom{n+1}k$. En un álgebra sin identidad, los términos extremos se interpretan como $a^n$ y $b^n$, sin introducir artificialmente una potencia de orden cero. Finalmente, la submultiplicatividad da la cota de las potencias por inducción. De $\norm1=\norm{1^2}\leq\norm1^2$ y $\norm1>0$ se obtiene $\norm1\geq1$.
+\end{proof}
+
+\begin{observacion}[Dos erratas algebraicas]
+La regla de signos de la lectura contiene una letra ajena al producto. Además, en su fórmula del binomio debe decir $(a+b)^n$, no $(ab)^n$. La conmutación es necesaria para la fórmula usual: sin ella, $(a+b)^2=a^2+ab+ba+b^2$.
+\end{observacion}
+
+\begin{proposicion}\label{v3:producto-continuo}
+El producto de un álgebra normada es conjuntamente continuo. Si $\sum_n a_n$ converge en $A$ y $b\in A$, entonces
+\[
+ \sum_n a_nb=\left(\sum_n a_n\right)b,
+ \qquad \sum_n ba_n=b\left(\sum_n a_n\right).
+\]
+\end{proposicion}
+\begin{proof}
+Si $a_n\to a$ y $b_n\to b$, escribimos
+\[
+ a_nb_n-ab=a_n(b_n-b)+(a_n-a)b.
+\]
+Una sucesión convergente es acotada, de modo que $\norm{a_n}\leq M$ para algún $M$. Por tanto
+\[
+ \norm{a_nb_n-ab}\leq M\norm{b_n-b}+\norm b\norm{a_n-a}\longrightarrow0.
+\]
+Este criterio secuencial caracteriza continuidad en los espacios métricos considerados. Para las series, las sumas parciales de $\sum a_nb$ son $(\sum_{n\leq N}a_n)b$ por distributividad. Su límite es el producto del límite por $b$; el argumento del otro lado es idéntico, conservando el orden de los factores.
+\end{proof}
+
+\section{Ejemplos e ideales: hipótesis que importan}
+
+\begin{definicion}
+Una subálgebra es un subespacio estable bajo producto. Un subespacio $I\subset A$ es ideal izquierdo si $AI\subset I$, derecho si $IA\subset I$, y bilateral si cumple ambas condiciones. Escribimos $I\mathrel{\triangleleft}A$ para un ideal bilateral. No exigimos que una subálgebra contenga la identidad del álgebra ambiente.
+\end{definicion}
+\index{ideal!izquierdo}\index{ideal!bilateral}
+
+Todo ideal es una subálgebra: en la condición de ideal puede elegirse también el factor exterior dentro del propio ideal. En un álgebra conmutativa, izquierda y derecha coinciden. El recíproco falla: las constantes forman una subálgebra de $C(X)$, pero, si existe una función no constante $f$, el producto $1f=f$ impide que esa subálgebra sea ideal.
+
+Los espacios $C(X)$, para $X$ compacto Hausdorff no vacío, y $C_b(X)$, para $X$ arbitrario, son álgebras conmutativas de Banach con norma uniforme. El producto preserva continuidad y acotación, y
+\[
+ \norm{fg}_\infty\leq\norm f_\infty\norm g_\infty.
+\]
+La completitud es la del espacio de funciones uniformemente acotadas y la continuidad de los límites uniformes. En un espacio no compacto, $C(X)$ puede contener funciones no acotadas; la norma uniforme no es entonces una norma finita sobre todo $C(X)$.
+
+Para un espacio localmente compacto Hausdorff, $C_0(X)$ consiste en las funciones continuas cuyos conjuntos $\{|f|\geq\eps\}$ son compactos para todo $\eps>0$. Es un subespacio cerrado de $C_b(X)$: si $f_n\to f$ uniformemente, el conjunto cerrado $\{|f|\geq\eps\}$ está contenido en el compacto $\{|f_n|\geq\eps/2\}$ para un $n$ suficientemente grande. Además, es un ideal de $C_b(X)$, pues $|fg|\geq\eps$ implica $|g|\geq\eps/\norm f_\infty$ cuando $f\ne0$.
+
+Si $X$ no es compacto, $C_0(X)$ no tiene identidad. Para verlo, usamos la propiedad de funciones de corte de los espacios localmente compactos Hausdorff: para cada $x$ existe $u\in C_c(X)$ con $u(x)=1$. Una identidad $e$ cumpliría $eu=u$, luego $e(x)=1$ para todo $x$. Pero la constante $1$ no se anula en el infinito cuando $X$ no es compacto. La propiedad de corte se obtiene escogiendo una vecindad de clausura compacta de $x$, separando $x$ de su frontera mediante el lema de Urysohn en ese compacto Hausdorff, y prolongando por cero; la función se anula en una vecindad de la frontera, lo que justifica la continuidad de la prolongación.
+
+\begin{observacion}[El álgebra ambiente no puede omitirse]
+La afirmación de que $C_0(X)$ es ideal de todo $C(X)$ es falsa. En $X=\R$, tome $g(x)=1/(1+x^2)\in C_0(\R)$ y $f(x)=1+x^2\in C(\R)$. Su producto es $1\notin C_0(\R)$. La prueba de la lectura utiliza $\norm f_\infty$ y, por ello, demuestra la afirmación correcta para $C_b(X)$.
+\end{observacion}
+
+En un espacio de medida, $L^\infty$ es un álgebra de Banach con producto de clases de funciones. El producto está bien definido porque cambiar representantes en conjuntos nulos no cambia su clase; la desigualdad esencial $|fg|\leq\norm f_\infty\norm g_\infty$ prueba submultiplicatividad. Si $\mu(X)>0$, la clase de $1$ es una identidad de norma uno; si $\mu(X)=0$, el álgebra cociente es nula y constituye la excepción a nuestra convención sobre identidades.
+
+Para un espacio de Banach $V$, $\Bcal(V,V)$ es un álgebra de Banach bajo composición, y $\Kcal(V,V)$ es un ideal bilateral cerrado. Si $T$ es compacto y $S$ acotado, una sucesión acotada admite una subsucesión en la que $Tx_n$ converge, y entonces $STx_n$ converge; para $TS$, se aplica compacidad a la sucesión acotada $Sx_n$. La cerradura en norma se prueba aproximando la imagen de la bola por una imagen totalmente acotada y usando completitud del codominio. En particular, las álgebras de operadores y de matrices no son generalmente conmutativas; la excepción no se limita a los cuaternios.
+
+Finalmente, $C^n([a,b])$ es subálgebra de $C([a,b])$ por Leibniz. Si $n\geq1$ y $a<b$, no es ideal: contiene a $1$, pero no a la función continua $|t-(a+b)/2|$. Para $n=0$ coincide con toda el álgebra.
+
+\section{Ejercicios sobre productos, inversos y cocientes}
+
+\begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:v3-l19-1}
+Estudie las siguientes álgebras normadas y justifique todos los productos:
+\begin{enumerate}
+\item $C^n([a,b])$ con producto puntual y la norma de la lectura 0, $\norm f_n=\sum_{k=0}^n\norm{f^{(k)}}_\infty$. Determine si esa norma es submultiplicativa y, cuando haga falta, corríjala mediante una norma equivalente.
+\item $\ell^1(\Z)$ con $(x*y)_k=\sum_{j\in\Z}x_jy_{k-j}$.
+\item $L^1(\R)$ con $(f*g)(x)=\int_\R f(y)g(x-y)\,dy$, definida casi en todas partes.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+(i) La norma dada no es submultiplicativa para $n\geq2$. Ponga $c=(a+b)/2$, $r=(b-a)/2$ y $f(t)=g(t)=t-c$. Entonces $\norm f_n=\norm g_n=r+1$, mientras que
+\[
+ \norm{fg}_n=r^2+2r+2>(r+1)^2.
+\]
+La versión válida utiliza
+\[
+ \norm f_{n,!}=\sum_{k=0}^n\frac{\norm{f^{(k)}}_\infty}{k!}.
+\]
+Leibniz da
+\[
+ \frac{\norm{(fg)^{(k)}}_\infty}{k!}
+ \leq\sum_{j=0}^k\frac{\norm{f^{(j)}}_\infty}{j!}
+                       \frac{\norm{g^{(k-j)}}_\infty}{(k-j)!}.
+\]
+Al sumar en $k\leq n$, aparecen algunos de los términos no negativos del producto $\norm f_{n,!}\norm g_{n,!}$, y se obtiene la desigualdad requerida. Las normas son equivalentes porque $\norm f_n/n!\leq\norm f_{n,!}\leq\norm f_n$; para $n=0,1$ coinciden. Su completitud puede verse directamente: una sucesión de Cauchy tiene límites uniformes $g_k$ de sus derivadas de orden $k$, y pasar al límite en $f_j^{(k)}(t)-f_j^{(k)}(a)=\int_a^t f_j^{(k+1)}$ da $g_k'=g_{k+1}$. Así $g_0\in C^n$ y la convergencia ocurre en la norma indicada. El producto es asociativo y conmutativo punto por punto, y la constante $1$ es identidad.
+
+(ii) Tonelli para series no negativas y el cambio de índice $l=k-j$ dan
+\[
+ \sum_{k\in\Z}\sum_{j\in\Z}|x_jy_{k-j}|
+ =\sum_j|x_j|\sum_l|y_l|=\norm x_1\norm y_1.
+\]
+Cada coeficiente está definido por una serie absolutamente convergente, la sucesión resultante pertenece a $\ell^1$, y $\norm{x*y}_1\leq\norm x_1\norm y_1$. Bilinealidad y conmutatividad siguen de las series y del cambio $j\mapsto k-j$. Para asociatividad, ambas expresiones tienen coeficiente $\sum_{j,l}x_jy_lz_{k-j-l}$. La suma de los valores absolutos, también sobre $k$, es $\norm x_1\norm y_1\norm z_1$, por lo que Fubini justifica reagrupar. La completitud es la de $\ell^1$.
+
+(iii) Elija representantes medibles. Tonelli e invariancia por traslación de Lebesgue implican
+\[
+ \int_\R\int_\R |f(y)g(x-y)|\,dy\,dx
+ =\int_\R |f(y)|\left(\int_\R|g(x-y)|\,dx\right)dy
+ =\norm f_1\norm g_1.
+\]
+La integral interior existe para casi todo $x$, define una función medible integrable y satisface $\norm{f*g}_1\leq\norm f_1\norm g_1$. El mismo cálculo aplicado a diferencias nulas casi en todas partes prueba independencia de representantes. Bilinealidad se hereda de la integral. La sustitución $u=x-y$ demuestra conmutatividad. Para tres funciones, la integral absoluta total de $f(s)g(t)h(x-s-t)$ sobre $\R^3$ vale $\norm f_1\norm g_1\norm h_1$; Fubini permite calcular las integrales en ambos órdenes y demuestra $(f*g)*h=f*(g*h)$ casi en todas partes. El resultado es un álgebra de Banach porque $L^1$ es completo. La ausencia de identidad se demostrará en el ejercicio~\ref{ej:v3-l20-5}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 2]\label{ej:v3-l19-2}
+Sea $A$ un álgebra unitaria. Un inverso izquierdo de $a$ satisface $ba=1$; un inverso derecho satisface $ac=1$. Pruebe:
+\begin{enumerate}
+\item Si $a$ tiene inverso izquierdo pero no derecho, posee infinitos inversos izquierdos.
+\item Si $b$ es inverso izquierdo y $c$ derecho, entonces $b=c$.
+\item El inverso bilateral, cuando existe, es único y se denota $a^{-1}$.
+\item Si $a,b$ son invertibles, $\alpha\ne0$ y $n\geq1$, también lo son $ab,\alpha a,a^n$, y sus inversos son $b^{-1}a^{-1},\alpha^{-1}a^{-1},(a^{-1})^n$.
+\item Si $A$ es normada y $b$ es inverso por alguno de los lados, determine la cota inferior correcta para $\norm b$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+(i) Sea $ba=1$. Como $a$ no tiene inverso derecho, $q=1-ab\ne0$. Se tiene $qa=a-aba=0$. Por tanto $(b+tq)a=1$ para todo $t\in\F$. Si $s\ne t$, $(s-t)q\ne0$; los inversos son distintos y $\R,\C$ tienen infinitos escalares.
+
+(ii) La asociatividad da $b=b(ac)=(ba)c=c$. (iii) Dos inversos bilaterales son, en particular, un inverso izquierdo y uno derecho, y el inciso anterior prueba unicidad. (iv) Multiplicar en ambos órdenes verifica, por ejemplo, $(ab)(b^{-1}a^{-1})=a1a^{-1}=1$ y $(b^{-1}a^{-1})(ab)=b^{-1}1b=1$. La compatibilidad con escalares verifica el segundo caso; el tercero se obtiene iterando el primero. Es indispensable $\alpha\ne0$, pues $0a=0$ no es invertible.
+
+(v) En cualquiera de los dos órdenes, $\norm1\leq\norm a\norm b$, de modo que
+\[
+ \norm b\geq\frac{\norm1}{\norm a}\geq\frac1{\norm a}.
+\]
+La cota $\norm b\geq\norm a$ impresa en la lectura es falsa incluso en $\R$: tome $a=2$, $b=1/2$. En particular, $\norm{a^{-1}}\geq1/\norm a$ si $a$ es invertible.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 3]\label{ej:v3-l19-3}
+Para $a$ en un álgebra normada unitaria, defina $L_a(x)=ax$. Pruebe que $L_a$ es lineal continuo y que $a\mapsto L_a$ es lineal, multiplicativo e inyectivo. Deduzca una norma equivalente y submultiplicativa para la que la identidad tiene norma uno.
+\end{ejercicio}
+\begin{solucion}
+Distributividad y compatibilidad escalar dan linealidad, y $\norm{L_ax}\leq\norm a\norm x$ da continuidad. Evaluando en cada $x$ se obtiene $L_{a+b}=L_a+L_b$, $L_{\alpha a}=\alpha L_a$ y $L_{ab}=L_aL_b$. Si $L_a=0$, evaluar en $1$ da $a=0$.
+
+Defina $\norm a'=\norm{L_a}$. La inyectividad garantiza que se trata de una norma; la desigualdad de la composición la hace submultiplicativa. Además,
+\[
+ \norm a'\leq\norm a,
+ \qquad \norm a=\norm{L_a1}\leq\norm a'\norm1.
+\]
+Las normas son equivalentes. Finalmente $L_1$ es la identidad del espacio normado no nulo $A$, cuya norma de operador es uno. Así $\norm1'=1$. La equivalencia preserva también completitud.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 4]\label{ej:v3-l19-4}
+Sea $I$ un ideal \emph{bilateral} cerrado de un álgebra normada $A$. Pruebe que $(a+I)(b+I)=ab+I$ define un producto de álgebra normada sobre $A/I$, con su norma cociente.
+\end{ejercicio}
+\begin{solucion}
+Si se sustituyen $a,b$ por $a+i,b+j$, la diferencia de productos es $aj+ib+ij\in I$. Este cálculo utiliza ambos lados del ideal y demuestra que el producto está bien definido. Todas las identidades algebraicas descienden de las de $A$. Para $\eps>0$, elija representantes $a',b'$ de las clases con normas menores que $\norm{a+I}+\eps$ y $\norm{b+I}+\eps$. Entonces
+\[
+ \norm{ab+I}\leq\norm{a'b'}
+ \leq(\norm{a+I}+\eps)(\norm{b+I}+\eps).
+\]
+Dejar $\eps\downarrow0$ da submultiplicatividad. La cerradura de $I$ garantiza que la norma cociente separa clases: norma cero significa pertenecer a $\cl I=I$. Si $A$ es Banach, $A/I$ es Banach por el teorema de completitud de cocientes. Si $I=A$, se obtiene el álgebra nula; si $A$ es unitaria e $I$ propio, $1+I$ es una identidad no nula.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 5]\label{ej:v3-l19-5}
+Sea $T:A\to B$ lineal, continuo y multiplicativo; cuando se exige homomorfismo unital, suponga además $T(1_A)=1_B$. Pruebe que su núcleo es ideal bilateral y su imagen es subálgebra. Precise el significado del primer teorema de isomorfismo $A/\ker T\simeq T(A)$ y las hipótesis para que sea un isomorfismo topológico.
+\end{ejercicio}
+\begin{solucion}
+Si $i\in\ker T$, entonces $T(ai)=T(a)T(i)=0$ y $T(ia)=0$. El núcleo es subespacio y, por continuidad, cerrado. Las imágenes de sumas, escalares y productos muestran que $T(A)$ es subálgebra. La aplicación
+\[
+ \widetilde T(a+\ker T)=T(a)
+\]
+está bien definida, es sobreyectiva sobre $T(A)$ y es inyectiva porque $T(a)=0$ equivale a $a\in\ker T$. Es lineal y multiplicativa, y
+$\norm{T(a)}\leq\norm T\inf_{i\in\ker T}\norm{a+i}=\norm T\norm{a+\ker T}$.
+
+Esto prueba un isomorfismo \emph{algebraico} y continuidad hacia la imagen, pero no continuidad automática de la inversa. Como contraejemplo, incluya $\ell^1$ en $c_0$, ambos con producto puntual, y use sus normas usuales. Es una inclusión multiplicativa continua; las sucesiones con sus primeros $n$ términos iguales a $1/n$ tienen norma $\ell^1$ igual a $1$ y norma uniforme $1/n$. La inversa sobre la imagen no es continua. Si $A$ y $B$ son Banach y $T(A)$ es cerrado, tanto el cociente como la imagen son Banach y el teorema de la aplicación abierta aplicado a $\widetilde T$ hace continua su inversa. Estas hipótesis justifican la versión topológica, que no se deduce solamente de la identidad algebraica.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 6: variables y cerradura]\label{ej:v3-l19-6}
+Sea $X$ localmente compacto Hausdorff y $E\subset X$. Defina
+\[
+ I(E)=\{f:f|_E=0\}.
+\]
+Pruebe que es un ideal en $C_b(X)$, con norma uniforme, y en $C(X)$, con la topología de convergencia uniforme en compactos. Examine la afirmación de que ese ideal es cerrado si y solo si $E$ es cerrado.
+\end{ejercicio}
+\begin{solucion}
+La notación de la lectura usa la misma letra para el conjunto de puntos y el espacio de funciones, por lo que hemos distinguido $E$ e $I(E)$. Las funciones que se anulan en $E$ forman un subespacio, y $(fg)(x)=f(x)g(x)=0$ en $E$ si $g$ se anula allí. Esto prueba la propiedad de ideal.
+
+Para cada $x$, la evaluación $f\mapsto f(x)$ es continua en ambas topologías: en norma uniforme, $|f(x)|\leq\norm f_\infty$; en la otra, se utiliza el compacto $\{x\}$. Así
+$I(E)=\bigcap_{x\in E}\ker(f\mapsto f(x))$ es siempre cerrado. Además, una función continua que se anula en $E$ se anula en $\cl E$, y por ello $I(E)=I(\cl E)$. No puede recuperarse la condición de que $E$ sea cerrado mirando solamente el ideal. Por ejemplo, $E=(0,1)\subset\R$ no es cerrado y su ideal es cerrado. Para los conjuntos cerrados sí puede recuperarse el conjunto como los ceros comunes de su ideal: si $x\notin E$, una función de corte soportada en $X\setminus E$ separa $x$ de $E$. Esto explica la correspondencia geométrica correcta sin afirmar el falso ``si y solo si''.
+\end{solucion}
+
+\section{Adjuntar una identidad sin alterar el álgebra original}\label{lec:v3-20}
+\fuentelectura{20}{Extensión de álgebras de Banach}
+
+Sea $A$ un álgebra de Banach, inicialmente sin identidad. Construimos
+\[
+ A^{\sim}=A\oplus\F,\qquad
+ (a,\alpha)(b,\beta)=(ab+\alpha b+\beta a,\alpha\beta),
+ \qquad \norm{(a,\alpha)}_1=\norm a+|\alpha|.
+\]
+La expresión imita el producto formal $(a+\alpha1)(b+\beta1)$. Esa motivación sugiere la fórmula, pero sus propiedades deben verificarse dentro del espacio construido.
+
+\begin{teorema}\label{v3:unitizacion}
+Con estas operaciones, $A^{\sim}$ es un álgebra de Banach unitaria, con identidad $(0,1)$ de norma uno. La aplicación $J(a)=(a,0)$ es un homomorfismo isométrico y su imagen es un ideal bilateral cerrado maximal.
+\end{teorema}
+\begin{proof}
+La suma de las dos normas es positiva y se anula únicamente en $(0,0)$; homogeneidad y desigualdad triangular se obtienen sumando las correspondientes desigualdades de cada coordenada. Si $(a_n,\alpha_n)$ es de Cauchy, ambas coordenadas lo son, luego convergen a $a\in A$ y $\alpha\in\F$. La suma de sus errores demuestra convergencia en la norma de $A^{\sim}$. Equivalentemente, una serie absolutamente convergente converge coordenada a coordenada; sus sumas parciales son $\sum_{k=1}^n a_k$, no las colas $\sum_{k=n}^\infty a_k$ que aparecen por errata en la lectura.
+
+La primera coordenada de cualquiera de las dos asociaciones de un producto de tres factores es
+\[
+ abc+\alpha bc+\beta ac+\gamma ab
+       +\alpha\beta c+\alpha\gamma b+\beta\gamma a;
+\]
+la segunda es $\alpha\beta\gamma$. La asociatividad de $A$ y de los escalares prueba la de $A^{\sim}$. Cada término de la fórmula del producto es lineal respecto de cada par de coordenadas, por lo que se cumplen las dos distributividades y la compatibilidad escalar. Multiplicar por $(0,1)$ en ambos órdenes devuelve $(a,\alpha)$. Además,
+\[
+ \norm{(a,\alpha)(b,\beta)}_1
+ \leq\norm a\norm b+|\alpha|\norm b+|\beta|\norm a+|\alpha\beta|
+ =\norm{(a,\alpha)}_1\norm{(b,\beta)}_1.
+\]
+La norma de la identidad es $1$.
+
+Las identidades $J(a+b)=J(a)+J(b)$, $J(ab)=J(a)J(b)$ y $\norm{J(a)}_1=\norm a$ verifican todas las propiedades de $J$. La proyección $q(a,\alpha)=\alpha$ es un homomorfismo continuo sobre $\F$, cuyo núcleo es $J(A)$; por tanto ese núcleo es cerrado y bilateral. Para comprobar maximalidad sin invertir flechas de cocientes, sea $I$ un ideal que contiene a $J(A)$ y contiene también algún $(a,\alpha)$ con $\alpha\ne0$. Restar $(a,0)$ y dividir por $\alpha$ muestra que $(0,1)\in I$, de modo que $I=A^{\sim}$. No hay ideal intermedio. Equivalentemente, $A^{\sim}/J(A)\simeq\F$ tiene dimensión uno.
+\end{proof}
+
+\begin{ejemplo}[Sucesiones convergentes]
+Sea $c$ el álgebra de sucesiones convergentes, con norma uniforme y producto puntual. Si $\ell=\lim x_n$, defina $T(x)=(x-\ell1,\ell)\in c_0^{\sim}$. El límite es lineal, así que $T$ es lineal; su inversa es $(a,\alpha)\mapsto a+\alpha1$. Las cotas
+\[
+ \norm{T(x)}_1\leq\norm{x-\ell1}_\infty+|\ell|
+ \leq3\norm x_\infty,
+ \qquad \norm{a+\alpha1}_\infty\leq\norm a_\infty+|\alpha|
+\]
+hacen continuas ambas aplicaciones. Si $\ell=\lim x_n$ y $m=\lim y_n$, la primera coordenada del producto es
+\[
+ (x-\ell1)(y-m1)+\ell(y-m1)+m(x-\ell1)=xy-\ell m1,
+\]
+y la segunda es $\ell m=\lim x_ny_n$. Por ello $T(xy)=T(x)T(y)$. Es un isomorfismo de Banach, generalmente no isométrico para la norma suma: $x=(-1,1,1,\ldots)$ tiene norma uniforme uno y $\norm{T(x)}_1=3$. La inclusión de $c_0$ en $c$, en cambio, sí es isométrica.
+\end{ejemplo}
+
+\section{Una herramienta para ideales cerrados}
+
+\begin{lema}[Serie de Neumann]\label{v3:neumann-basico}
+En un álgebra de Banach unitaria, si $\norm a<1$, entonces $1-a$ es invertible y
+\[
+ (1-a)^{-1}=\sum_{n=0}^\infty a^n.
+\]
+\end{lema}
+\begin{proof}
+El término $n=0$ es la identidad, de norma finita; la cola converge absolutamente porque $\norm{a^n}\leq\norm a^n$ para $n\geq1$. Si $s_N=1+a+\cdots+a^N$, la distributividad produce $(1-a)s_N=s_N(1-a)=1-a^{N+1}$. Como $\norm{a^{N+1}}\to0$, la continuidad del producto permite pasar al límite en ambas igualdades. La suma de la serie es, pues, un inverso por ambos lados.
+\end{proof}
+
+\section{Ejercicios sobre ideales maximales y existencia de identidad}
+
+\begin{ejercicio}[Lectura 20, ejercicio 1]\label{ej:v3-l20-1}
+Pruebe que la clausura de un ideal izquierdo, derecho o bilateral de un álgebra normada es un ideal del mismo tipo. Examine la conclusión de que todo ideal maximal es cerrado y demuestre la versión válida para álgebras de Banach unitarias.
+\end{ejercicio}
+\begin{solucion}
+El cierre de un subespacio es subespacio por continuidad de las operaciones vectoriales. Si $i_n\in I$ converge a $i$ y $a\in A$, entonces $ai_n\to ai$ y $i_na\to ia$. Cada condición de ideal que valía para $I$ pasa así a $\cl I$.
+
+Supongamos ahora $A$ Banach unitaria e $I$ maximal propio. Si $\cl I=A$, existe $i\in I$ con $\norm{1-i}<1$. El lema~\ref{v3:neumann-basico} hace invertible a $i$; un ideal que contiene un invertible contiene a $1$ y es todo $A$, contradicción. Así $\cl I$ es propio. La maximalidad y $I\subset\cl I$ implican $I=\cl I$. El argumento funciona también para ideales maximales izquierdos o derechos, multiplicando el inverso por el lado correspondiente.
+
+La completitud no puede suprimirse. En $\C[z]$ con la norma uniforme del disco unidad, $I=(z-2)$ es maximal porque es el núcleo de la evaluación sobreyectiva en $2$. Sin embargo,
+\[
+ p_N(z)=-\frac12\sum_{k=0}^N(z/2)^k,
+ \qquad (z-2)p_N(z)=1-(z/2)^{N+1}\longrightarrow1
+\]
+uniformemente en el disco. La clausura del ideal contiene a $1$, luego a toda el álgebra, aunque $I$ es propio. Por tanto el enunciado original para cualquier álgebra normada requiere la corrección indicada.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 2]\label{ej:v3-l20-2}
+Pruebe que un álgebra conmutativa unitaria no nula tiene ideales maximales.
+\end{ejercicio}
+\begin{solucion}
+Ordene por inclusión los ideales propios. La familia no es vacía, pues contiene a $\{0\}$. La unión de una cadena es subespacio e ideal: dados finitos elementos de la unión, alguno de los miembros de la cadena los contiene simultáneamente y permite realizar las operaciones. Esa unión sigue siendo propia, pues si contuviera a $1$, alguno de los ideales de la cadena ya contendría a $1$. Por Zorn existe un elemento maximal. Para la cadena vacía sirve $\{0\}$ como cota superior. Este argumento no presupone norma ni completitud.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 3: el campo cociente]\label{ej:v3-l20-3}
+Sea $A$ conmutativa unitaria sobre $\F$ e $I$ un ideal propio. Determine la relación entre maximalidad de $I$ y el cociente $A/I$. Examine la afirmación de la lectura $I$ maximal si y solo si $A/I\simeq\F$.
+\end{ejercicio}
+\begin{solucion}
+La afirmación algebraica general es: $I$ es maximal si y solo si $A/I$ es un \emph{campo}, que puede ser una extensión propia de $\F$. Si $I$ es maximal y $a\notin I$, el ideal $I+Aa$ contiene estrictamente a $I$, luego es todo $A$. Así $1=i+ba$ para ciertos $i\in I$, $b\in A$, y $(b+I)(a+I)=1+I$. Toda clase no nula tiene inversa. Recíprocamente, si el cociente es campo y un ideal $J$ contiene estrictamente a $I$, elija $a\in J\setminus I$. La inversa de su clase proporciona $b$ con $ba-1\in I\subset J$, de donde $1\in J$ y $J=A$.
+
+Si $A/I\simeq\F$, ciertamente es campo y $I$ es maximal. El recíproco, tal como está impreso, es falso: considere $A=\C$ como álgebra real e $I=\{0\}$. Es maximal, pero $\C$ no es isomorfo a $\R$ como álgebra real. Incluso sobre $\C$, un álgebra puramente algebraica puede ser $\C(t)$, cuyo ideal cero es maximal y cuyo campo no es $\C$. Para un álgebra de Banach \emph{compleja} unitaria, el cociente por un maximal es Banach por el ejercicio anterior y el teorema de Gelfand--Mazur, demostrado en el capítulo~\ref{cap:v3-11}, identifica ese campo con $\C$. Esas son las hipótesis analíticas adicionales que hacen válida la conclusión escalar.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 4]\label{ej:v3-l20-4}
+Demuestre que $e_0=(\delta_{0,n})_{n\in\Z}$ es la identidad de $\ell^1(\Z)$ con el producto de Cauchy.
+\end{ejercicio}
+\begin{solucion}
+La sucesión pertenece a $\ell^1$ y tiene norma uno. Para cada $k$,
+\[
+ (e_0*x)_k=\sum_j\delta_{0,j}x_{k-j}=x_k,
+ \qquad (x*e_0)_k=\sum_jx_j\delta_{0,k-j}=x_k.
+\]
+Cada suma tiene un único término no nulo. Las dos igualdades verifican una identidad bilateral.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 5]\label{ej:v3-l20-5}
+Pruebe que $L^1(\R)$ con convolución no tiene identidad. Si existiera $e\in L^1$ con $e*f=f$ casi en todas partes para toda $f\in L^1$, pruebe que la medida $\mu_e(E)=\int_E e\,d\lambda$ asignaría masa uno a todo intervalo abierto acotado que contiene al origen, y obtenga una contradicción con su continuidad absoluta.
+\end{ejercicio}
+\begin{solucion}
+Sea $f_n=(n/2)\mathbf1_{(-1/n,1/n)}$, cuya integral es uno. Fije $a<0<b$. Para $n$ suficientemente grande, $\int_a^b f_n=1$, y la identidad supuesta da $\int_a^b(e*f_n)=1$. Fubini, justificado por $\norm e_1\norm{f_n}_1<\infty$, permite escribir
+\[
+ 1=\int_\R e(y)h_n(y)\,dy,
+ \qquad h_n(y)=\frac n2\lambda\big((a,b)\cap(y-1/n,y+1/n)\big).
+\]
+Se tiene $0\leq h_n\leq1$. Para $y\in(a,b)$, la pequeña ventana termina contenida en el intervalo y $h_n(y)=1$; para $y\notin[a,b]$, termina disjunta y $h_n(y)=0$. Solo los dos extremos pueden tener otro límite. Convergencia dominada con dominante $|e|$ demuestra
+$1=\int_a^b e=\mu_e((a,b))$.
+
+En particular, $\mu_e((-1/n,1/n))=1$. Como esos intervalos decrecen a $\{0\}$ y $e$ es integrable, convergencia dominada vuelve a dar $\mu_e(\{0\})=1$. Pero $\lambda(\{0\})=0$ y una medida de densidad integrable satisface $\mu_e(\{0\})=\int_{\{0\}}e\,d\lambda=0$. Esta contradicción prueba la ausencia de identidad. El obstáculo es concreto: la identidad formal de la convolución es una masa puntual, que no tiene densidad en $L^1(\R)$.
+\end{solucion}
+
+La norma controla productos y series, mientras que los ideales permiten conservar parte del álgebra al pasar a un cociente. La unitización añade exactamente una dirección escalar. Estas construcciones preparan la pregunta espectral: para qué valores de un escalar deja de ser invertible un elemento menos ese escalar por la identidad.

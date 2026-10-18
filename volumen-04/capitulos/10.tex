@@ -1,0 +1,265 @@
+\chapter{La medida de Haar}\label{v4:haar}\label{cap:v4-10}
+\index{medida!de Haar}
+La longitud de un intervalo no cambia al trasladarlo. La medida de Haar expresa esta idea en un grupo: mide conjuntos de modo compatible con la multiplicación. El problema no es escribir la condición de invariancia, sino construir una medida que la satisfaga sin coordenadas, derivadas ni una fórmula explícita para el grupo.
+
+Este capítulo desarrolla las lecturas 17--19 de Valencia Bucio \cite{valencia4}; la lectura 19 lleva por error el encabezado «Lectura 18». Se completan la construcción por recubrimientos, su paso al límite y la prueba de unicidad. El contexto general y la convención de regularidad se contrastan con Folland \cite{folland2016}.
+
+\section{Preparación topológica y regularidad}\label{lectura:v4-17}
+En todo el capítulo, $G$ es un grupo localmente compacto y Hausdorff. Escribimos $\Cc(G)$ para las funciones complejas continuas de soporte compacto y
+\[
+ L_xf(t)=f(x^{-1}t),\qquad R_xf(t)=f(tx).
+\]
+El conjunto $\Cc^+(G)$ contendrá las funciones de $\Cc(G)$ no negativas; se dirá explícitamente cuando se excluye la función cero.
+
+\begin{proposicion}\label{v4:haar-subgrupo}
+Un subgrupo localmente compacto $H$ de un grupo Hausdorff $G$, con la topología inducida, es cerrado.
+\end{proposicion}
+\begin{proof}
+Elijamos una vecindad compacta $K$ de la identidad en $H$. Existe un abierto $U$ de $G$ tal que $e\in U$ y $U\cap H\subset K$. La regularidad de los grupos Hausdorff permite elegir un abierto $V$ con $e\in V$ y $\overline V\subset U$. Si $x\in V\cap\overline H$, toda vecindad de $x$ contenida en $U$ intersecta $H\cap U$. Por tanto $x\in\overline{H\cap U}\subset K$: la última inclusión usa que $K$ es compacto en $G$ y, por ser $G$ Hausdorff, cerrado. Así $V\cap\overline H\subset H$. El subgrupo $H$ contiene una vecindad de la identidad del grupo $\overline H$; sus traslaciones muestran que es abierto en ese grupo. Un subgrupo abierto es también cerrado, porque su complemento es unión de clases laterales abiertas. Como $H$ es denso en $\overline H$, necesariamente $H=\overline H$.
+\end{proof}
+
+\begin{lema}[Funciones de corte]\label{v4:haar-corte}\index{funcion@función!de corte}
+Si $X$ es localmente compacto y Hausdorff, $K\subset X$ es compacto y $U\supset K$ es abierto, existe $\phi\in\Cc(X)$ tal que $0\leq\phi\leq1$, $\phi=1$ en $K$ y $\supp\phi\subset U$.
+\end{lema}
+\begin{proof}
+Para cada punto de $K$ elijamos una vecindad cuyo cierre sea compacto y esté contenido en $U$. Una subcubierta finita produce un abierto $V$ con $K\subset V\subset\overline V\subset U$ y $\overline V$ compacto. Si $X$ es compacto, apliquemos el lema de Urysohn a los cerrados disjuntos $K$ y $X\setminus V$. Si no lo es, hagámoslo en la compactificación por un punto $X\cup\{\infty\}$, que es compacta y Hausdorff y, por tanto, normal. La función obtenida vale cero fuera de $V$; su restricción a $X$ tiene soporte contenido en $\overline V$. Este argumento utiliza normalidad de un espacio compacto, sin presuponer que todo espacio localmente compacto sea normal.
+\end{proof}
+
+\begin{lema}[Continuidad uniforme de las traslaciones]\label{v4:haar-uniforme}
+Para $f\in\Cc(G)$ y $\eps>0$ existe una vecindad $V$ de $e$ tal que
+\[
+ \norm{L_vf-f}_\infty<\eps,\qquad
+ \norm{R_vf-f}_\infty<\eps\quad(v\in V).
+\]
+Además, si $v$ recorre una vecindad relativamente compacta fija de $e$, los soportes de estas funciones están contenidos en un mismo compacto.
+\end{lema}
+\begin{proof}
+Sea $S=\supp f$ y sea $W$ una vecindad compacta y simétrica de $e$. Los soportes de $L_vf$ y $R_vf$, para $v\in W$, están contenidos en $WS$ y $SW$, respectivamente. Fuera del compacto $C=S\cup WS\cup SW$ todas las diferencias consideradas son cero. La función $(v,t)\mapsto f(v^{-1}t)-f(t)$ es continua y se anula en $\{e\}\times C$. Para cada $t\in C$, la continuidad proporciona vecindades $V_t$ de $e$ y $O_t$ de $t$ en las cuales su módulo es menor que $\eps$. Cubrimos $C$ con un número finito de los $O_t$ e intersectamos los correspondientes $V_t$. Esto da la primera desigualdad uniformemente en $t$. El mismo argumento aplicado a $(v,t)\mapsto f(tv)-f(t)$ da la segunda. Intersectamos las dos vecindades obtenidas con el interior de $W$.
+\end{proof}
+
+\begin{definicion}[Convención de medida de Haar]\label{v4:haar-def}
+Una medida de Haar izquierda es una medida de Borel $\mu$ no nula, finita en compactos, exteriormente regular en los conjuntos de Borel e interiormente regular en los abiertos, tal que
+\[
+ \mu(xA)=\mu(A)\qquad(x\in G,\ A\in\mathcal B(G)).
+\]
+La regularidad interior también vale para todo Borel de medida finita. Para las integrales podemos usar la completación de esta medida. Una medida de Haar derecha satisface $\mu(Ax)=\mu(A)$.
+\end{definicion}
+\begin{observacion}[Una precisión necesaria sobre «Radon»]\label{v4:haar-radon}\index{regularidad!de una medida}
+La terminología varía: algunos autores reservan «Radon» para medidas interiormente regulares en todos los Borel. En grupos $\sigma$-compactos las condiciones usuales coinciden; fuera de ellos hay que especificarlas. La definición de las lecturas exige simultáneamente regularidad interior y exterior en todos los Borel. Esa exigencia es demasiado fuerte en la generalidad anunciada.
+
+Por ejemplo, sea $D$ un grupo discreto no numerable y $G=\R\times D$. Normalicemos la medida de Haar exteriormente regular para que cada intervalo de longitud uno en una componente tenga medida uno. El cerrado $E=\{0\}\times D$ tiene intersección de medida cero con cada compacto, porque la proyección de un compacto sobre $D$ es finita. Sin embargo, todo abierto que contiene $E$ tiene medida infinita. En efecto, contiene un intervalo de longitud positiva en cada componente; entre una familia no numerable de longitudes positivas, alguna subfamilia infinita tiene longitudes mayores que $1/n$. Las uniones finitas de esos intervalos tienen medidas arbitrariamente grandes. Por regularidad exterior, $\mu(E)=\infty$. No hay regularidad interior en $E$.
+
+Si $G$ es $\sigma$-compacto, escribimos $G=\bigcup K_n$ con $K_n$ compactos crecientes. Para un Borel $A$, cada $A\cap K_n$ tiene medida finita e interiormente regular; la continuidad creciente de la medida prueba la regularidad interior de $A$. Esta es la situación de $\R^n$, los grupos compactos y los grupos discretos numerables.
+\end{observacion}
+
+\begin{proposicion}\label{v4:haar-integral}
+Para una medida con la regularidad de la definición anterior, la invariancia izquierda equivale a
+\[
+ \int_G L_xf\,d\mu=\int_G f\,d\mu
+ \qquad(x\in G,\ f\in\Cc^+(G)).
+\]
+La medida $\nu(A)=\mu(A^{-1})$ es de Haar derecha si y sólo si $\mu$ es de Haar izquierda.
+\end{proposicion}
+\begin{proof}
+La inversión es un homeomorfismo; conserva compactos y abiertos y transforma $(Ax)^{-1}$ en $x^{-1}A^{-1}$. Esto prueba la última afirmación, incluida la regularidad. Si $\mu$ es invariante, la identidad integral vale para indicadores, pues $L_x1_A=1_{xA}$; por linealidad vale para funciones simples y por convergencia monótona para funciones no negativas.
+
+Recíprocamente, para todo abierto $U$ la regularidad interior y el lema de corte dan
+\[
+ \mu(U)=\sup\left\{\int f\,d\mu: f\in\Cc(G),\ 0\leq f\leq1,
+       \supp f\subset U\right\}.                     \tag{10.1}\label{v4:haar-abiertos}
+\]
+Una dirección es inmediata porque $f\leq1_U$. Para la otra, cada compacto $K\subset U$ admite una función de corte con $\int f\geq\mu(K)$. El argumento también cubre $\mu(U)=\infty$: entonces existen compactos de medida tan grande como se quiera. Las traslaciones establecen una biyección entre las funciones de prueba de $U$ y las de $xU$; la hipótesis integral da $\mu(xU)=\mu(U)$. Tomar ínfimos sobre abiertos que contienen un Borel $A$ prueba $\mu(xA)=\mu(A)$.
+\end{proof}
+
+\begin{proposicion}[Positividad]\label{v4:haar-positividad}
+Todo abierto no vacío tiene medida de Haar positiva. Si $f\in\Cc^+(G)$ no es cero, entonces $\int f\,d\mu>0$.
+\end{proposicion}
+\begin{proof}
+Como $\mu$ no es nula, $\mu(G)>0$; por regularidad interior del abierto $G$ existe un compacto $K$ con $\mu(K)>0$. Para un abierto no vacío $U$, las traslaciones $xU$ cubren $K$. Una subcubierta finita de $m$ elementos da $0<\mu(K)\leq m\mu(U)$, de modo que $\mu(U)>0$. Si $f(t_0)>0$, elijamos $0<a<f(t_0)$. El abierto no vacío $\{f>a\}$ tiene medida positiva y $\int f\geq a\mu(\{f>a\})>0$.
+\end{proof}
+\begin{observacion}
+No se pueden omitir «no vacío» ni «no negativa». El vacío tiene medida cero, y una función continua no nula puede tener integral cero por cancelación. Estas dos precisiones corrigen el enunciado de positividad de la lectura 17.
+\end{observacion}
+
+\section{Construcción mediante recubrimientos}\label{lectura:v4-18}
+\begin{estrategia}
+Una medida que todavía no conocemos debería comparar dos funciones por el número ponderado de traslaciones necesario para que una cubra a la otra. Normalizamos esa comparación y hacemos que la función que cubre se concentre cerca de la identidad. La compacidad proporciona un límite; la concentración convierte una desigualdad subaditiva en aditividad.
+\end{estrategia}
+
+Para $f,\phi\in\Cc^+(G)\setminus\{0\}$ definimos
+\[
+ (f:\phi)=\inf\left\{\sum_{j=1}^m a_j:
+  f\leq\sum_{j=1}^m a_jL_{x_j}\phi,\quad a_j>0,\ x_j\in G\right\}.
+\]
+\index{recubrimiento!de funciones por traslaciones}
+El conjunto del ínfimo no es vacío. En efecto, $\phi>c>0$ en algún abierto no vacío $U$; un número finito de traslaciones de $U$ cubre $\supp f$. Multiplicar la suma de las correspondientes traslaciones de $\phi$ por $\norm f_\infty/c$ produce un mayorante de $f$.
+
+\begin{lema}\label{v4:haar-recubrimientos}
+Para funciones no negativas de soporte compacto se cumplen
+\begin{align*}
+ (L_xf:\phi)&=(f:\phi), & (af:\phi)&=a(f:\phi)\quad(a>0),\\
+ (f+g:\phi)&\leq(f:\phi)+(g:\phi), & f\leq g&\Longrightarrow(f:\phi)\leq(g:\phi),\\
+ (f:\phi)&\geq\norm f_\infty/\norm\phi_\infty,&
+ (f:\phi)&\leq(f:g)(g:\phi).
+\end{align*}
+\end{lema}
+\begin{proof}
+Trasladar un recubrimiento cambia $L_{x_j}\phi$ por $L_{xx_j}\phi$ y conserva sus coeficientes; aplicar también $x^{-1}$ da la igualdad. Multiplicar o dividir los coeficientes prueba la homogeneidad. Unir dos recubrimientos prueba la subaditividad, tomando recubrimientos cuyas sumas estén a menos de $\eta$ de los respectivos ínfimos y dejando $\eta\downarrow0$. La monotonía se obtiene usando para $f$ cualquier recubrimiento de $g$. La cota inferior se deduce de $\norm f_\infty\leq\norm\phi_\infty\sum a_j$.
+
+Para la última desigualdad, si $f\leq\sum a_iL_{x_i}g$ y $g\leq\sum b_jL_{y_j}\phi$, entonces
+\[
+ f\leq\sum_{i,j}a_ib_jL_{x_iy_j}\phi.
+\]
+La suma de los nuevos coeficientes es $(\sum a_i)(\sum b_j)$. Elegir ambas sumas arbitrariamente próximas a sus ínfimos prueba la afirmación. No se ha supuesto que un ínfimo se alcance.
+\end{proof}
+
+Fijemos $f_0\in\Cc^+(G)\setminus\{0\}$ y pongamos
+\[
+ I_\phi(f)=\frac{(f:\phi)}{(f_0:\phi)}.
+\]
+El denominador es positivo. La última desigualdad del lema, usada en ambos sentidos, da
+\[
+ \frac1{(f_0:f)}\leq I_\phi(f)\leq(f:f_0),\qquad I_\phi(f_0)=1.       \tag{10.2}\label{v4:haar-cotas}
+\]
+Cada $I_\phi$ es homogéneo, monótono, subaditivo e invariante por traslaciones izquierdas.
+
+\begin{lema}[Aditividad aproximada]\label{v4:haar-casiaditivo}
+Dados $f,g\in\Cc^+(G)\setminus\{0\}$ y $\eps>0$, existe una vecindad $U$ de $e$ tal que, para \emph{toda} $\phi\in\Cc^+(G)\setminus\{0\}$ con $\supp\phi\subset U$,
+\[
+ I_\phi(f)+I_\phi(g)\leq I_\phi(f+g)+\eps.
+\]
+\end{lema}
+\begin{proof}
+Elijamos $\psi\in\Cc^+(G)$ igual a uno en $S=\supp(f+g)$ y un número $\delta>0$ que fijaremos al final. Sea $h=f+g+\delta\psi$. Las funciones
+\[
+ h_1=f/h,\qquad h_2=g/h
+\]
+se definen como cero donde $h=0$. Son continuas: cerca de $S$ el denominador es positivo y fuera de $S$ los numeradores son cero. Tienen soporte compacto y $0\leq h_1+h_2\leq1$. Por el lema \ref{v4:haar-uniforme}, existe $U$ tal que
+\[
+ |h_i(xu)-h_i(x)|<\delta\quad(x\in G,\ u\in U,\ i=1,2).
+\]
+Si $h\leq\sum a_jL_{x_j}\phi$ y $L_{x_j}\phi(x)>0$, entonces $x_j^{-1}x\in U$, por lo que $h_i(x)\leq h_i(x_j)+\delta$. Multiplicando el recubrimiento por $h_i(x)$ obtenemos
+\[
+ (f:\phi)\leq\sum a_j(h_1(x_j)+\delta),\qquad
+ (g:\phi)\leq\sum a_j(h_2(x_j)+\delta).
+\]
+Sumar y aproximar el ínfimo de los recubrimientos de $h$ da
+\[
+ I_\phi(f)+I_\phi(g)\leq(1+2\delta)I_\phi(h)
+ \leq(1+2\delta)\bigl(I_\phi(f+g)+\delta I_\phi(\psi)\bigr).
+\]
+Si $A=(f+g:f_0)$ y $B=(\psi:f_0)$, la diferencia entre el último miembro e $I_\phi(f+g)$ es a lo más
+$2\delta A+\delta(1+2\delta)B$. Elegimos $\delta$ tan pequeño que esta cantidad sea menor que $\eps$. Las cotas son independientes de $\phi$, que es precisamente la uniformidad necesaria para el paso al límite.
+\end{proof}
+
+\section{Existencia y unicidad}
+\begin{teorema}[Haar]\label{v4:haar-teorema}
+Todo grupo localmente compacto y Hausdorff admite una medida de Haar izquierda. Dos de estas medidas son múltiplos positivos una de otra.
+\end{teorema}
+\begin{proof}[Demostración de la existencia]
+Consideremos el producto compacto
+\[
+ P=\prod_{f\in\Cc^+(G)\setminus\{0\}}
+       \left[\frac1{(f_0:f)},(f:f_0)\right].
+\]
+Su compacidad es el teorema de Tychonoff. Por \eqref{v4:haar-cotas}, cada $I_\phi$ es un punto de $P$. Para cada vecindad $U$ de $e$, sea $K_U$ la clausura en $P$ del conjunto de los $I_\phi$ con $\supp\phi\subset U$. Este conjunto no es vacío, por el lema de corte. Además,
+$K_{U_1\cap\cdots\cap U_n}\subset\bigcap K_{U_j}$. Los compactos $K_U$ tienen la propiedad de intersección finita; existe $I\in\bigcap_U K_U$.
+
+Una igualdad o desigualdad que involucra un número finito de coordenadas y es cerrada se conserva al tomar clausuras. Por ello $I$ es homogéneo, monótono, invariante, subaditivo e $I(f_0)=1$. Fijados $f,g$ y $\eps>0$, el lema anterior proporciona $U$ para el cual todos los puntos que generan $K_U$ satisfacen
+$I_\phi(f)+I_\phi(g)-I_\phi(f+g)\leq\eps$. La desigualdad define un cerrado del producto; la satisface también $I$. Como $\eps$ es arbitrario, obtenemos la desigualdad inversa a la subaditividad. Así
+\[
+ I(f+g)=I(f)+I(g).
+\]
+Declaramos $I(0)=0$ y extendemos a funciones reales mediante $I(u-v)=I(u)-I(v)$ para $u,v\geq0$. La extensión está bien definida: si $u-v=u'-v'$, entonces $u+v'=u'+v$ y la aditividad da la misma diferencia. Extendemos después por linealidad compleja. Si una función real $f$ está soportada en un compacto $K$ y $\psi\in\Cc^+(G)$ vale uno en $K$, la desigualdad $-\norm f_\infty\psi\leq f\leq\norm f_\infty\psi$ muestra que
+$|I(f)|\leq I(\psi)\norm f_\infty$. Para funciones complejas, multiplicar por una constante de módulo uno y tomar parte real da la misma cota.
+
+El teorema de representación de Riesz para funcionales positivos sobre $\Cc(G)$, desarrollado en el volumen II, proporciona una medida finita en compactos, exteriormente regular y regular interior en abiertos tal que $I(f)=\int f\,d\mu$. No es nula porque $I(f_0)=1$. La invariancia de $I$ y la proposición \ref{v4:haar-integral} prueban que $\mu$ es de Haar.
+\end{proof}
+
+\begin{proof}[Demostración de la unicidad]\label{lectura:v4-19}
+Sean $I(f)=\int f\,d\mu$ y $J(f)=\int f\,d\nu$ para dos medidas de Haar izquierdas. Probaremos que $I(f)/J(f)$ tiene el mismo valor para todas las $f\in\Cc^+(G)\setminus\{0\}$. Los denominadores son positivos por la proposición \ref{v4:haar-positividad}.
+
+Fijemos dos funciones de ese tipo $f,g$, una vecindad compacta y simétrica $K$ de $e$ y $\eps>0$. Por la continuidad uniforme, podemos escoger una vecindad simétrica $V\subset K$ tal que, para $t\in V$ y todo $x$,
+\[
+ |f(tx)-f(xt)|<\eps,\qquad |g(tx)-g(xt)|<\eps.
+\]
+En efecto, cada diferencia está acotada por la suma de las diferencias respecto de $f(x)$ o $g(x)$. Elijamos $h\in\Cc^+(G)\setminus\{0\}$, simétrica, con soporte en $V$. Se obtiene tomando una función de corte $j$ suficientemente localizada y poniendo $h(t)=j(t)+j(t^{-1})$.
+
+La invariancia izquierda, la simetría de $h$ y Fubini dan
+\begin{align*}
+ I(f)J(h)&=\int_G\int_G f(yx)h(y)\,d\mu(x)\,d\nu(y),\\
+ I(h)J(f)&=\int_G\int_G f(xy)h(y)\,d\mu(x)\,d\nu(y).
+\end{align*}
+Para comprobar la segunda igualdad, escribimos primero
+$I(h)J(f)=\int f(y)\int h(y^{-1}x)\,d\mu(x)\,d\nu(y)$,
+reemplazamos $h(y^{-1}x)$ por $h(x^{-1}y)$, cambiamos el orden de integración y hacemos $y=xz$ en la integral respecto de $\nu$. Todos los integrandos están soportados en un producto de compactos y son acotados; por tanto las integrales son absolutamente convergentes. La conmutación de las integrales puede justificarse sin ninguna hipótesis de numerabilidad: en el producto de los dos compactos, Stone--Weierstrass aproxima uniformemente el integrando continuo por sumas finitas de funciones de cada variable por separado. La igualdad es inmediata para esas sumas y pasa al límite por la finitud de ambas medidas.
+
+Para $y\in K$, las funciones $x\mapsto f(yx)$ y $x\mapsto f(xy)$ están soportadas en el compacto
+$C_f=K\supp f\cup(\supp f)K$. Al restar las dos identidades obtenemos
+\[
+ |I(f)J(h)-I(h)J(f)|\leq\eps\mu(C_f)J(h).
+\]
+Dividiendo por $J(f)J(h)$ resulta
+\[
+ \left|\frac{I(f)}{J(f)}-\frac{I(h)}{J(h)}\right|
+ \leq\eps\frac{\mu(C_f)}{J(f)}.
+\]
+La misma estimación para $g$, con la misma $h$, muestra que la diferencia entre $I(f)/J(f)$ e $I(g)/J(g)$ es a lo más
+$\eps(\mu(C_f)/J(f)+\mu(C_g)/J(g))$. Los compactos no dependen de $\eps$; dejar $\eps\downarrow0$ prueba que las razones coinciden. Por descomposición en partes positivas y negativas, $I=cJ$ en todo $\Cc(G)$ con $c>0$. La fórmula \eqref{v4:haar-abiertos} y la regularidad exterior implican $\mu=c\nu$ en todos los Borel.
+\end{proof}
+
+\section{Continuidad en norma y ejercicios de la lectura 17}
+\begin{proposicion}\label{v4:haar-Lp}
+Si $1\leq p<\infty$ y $f\in L^p(G)$, entonces $L_x$ es una isometría y la aplicación $x\mapsto L_xf$ es continua en la norma de $L^p$.
+\end{proposicion}
+\begin{proof}
+La invariancia de Haar da $\int|L_xf|^p=\int|f|^p$, primero para funciones medibles no negativas y luego para sus clases. Para $f\in\Cc(G)$, los soportes de $L_xf-f$ quedan en un compacto fijo $C$ cuando $x$ está cerca de $e$. Por el lema \ref{v4:haar-uniforme},
+$\norm{L_xf-f}_p\leq\mu(C)^{1/p}\norm{L_xf-f}_\infty\to0$.
+La densidad de $\Cc(G)$ en $L^p(G)$, consecuencia de la regularidad y las funciones de corte, permite elegir $g\in\Cc(G)$ con $\norm{f-g}_p<\eps$. Entonces
+\[
+ \norm{L_xf-f}_p\leq2\eps+\norm{L_xg-g}_p.
+\]
+Esto prueba continuidad en $e$. Como $L_a^{-1}L_x=L_{a^{-1}x}$ y $L_a$ es una isometría, también prueba continuidad en cada $a\in G$.
+\end{proof}
+
+\begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v4-l17-1}
+Sea $\mu$ una medida de Haar izquierda de $G$. Demuestre que $\mu(G)<\infty$ si y sólo si $G$ es compacto.
+\end{ejercicio}
+\begin{solucion}
+Si $G$ es compacto, la definición da $\mu(G)<\infty$. Para la otra dirección, supongamos que $G$ no es compacto. Elijamos un abierto no vacío $U$ de cierre compacto $K$. Construiremos $x_n$ con las traslaciones $x_nU$ disjuntas. Elegido $x_1=e$, si ya elegimos $x_1,\ldots,x_n$, la unión finita $\bigcup_{j=1}^n x_jKK^{-1}$ es compacta y no puede ser todo $G$. Tomemos $x_{n+1}$ fuera de ella. Si $x_{n+1}U\cap x_jU\ne\varnothing$, existirían $u,v\in U$ con $x_{n+1}u=x_jv$, de donde $x_{n+1}=x_jvu^{-1}\in x_jKK^{-1}$, contradicción. La aditividad y la invariancia dan
+$\mu(G)\geq\sum_n\mu(x_nU)=\sum_n\mu(U)=\infty$, pues $\mu(U)>0$.
+
+La hipótesis «$\mu$ es de Haar» es esencial y no aparece explícita en el ejercicio original. Una probabilidad gaussiana sobre $\R$ es finita, aunque $\R$ no sea compacto; no es invariante por traslaciones.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 2]\label{ej:v4-l17-2}
+Si $A$ es Borel y $0<\mu(A)<\infty$, pruebe que $a(x)=\mu(A\cap xA)$ es continua.
+\end{ejercicio}
+\begin{solucion}
+Tenemos $1_A\in L^2(G)$ y $L_x1_A=1_{xA}$. Por tanto
+$a(x)=\ip{1_A}{L_x1_A}$. Para $x$ cercano a $y$, Cauchy--Schwarz da
+\[
+ |a(x)-a(y)|\leq\norm{1_A}_2\norm{L_x1_A-L_y1_A}_2\longrightarrow0
+\]
+por la proposición \ref{v4:haar-Lp}. La fórmula con $x^{-1}$ sugerida en la lectura también vale: trasladar $A\cap x^{-1}A$ por $x$ produce $xA\cap A$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v4-l17-3}
+Con las mismas hipótesis, pruebe que $K=\{x:\mu(A\cap xA)=\mu(A)\}$ es un subgrupo cerrado.
+\end{ejercicio}
+\begin{solucion}
+La invariancia da $\mu(xA)=\mu(A)$, y de aquí
+\[
+ \norm{L_x1_A-1_A}_2^2=\mu(A\mathbin\triangle xA)
+       =2\mu(A)-2\mu(A\cap xA).
+\]
+Así $K$ es el estabilizador del vector $1_A$ para la representación $x\mapsto L_x$ en $L^2$. Contiene $e$; si $x,y\in K$, entonces $L_{xy}1_A=L_xL_y1_A=1_A$; si $x\in K$, aplicar $L_{x^{-1}}$ a $L_x1_A=1_A$ da $L_{x^{-1}}1_A=1_A$. Es, pues, un subgrupo. Es cerrado porque la función $x\mapsto\norm{L_x1_A-1_A}_2$ es continua y $K$ es su conjunto de ceros.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v4-l17-4}
+Sea $H$ un subgrupo denso de $G$ y $\mu$ una medida no nula, finita en compactos y con la regularidad de la definición \ref{v4:haar-def}. Si $\mu(hA)=\mu(A)$ para $h\in H$, pruebe que $\mu$ es de Haar izquierda.
+\end{ejercicio}
+\begin{solucion}
+Fijemos $f\in\Cc(G)$. La aplicación $x\mapsto\int L_xf\,d\mu$ es continua: cerca de un punto fijo los soportes quedan en un compacto $C$ y
+$|\int(L_xf-L_yf)\,d\mu|\leq\mu(C)\norm{L_xf-L_yf}_\infty$, cantidad que tiende a cero. El conjunto donde esta integral vale $\int f\,d\mu$ es cerrado y contiene al subgrupo denso $H$; es todo $G$. Aplicando la proposición \ref{v4:haar-integral} concluimos la invariancia de la medida. No hemos supuesto que un punto de $G$ sea límite de una sucesión de $H$: la argumentación con un cerrado funciona también en grupos no metrizables.
+\end{solucion}

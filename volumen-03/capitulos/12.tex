@@ -1,0 +1,164 @@
+\chapter{Caracteres y transformada de Gelfand}\label{cap:v3-12}
+
+Un carácter convierte cada elemento de un álgebra conmutativa en un número, respetando sumas, productos e identidad. Reunir todos esos modos de evaluación produce un espacio compacto; cada elemento del álgebra se convierte entonces en una función continua sobre ese espacio. La construcción no siempre conserva toda la información: su núcleo medirá precisamente lo que los caracteres no pueden detectar.
+
+\section{Caracteres e ideales maximales}\label{lec:v3-24}
+\fuentelectura{24}{La transformada de Gelfand}
+
+En este capítulo $A$ es un álgebra de Banach compleja, conmutativa, unitaria y no nula, con $\norm1=1$.
+
+\begin{definicion}
+Un \emph{carácter} de $A$ es un homomorfismo complejo lineal y multiplicativo $\varphi:A\to\C$ que no es idénticamente cero. El conjunto de caracteres se denota $\Delta(A)$.
+\end{definicion}
+\index{carácter}\index{espacio de ideales maximales}
+
+La exclusión del homomorfismo cero es indispensable. Si $\varphi(a)\ne0$, la identidad $\varphi(1)\varphi(a)=\varphi(a)$ da $\varphi(1)=1$. No necesitamos suponer continuidad: será consecuencia de la estructura algebraica.
+
+\begin{proposicion}\label{v3:caracteres-maximales}
+Cada carácter satisface $\varphi(a)\in\sigma(a)$ y $\norm\varphi=1$. Su núcleo es un ideal maximal cerrado. Recíprocamente, cada ideal maximal $M$ es el núcleo de un único carácter, determinado por
+\[
+ \varphi_M(a)=\lambda\quad\Longleftrightarrow\quad a-\lambda1\in M.
+\]
+Además,
+\[
+ \sigma(a)=\{\varphi(a):\varphi\in\Delta(A)\}.
+\]
+\end{proposicion}
+\begin{proof}
+Si $a-\varphi(a)1$ fuera invertible, aplicar $\varphi$ a su producto con la inversa daría $0=1$. Así $|\varphi(a)|\le r(a)\le\norm a$, y $\norm\varphi\le1$; evaluar en $1$ da la igualdad. El núcleo es cerrado por continuidad y es ideal por multiplicatividad. Como $\varphi$ es sobreyectiva ($\varphi(\lambda1)=\lambda$), el cociente por su núcleo es $\C$ y el núcleo es maximal.
+
+Para la recíproca, un ideal maximal de un álgebra de Banach unitaria es cerrado, y $A/M$ es un álgebra de Banach de división. Gelfand--Mazur identifica cada clase con un único $\lambda[1]$. La unicidad se sigue también de que $\lambda1\in M$ con $\lambda\ne0$ implicaría $1\in M$. Sumar y multiplicar clases prueba que $\varphi_M$ es lineal, multiplicativa y unital; su núcleo es exactamente $M$. Cualquier carácter con ese núcleo debe asignar a $a$ el mismo escalar, lo cual prueba la unicidad.
+
+Ya se probó que todos los valores de caracteres pertenecen al espectro. Si $\lambda\in\sigma(a)$, el ideal $(a-\lambda1)A$ es propio, pues de otro modo $a-\lambda1$ tendría inversa en el álgebra conmutativa. Está contenido en un ideal maximal $M$ y entonces $\varphi_M(a)=\lambda$. Esto prueba la inclusión restante y, en particular, la existencia de caracteres.
+\end{proof}
+
+\begin{ejemplo}[Series absolutamente convergentes]
+En $\ell^1(\N_0)$ con el producto de Cauchy, para $|z|\le1$ defina
+\[
+ \varphi_z(a)=\sum_{n=0}^{\infty}a_nz^n.
+\]
+La serie converge absolutamente y $|\varphi_z(a)|\le\norm a_1$, por lo que la aplicación es lineal continua. Además $\varphi_z(e_0)=1$. La doble serie $\sum_{j,k}|a_jb_kz^{j+k}|$ es finita; reagruparla por $n=j+k$ demuestra $\varphi_z(a*b)=\varphi_z(a)\varphi_z(b)$. Más adelante verificaremos que éstos son todos los caracteres.
+\end{ejemplo}
+
+\section{La topología del espacio de caracteres}
+
+Dotamos a $\Delta(A)\subset A^*$ de la topología débil estrella: una red $\varphi_\alpha$ converge a $\varphi$ si y sólo si $\varphi_\alpha(a)\to\varphi(a)$ para cada $a\in A$. Esta topología registra la convergencia de todas las evaluaciones, sin exigir convergencia en norma de los funcionales.
+
+\begin{teorema}\label{v3:compacto-caracteres}
+El espacio $\Delta(A)$ es compacto Hausdorff. Si $A$ es separable, es metrizable.
+\end{teorema}
+\begin{proof}
+La topología débil estrella es Hausdorff porque dos funcionales distintos difieren en algún elemento de $A$. La bola dual cerrada unitaria es compacta por Banach--Alaoglu. Dentro de ella,
+\[
+ \Delta(A)=\{\varphi:\varphi(1)=1,\ \varphi(ab)=\varphi(a)\varphi(b)\text{ para todo }a,b\in A\}
+\]
+es cerrado: cada igualdad se conserva bajo convergencia puntual de funcionales. En particular, la ecuación $\varphi(1)=1$ impide que una red de caracteres tenga límite cero; verificar únicamente la multiplicatividad no bastaría.
+
+Si $\{a_n\}$ es denso en la bola unitaria de $A$, la fórmula
+\[
+ d(\varphi,\psi)=\sum_{n=1}^{\infty}2^{-n}|\varphi(a_n)-\psi(a_n)|
+\]
+define una métrica en la bola dual: la serie converge pues cada diferencia es a lo sumo $2$, y la densidad garantiza que distancia cero implica igualdad. La convergencia débil estrella implica convergencia para esta métrica al controlar primero una suma finita y luego la cola geométrica. Recíprocamente, la convergencia de las evaluaciones en $a_n$, junto con la cota uniforme de las normas, permite aproximar cualquier $a$ por un múltiplo de algún $a_n$ y obtener convergencia en $a$. Así la métrica induce exactamente la topología deseada en $\Delta(A)$.
+\end{proof}
+
+\section{La representación por funciones continuas}
+
+\begin{definicion}
+Para $a\in A$, su \emph{transformada de Gelfand} es la función
+\[
+ \widehat a:\Delta(A)\to\C,\qquad \widehat a(\varphi)=\varphi(a).
+\]
+La aplicación de Gelfand es $\mathcal G:A\to C(\Delta(A))$, $a\mapsto\widehat a$.
+\end{definicion}
+\index{transformada de Gelfand}
+
+\begin{teorema}\label{v3:transformada-gelfand}
+La aplicación $\mathcal G$ es un homomorfismo unital continuo, y
+\[
+ \widehat a(\Delta(A))=\sigma(a),\qquad
+ \norm{\widehat a}_\infty=r(a)\le\norm a.
+\]
+Si $f$ es holomorfa cerca de $\sigma(a)$, entonces
+\[
+ \widehat{f(a)}=f\circ\widehat a.
+\]
+\end{teorema}
+\begin{proof}
+La función $\widehat a$ es continua por la definición de la topología débil estrella: es precisamente una de sus evaluaciones generadoras. La desigualdad $|\varphi(a)-\psi(a)|\le\norm{\varphi-\psi}\norm a$ sólo probaría continuidad para la topología de la norma, que es más fuerte y no resuelve esta cuestión. La linealidad y la multiplicatividad de cada carácter dan, punto por punto,
+$\widehat{\alpha a+\beta b}=\alpha\widehat a+\beta\widehat b$, $\widehat{ab}=\widehat a\,\widehat b$ y $\widehat1=1$. La descripción del espectro de la proposición~\ref{v3:caracteres-maximales} da las igualdades de imagen y norma, de donde resulta continuidad de $\mathcal G$.
+
+Finalmente, un carácter conmuta con la integral vectorial por ser lineal continuo y envía $(z1-a)^{-1}$ a $(z-\varphi(a))^{-1}$. La fórmula de Cauchy implica
+\[
+ \varphi(f(a))=\frac1{2\pi i}\int_\Gamma
+ \frac{f(z)}{z-\varphi(a)}\,dz=f(\varphi(a)).
+\]
+Esto vale para cada carácter, que es exactamente la última identidad.
+\end{proof}
+
+\section{Ejercicios sobre el radical y la representación}
+
+\begin{ejercicio}\label{ej:v3-l24-1}
+Un elemento $a$ es \emph{cuasinilpotente} si $\sigma(a)=\{0\}$. (i) Pruebe que
+\[
+ J=\{a\in A:ab\text{ es cuasinilpotente para todo }b\in A\}
+\]
+es un ideal cerrado, llamado radical de Jacobson, y que es la intersección de todos los ideales maximales. (ii) Pruebe que todo elemento cuasinilpotente es divisor topológico de cero. (iii) Pruebe $\ker\mathcal G=J$. Verifique además que cuasinilpotente no implica nilpotente para el operador de desplazamiento ponderado
+\[
+ T(x_1,x_2,\ldots)=(0,x_1,x_2/2,x_3/3,\ldots)
+ \quad\text{en }\ell^\infty.
+\]
+\end{ejercicio}
+\begin{solucion}
+(i) Si $a\in J$, tome $b=1$. La descripción del espectro por caracteres implica $\varphi(a)=0$ para cada $\varphi$. Recíprocamente, si todos los caracteres anulan $a$, también anulan $ab$, pues $\varphi(ab)=\varphi(a)\varphi(b)=0$; por la misma descripción, $\sigma(ab)=\{0\}$. Por tanto
+\[
+ J=\bigcap_{\varphi\in\Delta(A)}\ker\varphi
+   =\bigcap_{M\text{ maximal}}M.
+\]
+Una intersección de ideales cerrados es un ideal cerrado: la estabilidad algebraica se verifica en cada ideal y la cerradura se conserva bajo intersecciones arbitrarias.
+
+(ii) Si $a$ es cuasinilpotente, $a-\lambda1$ es invertible para cada $\lambda\ne0$, mientras $a$ no lo es. De aquí $a\in\partial G(A)$. El ejercicio~\ref{ej:v3-l21-5} proporciona elementos unitarios en norma $u_n$ con $au_n,u_na\to0$. Aquí ``unitario en norma'' sólo significa $\norm{u_n}=1$, sin relación con una involución. (iii) Por definición, $\mathcal G(a)=0$ equivale a $\varphi(a)=0$ para todo carácter, condición que acabamos de identificar con $a\in J$.
+
+Para el ejemplo, $T^n$ desplaza $n$ posiciones y multiplica la coordenada $k$ por $1/[k(k+1)\cdots(k+n-1)]$. El mayor peso se obtiene en $k=1$, por lo que $\norm{T^n}=1/n!$. La fórmula del radio espectral da $r(T)=0$ porque $(n!)^{1/n}\to\infty$; por ejemplo, al menos $n/2$ factores del factorial son mayores o iguales que $n/2$. Como el espectro es no vacío, es $\{0\}$. Ninguna potencia es cero, pues $T^ne_1=e_{n+1}/n!$. Si se desea situar el ejemplo dentro de un álgebra conmutativa, tome la subálgebra cerrada unitaria generada por $T$: las mismas normas de potencias dan allí el mismo espectro $\{0\}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-2}
+Pruebe que todo carácter de $\ell^1(\N_0)$ con convolución de Cauchy es $\varphi_z$ para un único $z$ con $|z|\le1$.
+\end{ejercicio}
+\begin{solucion}
+Sea $z=\varphi(e_1)$. Como $\norm\varphi=1$ y $\norm{e_1}_1=1$, $|z|\le1$. La identidad $e_n=e_1^{*n}$, con $e_0$ como identidad, implica $\varphi(e_n)=z^n$. Para $a\in\ell^1$, las sumas finitas $\sum_{n=0}^Na_ne_n$ convergen en norma a $a$, y la continuidad de $\varphi$ da $\varphi(a)=\sum a_nz^n$. La unicidad se obtiene evaluando en $e_1$. El parámetro recorre el disco \emph{cerrado}, incluidos sus puntos de frontera. Además $z\mapsto\varphi_z$ es un homeomorfismo de ese disco sobre el espacio de caracteres: cada serie define una función continua de $z$ por convergencia uniforme, y una biyección continua de un compacto a un Hausdorff es un homeomorfismo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-3}
+Demuestre que todo carácter es una aplicación abierta.
+\end{ejercicio}
+\begin{solucion}
+Si $U\subset A$ es abierto y $a\in U$, elija $r>0$ con $B(a,r)\subset U$. Para $|\lambda|<r$ se tiene $a+\lambda1\in U$ y $\varphi(a+\lambda1)=\varphi(a)+\lambda$. Así $B(\varphi(a),r)\subset\varphi(U)$. Cada punto de $\varphi(U)$ es interior. Esta prueba directa evita invocar el teorema de la aplicación abierta, aunque éste también se aplica porque el carácter es lineal, continuo y sobreyectivo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-4}
+Pruebe $\sigma(a+b)\subset\sigma(a)+\sigma(b)$ y $\sigma(ab)\subset\sigma(a)\sigma(b)$, y dé ejemplos en que ambas inclusiones sean propias.
+\end{ejercicio}
+\begin{solucion}
+La imagen espectral de $a+b$ es el conjunto de los valores $\varphi(a)+\varphi(b)$ con \emph{el mismo} carácter en ambos términos. La suma de espectros permite caracteres independientes, por lo que contiene ese conjunto. El mismo argumento, con productos, prueba la segunda inclusión. Para $a=(0,1)$ y $b=(1,0)$ en $\C^2$, los respectivos pares de conjuntos son $\{1\}\subsetneq\{0,1,2\}$ y $\{0\}\subsetneq\{0,1\}$. Aunque este ejercicio repite el de la lectura 22, su nueva solución explica mediante caracteres el origen de las inclusiones estrictas.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-5}
+Pruebe que $a$ es invertible si y sólo si $\widehat a$ es invertible en $C(\Delta(A))$.
+\end{ejercicio}
+\begin{solucion}
+Si $a$ es invertible, $\widehat{a^{-1}}$ es inversa de $\widehat a$. Recíprocamente, una función continua sobre un compacto es invertible precisamente cuando no se anula. Si $\widehat a$ no se anula, la identidad $\widehat a(\Delta(A))=\sigma(a)$ implica $0\notin\sigma(a)$, por lo que $a$ es invertible. La recíproca no procede de una afirmación general sobre homomorfismos: depende de que aquí se han usado todos los caracteres.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-6}
+Pruebe $r(a)=\norm{\widehat a}_\infty$. Deduzca que $\mathcal G$ es isométrica si y sólo si $\norm{a^2}=\norm a^2$ para cada $a\in A$.
+\end{ejercicio}
+\begin{solucion}
+La primera igualdad se sigue de que el rango de $\widehat a$ es exactamente el espectro. Si $\mathcal G$ es isométrica, entonces
+\[
+ \norm{a^2}=\norm{\widehat{a^2}}_\infty
+ =\norm{(\widehat a)^2}_\infty=\norm{\widehat a}_\infty^2=\norm a^2.
+\]
+Recíprocamente, la identidad para cuadrados se itera: $\norm{a^{2^k}}=\norm a^{2^k}$. La fórmula del radio espectral, restringida a esa subsucesión, da $r(a)=\norm a$. Por la primera igualdad, $\norm{\mathcal G(a)}_\infty=\norm a$ para todo $a$.
+\end{solucion}
+
+El radical explica por qué una representación por funciones escalares puede perder información. La identidad $C^*$ eliminará esa pérdida en el caso conmutativo y permitirá identificar el álgebra completa con todas las funciones continuas de su espacio de caracteres. La exposición se complementa con \cite{maxgelfand,murphy1990,rudin1991}.

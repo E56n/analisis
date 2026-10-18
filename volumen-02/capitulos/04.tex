@@ -1,0 +1,112 @@
+\chapter{Funciones simples e integral no negativa}\label{cap:v2-04}
+La integral comienza sumando valores multiplicados por medidas. Para pasar a funciones generales se aproxima desde abajo y se toma un supremo. El orden de esta construcción evita suponer de antemano un teorema de intercambio de límites e integrales. Desarrollamos aquí las lecturas 7 y 8 de Valencia Bucio \cite{valencia2}.
+
+\section{Particiones y aproximación por funciones simples}\label{lectura:v2-07}
+\begin{definicion}\index{funcion@función!simple}\index{representacion@representación!canonica de una funcion simple@canónica de una función simple}
+Una función simple es una función medible de rango finito contenido en $\R$. Si sus valores distintos son $a_1,\ldots,a_m$, su representación canónica es
+\[s=\sum_{j=1}^ma_j\ind{A_j},\qquad A_j=\{s=a_j\}.\]
+Los $A_j$ son medibles, no vacíos, disjuntos y cubren $X$. También se permiten representaciones no canónicas, con valores repetidos, conjuntos vacíos o conjuntos que se superponen.
+\end{definicion}
+\begin{proposicion}
+Las combinaciones lineales, productos, valores absolutos y máximos o mínimos finitos de funciones simples son simples.
+\end{proposicion}
+\begin{proof}
+Si $s=\sum_ja_j\ind{A_j}$ y $t=\sum_kb_k\ind{B_k}$ son canónicas, los conjuntos $A_j\cap B_k$ forman una partición finita después de descartar los vacíos. En cada pieza, $\alpha s+\beta t$, $st$, $\max(s,t)$ y $\min(s,t)$ toman respectivamente los valores $\alpha a_j+\beta b_k$, $a_jb_k$, $\max(a_j,b_k)$ y $\min(a_j,b_k)$. Todos los niveles se obtienen uniendo finitas piezas medibles. Para $|s|$, se reemplaza cada valor $a_j$ por $|a_j|$. Iterar el procedimiento prueba el caso de cualquier número finito de funciones.
+\end{proof}
+
+\begin{teorema}[Aproximación simple]\label{teo:v2-aproxsimple}
+Si $f:X\to[0,\infty]$ es medible, existe una sucesión creciente de funciones simples no negativas $s_n$ que converge puntualmente a $f$. Si $f$ está acotada, se pueden elegir con convergencia uniforme.
+\end{teorema}
+\begin{proof}
+Para $f(x)<n$, defina $s_n(x)=2^{-n}\lfloor2^nf(x)\rfloor$; para $f(x)\ge n$, incluyendo $f(x)=\infty$, defina $s_n(x)=n$. Su rango es finito y sus fibras se describen mediante bandas medibles $\{k2^{-n}\le f<(k+1)2^{-n}\}$ y $\{f\ge n\}$. Por ello es simple. El refinamiento de la malla diádica y el aumento del nivel de truncamiento implican $s_{n+1}\ge s_n$: por debajo de $n$, el redondeo con malla mitad no disminuye; por encima de $n$, el nuevo valor es al menos $n$.
+
+Siempre $0\le s_n\le f$. Si $f(x)<\infty$, para $n>f(x)$ se cumple $0\le f(x)-s_n(x)<2^{-n}$, de donde la convergencia. Si $f(x)=\infty$, $s_n(x)=n\to\infty$. Cuando $f\le M$, la misma cota vale simultáneamente para todos los puntos una vez que $n>M$, lo que prueba convergencia uniforme.
+\end{proof}
+\begin{observacion}[La construcción racional de la lectura original]
+Enumere los racionales no negativos como $(r_j)$ y defina $u_n=\max_{j\le n}r_j\ind{\{f>r_j\}}$. Son simples, crecientes y menores o iguales que $f$. Si $0<a<f(x)$, elija un racional $r_j\in(a,f(x))$; para $n\ge j$ se tiene $u_n(x)\ge r_j>a$. Como esto vale para todo $a<f(x)$, $u_n(x)\to f(x)$, incluyendo $f(x)=\infty$. Si $f(x)=0$, todos los términos son cero. Este argumento completa también el caso cero, que no permite una sucesión creciente de racionales no negativos estrictamente menores que $f(x)$.
+\end{observacion}
+
+\section{La integral de una función simple}\label{lectura:v2-08}
+\begin{definicion}\index{integral!de una funcion simple@de una función simple}
+Para una función simple no negativa con representación canónica $s=\sum_ja_j\ind{A_j}$, se define
+\[I(s)=\int_Xs\,d\mu=\sum_ja_j\mu(A_j)\in[0,\infty].\]
+La convención $0\cdot\infty=0$ asegura que la zona donde $s=0$ no contribuya, aunque tenga medida infinita.
+\end{definicion}
+\begin{proposicion}\label{prop:v2-integralsimple}
+Si $s=\sum_{j=1}^mb_j\ind{B_j}$ con $b_j\ge0$ y $B_j$ medibles, entonces $I(s)=\sum_jb_j\mu(B_j)$, aunque los conjuntos no sean disjuntos. Para funciones simples no negativas, $I(s+t)=I(s)+I(t)$, $I(as)=aI(s)$ si $a\ge0$, y $s\le t$ implica $I(s)\le I(t)$.
+\end{proposicion}
+\begin{proof}
+Forme las celdas $C_\eta=\bigcap_{j=1}^mB_j^{\eta_j}$, donde $\eta\in\{0,1\}^m$, $B_j^1=B_j$ y $B_j^0=B_j^c$. Son disjuntas y cubren $X$. En $C_\eta$, el valor de $s$ es $\sum_jb_j\eta_j$. Agrupar celdas de igual valor recupera la representación canónica; por aditividad finita,
+\[I(s)=\sum_\eta\left(\sum_jb_j\eta_j\right)\mu(C_\eta)
+=\sum_jb_j\sum_{\eta:\eta_j=1}\mu(C_\eta)
+=\sum_jb_j\mu(B_j).\]
+Todas las sumas son finitas y no negativas, por lo que no hay cancelaciones indeterminadas. Aplicar esta fórmula a las representaciones concatenadas de $s+t$ prueba aditividad; reemplazar $b_j$ por $ab_j$ prueba homogeneidad. Si $s\le t$, $t-s$ es simple no negativa y $I(t)=I(s)+I(t-s)\ge I(s)$.
+\end{proof}
+
+\begin{lema}[Continuidad creciente para un límite simple]\label{lema:v2-limitesimple}
+Si $s_n$ son simples no negativas, $s_n\uparrow s$ y $s$ es simple, entonces $I(s_n)\uparrow I(s)$.
+\end{lema}
+\begin{proof}
+La monotonía da $L=\lim_nI(s_n)\le I(s)$. Fije $0<c<1$ y escriba $s=\sum_{j=1}^ma_j\ind{A_j}$, omitiendo el valor cero. Para cada $j$ ponga $A_{n,j}=A_j\cap\{s_n\ge ca_j\}$. Estos conjuntos crecen a $A_j$: si $s(x)=a_j>0$, la convergencia a $a_j$ obliga a superar el umbral estrictamente menor $ca_j$. Las funciones $t_n=\sum_jca_j\ind{A_{n,j}}$ satisfacen $t_n\le s_n$, de modo que
+\[L\ge\lim_nI(t_n)=\sum_jca_j\lim_n\mu(A_{n,j})=c\sum_ja_j\mu(A_j)=cI(s).\]
+Si $I(s)=\infty$, ya esta desigualdad fuerza $L=\infty$. Si es finita, haga $c\uparrow1$. Se ha usado solamente continuidad de la medida, no un teorema de convergencia de integrales que todavía no esté probado.
+\end{proof}
+
+\section{El supremo que define la integral}
+\begin{definicion}\index{integral!de Lebesgue}
+Para $f:X\to[0,\infty]$ medible, se define
+\[\int_Xf\,d\mu=\sup\{I(s):s\text{ simple},\ 0\le s\le f\}.\]
+Una función no negativa es integrable cuando este supremo es finito.
+\end{definicion}
+Si $f$ es simple, la definición coincide con $I(f)$: la monotonía da $I(s)\le I(f)$ y la función $s=f$ es admisible. Si $f\le g$, toda aproximación inferior de $f$ también lo es de $g$ y, por tanto, $\int f\le\int g$.
+
+\begin{teorema}\label{teo:v2-integral-aprox}
+Si $s_n$ son simples no negativas y $s_n\uparrow f$, entonces
+\[\int_Xf\,d\mu=\lim_n\int_Xs_n\,d\mu.\]
+\end{teorema}
+\begin{proof}
+El límite $L$ existe por monotonía y es menor o igual que $\int f$. Fije una simple $0\le t\le f$. Las funciones $t_n=\min(t,s_n)$ son simples, crecen a $t$ y satisfacen $t_n\le s_n$. El lema \ref{lema:v2-limitesimple} da $I(t)=\lim_nI(t_n)\le L$. Tomar supremo sobre todas las simples $t\le f$ produce $\int f\le L$. La conclusión no depende de una aproximación simple particular.
+\end{proof}
+\begin{proposicion}\label{prop:v2-integral-positiva}
+Para funciones medibles no negativas $f,g$ y $a\ge0$,
+\[\int(f+g)=\int f+\int g,\qquad \int af=a\int f.\]
+Si dos funciones medibles no negativas coinciden casi en todas partes, tienen la misma integral, finita o infinita.
+\end{proposicion}
+\begin{proof}
+Elija simples crecientes $s_n\uparrow f$ y $t_n\uparrow g$. Entonces $s_n+t_n\uparrow f+g$. El teorema anterior y la aditividad simple dan
+\[\int(f+g)=\lim_n[I(s_n)+I(t_n)]=\int f+\int g.\]
+La igualdad de límites vale en $[0,\infty]$: si algún sumando diverge, también la suma diverge; si ambos son finitos, es el álgebra usual de límites. La homogeneidad para $a>0$ se obtiene con $as_n\uparrow af$; para $a=0$ ambos lados son cero por convención.
+
+Si $N$ es medible nulo, toda simple no negativa que se anula fuera de $N$ tiene integral cero. Por definición, cualquier función medible no negativa que se anula fuera de $N$ tiene integral cero. Dividir $f=f\ind{X\setminus N}+f\ind N$ muestra que su integral no cambia al anularla en $N$. Aplicando esto a dos funciones iguales fuera de $N$, obtenemos igualdad de sus integrales.
+\end{proof}
+
+\section{Ejercicios sobre la construcción de la integral}
+La lectura 7 no contiene una lista final de ejercicios; sus comprobaciones sobre máximos, mínimos, operaciones y aproximación quedaron desarrolladas en las pruebas anteriores.
+\begin{ejercicio}[Lectura 8, ejercicio 1]\label{ej:v2-l08-1}
+Justifique la fórmula de la integral para una representación no canónica $s=\sum_{k=1}^m\alpha_k\ind{A_k}$ de una función simple no negativa.
+\end{ejercicio}
+\begin{solucion}
+Si $\alpha_k\ge0$, las celdas determinadas por todas las pertenencias a los $A_k$ forman una partición finita. En cada celda $C$, $s$ es la suma de los coeficientes cuyos conjuntos contienen $C$. Al sumar ese valor multiplicado por $\mu(C)$ e intercambiar las dos sumas finitas, el coeficiente $\alpha_k$ queda multiplicado por la suma de las medidas de las celdas que componen $A_k$, esto es, $\mu(A_k)$. Por tanto $\int s=\sum_k\alpha_k\mu(A_k)$, como se detalló en la proposición \ref{prop:v2-integralsimple}.
+
+Si se permiten coeficientes negativos, la fórmula exige que el lado derecho esté definido; por ejemplo, basta que todos los conjuntos con coeficiente no nulo tengan medida finita. Sin esa precaución, $0=\ind X-\ind X$ en un espacio de medida infinita produciría $\infty-\infty$. La no negatividad de $s$ por sí sola no elimina ese problema en una representación con coeficientes de signos distintos.
+\end{solucion}
+\begin{ejercicio}[Lectura 8, ejercicio 2]\label{ej:v2-l08-2}
+Si $s,t$ son simples no negativas y $s\le t$ casi en todas partes, pruebe $\int s\le\int t$.
+\end{ejercicio}
+\begin{solucion}
+El conjunto medible $N=\{s>t\}$ es nulo. Las funciones $s\ind{X\setminus N}$ y $t\ind{X\setminus N}$ satisfacen la desigualdad en todo punto. Sus integrales coinciden con las de $s,t$ porque las partes sobre $N$ tienen integral cero. Aplicar monotonía puntual concluye.
+\end{solucion}
+\begin{ejercicio}[Lectura 8, ejercicio 3]\label{ej:v2-l08-3}
+Si $f\ge0$ es medible y $\int f<\infty$, pruebe: (i) $\{f>0\}$ es $\sigma$-finito; (ii) $\{f=\infty\}$ es nulo.
+\end{ejercicio}
+\begin{solucion}
+(i) Para $E_n=\{f\ge1/n\}$, la simple $n^{-1}\ind{E_n}\le f$ da $\mu(E_n)/n\le\int f$, de donde $\mu(E_n)<\infty$. Los $E_n$ crecen y su unión es $\{f>0\}$. El ejercicio \ref{ej:v2-l02-8}, aplicado a ese espacio restringido, prueba $\sigma$-finitud.
+
+(ii) Si $Z=\{f=\infty\}$, para cada entero $m>0$ se tiene $m\ind Z\le f$, luego $m\mu(Z)\le\int f$. Por tanto $\mu(Z)\le m^{-1}\int f$ para todo $m$, y hacer $m\to\infty$ da cero. La integrabilidad permite infinitos puntuales, pero solamente en un conjunto nulo.
+\end{solucion}
+\begin{ejercicio}[Lectura 8, ejercicio 4]\label{ej:v2-l08-4}
+En $\N$ con la medida de conteo, pruebe que $\int_\N f\,d\mu_c=\sum_na_n$ para $f(n)=a_n\ge0$.
+\end{ejercicio}
+\begin{solucion}
+Para cada $m$, la función $s_m=\sum_{n=1}^ma_n\ind{\{n\}}$ es simple y menor o igual que $f$ si los $a_n$ son finitos. Por ello $\int f\ge\sum_{n\le m}a_n$ y, tomando supremo, $\int f\ge\sum_na_n$. Para la otra desigualdad, si $s=\sum_{j=1}^rb_j\ind{B_j}\le f$ es simple no negativa, su integral es $\sum_jb_j\mu_c(B_j)=\sum_ns(n)\le\sum_na_n$: la igualdad intermedia se comprueba agrupando los términos según los niveles de $s$, con suma infinita cuando un nivel positivo tiene infinitos puntos. Tomar supremo sobre $s$ da la desigualdad inversa. Si algún $a_n=\infty$, las simples $M\ind{\{n\}}\le f$ para todo $M$ fuerzan integral infinita, de acuerdo con la serie.
+\end{solucion}

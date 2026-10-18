@@ -1,0 +1,266 @@
+{
+  "volumen": 3,
+  "capitulo": 9,
+  "lecturas": [
+    16,
+    17,
+    18
+  ],
+  "ejercicios_originales": 16,
+  "por_lectura": {
+    "16": 6,
+    "17": 5,
+    "18": 5
+  },
+  "soluciones": 16,
+  "labels": [
+    "ej:v3-l16-1",
+    "ej:v3-l16-2",
+    "ej:v3-l16-3",
+    "ej:v3-l16-4",
+    "ej:v3-l16-5",
+    "ej:v3-l16-6",
+    "ej:v3-l17-1",
+    "ej:v3-l17-2",
+    "ej:v3-l17-3",
+    "ej:v3-l17-4",
+    "ej:v3-l17-5",
+    "ej:v3-l18-1",
+    "ej:v3-l18-2",
+    "ej:v3-l18-3",
+    "ej:v3-l18-4",
+    "ej:v3-l18-5"
+  ],
+  "correcciones": [
+    "L16: cerrado en norma no basta para compacidad débil*.",
+    "L16: redes convergentes o de Cauchy pueden carecer de toda cola acotada.",
+    "L16ej1: topología estrictamente más fina; igualdad no produce contradicción.",
+    "L16ej2: exigir continuidad de la familia para metrizar la topología dada.",
+    "L17: acotación y vecindades en bidual traducidas correctamente en prueba Eberlein–Šmulian.",
+    "L18: ordenar estrictamente los índices en la norma de James.",
+    "L18: no afirmar no reflexividad universal para todas las medidas o compactos.",
+    "L18: compactar intersecciones acotadas, no el convexo posiblemente no acotado.",
+    "L18: clausura del subespacio generado en reducción separable.",
+    "L18: alcance de norma en la bola unitaria, condición indispensable.",
+    "L18ej3: T continuo y dominio no nulo."
+  ],
+  "pruebas_desarrolladas": [
+    "Banach–Alaoglu",
+    "metrizabilidad de bola dual y separabilidad",
+    "Eberlein–Šmulian en ambas direcciones",
+    "Goldstine",
+    "reflexividad y compacidad de bola",
+    "reflexividad de Lp y Hilbert",
+    "completitud y no reflexividad del modelo de James",
+    "existencia de mejores aproximaciones",
+    "reducción separable"
+  ],
+  "resultados_externos_identificados": [
+    "James1951: existencia de espacio no reflexivo isométrico a su bidual, contexto histórico no usado.",
+    "James1972: criterio por alcance de norma, panorama original no usado."
+  ],
+  "inventario_detallado": [
+    {
+      "lectura": 16,
+      "original": "AnM3-LFM-lect16.pdf",
+      "url_original": "https://drive.google.com/file/d/13Srb0Z9QIk18Ht9NN4JYnGspWWr8sLvE/view?usp=drivesdk",
+      "capitulo": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "etiqueta": "ej:v3-l16-1",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "Sean $\\tau$ y $\\tau'$ topologías en un mismo conjunto, con $(K,\\tau)$ compacto y $(K,\\tau')$ Hausdorff. Si $\\tau'\\subseteq\\tau$, pruebe mediante redes que $\\tau'=\\tau$.",
+          "caracteres_solucion_latex": 873,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 2,
+          "etiqueta": "ej:v3-l16-2",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "Sea $(f_n:X\\to Y_n)$ una familia numerable que separa puntos y suponga que cada $Y_n$ es métrico. Construya una métrica en $X$ que induzca la topología inicial de estas aplicaciones. Deduzca que un compacto con una familia numerable de funciones \\emph{continuas} complejas que separa puntos es metrizable.",
+          "caracteres_solucion_latex": 1576,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 3,
+          "etiqueta": "ej:v3-l16-3",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "Si $X$ es Banach, pruebe que toda sucesión de Cauchy débil* en $X^*$ converge débil*.",
+          "caracteres_solucion_latex": 999,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 4,
+          "etiqueta": "ej:v3-l16-4",
+          "incisos_o_subtareas": [
+            "i",
+            "ii"
+          ],
+          "enunciado_edicion_latex": "Sean $1<p<\\infty$, $1/p+1/q=1$, y $(u_\\alpha)$ una red en $\\ell^q=(\\ell^p)^*$. Pruebe: (i) la convergencia débil* a $u$ implica convergencia de cada coordenada; (ii) si la red es acotada en norma y converge coordenada a coordenada a $u\\in\\ell^q$, converge débil* a $u$.",
+          "caracteres_solucion_latex": 717,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 5,
+          "etiqueta": "ej:v3-l16-5",
+          "incisos_o_subtareas": [
+            "ell1: i",
+            "ell1: ii",
+            "ellinfinito: i",
+            "ellinfinito: ii"
+          ],
+          "enunciado_edicion_latex": "Demuestre las dos afirmaciones anteriores para $\\ell^1=(c_0)^*$ y $\\ell^\\infty=(\\ell^1)^*$, indicando en cada caso el predual.",
+          "caracteres_solucion_latex": 773,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 6,
+          "etiqueta": "ej:v3-l16-6",
+          "incisos_o_subtareas": [
+            "i",
+            "ii"
+          ],
+          "enunciado_edicion_latex": "Pruebe que todo espacio normado separable se encaja lineal e isométricamente (i) en $C(\\mathcal C)$, donde $\\mathcal C$ es el conjunto de Cantor; (ii) en $C([0,1])$.",
+          "caracteres_solucion_latex": 1791,
+          "estado": "resuelto; corrección explícita si procede"
+        }
+      ],
+      "numero_ejercicios_originales": 6
+    },
+    {
+      "lectura": 17,
+      "original": "AnM3-LFM-lect17.pdf",
+      "url_original": "https://drive.google.com/file/d/1uDtOjIEfL6C4D29lhK8uk6vfp5Cv2hNn/view?usp=drivesdk",
+      "capitulo": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "etiqueta": "ej:v3-l17-1",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "En $(\\ell^\\infty)^*$ considere $\\varphi_n(x)=x_n$. Pruebe que pertenecen a la bola unitaria y que ninguna subsucesión converge débil*. Concluya que compacidad débil* no implica compacidad secuencial débil*.",
+          "caracteres_solucion_latex": 544,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 2,
+          "etiqueta": "ej:v3-l17-2",
+          "incisos_o_subtareas": [
+            "cierre de cápsula convexa",
+            "aproximantes de las colas"
+          ],
+          "enunciado_edicion_latex": "\\label{v3:mazur}\nSi $x_n\\rightharpoonup x$ en un espacio de Banach, pruebe que $x$ pertenece al cierre en norma de la envolvente convexa de los $x_n$. Más precisamente, encuentre $y_n\\in\\co\\{x_k:k\\geq n\\}$ con $\\norm{y_n-x}\\to0$.",
+          "caracteres_solucion_latex": 616,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 3,
+          "etiqueta": "ej:v3-l17-3",
+          "incisos_o_subtareas": [
+            "i",
+            "ii",
+            "subespacio cerrado para Banach separable"
+          ],
+          "enunciado_edicion_latex": "Pruebe: (i) $X$ admite una familia numerable $\\alpha$-normante para algún $0<\\alpha<1$ si y sólo si existe $T\\in\\Bcal(X,\\ell^\\infty)$ y $\\beta>0$ con $\\norm{Tx}_\\infty\\geq\\beta\\norm x$; (ii) admite una familia numerable $1$-normante si y sólo si se encaja lineal e isométricamente en $\\ell^\\infty$. Deduzca que todo Banach separable se encaja como subespacio cerrado de $\\ell^\\infty$.",
+          "caracteres_solucion_latex": 1267,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 4,
+          "etiqueta": "ej:v3-l17-4",
+          "incisos_o_subtareas": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_edicion_latex": "Para un subespacio $Y\\subset X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$ mediante evaluación; (ii) $J_X(Y)\\subset X^{**}$ es $\\alpha$-normante para $X^*$ para algún $0<\\alpha<1$; (iii) $\\overline Y=X$.",
+          "caracteres_solucion_latex": 731,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 5,
+          "etiqueta": "ej:v3-l17-5",
+          "incisos_o_subtareas": [
+            "i",
+            "ii"
+          ],
+          "enunciado_edicion_latex": "En $\\ell^2$ sea $v_n=n^{1/4}e_n$. Pruebe: (i) cero es punto de acumulación débil del conjunto de términos; (ii) ninguna subsucesión converge débilmente. Explique por qué no hay contradicción con Eberlein--Šmulian.",
+          "caracteres_solucion_latex": 950,
+          "estado": "resuelto; corrección explícita si procede"
+        }
+      ],
+      "numero_ejercicios_originales": 5
+    },
+    {
+      "lectura": 18,
+      "original": "AnM3-LFM-lect18.pdf",
+      "url_original": "https://drive.google.com/file/d/1mMXIdtvO-oxRIH1RBs1Gd3ZpIw4uL4uq/view?usp=drivesdk",
+      "capitulo": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "etiqueta": "ej:v3-l18-1",
+          "incisos_o_subtareas": [
+            "subespacio",
+            "cociente"
+          ],
+          "enunciado_edicion_latex": "Si $X$ es un espacio de Banach reflexivo y $Y$ es un subespacio cerrado, pruebe que $Y$ y $X/Y$ son reflexivos.",
+          "caracteres_solucion_latex": 791,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 2,
+          "etiqueta": "ej:v3-l18-2",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "Pruebe que un espacio de Banach $X$ es reflexivo si y sólo si $X^*$ lo es.",
+          "caracteres_solucion_latex": 662,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 3,
+          "etiqueta": "ej:v3-l18-3",
+          "incisos_o_subtareas": [
+            "enunciado completo"
+          ],
+          "enunciado_edicion_latex": "Sea $X\\ne\\{0\\}$ un espacio de Banach reflexivo y sea $T:X\\to\\F^n$ lineal \\emph{continuo}. Pruebe que existe $x\\in X$ con $\\norm x=1$ y $\\norm{Tx}=\\norm T$.",
+          "caracteres_solucion_latex": 901,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 4,
+          "etiqueta": "ej:v3-l18-4",
+          "incisos_o_subtareas": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "enunciado_edicion_latex": "Para un subespacio $Y$ de un espacio de Banach $X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$; (ii) $J_X(Y)$ es $\\alpha$-normante para $X^*$ para algún $0<\\alpha<1$; (iii) $\\overline Y=X$.",
+          "caracteres_solucion_latex": 824,
+          "estado": "resuelto; corrección explícita si procede"
+        },
+        {
+          "numero_original": 5,
+          "etiqueta": "ej:v3-l18-5",
+          "incisos_o_subtareas": [
+            "compacto implica Dunford–Pettis",
+            "recíproco con dominio reflexivo"
+          ],
+          "enunciado_edicion_latex": "Un operador acotado $T:X\\to Y$ entre espacios de Banach se llama de Dunford--Pettis si transforma toda sucesión débilmente convergente en una sucesión convergente en norma. Pruebe que todo operador compacto es de Dunford--Pettis, y que el recíproco vale cuando $X$ es reflexivo.",
+          "caracteres_solucion_latex": 1100,
+          "estado": "resuelto; corrección explícita si procede"
+        }
+      ],
+      "numero_ejercicios_originales": 5
+    }
+  ]
+}

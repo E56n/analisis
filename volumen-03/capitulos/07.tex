@@ -1,0 +1,307 @@
+\chapter{Valores singulares, traza y clases de Schatten}\label{cap:v3-07}
+La norma de operador mide la mayor expansión posible, pero no describe cuántas direcciones contribuyen a ella. Los valores singulares organizan esas expansiones en una sucesión. Su suma y la suma de sus cuadrados producen dos clases fundamentales de operadores: los de clase de traza y los de Hilbert--Schmidt. Probaremos también la completitud de todas las clases de Schatten, desarrollando el ejercicio más extenso de la lectura.
+
+\section{Raíz positiva y descomposición singular}\label{lec:v3-12}
+\fuentelectura{12}{Operadores de Hilbert--Schmidt y de clase de traza}
+Diremos que $A\in\Bcal(H)$ es positivo si es autoadjunto y $\ip{Ax}x\ge0$ para todo $x$. En particular $T^*T$ es positivo para todo $T$ acotado.
+
+\begin{proposicion}\label{v3:raiz-compacta}
+Si $T$ es compacto, existe un único operador positivo $|T|$ tal que $|T|^2=T^*T$. Es compacto y satisface $\norm{|T|x}=\norm{Tx}$.
+\end{proposicion}
+\begin{proof}
+El operador $T^*T$ es compacto positivo. Por el teorema espectral, sus valores propios no nulos, repetidos según multiplicidad, son $a_n>0$, con vectores propios ortonormales $f_n$, y
+\[T^*Tx=\sum_n a_n\ip x{f_n}f_n.
+\]
+La lista puede ser finita; en el caso infinito $a_n\to0$. Definimos
+\[|T|x=\sum_n\sqrt{a_n}\ip x{f_n}f_n,
+\]
+con valor cero en el núcleo. La serie define un operador positivo y las truncaciones convergen en norma porque el supremo de los coeficientes restantes tiende a cero. Es, pues, compacto y su cuadrado es $T^*T$. Además $\norm{|T|x}^2=\ip{T^*Tx}x=\norm{Tx}^2$.
+
+Si $B$ es otra raíz positiva, $B$ conmuta con $T^*T=B^2$. Por ello preserva cada espacio propio $E_a$ para $a>0$, y su restricción positiva a ese espacio finito tiene cuadrado $aI$. El teorema espectral finito obliga a que todos sus valores propios sean $\sqrt a$, luego $B|_{E_a}=\sqrt a I$. En el núcleo de $T^*T$, $\norm{Bx}^2=\ip{B^2x}x=0$, de modo que $B$ se anula. La descomposición ortogonal demuestra $B=|T|$. La unicidad se afirma entre raíces \emph{positivas}; otras raíces pueden existir.
+\end{proof}
+
+\begin{definicion}\index{valor singular}
+Los valores propios positivos de $|T|$, repetidos según multiplicidad y ordenados de manera no creciente, se llaman \emph{valores singulares} de $T$ y se denotan $s_n(T)$. Si la lista es finita, la completamos con ceros cuando una fórmula lo requiera.
+\end{definicion}
+
+\begin{teorema}[Descomposición singular y polar]\label{v3:singulares}\index{descomposición!singular}\index{descomposición!polar}\index{isometría parcial}
+Existen familias ortonormales $(f_n),(g_n)$ tales que, con $s_n=s_n(T)>0$,
+\begin{align*}
+Tx&=\sum_ns_n\ip x{f_n}g_n,& |T|x&=\sum_ns_n\ip x{f_n}f_n,\\
+T^*x&=\sum_ns_n\ip x{g_n}f_n,& |T^*|x&=\sum_ns_n\ip x{g_n}g_n.
+\end{align*}
+Las series de operadores convergen en norma. Además $T=U|T|$, donde $U$ es una isometría de $\cl{\ran|T|}=(\ker T)^\perp$ sobre $\cl{\ran T}$ y vale cero en $\ker T$.
+\end{teorema}
+\begin{proof}
+Escojamos los $f_n$ como base ortonormal de los espacios propios positivos de $|T|$ y definamos $g_n=Tf_n/s_n$. Entonces
+\[\ip{g_n}{g_m}=\frac{\ip{T^*Tf_n}{f_m}}{s_ns_m}=\delta_{nm}.
+\]
+El núcleo de $|T|$ coincide con el de $T$ por la igualdad de normas anterior. Aplicando $T$ a la descomposición de $x$ en ese núcleo y los $f_n$ obtenemos la primera fórmula; la norma de su cola es $\sup_{n>N}s_n$, por ortogonalidad. Para el adjunto, evaluar los apareamientos en la serie da la tercera fórmula. De ella se deduce $TT^*g_n=s_n^2g_n$ y que $TT^*$ se anula en el complemento ortogonal de los $g_n$; la unicidad de la raíz positiva da la cuarta.
+
+La aplicación definida inicialmente por $U(|T|x)=Tx$ está bien definida porque $\ker|T|=\ker T$, y preserva normas. Se extiende por continuidad a la cerradura de esa imagen, con imagen $\cl{\ran T}$, y se define como cero en su complemento ortogonal. Esto prueba la descomposición polar. En general $U$ es una \emph{isometría parcial}, no un unitario como afirma la lectura: el corrimiento compacto ponderado inyectivo en $\ell^2$ tiene parte polar igual al corrimiento unilateral, que no es suprayectivo.
+\end{proof}
+
+\section{Hilbert--Schmidt y la independencia de la base}
+Una suma de números no negativos sobre un conjunto arbitrario de índices se define como el supremo de sus sumas finitas. Si es finita, sólo un número a lo sumo numerable de términos es no nulo: para cada $m$, sólo puede haber finitos términos mayores que $1/m$.
+
+\begin{proposicion}\label{v3:hilbert-schmidt}\index{operador!de Hilbert--Schmidt}
+Para cualquier $T\in\Bcal(H)$, el número
+\[\norm T_{\mathrm{HS}}^2=\sum_{e\in\mathcal E}\norm{Te}^2\in[0,\infty]
+\]
+no depende de la base ortonormal $\mathcal E$. Además $\norm T_{\mathrm{HS}}=\norm{T^*}_{\mathrm{HS}}$. Si es finito, $T$ es compacto y
+\[\norm T\le\norm T_{\mathrm{HS}},\qquad
+\norm T_{\mathrm{HS}}^2=\sum_ns_n(T)^2.
+\]
+\end{proposicion}
+\begin{proof}
+Para bases ortonormales $\mathcal E,\mathcal F$, Parseval y el intercambio de sumas no negativas dan
+\[\sum_{e\in\mathcal E}\norm{Te}^2
+=\sum_{e\in\mathcal E}\sum_{f\in\mathcal F}|\ip{Te}f|^2
+=\sum_{f\in\mathcal F}\sum_{e\in\mathcal E}|\ip e{T^*f}|^2
+=\sum_{f\in\mathcal F}\norm{T^*f}^2.
+\]
+Tomando primero $\mathcal F=\mathcal E$ obtenemos igualdad para $T$ y $T^*$ en una base; combinándola con la identidad para dos bases obtenemos independencia. Parseval proviene de la expansión ortogonal de los vectores: en particular $\ip xy=\sum_{e\in\mathcal E}\ip xe\ip ey$, con convergencia absoluta por Cauchy--Schwarz.
+
+Para $x=\sum_e\ip xe\,e$ y $y$ unitario, Cauchy--Schwarz da
+\[|\ip{Tx}y|\le\Bigl(\sum_e|\ip xe|^2\Bigr)^{1/2}
+\Bigl(\sum_e|\ip{Te}y|^2\Bigr)^{1/2}
+\le\norm x\norm T_{\mathrm{HS}}.
+\]
+Así $\norm T\le\norm T_{\mathrm{HS}}$. Si esta última norma es finita, para cada $\eps>0$ existe un conjunto finito $F\subset\mathcal E$ con $\sum_{e\notin F}\norm{Te}^2<\eps^2$. La misma estimación aplicada a $T(I-P_F)$ da $\norm{T-TP_F}<\eps$. Como $TP_F$ tiene rango finito, $T$ es compacto. Finalmente, extendemos los vectores singulares $f_n$ a una base con vectores del núcleo; en ella $\norm{Tf_n}^2=s_n^2$ y los demás términos son cero, dando la fórmula de valores singulares.
+\end{proof}
+
+\section{Una fórmula variacional para las clases de Schatten}
+Para $1\le p<\infty$, definimos
+\[\mathcal S_p(H)=\{T\in\Kcal(H):\sum_ns_n(T)^p<\infty\},\qquad
+\norm T_p=\Bigl(\sum_ns_n(T)^p\Bigr)^{1/p}.
+\]
+Escribimos $\mathcal S_2=\mathrm{HS}(H)$ y $\mathcal S_1=\mathrm{TR}(H)$; la norma de esta última también se denota $\norm T_{\mathrm{tr}}$. La siguiente prueba establece de una vez la desigualdad triangular y la completitud, que no se deducen simplemente de la desigualdad triangular para sucesiones, porque los valores singulares de una suma no se suman término a término.
+
+\begin{lema}[Fórmula variacional]\label{v3:schatten-variacional}
+Sea $T$ compacto, $1\le p<\infty$ y $q$ el exponente conjugado, con $q=\infty$ si $p=1$. Entonces, admitiendo el valor $+\infty$,
+\[\norm T_p=
+\sup\left\{\left|\sum_{i=1}^m b_i\ip{Te_i}{h_i}\right|:
+\begin{array}{l}(e_i)_{i=1}^m,(h_i)_{i=1}^m\text{ ortonormales},\\
+b_i\ge0,\ \norm b_{\ell^q}\le1,\ m<\infty
+\end{array}\right\}.
+\]
+\end{lema}
+\begin{proof}
+Use la descomposición $Tx=\sum_js_j\ip x{f_j}g_j$. Para las familias finitas del enunciado pongamos
+$a_{ij}=|\ip{e_i}{f_j}|\,|\ip{g_j}{h_i}|$. Por Cauchy--Schwarz y Bessel,
+\[\sum_ja_{ij}\le1\quad\text{para cada }i,\qquad
+\sum_ia_{ij}\le1\quad\text{para cada }j.
+\]
+Entonces el módulo de la suma está acotado por $\sum_{i,j}b_is_ja_{ij}$. Si $1<p<\infty$, Hölder para esta suma con pesos no negativos da
+\[\sum_{i,j}b_is_ja_{ij}
+\le\Bigl(\sum_{i,j}b_i^qa_{ij}\Bigr)^{1/q}
+\Bigl(\sum_{i,j}s_j^pa_{ij}\Bigr)^{1/p}
+\le\norm b_q\norm s_p\le\norm T_p.
+\]
+Para $p=1$ se usa directamente $b_i\le1$ y $\sum_i a_{ij}\le1$, obteniendo la misma cota. Las sumas infinitas se justifican por límites monótonos de sumas finitas.
+
+Para la cota opuesta, escoja $e_i=f_i$, $h_i=g_i$ para los primeros $m$ valores singulares positivos. Si $p=1$, tome $b_i=1$; obtiene $\sum_{i=1}^ms_i$. Si $p>1$, tome
+$b_i=s_i^{p-1}/(\sum_{j=1}^ms_j^p)^{1/q}$, cuando el denominador no sea cero. Entonces $\norm b_q=1$ y la suma es $(\sum_{i=1}^ms_i^p)^{1/p}$. Al aumentar $m$ se alcanza el valor requerido. Si $T=0$, ambas partes son cero.
+\end{proof}
+
+\begin{teorema}\label{v3:schatten-banach}\index{Schatten, clases de}
+Para cada $1\le p<\infty$, $\mathcal S_p(H)$ es un espacio de Banach con la norma $\norm\cdot_p$, y $\norm T\le\norm T_p$. En particular $\norm\cdot_{\mathrm{HS}}$ y $\norm\cdot_{\mathrm{tr}}$ son normas.
+\end{teorema}
+\begin{proof}
+Los compactos forman un espacio vectorial. La fórmula variacional expresa $\norm T_p$ como un supremo de módulos de funcionales lineales en $T$; por ello es homogénea y subaditiva. Si $S,T\in\mathcal S_p$, esa subaditividad hace finita la norma de $S+T$, así que la clase es un espacio vectorial. El caso $m=1$, $b_1=1$ muestra $\norm T\le\norm T_p$, y de aquí se deduce que sólo el operador cero tiene norma cero.
+
+Sea $(T_n)$ de Cauchy en $\norm\cdot_p$. También lo es en norma de operador, luego converge a un operador $T$; como los compactos son cerrados en esa norma, $T$ es compacto. Para cada funcional finita $F$ del lema, $F(T_n-T_m)\to F(T_n-T)$ cuando $m\to\infty$. Dado $\eps>0$, si $n,m\ge N$ tenemos $|F(T_n-T_m)|\le\eps$, por tanto $|F(T_n-T)|\le\eps$ para $n\ge N$. Tomando el supremo en todas las elecciones finitas, $\norm{T_n-T}_p\le\eps$. En particular $T-T_N\in\mathcal S_p$, y entonces $T\in\mathcal S_p$. Esto prueba la completitud sin suponer de antemano continuidad de cada valor singular.
+\end{proof}
+
+\section{Traza y productos de operadores}
+Para $u,v\in H$ escribiremos $u\otimes v$ para el operador de rango uno $x\mapsto\ip xv u$. Su único valor singular no nulo es $\norm u\norm v$ si ambos vectores son no nulos: el cuadrado del módulo es el operador $\norm u^2(v\otimes v)$. Por tanto $\norm{u\otimes v}_p=\norm u\norm v$ para todo $p$.
+
+\begin{proposicion}\label{v3:traza-variacional}
+Para un compacto $T$,
+\[\norm T_{\mathrm{tr}}=
+\sup_{\mathcal E,\mathcal F}\sum_{i\in I}|\ip{Te_i}{h_i}|,
+\]
+donde se consideran bases ortonormales $\mathcal E=(e_i)_{i\in I}$, $\mathcal F=(h_i)_{i\in I}$ con un mismo conjunto de índices. Si $T$ es de clase de traza, la serie
+\[\tr T=\sum_{e\in\mathcal E}\ip{Te}e
+\]
+converge absolutamente y es independiente de la base. Para una descomposición singular,
+\[\tr T=\sum_ns_n\ip{g_n}{f_n},\qquad |\tr T|\le\norm T_{\mathrm{tr}}.
+\]
+\end{proposicion}
+\begin{proof}
+La cota superior para la suma de módulos sigue del lema~\ref{v3:schatten-variacional} con $p=1$, absorbiendo las fases en los $h_i$ y tomando supremos sobre subconjuntos finitos. Para la cota inferior, fijado $N$ extendemos las familias \emph{finitas} $f_1,\ldots,f_N$ y $g_1,\ldots,g_N$ a bases completas con índices coincidentes en esos primeros lugares; sus complementos tienen la misma dimensión porque se quitó la misma cantidad finita de vectores. La suma es al menos $\sum_{n=1}^Ns_n$. Hacer $N\to\infty$ da la igualdad. Este argumento no necesita extender simultáneamente dos familias infinitas cuyos complementos podrían tener dimensiones distintas.
+
+Para una base $\mathcal E$ y $T$ de traza, la descomposición singular da
+\[\sum_e\ip{Te}e=\sum_e\sum_ns_n\ip e{f_n}\ip{g_n}e.
+\]
+La suma de módulos de los términos dobles es a lo sumo
+\[\sum_ns_n\Bigl(\sum_e|\ip e{f_n}|^2\Bigr)^{1/2}
+\Bigl(\sum_e|\ip{g_n}e|^2\Bigr)^{1/2}=\sum_ns_n<\infty.
+\]
+Podemos, pues, intercambiar las sumas. Parseval da $\sum_e\ip e{f_n}\ip{g_n}e=\ip{g_n}{f_n}$, y obtenemos una expresión independiente de $\mathcal E$. La cota de la traza sigue tomando módulos. La linealidad de la traza se obtiene sumando en una misma base las series absolutamente convergentes.
+\end{proof}
+Si $T$ es además normal, su descomposición espectral y una base de vectores propios dan
+\[\tr T=\sum_{\lambda\in\sigma(T)\setminus\{0\}}\lambda\dim E_\lambda,
+\]
+con convergencia absoluta, pues los valores singulares son los módulos de esos valores propios con sus multiplicidades.
+
+\begin{observacion}[Una igualdad de imágenes que debe corregirse]
+La lectura afirma $\ran\sqrt{|T|}=\ran|T|$. En general sólo coinciden sus \emph{cerraduras}, ambas iguales a $(\ker T)^\perp$. Por ejemplo, en $\ell^2$, sea $|T|e_n=n^{-2}e_n$. El vector $y_n=n^{-2}$ pertenece a $\ran\sqrt{|T|}$ porque su preimagen es $(1/n)\in\ell^2$, pero no a $\ran|T|$, pues la única preimagen formal sería $(1,1,\ldots)$. La demostración de independencia de la traza dada arriba evita esta afirmación falsa. Sí es válida la factorización $T=(U\sqrt{|T|})\sqrt{|T|}$, con ambos factores de Hilbert--Schmidt cuando $T$ es de clase de traza, porque los cuadrados de sus valores singulares suman $\sum_ns_n(T)$.
+\end{observacion}
+
+\begin{proposicion}\label{v3:ideales-hs-traza}
+$\mathcal S_2$ y $\mathcal S_1$ son ideales bilaterales de $\Bcal(H)$ y satisfacen, para $A$ acotado,
+\[\norm{AT}_{\mathrm{HS}},\norm{TA}_{\mathrm{HS}}\le\norm A\norm T_{\mathrm{HS}},
+\qquad
+\norm{AT}_{\mathrm{tr}},\norm{TA}_{\mathrm{tr}}\le\norm A\norm T_{\mathrm{tr}}.
+\]
+Si $S,T$ son Hilbert--Schmidt, $ST$ es de traza y $\norm{ST}_{\mathrm{tr}}\le\norm S_{\mathrm{HS}}\norm T_{\mathrm{HS}}$.
+\end{proposicion}
+\begin{proof}
+Para Hilbert--Schmidt, en cualquier base,
+$\sum_e\norm{ATe}^2\le\norm A^2\sum_e\norm{Te}^2$. La cota para $TA$ se obtiene aplicando la anterior a $A^*T^*$ y usando la igualdad de normas Hilbert--Schmidt de un operador y su adjunto.
+
+Para traza, la descomposición singular $T=\sum_ns_n(g_n\otimes f_n)$ converge en norma de traza: la norma de la cola es $\sum_{n>N}s_n$. Como $\norm{(Ag_n)\otimes f_n}_{\mathrm{tr}}\le\norm A$, la serie $\sum_ns_n(Ag_n\otimes f_n)$ converge en el Banach $\mathcal S_1$ y coincide en norma de operador con $AT$. Esto da la primera cota. De igual modo $TA=\sum_ns_n(g_n\otimes A^*f_n)$ da la segunda.
+
+Finalmente, $ST$ es compacto. Para familias ortonormales finitas $(e_i),(h_i)$,
+\[\sum_i|\ip{STe_i}{h_i}|=\sum_i|\ip{Te_i}{S^*h_i}|
+\le\Bigl(\sum_i\norm{Te_i}^2\Bigr)^{1/2}
+\Bigl(\sum_i\norm{S^*h_i}^2\Bigr)^{1/2}
+\le\norm T_{\mathrm{HS}}\norm S_{\mathrm{HS}}.
+\]
+La fórmula variacional para $p=1$ implica que $ST$ es de traza y da la cota.
+\end{proof}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}\label{ej:v3-l12-1}
+Demuestre que $\norm\cdot_{\mathrm{HS}}$ y $\norm\cdot_{\mathrm{tr}}$ son normas en sus respectivas clases.
+\end{ejercicio}
+\begin{solucion}
+Para Hilbert--Schmidt, la identificación $T\mapsto(Te)_{e\in\mathcal E}$ en el espacio de familias cuadrado-sumables prueba homogeneidad y la desigualdad triangular de Minkowski. Si todos los $Te$ son cero, $T$ se anula en el span denso de la base, luego $T=0$. La suma y los múltiplos permanecen en la clase por esa desigualdad. Para traza, no puede sumarse directamente la lista de valores singulares. El lema~\ref{v3:schatten-variacional} con $p=1$ expresa la norma como supremo de módulos de expresiones lineales, y por tanto
+\[\norm{S+T}_{\mathrm{tr}}\le\norm S_{\mathrm{tr}}+\norm T_{\mathrm{tr}},\qquad
+\norm{aT}_{\mathrm{tr}}=|a|\norm T_{\mathrm{tr}}.
+\]
+Las sumas de compactos son compactas y la cota asegura finitud de la norma de la suma. Finalmente $\norm T\le\norm T_{\mathrm{tr}}$ prueba definitud. Todos los axiomas quedan verificados.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-2}
+Todo operador de Hilbert--Schmidt es compacto.
+\end{ejercicio}
+\begin{solucion}
+Fijada una base $\mathcal E$, para cada $n$ escoja un conjunto finito $F_n$ con $\sum_{e\notin F_n}\norm{Te}^2<1/n^2$. Entonces $TP_{F_n}$ tiene rango finito y
+\[\norm{T-TP_{F_n}}\le\norm{T(I-P_{F_n})}_{\mathrm{HS}}
+=\Bigl(\sum_{e\notin F_n}\norm{Te}^2\Bigr)^{1/2}<1/n.
+\]
+La desigualdad usada se probó para operadores acotados sin presuponer compacidad en la proposición~\ref{v3:hilbert-schmidt}; así no hay circularidad. El límite en norma de compactos es compacto.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-3}
+Pruebe $\norm T\le\norm T_{\mathrm{HS}}$.
+\end{ejercicio}
+\begin{solucion}
+Para $x$ unitario, extiéndalo a una base ortonormal. La independencia de la base da $\norm{Tx}^2\le\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$. Tomar el supremo en $x$ da la desigualdad. También se obtiene de $\sup_ns_n\le(\sum_ns_n^2)^{1/2}$ una vez probada la compacidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-4}
+Demuestre que las clases de Hilbert--Schmidt y de traza son ideales bilaterales en $\Bcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:ideales-hs-traza} proporciona las cuatro cotas necesarias. Para dejar explícitos los dos lados: $AT$ se controla en Hilbert--Schmidt sumando $\norm{ATe}^2\le\norm A^2\norm{Te}^2$, y $TA$ aplicando ese resultado al adjunto; para traza se usa la serie singular y las identidades $A(g\otimes f)=Ag\otimes f$, $(g\otimes f)A=g\otimes A^*f$. Cada término tiene norma de traza igual al producto de las normas de sus dos vectores. La suma de esas cotas es $\norm A\sum_ns_n(T)<\infty$, de modo que ambos productos pertenecen a la clase. La estructura de subespacio se estableció en el ejercicio~\ref{ej:v3-l12-1}.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-5}
+Pruebe: (i) si $T$ es de traza, $T^*$ también y $\tr(T^*)=\overline{\tr T}$; (ii) para $S,T$ Hilbert--Schmidt, $\tr(ST)=\tr(TS)$; (iii) $\langle S,T\rangle_{\mathrm{HS}}=\tr(ST^*)$ es un producto interno que hace Hilbert a $\mathrm{HS}(H)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La descomposición singular intercambia $f_n$ y $g_n$ al pasar de $T$ a $T^*$, luego sus valores singulares son iguales y $\norm{T^*}_{\mathrm{tr}}=\norm T_{\mathrm{tr}}$. En una base ortonormal,
+$\ip{T^*e}e=\overline{\ip{Te}e}$; la convergencia absoluta permite conjugar la suma y da la fórmula.
+
+(ii) Ambos productos son de traza por la proposición anterior. Para una base $(e_i)$, expandiendo $Te_i$ y aplicando $S$,
+\[\tr(ST)=\sum_{i,j}\ip{Te_i}{e_j}\ip{Se_j}{e_i}.
+\]
+La suma doble de módulos es finita: Cauchy--Schwarz y Parseval la acotan por
+\[\Bigl(\sum_{i,j}|\ip{Te_i}{e_j}|^2\Bigr)^{1/2}
+\Bigl(\sum_{i,j}|\ip{Se_j}{e_i}|^2\Bigr)^{1/2}
+=\norm T_{\mathrm{HS}}\norm S_{\mathrm{HS}}.
+\]
+Se puede intercambiar $i,j$; la expresión resultante es $\tr(TS)$.
+
+(iii) Por el inciso (ii),
+\[\tr(ST^*)=\tr(T^*S)=\sum_e\ip{Se}{Te}.
+\]
+La serie converge absolutamente por Cauchy--Schwarz. Es lineal en $S$, conjugado-lineal en $T$, hermitiana y su valor en $(T,T)$ es $\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$, positivo salvo para $T=0$. Así es un producto interno cuya norma es la Hilbert--Schmidt. La completitud se demostró en el teorema~\ref{v3:schatten-banach} con $p=2$; por tanto este espacio es Hilbert.
+\end{solucion}
+
+\begin{ejercicio}[Todas las clases de Schatten]\label{ej:v3-l12-6}
+Para $1\le p<\infty$, pruebe que $\mathcal S_p(H)$ es un espacio vectorial complejo, que $\norm\cdot_p$ es una norma y que ese espacio es completo.
+\end{ejercicio}
+\begin{solucion}
+La prueba completa consta del lema~\ref{v3:schatten-variacional} y del teorema~\ref{v3:schatten-banach}; explicitamos cómo responde a cada parte. La fórmula variacional se obtiene de la descomposición singular, Bessel y Hölder con la matriz no negativa $a_{ij}$ cuyas sumas por filas y columnas son a lo sumo uno. Su cota inferior se obtiene eligiendo las familias singulares y los pesos duales $b_i$. Esta igualdad hace subaditiva y homogénea a $\norm\cdot_p$, y la cota $\norm T\le\norm T_p$ demuestra definitud. Como la suma de compactos es compacta y la desigualdad triangular mantiene finita la norma, la clase es un subespacio vectorial.
+
+Para completitud, una sucesión de Cauchy en $p$ converge en norma de operador a un compacto $T$. Cada expresión finita de la fórmula variacional es continua para esa norma de operador. Pasar al límite en $|F(T_n-T_m)|\le\eps$ y tomar el supremo prueba $\norm{T_n-T}_p\le\eps$ para $n$ grande. Esto demuestra simultáneamente que $T$ pertenece a la clase y que la convergencia ocurre en su norma. No se ha usado ninguna desigualdad de valores singulares sin demostrar.
+\end{solucion}
+
+\section{Ampliación: núcleos integrales y prueba de Schur}\index{Schur, prueba de}
+El siguiente criterio desarrolla la nota de Egor Maximenko \emph{La prueba de Schur simplificada para operadores integrales} \cite{maxschur}. Se distinguen los espacios de entrada y salida para evitar invertirlos en la fórmula.
+
+\begin{teorema}[Schur, versión no ponderada]\label{v3:schur}
+Sean $(X,\mu),(Y,\nu)$ espacios de medida $\sigma$-finitos y $K:X\times Y\to\C$ medible. Supongamos
+\[\esssup_{x\in X}\int_Y|K(x,y)|\,d\nu(y)\le C_1<\infty,
+\quad
+\esssup_{y\in Y}\int_X|K(x,y)|\,d\mu(x)\le C_2<\infty.
+\]
+Entonces $Af(x)=\int_YK(x,y)f(y)\,d\nu(y)$ define un operador $L^2(Y,\nu)\to L^2(X,\mu)$ y $\norm A\le\sqrt{C_1C_2}$.
+\end{teorema}
+\begin{proof}
+Tonelli da
+\[\int_X\int_Y|K(x,y)||f(y)|^2\,d\nu(y)\,d\mu(x)
+\le C_2\norm f_2^2.
+\]
+Así la integral interior es finita para casi todo $x$. Cauchy--Schwarz aplicado a $|K|^{1/2}$ y $|K|^{1/2}|f|$ implica allí integrabilidad absoluta de $Kf$ y
+\[|Af(x)|^2\le\left(\int_Y|K(x,y)|\,d\nu(y)\right)
+\left(\int_Y|K(x,y)||f(y)|^2\,d\nu(y)\right).
+\]
+Integramos y usamos las dos cotas en su orden:
+\[\norm{Af}_2^2\le C_1\int_Y|f(y)|^2\left(\int_X|K(x,y)|\,d\mu(x)\right)d\nu(y)
+\le C_1C_2\norm f_2^2.
+\]
+Esto prueba existencia casi en todas partes, independencia del representante y acotación. No debe introducirse un segundo factor $C_1C_2$ al reescribir la integral intermedia, como ocurre en una línea de la nota complementaria.
+\end{proof}
+
+\begin{proposicion}\label{v3:nucleo-hs}
+Si $K\in L^2([0,1]^2)$, el operador $A_Kf(x)=\int_0^1K(x,y)f(y)\,dy$ es Hilbert--Schmidt y
+\[\norm{A_K}_{\mathrm{HS}}=\norm K_{L^2([0,1]^2)}.
+\]
+\end{proposicion}
+\begin{proof}
+Por Cauchy--Schwarz en $y$ y después integración en $x$, $\norm{A_Kf}_2\le\norm K_2\norm f_2$. Sea $(e_n)$ una base ortonormal de $L^2[0,1]$. Para casi todo $x$, $K(x,\cdot)\in L^2$ por Fubini y
+\[\sum_n\left|\int_0^1K(x,y)e_n(y)\,dy\right|^2
+=\norm{K(x,\cdot)}_2^2,
+\]
+porque $(\cl{e_n})$ también es una base ortonormal y se aplica Parseval. Tonelli permite integrar esta suma no negativa:
+\[\sum_n\norm{A_Ke_n}_2^2=\int_0^1\norm{K(x,\cdot)}_2^2\,dx=\norm K_2^2.
+\]
+La proposición~\ref{v3:hilbert-schmidt} da la conclusión y también la compacidad.
+\end{proof}
+
+\begin{ejercicio}[Complemento: núcleo acotado en medida finita]\label{ej:v3-ampl-schur}
+Si $\mu(X),\nu(Y)<\infty$ y $|K(x,y)|\le M$ casi en todas partes, pruebe $\norm A\le M\sqrt{\mu(X)\nu(Y)}$.
+\end{ejercicio}
+\begin{solucion}
+Las integrales de filas están acotadas por $M\nu(Y)$ y las de columnas por $M\mu(X)$. Schur da
+\[\norm A\le\sqrt{M\nu(Y)\,M\mu(X)}=M\sqrt{\mu(X)\nu(Y)}.
+\]
+Si alguna medida es cero, el operador es cero y la fórmula sigue siendo válida. Esto resuelve el ejercicio final propuesto, sin solución, en la nota complementaria de Schur.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: tamaño Hilbert--Schmidt de Volterra]\label{ej:v3-ampl-volterra-hs}
+Calcule la norma Hilbert--Schmidt de $V$ en $L^2[0,1]$ y determine si $V^*V$ es de traza.
+\end{ejercicio}
+\begin{solucion}
+El núcleo es $K(x,y)=\boldsymbol1_{\{0\le y\le x\le1\}}$, cuyo cuadrado integra el área del triángulo: $\int_0^1\int_0^x1\,dy\,dx=1/2$. Por tanto $\norm V_{\mathrm{HS}}=1/\sqrt2$. El producto $V^*V$ es de traza porque ambos factores son Hilbert--Schmidt, y
+\[\tr(V^*V)=\sum_e\ip{V^*Ve}e=\sum_e\norm{Ve}^2=\norm V_{\mathrm{HS}}^2=\tfrac12.
+\]
+Como $V^*V$ es positivo, su norma de traza coincide con su traza, también igual a $1/2$.
+\end{solucion}
+
+Las clases de Schatten proporcionan normas que distinguen diferentes grados de compacidad. La traza recupera una suma de valores propios para compactos normales, mientras que la clase Hilbert--Schmidt convierte el espacio de operadores en un Hilbert. Los criterios integrales conectan estas construcciones con ejemplos calculables; más adelante, las topologías débiles permitirán estudiar límites que no convergen en ninguna de estas normas.

@@ -1,0 +1,301 @@
+\chapter{Función modular e integración en cocientes}\label{v4:modular}\label{cap:v4-11}
+La invariancia por la izquierda no garantiza invariancia por la derecha. La función modular mide esa diferencia. Al integrar en un espacio de clases laterales, la misma función determina si existe una medida compatible con la acción del grupo. Desarrollaremos las lecturas 20 y 21 de Valencia Bucio \cite{valencia4}, manteniendo una sola convención de signos y justificando cuidadosamente el paso de funciones continuas a funciones integrables.
+
+\section{La función modular y los cambios de variable}\label{lectura:v4-20}
+Fijemos una medida de Haar izquierda $\mu$ de $G$. Para $a\in G$, la medida $\mu_a(A)=\mu(Aa)$ es de Haar izquierda: la traslación derecha es un homeomorfismo, preserva la regularidad y los compactos, y $\mu_a(xA)=\mu(xAa)=\mu(Aa)$. La unicidad de Haar proporciona un único número $\Delta(a)>0$ tal que
+\begin{equation}\label{v4:mod-convencion}
+ \mu(Aa)=\Delta(a)\mu(A).
+\end{equation}
+\index{funcion@función!modular}\index{grupo!unimodular}
+\begin{definicion}
+La aplicación $\Delta:G\to(0,\infty)$ determinada por \eqref{v4:mod-convencion} es la \emph{función modular}. El grupo es \emph{unimodular} si $\Delta\equiv1$.
+\end{definicion}
+
+\begin{proposicion}\label{v4:mod-prop}
+La función modular no depende de la normalización de $\mu$ y es un homomorfismo continuo. Para toda función no negativa medible, y también para toda función integrable,
+\begin{equation}\label{v4:mod-derecha}
+ \int_G f(ta)\,d\mu(t)=\Delta(a)^{-1}\int_G f(t)\,d\mu(t).
+\end{equation}
+\end{proposicion}
+\begin{proof}
+Multiplicar $\mu$ por una constante positiva no cambia el factor de \eqref{v4:mod-convencion}. Si $A$ tiene medida finita y positiva, entonces
+\[
+ \mu(Aab)=\Delta(b)\mu(Aa)=\Delta(b)\Delta(a)\mu(A),
+\]
+lo que da $\Delta(ab)=\Delta(a)\Delta(b)$. Además, $\Delta(e)=1$ y $\Delta(a^{-1})=\Delta(a)^{-1}$.
+
+Para un indicador, $1_A(ta)=1_{Aa^{-1}}(t)$; por ello su integral es $\mu(Aa^{-1})=\Delta(a)^{-1}\mu(A)$. Pasar a funciones simples y a límites monótonos prueba \eqref{v4:mod-derecha} para funciones no negativas. Al aplicarla a $|f|$, se comprueba primero que $R_af$ es integrable; después se aplica a las partes reales e imaginarias positivas y negativas. Así no se presupone la continuidad de $R_a$ en $L^1$ para demostrar la fórmula que precisamente la justifica.
+
+Para probar continuidad, tomemos $f\in\Cc^+(G)$ con $\int f=\alpha>0$. La función $a\mapsto\int f(ta)\,d\mu(t)$ es continua: cerca de cualquier $a_0$ los soportes de $R_af$ están en un compacto fijo, y la convergencia uniforme de las traslaciones controla la integral de la diferencia. Por \eqref{v4:mod-derecha}, esa función es $\alpha\Delta(a)^{-1}$, positiva. Tomar su recíproco prueba la continuidad de $\Delta$.
+\end{proof}
+\begin{observacion}[Control de la convención]
+El factor de la medida de $Aa$ es $\Delta(a)$; el factor de la integral de $f(ta)$ es su inverso. Confundirlos cambia las fórmulas de inversión y de cocientes. En la prueba de multiplicatividad de la lectura 20 se intercambian accidentalmente traslaciones izquierdas y derechas; en la lectura 21 aparecen factores modulares sin el inverso. Aquí todas las fórmulas se deducen de \eqref{v4:mod-convencion}.
+\end{observacion}
+
+\begin{proposicion}\label{v4:mod-Lp}
+Si $1\leq p<\infty$, entonces
+\[
+ \norm{R_af}_p=\Delta(a)^{-1/p}\norm f_p,
+\]
+y las aplicaciones $a\mapsto R_af$ y $a\mapsto L_af$ son continuas en $L^p(G)$. En $L^\infty$, ambas traslaciones conservan la norma, pero la continuidad en norma puede fallar.
+\end{proposicion}
+\begin{proof}
+Aplicar \eqref{v4:mod-derecha} a $|f|^p$ da la fórmula de la norma. Para $g\in\Cc(G)$, la continuidad uniforme y el compacto común de los soportes dan $\norm{R_ag-g}_p\to0$ cuando $a\to e$. Para $f\in L^p$, elijamos $g\in\Cc(G)$ próximo a $f$. Entonces
+\[
+ \norm{R_af-f}_p\leq
+ (\Delta(a)^{-1/p}+1)\norm{f-g}_p+\norm{R_ag-g}_p.
+\]
+La continuidad de $\Delta$ ya está probada, de modo que el primer factor está acotado cerca de $e$. Primero elegimos $g$ y después $a$; obtenemos continuidad en $e$. Las identidades de composición y la acotación de cada traslación transportan el resultado a cualquier punto. El caso izquierdo se probó en \ref{v4:haar-Lp}.
+
+Las traslaciones preservan los conjuntos nulos, por lo que conservan la norma esencial suprema. Sin embargo, para $f=1_{[0,\infty)}$ en $\R$ y $a\ne0$, la diferencia $R_af-f$ tiene módulo uno en un intervalo de longitud $|a|$. Por ello $\norm{R_af-f}_\infty=1$ aunque $a\to0$.
+\end{proof}
+
+\begin{teorema}[Cambio por inversión]\label{v4:mod-inversion}
+Para $f\in L^1(G)$,
+\begin{equation}\label{v4:mod-formula-inversion}
+ \int_G f(t^{-1})\Delta(t^{-1})\,d\mu(t)=\int_G f(t)\,d\mu(t).
+\end{equation}
+La igualdad también vale para funciones no negativas, permitiendo el valor infinito.
+\end{teorema}
+\begin{proof}
+Para $f\in\Cc(G)$ escribamos
+$Tf(t)=f(t^{-1})\Delta(t^{-1})$ y $J(f)=\int Tf\,d\mu$.
+Es un funcional positivo no nulo. Verifiquemos su invariancia izquierda. Si
+$F(u)=f(u^{-1})\Delta(u^{-1})$, entonces
+\[
+ f(a^{-1}t^{-1})\Delta(t^{-1})=\Delta(a)F(ta).
+\]
+La identidad usa $(ta)^{-1}=a^{-1}t^{-1}$ y la multiplicatividad de $\Delta$. Por \eqref{v4:mod-derecha}, integrar el miembro derecho produce $\int F$, de donde $J(L_af)=J(f)$. Riesz y la unicidad de Haar dan $J=cI$ con $c>0$, donde $I(f)=\int f\,d\mu$.
+
+Ahora $T^2f=f$, porque $\Delta(t)\Delta(t^{-1})=1$. Por tanto
+$I(f)=I(T^2f)=cI(Tf)=c^2I(f)$. Elegir $I(f)>0$ muestra $c=1$. Esto prueba \eqref{v4:mod-formula-inversion} en $\Cc(G)$.
+
+La medida $A\mapsto\int 1_A(t^{-1})\Delta(t^{-1})\,d\mu(t)$ es finita en compactos y tiene la misma regularidad que $\mu$: la inversión es un homeomorfismo y el peso es continuo y estrictamente positivo. La igualdad en $\Cc$ implica igualdad de las medidas por regularidad. La aproximación por funciones simples extiende entonces la fórmula a funciones no negativas y a $L^1$.
+\end{proof}
+
+\begin{ejemplo}[Grupos unimodulares y un ejemplo no unimodular]\label{v4:mod-ejemplos}
+Los grupos abelianos son unimodulares, pues $Aa=aA$. Los grupos compactos también: $\Delta(G)$ es un subgrupo compacto de $(0,\infty)$, y el único tal subgrupo es $\{1\}$. En efecto, si contiene $r>1$, contiene las potencias no acotadas $r^n$; si contiene $0<r<1$, contiene $r^{-1}>1$. Los grupos discretos son unimodulares porque la medida de conteo es invariante por ambos lados.
+
+Para ver que la distinción no es vacía, consideremos el grupo afín
+\[
+ G=\{(a,b):a>0,\ b\in\R\},\qquad
+ (a,b)(c,d)=(ac,b+ad).
+\]
+La medida $d\mu(a,b)=a^{-2}\,da\,db$ es invariante por la izquierda. La aplicación $(a,b)\mapsto(c,d)(a,b)=(ca,d+cb)$ tiene jacobiano $c^2$, que cancela el factor $(ca)^{-2}$. La traslación derecha $(a,b)\mapsto(ac,b+ad)$ tiene jacobiano $c$, de modo que
+$\mu(A(c,d))=c^{-1}\mu(A)$. Por tanto $\Delta(c,d)=c^{-1}$ y el grupo no es unimodular. La medida derecha correspondiente es $a^{-1}\,da\,db$.
+\end{ejemplo}
+
+\section{Ejercicios de la lectura 20}
+\begin{ejercicio}[Lectura 20, ejercicio 1]\label{ej:v4-l20-1}
+Demuestre que, para $f\in\Cc(G)$ y $\eps>0$, existe una vecindad $U$ de $e$ tal que $x^{-1}y\in U$ o $yx^{-1}\in U$ implica $|f(x)-f(y)|<\eps$.
+\end{ejercicio}
+\begin{solucion}
+Por el lema \ref{v4:haar-uniforme}, elijamos una vecindad simétrica $U$ tal que $\norm{R_uf-f}_\infty<\eps$ y $\norm{L_uf-f}_\infty<\eps$ para $u\in U$. Si $u=x^{-1}y$, entonces $y=xu$ y
+$|f(y)-f(x)|=|R_uf(x)-f(x)|<\eps$. Si $u=yx^{-1}$, entonces $y=ux$ y
+$|f(y)-f(x)|=|L_{u^{-1}}f(x)-f(x)|<\eps$.
+
+La parte esencial del argumento es que la vecindad no depende de $x$. Esto procede de la cubierta finita de un compacto que contiene todos los soportes trasladados, demostrada en el lema citado; la continuidad puntual por sí sola no bastaría.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 2]\label{ej:v4-l20-2}
+Pruebe la equivalencia entre: $G$ es discreto; $\mu(\{e\})>0$; $\mu$ es un múltiplo positivo de la medida de conteo.
+\end{ejercicio}
+\begin{solucion}
+Si $G$ es discreto, los compactos son finitos y la medida de conteo es de Haar. La unicidad da la tercera afirmación. Esta implica evidentemente la segunda. Supongamos ahora que $c=\mu(\{e\})>0$. Por invariancia, cada singleton tiene medida $c$. Una vecindad compacta $K$ de $e$ tiene medida finita; no puede contener más de $\mu(K)/c$ puntos, porque la medida de cualquier conjunto de $m$ puntos es $mc$. Así $K$ es finito. Existe un abierto $V$ con $e\in V\subset K$; al quitar los finitos puntos de $V\setminus\{e\}$, que son cerrados por la propiedad Hausdorff, obtenemos que $\{e\}$ es abierto. Todas sus traslaciones son abiertas, luego $G$ es discreto. La medida de conteo en un conjunto infinito, incluso no numerable, se entiende como infinito sobre todo subconjunto infinito.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 3]\label{ej:v4-l20-3}
+Sea $H$ un subgrupo del grupo multiplicativo $(0,\infty)$. Demuestre que es discreto o denso.
+\end{ejercicio}
+\begin{solucion}
+El logaritmo es un isomorfismo topológico de $(0,\infty)$ sobre $(\R,+)$. Basta estudiar el subgrupo aditivo $A=\log H$. Si $A=\{0\}$, es discreto. En otro caso, $A$ tiene elementos positivos. Sea $d=\inf(A\cap(0,\infty))$.
+
+Si $d=0$, dados $x\in\R$ y $\eps>0$, elijamos $0<a\in A$ con $a<\eps$. Existe un entero $n$ con $|x-na|\leq a/2<\eps$. Como $na\in A$, el grupo $A$ es denso.
+
+Si $d>0$, probaremos que $d\in A$. Elijamos $a\in A$ con $d\leq a<2d$. Si $a>d$, la definición de ínfimo proporciona $b\in A$ con $d\leq b<a$ y entonces $0<a-b<d$, contradicción. Por tanto $a=d$. Para cualquier $x\in A$ hacemos división euclidiana real: $x=nd+r$ con $n\in\Z$ y $0\leq r<d$. Como $r=x-nd\in A$, la definición de $d$ fuerza $r=0$. Así $A=d\Z$, que es discreto. Al aplicar la exponencial obtenemos $H=\{e^{nd}:n\in\Z\}$ en este caso.
+\end{solucion}
+
+\section{Promediar sobre un subgrupo}\label{lectura:v4-21}
+Sea ahora $H$ un subgrupo cerrado de $G$, con medida de Haar izquierda $\mu_H$. El espacio $Q=G/H$ es Hausdorff; la proyección $\pi:G\to Q$ es abierta porque $\pi^{-1}(\pi(U))=UH$ es unión de traslaciones abiertas. Si $K$ es una vecindad compacta de $x$, entonces $\pi(K)$ es una vecindad compacta de $xH$. Por tanto $Q$ es localmente compacto.
+
+\begin{observacion}[La medida de un subgrupo cerrado]\label{v4:mod-subgrupo-nulo}
+Si $H$ es abierto, la restricción de $\mu$ a $H$ es una medida de Haar no nula. Si no es abierto, todo compacto $K\subset H$ tiene medida cero. En efecto, si $\mu(K)>0$, la función $x\mapsto\mu(K\cap xK)$ es continua y positiva en $e$ por el ejercicio \ref{ej:v4-l17-2}. Sería positiva en una vecindad $V$, lo que implica $V\subset KK^{-1}\subset H$ y haría abierto a $H$. En particular, si $H$ es $\sigma$-compacto y no es abierto, entonces $\mu(H)=0$.
+
+Sin $\sigma$-compacidad no se debe afirmar automáticamente $\mu(H)=0$ bajo nuestra convención exteriormente regular. El subgrupo $\{0\}\times D$ del ejemplo \ref{v4:haar-radon} no es abierto y tiene medida infinita. Su restricción no es una medida de Haar de $H$: no es regular interior en el abierto $H$ de su propia topología. La medida intrínseca $\mu_H$ y la restricción de $\mu$ son objetos distintos.
+\end{observacion}
+
+Para $f\in\Cc(G)$ definamos
+\[
+ T_Hf(xH)=\int_H f(xh)\,d\mu_H(h).
+\]
+\index{integracion@integración!sobre un cociente}
+La definición no depende del representante: si se cambia $x$ por $xh_0$, la invariancia izquierda de $\mu_H$ permite sustituir $h_0h$ por $h$. La función de $h$ integrada tiene soporte contenido en el compacto $x^{-1}\supp f\cap H$.
+
+\begin{lema}\label{v4:mod-promedio}
+El operador $T_H:\Cc(G)\to\Cc(Q)$ es lineal, positivo y sobreyectivo. Más precisamente,
+$\supp(T_Hf)\subset\pi(\supp f)$, y toda $g\in\Cc^+(Q)$ tiene una preimagen no negativa.
+\end{lema}
+\begin{proof}
+La linealidad y positividad se siguen de la integral. Fuera del compacto $\pi(\supp f)$ todas las fibras evitan $\supp f$, luego el promedio es cero. Para la continuidad, fijemos $x\in G$ y una vecindad compacta $U$ de $x$. Los soportes de $h\mapsto f(yh)$ para $y\in U$ están en
+$C=U^{-1}\supp f\cap H$, compacto. Cuando $y\to x$, la continuidad uniforme por traslación izquierda da
+\[
+ |T_Hf(yH)-T_Hf(xH)|\leq
+ \mu_H(C)\sup_{h\in H}|f(yh)-f(xh)|\longrightarrow0.
+\]
+Así $T_Hf\circ\pi$ es continua; por la definición de topología cociente, $T_Hf$ es continua en $Q$.
+
+Para la sobreyectividad, sea $S=\supp g$. Cubramos $S$ con un número finito de abiertos $\pi(U_j)$ donde cada $U_j$ es relativamente compacto en $G$. El compacto $A=\bigcup_j\overline{U_j}$ satisface $S\subset\pi(A)$. Tomemos $\phi\in\Cc^+(G)$ igual a uno en $A$. Para $q\in S$, existe $x\in A$ con $q=xH$; la función $h\mapsto\phi(xh)$ es positiva cerca de $e$, por lo que $T_H\phi(q)>0$. Como $S$ es compacto, $T_H\phi$ tiene un mínimo estrictamente positivo en $S$.
+
+Definamos
+\[
+ f(x)=\begin{cases}
+ g(\pi(x))\phi(x)/T_H\phi(\pi(x)),&T_H\phi(\pi(x))>0,\\
+ 0,&T_H\phi(\pi(x))=0.
+ \end{cases}
+\]
+Esta función es continua: cerca de $\pi^{-1}(S)$ el denominador no se anula, y fuera de ese cerrado el numerador $g\circ\pi$ es cero. Su soporte está contenido en $\supp\phi$, y la constancia de $g\circ\pi$ y $T_H\phi\circ\pi$ en cada fibra da $T_Hf=g$. Si $g\geq0$, también $f\geq0$.
+\end{proof}
+
+\section{Cuándo existe una medida invariante en el cociente}
+\begin{teorema}[Fórmula integral de Weil]\label{v4:mod-weil}\index{formula@fórmula!integral de Weil}
+Existe una medida no nula en $Q=G/H$, finita en compactos, con la regularidad de Haar e invariante por la acción izquierda de $G$, si y sólo si
+\begin{equation}\label{v4:mod-compatibilidad}
+ \Delta_G(h)=\Delta_H(h)\qquad(h\in H).
+\end{equation}
+En ese caso es única salvo un múltiplo positivo. Fijadas $\mu_G$ y $\mu_H$, tiene una única normalización $\nu$ para la cual
+\begin{equation}\label{v4:mod-weil-formula}
+ \int_G f\,d\mu_G=\int_{G/H}T_Hf\,d\nu
+   =\int_{G/H}\int_H f(xh)\,d\mu_H(h)\,d\nu(xH)
+\end{equation}
+para $f\in\Cc(G)$ y para $f\in L^1(G)$. En este último caso las integrales sobre las fibras existen para casi toda clase lateral, y la función resultante se considera en la completación de $\nu$.
+\end{teorema}
+\begin{proof}[Necesidad y unicidad]
+Si existe $\nu$, el funcional $J(f)=\int_Q T_Hf\,d\nu$ es positivo. No es nulo, porque la sobreyectividad positiva de $T_H$ permite obtener una función no negativa cuya integral sea positiva. Además,
+$T_H(L_af)(xH)=T_Hf(a^{-1}xH)$; la invariancia de $\nu$ da $J(L_af)=J(f)$. Por Riesz y unicidad de Haar, $J(f)=c\int f\,d\mu_G$ con $c>0$.
+
+Para $h\in H$, la traslación derecha dentro de $H$ da
+$T_H(R_hf)=\Delta_H(h)^{-1}T_Hf$. La misma integral en $G$ satisface
+$\int R_hf=\Delta_G(h)^{-1}\int f$. Elegir $f$ de integral no nula y comparar ambas expresiones de $J(R_hf)$ fuerza \eqref{v4:mod-compatibilidad}.
+
+Si $\nu_1$ y $\nu_2$ son invariantes, sus funcionales elevados a $\Cc(G)$ son proporcionales por unicidad de Haar. Como $T_H$ es sobreyectivo, las integrales respecto de $\nu_1,\nu_2$ son proporcionales en todo $\Cc(Q)$; la regularidad extiende la igualdad a medidas. Reescalar $\nu$ fija el factor $c$ igual a uno de manera única.
+\end{proof}
+
+\begin{proof}[Suficiencia y fórmula en funciones continuas]
+Supongamos \eqref{v4:mod-compatibilidad}. El paso decisivo es demostrar
+\begin{equation}\label{v4:mod-kernel}
+ T_Hf=0\quad\Longrightarrow\quad\int_G f\,d\mu_G=0.
+\end{equation}
+Para $f,\phi\in\Cc(G)$ y $T_Hf=0$, Fubini y el cambio por traslación derecha dan
+\begin{align*}
+ 0&=\int_G\phi(x)\int_H f(xh)\,dh\,dx\\
+  &=\int_H\Delta_G(h)^{-1}\int_G f(u)\phi(uh^{-1})\,du\,dh\\
+  &=\int_G f(u)\int_H\Delta_H(h)^{-1}\phi(uh^{-1})\,dh\,du\\
+  &=\int_G f(u)T_H\phi(uH)\,du.
+\end{align*}
+La última igualdad es la fórmula de inversión en $H$. Las aplicaciones de Fubini son legítimas: en el integrando inicial $x\in\supp\phi$ y $h\in(\supp\phi)^{-1}\supp f\cap H$, dos compactos; el integrando es acotado. La conmutación de las integrales también se obtiene aproximando uniformemente el integrando, sobre ese producto compacto, por sumas de productos de funciones continuas de cada variable. Los cambios de variable conservan la integrabilidad.
+
+Elijamos $g\in\Cc^+(Q)$ igual a uno en $\pi(\supp f)$ y una preimagen $\phi\geq0$ con $T_H\phi=g$. La última integral es entonces $\int f$, lo que prueba \eqref{v4:mod-kernel}.
+
+Para $g\in\Cc(Q)$, elijamos $f\in\Cc(G)$ con $T_Hf=g$ y definamos
+$\Lambda(g)=\int_G f\,d\mu_G$. La implicación \eqref{v4:mod-kernel} muestra que la definición no depende de la preimagen. Es lineal y positiva porque toda $g\geq0$ admite preimagen positiva. No es cero: si $f\geq0$ no es nula, entonces $\Lambda(T_Hf)=\int f>0$. El teorema de Riesz proporciona la medida $\nu$ y la igualdad \eqref{v4:mod-weil-formula} en $\Cc(G)$. La identidad para traslaciones prueba que $\nu$ es $G$-invariante, usando nuevamente la determinación de una medida por sus integrales de funciones de soporte compacto.
+\end{proof}
+
+\subsection{Por qué la fórmula sigue siendo válida en \texorpdfstring{$L^1$}{L1}}
+El paso siguiente evita dos afirmaciones incorrectas que aparecen en el argumento original: una función integrable no tiene necesariamente soporte compacto ni soporte topológico $\sigma$-compacto; y un conjunto nulo de $G$ no puede descartarse sobre cada fibra sin una justificación.
+
+\begin{lema}[Los nulos son nulos en casi toda fibra]\label{v4:mod-nulos}
+Si $N$ es un Borel de medida $\mu_G(N)=0$, entonces
+$\mu_H(\{h:xh\in N\})=0$ para $\nu$-casi toda $xH$.
+\end{lema}
+\begin{proof}
+Primero consideremos un abierto $U\subset G$. Las funciones
+$T_H\phi$, con $\phi\in\Cc(G)$, $0\leq\phi\leq1$ y $\supp\phi\subset U$, forman una familia dirigida hacia arriba: $\max(\phi_1,\phi_2)$ domina ambas. Su supremo puntual es $T_H1_U$. Para comprobarlo en una fibra, aproximamos el abierto $x^{-1}U\cap H$ por compactos de $H$; para cada compacto $K$ de ese abierto existe una función de corte en $G$ igual a uno en $xK$ y soportada en $U$. Por regularidad interior de $\mu_H$, las integrales de tales funciones se acercan a $\mu_H(x^{-1}U\cap H)$, incluso si es infinita. Por tanto $T_H1_U$ es semicontinua inferior y medible.
+
+Para una familia dirigida de funciones continuas no negativas sobre un espacio con medida regular interior en abiertos, la integral del supremo es el supremo de las integrales. He aquí la justificación que permite usar una familia no numerable. Los abiertos de nivel del supremo son uniones de los abiertos de nivel de los miembros de la familia. Todo compacto dentro de una de esas uniones está cubierto por un número finito de ellos; la dirección de la familia permite dominarlos con un solo miembro. La regularidad interior da la misma igualdad para las medidas de los abiertos de nivel. Finalmente, una aproximación de la integral por sumas inferiores con un número finito de niveles permite escoger un único miembro que aproxime simultáneamente todos los niveles; tomar el supremo de esas sumas prueba la afirmación.
+
+Aplicamos este hecho y la fórmula de Weil en $\Cc(G)$:
+\[
+ \int_Q T_H1_U\,d\nu
+ =\sup_\phi\int_Q T_H\phi\,d\nu
+ =\sup_\phi\int_G\phi\,d\mu_G=\mu_G(U).
+\]
+Por regularidad exterior, elijamos abiertos $U_n\supset N$ con $\mu_G(U_n)<2^{-n}$. La suma $\sum_nT_H1_{U_n}$ tiene integral finita por convergencia monótona, así que es finita casi en todas partes. En esas clases laterales, $T_H1_{U_n}\to0$. Como $0\leq T_H1_N\leq T_H1_{U_n}$ para todo $n$, concluimos $T_H1_N=0$ allí. La función $T_H1_N$, aun antes de probar su medibilidad global, está soportada en un conjunto $\nu$-nulo y se puede interpretar en la medida completada.
+\end{proof}
+
+\begin{proof}[Final de la demostración de Weil en $L^1$]
+Para $\phi\in\Cc(G)$,
+\[
+ \norm{T_H\phi}_{L^1(Q)}\leq\int_QT_H|\phi|\,d\nu
+       =\norm\phi_{L^1(G)}.
+\]
+Por densidad, $T_H$ se extiende a una contracción de $L^1(G)$ en $L^1(Q)$. Falta identificarla con la integral sobre las fibras, y ese paso es el que no debe omitirse.
+
+Elijamos $\phi_n\in\Cc(G)$ con $\norm{\phi_n-f}_1<2^{-n}$. La suma de esas normas es finita; por convergencia monótona, $\phi_n\to f$ fuera de un conjunto Borel nulo $N$, después de elegir un representante Borel de $f$. Además,
+\[
+ \sum_n\norm{\phi_{n+1}-\phi_n}_1<\infty.
+\]
+La fórmula en funciones continuas y la convergencia monótona implican que, para casi toda $xH$,
+\[
+ \int_H\left(|\phi_1(xh)|+
+          \sum_n|\phi_{n+1}(xh)-\phi_n(xh)|\right)dh<\infty.
+\]
+Por el lema anterior, en casi toda fibra la convergencia $\phi_n(xh)\to f(xh)$ vale para casi todo $h$. En la intersección de ambos conjuntos de clases laterales, la expresión entre paréntesis es un mayorante integrable de todos los $|\phi_n(xh)|$ y de $|f(xh)|$. La convergencia dominada da
+\[
+ T_H\phi_n(xH)\longrightarrow\int_H f(xh)\,dh.
+\]
+Por otro lado, las contracciones $T_H\phi_n$ convergen en $L^1(Q)$ a la extensión de $T_Hf$. Una subsucesión converge casi en todas partes al mismo límite, de modo que este coincide con la integral sobre la fibra. Finalmente, pasamos al límite en $\int_G\phi_n=\int_QT_H\phi_n$ usando convergencia en norma $L^1$ en ambos lados. Esto prueba \eqref{v4:mod-weil-formula}. El lema de los nulos muestra también que el resultado no depende del representante de $f$.
+\end{proof}
+
+\begin{corolario}\label{v4:mod-weil-positivo}
+Si $G$ es $\sigma$-compacto, la fórmula de Weil vale para toda función Borel $f\geq0$, permitiendo el valor infinito. Lo mismo vale si $f$ se anula fuera de una unión numerable de compactos.
+\end{corolario}
+\begin{proof}
+Elijamos compactos crecientes $K_n$ que cubran el conjunto donde $f$ puede ser no nula y pongamos $f_n=\min(f,n)1_{K_n}$. Cada $f_n$ es integrable y $f_n\uparrow f$. Aplicamos la fórmula recién demostrada a $f_n$ y usamos convergencia monótona primero en $H$ y después en $Q$. Los conjuntos excepcionales de las fórmulas para $f_n$ tienen unión nula porque son numerables.
+\end{proof}
+
+\section{Ejercicios de la lectura 21 y alcance de las hipótesis}
+\begin{ejercicio}[Lectura 21, ejercicio 1; versión precisa]\label{ej:v4-l21-1}
+Suponga $\Delta_G|_H=\Delta_H$. Si $f:G\to\C$ es Borel y se anula fuera de una unión numerable de compactos, pruebe que
+\[
+ \int_Q\int_H|f(xh)|\,dh\,d\nu(xH)<\infty
+ \quad\Longrightarrow\quad f\in L^1(G).
+\]
+Explique por qué las hipótesis requieren cuidado en el enunciado original.
+\end{ejercicio}
+\begin{solucion}
+El corolario \ref{v4:mod-weil-positivo}, aplicado a $|f|$, identifica la integral iterada con $\int_G|f|$. La finitud de la primera implica la de la segunda, que es exactamente $f\in L^1(G)$. En particular, la afirmación vale para toda función Borel cuando $G$ es $\sigma$-compacto.
+
+El original no exige medibilidad. Esta no se deduce de la medibilidad de $|f|$: en el grupo compacto $\T$, tomemos un conjunto no medible $A$ y $f=1$ en $A$, $f=-1$ fuera. Entonces $|f|=1$, de integral finita, pero $f$ no es medible. Podemos tomar $H=G$ para que la integral iterada del módulo esté perfectamente definida.
+
+Incluso añadiendo medibilidad, en grupos generales y con la convención exteriormente regular aparece otra dificultad real. Sea $G=\R\times D$ con $D$ discreto no numerable, $H=\R\times\{e\}$ y $f=1_{\{0\}\times D}$. Ambas funciones modulares son uno y $G/H$ se identifica con $D$, con medida de conteo. Sobre cada fibra, $f$ es el indicador de un punto de $\R$, así que la integral interior es cero y la integral iterada también. Pero la observación \ref{v4:haar-radon} demuestra que $\int_Gf=\infty$. El conjunto donde $f$ es no nula no está contenido en una unión numerable de compactos. El contraejemplo muestra por qué no se extiende sin más la fórmula $L^1$ a todos los Borel positivos de un grupo no $\sigma$-compacto. La versión demostrada conserva el contenido útil del ejercicio y declara la hipótesis adicional.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:v4-l21-2}
+Si $H$ es cerrado y normal en $G$, demuestre que $\Delta_G|_H=\Delta_H$. Deduzca que $\ker\Delta_G$ es unimodular.
+\end{ejercicio}
+\begin{solucion}
+Cuando $H$ es normal, $G/H$ es un grupo localmente compacto Hausdorff. Su medida de Haar izquierda es invariante bajo la acción izquierda de $G$, pues esta acción es precisamente la traslación por la clase $xH$. La necesidad en el teorema \ref{v4:mod-weil} da $\Delta_G|_H=\Delta_H$. No estamos suponiendo la fórmula cociente para obtener la medida: usamos la existencia independiente de Haar en el grupo $G/H$.
+
+El núcleo $N=\ker\Delta_G$ es cerrado porque $\Delta_G$ es continua y $\{1\}$ es cerrado, y es normal porque es el núcleo de un homomorfismo. Aplicando lo anterior a $N$, obtenemos $\Delta_N=\Delta_G|_N=1$. Esta es la unimodularidad de $N$, aunque $G$ no sea unimodular.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:v4-l21-3}
+Sean $H$ cerrado y $K$ compacto, subgrupos de $G$, con $G=HK$. Demuestre que se pueden normalizar sus medidas de Haar de modo que
+\[
+ \int_Gf(g)\,dg=\int_H\int_K f(hk)\,dk\,dh
+ \qquad(f\in L^1(G)).
+\]
+\end{ejercicio}
+\begin{solucion}
+Normalicemos la medida de $K$ como probabilidad y pongamos $P=H\times K$. El grupo $P$ actúa transitivamente en $G$ por $(h,k)\cdot g=hgk^{-1}$: la hipótesis $G=HK$ permite escribir cualquier elemento como $hk^{-1}$. El estabilizador de $e$ es
+$L=\{(\ell,\ell):\ell\in H\cap K\}$, que es compacto. La aplicación $P/L\to G$, $(h,k)L\mapsto hk^{-1}$, es una biyección continua. Es un homeomorfismo: el mapa $P\to G$ es propio, pues la preimagen de un compacto $C$ es cerrada y está contenida en el compacto $(CK\cap H)\times K$; al descender al cociente, una biyección continua propia entre espacios localmente compactos Hausdorff es un homeomorfismo.
+
+La función modular de un grupo es uno en todo subgrupo compacto. Así $\Delta_P|_L=1=\Delta_L$, y el teorema de Weil proporciona una medida $P$-invariante en $P/L$. Normalicemos también la medida de $L$ como probabilidad. Para $f\in\Cc(G)$, la función $F(h,k)=f(hk^{-1})$ tiene soporte compacto en $P$ por la propiedad anterior; es constante en las clases de $L$, de modo que $T_LF$ se identifica con $f$. La fórmula de Weil en $P$ da
+\[
+ \int_{P/L}f\,d\eta=\int_H\int_K f(hk^{-1})\,dk\,dh
+                  =\int_H\int_K f(hk)\,dk\,dh,
+\]
+porque la medida de Haar de un grupo compacto es invariante por inversión.
+
+La medida de Haar de $G$ también es $P$-invariante: es invariante bajo la izquierda por $H$, y bajo la derecha por $K$ porque $\Delta_G|_K=1$. La unicidad de la medida invariante en $P/L$ muestra que, después de reescalar la medida de $G$, esta coincide con $\eta$. Obtenemos la igualdad deseada en $\Cc(G)$. Para precisar la extensión a $L^1$, la imagen de la medida de Haar de $P$ bajo el mapa propio $p(h,k)=hk^{-1}$ es una medida finita en compactos y con la regularidad adoptada. La regularidad exterior se conserva porque $p$ es cerrado: si un abierto $U$ contiene $p^{-1}(A)$, el abierto $G\setminus p(P\setminus U)$ contiene $A$ y su preimagen está en $U$. La regularidad interior en abiertos se obtiene proyectando compactos. La igualdad ya probada en $\Cc(G)$ identifica esta medida imagen con $\mu_G$. Por aproximación simple, $f\circ p\in L^1(P)$ y su integral es $\int_Gf$. Finalmente aplicamos Weil en $P$ al subgrupo normal y compacto $\{e\}\times K$; el cociente es $H$ y la normalización de Haar da la integral iterada escrita arriba. La inversión en $K$ no altera la integral ni la integrabilidad.
+\end{solucion}

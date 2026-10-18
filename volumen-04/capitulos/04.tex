@@ -1,0 +1,188 @@
+\chapter{Fourier en los espacios de Lebesgue}\label{cap:v4-04}
+Ahora pasamos de funciones regulares a clases de funciones integrables. La convergencia en norma no determina el valor en un punto, pero permite reconstruir toda la clase de equivalencia. Los puntos de Lebesgue proporcionarán después la conexión precisa con la convergencia puntual de los promedios.
+
+\section{Densidad suave y completitud ortogonal}\label{lectura:v4-06}
+\index{funcion@función!suave de soporte compacto}\index{Fourier!base ortonormal}
+\begin{lema}\label{v4:densidad-suave}
+Para $1\leq p<\infty$, $C_c^\infty(\R)$ es denso en $L^p(\R)$ y las funciones periódicas $C^\infty$ son densas en $L^p(\T)$.
+\end{lema}
+\begin{proof}
+Definamos $r(t)=e^{-1/t}$ si $t>0$ y $r(t)=0$ si $t\leq0$. Cada derivada en $t>0$ es $e^{-1/t}$ multiplicada por un polinomio en $1/t$. Para todo entero $m$, $s^me^{-s}\to0$ cuando $s\to\infty$: basta comparar la serie de $e^s$ con su término de grado $m+1$. Todas las derivadas se prolongan entonces con valor cero en $t=0$. Por inducción en el orden, $r\in C^\infty(\R)$.
+
+La función $\eta(t)=r(t)/(r(t)+r(1-t))$ es suave, vale cero si $t\leq0$, vale uno si $t\geq1$ y está entre cero y uno. Para $a<b$ y $\delta>0$,
+\[
+ h_\delta(x)=\eta\left(\frac{x-a+\delta}{\delta}\right)
+ \eta\left(\frac{b+\delta-x}{\delta}\right)
+\]
+vale uno en $[a,b]$, se anula fuera de $[a-\delta,b+\delta]$ y satisface
+$\norm{h_\delta-\mathbf1_{[a,b]}}_p^p\leq2\delta$.
+La densidad de funciones escalonadas del teorema~\ref{v4:densidad-escalonadas}, seguida de una aproximación para cada uno de sus finitos intervalos, prueba el resultado en $\R$.
+
+En $[0,2\pi]$ se puede primero cortar una función integrable en las franjas $(0,\delta)$ y $(2\pi-\delta,2\pi)$: la integral de $|f|^p$ en esas franjas tiende a cero. Aproximamos el resto por funciones escalonadas apoyadas en un subintervalo interior y después por las funciones suaves anteriores, escogiendo sus soportes todavía dentro de $(0,2\pi)$. Sus extensiones periódicas son suaves, pues se anulan en una vecindad de los extremos. Esto prueba la densidad periódica y justifica la suavidad que la lectura original dejaba sin verificar.
+\end{proof}
+\begin{teorema}\label{v4:base-fourier}
+La familia $(e_n)_{n\in\Z}$ es una base ortonormal de $L^2(\T)$. Para toda $f\in L^2(\T)$,
+\[
+ S_Nf\longrightarrow f\text{ en }L^2,
+ \qquad\norm f_2^2=\sum_{n\in\Z}|\widehat f(n)|^2.
+\]
+La aplicación $f\mapsto(\widehat f(n))$ es un isomorfismo unitario sobre $\ell^2(\Z)$.
+\end{teorema}
+\begin{proof}
+Fejér aproxima uniformemente cada función continua mediante polinomios trigonométricos, y convergencia uniforme implica convergencia en $L^2$ porque $m(\T)=1$ y $\norm h_2\leq\norm h_\infty$. Por el lema anterior, las funciones continuas son densas en $L^2$. Así, el espacio generado por los exponenciales es denso.
+
+Para precisar la convergencia de las sumas parciales ordinarias, dado $\eps>0$ escojamos un polinomio $P$ con $\norm{f-P}_2<\eps$. Si $N$ contiene todas sus frecuencias, $S_NP=P$. Como una proyección ortogonal tiene norma a lo sumo uno,
+\[
+ \norm{f-S_Nf}_2\leq\norm{f-P}_2+\norm{S_N(P-f)}_2<2\eps.
+\]
+La ortogonalidad da $\norm{S_Nf}_2^2=\sum_{|n|\leq N}|\widehat f(n)|^2$; tomar límites prueba Parseval. Si $(a_n)\in\ell^2$, las sumas $\sum_{|n|\leq N}a_ne_n$ son de Cauchy por Pitágoras. La completitud de $L^2$ da un límite $f$, y la continuidad de cada producto interno implica $\widehat f(n)=a_n$. Así la isometría es sobreyectiva.
+\end{proof}
+\begin{corolario}
+Los coeficientes de Fourier determinan una función de $L^2$ salvo igualdad casi en todas partes. Además, alguna subsucesión de sus sumas parciales converge a ella casi en todas partes.
+\end{corolario}
+\begin{proof}
+Si todos los coeficientes son cero, Parseval da $\norm f_2=0$. Para la segunda afirmación elegimos $N_j$ de modo que $\norm{S_{N_j}f-f}_2^2\leq2^{-j}$. Tonelli da $\int\sum_j|S_{N_j}f-f|^2<\infty$; por tanto la serie numérica es finita fuera de un nulo y sus términos tienden a cero.
+\end{proof}
+\begin{observacion}[Panorama: el teorema de Carleson]
+El resultado mucho más profundo de Carleson afirma que la sucesión completa $S_Nf$ converge casi en todas partes para $f\in L^2(\T)$. Como en la lectura 6, se menciona como un teorema externo y no se utiliza en las demostraciones de este volumen. La prueba de convergencia en norma y la extracción de una subsucesión anteriores no prueban ese teorema. La referencia original se identifica al final~\cite{carleson1966}.
+\end{observacion}
+\begin{ejemplo}
+Para $f(x)=\pi-x$ en $(0,2\pi)$, $a_n=0$ y $b_n=2/n$: integrar $\int(\pi-x)\sin nx$ por partes deja el término de frontera $2\pi/n$. Así $f=2\sum_{n\geq1}\sin(nx)/n$ en $L^2$ y en cada punto interior por Dirichlet. Parseval da
+\[
+ \frac1{2\pi}\int_0^{2\pi}(\pi-x)^2dx=\frac{\pi^2}3
+ =2\sum_{n\geq1}\frac1{n^2}.
+\]
+No es necesario invocar Carleson para este ejemplo suave a trozos.
+\end{ejemplo}
+
+\section{Ejercicios de Parseval}
+\begin{ejercicio}[Lectura 6, ejercicio 1]\label{ej:v4-l06-1}
+Probar que senos, cosenos y la constante son totales en $L^2(\T)$ y obtener la identidad real de Parseval.
+\end{ejercicio}
+\begin{solucion}
+Los exponenciales son combinaciones lineales de senos y cosenos, y recíprocamente, de modo que ambas familias tienen el mismo espacio generado denso. Respecto de la familia ortonormal $1,\sqrt2\cos nx,\sqrt2\sin nx$, los coeficientes son $a_0/2,a_n/\sqrt2,b_n/\sqrt2$. Parseval da
+\[
+ \frac{|a_0|^2}4+\frac12\sum_{n\geq1}(|a_n|^2+|b_n|^2)
+ =\frac1{2\pi}\int_0^{2\pi}|f|^2dx.
+\]
+Multiplicar por dos produce exactamente la fórmula solicitada en la lectura.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 2]\label{ej:v4-l06-2}
+Si $c_n,d_n$ son los coeficientes de $f,g\in L^2(\T)$, demostrar $\ip fg=\sum_n c_n\overline{d_n}$.
+\end{ejercicio}
+\begin{solucion}
+Para sumas parciales, la ortogonalidad da $\ip{S_Nf}{S_Ng}=\sum_{|n|\leq N}c_n\overline{d_n}$. El producto interno es continuo: el error respecto de $\ip fg$ es a lo sumo $\norm{S_Nf-f}_2\norm{S_Ng}_2+\norm f_2\norm{S_Ng-g}_2$, que tiende a cero. La serie escalar es absolutamente convergente por Cauchy--Schwarz en $\ell^2$. El conjugado de $d_n$ es indispensable con la convención de producto interno adoptada.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 3]\label{ej:v4-l06-3}
+Para $f$ real, periódica y $C^1$, demostrar mediante los coeficientes que $f'\perp f$.
+\end{ejercicio}
+\begin{solucion}
+El ejercicio anterior y $\widehat{f'}(n)=inc_n$ dan $\ip{f'}f=\sum_n in|c_n|^2$. La serie converge absolutamente porque $\sum|n||c_n|^2\leq(\sum n^2|c_n|^2)^{1/2}(\sum|c_n|^2)^{1/2}<\infty$. Como $f$ es real, $|c_{-n}|=|c_n|$; los términos de índices opuestos se cancelan. El término $n=0$ es cero. Para funciones complejas la afirmación no vale en general: $f=e^{ix}$ da $\ip{f'}f=i$.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 4]\label{ej:v4-l06-4}
+Usar la serie de $x^2$ para calcular $\sum_{n\geq1}n^{-4}$.
+\end{ejercicio}
+\begin{solucion}
+El ejercicio~\ref{ej:v4-l04-3} dio $a_0=2\pi^2/3$, $a_n=4(-1)^n/n^2$, $b_n=0$. Por Parseval,
+\[
+ \frac1{2\pi}\int_{-\pi}^\pi x^4dx
+ =\frac{\pi^4}5=\frac{\pi^4}9+8\sum_{n\geq1}\frac1{n^4}.
+\]
+Despejando se obtiene $\sum n^{-4}=\pi^4/90$.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 5]\label{ej:v4-l06-5}
+Calcular la serie de $f(x)=x(\pi-|x|)$ en $[-\pi,\pi]$ y la suma $\sum_{j\geq1}(2j-1)^{-6}$.
+\end{ejercicio}
+\begin{solucion}
+La función es impar; por ello $a_n=0$. Para $n\geq1$,
+\[
+ b_n=\frac2\pi\int_0^\pi x(\pi-x)\sin nx\,dx
+ =\frac{4(1-(-1)^n)}{\pi n^3}.
+\]
+Para verificar la última igualdad, la primera integración por partes anula los extremos y deja $n^{-1}\int_0^\pi(\pi-2x)\cos nx\,dx$; una segunda deja $2n^{-2}\int_0^\pi\sin nx\,dx=2(1-(-1)^n)/n^3$. Así
+\[
+ f(x)=\frac8\pi\sum_{j\geq1}\frac{\sin((2j-1)x)}{(2j-1)^3}.
+\]
+La integral de la norma se calcula expandiendo el polinomio:
+\[
+ \norm f_2^2=\frac1\pi\int_0^\pi x^2(\pi-x)^2dx=\frac{\pi^4}{30}.
+\]
+Parseval da $\pi^4/30=(32/\pi^2)\sum_{j\geq1}(2j-1)^{-6}$ y por tanto la suma es $\pi^6/960$.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 6]\label{ej:v4-l06-6}
+Sea $\alpha\in\R\setminus\Z$ y extiéndase periódicamente $f(x)=\pi e^{i(\pi-x)\alpha}/\sin(\pi\alpha)$ desde $[0,2\pi)$. Calcular sus coeficientes y demostrar $\sum_{n\in\Z}(n+\alpha)^{-2}=\pi^2/\sin^2(\pi\alpha)$.
+\end{ejercicio}
+\begin{solucion}
+Como $n+\alpha\ne0$,
+\[
+ c_n=\frac{e^{i\pi\alpha}}{2\sin(\pi\alpha)}
+ \frac{e^{-2\pi i(n+\alpha)}-1}{-i(n+\alpha)}
+ =\frac1{n+\alpha}.
+\]
+Aquí usamos $e^{-2\pi i\alpha}-1=-2ie^{-i\pi\alpha}\sin(\pi\alpha)$. La función tiene módulo constante $\pi/|\sin(\pi\alpha)|$, por lo que Parseval da la identidad. La serie se entiende en $L^2$; en los extremos de período, Dirichlet da el promedio lateral correspondiente.
+\end{solucion}
+\begin{ejercicio}[Lectura 6, ejercicio 7: Wirtinger]\label{ej:v4-l06-7}
+Si $f$ es periódica, continua, $C^1$ a trozos y tiene media cero, demostrar $\int|f|^2\leq\int|f'|^2$ y caracterizar la igualdad.
+\end{ejercicio}
+\begin{solucion}
+La media cero significa $c_0=0$. Por Parseval aplicado a $f$ y $f'$, respectivamente,
+\[
+ \norm f_2^2=\sum_{n\ne0}|c_n|^2
+ \leq\sum_{n\ne0}n^2|c_n|^2=\norm{f'}_2^2.
+\]
+La diferencia es $\sum_{|n|\geq2}(n^2-1)|c_n|^2$, una suma de términos no negativos. Se anula exactamente si esos coeficientes son cero. La unicidad de Fourier da $f=c_1e^{ix}+c_{-1}e^{-ix}$ casi en todas partes; la continuidad extiende la identidad a todo punto. Es equivalente a $f(x)=a\sin x+b\cos x$, $a,b\in\C$. Toda función de esa forma produce igualdad.
+\end{solucion}
+
+\section{Localización y criterio de Dini}\label{lectura:v4-07}
+\index{Dini!criterio}\index{localizacion@localización!de Fourier}
+Por Riemann--Lebesgue, la transformación $L^1(\T)\to c_0(\Z)$ que asigna coeficientes es lineal y continua, de norma uno: la cota ya se probó y la constante $f=1$ alcanza la norma. La desaparición de coeficientes por sí sola no caracteriza cuáles sucesiones son transformadas; se demostrará su falta de sobreyectividad en el capítulo siguiente.
+\begin{teorema}[Localización y Dini]\label{v4:dini}
+Sea $f\in L^1(\T)$, $a\in\C$, $x\in\R$ y $0<\delta<\pi$. Entonces $S_Nf(x)\to a$ si y solo si
+\[
+ \int_0^\delta\frac{f(x+t)+f(x-t)-2a}{t}\sin((N+\tfrac12)t)\,dt\longrightarrow0.
+\]
+En particular, basta que $[f(x+t)+f(x-t)-2a]/t$ sea integrable cerca de cero.
+\end{teorema}
+\begin{proof}
+Pongamos $g(t)=f(x+t)+f(x-t)-2a$. La fórmula de Dirichlet y la paridad dan
+\[
+ S_Nf(x)-a=\frac1\pi\int_0^\pi\frac{g(t)}{2\sin(t/2)}\sin((N+\tfrac12)t)\,dt.
+\]
+En $[\delta,\pi]$, $g/(2\sin(t/2))$ es integrable, así que su integral oscilante tiende a cero. En $(0,\delta)$, la diferencia
+\[
+ \frac1{2\sin(t/2)}-\frac1t
+\]
+se prolonga continuamente por cero en el origen: el desarrollo $2\sin(t/2)=t+O(t^3)$ da un error $O(t)$. Multiplicada por $g\in L^1(0,\delta)$ produce otra función integrable, cuya integral oscilante tiende a cero. Queda exactamente la equivalencia anunciada. Bajo la condición de Dini se aplica Riemann--Lebesgue directamente al último cociente. El signo entre $f(x+t)$ y $f(x-t)$ es suma; la resta que aparece en el enunciado original es una errata.
+\end{proof}
+
+\section{Puntos de Lebesgue y promedios de Fourier}
+\index{Lebesgue!punto de}\index{Fejer@Fejér!teorema de Fejer--Lebesgue@teorema de Fejér--Lebesgue}
+\begin{definicion}
+Un punto $x$ es punto de Lebesgue de una función localmente integrable $f$ si $f(x)$ es finito y
+\[
+ \frac1{2h}\int_{-h}^h|f(x-t)-f(x)|\,dt\longrightarrow0\quad(h\downarrow0).
+\]
+\end{definicion}
+Las dos integrales unilaterales son no negativas y están acotadas por la integral bilateral; por ello la condición equivale a exigir ambas versiones unilaterales. Todo punto de continuidad es de Lebesgue. El teorema de diferenciación del volumen II asegura que casi todo punto de una función localmente integrable es de Lebesgue para un representante apropiado.
+\begin{teorema}[Fejér--Lebesgue]\label{v4:fejer-lebesgue}
+Si $f\in L^1(\T)$ y $x$ es un punto de Lebesgue, entonces $\sigma_Nf(x)\to f(x)$.
+\end{teorema}
+\begin{proof}
+Sea $g(t)=|f(x+t)+f(x-t)-2f(x)|$ para $0<t<\pi$ y $A(h)=\int_0^hg(t)\,dt$. La condición de Lebesgue implica $A(h)=o(h)$. La paridad de $K_N$ da
+\[
+ |\sigma_Nf(x)-f(x)|\leq\frac1{2\pi}\int_0^\pi g(t)K_N(t)\,dt.
+\]
+La fórmula del núcleo y $\sin(t/2)\geq t/\pi$ proporcionan
+$K_N(t)\leq\min\{N,\pi^2/(Nt^2)\}$.
+Fijemos $\eps>0$ y elijamos $\delta$ con $A(h)\leq\eps h$ para $0<h\leq\delta$. Para $N>1/\delta$ dividimos la integral en $(0,1/N)$, $(1/N,\delta)$ y $(\delta,\pi)$. La primera parte, incluyendo el factor $1/(2\pi)$, es a lo sumo $NA(1/N)/(2\pi)\leq\eps/(2\pi)$. Para la segunda, integración por partes de una función absolutamente continua da
+\[
+ \int_{1/N}^\delta\frac{g(t)}{t^2}\,dt
+ =\frac{A(\delta)}{\delta^2}-N^2A(1/N)+2\int_{1/N}^\delta\frac{A(t)}{t^3}\,dt
+ \leq2\eps N.
+\]
+Su contribución es a lo sumo $\pi\eps$. En la tercera, $K_N\leq1/[N\sin^2(\delta/2)]$, así que la contribución tiende a cero porque $g\in L^1$. El límite superior del error es a lo sumo $(\pi+1/(2\pi))\eps$. Hacer $\eps\downarrow0$ termina la prueba.
+\end{proof}
+La lectura 7 no contiene ejercicios numerados después de su encabezado final. Sus pasos de localización, integrabilidad del error y estimaciones de Fejér se han desarrollado aquí. La convergencia casi en todas partes de los \emph{promedios} para $L^1$ procede de Fejér--Lebesgue; no debe confundirse con la convergencia de las sumas ordinarias de Carleson.
+
+\paragraph{Qué reconstruyen los coeficientes.}
+En $L^2$, Fourier conserva exactamente la norma y convierte el espacio en $\ell^2$. En $L^1$ sigue habiendo unicidad, pero ni las normas ni las condiciones de convergencia se trasladan de la misma forma. La convolución permitirá formular esa diferencia y extender la aproximación a todos los exponentes finitos.

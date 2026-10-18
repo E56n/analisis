@@ -1,0 +1,77 @@
+{
+  "lecturas": [
+    {
+      "lectura": 17,
+      "capitulo": 10,
+      "ejercicios": [
+        "ej:v4-l17-1",
+        "ej:v4-l17-2",
+        "ej:v4-l17-3",
+        "ej:v4-l17-4"
+      ],
+      "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+    },
+    {
+      "lectura": 18,
+      "capitulo": 10,
+      "ejercicios": [],
+      "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+    },
+    {
+      "lectura": 19,
+      "capitulo": 10,
+      "ejercicios": [],
+      "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+    },
+    {
+      "lectura": 20,
+      "capitulo": 11,
+      "ejercicios": [
+        "ej:v4-l20-1",
+        "ej:v4-l20-2",
+        "ej:v4-l20-3"
+      ],
+      "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+    },
+    {
+      "lectura": 21,
+      "capitulo": 11,
+      "ejercicios": [
+        "ej:v4-l21-1",
+        "ej:v4-l21-2",
+        "ej:v4-l21-3"
+      ],
+      "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+    }
+  ],
+  "correcciones": [
+    "Regularidad de Haar en grupos no sigma compactos.",
+    "L17: positividad solo para abiertos no vacíos y funciones no negativas no nulas.",
+    "L18: aditividad aproximada uniforme en todas las funciones soportadas en la vecindad elegida.",
+    "L19: encabezado original equivocado; prueba de unicidad sin conmutatividad.",
+    "L20: inversos de factores modulares y orden de productos corregidos; continuidad modular antes de continuidad derecha Lp.",
+    "L21: no toda función integrable tiene soporte topológico sigma compacto; paso L1 justificado por lema de nulos en fibras.",
+    "L21ej1: se exige medibilidad y soporte sigma compacto para el recíproco; se dan contraejemplos a la afirmación irrestricta."
+  ],
+  "fuentes": [
+    "valencia4",
+    "folland2016"
+  ],
+  "notacion": [
+    {
+      "simbolo": "\\Delta_G",
+      "significado": "Función modular: mu(Aa)=Delta_G(a)mu(A)",
+      "label": "v4:mod-convencion"
+    },
+    {
+      "simbolo": "T_H f",
+      "significado": "Promedio de f sobre las fibras de G/H",
+      "label": "v4:mod-promedio"
+    },
+    {
+      "simbolo": "(f:\\phi)",
+      "significado": "Ínfimo de coeficientes de recubrimientos por traslaciones",
+      "label": "v4:haar-recubrimientos"
+    }
+  ]
+}

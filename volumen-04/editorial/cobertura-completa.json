@@ -1,0 +1,1781 @@
+{
+  "volumen": 4,
+  "titulo": "Análisis armónico y grupos localmente compactos",
+  "autor_edicion": "Eder Said Martinez Ramirez",
+  "fecha": "2026-10-18",
+  "conteos": {
+    "lecturas_originales": 27,
+    "lectura_reconstruida": 24,
+    "ejercicios_originales": 81,
+    "ejercicios_reconstruccion": 8,
+    "ejercicios_ampliacion": 10,
+    "ejercicios_total": 99,
+    "soluciones": 99
+  },
+  "lecturas": [
+    {
+      "lectura": 1,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1nLDFj8t6Z2Yv235RDIRBZ0Laq4O22jjY/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect01.txt",
+      "sha256_texto_fuente": "8478f0833c19874c0a00fae70696eed5c8adb7011636e8d04d41b9a7064cdbb2",
+      "capitulo": 1,
+      "ancla": "lectura:v4-01",
+      "cantidad_ejercicios": 8,
+      "teoria": [
+        "Regularidad, consistencia y linealidad de Cesàro; s_n/n→0.",
+        "Serie geométrica sobre el círculo.",
+        "Criterio tauberiano Hardy–Landau con prueba de los índices y cotas."
+      ],
+      "correcciones": [
+        "Ej2 falso incluso con multiplicadores monótonos acotados: contraejemplos y versión suficiente con variación ponderada y completitud.",
+        "Ej3(iii) no requiere Banach, por telescopía.",
+        "Ej5 falso: hace falta convergencia uniforme en coordenadas.",
+        "Ej7 producto de series ordinariamente convergentes puede no converger; contraejemplo."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l01-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "Si $\\sum v_n$ tiene suma de Cesàro $v$, demostrar que $\\sum_{n\\geq1}v_{n+1}$ tiene suma de Cesàro $v-v_1$.",
+          "solucion_latex": "Sus sumas parciales son $s_{n+1}-v_1$. El promedio de las primeras $n$ es\n\\[\n \\frac1n\\sum_{k=1}^n(s_{k+1}-v_1)\n =\\frac{n+1}{n}\\sigma_{n+1}-\\frac{s_1}{n}-v_1\\longrightarrow v-v_1.\n\\]\nAsí se justifica quitar un término sin suponer convergencia ordinaria.",
+          "enunciado_original_extraido": "1. Si la serie P∞\nn=1\nvn converge a v en el sentido de Ces`aro, demuestre que la serie P∞\nn=1\nvn+1 converge a\nv − v1 en el sentido de Ces`aro."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l01-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "El enunciado original afirma que la monotonía de $(\\alpha_n)$ basta para que $\\sum\\alpha_nv_n$ sea sumable por Cesàro cuando lo es $\\sum v_n$. Mostrar que es falso. Probar la siguiente versión suficiente en un espacio de Banach $V$: si $(\\alpha_n)$ converge y\n\\[\n \\sum_{n\\geq1} n|\\alpha_n-\\alpha_{n+1}|<\\infty,\n\\]\nentonces el producto término a término conserva la sumabilidad de Cesàro.",
+          "solucion_latex": "Tomemos $v_n=(-1)^{n+1}$ y $\\alpha_n=n$. La primera serie tiene suma de Cesàro $1/2$, mientras que la segunda no es sumable, como se calcula en el ejercicio~\\ref{ej:v4-l01-8}. La sola monotonía es insuficiente.\n\nNi siquiera añadir acotación a la monotonía basta. Para verlo, fijemos $N_j=2^{4j}$, $A_j=2^{2j}$ y una serie cuyas únicas sumas parciales no nulas sean $s_{N_j}=A_j$. Es decir, sus términos no nulos son $v_{N_j}=A_j$ y $v_{N_j+1}=-A_j$. Si $N_j\\leq n<N_{j+1}$,\n\\[\n 0\\leq\\sigma_n\\leq\\frac{\\sum_{r\\leq j}4^r}{16^j}\\longrightarrow0.\n\\]\nDefinamos $\\alpha_n=\\sum_{r:N_r\\geq n}2^{-r}$. Esta sucesión es no negativa, decreciente y acotada, y $\\alpha_{N_j}-\\alpha_{N_j+1}=2^{-j}$. Cada pareja de términos de la serie multiplicada deja un incremento permanente $A_j2^{-j}=2^j$. Todas sus sumas parciales son no negativas; para $N_j+1\\leq n\\leq2N_j$ son al menos $2^j$. Su promedio en $2N_j$ es, por ello, al menos $2^{j-1}$.\n\nProbemos ahora la versión corregida. Pongamos $d_k=\\alpha_k-\\alpha_{k+1}$ y $\\alpha=\\lim\\alpha_n$. La sumación por partes, obtenida al sustituir $v_k=s_k-s_{k-1}$, da\n\\[\n t_n:=\\sum_{k=1}^n\\alpha_kv_k=\\alpha_ns_n+\\sum_{k=1}^{n-1}d_ks_k.\n\\]\nComo $s_k/k\\to0$, existe $C$ con $\\norm{s_k}\\leq Ck$. La serie $\\sum d_ks_k$ es absolutamente convergente si $V$ es completo; sin completitud puede no tener suma en $V$. Por tanto, para esta versión añadimos explícitamente que $V$ sea de Banach (o que esa serie converja en $V$). Sea $b$ su suma. Además,\n\\[\n n|\\alpha_n-\\alpha|\\leq\\sum_{k\\geq n}k|d_k|\\longrightarrow0,\n\\]\nde donde $(\\alpha_n-\\alpha)s_n\\to0$. Los promedios de $t_n$ convergen, entonces, a $\\alpha v+b$: el promedio de $\\alpha s_n$ tiende a $\\alpha v$, el del error tiende a cero y el de las sumas parciales de $\\sum d_ks_k$ tiende a $b$.",
+          "enunciado_original_extraido": "2. Criterio de Abel para sumas de Ces`aro. Sea {αn}∞\nn=1 una sucesi´on mon´otona en R. Si la serie P∞\nn=1\nvn\nes Ces`aro-sumable, pruebe que la serie P∞\nn=1\nαnvn es Ces`aro-sumable."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l01-3",
+          "incisos_y_tareas": [
+            "(i) identidad de sumación por partes",
+            "(ii) equivalencia convergencia y tn/n→0",
+            "(iii) equivalencia Cesàro y serie telescópica"
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "Sean $s_n=\\sum_{k=1}^nv_k$, $t_n=\\sum_{k=1}^nkv_k$ y $\\sigma_n=n^{-1}\\sum_{k=1}^ns_k$. Probar: (i) $t_n=(n+1)s_n-n\\sigma_n$; (ii) si la serie es Cesàro-sumable, converge ordinariamente si y solo si $t_n/n\\to0$; (iii) la serie es Cesàro-sumable si y solo si $\\sum t_n/[n(n+1)]$ converge en $V$.",
+          "solucion_latex": "Cada $v_k$ aparece $n-k+1$ veces en $\\sum_{j=1}^ns_j$, así que $n\\sigma_n=\\sum_{k=1}^n(n-k+1)v_k=(n+1)s_n-t_n$. Esto prueba (i). Si $s_n\\to s$, la consistencia da $\\sigma_n\\to s$, y (i) implica $t_n/n\\to0$. Recíprocamente, $s_n=\\frac n{n+1}(\\sigma_n+t_n/n)$ prueba (ii).\n\nCon $\\sigma_0=0$, la identidad $s_n=n\\sigma_n-(n-1)\\sigma_{n-1}$ transforma (i) en\n\\[\n \\frac{t_n}{n(n+1)}=\\frac n{n+1}\\sigma_n-\\frac{n-1}{n}\\sigma_{n-1}.\n\\]\nLa suma telescópica hasta $N$ vale $\\frac N{N+1}\\sigma_N$. Su convergencia equivale a la de $\\sigma_N$, incluso sin la hipótesis de Banach que añadía el original.",
+          "enunciado_original_extraido": "33. Sea P∞\nn=1\nvn una serie en V , y pongamos para todo n ∈ N\nsn =\nXn\nk=1\nvk, , tn =\nXn\nk=1\nkvk, un =\n1\nn\nXn\nk=1\nsk.\nDemuestre lo siguiente:\n(i) Para todo n ∈ N se tiene tn = (n + 1)sn − nun.\n(ii) Si la serie P∞\nn=1\nvn es Ces`aro-sumable, entonces converge en A si y solo si limn→∞\ntn\nn = 0.\n(iii) Suponga que V es un espacio de Banach. Entonces la serie P∞\nn=1\nvn es Ces`aro-sumable en V si y solo\nsi la serie P∞\nn=1\ntn/(n(n + 1)) es convergente en V ."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l01-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "En dimensión finita, demostrar que una serie es Cesàro-sumable si y solo si lo son sus series coordenadas respecto de una base fija.",
+          "solucion_latex": "Sea $(e_1,\\ldots,e_d)$ una base. Las coordenadas del promedio vectorial son los promedios escalares, por linealidad. Las aplicaciones coordenadas son continuas porque todas las normas en dimensión finita son equivalentes; así, convergencia vectorial implica convergencia de cada coordenada. Recíprocamente, si las coordenadas convergen a $a_j$, entonces\n\\[\n \\left\\|\\sigma_n-\\sum_{j=1}^da_je_j\\right\\|\n \\leq\\sum_{j=1}^d|\\sigma_n^{(j)}-a_j|\\norm{e_j}\\longrightarrow0.\n\\]\nLa finitud de la suma es esencial.",
+          "enunciado_original_extraido": "4. Suponga que V es de dimensi´on finita. Demuestre que una serie P∞\nn=1\nvn en V es Ces`aro-sumable si\ny solo si todas las componentes de la serie (con respecto a una base fija de V ) son Cesˆaro-sumables en F."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l01-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "El original propone caracterizar la sumabilidad en $\\ell^\\infty$ por sumabilidad de cada coordenada y acotación de las sumas obtenidas. Dar un contraejemplo y formular el criterio correcto.",
+          "solucion_latex": "Sean $s_n(k)=\\mathbf1_{\\{k\\geq n\\}}$, $v_1=s_1$ y $v_n=s_n-s_{n-1}$ para $n\\geq2$. Todos son elementos de $\\ell^\\infty$. Para cada coordenada fija $k$, $s_n(k)\\to0$, luego la suma de Cesàro escalar es cero. Sin embargo,\n\\[\n \\sigma_n(k)=\\frac{\\min(k,n)}n,\\qquad \\norm{\\sigma_n}_\\infty=1.\n\\]\nNo hay convergencia en $\\ell^\\infty$: cualquier límite tendría todas sus coordenadas nulas. El criterio correcto es que los promedios escalares converjan \\emph{uniformemente en la coordenada} a una sucesión acotada $a$, esto es, $\\sup_k|\\sigma_n(k)-a(k)|\\to0$. Esta condición es exactamente la definición de convergencia en la norma de $\\ell^\\infty$.",
+          "enunciado_original_extraido": "5. Demuestre que una serie P∞\nn=1\nxn en ℓ∞ (aqu´ı, xn = {xn(k)}∞\nk=1 para todo n ∈ N) es Ces`aro-sumable\nen ℓ∞ si y solo si para todo k ∈ N la serie P∞\nn=1\nxn(k) es Ces`aro-sumable en F y la sucesi´on de sumas de\nCes`aro obtenida es acotada.\nSea A un ´algebra normada. Definimos el producto de Cauchy de la serie P∞\nn=1\nun por la serie P∞\nn=1\nvn como\nla serie P∞\nn=1\nwn, donde\n∀ n ∈ N (wn = u1vn + u2vn−1 + · · · + un−1v2 + unv1)."
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v4-l01-6",
+          "incisos_y_tareas": [
+            "(i) convergencia absoluta",
+            "(ii) convergencia ordinaria",
+            "(iii) convergencia Cesàro",
+            "valor del producto en los tres casos"
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "En un álgebra de Banach $A$, sea $\\sum u_n$ absolutamente convergente y sea $w_n=\\sum_{k=1}^nu_kv_{n+1-k}$. Demostrar que $\\sum w_n$ converge absolutamente, ordinariamente o por Cesàro si $\\sum v_n$ tiene, respectivamente, esa propiedad. En cada caso su suma es el producto de las sumas en el orden indicado.",
+          "solucion_latex": "Escribamos $a=\\sum u_n$ y $b=\\sum v_n$, entendiendo la segunda suma según el caso. Si ambas series son absolutamente convergentes,\n\\[\n \\sum_n\\norm{w_n}\\leq\\sum_{k,j\\geq1}\\norm{u_k}\\norm{v_j}\n =\\left(\\sum_k\\norm{u_k}\\right)\\left(\\sum_j\\norm{v_j}\\right)<\\infty.\n\\]\nLas sumas rectangulares del producto convergen a $ab$ por continuidad de la multiplicación; la convergencia absoluta permite reordenarlas en diagonales y conserva el límite.\n\nEn el caso ordinario, pongamos $t_j=\\sum_{r=1}^jv_r$, $t_0=0$. Las sumas parciales del producto son $W_n=\\sum_{k=1}^nu_kt_{n+1-k}$. La sucesión $(t_j)$ es acotada. Dado $\\eps>0$, elegimos $K$ con $\\sum_{k>K}\\norm{u_k}$ tan pequeña como se requiera; la cola de $W_n$ queda acotada por esa suma multiplicada por $\\sup_j\\norm{t_j}$. Para los primeros $K$ términos, $t_{n+1-k}\\to b$. Pasando primero $n\\to\\infty$ y luego $K\\to\\infty$, resulta $W_n\\to ab$.\n\nPara Cesàro, sean $\\tau_m=m^{-1}\\sum_{j=1}^mt_j\\to b$. Al intercambiar dos sumas finitas,\n\\[\n \\frac1n\\sum_{r=1}^nW_r\n =\\sum_{k=1}^nu_k\\frac{n+1-k}{n}\\tau_{n+1-k}.\n\\]\nPara cada $k$ fijo el segundo factor tiende a $b$, y su norma es a lo sumo $\\sup_m\\norm{\\tau_m}$. El mismo argumento de cabeza finita y cola absolutamente pequeña prueba convergencia a $ab$.",
+          "enunciado_original_extraido": "6. Sea A un ´algebra de Banach, y sean P∞\nn=1\nun,\nP∞\nn=1\nvn dos series en A. Suponga que la serie P∞\nn=1\nun\nconverge absolutamente en A. Demuestre lo siguiente:\n(i) Si la serie P∞\nn=1\nvn converge absolutamente en A, entonces el producto de Cauchy de las dos series\nconverge absolutamente en A.\n(ii) Si la serie P∞\nn=1\nvn converge en A, entonces el producto de Cauchy de las dos series converge en A.\n(iii) Si la serie P∞\nn=1\nvn converge en el sentido de Ces`aro en A, entonces el producto de Cauchy de las dos\nseries es Ces`aro-sumable en A.\nAdem´as, en todos los casos demuestre que la suma (resp. la suma de Ces`aro) del producto de Cauchy de\nlas dos series es igual al producto de las sumas (resp. sumas de Ces`aro) de las series."
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v4-l01-7",
+          "incisos_y_tareas": [
+            "convergencia Cesàro y valor",
+            "pregunta sobre convergencia ordinaria y contraejemplo"
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "Si $\\sum u_n=a$ y $\\sum v_n=b$ convergen en un álgebra normada, probar que su producto de Cauchy tiene suma de Cesàro $ab$. Determinar si necesariamente converge ordinariamente.",
+          "solucion_latex": "Sean $s_n=\\sum_{j\\leq n}u_j$, $t_n=\\sum_{j\\leq n}v_j$. Contando cuántas veces aparece cada producto $u_iv_j$, obtenemos\n\\[\n \\frac1n\\sum_{r=1}^nW_r=\\frac1n\\sum_{k=1}^ns_kt_{n+1-k}.\n\\]\nElijamos $K$ para que $\\norm{s_k-a}<\\eps$ y $\\norm{t_k-b}<\\eps$ si $k\\geq K$. Fuera de los a lo sumo $2K$ índices próximos a los extremos, ambos factores son próximos a sus límites; allí\n\\[\n \\norm{s_kt_{n+1-k}-ab}\\leq\\eps\\sup_j\\norm{t_j}+\\norm a\\eps.\n\\]\nLos términos extremos, uniformemente acotados, contribuyen $O(K/n)$. Así el promedio tiende a $ab$.\n\nLa convergencia ordinaria puede fallar: tomemos $u_n=v_n=(-1)^{n-1}/\\sqrt n$. Ambas series convergen por el criterio alternante, pero\n\\[\n |w_n|=\\sum_{k=1}^n\\frac1{\\sqrt{k(n+1-k)}}\\geq\\frac{2n}{n+1},\n\\]\nporque $k(n+1-k)\\leq(n+1)^2/4$. Los términos del producto ni siquiera tienden a cero.",
+          "enunciado_original_extraido": "7. Sea A un ´algebra normada, y sean P∞\nn=1\nun,\nP∞\nn=1\nvn dos series convergentes en A. Demuestre que\nsu producto de Cauchy converge en el sentido de Ces`aro en A. ¿El producto de Cauchy converge en A?\nJustifique."
+        },
+        {
+          "numero_original": 8,
+          "label": "ej:v4-l01-8",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/01.tex",
+          "enunciado_latex": "Calcular la suma de Cesàro de $\\sum_{n\\geq1}(-1)^{n+1}$ y mostrar que su producto de Cauchy consigo misma no es Cesàro-sumable.",
+          "solucion_latex": "Las sumas parciales de la primera serie alternan entre $1$ y $0$, por lo que sus promedios tienden a $1/2$. Los términos del producto son $w_n=n(-1)^{n+1}$. Sus sumas parciales satisfacen $W_{2m}=-m$ y $W_{2m-1}=m$. Por tanto\n\\[\n \\frac1{2m}\\sum_{r=1}^{2m}W_r=0,\n \\qquad \\frac1{2m+1}\\sum_{r=1}^{2m+1}W_r=\\frac{m+1}{2m+1}\\longrightarrow\\frac12.\n\\]\nLos dos límites subsecuenciales difieren. El ejercicio anterior exige convergencia ordinaria de las dos series; sustituirla por sumabilidad de Cesàro invalida su conclusión.",
+          "enunciado_original_extraido": "8. Considere la serie P∞\nn=1\n(−1)n+1 en R. Pruebe que esta serie converge en el sentido de Ces`aro a 1/2,\npero el producto de Cauchy de esta serie consigo misma no es Ces`aro-sumable.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 2,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/12t2nrI2caFaO8BX_tF6ND58kQlGoqLs2/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect02.txt",
+      "sha256_texto_fuente": "099280f16f21f0b9d9af2b025a9b0ab6625784ed5e258cb9593c2f7ed6192507",
+      "capitulo": 2,
+      "ancla": "lectura:v4-02",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Traslaciones y unicidad de Lebesgue.",
+        "Densidad de escalonadas por aproximación de conjuntos medibles.",
+        "Riemann/Lebesgue y espacios de intervalo; transporte afín de Lp.",
+        "Cambio de variable no necesariamente sobreyectivo y derivada de Radon–Nikodym correcta."
+      ],
+      "correcciones": [
+        "φ′ no nula no implica φ sobreyectiva ni φ′ creciente. Se trabaja sobre J=φ(R) y se usa |φ′|.",
+        "La densidad de la medida imagen inversa es 1/|φ′(φ−1(y))| en J, no φ′.",
+        "Aproximación medible por uniones finitas no se justifica con una supuesta cubierta finita por intervalos cerrados."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l02-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Sea $\\varphi\\in C^1(\\R)$ con $\\varphi'(x)\\ne0$ para todo $x$, y sea $f$ Lebesgue-medible en $J$. Probar que $f\\circ\\varphi$ es Lebesgue-medible.",
+          "solucion_latex": "La continuidad de $\\varphi'$ y el teorema del valor intermedio muestran que tiene signo constante. El teorema del valor medio hace a $\\varphi$ estrictamente monótona; su inversa $\\psi:J\\to\\R$ es $C^1$ y $\\psi'(y)=1/\\varphi'(\\psi(y))$. En cada subintervalo compacto de $J$, esa derivada es acotada, así que $\\psi$ es Lipschitz. Una aplicación $L$-Lipschitz manda conjuntos nulos en nulos: una cubierta por intervalos de longitud total $<\\eps/L$ produce una cubierta imagen de longitud total $<\\eps$. Agotando $J$ por compactos, concluimos que $\\varphi^{-1}(N)=\\psi(N)$ es nulo si $N$ es nulo. La preimagen de un boreliano es boreliana por continuidad. Descomponer cada conjunto medible en un boreliano y una modificación nula prueba el resultado.",
+          "enunciado_original_extraido": "1. Demuestre que f ◦ φ es una funci´on Lebesgue-medible.\nSugerencia: Primero demuestre que una funci´on es Lebesgue-medible en R si y solo si es Lebesgue-medible\nen todo intervalo acotado de R. Luego, imite el proceso en el punto (i) de la prueba del teorema 7."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l02-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Definir $\\mu(A)=\\int_\\R\\mathbf1_A(\\varphi(x))\\,dx$ para conjuntos medibles $A\\subseteq\\R$. Probar que $\\mu$ es una medida absolutamente continua respecto de Lebesgue.",
+          "solucion_latex": "La igualdad $\\mu(A)=|\\varphi^{-1}(A\\cap J)|$ prueba $\\mu(\\varnothing)=0$. Para conjuntos disjuntos $A_j$, sus preimágenes son disjuntas; la aditividad numerable de Lebesgue, o la convergencia monótona aplicada a las indicadoras, da $\\mu(\\bigcup_j A_j)=\\sum_j\\mu(A_j)$. Si $|A|=0$, el ejercicio anterior da $|\\varphi^{-1}(A)|=0$, luego $\\mu\\ll dx$. Es $\\sigma$-finita: los conjuntos $\\varphi([-n,n])$ tienen medida $2n$ y cubren $J$, mientras que $\\R\\setminus J$ tiene medida $\\mu$ nula.",
+          "enunciado_original_extraido": "2. Considere la funci´on µ : L → [0, +∞] definida como\n∀ A ∈ L Åµ(A) = Z\nR\n(χA ◦ φ) dλã.\nDemuestre que µ es una medida sobre (R,L) absolutamente continua con respecto a la medida de\nLebesgue."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l02-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Hallar la derivada de Radon--Nikodym de $\\mu$. Corregir la afirmación original $d\\mu/dx=\\varphi'$.",
+          "solucion_latex": "La derivada correcta es\n\\[\n h(y)=\\frac{\\mathbf1_J(y)}{|\\varphi'(\\varphi^{-1}(y))|}.\n\\]\nPara $[a,b]\\subset J$, la monotonía y el teorema fundamental del cálculo aplicados a $\\psi=\\varphi^{-1}$ dan\n\\[\n \\mu([a,b])=|\\psi(b)-\\psi(a)|=\\int_a^b|\\psi'(y)|\\,dy=\\int_a^b h(y)\\,dy.\n\\]\nLa unicidad de medidas en cada intervalo compacto, seguida de agotamiento de $J$, extiende la igualdad a todos los borelianos; ambas medidas son completas sobre los conjuntos de Lebesgue medibles, pues se anulan en los nulos. Fuera de $J$ ambas son cero. Así $h=d\\mu/dx$. Con $\\varphi(x)=2x$ se obtiene $h=1/2$, no $2$, lo que ya refuta la fórmula original.",
+          "enunciado_original_extraido": "3. Sea g : R → R la derivada de Radon-Nikodym de µ con respecto a λ. Pruebe que g = φ\n′\nc.t.p. en\nR.\nSugerencia: Considere un intervalo no degenerado [a, b]. Use el teorema del valor medio para estimar el\nvalor de R\nR\n(χ[a,b] ◦ φ) dµ."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l02-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Completar la demostración del cambio de variable, con las hipótesis corregidas anteriores.",
+          "solucion_latex": "Por la definición de medida imagen, primero para indicadoras y después por aproximación simple,\n\\[\n \\int_\\R q(\\varphi(x))\\,dx=\\int_J q(y)h(y)\\,dy\n\\]\npara toda $q\\geq0$ medible. Apliquemos esto a $q(y)=|f(y)|\\,|\\varphi'(\\psi(y))|$. Resulta\n\\[\n \\int_\\R |f(\\varphi(x))|\\,|\\varphi'(x)|\\,dx=\\int_J|f(y)|\\,dy<\\infty.\n\\]\nLa misma identidad para las partes positivas y negativas de las partes real e imaginaria de $f$ da la fórmula buscada. Así se prueban a la vez la integrabilidad del integrando transformado y la igualdad, sin presuponer el cambio de variable que se quería demostrar.",
+          "enunciado_original_extraido": "4. Termine la demostraci´on del teorema de cambio de variable.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 3,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1-9r17GFkjwIMeFzwoJvDRZhYkaVFsnrG/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect03.txt",
+      "sha256_texto_fuente": "7372f66255d96057a741b939b58ee54739514784e1989511f6cd3898cf412c8e",
+      "capitulo": 2,
+      "ancla": "lectura:v4-03",
+      "cantidad_ejercicios": 2,
+      "teoria": [
+        "Transporte de seminormas y cocientes.",
+        "Funciones periódicas, identificación Lp de un intervalo, completitud y separabilidad.",
+        "Familias totales, completas, Riemann–Lebesgue y ortonormalidad exponencial."
+      ],
+      "correcciones": [
+        "Núcleo de seminorma transportada es T−1(N_W), no T−1(W).",
+        "Familia real ortogonal debe normalizarse con raíz de2; función constante aparte."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l03-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Sea $1<p<\\infty$ y sea $A\\subset L^p(X,\\mu)$. Demostrar que $A$ es completa en $L^p$ si y solo si los funcionales $g\\mapsto\\int_X a\\overline g\\,d\\mu$, $a\\in A$, son totales en $L^{p'}$.",
+          "solucion_latex": "Si $A$ es completa y $g\\in L^{p'}$ satisface $\\int a\\overline g=0$ para todo $a\\in A$, Hölder permite extender esa identidad al cierre del espacio generado. En particular se puede tomar $a=|g|^{p'-2}g$ (cero donde $g=0$), que pertenece a $L^p$ porque $(p'-1)p=p'$; obtenemos $\\int|g|^{p'}=0$.\n\nRecíprocamente, si el cierre $M$ del espacio generado es propio, Hahn--Banach produce un funcional continuo no nulo de $L^p$ que se anula en $M$. Por la representación del dual de $L^p$, válida para $1<p<\\infty$, ese funcional tiene la forma $a\\mapsto\\int a\\overline g$ para algún $g\\in L^{p'}$ no nulo. Contradice totalidad. Aquí se usan, con el alcance de medida correspondiente, los teoremas de dualidad desarrollados en el volumen II; en particular cubren los espacios de Lebesgue de este volumen.",
+          "enunciado_original_extraido": "1. Sea 1 < p < +∞ fijo, sea p\n∗ = p/(p − 1), sea (X, X, µ) un espacio de medida y sea A una familia de\nfunciones de L\np\n(X). Demuestre que A es completo en L\np\n(X) si y solo si A es total en L\np\n∗\n(X)."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l03-2",
+          "incisos_y_tareas": [
+            "Riemann–Lebesgue para senos/cosenos",
+            "ortogonalidad y normalización"
+          ],
+          "archivo": "capitulos/02.tex",
+          "enunciado_latex": "Establecer Riemann--Lebesgue y ortogonalidad para los senos y cosenos. Precisar su normalización ortonormal.",
+          "solucion_latex": "Las identidades $\\cos nt=(e_n+e_{-n})/2$ y $\\sin nt=(e_n-e_{-n})/(2i)$ expresan los coeficientes reales como combinaciones de coeficientes complejos; por el teorema~\\ref{v4:rl-circulo}, tienden a cero. La ortogonalidad de los exponenciales da, para $n,k\\geq1$,\n\\[\n \\ip{\\cos nt}{\\cos kt}=\\ip{\\sin nt}{\\sin kt}=\\tfrac12\\delta_{nk},\n \\qquad\\ip{\\sin nt}{\\cos kt}=0.\n\\]\nAmbos tipos son ortogonales a la constante $1$, cuya norma es uno. Por tanto la familia ortonormal correcta es $\\{1\\}\\cup\\{\\sqrt2\\cos nt,\\sqrt2\\sin nt:n\\geq1\\}$. Los senos y cosenos sin esos factores son ortogonales, pero no ortonormales con la medida elegida.",
+          "enunciado_original_extraido": "2. Demuestre los teoremas 7 y 8 para el conjunto de las funciones\n{x 7→ sen(nx) : n ∈ N} ∪ {x 7→ cos(nx) : n ≥ 0 en Z}.\n3"
+        }
+      ]
+    },
+    {
+      "lectura": 4,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/14iCCcd9zyvpPW27NKKIigCHNWmdeDDKs/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect04.txt",
+      "sha256_texto_fuente": "839a902415f0cb3cd8872d8c89c03e17a0aea9469ab8932f5197d3c81a027d7e",
+      "capitulo": 3,
+      "ancla": "lectura:v4-04",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Núcleo de Dirichlet, integral uno y fórmula trigonométrica.",
+        "Convergencia Dirichlet y promedio de límites laterales; ejemplo |x|."
+      ],
+      "correcciones": [
+        "Los coeficientes requieren integrabilidad, no mera medibilidad."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l04-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/03.tex",
+          "enunciado_latex": "Para $f\\in L^1(\\T)$, expresar la serie compleja como $a_0/2+\\sum_{n\\geq1}(a_n\\cos nx+b_n\\sin nx)$.",
+          "solucion_latex": "Agrupando únicamente los pares finitos de índices $n,-n$,\n\\[\n c_ne^{inx}+c_{-n}e^{-inx}\n =(c_n+c_{-n})\\cos nx+i(c_n-c_{-n})\\sin nx.\n\\]\nPor tanto $a_0=2c_0$, $a_n=c_n+c_{-n}$ y $b_n=i(c_n-c_{-n})$. Equivalentemente,\n\\[\n a_n=\\frac1\\pi\\int_0^{2\\pi}f(t)\\cos nt\\,dt,\\qquad\n b_n=\\frac1\\pi\\int_0^{2\\pi}f(t)\\sin nt\\,dt.\n\\]\nEstas igualdades describen cada suma parcial y no requieren reordenar una serie infinita convergente.",
+          "enunciado_original_extraido": "1. Considere el conjunto de funciones {x 7→ sen(nx) : n ∈ N} ∪ {x 7→ cos(nx) : n ≥ 0 en Z}. Si f es\nmedible y peri´odica de periodo 2π, pruebe que la serie de Fourier de f es de la forma\nˆf(x) = a0\n2\n+\nX∞\nn=1\nan cos(nx) + X∞\nn=1\nbnsen(nx),\ndonde a0 = 2c0 y an = cn + c−n, bn = i(cn − c−n) para todo n ∈ N."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l04-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/03.tex",
+          "enunciado_latex": "Si $f\\in L^1(\\T)$ es real, probar que sus coeficientes $a_n,b_n$ son reales.",
+          "solucion_latex": "Las últimas integrales del ejercicio anterior tienen integrandos reales. También $c_{-n}=\\overline{c_n}$, por conjugación de la integral; así $a_n=2\\Re c_n$ y $b_n=-2\\Im c_n$.",
+          "enunciado_original_extraido": "2. Si f es real-valuada, medible y peri´odica de periodo 2π demuestre que an, bn ∈ R para todo n ∈ N."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l04-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/03.tex",
+          "enunciado_latex": "Hallar la serie de $x^2$ en $[-\\pi,\\pi]$, extendida periódicamente, y deducir $\\sum_{n\\geq1}n^{-2}=\\pi^2/6$.",
+          "solucion_latex": "La paridad da $b_n=0$ y $a_0=2\\pi^2/3$. Para $n\\geq1$, dos integraciones por partes dan\n\\[\n \\int_0^\\pi x^2\\cos nx\\,dx\n =-\\frac2n\\int_0^\\pi x\\sin nx\\,dx\n =\\frac{2\\pi(-1)^n}{n^2}.\n\\]\nAsí $a_n=4(-1)^n/n^2$. La extensión es continua y suave a trozos, luego\n\\[\n x^2=\\frac{\\pi^2}3+4\\sum_{n\\geq1}\\frac{(-1)^n\\cos nx}{n^2}.\n\\]\nEn $x=\\pi$ obtenemos $\\pi^2=\\pi^2/3+4\\sum n^{-2}$, que da la suma solicitada.",
+          "enunciado_original_extraido": "3. Calcule la serie de Fourier de la funci´on definida en [−π, π[ y extendida peri´odicamente\nf(x) = x\n2\n.\nUsando esta funci´on, demuestre que\nX∞\nn=1\n1\nn2\n=\nπ\n2\n6\n."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l04-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/03.tex",
+          "enunciado_latex": "Sea $f$ periódica, continua y $C^1$ a trozos. Si $\\sum_{n\\in\\Z}|c_n|<\\infty$, probar que su serie converge a $f$ absoluta y uniformemente.",
+          "solucion_latex": "Cada término tiene módulo $|c_n|$, independientemente de $x$. El criterio de Weierstrass hace converger la serie absoluta y uniformemente a alguna función $g$. Por el teorema~\\ref{v4:dirichlet-puntual}, las mismas sumas parciales convergen puntualmente a $f$. La unicidad del límite en $\\C$ da $g=f$. Más adelante la unicidad de los coeficientes permitirá eliminar la hipótesis de suavidad.",
+          "enunciado_original_extraido": "4. Sea f : R → F una funci´on continua, peri´odica de periodo 2π y de clase C\n1 a trozos. Si la serie\n+\nP∞\nn=−∞\n|cn| es convergente, pruebe que la serie de Fourier de f converge a f absoluta y uniformemente en\nR.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 5,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1AWYv6cMv1ZWx4clZ1fSe5ErNEQ-Fg3O0/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect05.txt",
+      "sha256_texto_fuente": "28f9aca36947288ac052bf6d3ba943b5a3569ccfcfe3b983eed9da240ad8bf79",
+      "capitulo": 3,
+      "ancla": "lectura:v4-05",
+      "cantidad_ejercicios": 0,
+      "teoria": [
+        "Derivación e integración de Fourier con hipótesis para cada modalidad de convergencia.",
+        "Absoluta y uniforme bajo C1 a trozos y continuidad.",
+        "Núcleo de Fejér, fórmula, positividad, concentración y aproximación uniforme; densidad trigonométrica."
+      ],
+      "correcciones": [
+        "Serie de f′ converge a f′, no a f; derivación uniforme necesita continuidad de f′.",
+        "Se fija la diferencia de índices entre promedios0..N−1 y1..N."
+      ],
+      "ejercicios": []
+    },
+    {
+      "lectura": 6,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1EAPuT7vZt8B9C7FNMq-0XdyG1Iad4rY2/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect06.txt",
+      "sha256_texto_fuente": "03d46dc2d82f2ef87c4ad15ab84f03508c62853766f745d243a8266276db460c",
+      "capitulo": 4,
+      "ancla": "lectura:v4-06",
+      "cantidad_ejercicios": 7,
+      "teoria": [
+        "Densidad suave con función de corte explícita.",
+        "Base ortonormal trigonométrica, Parseval, onto ell2 y subsecuencia a.e.",
+        "Carleson sólo anunciado como panorama externo, como en la fuente; no se usa ni se afirma demostrado."
+      ],
+      "correcciones": [
+        "Parseval polarizado lleva conjugación en los coeficientes del segundo argumento."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l06-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Probar que senos, cosenos y la constante son totales en $L^2(\\T)$ y obtener la identidad real de Parseval.",
+          "solucion_latex": "Los exponenciales son combinaciones lineales de senos y cosenos, y recíprocamente, de modo que ambas familias tienen el mismo espacio generado denso. Respecto de la familia ortonormal $1,\\sqrt2\\cos nx,\\sqrt2\\sin nx$, los coeficientes son $a_0/2,a_n/\\sqrt2,b_n/\\sqrt2$. Parseval da\n\\[\n \\frac{|a_0|^2}4+\\frac12\\sum_{n\\geq1}(|a_n|^2+|b_n|^2)\n =\\frac1{2\\pi}\\int_0^{2\\pi}|f|^2dx.\n\\]\nMultiplicar por dos produce exactamente la fórmula solicitada en la lectura.",
+          "enunciado_original_extraido": "1. Demuestre que el conjunto de funciones {x 7→ sen(nx) : n ∈ N} ∪ {x 7→ cos(nx) : n ≥ 0 en Z} es\ntotal en L\n2\n(2π) y deduzca la identidad de Parseval\n1\n2\n|a0|\n2 +\nX∞\nn=1\n(|an|\n2 + |bn|2\n) = 1\nπ\nZ 2π\n0\n|f|\n2\ndλ."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l06-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Si $c_n,d_n$ son los coeficientes de $f,g\\in L^2(\\T)$, demostrar $\\ip fg=\\sum_n c_n\\overline{d_n}$.",
+          "solucion_latex": "Para sumas parciales, la ortogonalidad da $\\ip{S_Nf}{S_Ng}=\\sum_{|n|\\leq N}c_n\\overline{d_n}$. El producto interno es continuo: el error respecto de $\\ip fg$ es a lo sumo $\\norm{S_Nf-f}_2\\norm{S_Ng}_2+\\norm f_2\\norm{S_Ng-g}_2$, que tiende a cero. La serie escalar es absolutamente convergente por Cauchy--Schwarz en $\\ell^2$. El conjugado de $d_n$ es indispensable con la convención de producto interno adoptada.",
+          "enunciado_original_extraido": "2. Sean f, g ∈ L\n2\n(2π). Pruebe que\n⟨f|g⟩ =\nX\n+∞\nn=−∞\ncndn,\n3donde {cn}\n+∞\nn=−∞ y {dn}\n+∞\nn=−∞ son las sucesiones de coeficientes de Fourier de f u g respectivamente."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l06-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Para $f$ real, periódica y $C^1$, demostrar mediante los coeficientes que $f'\\perp f$.",
+          "solucion_latex": "El ejercicio anterior y $\\widehat{f'}(n)=inc_n$ dan $\\ip{f'}f=\\sum_n in|c_n|^2$. La serie converge absolutamente porque $\\sum|n||c_n|^2\\leq(\\sum n^2|c_n|^2)^{1/2}(\\sum|c_n|^2)^{1/2}<\\infty$. Como $f$ es real, $|c_{-n}|=|c_n|$; los términos de índices opuestos se cancelan. El término $n=0$ es cero. Para funciones complejas la afirmación no vale en general: $f=e^{ix}$ da $\\ip{f'}f=i$.",
+          "enunciado_original_extraido": "3. Sea f una funci´on real-valuada, peri´odica de periodo 2π y de clase C\n1\n. Usando el ejercicio anterior,\ndemuestre que f\n′ ⊥ f en L2\n(2π)."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l06-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Usar la serie de $x^2$ para calcular $\\sum_{n\\geq1}n^{-4}$.",
+          "solucion_latex": "El ejercicio~\\ref{ej:v4-l04-3} dio $a_0=2\\pi^2/3$, $a_n=4(-1)^n/n^2$, $b_n=0$. Por Parseval,\n\\[\n \\frac1{2\\pi}\\int_{-\\pi}^\\pi x^4dx\n =\\frac{\\pi^4}5=\\frac{\\pi^4}9+8\\sum_{n\\geq1}\\frac1{n^4}.\n\\]\nDespejando se obtiene $\\sum n^{-4}=\\pi^4/90$.",
+          "enunciado_original_extraido": "4. Calcule la serie de Fourier de la funci´on f(x) = x\n2 definida en [−π, π] y extendida peri´odicamente\na R. Deduzca la suma\nX∞\nn=1\n1\nn4\n=\nπ\n4\n90\n."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l06-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Calcular la serie de $f(x)=x(\\pi-|x|)$ en $[-\\pi,\\pi]$ y la suma $\\sum_{j\\geq1}(2j-1)^{-6}$.",
+          "solucion_latex": "La función es impar; por ello $a_n=0$. Para $n\\geq1$,\n\\[\n b_n=\\frac2\\pi\\int_0^\\pi x(\\pi-x)\\sin nx\\,dx\n =\\frac{4(1-(-1)^n)}{\\pi n^3}.\n\\]\nPara verificar la última igualdad, la primera integración por partes anula los extremos y deja $n^{-1}\\int_0^\\pi(\\pi-2x)\\cos nx\\,dx$; una segunda deja $2n^{-2}\\int_0^\\pi\\sin nx\\,dx=2(1-(-1)^n)/n^3$. Así\n\\[\n f(x)=\\frac8\\pi\\sum_{j\\geq1}\\frac{\\sin((2j-1)x)}{(2j-1)^3}.\n\\]\nLa integral de la norma se calcula expandiendo el polinomio:\n\\[\n \\norm f_2^2=\\frac1\\pi\\int_0^\\pi x^2(\\pi-x)^2dx=\\frac{\\pi^4}{30}.\n\\]\nParseval da $\\pi^4/30=(32/\\pi^2)\\sum_{j\\geq1}(2j-1)^{-6}$ y por tanto la suma es $\\pi^6/960$.",
+          "enunciado_original_extraido": "5. Calcule la serie de Fourier de la funci´on f(x) = x(π − |x|) definida en [−π, π[ y extendida\nperi´odicamente a R. A partir de ah´ı, obtenga el valor de la suma\nX∞\nn=1\n1\n(2n − 1)6\n."
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v4-l06-6",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Sea $\\alpha\\in\\R\\setminus\\Z$ y extiéndase periódicamente $f(x)=\\pi e^{i(\\pi-x)\\alpha}/\\sin(\\pi\\alpha)$ desde $[0,2\\pi)$. Calcular sus coeficientes y demostrar $\\sum_{n\\in\\Z}(n+\\alpha)^{-2}=\\pi^2/\\sin^2(\\pi\\alpha)$.",
+          "solucion_latex": "Como $n+\\alpha\\ne0$,\n\\[\n c_n=\\frac{e^{i\\pi\\alpha}}{2\\sin(\\pi\\alpha)}\n \\frac{e^{-2\\pi i(n+\\alpha)}-1}{-i(n+\\alpha)}\n =\\frac1{n+\\alpha}.\n\\]\nAquí usamos $e^{-2\\pi i\\alpha}-1=-2ie^{-i\\pi\\alpha}\\sin(\\pi\\alpha)$. La función tiene módulo constante $\\pi/|\\sin(\\pi\\alpha)|$, por lo que Parseval da la identidad. La serie se entiende en $L^2$; en los extremos de período, Dirichlet da el promedio lateral correspondiente.",
+          "enunciado_original_extraido": "6. Sea α ∈ R\\Z. Calcule la serie de Fourier de la funci´on definida en [0, 2π[ y extendida peri´odicamente\na R\nx 7→\nπ\nsen(πα)\ne\ni(π−x)α\ny deduzca la f´ormula\nX\n+∞\nn=−∞\n1\n(n + α)\n2\n=\nπ\n2\nsen2(πα)\n."
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v4-l06-7",
+          "incisos_y_tareas": [
+            "desigualdad de Wirtinger",
+            "caracterización de la igualdad"
+          ],
+          "archivo": "capitulos/04.tex",
+          "enunciado_latex": "Si $f$ es periódica, continua, $C^1$ a trozos y tiene media cero, demostrar $\\int|f|^2\\leq\\int|f'|^2$ y caracterizar la igualdad.",
+          "solucion_latex": "La media cero significa $c_0=0$. Por Parseval aplicado a $f$ y $f'$, respectivamente,\n\\[\n \\norm f_2^2=\\sum_{n\\ne0}|c_n|^2\n \\leq\\sum_{n\\ne0}n^2|c_n|^2=\\norm{f'}_2^2.\n\\]\nLa diferencia es $\\sum_{|n|\\geq2}(n^2-1)|c_n|^2$, una suma de términos no negativos. Se anula exactamente si esos coeficientes son cero. La unicidad de Fourier da $f=c_1e^{ix}+c_{-1}e^{-ix}$ casi en todas partes; la continuidad extiende la identidad a todo punto. Es equivalente a $f(x)=a\\sin x+b\\cos x$, $a,b\\in\\C$. Toda función de esa forma produce igualdad.",
+          "enunciado_original_extraido": "7. Desigualdad de Wirtinger. Sea f una funci´on peri´odica de periodo 2π, continua y de clase C\n1 a\ntrozos tal que R 2π\n0\nf dλ = 0. Demuestre que\nZ 2π\n0\n|f|\n2\ndλ ≤\nZ 2π\n0\n|f\n′\n|\n2\ndλ,\ndonde se tiene la igualdad si y solo si f(x) = αsen(x) + β cos(t) para algunos α.β ∈ C.\nSugerencia: Use la identidad de Parseval.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 7,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1DrUaLd-gOgqRJUBfA17IrPndPQfWgCUw/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect07.txt",
+      "sha256_texto_fuente": "a1718a1b641e2a3b212d9b3295ca6c09ee06fb0ee0b1f00f0e5f80586c40c2cb",
+      "capitulo": 4,
+      "ancla": "lectura:v4-07",
+      "cantidad_ejercicios": 0,
+      "teoria": [
+        "Localización y Dini con cociente y signo corregidos.",
+        "Puntos de Lebesgue; convergencia de Fejér por separación de tres regiones.",
+        "La no sobreyectividad L1→c0 se demuestra en capítulo5 mediante normas de Dirichlet."
+      ],
+      "correcciones": [
+        "Dini requiere f(x+t)+f(x−t)−2f(x), no diferencia de valores laterales."
+      ],
+      "ejercicios": []
+    },
+    {
+      "lectura": 8,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1m32prT-KehE3KTPpeksZPPDhD-F3zUwN/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect08.txt",
+      "sha256_texto_fuente": "7dd36eb4652503b6e746a318d10d85a73b15968b36ffd47b20c0e8c2d4326b5e",
+      "capitulo": 5,
+      "ancla": "lectura:v4-08",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Convolución L1, Fubini, producto de coeficientes, álgebra Banach sin unidad.",
+        "Traslaciones Lp, núcleos de Dirac y aproximación Lp/C uniforme.",
+        "Dirac cosenos con estimación de concentración.",
+        "Complemento Fourier finita: inversión, Parseval, convolución, matriz circulante."
+      ],
+      "correcciones": [
+        "Se unifica Haar normalizada dt/(2π).",
+        "Norma del operador de convolución ≤ norma L1; igualdad irrestricta falsa, contraejemplo1+eit en L2."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l08-1",
+          "incisos_y_tareas": [
+            "linealidad",
+            "asociatividad",
+            "conmutatividad",
+            "submultiplicatividad",
+            "completitud"
+          ],
+          "archivo": "capitulos/05.tex",
+          "enunciado_latex": "Demostrar que $L^1(\\T)$, con convolución, es un álgebra de Banach conmutativa.",
+          "solucion_latex": "La bilinealidad sigue de la linealidad integral y la cota submultiplicativa del teorema~\\ref{v4:conv-T}. La completitud es la de $L^1$. Cambiar $t$ por $x-t$ prueba conmutatividad. Para asociatividad, la integral triple del valor absoluto está acotada por $\\norm f_1\\norm g_1\\norm h_1$. Fubini permite entonces calcular casi en todas partes\n\\[\n ((f*g)*h)(x)=\\int_\\T\\int_\\T f(s)g(t-s)h(x-t)\\,dm(s)dm(t)\n =\\int_\\T f(s)\\int_\\T g(u)h(x-s-u)\\,dm(u)dm(s),\n\\]\ncon $u=t-s$. El último miembro es $f*(g*h)(x)$.",
+          "enunciado_original_extraido": "1. Demuestre el teorema 4."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l08-2",
+          "incisos_y_tareas": [
+            "existencia a.e.",
+            "pertenencia Lp",
+            "desigualdad",
+            "norma de operador: corrección y contraejemplo"
+          ],
+          "archivo": "capitulos/05.tex",
+          "enunciado_latex": "Si $f\\in L^1(\\T)$, $g\\in L^p(\\T)$ y $1<p<\\infty$, demostrar que $f*g\\in L^p$ y $\\norm{f*g}_p\\leq\\norm f_1\\norm g_p$. Precisar la norma de $T_f:g\\mapsto f*g$.",
+          "solucion_latex": "Si $\\norm f_1=0$ la conclusión es inmediata. En otro caso, Hölder para la medida finita $|f(t)|dm(t)$ da\n\\[\n |f*g(x)|^p\\leq\\norm f_1^{p-1}\\int_\\T |f(t)|\\,|g(x-t)|^pdm(t).\n\\]\nTonelli e invariancia de la medida hacen integrable el lado derecho y, tras integrar, dan $\\norm{f*g}_p^p\\leq\\norm f_1^p\\norm g_p^p$. En particular la integral de convolución existe absolutamente casi en todas partes. Por tanto $\\norm{T_f}\\leq\\norm f_1$.\n\nLa igualdad afirmada en el original es falsa en general. Para $p=2$ y $f(t)=1+e^{it}$, Fourier muestra que $T_f$ es la proyección ortogonal sobre $\\operatorname{span}\\{1,e^{it}\\}$, de norma uno, mientras que\n\\[\n \\norm f_1=\\frac1{2\\pi}\\int_0^{2\\pi}2|\\cos(t/2)|\\,dt=\\frac4\\pi>1.\n\\]\nLa cota es la conclusión válida para todo $p$.",
+          "enunciado_original_extraido": "2. Sea 1 < p < +∞ y sean f ∈ L\n1\n(2π), g ∈ L\np\n(2π). Demuestre que f ∗ g est´a definida c.t.p. en R,\nque f ∗ g ∈ L\np\n(2π) y que ∥f ∗ g∥p ≤ ∥f∥1∥g∥p. Deduzca que para toda f ∈ L\n1\n(2π) la aplicaci´on g 7→ f ∗ g\n3es un operador lineal continuo de L\np\n(2π) de norma ∥f∥1."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l08-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/05.tex",
+          "enunciado_latex": "Probar que $f\\mapsto T_f$ es un homomorfismo continuo de álgebras de $L^1(\\T)$ en $\\Bcal(L^p(\\T))$.",
+          "solucion_latex": "La linealidad es inmediata. Si $f,h\\in L^1$ y $g\\in L^p$, aproximamos $g$ en $L^p$ por funciones acotadas $g_j$ (truncación en altura). Para cada $g_j$, las integrales de valor absoluto en la identidad de asociatividad son finitas porque el círculo tiene medida uno y $g_j$ es acotada. Así $T_{f*h}g_j=T_fT_hg_j$. La cota del ejercicio anterior permite pasar al límite en $L^p$ y obtener $T_{f*h}=T_fT_h$. También $\\norm{T_f-T_h}\\leq\\norm{f-h}_1$, lo que prueba continuidad.",
+          "enunciado_original_extraido": "3. Bajo las hip´otesis del ejercicio anterior, pruebe que la convoluci´on induce un homomorfismo con\u0002tinuo de ´algebras de Banach de L\n1\n(2π) en CL(L\np\n(2π))."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l08-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/05.tex",
+          "enunciado_latex": "Si $1<p<\\infty$, $(k_j)$ es una sucesión de Dirac y $g\\in L^p(\\T)$, probar $\\norm{g-g*k_j}_p\\to0$.",
+          "solucion_latex": "Jensen para la medida de probabilidad $k_jdm$ produce\n\\[\n\\norm{g-g*k_j}_p^p\\leq\\int k_j(t)\\norm{g-g(\\cdot-t)}_p^pdm(t).\n\\]\nPara $\\eps>0$ escojamos $\\delta$ con $\\norm{g-g(\\cdot-t)}_p<\\eps$ si $|t|<\\delta$. La integral es a lo sumo\n\\[\n \\eps^p+(2\\norm g_p)^p\\int_{|t|\\geq\\delta}k_j(t)\\,dm(t).\n\\]\nEl límite superior es $\\eps^p$; hacer $\\eps\\downarrow0$ da la conclusión. Esta es la versión $L^p$ completa de la sugerencia original, con una misma letra $g$ en hipótesis y conclusión.",
+          "enunciado_original_extraido": "4. Sea 1 < p < +∞, sea {ξn}∞\nn=1 una sucesi´on de Dirac en L\n1\n(2π) y sea g ∈ L\np\n(2π). Demuestre que\nlimn→∞∥f − f ∗ ξn∥p = 0.\nSugerencia: Considere la funci´on convexa φ(t) = t\np definida en [0, +∞[. Use la desigualdad de Jensen\n(ejercicio 5 (ii), lectura 17, An´alisis Matem´atico 2) con X = [−π, π], µ(A) = R\nA\nξn dλ para todo conjunto\nLebesgue-medible A ⊆ X e imite la demostraci´on del teorema 6.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 9,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1ZZT86Q7sc56QGMYp2_KQAkDfsU-h8bH2/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect09.txt",
+      "sha256_texto_fuente": "9b35d464e9466138feead6a91464fb49f62b93b13a226939b95773c3adba12f0",
+      "capitulo": 6,
+      "ancla": "lectura:v4-09",
+      "cantidad_ejercicios": 5,
+      "teoria": [
+        "Convolución en R extendida a R^d; Tonelli, asociatividad, conmutatividad.",
+        "Young general con extremos; Lp*Lp prima continuo y C0 para exponentes interiores.",
+        "Traslaciones fuertemente y uniformemente continuas en cada vector; aproximación Lp."
+      ],
+      "correcciones": [
+        "Continuidad uniforme corresponde a cada órbita de un vector, no a la norma de operador.",
+        "La condición g→0 es suficiente; el ejercicio pide ejemplo cuando se omite, no necesidad para cada pareja.",
+        "En ej5 la continuidad se exige en puntos K respecto del ambiente; continuidad sólo de la restricción es insuficiente."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l09-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/06.tex",
+          "enunciado_latex": "Para $1\\leq p<\\infty$ y $f\\in L^p(\\R^d)$, demostrar que $t\\mapsto f(\\cdot+t)$ y $t\\mapsto f(\\cdot-t)$ son uniformemente continuas con valores en $L^p$.",
+          "solucion_latex": "Para $u\\in C_c$, con soporte $K$, y $|t|\\leq1$, la diferencia $u(\\cdot+t)-u$ se anula fuera del compacto $K+\\overline{B(0,1)}$. Por continuidad uniforme de $u$, su supremo tiende a cero, y su norma $L^p$ está acotada por ese supremo multiplicado por la medida del compacto elevada a $1/p$. Para $f$ general escojamos $u\\in C_c$ con $\\norm{f-u}_p<\\eps/3$. La invariancia de la norma da\n\\[\n \\norm{f(\\cdot+t)-f}_p\\leq2\\norm{f-u}_p+\\norm{u(\\cdot+t)-u}_p.\n\\]\nAsí hay continuidad en cero. La norma de la diferencia entre las traslaciones con parámetros $s,t$ es $\\norm{f(\\cdot+t-s)-f}_p$, que solo depende de $t-s$; esto da continuidad uniforme. El signo opuesto se trata sustituyendo $t$ por $-t$. Se habla de continuidad fuerte para cada $f$, no de continuidad de los operadores en norma de operador.",
+          "enunciado_original_extraido": "1. Sea p ∈ [1, +∞[. Demuestre que los operadores de traslaci´on izquierda y derecha L, R : R → L\np\n(R)\ndados por\n∀ t ∈ R, f ∈ L\np\n(R) (Ltf : x 7→ f(x + t), Rtf : x 7→ f(x − t))\nson uniformemente continuas en R.\nSugerencia: Demuestre el resultado primero para las funciones continuas con soporte compacto en R. Luego\nuse que estas funciones son densas en L\np\n(R)."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l09-2",
+          "incisos_y_tareas": [
+            "anulación en infinito",
+            "contraejemplo al omitir la hipótesis"
+          ],
+          "archivo": "capitulos/06.tex",
+          "enunciado_latex": "Sean $f\\in L^1(\\R^d)$ y $g$ acotada, con $g(x)\\to0$ cuando $|x|\\to\\infty$. Probar que $f*g(x)\\to0$ y mostrar que no puede omitirse una condición de este tipo en un enunciado general.",
+          "solucion_latex": "Para cada $y$ fijo, $g(x-y)\\to0$ cuando $|x|\\to\\infty$, y $|f(y)g(x-y)|\\leq\\norm g_\\infty|f(y)|$. Convergencia dominada da el límite. Equivalentemente se puede separar una bola que contiene casi toda la integral de $|f|$ y controlar uniformemente $g(x-y)$ dentro de esa bola. Sin la condición, tomemos $g=1$ y $f=\\mathbf1_{[0,1]^d}$: $f*g=1$. Esto muestra que la hipótesis no puede simplemente eliminarse; no afirma que sea necesaria para cada pareja particular, pues, por ejemplo, $f=0$ siempre produce límite cero.",
+          "enunciado_original_extraido": "2. Sean f ∈ L\n1\n(R), g ∈ L∞(R). Si lim\n|x|→∞\ng(x) = 0, demuestre que\nlim\n|x|→∞\nf ∗ g(x) = 0.\nAdem´as, d´e un contraejemplo que muestre que la condici´on lim\n|x|→∞\ng(x) = 0 es necesaria."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l09-3",
+          "incisos_y_tareas": [
+            "soporte compacto",
+            "inclusión en suma de soportes"
+          ],
+          "archivo": "capitulos/06.tex",
+          "enunciado_latex": "Si $f,g$ tienen soporte compacto y su convolución existe casi en todas partes, demostrar $\\supp(f*g)\\subseteq\\supp f+\\supp g$, entendiendo soporte esencial cuando corresponda.",
+          "solucion_latex": "Sean $K=\\supp f$, $L=\\supp g$. Elegimos representantes que se anulan fuera de esos conjuntos. Si $x\\notin K+L$, no existe $y$ con $y\\in K$ y $x-y\\in L$, así que $f(y)g(x-y)=0$ para todo $y$ salvo los nulos de elección de representantes. La integral vale cero. El conjunto $K+L$ es compacto por ser la imagen de $K\\times L$ bajo la suma continua, y por tanto es cerrado. La convolución se anula en su complemento, lo que demuestra la inclusión. Para clases de funciones no se usan valores arbitrarios asignados sobre nulos para definir el soporte.",
+          "enunciado_original_extraido": "3. Sean f, g : R → F dos funciones de soporte compacto. Si f ∗ g est´a definida c.t.p. en R, demuestre\nque f ∗ g es de soporte compacto. M´as a´un, pruebe que\nsupp(f ∗ g) ⊆ supp(f) + supp(g).\nUna sucesi´on de Dirac en L\n1\n(R) es una sucesi´on {ξn}∞\nn=1 en L\n1\n(R) de funciones no negativas tales que:\n(i)\nR\nR\nξn dλ = 1 para todo n ∈ N.\n(ii) Para todo ε > 0 tenemos limn→∞\nR ε\n−ε\nξn dλ = 1."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l09-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/06.tex",
+          "enunciado_latex": "Sea $(k_j)\\subset L^1(\\R^d)$, con $k_j\\geq0$, $\\int k_j=1$ y $\\int_{|t|\\geq\\delta}k_j(t)dt\\to0$ para cada $\\delta>0$. Probar $f*k_j\\to f$ en $L^p$ para $1\\leq p<\\infty$.",
+          "solucion_latex": "Jensen para la probabilidad $k_j(t)dt$ y Tonelli dan\n\\[\n \\norm{f*k_j-f}_p^p\\leq\\int k_j(t)\\norm{f(\\cdot-t)-f}_p^pdt.\n\\]\nPara $p=1$ basta la desigualdad triangular integral. En $|t|<\\delta$, el ejercicio~\\ref{ej:v4-l09-1} hace la diferencia menor que cualquier $\\eps$ previamente fijado. En el complemento está acotada por $2\\norm f_p$. Por tanto el límite superior del lado derecho es a lo sumo $\\eps^p$. Hacer $\\eps\\downarrow0$ prueba el resultado.",
+          "enunciado_original_extraido": "4. Sea 1 ≤ p < +∞, sea {ξn}∞\nn=1 una sucesi´on de Dirac en L\n1\n(R) y sea f ∈ L\np\n(R). Demuestre que\nlimn→∞∥f − f ∗ ξn∥p = 0.\nSugerencia: Imite la demostraci´on del teorema 6 de la lectura 8."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l09-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/06.tex",
+          "enunciado_latex": "Sea $f$ un representante acotado de $L^\\infty(\\R^d)$ que es continuo, como función definida en $\\R^d$, en cada punto de un compacto $K$. Probar que $f*k_j\\to f$ uniformemente en $K$. Explicar por qué no basta continuidad de la restricción $f|_K$.",
+          "solucion_latex": "Dado $\\eps>0$, para cada $z\\in K$ elegimos $r_z>0$ tal que $|f(w)-f(z)|<\\eps/2$ si $|w-z|<r_z$. Una cantidad finita de bolas $B(z,r_z/2)$ cubre $K$. Si $\\delta$ es menor que la mitad del mínimo de sus radios y $x\\in K$, $|t|<\\delta$, podemos elegir un centro de esa cubierta para el que tanto $x$ como $x-t$ están en $B(z,r_z)$. Entonces $|f(x-t)-f(x)|<\\eps$. Así\n\\[\n \\sup_{x\\in K}|f*k_j(x)-f(x)|\n \\leq\\eps+2\\norm f_\\infty\\int_{|t|\\geq\\delta}k_j(t)dt\\longrightarrow\\eps.\n\\]\nSi solo se pide continuidad sobre el subespacio $K$, tomemos $K=\\{0\\}$ y $f=\\mathbf1_{\\{0\\}}$. La restricción es continua, pero toda convolución es cero y $f(0)=1$. La interpretación de la hipótesis en el enunciado es, por tanto, esencial.",
+          "enunciado_original_extraido": "5. Sea {ξn}∞\nn=1 una sucesi´on de Dirac en L\n1\n(R) y sea f ∈ L∞(R). Suponga que f es continua en un\nconjunto compacto K de R. Pruebe que la sucesi´on {f ∗ ξn}∞\nn=1 converge a f uniformemente en K.\nSugerencia: Recuerde que una funci´on entre dos espacios m´etricos que es continua en un compacto es\nuniformemente continua en dicho compacto. Luego use el teorema 7.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 10,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1Dwu7nJW_XHmb8OtzCFJL38B70wMBwvfN/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect10.txt",
+      "sha256_texto_fuente": "531ac36855cda0b4bd11dce1605d2aa04720deada3d8546db80fa1fbd27080f7",
+      "capitulo": 7,
+      "ancla": "lectura:v4-10",
+      "cantidad_ejercicios": 3,
+      "teoria": [
+        "Transformada L1→C0, Riemann–Lebesgue y norma.",
+        "Convolución, traslación, modulación y diferenciación bajo hipótesis AC.",
+        "Caracteres euclidianos y gaussianas con prueba directa."
+      ],
+      "correcciones": [
+        "Involución requiere conjugación; el texto desarrolla explícitamente por qué L1 no es C*, con contraejemplo.",
+        "Diferenciación: hipótesis AC local y f,f′ integrables."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l10-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Si $f,g\\in L^1(\\R^d)$, probar $\\int f\\widehat g=\\int\\widehat f g$.",
+          "solucion_latex": "Ambos productos son integrables porque cada transformada es acotada. La integral doble de $|f(x)g(y)e^{ix\\cdot y}|$ es $\\norm f_1\\norm g_1$. Por Fubini,\n\\[\n \\int f(x)\\widehat g(x)dx=\\int\\int f(x)g(y)e^{ix\\cdot y}dydx\n =\\int\\widehat f(y)g(y)dy.\n\\]\nEsta es una identidad bilineal; los conjugados aparecerán en la versión de producto interno.",
+          "enunciado_original_extraido": "1. Teorema de transferencia. Sean f, g ∈ L\n1\n(R). Demuestre que\nZ\nR\nfg dλ ˆ =\nZ\nR\nˆfg dλ."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l10-2",
+          "incisos_y_tareas": [
+            "(i) involución",
+            "(ii) homomorfismo con involución",
+            "contraejemplo identidad C* añadido"
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Definir $f^*(x)=\\overline{f(-x)}$. Probar que es una involución isométrica de $L^1(\\R^d)$ y que $\\widehat{f^*}=\\overline{\\widehat f}$. Explicar por qué $L^1(\\R)$ no es un álgebra $C^*$ con esa norma.",
+          "solucion_latex": "La conjugación hace a $*$ antilineal, $f^{**}=f$ y el cambio $x\\mapsto-x$ da $\\norm{f^*}_1=\\norm f_1$. Cambiar variables en la convolución da $(f*g)^*=g^**f^*$. Además,\n\\[\n \\widehat{f^*}(\\xi)=\\int\\overline{f(-x)}e^{ix\\cdot\\xi}dx\n =\\overline{\\int f(y)e^{iy\\cdot\\xi}dy}.\n\\]\nEl conjugado en $f^*$ es necesario en el caso complejo.\n\nPara refutar la identidad $C^*$ tomemos $f=\\mathbf1_{[0,1]}-\\mathbf1_{[1,2]}$, con $\\norm f_1=2$. Su autocorrelación $f*f^*$ es par y vale $2-3x$ para $0\\leq x\\leq1$, $x-2$ para $1\\leq x\\leq2$ y cero para $x\\geq2$. Esto se obtiene contando las longitudes de intersección de los dos intervalos y sus traslaciones. Por integración,\n\\[\n \\norm{f*f^*}_1=2\\left(\\int_0^{2/3}(2-3x)dx+\\int_{2/3}^1(3x-2)dx+\\int_1^2(2-x)dx\\right)=\\frac83<4=\\norm f_1^2.\n\\]\nAsí la afirmación de que no es $C^*$ queda demostrada, además de la parte pedida explícitamente.",
+          "enunciado_original_extraido": "2. Sea ∗: L\n1\n(R) → L\n1\n(R) la funci´on dada por\n∀ f ∈ L\n1\n(R)∀ x ∈ R\nÄ\nf\n∗\n(x) = f(−x)\nä\n.\nDemuestre lo siguiente:\n(i) La funci´on ∗es una involuci´on en L\n1\n(R).\n(ii) La transformada de Fourier es un homomorfismo de ´algebras con involuci´on si tomamos a L\n1\n(R) con\nla involuci´on del inciso anterior y a C0(R) con la conjugaci´on usual.\nCabe aclarar que L\n1\n(R), con esta involuci´on, no es un ´algebra C\n∗\n, aunque no probaremos eso."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l10-3",
+          "incisos_y_tareas": [
+            "transformadas de Dirac→1",
+            "identidad aproximada en C0"
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Si $(k_j)$ es una sucesión de Dirac en $L^1(\\R^d)$, demostrar $\\widehat k_j(\\xi)\\to1$ y que, para todo $h\\in C_0(\\R^d)$, $\\norm{h\\widehat k_j-h}_\\infty\\to0$.",
+          "solucion_latex": "Como $\\int k_j=1$,\n\\[\n |\\widehat k_j(\\xi)-1|\\leq\\int k_j(x)|e^{ix\\cdot\\xi}-1|dx.\n\\]\nSi $|\\xi|\\leq R$, la parte con $|x|<\\delta$ es a lo sumo $R\\delta$ y la otra a lo sumo $2\\int_{|x|\\geq\\delta}k_j$. Elegir primero $\\delta$ y después $j$ prueba convergencia uniforme en cada compacto de frecuencias. Además $|\\widehat k_j|\\leq1$. Para $h\\in C_0$, fuera de una bola grande $|h|<\\eps$, y el error del producto es a lo sumo $2\\eps$; dentro se aplica la convergencia uniforme recién probada. No se afirma $\\widehat k_j\\to1$ uniformemente en toda la recta: cada transformada se anula en infinito, mientras que la constante uno no.",
+          "enunciado_original_extraido": "3. Sean {ξn}∞\nn=1 una sucesi´on de Dirac en L\n1\n(R). Demuestre que para todo x ∈ R\nlimn→∞\nˆξn(x) = 1.\nDeduzca que la transformada de Fourier manda aproximaciones de la identidad en L\n1\n(R) a aproxima\u0002ciones de la identidad en C0(R).\n3"
+        }
+      ]
+    },
+    {
+      "lectura": 11,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1xwmWDEClcSGkLj0qeXitWN22v2ofhPcM/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect11.txt",
+      "sha256_texto_fuente": "87e0345e12ce4601616758af579c95a41c248e9a9047953ff38173e6c686dfb2",
+      "capitulo": 7,
+      "ancla": "lectura:v4-11",
+      "cantidad_ejercicios": 5,
+      "teoria": [
+        "Núcleo gaussiano e inversión L1 por aproximación; en puntos de Lebesgue.",
+        "Dini en R, integral de Dirichlet y control de colas.",
+        "Unicidad, Parseval integrable, Schwartz y divisores de cero."
+      ],
+      "correcciones": [
+        "Transformada de1[-1,1] es2sinξ/ξ; falta factor2 en fuente.",
+        "No integrabilidad se demuestra con valores absolutos.",
+        "Parseval complejo incluye conjugados."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l11-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Si $f\\in L^1(\\R^d)$ y $\\widehat f=0$, demostrar que $f=0$ casi en todas partes.",
+          "solucion_latex": "La función nula pertenece a $L^1$, por lo que $f$ satisface las hipótesis de inversión. La integral inversa es cero en todo punto, y el teorema~\\ref{v4:inversion-Rn} implica $f=0$ casi en todas partes. También se puede usar $f*H_t=0$ y pasar al límite en $L^1$.",
+          "enunciado_original_extraido": "1. Sean f ∈ L\n1\n(R) tal que ˆf = 0 en todo R. Demuestre que f = 0 c.t.p. en R.\nSugerencia: Utilice el teorema de inversi´on de Fourier."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l11-2",
+          "incisos_y_tareas": [
+            "(i) cálculo con factor2 corregido",
+            "(ii) divergencia integral absoluta"
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Calcular la transformada de $\\mathbf1_{[-1,1]}$ y demostrar que no es integrable.",
+          "solucion_latex": "Para $\\xi\\ne0$, $\\int_{-1}^1e^{ix\\xi}dx=2\\sin\\xi/\\xi$; en cero vale dos. El factor dos faltaba en el inciso original. Para $k\\geq1$, en $I_k=[k\\pi+\\pi/6,k\\pi+5\\pi/6]$ se tiene $|\\sin\\xi|\\geq1/2$ y $\\xi\\leq(k+1)\\pi$. Así\n\\[\n \\int_{I_k}\\left|\\frac{2\\sin\\xi}{\\xi}\\right|d\\xi\n \\geq\\frac{2}{3(k+1)}.\n\\]\nLos intervalos son disjuntos y la suma de esas cotas diverge. Debe estimarse el valor absoluto, pues la integral impropia sin valor absoluto sí converge.",
+          "enunciado_original_extraido": "2. El siguiente ejercicio demuestra que la transformada de Fourier de una funci´on en L\n1\n(R) no nece\u0002sariamente es integrable. Sea f(x) = χ[−1,1](x). Demuestre lo siguiente:\n(i)\nˆf(x) = sen(x)/x c.t.p. en R.\n(ii)\nˆf no es integrable en R. Sugerencia: Para cada k ∈ N estime el valor de R kπ\nπ\n(sen(x)/x) dλ(x)."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l11-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Si $f,g,\\widehat f,\\widehat g\\in L^1(\\R^d)$, demostrar\n$\\int\\widehat f\\,\\overline{\\widehat g}=(2\\pi)^d\\int f\\overline g$.",
+          "solucion_latex": "La inversión implica que $g$ coincide casi en todas partes con una función acotada, por lo que $f\\overline g$ es integrable. También $\\widehat f\\,\\overline{\\widehat g}$ es integrable porque $\\widehat g$ es acotada. Conjugando la inversión de $g$ y aplicando Fubini, justificado por $\\norm f_1\\norm{\\widehat g}_1$,\n\\[\n \\int f(x)\\overline{g(x)}dx\n =(2\\pi)^{-d}\\int\\overline{\\widehat g(\\xi)}\\int f(x)e^{ix\\cdot\\xi}dx\\,d\\xi.\n\\]\nLa integral interior es $\\widehat f(\\xi)$.",
+          "enunciado_original_extraido": "33. Identidad de Parseval. Sean f, g ∈ L\n1\n(R) tales que ˆf, gˆ ∈ L\n1\n(R). Pruebe que\nZ\nR\nˆfg dλ ˆ = 2π\nZ\nR\nfg dλ.\nSugerencia: Use el teorema de transferencia y el teorema de inversi´on de Fourier."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l11-4",
+          "incisos_y_tareas": [
+            "(i) integral gaussiana",
+            "(ii) transformada gaussiana",
+            "(iii) sucesión de Dirac y fórmula inversa"
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Para $\\varphi(x)=e^{-x^2}$, calcular su integral y transformada. Probar que $k_n(x)=n\\pi^{-1/2}e^{-n^2x^2}$ forma una sucesión de Dirac que satisface la fórmula de inversión.",
+          "solucion_latex": "El lema~\\ref{v4:gaussiana} da $\\int\\varphi=\\sqrt\\pi$ y $\\widehat\\varphi(\\xi)=\\sqrt\\pi e^{-\\xi^2/4}$. El cambio $u=nx$ muestra $\\int k_n=1$, y\n\\[\n \\int_{|x|\\geq\\delta}k_n(x)dx=\\pi^{-1/2}\\int_{|u|\\geq n\\delta}e^{-u^2}du\\longrightarrow0.\n\\]\nSu transformada es $e^{-\\xi^2/(4n^2)}$, integrable. Integrando directamente esta gaussiana con el signo inverso se obtiene $k_n$; esto prueba la fórmula sin usar previamente el teorema que la toma como herramienta.",
+          "enunciado_original_extraido": "4. Sea φ : x 7→ e\n−x\n2\n. Demuestre lo siguiente:\n(i)\nR\nR\nφ dλ =\n√\nπ.\n(ii) φˆ(x) = √πe−x\n2/4\n.\n(iii) Pongamos ξ = √\n1\nπ\nφ. Usando el inciso anterior, demuestre que la sucesi´on {ξn}∞\nn=1, donde\n∀ n ∈ N, x ∈ R (ξn(x) = nξ(nx))\nes una sucesi´on de Dirac en L\n1\n(R) que satisface las hip´otesis y la condici´on del teorema de inversi´on\nde Fourier."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l11-5",
+          "incisos_y_tareas": [
+            "(i) Cc∞⊂Schwartz; gaussiana no compacta; densidad Lp",
+            "(ii) estabilidad Fourier",
+            "consecuencia: divisores de cero L1"
+          ],
+          "archivo": "capitulos/07.tex",
+          "enunciado_latex": "Una función $f\\in C^\\infty(\\R^d)$ es de Schwartz si $\\sup_x|x^\\alpha\\partial^\\beta f(x)|<\\infty$ para todos los multiíndices $\\alpha,\\beta$. Probar: (i) $C_c^\\infty\\subset\\Sscr$ y las gaussianas pertenecen a $\\Sscr$ sin tener soporte compacto; $\\Sscr$ es denso en $L^p$, $p<\\infty$; (ii) Fourier preserva $\\Sscr$; (iii) $L^1(\\R)$ tiene divisores de cero.",
+          "solucion_latex": "(i) Para una función suave de soporte compacto, cada derivada tiene soporte en el mismo compacto, así que el producto por cualquier monomio es acotado. Las derivadas de una gaussiana son polinomios por la misma gaussiana; la exponencial domina todas las potencias, por lo que también es de Schwartz, y es estrictamente positiva en toda la recta. La densidad de $C_c^\\infty$ se probó en dimensión uno en el lema~\\ref{v4:densidad-suave}; en dimensión $d$ se toman productos de las funciones de corte para aproximar indicadoras de rectángulos y después funciones simples. Esto da densidad de $\\Sscr$.\n\n(ii) Toda derivada de una función de Schwartz, multiplicada por un monomio, es integrable: se domina su valor absoluto por $C(1+|x|)^{-d-1}$. Derivar bajo la integral y después integrar por partes en cada coordenada da\n\\[\n \\partial_\\xi^\\alpha\\widehat f=i^{|\\alpha|}\\widehat{x^\\alpha f},\\qquad\n \\xi^\\beta\\partial_\\xi^\\alpha\\widehat f\n =i^{|\\alpha|+|\\beta|}\\widehat{\\partial_x^\\beta(x^\\alpha f)}.\n\\]\nLos términos de frontera se anulan por decaimiento rápido. La última transformada está acotada por la norma $L^1$ de su argumento, lo que prueba todas las seminormas de Schwartz. La inversión muestra además que Fourier es una biyección de $\\Sscr$ sobre sí mismo.\n\n(iii) Sea $b(\\xi)=e^{-1/(1-\\xi^2)}$ si $|\\xi|<1$, y cero fuera. La prueba de suavidad del lema~\\ref{v4:densidad-suave}, aplicada a $1-\\xi^2$, muestra $b\\in C_c^\\infty$. Las funciones $b(\\xi)$ y $b(\\xi-3)$ son no nulas y tienen soportes disjuntos. Sus transformadas inversas $u,v$ pertenecen a $\\Sscr\\subset L^1$ y son no nulas por inversión. Como $\\widehat{u*v}=b(\\xi)b(\\xi-3)=0$, el ejercicio~\\ref{ej:v4-l11-1} da $u*v=0$. Son divisores de cero explícitamente construidos.",
+          "enunciado_original_extraido": "5. Una funci´on de Schwartz en R es una funci´on f : R → F de clase C∞ en R que satisface\n∀ n, m ∈ N ∪ {0}\nÅ\nsup\nx∈R\n|x\nmf(n)\n(x)| < +∞\nã\n.\nDemuestre lo siguiente:\n(i) Toda funci´on de clase C∞ con soporte compacto en R es una funci´on de Schwartz en R. Adem´as,\nla funci´on φ del ejercicio 4 es una funci´on de Schwartz en R que no es de soporte compacto en\nR. Deduzca que el subespacio de las funciones de Schwartz en R es denso en L\np\n(R) para todo\np ∈ [1, +∞[.\n(ii) El subespacio de las funciones de Schwartz en R es cerrado bajo la transformada de Fourier: para\ntoda funci´on de Schwartz f en R se tiene que ˆf es una funci´on de Schwartz en R.\nAhora considere la funci´on de Schwartz en R\n∀ x ∈ R\nÇ\nf(x) = ®\ne\n−1/(1−x\n2\n)\nsi |x| < 1\n0 si |x| ≥ 1\nå\n.\nUsando el teorema de inversi´on de Fourier, la proposici´on 3 y el inciso (ii), deduzca que el ´algebra de\nBanach L\n1\n(R) tiene divisores de cero.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 12,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1g6nU48iMt1rQJqdpmoWlNAkk1ZH138jJ/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect12.txt",
+      "sha256_texto_fuente": "68dedf8a15960e45854616b2b6ae08e5955ecbe17cfde6579fb0e7d00f573429",
+      "capitulo": 7,
+      "ancla": "lectura:v4-12",
+      "cantidad_ejercicios": 0,
+      "teoria": [
+        "Norma de caracteres Banach, representante continuo desde L∞.",
+        "Caracterización de todos los caracteres L1(R^d), unicidad y homeomorfismo débil estrella."
+      ],
+      "correcciones": [],
+      "ejercicios": []
+    },
+    {
+      "lectura": 13,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1s_6lVJXX5shkaNAlQSlu1j6NGSznhXeY/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect13.txt",
+      "sha256_texto_fuente": "8fe24970083a690a1b204ee0fa601b89188e5ed519c3721686b0d5c49383e0ac",
+      "capitulo": 8,
+      "ancla": "lectura:v4-13",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Plancherel mediante calor, adjunto inverso y extensión unitaria no circular.",
+        "Identidades de integración, Poisson, sinc L2 y constantes."
+      ],
+      "correcciones": [
+        "Sinc no es L1: su convolución se justifica en L2.",
+        "Última remisión del ejercicio4 corresponde a ejercicio2, no1."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l13-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/08.tex",
+          "enunciado_latex": "Para $t\\in\\R$, demostrar\n\\[\n \\int_{-1}^1\\frac{\\sin(t-y)}{t-y}dy\n =\\int_{-1}^1\\frac{\\sin y}{y}e^{iyt}dy,\n\\]\nprolongando los cocientes por continuidad en cero.",
+          "solucion_latex": "Sean $f=\\mathbf1_{[-1,1]}$ y $g(x)=e^{itx}f(x)$. Entonces $\\widehat f(y)=2\\sin y/y$ y $\\widehat g(y)=\\widehat f(y+t)=2\\sin(y+t)/(y+t)$. La transferencia bilineal del ejercicio~\\ref{ej:v4-l10-1} da $\\int f\\widehat g=\\int\\widehat f g$. Dividimos entre dos y cambiamos $y$ por $-y$ en la integral izquierda para obtener la fórmula.",
+          "enunciado_original_extraido": "1. Sea t ∈ R fijo. Demuestre que\nZ 1\n−1\nsen(t − y)\nt − y\ndλ(y) = Z 1\n−1\nsen(y)\ny\ne\niyt dλ(y).\nSugerencia: Tome f = χ[−1,1], g(x) = e\nitxf(x) y use el teorema de transferencia."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l13-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/08.tex",
+          "enunciado_latex": "Calcular la transformada de $f(x)=e^{-|x|}$ y la integral $\\int_\\R t^2/(1+t^2)^2\\,dt$.",
+          "solucion_latex": "Separar las dos semirrectas da\n\\[\n \\widehat f(\\xi)=\\int_0^\\infty e^{-x}(e^{ix\\xi}+e^{-ix\\xi})dx\n =\\frac1{1-i\\xi}+\\frac1{1+i\\xi}=\\frac2{1+\\xi^2}.\n\\]\nLa función $f$ es localmente absolutamente continua y $f'(x)=-\\sgn(x)e^{-|x|}$ casi en todas partes. Por ello $\\widehat{f'}(\\xi)=-2i\\xi/(1+\\xi^2)$. Además $\\norm{f'}_2^2=2\\int_0^\\infty e^{-2x}dx=1$. Plancherel da $4\\int\\xi^2/(1+\\xi^2)^2d\\xi=2\\pi$, así que la integral es $\\pi/2$.",
+          "enunciado_original_extraido": "2. Calcule la transformada de Fourier de la funci´on f(x) = e\n−|x| definida en todo R. Con ella, calcule\nel valor de la integral\nZ\nR\nt\n2\n(1 + t\n2)2\ndλ(t)."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l13-3",
+          "incisos_y_tareas": [
+            "semigrupo Poisson",
+            "convolución sinc con justificación L2"
+          ],
+          "archivo": "capitulos/08.tex",
+          "enunciado_latex": "Para $a>0$ sean $p_a(x)=a/[\\pi(x^2+a^2)]$ y $s_a(x)=\\sin(ax)/(\\pi x)$. Probar $p_a*p_b=p_{a+b}$ y $s_a*s_b=s_{\\min(a,b)}$.",
+          "solucion_latex": "La misma integración del ejercicio anterior da $\\widehat{e^{-a|x|}}(\\xi)=2a/(a^2+\\xi^2)$. La inversión, aplicable porque ambas funciones son integrables, implica $\\widehat{p_a}(\\xi)=e^{-a|\\xi|}$. Por el teorema de convolución y unicidad en $L^1$, $\\widehat{p_a*p_b}=e^{-(a+b)|\\xi|}=\\widehat{p_{a+b}}$.\n\nLa función $s_a$ no pertenece a $L^1$, de modo que no se puede aplicar el mismo argumento sin modificación. Es la transformada inversa no normalizada de $\\mathbf1_{[-a,a]}$, y pertenece a $L^2$. Hölder asegura que $s_a*s_b(x)$ existe para todo $x$. Aplicando Parseval al producto interno que expresa esa convolución,\n\\[\n (s_a*s_b)(x)=\\frac1{2\\pi}\\int_{\\R}\\mathbf1_{[-a,a]}(\\xi)\\mathbf1_{[-b,b]}(\\xi)e^{-ix\\xi}d\\xi\n =\\frac{\\sin(\\min(a,b)x)}{\\pi x}.\n\\]\nPara justificar la identidad de producto interno, escribimos la convolución como $\\ip{s_a}{\\overline{s_b(x-\\cdot)}}$ y usamos las fórmulas de reflexión y traslación de Fourier en $L^2$. Ambas funciones son reales y pares, lo que deja el signo indicado. En $x=0$ se toman los límites continuos.",
+          "enunciado_original_extraido": "3. Para cada a > 0 sean las funciones fa(x) = a/(π(x\n2 + a2\n)), ga(x) = sen(ax)/(πx). Usando la\ntransformada de Fourier pruebe que para cualesquiera a, b > 0\nfa ∗ fb = fa+b, ga ∗ gb = gmin{a,b}."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l13-4",
+          "incisos_y_tareas": [
+            "integral senos",
+            "integral racional",
+            "caso a=b y remisión corregida"
+          ],
+          "archivo": "capitulos/08.tex",
+          "enunciado_latex": "Demostrar, para $a,b>0$,\n\\[\n \\int_\\R\\frac{\\sin(at)\\sin(bt)}{t^2}dt=\\pi\\min(a,b),\\qquad\n \\int_\\R\\frac{t^2}{(t^2+a^2)(t^2+b^2)}dt=\\frac\\pi{a+b}.\n\\]",
+          "solucion_latex": "Evaluar $s_a*s_b=s_{\\min(a,b)}$ en cero da la primera integral, pues $s_a,s_b$ son pares y $s_c(0)=c/\\pi$. Para $a\\ne b$,\n\\[\n \\frac{t^2}{(t^2+a^2)(t^2+b^2)}\n =\\frac1{b^2-a^2}\\left(\\frac{b^2}{t^2+b^2}-\\frac{a^2}{t^2+a^2}\\right).\n\\]\nComo $\\int(t^2+c^2)^{-1}dt=\\pi/c$, integrar da $\\pi(b-a)/(b^2-a^2)=\\pi/(a+b)$. Para $b\\to a$, dominada se aplica tomando $b\\in[a/2,3a/2]$ y dominando por una constante multiplicada por $(t^2+a^2)^{-1}$; se obtiene el caso $a=b$. En particular $a=b=1$ reproduce el ejercicio~\\ref{ej:v4-l13-2}. La referencia final al ejercicio 1 en el original debe apuntar al ejercicio 2.",
+          "enunciado_original_extraido": "34. Usando el ejercicio anterior, demuestre que\nZ\nR\nsen(at) sen(bt)\nt\n2\ndλ(t) = π min{a, b},\nZ\nR\nt\n2\n(t\n2 + a2)(t2 + b2)\n=\nπ\na + b\npara cualesquiera a, b > 0. De esta ´ultima integral deduzca el resultado del ejercicio 1.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 14,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1iwtYwi_UM623noW1DHeJPRFzWIn9oByN/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect14.txt",
+      "sha256_texto_fuente": "b621fd0ba6dc9d5ca670f7a0207426befa1d2b74c0b1dab96f2888e43a5c167c",
+      "capitulo": 8,
+      "ancla": "lectura:v4-14",
+      "cantidad_ejercicios": 0,
+      "teoria": [
+        "Clasificación completa de subespacios cerrados invariantes; multiplicadores/proyecciones.",
+        "Complemento Paley–Wiener: representante continuo, núcleo reproductor, base sinc, muestreo y Parseval."
+      ],
+      "correcciones": [
+        "El subespacio invariante debe ser cerrado; Schwartz da contraejemplo sin esa hipótesis."
+      ],
+      "ejercicios": []
+    },
+    {
+      "lectura": 15,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1WRjRW2jbsxnfmDNBcyX70iSnMCJGoNgs/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect15.txt",
+      "sha256_texto_fuente": "5cea0ca66a05bec89278ac443ab9275c29fe94df35d5811799e07598f9046270",
+      "capitulo": 9,
+      "ancla": "lectura:v4-15",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Operaciones y homeomorfismos; productos de abiertos y compactos.",
+        "Axiomas correctos de base de identidad, separación T1/Hausdorff.",
+        "Bohr Z y topología profinita en ejercicios."
+      ],
+      "correcciones": [
+        "Axiomas de vecindades: x∈U y xV⊂U, con cuantificadores completos.",
+        "Profinita: normales finito índice son base en identidad, sus clases forman base global."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l15-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Demostrar que basta exigir continuidad de $(x,y)\\mapsto xy^{-1}$ para obtener un grupo topológico.",
+          "solucion_latex": "Si producto e inversión son continuos, su composición lo es. Recíprocamente, restringir la aplicación dada a $\\{e\\}\\times G$ prueba continuidad de $y\\mapsto y^{-1}$. Componer después $(x,y)\\mapsto(x,y^{-1})$ con la aplicación dada produce $xy$, que también es continua.",
+          "enunciado_original_extraido": "1. Sea G un grupo, y sea τ una topolog´ıa sobre G. Demuestre que G es un grupo topol´ogico si y solo\nsi la funci´on de G × G en G dada por\n(x, y) 7→ xy−1\nes continua en G × G."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l15-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Probar que un grupo infinito con la topología cofinita no es un grupo topológico.",
+          "solucion_latex": "La topología cofinita es $T_1$ porque los puntos son cerrados, pero no es Hausdorff: dos abiertos no vacíos tienen complementos finitos y, al ser infinito el conjunto, deben intersectarse. En un grupo topológico $T_1$ implica Hausdorff, contradicción.",
+          "enunciado_original_extraido": "2. Sea G un grupo infinito, y sea τ la topolog´ıa cofinita. Demuestre que G, con esta topolog´ıa, no es\nun grupo topol´ogico."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l15-3",
+          "incisos_y_tareas": [
+            "(i) grupo producto compacto",
+            "(ii) inyección de Z",
+            "(iii) imagen no discreta"
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Sea $P=\\prod_{\\chi\\in\\operatorname{Hom}(\\Z,\\T)}\\T$ y $j(n)=(\\chi(n))_\\chi$. Probar: (i) $P$ es un grupo topológico compacto; (ii) $j$ es un monomorfismo; (iii) la topología que induce sobre $\\Z$ no es discreta.",
+          "solucion_latex": "(i) Las operaciones coordenadas son continuas en la topología producto. Cada factor es compacto y Tychonoff hace compacto al producto. (ii) Cada coordenada de $j$ es un homomorfismo, luego $j$ lo es. Si $n\\ne0$, el carácter $\\chi(k)=e^{i\\pi k/n}$ satisface $\\chi(n)=-1\\ne1$, por lo que $j(n)\\ne j(0)$.\n\n(iii) Una vecindad básica de $j(0)$ restringe solo un número finito de caracteres $\\chi_1,\\ldots,\\chi_r$. Dado un arco suficientemente pequeño alrededor de uno en cada coordenada, dividamos el círculo en $M$ arcos de longitud $2\\pi/M$, con $M$ tan grande que el cociente de dos puntos del mismo arco caiga en los arcos pedidos. Entre los $M^r+1$ puntos $(\\chi_1(k),\\ldots,\\chi_r(k))$, $0\\leq k\\leq M^r$, dos están en el mismo producto de arcos por el principio del palomar. Si sus índices son $p<q$, el entero no nulo $q-p$ tiene todas sus imágenes en las vecindades de uno. Así ninguna vecindad de $j(0)$ lo aísla y el subgrupo no es discreto.",
+          "enunciado_original_extraido": "3. El prop´osito de este ejercicio es dotar a Z con una estructura de grupo topol´ogico no discreto.\n(i) Sea Hom(Z, T) el grupo de todos los caracteres de Z y sea\nG =\nY\nφ∈Hom(Z,T)\nT.\nDemuestre que G, con la topolog´ıa producto, es un grupo topol´ogico compacto.\n(ii) Considere ahora la funci´on ξ : Z → G dada por\n∀ n ∈ Z\n\nξ(n) = (φ(n))φ∈Hom(Z,T)\n\u0001\n.\nPruebe que ξ es un monomorfismo de grupos.\n(iii) Sea G la imagen de Z en G bajo ξ. Note que G ≃ Z como grupos. Adem´as, G, con la topolog´ıa del\nsubespacio, es un grupo topol´ogico. Demuestre que G no es discreto. Sugerencia: Suponga que ξ(1)\nes abierto, y tome un abierto b´asico U de la topolog´ıa producto de G tal que U ∩ G = ξ(1). Use que\nξ(1) genera a todo G para obtener una contradicci´on."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l15-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Construir la topología profinita de un grupo $G$ a partir de sus subgrupos normales de índice finito.",
+          "solucion_latex": "Esos subgrupos forman una base de vecindades de la identidad; la base de toda la topología está formada por sus clases, no solo por los subgrupos. Una intersección finita sigue siendo normal y de índice finito: el mapa al producto finito de cocientes tiene esa intersección como núcleo. Cada $N$ satisface $NN=N$, $N^{-1}=N$, $xN=N$ si $x\\in N$, y $xNx^{-1}=N$ para todo $x$. Se verifican las condiciones del teorema~\\ref{v4:base-identidad}. La topología es Hausdorff exactamente cuando la intersección de esos subgrupos es $\\{e\\}$; no se presupone esta propiedad para un grupo arbitrario.",
+          "enunciado_original_extraido": "4. Sea G un grupo, y sea N la familia de todos los subgrupos normales de G de ´ındice finito. Demuestre\nque N es una base para una topolog´ıa de G que hace de G un grupo topol´ogico. Esta topolog´ıa es llamada\nla topolog´ıa profinita de G.\n3"
+        }
+      ]
+    },
+    {
+      "lectura": 16,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1P3pCGCBP9fYzcjBAFm7v5TLxOdbJGqQz/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect16.txt",
+      "sha256_texto_fuente": "d553364a72cfad2bdf85b38addc07e06e0198d9c3b792912ebfd7a2d6c28ae72",
+      "capitulo": 9,
+      "ancla": "lectura:v4-16",
+      "cantidad_ejercicios": 9,
+      "teoria": [
+        "Subgrupos, clausuras, abiertos/cerrados; proyección cociente abierta.",
+        "Cociente Hausdorff iff subgrupo cerrado; normalidad y grupo cociente.",
+        "Componente conexa de e y cociente totalmente disconexo."
+      ],
+      "correcciones": [
+        "Topología cociente es la más fina que hace continua la proyección.",
+        "Suma directa/invariancia se emplean con clausuras y topología especificadas."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l16-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Probar que un subgrupo $H$ es abierto si y solo si tiene interior no vacío.",
+          "solucion_latex": "Si $H$ es abierto, contiene a $e$ y su interior no es vacío. Si $x\\in U\\subset H$ con $U$ abierto, $x^{-1}U$ es una vecindad abierta de $e$ contenida en $H$. Las traslaciones $h(x^{-1}U)$, $h\\in H$, son abiertas, están en $H$ y lo cubren. Así $H$ es abierto.",
+          "enunciado_original_extraido": "1. Demuestre que un subgrupo H de un grupo topol´ogico G es abierto si y solo si H˚ ̸= ∅."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l16-2",
+          "incisos_y_tareas": [
+            "hipótesis(i)-(iii) verificadas en la prueba",
+            "subgrupo",
+            "cerradura"
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Sea $\\mathcal A$ una familia no vacía de vecindades de $e$, dirigida por refinamiento, tal que para cada $U$ hay miembros $V,W$ con $VV\\subset U$ y $W^{-1}\\subset U$. Probar que $H=\\bigcap_{U\\in\\mathcal A}U$ es un subgrupo cerrado.",
+          "solucion_latex": "La identidad pertenece a todos los miembros. Si $x,y\\in H$, para cada $U$ elegimos $V$ con $VV\\subset U$; entonces $xy\\in U$. La propiedad de inversión implica de la misma forma $x^{-1}\\in U$ para todo $U$. Por tanto $H$ es subgrupo.\n\nPara cerradura, fijemos $U$ y escojamos $V$ con $VV\\subset U$. Si $x\\in\\overline V$, la vecindad $xV^{-1}$ corta $V$, de modo que $xv^{-1}=w$ para algunos $v,w\\in V$, y $x=wv\\in VV\\subset U$. Así $\\overline H\\subset\\overline V\\subset U$ para todo $U$, luego $\\overline H\\subset H$.",
+          "enunciado_original_extraido": "2. Sea G un grupo topol´ogico y sea A una familia de vecindades de e tales que:\n(i) Para todo U ∈ A existe V ∈ A tal que V V ⊆ U.\n(ii) Para todo U ∈ A existe V ∈ A tal que V\n−1 ⊆ U.\n(iii) Para cualesquiera U, V ∈ A existe W ∈ A tal que W ⊆ U ∩ V .\nDemuestre que el conjunto H =\nT\nU∈A\nU es un subgrupo cerrado de G."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l16-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Bajo las hipótesis anteriores, si para cada $U\\in\\mathcal A$ y $x\\in G$ existe $V\\in\\mathcal A$ con $x^{-1}Vx\\subset U$, probar que $H$ es normal.",
+          "solucion_latex": "Para $h\\in H$, $h\\in V$ implica $x^{-1}hx\\in U$. Como esto vale para todo $U$, $x^{-1}Hx\\subset H$. Aplicar la misma inclusión a $x^{-1}$ da la igualdad.",
+          "enunciado_original_extraido": "3. Bajo las hip´otesis del ejercicio anterior, suponga que para todo U ∈ A y para todo x ∈ G existe\nV ∈ A tal que x\n−1V x ⊆ U. Demuestre que H es normal en G."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l16-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Probar que un subgrupo es discreto en su topología de subespacio si y solo si tiene un punto aislado.",
+          "solucion_latex": "Si $\\{h\\}$ es abierto en $H$, la traslación por $kh^{-1}$, homeomorfismo de $H$, muestra que $\\{k\\}$ es abierto para todo $k\\in H$. Por tanto todo subconjunto es unión de abiertos unipuntuales. La implicación inversa es parte de la definición de discreto.",
+          "enunciado_original_extraido": "4. Demuestre que un subgrupo H de un grupo topol´ogico G es discreto si y solo si H tiene un punto\naislado (en la topolog´ıa del subespacio en H)."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l16-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Si $G$ es Hausdorff y $H$ un subgrupo compacto, demostrar que $q:G\\to G/H$ es cerrada.",
+          "solucion_latex": "Para $F\\subset G$ cerrado, $q^{-1}(q(F))=FH$ es cerrado por la proposición sobre producto de cerrado y compacto. Por la definición de topología cociente, una parte del cociente es cerrada exactamente cuando su preimagen es cerrada. Así $q(F)$ es cerrado.",
+          "enunciado_original_extraido": "35. Sea G un grupo de Hausdorff y sea H un subgrupo compacto de G. Demuestre que la proyecci´on\ncan´onica de G sobre G/H es un mapeo cerrado."
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v4-l16-6",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Si $H\\leq G$ y $U\\cap H$ es cerrado en $G$ para alguna vecindad $U$ de $e$, probar que $H$ es cerrado.",
+          "solucion_latex": "Escojamos una vecindad abierta $V\\subset U$. Entonces $\\overline H\\cap V\\subset\\overline{H\\cap U}=H\\cap U$: cualquier vecindad de un punto de $\\overline H\\cap V$, al intersectarla con $V$, todavía corta $H$. Si $x\\in\\overline H$, la vecindad $xV^{-1}$ corta $H$; sea $h=xv^{-1}\\in H$ con $v\\in V$. Entonces $h^{-1}x=v\\in\\overline H\\cap V\\subset H$, pues $\\overline H$ es subgrupo. Se concluye $x=h(h^{-1}x)\\in H$.",
+          "enunciado_original_extraido": "6. Sea G un grupo topol´ogico y sea H ≤ G tal que U ∩ H es cerrado en G para alguna vecindad U de\ne en G. Demuestre que H es cerrado en G."
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v4-l16-7",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Probar que $\\overline{\\{e\\}}$ es un subgrupo normal.",
+          "solucion_latex": "Es subgrupo por el resultado de clausura de subgrupos. Cada conjugación es un homeomorfismo y fija $e$, de modo que manda $\\overline{\\{e\\}}$ exactamente en $\\overline{\\{e\\}}$. Por tanto es normal. El cociente por este subgrupo es Hausdorff por el teorema~\\ref{v4:cociente-topologico}.",
+          "enunciado_original_extraido": "7. Pruebe que la cerradura de {e} en G es un subgrupo normal de G."
+        },
+        {
+          "numero_original": 8,
+          "label": "ej:v4-l16-8",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Si $F$ es compacto y $O$ es abierto con $F\\subset O$, hallar una vecindad $V$ de $e$ con $FV\\cup VF\\subset O$.",
+          "solucion_latex": "Para cada $x\\in F$, continuidad de multiplicación en $(x,e)$ proporciona abiertos $A_x\\ni x$ y $V_x\\ni e$ con $A_xV_x\\subset O$. Extraemos una cubierta finita de $F$ por los $A_x$ y tomamos la intersección $V_1$ de los $V_x$ correspondientes; entonces $FV_1\\subset O$. Repetimos en $(e,x)$ para obtener $V_2F\\subset O$. La vecindad $V=V_1\\cap V_2$ cumple ambas inclusiones.",
+          "enunciado_original_extraido": "8. Sea G un grupo topol´ogico, sea F ⊆ G compacto y sea U ⊆ G un abierto que contiene a F. De\u0002muestre que existe una vecindad V de e tal que (F V ) ∪ (V F) ⊆ U."
+        },
+        {
+          "numero_original": 9,
+          "label": "ej:v4-l16-9",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/09.tex",
+          "enunciado_latex": "Si $F$ es una vecindad compacta y abierta de $e$, probar que contiene un subgrupo compacto y abierto, que también es cerrado en $G$.",
+          "solucion_latex": "El ejercicio anterior con $O=F$ proporciona una vecindad $V$ con $FV\\subset F$. Escojamos una vecindad abierta simétrica $W\\subset V$. Como $e\\in F$, por inducción $W^n\\subset F$ para todo $n\\geq1$: si $W^n\\subset F$, entonces $W^{n+1}\\subset FV\\subset F$. El conjunto $H=\\bigcup_{n\\geq1}W^n$ es subgrupo, porque $W$ contiene $e$, es simétrico y $W^nW^m=W^{n+m}$. Es abierto por ser unión de abiertos; todo subgrupo abierto es cerrado. Al ser cerrado en el compacto $F$, es compacto. Así $H\\subset F$ tiene las tres propiedades.",
+          "enunciado_original_extraido": "9. Sea G un grupo topol´ogico y sea F una vecindad compacta y abierta de e. Demuestre que F\ncontiene un subgrupo compacto, abierto y cerrado de G.\nSugerencia: Si U es una vecindad sim´etrica de e, demuestre que S∞\nn=1\nU\n(n)\n, donde U\n(n) = UU · · ·U n veces\npara todo n ∈ N, es un subgrupo abierto y cerrado de G. Luego use el ejercicio 8 con F.\n4"
+        }
+      ]
+    },
+    {
+      "lectura": 17,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1ih2A6JyNvw_wzXjxFPYJ-xkXQfnrJjep/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect17.txt",
+      "sha256_texto_fuente": "c2ace8dd80bdea0c4142f2ae0c0e2ba234c6bee65b7f885610aa426182f1d6bf",
+      "capitulo": 10,
+      "ancla": "lectura:v4-17",
+      "cantidad_ejercicios": 4,
+      "teoria": "Teoría completa y todos los ejercicios explícitos desarrollados.",
+      "correcciones": [],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l17-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/10.tex",
+          "enunciado_latex": "Sea $\\mu$ una medida de Haar izquierda de $G$. Demuestre que $\\mu(G)<\\infty$ si y sólo si $G$ es compacto.",
+          "solucion_latex": "Si $G$ es compacto, la definición da $\\mu(G)<\\infty$. Para la otra dirección, supongamos que $G$ no es compacto. Elijamos un abierto no vacío $U$ de cierre compacto $K$. Construiremos $x_n$ con las traslaciones $x_nU$ disjuntas. Elegido $x_1=e$, si ya elegimos $x_1,\\ldots,x_n$, la unión finita $\\bigcup_{j=1}^n x_jKK^{-1}$ es compacta y no puede ser todo $G$. Tomemos $x_{n+1}$ fuera de ella. Si $x_{n+1}U\\cap x_jU\\ne\\varnothing$, existirían $u,v\\in U$ con $x_{n+1}u=x_jv$, de donde $x_{n+1}=x_jvu^{-1}\\in x_jKK^{-1}$, contradicción. La aditividad y la invariancia dan\n$\\mu(G)\\geq\\sum_n\\mu(x_nU)=\\sum_n\\mu(U)=\\infty$, pues $\\mu(U)>0$.\n\nLa hipótesis «$\\mu$ es de Haar» es esencial y no aparece explícita en el ejercicio original. Una probabilidad gaussiana sobre $\\R$ es finita, aunque $\\R$ no sea compacto; no es invariante por traslaciones.",
+          "enunciado_original_extraido": "1. Sea G un grupo localmente compacto de Hausdorff tal que µ(G) < +∞. Demuestre que G es\ncompacto."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l17-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/10.tex",
+          "enunciado_latex": "Si $A$ es Borel y $0<\\mu(A)<\\infty$, pruebe que $a(x)=\\mu(A\\cap xA)$ es continua.",
+          "solucion_latex": "Tenemos $1_A\\in L^2(G)$ y $L_x1_A=1_{xA}$. Por tanto\n$a(x)=\\ip{1_A}{L_x1_A}$. Para $x$ cercano a $y$, Cauchy--Schwarz da\n\\[\n |a(x)-a(y)|\\leq\\norm{1_A}_2\\norm{L_x1_A-L_y1_A}_2\\longrightarrow0\n\\]\npor la proposición \\ref{v4:haar-Lp}. La fórmula con $x^{-1}$ sugerida en la lectura también vale: trasladar $A\\cap x^{-1}A$ por $x$ produce $xA\\cap A$.",
+          "enunciado_original_extraido": "2. Sea G un grupo localmente compacto de Hausdorff, sea µ una medida de Haar izquierda sobre G y\nsea A ∈ B(G) tal que 0 < µ(A) < +∞. Demuestre que la funci´on x 7→ µ(A ∩ xA) de G en R es continua\nen G.\nSugerencia: En L\n2\n(G), escriba la funci´on como ⟨χA|Lx−1χA⟩."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l17-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/10.tex",
+          "enunciado_latex": "Con las mismas hipótesis, pruebe que $K=\\{x:\\mu(A\\cap xA)=\\mu(A)\\}$ es un subgrupo cerrado.",
+          "solucion_latex": "La invariancia da $\\mu(xA)=\\mu(A)$, y de aquí\n\\[\n \\norm{L_x1_A-1_A}_2^2=\\mu(A\\mathbin\\triangle xA)\n       =2\\mu(A)-2\\mu(A\\cap xA).\n\\]\nAsí $K$ es el estabilizador del vector $1_A$ para la representación $x\\mapsto L_x$ en $L^2$. Contiene $e$; si $x,y\\in K$, entonces $L_{xy}1_A=L_xL_y1_A=1_A$; si $x\\in K$, aplicar $L_{x^{-1}}$ a $L_x1_A=1_A$ da $L_{x^{-1}}1_A=1_A$. Es, pues, un subgrupo. Es cerrado porque la función $x\\mapsto\\norm{L_x1_A-1_A}_2$ es continua y $K$ es su conjunto de ceros.",
+          "enunciado_original_extraido": "3. Sea G un grupo localmente compacto de Hausdorff, sea µ una medida de Haar izquierda sobre G y\nsea A ∈ B(G) tal que 0 < µ(A) < +∞. Demuestre que el conjunto\nK = {x ∈ G : µ(A ∩ xA) = µ(A)}\nes un subgrupo cerrado de G."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l17-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/10.tex",
+          "enunciado_latex": "Sea $H$ un subgrupo denso de $G$ y $\\mu$ una medida no nula, finita en compactos y con la regularidad de la definición \\ref{v4:haar-def}. Si $\\mu(hA)=\\mu(A)$ para $h\\in H$, pruebe que $\\mu$ es de Haar izquierda.",
+          "solucion_latex": "Fijemos $f\\in\\Cc(G)$. La aplicación $x\\mapsto\\int L_xf\\,d\\mu$ es continua: cerca de un punto fijo los soportes quedan en un compacto $C$ y\n$|\\int(L_xf-L_yf)\\,d\\mu|\\leq\\mu(C)\\norm{L_xf-L_yf}_\\infty$, cantidad que tiende a cero. El conjunto donde esta integral vale $\\int f\\,d\\mu$ es cerrado y contiene al subgrupo denso $H$; es todo $G$. Aplicando la proposición \\ref{v4:haar-integral} concluimos la invariancia de la medida. No hemos supuesto que un punto de $G$ sea límite de una sucesión de $H$: la argumentación con un cerrado funciona también en grupos no metrizables.",
+          "enunciado_original_extraido": "4. Sea G un grupo localmente compacto, sea H ≤ G denso en G y sea µ una medida de Radon no cero\nsobre G tal que µ(xA) = µ(A) para todo A ∈ B(G) y para todo x ∈ H. Pruebe que µ es una medida de\nHaar izquierda sobre G.\n3"
+        }
+      ],
+      "auditoria_bloque": {
+        "lectura": 17,
+        "capitulo": 10,
+        "ejercicios": [
+          "ej:v4-l17-1",
+          "ej:v4-l17-2",
+          "ej:v4-l17-3",
+          "ej:v4-l17-4"
+        ],
+        "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+      }
+    },
+    {
+      "lectura": 18,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1WJHfBefZzqLxdXTLnoANRUzQG9NoLytc/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect18.txt",
+      "sha256_texto_fuente": "12e86b201c77409cf30b78b1e77da76a92519d69a69fc72f4ee2ba310715eb47",
+      "capitulo": 10,
+      "ancla": "lectura:v4-18",
+      "cantidad_ejercicios": 0,
+      "teoria": "Teoría completa y todos los ejercicios explícitos desarrollados.",
+      "correcciones": [],
+      "ejercicios": [],
+      "auditoria_bloque": {
+        "lectura": 18,
+        "capitulo": 10,
+        "ejercicios": [],
+        "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+      }
+    },
+    {
+      "lectura": 19,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1zoEho_DAbfTv7cL9pdKWTiqZ1q0qwdfB/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect19.txt",
+      "sha256_texto_fuente": "b73d63517251b79e0c05a2ef74b6c55000a2937e2097d07f940e2d75ac991b29",
+      "capitulo": 10,
+      "ancla": "lectura:v4-19",
+      "cantidad_ejercicios": 0,
+      "teoria": "Teoría completa y todos los ejercicios explícitos desarrollados.",
+      "correcciones": [],
+      "ejercicios": [],
+      "auditoria_bloque": {
+        "lectura": 19,
+        "capitulo": 10,
+        "ejercicios": [],
+        "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+      }
+    },
+    {
+      "lectura": 20,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1mjL3GMEkbLiYNprRP3zrYU1rfDSw2NN_/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect20.txt",
+      "sha256_texto_fuente": "20e8b079f458533e8a48d9fa3723e24ba47ba04747cc1f49173a5dbe0d63e519",
+      "capitulo": 11,
+      "ancla": "lectura:v4-20",
+      "cantidad_ejercicios": 3,
+      "teoria": "Teoría completa y todos los ejercicios explícitos desarrollados.",
+      "correcciones": [],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l20-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Demuestre que, para $f\\in\\Cc(G)$ y $\\eps>0$, existe una vecindad $U$ de $e$ tal que $x^{-1}y\\in U$ o $yx^{-1}\\in U$ implica $|f(x)-f(y)|<\\eps$.",
+          "solucion_latex": "Por el lema \\ref{v4:haar-uniforme}, elijamos una vecindad simétrica $U$ tal que $\\norm{R_uf-f}_\\infty<\\eps$ y $\\norm{L_uf-f}_\\infty<\\eps$ para $u\\in U$. Si $u=x^{-1}y$, entonces $y=xu$ y\n$|f(y)-f(x)|=|R_uf(x)-f(x)|<\\eps$. Si $u=yx^{-1}$, entonces $y=ux$ y\n$|f(y)-f(x)|=|L_{u^{-1}}f(x)-f(x)|<\\eps$.\n\nLa parte esencial del argumento es que la vecindad no depende de $x$. Esto procede de la cubierta finita de un compacto que contiene todos los soportes trasladados, demostrada en el lema citado; la continuidad puntual por sí sola no bastaría.",
+          "enunciado_original_extraido": "1. Sea f : G → F una funci´on continua con soporte compacto en G. Demuestre que f es uniforme\u0002mente continua en el sentido siguiente: para todo ε > 0 existe una vecindad U de e tal que para cualesquiera\nx, y ∈ G que satisfacen x\n−1y ∈ U o yx−1 ∈ U se cumple |f(x) − f(y)| < ε."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l20-2",
+          "incisos_y_tareas": [
+            "(i) discreto⇒átomo",
+            "(ii) átomo⇒discreto",
+            "(iii) equivalencia con conteo escalado"
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Pruebe la equivalencia entre: $G$ es discreto; $\\mu(\\{e\\})>0$; $\\mu$ es un múltiplo positivo de la medida de conteo.",
+          "solucion_latex": "Si $G$ es discreto, los compactos son finitos y la medida de conteo es de Haar. La unicidad da la tercera afirmación. Esta implica evidentemente la segunda. Supongamos ahora que $c=\\mu(\\{e\\})>0$. Por invariancia, cada singleton tiene medida $c$. Una vecindad compacta $K$ de $e$ tiene medida finita; no puede contener más de $\\mu(K)/c$ puntos, porque la medida de cualquier conjunto de $m$ puntos es $mc$. Así $K$ es finito. Existe un abierto $V$ con $e\\in V\\subset K$; al quitar los finitos puntos de $V\\setminus\\{e\\}$, que son cerrados por la propiedad Hausdorff, obtenemos que $\\{e\\}$ es abierto. Todas sus traslaciones son abiertas, luego $G$ es discreto. La medida de conteo en un conjunto infinito, incluso no numerable, se entiende como infinito sobre todo subconjunto infinito.",
+          "enunciado_original_extraido": "2. Demuestre que las siguientes afirmaciones son equivalentes:\n(i) G es discreto.\n(ii) µ({e}) > 0.\n(iii) µ es un m´ultiplo escalar de la medida de conteo."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l20-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Sea $H$ un subgrupo del grupo multiplicativo $(0,\\infty)$. Demuestre que es discreto o denso.",
+          "solucion_latex": "El logaritmo es un isomorfismo topológico de $(0,\\infty)$ sobre $(\\R,+)$. Basta estudiar el subgrupo aditivo $A=\\log H$. Si $A=\\{0\\}$, es discreto. En otro caso, $A$ tiene elementos positivos. Sea $d=\\inf(A\\cap(0,\\infty))$.\n\nSi $d=0$, dados $x\\in\\R$ y $\\eps>0$, elijamos $0<a\\in A$ con $a<\\eps$. Existe un entero $n$ con $|x-na|\\leq a/2<\\eps$. Como $na\\in A$, el grupo $A$ es denso.\n\nSi $d>0$, probaremos que $d\\in A$. Elijamos $a\\in A$ con $d\\leq a<2d$. Si $a>d$, la definición de ínfimo proporciona $b\\in A$ con $d\\leq b<a$ y entonces $0<a-b<d$, contradicción. Por tanto $a=d$. Para cualquier $x\\in A$ hacemos división euclidiana real: $x=nd+r$ con $n\\in\\Z$ y $0\\leq r<d$. Como $r=x-nd\\in A$, la definición de $d$ fuerza $r=0$. Así $A=d\\Z$, que es discreto. Al aplicar la exponencial obtenemos $H=\\{e^{nd}:n\\in\\Z\\}$ en este caso.",
+          "enunciado_original_extraido": "3. Sea G un subgrupo de ]0, +∞[. Demuestre que G es discreto o denso en ]0, +∞[.\n3"
+        }
+      ],
+      "auditoria_bloque": {
+        "lectura": 20,
+        "capitulo": 11,
+        "ejercicios": [
+          "ej:v4-l20-1",
+          "ej:v4-l20-2",
+          "ej:v4-l20-3"
+        ],
+        "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+      }
+    },
+    {
+      "lectura": 21,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/14qKzZtqSEGhNHHd6h21nG4JRlACa8R0B/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect21.txt",
+      "sha256_texto_fuente": "9d8b1a820efcd28419d518297c5841725d96065a687de8b822a7dc3f1b262c01",
+      "capitulo": 11,
+      "ancla": "lectura:v4-21",
+      "cantidad_ejercicios": 3,
+      "teoria": "Teoría completa y todos los ejercicios explícitos desarrollados.",
+      "correcciones": [],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l21-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Suponga $\\Delta_G|_H=\\Delta_H$. Si $f:G\\to\\C$ es Borel y se anula fuera de una unión numerable de compactos, pruebe que\n\\[\n \\int_Q\\int_H|f(xh)|\\,dh\\,d\\nu(xH)<\\infty\n \\quad\\Longrightarrow\\quad f\\in L^1(G).\n\\]\nExplique por qué las hipótesis requieren cuidado en el enunciado original.",
+          "solucion_latex": "El corolario \\ref{v4:mod-weil-positivo}, aplicado a $|f|$, identifica la integral iterada con $\\int_G|f|$. La finitud de la primera implica la de la segunda, que es exactamente $f\\in L^1(G)$. En particular, la afirmación vale para toda función Borel cuando $G$ es $\\sigma$-compacto.\n\nEl original no exige medibilidad. Esta no se deduce de la medibilidad de $|f|$: en el grupo compacto $\\T$, tomemos un conjunto no medible $A$ y $f=1$ en $A$, $f=-1$ fuera. Entonces $|f|=1$, de integral finita, pero $f$ no es medible. Podemos tomar $H=G$ para que la integral iterada del módulo esté perfectamente definida.\n\nIncluso añadiendo medibilidad, en grupos generales y con la convención exteriormente regular aparece otra dificultad real. Sea $G=\\R\\times D$ con $D$ discreto no numerable, $H=\\R\\times\\{e\\}$ y $f=1_{\\{0\\}\\times D}$. Ambas funciones modulares son uno y $G/H$ se identifica con $D$, con medida de conteo. Sobre cada fibra, $f$ es el indicador de un punto de $\\R$, así que la integral interior es cero y la integral iterada también. Pero la observación \\ref{v4:haar-radon} demuestra que $\\int_Gf=\\infty$. El conjunto donde $f$ es no nula no está contenido en una unión numerable de compactos. El contraejemplo muestra por qué no se extiende sin más la fórmula $L^1$ a todos los Borel positivos de un grupo no $\\sigma$-compacto. La versión demostrada conserva el contenido útil del ejercicio y declara la hipótesis adicional.",
+          "enunciado_original_extraido": "1. Suponga que ∆G = ∆H en H, y sea ν la medida cociente de G m´odulo H. Sea f : G → F una\nfunci´on tal que\nZ\nG/H\nZ\nH\n|f(xh)| dµH(h)dν(xH) < +∞.\nDemuestre que f ∈ L\n1\n(G)."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l21-2",
+          "incisos_y_tareas": [
+            "igualdad modular sobre H normal",
+            "núcleo de modular unimodular"
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Si $H$ es cerrado y normal en $G$, demuestre que $\\Delta_G|_H=\\Delta_H$. Deduzca que $\\ker\\Delta_G$ es unimodular.",
+          "solucion_latex": "Cuando $H$ es normal, $G/H$ es un grupo localmente compacto Hausdorff. Su medida de Haar izquierda es invariante bajo la acción izquierda de $G$, pues esta acción es precisamente la traslación por la clase $xH$. La necesidad en el teorema \\ref{v4:mod-weil} da $\\Delta_G|_H=\\Delta_H$. No estamos suponiendo la fórmula cociente para obtener la medida: usamos la existencia independiente de Haar en el grupo $G/H$.\n\nEl núcleo $N=\\ker\\Delta_G$ es cerrado porque $\\Delta_G$ es continua y $\\{1\\}$ es cerrado, y es normal porque es el núcleo de un homomorfismo. Aplicando lo anterior a $N$, obtenemos $\\Delta_N=\\Delta_G|_N=1$. Esta es la unimodularidad de $N$, aunque $G$ no sea unimodular.",
+          "enunciado_original_extraido": "2. Si H es normal en G, demuestre que ∆G = ∆H en H. Deduzca que el kernel de ∆G es un grupo\nunimodular."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l21-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/11.tex",
+          "enunciado_latex": "Sean $H$ cerrado y $K$ compacto, subgrupos de $G$, con $G=HK$. Demuestre que se pueden normalizar sus medidas de Haar de modo que\n\\[\n \\int_Gf(g)\\,dg=\\int_H\\int_K f(hk)\\,dk\\,dh\n \\qquad(f\\in L^1(G)).\n\\]",
+          "solucion_latex": "Normalicemos la medida de $K$ como probabilidad y pongamos $P=H\\times K$. El grupo $P$ actúa transitivamente en $G$ por $(h,k)\\cdot g=hgk^{-1}$: la hipótesis $G=HK$ permite escribir cualquier elemento como $hk^{-1}$. El estabilizador de $e$ es\n$L=\\{(\\ell,\\ell):\\ell\\in H\\cap K\\}$, que es compacto. La aplicación $P/L\\to G$, $(h,k)L\\mapsto hk^{-1}$, es una biyección continua. Es un homeomorfismo: el mapa $P\\to G$ es propio, pues la preimagen de un compacto $C$ es cerrada y está contenida en el compacto $(CK\\cap H)\\times K$; al descender al cociente, una biyección continua propia entre espacios localmente compactos Hausdorff es un homeomorfismo.\n\nLa función modular de un grupo es uno en todo subgrupo compacto. Así $\\Delta_P|_L=1=\\Delta_L$, y el teorema de Weil proporciona una medida $P$-invariante en $P/L$. Normalicemos también la medida de $L$ como probabilidad. Para $f\\in\\Cc(G)$, la función $F(h,k)=f(hk^{-1})$ tiene soporte compacto en $P$ por la propiedad anterior; es constante en las clases de $L$, de modo que $T_LF$ se identifica con $f$. La fórmula de Weil en $P$ da\n\\[\n \\int_{P/L}f\\,d\\eta=\\int_H\\int_K f(hk^{-1})\\,dk\\,dh\n                  =\\int_H\\int_K f(hk)\\,dk\\,dh,\n\\]\nporque la medida de Haar de un grupo compacto es invariante por inversión.\n\nLa medida de Haar de $G$ también es $P$-invariante: es invariante bajo la izquierda por $H$, y bajo la derecha por $K$ porque $\\Delta_G|_K=1$. La unicidad de la medida invariante en $P/L$ muestra que, después de reescalar la medida de $G$, esta coincide con $\\eta$. Obtenemos la igualdad deseada en $\\Cc(G)$. Para precisar la extensión a $L^1$, la imagen de la medida de Haar de $P$ bajo el mapa propio $p(h,k)=hk^{-1}$ es una medida finita en compactos y con la regularidad adoptada. La regularidad exterior se conserva porque $p$ es cerrado: si un abierto $U$ contiene $p^{-1}(A)$, el abierto $G\\setminus p(P\\setminus U)$ contiene $A$ y su preimagen está en $U$. La regularidad interior en abiertos se obtiene proyectando compactos. La igualdad ya probada en $\\Cc(G)$ identifica esta medida imagen con $\\mu_G$. Por aproximación simple, $f\\circ p\\in L^1(P)$ y su integral es $\\int_Gf$. Finalmente aplicamos Weil en $P$ al subgrupo normal y compacto $\\{e\\}\\times K$; el cociente es $H$ y la normalización de Haar da la integral iterada escrita arriba. La inversión en $K$ no altera la integral ni la integrabilidad.",
+          "enunciado_original_extraido": "3. Sea K un subgrupo compacto de G tal que G = HK. Demuestre que es posible elegir las medidas\nde Haar izquierdas µG, µH, µK de tal forma que\nZ\nG\nf dµG =\nZ\nH\nZ\nK\nf(hk) dµK(k)dµH(h).\nSugerencia: Considere la acci´on de H × K en G (h, k)· g = hgk−1, identifique G con H × K/H ∩ K y use\nel teorema 7 para probar que µG es H × K-invariante.\n4"
+        }
+      ],
+      "auditoria_bloque": {
+        "lectura": 21,
+        "capitulo": 11,
+        "ejercicios": [
+          "ej:v4-l21-1",
+          "ej:v4-l21-2",
+          "ej:v4-l21-3"
+        ],
+        "cobertura": "Teoría completa y todos los ejercicios explícitos desarrollados."
+      }
+    },
+    {
+      "lectura": 22,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1N7aDZOZZUPt-asUDpmxCmJs8_-gMd2Q7/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect22.txt",
+      "sha256_texto_fuente": "d3099357b4f453993c10ea40b48b9d26f527b990c1f8959b4e3cb06d8c383a16",
+      "capitulo": 12,
+      "ancla": "lectura:v4-22",
+      "cantidad_ejercicios": 5,
+      "teoria": [
+        "Convolución/involución con todos los factores modulares; reducción sigmafinita de integrandos L1.",
+        "Traslaciones fuertes e identidades aproximadas izquierda/derecha.",
+        "Conmutatividad de L1 iff grupo abeliano.",
+        "Young ponderada y contraejemplo a la versión no ponderada en grupos generales.",
+        "Unidad de L1 iff G discreto; se prueba también el recíproco anunciado."
+      ],
+      "correcciones": [
+        "En grupo no unimodular Young general incorpora Δ−1/p prima.",
+        "Definición Dirac usa toda vecindad, no la existencia de una vecindad.",
+        "Ej3 falso para f continua no acotada y núcleos sólo concentrados; se da contraejemplo e hipótesis de soportes decrecientes.",
+        "Continuidad uniforme de convolución se precisa respecto de traslación izquierda."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l22-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/12.tex",
+          "enunciado_latex": "Sean $1/p+1/q=1+1/r$, con exponentes en $[1,\\infty]$. Probar la versión válida en un grupo general:\n\\[\n \\norm{f*g}_r\\leq\\norm f_p\\norm{\\Delta^{-1/p'}g}_q.\n\\]\nEn un grupo unimodular se reduce a la desigualdad usual. Explicar por qué la versión sin peso no vale siempre.",
+          "solucion_latex": "Pongamos $h=\\Delta^{-1/p'}g$. Para $r<\\infty$ escribimos, con $z=y^{-1}x$,\n\\[\n |f(y)g(z)|=(|f(y)|^p|h(z)|^q)^{1/r}\n |f(y)|^{1-p/r}|h(z)|^{1-q/r}\\Delta(z)^{1/p'}.\n\\]\nAplicamos Hölder con recíprocos $1/r$, $1/p-1/r$ y $1/q-1/r=1/p'$. Para el tercer factor, el cambio $y=xz^{-1}$ da\n\\[\n \\int |h(y^{-1}x)|^q\\Delta(y^{-1}x)dy=\\int|h(z)|^qdz.\n\\]\nAsí\n\\[\n |f*g(x)|^r\\leq\\norm f_p^{r-p}\\norm h_q^{r-q}(|f|^p*|h|^q)(x).\n\\]\nEl teorema~\\ref{v4:conv-grupo}, seguido de integración, da la cota. Los factores de potencia cero se omiten. El caso $p=1$ se obtiene directamente por Jensen para $|f|/\\norm f_1$; el caso $r=\\infty$ es Hölder con el mismo cambio de variable y $q=p'$. De este modo se cubren los extremos sin dividir entre exponentes nulos.\n\nEl peso es real, no un artificio de la prueba. Para $1<p<\\infty$ y $a$ con $\\Delta(a)<1$, sean $g_U=L_ae_U$, de norma $L^1$ uno. Para $f\\in C_c$ no nula, el cambio de variable anterior y continuidad de traslaciones muestran\n\\[\n f*g_U\\longrightarrow\\Delta(a)^{-1}f(\\cdot a^{-1})\\quad\\text{en }L^p.\n\\]\nSu norma límite es $\\Delta(a)^{-1/p'}\\norm f_p>\\norm f_p$. La desigualdad sin peso, con $q=1,r=p$, fallaría para $U$ suficientemente pequeña. La convergencia se verifica expresando la integral como promedio de las funciones $\\Delta(au)^{-1}f(\\cdot u^{-1}a^{-1})$, $u\\in U$, que convergen en $L^p$ a la función indicada; sobre una vecindad fija de $e$, las normas y factores modulares están uniformemente acotados.",
+          "enunciado_original_extraido": "1. Demuestre el an´alogo del teorema de Young (teorema 5 de la lectura 9) en G."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l22-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/12.tex",
+          "enunciado_latex": "Si $G$ es discreto, demostrar que $L^1(G)$ tiene unidad.",
+          "solucion_latex": "Por invariancia, todos los puntos tienen una misma masa $c>0$; es finita porque los puntos son compactos y positiva porque son abiertos. La función $u=c^{-1}\\mathbf1_{\\{e\\}}$ satisface $u*f=f$ directamente en la suma de convolución. También $f*u=f$, pues solo contribuye el término $y=x$, de masa $c$. Con medida de conteo $c=1$ y la unidad es $\\delta_e$. No se confunde esta función con una masa puntual como medida en un grupo no discreto.",
+          "enunciado_original_extraido": "2. Si G es discreto, pruebe que L\n1\n(G) es un ´algebra unitaria.\nEl rec´ıproco del ejercicio 2 tambi´en es cierto, pero lo demostraremos m´as adelante."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l22-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/12.tex",
+          "enunciado_latex": "Para $f\\in C(G)$, demostrar que $e_U*f$ y $f*e_U$ existen en todo punto y convergen puntualmente a $f$, usando la red con soportes $\\supp e_U\\subset U$. Mostrar que, para una red de Dirac arbitraria, no basta que cada núcleo tenga soporte compacto.",
+          "solucion_latex": "En la primera convolución, la variable de integración está en $\\supp e_U$; en la segunda, está en $x(\\supp e_U)^{-1}$. Son compactos y $f$ es acotada en ellos, así que ambas integrales existen. Para $x$ fijo,\n\\[\n |e_U*f(x)-f(x)|\\leq\\sup_{y\\in U}|f(y^{-1}x)-f(x)|\\longrightarrow0.\n\\]\nPara la otra convolución usamos\n\\[\n f*e_U(x)=\\int e_U(z)\\Delta(z)^{-1}f(xz^{-1})dz.\n\\]\nLa función de $z$ dentro del promedio es continua y vale $f(x)$ en $e$; el mismo argumento prueba su límite.\n\nLa concentración de masa sola no controla una función no acotada. En $\\R$, sea $f(x)=e^{x^2}$, sea $b$ una función suave no negativa de integral uno apoyada en $[-1,1]$, y sea $h_n$ una identidad aproximada de soporte $[-1/n,1/n]$. Entonces $k_n=(1-1/n)h_n+n^{-1}b(\\cdot-n)$ es una sucesión de Dirac, cada término de soporte compacto, pero\n\\[\n (k_n*f)(0)\\geq n^{-1}e^{(n-1)^2}\\longrightarrow\\infty.\n\\]\nPor tanto se corrige el enunciado usando soportes que se contraen, condición que cumple la red construida en este capítulo.",
+          "enunciado_original_extraido": "3. Sea f : G → F una funci´on continua, y sea {ξα}α∈A una red de Dirac formada por funciones contin\u0002uas de coporte compacto en G. Demuestre que las redes {ξα ∗ f}α∈A y {f ∗ ξα}α∈A est´an bien definidas\ny convergen puntualmente a f en G."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l22-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/12.tex",
+          "enunciado_latex": "Si $f\\in L^1(G)$ y $g\\in L^\\infty(G)$, probar que $f*g$ está definida en todo punto, es acotada y satisface $\\norm{L_a(f*g)-f*g}_\\infty\\to0$ cuando $a\\to e$.",
+          "solucion_latex": "Elijamos un representante acotado de $g$. Entonces la integral absoluta es a lo sumo $\\norm f_1\\norm g_\\infty$ para cada $x$. Otro representante equivalente da la misma integral: inversión y traslaciones preservan nulos porque el factor modular es positivo. La identidad $L_a(f*g)=(L_af)*g$ da\n\\[\n \\norm{L_a(f*g)-f*g}_\\infty\\leq\\norm{L_af-f}_1\\norm g_\\infty\\longrightarrow0.\n\\]\nEsta es la continuidad uniforme por traslaciones izquierdas que se afirma; en particular implica continuidad ordinaria. En un grupo no abeliano conviene especificar la uniformidad utilizada en lugar de intercambiar sin explicación izquierda y derecha.",
+          "enunciado_original_extraido": "4. Sean f ∈ L\n1\n(G), g ∈ L∞(G). Demuestre que f ∗ g est´a definida en todo G, es acotada y uniforme\u0002mente continua en G."
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l22-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/12.tex",
+          "enunciado_latex": "Si $f,g\\in C_c(G)$, demostrar $\\supp(f*g)\\subseteq\\supp f\\,\\supp g$ y que $f*g\\in C_c(G)$.",
+          "solucion_latex": "Si $x$ no pertenece al producto de soportes, no puede ocurrir simultáneamente $y\\in\\supp f$ y $y^{-1}x\\in\\supp g$; el integrando es cero. El producto de soportes es compacto por continuidad de multiplicación. La convolución es continua por el ejercicio anterior, pues $g$ es acotada y $f\\in L^1$. Así se anula fuera de un compacto y pertenece a $C_c$.",
+          "enunciado_original_extraido": "5. Sean f, g ∈ L\n1\n(G) dos funciones continuas de soporte compacto en G. Demuestre que el soporte\nde f ∗ g est´a contenido en supp(f)supp(g); luego f ∗ g es de soporte compacto en G.\n3"
+        }
+      ]
+    },
+    {
+      "lectura": 23,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1I1IcGztWMp3trQIAJLSMKmXLfOi5DlVe/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect23.txt",
+      "sha256_texto_fuente": "b7285b48020d56daea964c6c5d0e1a8c731fc3ae668fe855b5f07701d6aaa4dd",
+      "capitulo": 13,
+      "ancla": "lectura:v4-23",
+      "cantidad_ejercicios": 4,
+      "teoria": [
+        "Continuidad fuerte/débil sobre unitarios y representaciones regulares.",
+        "Entrelazador correcto J con inversión y factor modular.",
+        "Invariancia cerrada, suma directa arbitraria continua, descomposición cíclica por Zorn.",
+        "Schur completo, adjuntos de entrelazadores y dimensión uno en grupos abelianos."
+      ],
+      "correcciones": [
+        "La fórmula original del entrelazador regular es falsa; Jf(y)=Δ(y)−1/2 f(y−1).",
+        "Irreducibilidad sólo usa subespacios cerrados; cyclicidad usa span cerrado.",
+        "Schur(ii) no se divide por un entrelazador cero; el escalar de T*T es real positivo."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l23-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "Demuestre que el conjunto $C(\\pi,\\pi')$ de entrelazadores es un subespacio de $\\Bcal(H,H')$.",
+          "solucion_latex": "El operador cero entrelaza. Si $S,T$ entrelazan y $a,b\\in\\C$, $(aS+bT)\\pi(x)=\\pi'(x)(aS+bT)$. Además, el subespacio es cerrado en norma: si $T_n\\to T$, las desigualdades $\\norm{(T_n-T)\\pi(x)}\\leq\\norm{T_n-T}$ y $\\norm{\\pi'(x)(T_n-T)}\\leq\\norm{T_n-T}$ permiten tomar límites en cada igualdad.",
+          "enunciado_original_extraido": "1. Sean π, π′representaciones de G sobre H y H′respectivamente. Demuestre que el conjunto C(π, π′)\nde todos los operadores de entrelazado para π y π\n′\nes un subespacio de CL(H, H′)."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l23-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "Demuestre que el conmutante $C(\\pi)$ es un álgebra de von Neumann.",
+          "solucion_latex": "Contiene $I$, es un subespacio por el ejercicio anterior y es cerrado bajo productos porque $(ST)\\pi(x)=S\\pi(x)T=\\pi(x)ST$. Es cerrado bajo adjuntas tomando la adjunta de $T\\pi(x^{-1})=\\pi(x^{-1})T$. Finalmente es cerrado en la topología débil de operadores: si una red $T_\\alpha$ del conmutante converge débilmente a $T$, para todo $u,v$,\n\\[\n\\ip{T\\pi(x)u}{v}=\\lim_\\alpha\\ip{T_\\alpha\\pi(x)u}{v}\n=\\lim_\\alpha\\ip{T_\\alpha u}{\\pi(x)^*v}\n=\\ip{\\pi(x)Tu}{v}.\n\\]\nLa igualdad de todos los coeficientes implica $T\\pi(x)=\\pi(x)T$. Esto es precisamente ser una subálgebra unital autoadjunta débilmente cerrada.",
+          "enunciado_original_extraido": "2. Sea π una representaci´on de G sobre H. Se define el centralizador de π como el conjunto C(π) de\ntodos los operadores lineales continuos de H que conmutan con π(x) para todo x ∈ G. Demuestre que\nC(π) es un ´algebra de von Neumann."
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l23-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "Si $M$ es cerrado e invariante, demuestre que $M^\\perp$ es invariante.",
+          "solucion_latex": "Para $v\\in M^\\perp$, $m\\in M$ y $x\\in G$, $\\ip{\\pi(x)v}{m}=\\ip{v}{\\pi(x^{-1})m}=0$, pues $\\pi(x^{-1})m\\in M$. Por definición de complemento ortogonal, $\\pi(x)v\\in M^\\perp$.",
+          "enunciado_original_extraido": "3. Sea π una representaci´on de G sobre H, y sea V un subespacio cerrado de H. Si V es π-invariante,\ndemuestre que V\n⊥ es π-invariante."
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l23-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "Para $M$ cerrado, pruebe que $M$ es invariante si y solo si $P_M\\in C(\\pi)$.",
+          "solucion_latex": "Si $M$ es invariante, también $M^\\perp$ lo es. Para $u=m+n$, con $m\\in M$, $n\\in M^\\perp$, tanto $P_M\\pi(x)u$ como $\\pi(x)P_Mu$ valen $\\pi(x)m$. Recíprocamente, si conmutan y $m\\in M$, entonces $\\pi(x)m=\\pi(x)P_Mm=P_M\\pi(x)m\\in M$.",
+          "enunciado_original_extraido": "4. Sea π una representaci´on de G sobre H, y V un subespacio cerrado de H y sea P la proyecci´on\nortogonal de H sobre V . Demuestre que V es π-invariante si y solo si P ∈ C(π).\n3"
+        }
+      ]
+    },
+    {
+      "lectura": 24,
+      "procedencia": "reconstrucción editorial independiente",
+      "fuente": "https://drive.google.com/file/d/1S_Am0ooAvf7IKqq7bVcxAlXrou3z1rO0/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect24.txt",
+      "sha256_texto_fuente": "67018e42c4c7b1b1fc7f8c28aee3463fc32d91a6ab31a7a8b058ba51337c1acd",
+      "capitulo": 13,
+      "ancla": "lectura:v4-24",
+      "cantidad_ejercicios": 8,
+      "teoria": [
+        "Reconstrucción editorial, no original de Valencia.",
+        "Contractividad por unitización y espectros.",
+        "No degeneración: equivalencias y aproximación fuerte.",
+        "Integración débil mediante Riesz, multiplicación e involución, covariancia.",
+        "Integral vectorial sin convergencia dominada para redes.",
+        "Recíproco: definición bien determinada en subespacio denso, extensión, unitariedad, continuidad, recuperación y unicidad.",
+        "Entrelazado, invariancia, irreducibilidad y cyclicidad.",
+        "Fidelidad regular, diferencia entre C* universal/reducida y justificación conjuntista del supremo."
+      ],
+      "correcciones": [
+        "Procedencia editorial diferenciada del curso original.",
+        "Límite de reconstrucción es fuerte, no norma.",
+        "Se distingue fidelidad en L1 de la comparación entre completaciones C*."
+      ],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l24-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{La representación trivial y una representación no fiel.}\nDemuestre que $\\varepsilon(f)=\\int_G f(x)dx$ es una $*$-representación no degenerada en $\\C$. Para $G=\\R$, encuentre una función no nula en su núcleo.",
+          "solucion_latex": "Por Fubini e invariancia izquierda,\n\\[\n\\varepsilon(f*g)=\\int_G f(y)\\left(\\int_Gg(y^{-1}x)dx\\right)dy\n=\\varepsilon(f)\\varepsilon(g).\n\\]\nLa integral absoluta está acotada por $\\norm f_1\\norm g_1$. La fórmula de inversión \\eqref{v4-l24-eq:inv} da $\\varepsilon(f^*)=\\overline{\\varepsilon(f)}$. Además, $\\varepsilon(e_U)=1$, de modo que $\\varepsilon(L^1(G))\\C=\\C$ y hay no degeneración. Su representación de grupo es $U(x)=1$, porque su integral reproduce $\\varepsilon$ y el teorema \\ref{v4-l24-t:inverse} da unicidad.\n\nEn $\\R$, la función $f=\\chi_{[0,1]}-\\chi_{[1,2]}$ tiene integral cero, pero $\\norm f_1=2$. Por tanto, $\\varepsilon$ no es inyectiva. La no degeneración se refiere a los vectores sobre los que actúa la representación; no equivale a tener núcleo cero como aplicación del álgebra.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l24-2",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Reconstrucción en $\\mathbb Z$.}\nSea $T$ un operador unitario en $H$. Para $a=(a_n)_{n\\in\\mathbb Z}\\in\\ell^1(\\mathbb Z)$ defina $\\rho_T(a)=\\sum_{n\\in\\mathbb Z}a_nT^n$. Pruebe que es una $*$-representación no degenerada y recupere su representación de grupo.",
+          "solucion_latex": "Las sumas parciales sobre conjuntos finitos forman una familia de Cauchy en norma porque\n\\[\n\\norm{\\sum_{n\\in F}a_nT^n}\\leq\\sum_{n\\in F}|a_n|.\n\\]\nLa suma converge absolutamente en el espacio de Banach $\\Bcal(H)$, no depende del orden, y $\\norm{\\rho_T(a)}\\leq\\norm a_1$. Para $a,b\\in\\ell^1$, la serie doble tiene suma de normas a lo sumo $\\norm a_1\\norm b_1$. Podemos reagrupar por $k=n+m$:\n\\[\n\\rho_T(a)\\rho_T(b)=\\sum_{n,m}a_nb_mT^{n+m}\n=\\sum_k\\left(\\sum_n a_nb_{k-n}\\right)T^k=\\rho_T(a*b).\n\\]\nComo $a^*_n=\\overline{a_{-n}}$ y $(T^n)^*=T^{-n}$, tomar adjuntas de sumas parciales y pasar al límite da $\\rho_T(a^*)=\\rho_T(a)^*$. El elemento $\\delta_0$ se transforma en $I$; esto prueba no degeneración. La representación del grupo es $U(k)=T^k$, fuertemente continua porque $\\mathbb Z$ es discreto. Además, $\\rho_T(\\delta_k)=T^k$, que verifica directamente la reconstrucción.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l24-3",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Una identidad aproximada explícita en $\\R$.}\nCon medida de Lebesgue, sea $e_n(x)=\\tfrac n2\\chi_{[-1/n,1/n]}(x)$. Demuestre que $e_n*f\\to f$ en $L^1(\\R)$ y que $\\Pi_U(e_n)u\\to u$ para toda representación unitaria fuertemente continua de $\\R$.",
+          "solucion_latex": "Cada $e_n$ es no negativa, tiene integral uno y su soporte se contrae a cero. Aunque no es continua, pertenece a $L^1$ y se puede usar la misma estimación de \\eqref{v4-l24-eq:approxbound}:\n\\[\n\\norm{e_n*f-f}_1\\leq\\frac n2\\int_{-1/n}^{1/n}\\norm{L_tf-f}_1dt\n\\leq\\sup_{|t|\\leq1/n}\\norm{L_tf-f}_1\\longrightarrow0.\n\\]\nLa última convergencia procede de continuidad en cero: dado $\\varepsilon$, todos los valores con $|t|<\\delta$ son menores que $\\varepsilon$, y elegimos $n$ con $1/n<\\delta$. De igual manera,\n\\[\n\\norm{\\Pi_U(e_n)u-u}\\leq\\sup_{|t|\\leq1/n}\\norm{U(t)u-u}\\longrightarrow0.\n\\]\nNo se afirma convergencia en norma de operadores, pues la vecindad elegida puede depender del vector $u$.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 4,
+          "label": "ej:v4-l24-4",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Evaluación de Fourier como representación.}\nPara $\\xi\\in\\R$ ponga $\\chi_\\xi(x)=e^{-i\\xi x}$ y $\\Phi_\\xi(f)=\\int_\\R f(x)e^{-i\\xi x}dx$. Verifique multiplicatividad, compatibilidad con involución y $\\norm{\\Phi_\\xi}=1$.",
+          "solucion_latex": "El grupo es aditivo y $\\Delta=1$. Aplicando Fubini y $x=y+z$,\n\\[\n\\Phi_\\xi(f*g)=\\int_\\R\\int_\\R f(y)g(z)e^{-i\\xi(y+z)}dzdy\n=\\Phi_\\xi(f)\\Phi_\\xi(g).\n\\]\nPor $f^*(x)=\\overline{f(-x)}$ y $y=-x$,\n\\[\n\\Phi_\\xi(f^*)=\\int_\\R\\overline{f(y)}e^{i\\xi y}dy\n=\\overline{\\Phi_\\xi(f)}.\n\\]\nLa desigualdad $|\\Phi_\\xi(f)|\\leq\\norm f_1$ prueba $\\norm{\\Phi_\\xi}\\leq1$. Para obtener la cota opuesta, tome cualquier $h\\geq0$ integrable con integral uno, y defina $f(x)=e^{i\\xi x}h(x)$. Entonces $\\norm f_1=1$ y $\\Phi_\\xi(f)=1$. Esto también prueba que la funcional es no nula y, al actuar en $\\C$, no degenerada.\nCon la convención euclidiana de este volumen, $\\Phi_\\xi(f)=\\widehat f(-\\xi)$.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 5,
+          "label": "ej:v4-l24-5",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Fidelidad de la representación regular en $L^1(G)$.}\nSi $\\Pi_\\lambda(f)=0$ como operador sobre $L^2(G)$, demuestre que $f=0$ en $L^1(G)$. Explique por qué esto no identifica automáticamente $C^*(G)$ con $C_r^*(G)$.",
+          "solucion_latex": "Las funciones $e_U\\in\\Cc(G)$ pertenecen a $L^2(G)$, porque son acotadas y tienen soporte de medida finita. Por el ejemplo \\ref{v4-l24-e:regular}, $\\Pi_\\lambda(f)e_U=f*e_U=0$ en $L^2$. Además, $f*e_U\\in L^1$ por la proposición \\ref{v4-l24-p:banach}; las dos interpretaciones de la convolución coinciden casi en todas partes. Esto se comprueba aproximando $f$ por funciones de $\\Cc$: las convoluciones convergen tanto en $L^1$ como en $L^2$, y una sucesión que converge en ambas normas tiene el mismo límite casi en todas partes, extrayendo subsucesiones convergentes casi en todas partes. Así, $f*e_U=0$ también en $L^1$. Por el lema \\ref{v4-l24-l:approx}, $f*e_U\\to f$ en $L^1$, luego $\\norm f_1=0$.\n\nEste argumento prueba inyectividad sobre el álgebra densa $L^1(G)$. Una aplicación continua inyectiva sobre un subespacio denso puede adquirir núcleo al extenderse a otra completación. Para identificar ambas álgebras $C^*$ hace falta controlar las normas de completación; la fidelidad en $L^1$ por sí sola no prueba ese control.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 6,
+          "label": "ej:v4-l24-6",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Por qué es indispensable la no degeneración.}\nSea $U_0$ una representación en $H_0$, sea $K\\ne\\{0\\}$ y defina $\\rho(f)=\\Pi_{U_0}(f)\\oplus0$ en $H_0\\oplus K$. Pruebe que $\\rho$ es una $*$-representación que no puede ser la representación integrada de una representación unitaria en todo $H_0\\oplus K$.",
+          "solucion_latex": "Las operaciones de suma directa se realizan componente a componente, así que multiplicatividad e involución se heredan de $\\Pi_{U_0}$ y de la representación cero. Todo vector $(0,k)$ con $k\\in K$ es anulado por todas las $\\rho(f)$. Para $k\\ne0$, la proposición \\ref{v4-l24-p:nd} implica degeneración. Si existiera una representación unitaria $W$ con $\\Pi_W=\\rho$, el teorema \\ref{v4-l24-t:direct} daría\n\\[\n(0,k)=\\lim_U\\Pi_W(e_U)(0,k)=\\lim_U\\rho(e_U)(0,k)=0,\n\\]\ncontradicción. En $H_0$ sí se recupera $U_0$; el problema consiste exactamente en el sumando anulado $K$.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 7,
+          "label": "ej:v4-l24-7",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Conmutante e irreducibilidad.}\nPruebe que $U$ es irreducible si y solo si todo operador que conmuta con todas las $\\Pi_U(f)$ es un múltiplo escalar de $I$. Precise qué significa aquí ``invariante''.",
+          "solucion_latex": "Por el teorema \\ref{v4-l24-t:intertwine}, el conmutante de las $\\Pi_U(f)$ coincide con el de los $U(x)$. Si $U$ es irreducible, el lema de Schur (teorema \\ref{v4:schur}) implica que ese conmutante es $\\C I$.\n\nRecíprocamente, sea $M$ un subespacio cerrado $U$-invariante. También $M^\\perp$ es invariante: para $v\\in M^\\perp$ y $m\\in M$,\n\\[\n\\ip{U(x)v}{m}=\\ip{v}{U(x^{-1})m}=0,\n\\]\nporque $U(x^{-1})m\\in M$. La proyección ortogonal $P_M$ conmuta entonces con cada $U(x)$: ambos lados de $P_MU(x)=U(x)P_M$ son iguales sobre cada sumando de $H=M\\oplus M^\\perp$. Conmuta, por tanto, con toda $\\Pi_U(f)$. Por hipótesis, $P_M=cI$. Como $P_M^2=P_M$, $c^2=c$; en $\\C$ esto implica $c=0$ o $c=1$. En consecuencia, $M=\\{0\\}$ o $M=H$.\n\nLa palabra ``cerrado'' es esencial: la irreducibilidad unitaria se define usando subespacios cerrados invariantes. La existencia de un subespacio algebraico propio, denso e invariante no la contradice.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        },
+        {
+          "numero_original": 8,
+          "label": "ej:v4-l24-8",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/13.tex",
+          "enunciado_latex": "\\textbf{Convergencia fuerte que no es convergencia en norma.}\nPara la representación regular de $\\R$, pruebe que los operadores del ejercicio \\ref{ej:v4-l24-3} convergen fuertemente a $I$, pero no en norma de operadores. Puede utilizar el teorema de Plancherel y la convención $\\widehat f(\\xi)=\\int_\\R f(x)e^{-i\\xi x}dx$.",
+          "solucion_latex": "La convergencia fuerte es el ejercicio \\ref{ej:v4-l24-3} aplicado a $\\lambda$. Para la norma, calculamos\n\\[\n\\widehat e_n(\\xi)=\\begin{cases}\n\\displaystyle\\frac{\\sin(\\xi/n)}{\\xi/n},&\\xi\\ne0,\\\\[4pt]\n1,&\\xi=0.\n\\end{cases}\n\\]\nEn efecto, integramos $\\tfrac n2e^{-i\\xi x}$ entre $-1/n$ y $1/n$; para $\\xi=0$ usamos integral uno. Plancherel identifica unitariamente la convolución por $e_n$ con la multiplicación por $\\widehat e_n$. La identidad de convolución se comprueba primero en $\\Cc$ y se extiende a $L^2$ por la estimación del ejemplo \\ref{v4-l24-e:regular}.\n\nEn $\\xi=n\\pi$ el multiplicador vale cero. Por continuidad, para cada $\\varepsilon>0$ existe un intervalo $J$ de medida positiva y finita, alrededor de $n\\pi$, en el que $|\\widehat e_n(\\xi)-1|>1-\\varepsilon$. Tome $v\\in L^2$ cuyo transformado unitario de Plancherel sea $\\chi_J/\\sqrt{|J|}$. Tiene norma uno y\n\\[\n\\norm{(\\Pi_\\lambda(e_n)-I)v}_2^2\n=\\frac1{|J|}\\int_J|\\widehat e_n(\\xi)-1|^2d\\xi\n\\geq(1-\\varepsilon)^2.\n\\]\nPor definición de norma de operador, $\\norm{\\Pi_\\lambda(e_n)-I}\\geq1-\\varepsilon$. Como $\\varepsilon$ es arbitrario, la norma es al menos uno para cada $n$, y no tiende a cero. El intervalo y el vector pueden depender de $n$; esto es compatible con convergencia fuerte para cada vector fijo.",
+          "fuente_latex": "tmp/originales/04/lect24.tex"
+        }
+      ]
+    },
+    {
+      "lectura": 25,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1HIf89Q_vWI48ZuYclaaRkqCNXf6NBcqQ/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect25.txt",
+      "sha256_texto_fuente": "ced4e0fd66a9288d86dd65cd70c5dd7ec6283a361dfbd9416abeb084a894735c",
+      "capitulo": 14,
+      "ancla": "lectura:v4-25",
+      "cantidad_ejercicios": 3,
+      "teoria": {
+        "1-3": "Definición, operaciones de caracteres y representaciones unitarias de dimensión1.",
+        "4": "v4:dual-topologico: producto de dos grupos, incluyendo topología.",
+        "5(i)-(ii)": "v4:duales-modelos: R, T=R/(2πZ), Z y cíclicos finitos.",
+        "6-7": "v4:compacto-abierta: subbase en C(X), Hausdorff y convergencia uniforme en compactos con redes.",
+        "8": "v4:dual-topologico: continuidad de operaciones.",
+        "9(i)-(ii)": "v4:dual-compacto-discreto: compacto→discreto, discreto→compacto."
+      },
+      "correcciones": [],
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "label": "ej:v4-l25-1",
+          "incisos_y_tareas": [
+            "Enunciado completo, todas sus afirmaciones y solución desarrollada."
+          ],
+          "archivo": "capitulos/14.tex",
+          "enunciado_latex": "Sea $G$ un grupo abeliano finito de orden $n$. Demuestre que $\\widehat G\\simeq G$. Explique por qué la afirmación no proporciona, en general, una identificación canónica de $G$ con su dual.",
+          "solucion_latex": "Primero justificamos la descomposición finita que usaremos. En un grupo abeliano finito, dados elementos de órdenes $r,s$, existe un elemento de orden $\\operatorname{mcm}(r,s)$. Para cada primo $p$, una potencia del elemento cuyo orden contiene la mayor potencia $p^{a_p}$ proporciona un elemento de ese orden; el producto de esos elementos, que conmutan y tienen órdenes coprimos, tiene orden $\\prod_pp^{a_p}$. Por ello, si $g$ tiene orden máximo $m$, el orden de todo elemento divide $m$.\n\nEl carácter de $\\langle g\\rangle$ que envía $g$ a $e^{2\\pi i/m}$ se extiende algebraicamente a $G$. Para ver el paso de extensión, si ya está definido en un subgrupo $H$ y $x\\notin H$, sea $k$ el menor entero positivo con $x^k\\in H$. Elija $z\\in\\T$ con $z^k=\\chi(x^k)$ y defina $\\chi(hx^j)=\\chi(h)z^j$. Si $hx^j=h'x^{j'}$, entonces $j-j'$ es múltiplo de $k$; la ecuación de la raíz garantiza que ambas fórmulas coinciden. Se comprueban producto y restricción directamente. Repetir el paso un número finito de veces extiende el carácter a $G$.\n\nComo todos los elementos de $G$ tienen orden que divide $m$, la imagen del carácter extendido está en las raíces $m$-ésimas, y su restricción a $\\langle g\\rangle$ es un isomorfismo sobre ellas. Todo $x\\in G$ puede escribirse de manera única como $g^jh$ con $h\\in\\ker\\chi$: elija $j$ que iguale las imágenes y use que $\\langle g\\rangle\\cap\\ker\\chi=\\{e\\}$. Así $G\\simeq\\langle g\\rangle\\times\\ker\\chi$. La inducción sobre el orden descompone $G$ en un producto finito de grupos cíclicos.\n\nCada factor cíclico es isomorfo a su dual por la proposición~\\ref{v4:duales-modelos}, y el dual de un producto finito es el producto de los duales. Esto prueba $\\widehat G\\simeq G$; todas las topologías finitas de Hausdorff son discretas, por lo que también es un isomorfismo topológico. Se eligieron generadores y descomposiciones. La identificación realmente canónica será con el \\emph{bidual}: $x$ determina la evaluación $\\chi\\mapsto\\chi(x)$ sin esas elecciones.",
+          "enunciado_original_extraido": "1. Sea G un grupo abeliano finito de orden n. Demuestre que G“ ≃ G.\nSugerencia: Pruebe el ejercicio primero para grupos c´ıclicos."
+        },
+        {
+          "numero_original": 2,
+          "label": "ej:v4-l25-2",
+          "incisos_y_tareas": [
+            "inyectividad del mapa dual del cociente",
+            "imagen=núcleo",
+            "sobreyectividad de restricción",
+            "topología de subespacio",
+            "topología cociente; apertura"
+          ],
+          "archivo": "capitulos/14.tex",
+          "enunciado_latex": "Sea $A\\xrightarrow{f}B\\xrightarrow{g}C$ una sucesión exacta corta de grupos LCA: $f$ identifica $A$ con $\\ker g$ con su topología de subespacio, y $g$ identifica $C$ con $B/f(A)$ con su topología cociente. Pruebe que\n\\[\n \\widehat C\\xrightarrow{\\widehat g}\\widehat B\n \\xrightarrow{\\widehat f}\\widehat A,\n \\qquad \\widehat g(\\eta)=\\eta\\circ g,\\quad\n \\widehat f(\\chi)=\\chi\\circ f,\n\\]\nes exacta corta en el mismo sentido topológico.",
+          "solucion_latex": "La precomposición es continua para la topología compacto-abierta: la imagen de un compacto por $f$ o $g$ es compacta. Como $g$ es sobreyectiva, $\\eta\\circ g=1$ implica $\\eta=1$, luego $\\widehat g$ es inyectiva. Si $\\chi$ está en su imagen, se anula en $f(A)$. Recíprocamente, si $\\chi\\circ f=1$, la fórmula $\\eta(g(b))=\\chi(b)$ está bien definida porque dos preimágenes difieren por un elemento de $f(A)$. Es un homomorfismo y es continuo por la definición de topología cociente. Así\n\\[\n \\operatorname{im}\\widehat g=\\ker\\widehat f=f(A)^\\perp.\n\\]\nLa sobreyectividad de $\\widehat f$ significa que \\emph{todo carácter continuo de un subgrupo cerrado se extiende al grupo}. Esa afirmación no se deduce de la definición de carácter ni de una extensión algebraica: debe preservarse la continuidad. El teorema~\\ref{v4:dual-exactitud}, demostrado completamente al final del capítulo~\\ref{cap:v4-16}, prueba que la restricción $\\widehat B\\to\\widehat{f(A)}$ es sobreyectiva y abierta. Puesto que $f$ es un isomorfismo topológico sobre su imagen, esto prueba la misma afirmación para $\\widehat f$ y garantiza la topología cociente.\n\nFinalmente, el lema~\\ref{v4:dual-cociente-encaje} demuestra que la precomposición por $B\\to B/f(A)$ es un homeomorfismo sobre el aniquilador $f(A)^\\perp$, con la topología de subespacio. Aplicado al isomorfismo $C\\simeq B/f(A)$ prueba la condición topológica restante para $\\widehat g$. Esta solución separa las verificaciones inmediatas del resultado central de dualidad que necesita; las remisiones contienen sus pruebas y no son hipótesis adicionales sobre los grupos.",
+          "enunciado_original_extraido": "2. Una sucesi´on exacta corta de grupos localmente compactos abelianos es una sucesi´on de homomor\u0002fismos de grupos topol´ogicos\nA\nf\n−−−−→ B\ng\n−−−−→ C,\ndonde:\n(i) f es inyectiva y g es suprayectiva.\n3(ii) ker g = imf.\n(iii) A tiene la topolog´ıa del subespacio y C tiene la topolog´ıa cociente.\nDemuestre que la sucesi´on exacta corta de grupos localmente compactos abelianos A\nf\n−→ B\ng\n−→ C induce\nuna sucesi´on exacta corta de grupos duales\nC“ gb−−−−→ B“ fb−−−−→ A. b"
+        },
+        {
+          "numero_original": 3,
+          "label": "ej:v4-l25-3",
+          "incisos_y_tareas": [
+            "dual del producto de compactos",
+            "dual de suma discreta",
+            "corrección de hipótesis y topologías"
+          ],
+          "archivo": "capitulos/14.tex",
+          "enunciado_latex": "Demuestre las siguientes versiones precisas de los isomorfismos de la lectura:\n\\begin{enumerate}\n\\item Si cada $G_n$ es compacto, el dual de $\\prod_{n\\ge1}G_n$, con topología producto, es isomorfo a $\\bigoplus_{n\\ge1}\\widehat G_n$, dotado de la topología discreta.\n\\item Si cada $G_n$ es discreto, el dual de $\\bigoplus_{n\\ge1}G_n$, dotado de la topología discreta, es isomorfo a $\\prod_{n\\ge1}\\widehat G_n$, dotado de la topología producto.\n\\end{enumerate}\nExplique por qué no basta suponer que los $G_n$ sean localmente compactos sin especificar las topologías de las sumas.",
+          "solucion_latex": "(i) Sea $\\chi$ un carácter del producto. La continuidad en la identidad proporciona una vecindad básica $U$ cuya imagen está en el semiplano derecho. Sólo un conjunto finito $F$ de coordenadas está restringido en $U$. El subgrupo de elementos con coordenadas identidad en $F$ está contenido en $U$, por lo que su imagen es un subgrupo de ese semiplano. El lema~\\ref{v4:arco-sin-subgrupos} obliga a que $\\chi$ sea trivial en ese subgrupo. En consecuencia depende únicamente de las coordenadas de $F$, y el resultado sobre productos finitos da\n\\[\n \\chi((x_n))=\\prod_{n\\in F}\\chi_n(x_n).\n\\]\nLas restricciones a cada factor determinan de manera única los $\\chi_n$, todos salvo un número finito triviales. Esto da el isomorfismo algebraico con la suma directa. El producto de los compactos es compacto por Tychonoff, luego su dual es discreto; el isomorfismo es topológico con la topología especificada.\n\n(ii) Un elemento de la suma directa tiene sólo un número finito de coordenadas no identidad. Por eso cualquier familia $(\\chi_n)$ define el carácter\n$\\chi((x_n))=\\prod_n\\chi_n(x_n)$: el producto que se evalúa es finito. Es continuo porque el dominio es discreto. Recíprocamente, restringir a los factores recupera toda la familia, de modo que tenemos una biyección homomorfa. Para un subconjunto compacto del dominio, que es finito, la evaluación depende de un número finito de coordenadas de la familia de caracteres; por ello la biyección desde $\\prod_n\\widehat G_n$ al dual es continua. Su dominio es compacto, pues cada $\\widehat G_n$ lo es, y su codominio es Hausdorff. Una biyección continua de compacto en Hausdorff es homeomorfismo.\n\nEn general, $\\prod_nG_n$ puede dejar de ser localmente compacto: en $\\R^{\\N}$ toda vecindad básica restringe sólo un número finito de coordenadas. Si estuviera contenida en un compacto, la proyección de ese compacto sobre alguna coordenada no restringida contendría todo $\\R$, imposible para un compacto. Por otra parte, «suma directa» especifica una operación algebraica, pero no determina por sí sola una topología. Las versiones anteriores fijan ambos datos y permanecen dentro de los grupos localmente compactos. No se afirma el enunciado general sin esas precisiones.",
+          "enunciado_original_extraido": "3. Sea {Gn : n ∈ N} una familia de grupos localmente compactos y de Hausdorff. Demuestre que\ntenemos los isomorfismos can´onicos\n◊\nY∞\nn=1\nGn ≃\nM∞\nn=1\nG”n\ny\nM\n◊ ∞\nn=1\nGn ≃\nY∞\nn=1\nG”n.\n4"
+        }
+      ],
+      "auditoria_bloque": {
+        "lectura": 25,
+        "capitulo": 14,
+        "ancla": "lectura:v4-25",
+        "ejercicios": [
+          "ej:v4-l25-1",
+          "ej:v4-l25-2",
+          "ej:v4-l25-3"
+        ],
+        "incisos": {
+          "1": "Grupo abeliano finito autodual; descomposición cíclica justificada, identificación no canónica.",
+          "2": "Inyectividad, imagen=núcleo, sobreyectividad y ambas condiciones topológicas; dependencia exacta v4:dual-exactitud y v4:dual-cociente-encaje, ambas probadas en capítulo16.",
+          "3": "Los dos isomorfismos producto/suma bajo hipótesis topológicas precisas; explicación de por qué el enunciado irrestricto no está determinado."
+        },
+        "teoria_original": {
+          "1-3": "Definición, operaciones de caracteres y representaciones unitarias de dimensión1.",
+          "4": "v4:dual-topologico: producto de dos grupos, incluyendo topología.",
+          "5(i)-(ii)": "v4:duales-modelos: R, T=R/(2πZ), Z y cíclicos finitos.",
+          "6-7": "v4:compacto-abierta: subbase en C(X), Hausdorff y convergencia uniforme en compactos con redes.",
+          "8": "v4:dual-topologico: continuidad de operaciones.",
+          "9(i)-(ii)": "v4:dual-compacto-discreto: compacto→discreto, discreto→compacto."
+        }
+      }
+    },
+    {
+      "lectura": 26,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1Ei8Dcz4q3OcDZaeApmmQHvGyjIR60kAl/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect26.txt",
+      "sha256_texto_fuente": "8f4066b3cd2651f30f1fd309f2339c09a2e8c855d7bc31546dd96e0681743b0b",
+      "capitulo": 15,
+      "ancla": "lectura:v4-26",
+      "cantidad_ejercicios": 0,
+      "teoria": {
+        "1": "v4:espectro-no-unitario: compacidad Δ(A)∪{0}, local compacidad de Δ(A), norma de caracteres.",
+        "2-3": "v4:gelfand-cero-infinito: definición y homomorfismo contractivo a C0.",
+        "4-6": "v4:fourier-identidades-lca: integral, carácter no nulo, cota y todas las identidades necesarias.",
+        "7": "v4:dual-vecindades-integrales: argumento cuantitativo corregido.",
+        "8": "v4:espectro-luno-biyeccion y v4:dual-espectro-homeomorfismo: biyección/homeomorfismo, incluido paso funcional-integral."
+      },
+      "correcciones": [],
+      "ejercicios": [],
+      "auditoria_bloque": {
+        "lectura": 26,
+        "capitulo": 15,
+        "ancla": "lectura:v4-26",
+        "ejercicios": [],
+        "verificaciones_internas": "Todas integradas en las pruebas; no lista original numerada.",
+        "teoria_original": {
+          "1": "v4:espectro-no-unitario: compacidad Δ(A)∪{0}, local compacidad de Δ(A), norma de caracteres.",
+          "2-3": "v4:gelfand-cero-infinito: definición y homomorfismo contractivo a C0.",
+          "4-6": "v4:fourier-identidades-lca: integral, carácter no nulo, cota y todas las identidades necesarias.",
+          "7": "v4:dual-vecindades-integrales: argumento cuantitativo corregido.",
+          "8": "v4:espectro-luno-biyeccion y v4:dual-espectro-homeomorfismo: biyección/homeomorfismo, incluido paso funcional-integral."
+        },
+        "ampliaciones": [
+          "ej:v4-ampl-15-1",
+          "ej:v4-ampl-15-2",
+          "ej:v4-ampl-15-3"
+        ]
+      }
+    },
+    {
+      "lectura": 27,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/1ZU_Vc610UbZ4c_IbpLlcrGPCZiTmh8SV/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect27.txt",
+      "sha256_texto_fuente": "950266f81bd0e24a2848e78e8062b7e20da5f37b49a7e9ebcc3a62e565c66a26",
+      "capitulo": 16,
+      "ancla": "lectura:v4-27",
+      "cantidad_ejercicios": 0,
+      "teoria": {
+        "1-2": "v4:regular-l2: construcción por convolución y Riesz, Young para todo L2 y producto interno.",
+        "3": "v4:regular-l2 y v4:regular-fiel: linealidad, multiplicación, adjunto, acotación e inyectividad.",
+        "4": "Definición C*r como cierre en B(L2); propiedades C*, conmutatividad y justificación de igualdad con C* universal en LCA.",
+        "5": "v4:espectros-homeomorfismo: continuidad y biyección→homeomorfismo por unitización.",
+        "6-7": "v4:cstar-fourier: espectro C*r=Gdual, isomorfismo C0 y Fourier inyectiva."
+      },
+      "correcciones": [],
+      "ejercicios": [],
+      "auditoria_bloque": {
+        "lectura": 27,
+        "capitulo": 16,
+        "ancla": "lectura:v4-27",
+        "ejercicios": [],
+        "verificaciones_internas": "Todas integradas en pruebas; no lista original numerada.",
+        "teoria_original": {
+          "1-2": "v4:regular-l2: construcción por convolución y Riesz, Young para todo L2 y producto interno.",
+          "3": "v4:regular-l2 y v4:regular-fiel: linealidad, multiplicación, adjunto, acotación e inyectividad.",
+          "4": "Definición C*r como cierre en B(L2); propiedades C*, conmutatividad y justificación de igualdad con C* universal en LCA.",
+          "5": "v4:espectros-homeomorfismo: continuidad y biyección→homeomorfismo por unitización.",
+          "6-7": "v4:cstar-fourier: espectro C*r=Gdual, isomorfismo C0 y Fourier inyectiva."
+        }
+      }
+    },
+    {
+      "lectura": 28,
+      "procedencia": "Miguel Ángel Valencia Bucio; lectura original",
+      "fuente": "https://drive.google.com/file/d/17FzrY0F0bwgiIHzVmZAHvLaShZWoNpuG/view?usp=drivesdk",
+      "archivo_fuente": "tmp/originales/04/lect28.txt",
+      "sha256_texto_fuente": "5f361985ef5f2918f09dadd7d90f52b690e58067ad65cc19b0cd24a0ad8501fa",
+      "capitulo": 16,
+      "ancla": "lectura:v4-28",
+      "cantidad_ejercicios": 0,
+      "teoria": {
+        "1": "v4:dirac-positivo: núcleos h*h*, soporte, positividad, integral uno.",
+        "2": "v4:l2-convolucion-cero: L2*L2⊂C0, existencia en todos los puntos y cota.",
+        "3-4": "Norma máxima, completación como cierre de grafo en C0(G)⊕C0(Gdual).",
+        "5-6": "v4:grafo-fourier-inyectivo: ambas proyecciones contractivas inyectivas, identificación como función/símbolo sin presuponer L1.",
+        "7": "v4:positividad-identidad: transformada real/positiva implica valor real/positivo en e.",
+        "8(i)-(ii)": "v4:regularizacion: L1*Cc⊂C0 y A(φ*ψ)∈E∩L2, símbolo y aproximación simultánea.",
+        "9": "v4:dirac-tres-espacios: convergencias C0,C*r,E y transformadas→1 uniformemente en compactos del dual.",
+        "10(i)-(iii)": "v4:inversa-compacta y v4:aproximacion-lectura28: resultado fortalecido por inversa exacta, con soportes espectrales y problema de signo corregidos.",
+        "11": "Corolario de inversa exacta; sucesión constante satisface aproximación uniforme y soporte espectral."
+      },
+      "correcciones": [],
+      "ejercicios": [],
+      "auditoria_bloque": {
+        "lectura": 28,
+        "capitulo": 16,
+        "ancla": "lectura:v4-28",
+        "ejercicios": [],
+        "verificaciones_internas": "Todas integradas en pruebas, incluidas norma y tres convergencias de identidades aproximadas.",
+        "teoria_original": {
+          "1": "v4:dirac-positivo: núcleos h*h*, soporte, positividad, integral uno.",
+          "2": "v4:l2-convolucion-cero: L2*L2⊂C0, existencia en todos los puntos y cota.",
+          "3-4": "Norma máxima, completación como cierre de grafo en C0(G)⊕C0(Gdual).",
+          "5-6": "v4:grafo-fourier-inyectivo: ambas proyecciones contractivas inyectivas, identificación como función/símbolo sin presuponer L1.",
+          "7": "v4:positividad-identidad: transformada real/positiva implica valor real/positivo en e.",
+          "8(i)-(ii)": "v4:regularizacion: L1*Cc⊂C0 y A(φ*ψ)∈E∩L2, símbolo y aproximación simultánea.",
+          "9": "v4:dirac-tres-espacios: convergencias C0,C*r,E y transformadas→1 uniformemente en compactos del dual.",
+          "10(i)-(iii)": "v4:inversa-compacta y v4:aproximacion-lectura28: resultado fortalecido por inversa exacta, con soportes espectrales y problema de signo corregidos.",
+          "11": "Corolario de inversa exacta; sucesión constante satisface aproximación uniforme y soporte espectral."
+        },
+        "ampliaciones": [
+          "ej:v4-ampl-16-1",
+          "ej:v4-ampl-16-2",
+          "ej:v4-ampl-16-3",
+          "ej:v4-ampl-16-4",
+          "ej:v4-ampl-16-5"
+        ]
+      }
+    }
+  ],
+  "ampliaciones": [
+    {
+      "label": "ej:v4-ampl-dft4",
+      "archivo": "capitulos/05.tex",
+      "enunciado_latex": "En $\\Z/4\\Z$, calcular la convolución de $a=(1,2,0,0)$ y $b=(1,0,1,0)$ mediante sumas y mediante Fourier.",
+      "solucion_latex": "Como $b$ vale uno en $0$ y $2$, $(a*b)(r)=a(r)+a(r-2)$, por lo que $a*b=(1,2,1,2)$. Las transformadas son\n\\[\n \\widehat a=(3,1+2i,-1,1-2i),\\qquad \\widehat b=(2,0,2,0).\n\\]\nEl producto es $(6,0,-2,0)$. Invirtiendo, $(a*b)(k)=\\tfrac14(6-2e^{-\\pi ik})$, que vale uno si $k$ es par y dos si es impar. El cálculo exhibe la diferencia entre convolución cíclica y producto de polinomios sin reducción: aquí se trabaja módulo $z^4-1$."
+    },
+    {
+      "label": "ej:v4-ampl-muestreo",
+      "archivo": "capitulos/08.tex",
+      "enunciado_latex": "En la convención $\\widehat f(\\nu)=\\int f(x)e^{2\\pi ix\\nu}dx$, resolver el ejercicio de Lozano Vite y Maximenko que sustituye la banda $[-1/2,1/2]$ por $[-b,b]$: hallar la separación entre muestras, el núcleo y Parseval.",
+      "solucion_latex": "La frecuencia angular de nuestra convención es $\\xi=2\\pi\\nu$, de modo que $a=2\\pi b$. Sustituir en el teorema anterior da separación $1/(2b)$ y\n\\[\n f(x)=\\sum_{k\\in\\Z}f\\left(\\frac{k}{2b}\\right)\\operatorname{sinc}(2bx-k),\\qquad\n \\norm f_2^2=\\frac1{2b}\\sum_k\\left|f\\left(\\frac{k}{2b}\\right)\\right|^2.\n\\]\nEl núcleo es $K_y(x)=2b\\operatorname{sinc}(2b(x-y))$ y la norma de evaluación es $\\sqrt{2b}$. Con $b=1/2$ recuperamos muestras enteras y núcleo $\\operatorname{sinc}(x-y)$. La distancia entre muestras depende de la banda y de la convención de frecuencia; no debe trasladarse una fórmula sin ajustar ambas."
+    },
+    {
+      "label": "ej:v4-ampl-15-1",
+      "archivo": "capitulos/15.tex",
+      "enunciado_latex": "Si se reemplaza $\\mu$ por $c\\mu$, con $c>0$, determine cómo cambian la norma $L^1$, la convolución y la transformada de Fourier. Compruebe que la identidad de convolución sigue siendo válida con esas tres modificaciones simultáneas.",
+      "solucion_latex": "La norma pasa a $\\norm f_{1,c\\mu}=c\\norm f_{1,\\mu}$; la convolución pasa a $f*_{c\\mu}g=c(f*_{\\mu}g)$; la transformada pasa a $\\widehat f_{c\\mu}=c\\widehat f_\\mu$. Por ello\n\\[\n \\widehat{f*_{c\\mu}g}_{c\\mu}\n =c^2\\widehat{f*_{\\mu}g}_{\\mu}\n =c^2\\widehat f_\\mu\\widehat g_\\mu\n =\\widehat f_{c\\mu}\\widehat g_{c\\mu}.\n\\]\nModificar sólo una de esas operaciones sin ajustar las demás introduciría un factor incorrecto. La escala de la medida dual que conserva Plancherel será $c^{-1}$, como se comprobará después."
+    },
+    {
+      "label": "ej:v4-ampl-15-2",
+      "archivo": "capitulos/15.tex",
+      "enunciado_latex": "En $G=\\R$ con Lebesgue y $\\chi_\\xi(x)=e^{i\\xi x}$, calcule la transformada de $e^{i\\eta x}f(x-a)$ en términos de $\\widehat f$. Determine también la transformada de $\\overline{f(-x)}$.",
+      "solucion_latex": "El cambio $y=x-a$ produce\n\\[\n \\int_\\R e^{i\\eta x}f(x-a)e^{i\\xi x}\\,dx\n =e^{i(\\xi+\\eta)a}\\int_\\R f(y)e^{i(\\xi+\\eta)y}\\,dy\n =e^{i(\\xi+\\eta)a}\\widehat f(\\xi+\\eta).\n\\]\nLa fase contiene $\\xi+\\eta$, no sólo $\\xi$, porque primero se evalúa la modulación en el punto trasladado. Para la segunda función, el cambio $y=-x$ da\n\\[\n \\int_\\R\\overline{f(-x)}e^{i\\xi x}\\,dx\n =\\int_\\R\\overline{f(y)}e^{-i\\xi y}\\,dy\n =\\overline{\\widehat f(\\xi)}.\n\\]\nAmbas integrales existen absolutamente porque las operaciones preservan la integrabilidad."
+    },
+    {
+      "label": "ej:v4-ampl-15-3",
+      "archivo": "capitulos/15.tex",
+      "enunciado_latex": "En $\\widehat\\R\\simeq\\R$, considere $\\chi_n(x)=e^{inx}$. Pruebe que los funcionales $\\Phi_{\\chi_n}$ convergen débil estrella al funcional cero, aunque ninguno es cero, y que $(\\chi_n)$ no converge en $\\widehat\\R$.",
+      "solucion_latex": "Para todo $f\\in L^1(\\R)$, el teorema anterior da $\\widehat f\\in C_0(\\R)$. Como $n$ sale de todo compacto de $\\R$, $\\Phi_{\\chi_n}(f)=\\widehat f(n)\\to0$. Esto es precisamente convergencia débil estrella al funcional cero. Si $(\\chi_n)$ convergiera en el dual, el homeomorfismo de la proposición~\\ref{v4:duales-modelos} haría converger la sucesión de parámetros $n$ en $\\R$, imposible. El límite existe en el compacto ampliado $\\Delta(L^1)\\cup\\{0\\}$ y no en el espectro sin el cero. Este ejemplo explica por qué la compacidad del espectro de un álgebra sin unidad no puede darse por supuesta."
+    },
+    {
+      "label": "ej:v4-ampl-16-1",
+      "archivo": "capitulos/16.tex",
+      "enunciado_latex": "Sea $G$ un grupo abeliano finito de orden $N$, con medida de contar. Determine la medida dual de Plancherel y demuestre explícitamente las fórmulas de inversión y Parseval.",
+      "solucion_latex": "Si $\\chi$ es un carácter no trivial, existe $a$ con $\\chi(a)\\ne1$. Por reordenamiento de la suma,\n\\[\n \\sum_{x\\in G}\\chi(x)=\\sum_{x\\in G}\\chi(ax)\n =\\chi(a)\\sum_{x\\in G}\\chi(x),\n\\]\ny la suma es cero. Para el carácter trivial la suma es $N$. Por el ejercicio~\\ref{ej:v4-l25-1}, $\\widehat G$ tiene $N$ elementos; aplicando la misma identidad en el dual y la separación de puntos, resulta\n\\[\n \\sum_{\\chi\\in\\widehat G}\\chi(y)\\overline{\\chi(x)}\n =\\begin{cases}N,&x=y,\\\\0,&x\\ne y.\\end{cases}\n\\]\nComo $\\widehat f(\\chi)=\\sum_y f(y)\\chi(y)$, intercambiar dos sumas finitas da\n\\[\n \\frac1N\\sum_{\\chi\\in\\widehat G}\\widehat f(\\chi)\\overline{\\chi(x)}\n =\\frac1N\\sum_y f(y)\\sum_\\chi\\chi(y)\\overline{\\chi(x)}=f(x).\n\\]\nLa medida dual es, por tanto, $N^{-1}$ veces la medida de contar. Asimismo,\n\\[\n \\frac1N\\sum_\\chi|\\widehat f(\\chi)|^2\n =\\frac1N\\sum_{x,y}f(x)\\overline{f(y)}\n                   \\sum_\\chi\\chi(x)\\overline{\\chi(y)}\n =\\sum_x|f(x)|^2.\n\\]\nAsí la normalización inversa y Plancherel se comprueban sin límites ni integrales impropias."
+    },
+    {
+      "label": "ej:v4-ampl-16-2",
+      "archivo": "capitulos/16.tex",
+      "enunciado_latex": "Sea $a>0$ y $H=a\\Z\\subset\\R$. Identifique $H^\\perp$ usando los caracteres $\\chi_\\xi(x)=e^{i\\xi x}$. Deduzca el dual de $\\R/a\\Z$ y describa la aplicación de restricción $\\widehat\\R\\to\\widehat{a\\Z}$, incluyendo su núcleo y su topología.",
+      "solucion_latex": "Un carácter $\\chi_\\xi$ es trivial en $a\\Z$ si y sólo si $e^{i\\xi a}=1$, es decir, si y sólo si $\\xi a\\in2\\pi\\Z$. Luego\n\\[\n H^\\perp=(2\\pi/a)\\Z.\n\\]\nEl lema~\\ref{v4:dual-cociente-encaje} identifica el dual de $\\R/a\\Z$ con esta retícula, que es discreta en $\\R$. Sus caracteres son $x+a\\Z\\mapsto e^{2\\pi i n x/a}$.\n\nEl grupo $a\\Z$ es discreto y está generado por $a$, así que un carácter suyo queda determinado por el valor $z\\in\\T$ en $a$, y toma el valor $z^n$ en $na$. La restricción, bajo las identificaciones $\\widehat\\R\\simeq\\R$ y $\\widehat{a\\Z}\\simeq\\T$, es $\\xi\\mapsto e^{ia\\xi}$. Es sobreyectiva, su núcleo es $(2\\pi/a)\\Z$ y es abierta: la imagen de un intervalo suficientemente corto es un arco abierto, y cualquier abierto es unión de tales intervalos. Por tanto $\\R/((2\\pi/a)\\Z)\\simeq\\T$ topológicamente, en acuerdo con el teorema de exactitud."
+    },
+    {
+      "label": "ej:v4-ampl-16-3",
+      "archivo": "capitulos/16.tex",
+      "enunciado_latex": "En $G=\\T$ use Haar normalizada $dt/(2\\pi)$, con $z=e^{it}$, y caracteres $\\chi_n(z)=z^n$. Determine la medida dual en $\\Z$ y escriba la inversión de un polinomio trigonométrico. Explique por qué los exponentes en la inversión llevan signo negativo con nuestra convención.",
+      "solucion_latex": "Para $f(z)=\\sum_{m=-M}^M c_mz^m$,\n\\[\n \\widehat f(n)=\\frac1{2\\pi}\\int_0^{2\\pi}\n              \\sum_{m=-M}^M c_me^{i(m+n)t}\\,dt=c_{-n},\n\\]\ncon $c_m=0$ fuera del rango. Por tanto\n$f(z)=\\sum_{n\\in\\Z}\\widehat f(n)z^{-n}$, suma finita en este caso. La ortogonalidad de $z^m$ da\n\\[\n \\int_\\T|f|^2\\,d\\mu=\\sum_m|c_m|^2\n =\\sum_n|\\widehat f(n)|^2.\n\\]\nEn consecuencia la medida dual es la medida de contar. También puede fijarse su escala usando la función constante $1$: su transformada vale uno en $n=0$ y cero en los demás enteros, y ambas normas cuadradas deben valer uno. La invariancia de Haar en el grupo discreto obliga a que todos los puntos tengan esa misma masa. El signo negativo en la inversión es la conjugación del carácter; cambiar el signo de la transformada directa cambiaría el de la inversa."
+    },
+    {
+      "label": "ej:v4-ampl-16-4",
+      "archivo": "capitulos/16.tex",
+      "enunciado_latex": "Muestre con un ejemplo que $\\widehat f\\ge0$ no implica $f\\ge0$ punto por punto. Verifique que el ejemplo sí satisface $f(e)\\ge0$ y explique por qué no contradice el lema~\\ref{v4:positividad-identidad}.",
+      "solucion_latex": "Tome $G=\\Z$ con medida de contar y\n\\[\n f=2\\,1_{\\{0\\}}-1_{\\{1\\}}-1_{\\{-1\\}}.\n\\]\nEs una función de soporte finito y, por tanto, pertenece a $L^1(\\Z)\\cap C_0(\\Z)\\subset E$. Si identificamos el dual con $\\T$ mediante $\\chi_z(n)=z^n$, entonces\n\\[\n \\widehat f(z)=2-z-z^{-1}=2-2\\operatorname{Re}z=|1-z|^2\\ge0.\n\\]\nSin embargo, $f(1)=f(-1)=-1$. En la identidad del grupo, $f(0)=2\\ge0$, exactamente lo que afirma el lema. La positividad espectral significa que el operador de convolución $\\lambda(f)$ es positivo, es decir, $\\ip{\\lambda(f)u}{u}\\ge0$ para todo $u\\in\\ell^2(\\Z)$; no significa que sus coeficientes sean todos no negativos. De hecho, si $S=L_1$, entonces $\\lambda(f)=2I-S-S^*=(I-S)^*(I-S)$, lo que verifica la positividad directamente."
+    },
+    {
+      "label": "ej:v4-ampl-16-5",
+      "archivo": "capitulos/16.tex",
+      "enunciado_latex": "En $G=\\R$ con medida de Lebesgue, sea $\\eta(\\xi)=\\max\\{1-|\\xi|,0\\}$. Calcule su inversa para la medida dual $(2\\pi)^{-1}d\\xi$. Pruebe que esa inversa pertenece a $L^1\\cap L^2\\cap C_0$ y que su soporte no es compacto, aunque $\\supp\\eta=[-1,1]$.",
+      "solucion_latex": "La simetría elimina la parte imaginaria. Para $x\\ne0$, integración por partes da\n\\[\n u(x)=\\frac1{2\\pi}\\int_{-1}^1(1-|\\xi|)e^{-i\\xi x}\\,d\\xi\n =\\frac1\\pi\\int_0^1(1-\\xi)\\cos(\\xi x)\\,d\\xi\n =\\frac{1-\\cos x}{\\pi x^2}.\n\\]\nEn $x=0$ la integral vale $1/(2\\pi)$, coincidiendo con el límite porque $(1-\\cos x)/x^2\\to1/2$. Así $u$ es continua y acotada cerca de cero. Para $|x|\\ge1$, $|u(x)|\\le2/(\\pi x^2)$, lo cual demuestra integrabilidad, integrabilidad del cuadrado y anulación en el infinito. Por la inversión construida, su transformada es $\\eta$; la igualdad inicialmente casi en todas partes es igualdad en cada frecuencia porque ambas funciones son continuas. La función $u$ es positiva salvo en los puntos no nulos $2\\pi n$ donde se anula. Cada intervalo abierto contiene puntos donde $u>0$, de modo que $\\supp u=\\R$. Un soporte espectral compacto no es un soporte compacto en la variable original."
+    }
+  ],
+  "revision_independiente": {
+    "07-08": "Root: todas las pruebas y ejercicios leídos; signos, gaussianas, Plancherel, Dini, invariantes y muestreo aprobados.",
+    "10-11": "Root: autoría y compilación aislada; regularidad y Fubini revisados.",
+    "14-16": "Agente01_06: teoría/exactitud cotejada con Folland; root revisó íntegramente16; QA aislado 29p aprobado."
+  }
+}

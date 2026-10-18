@@ -1,0 +1,1374 @@
+{
+  "volumen": 2,
+  "alcance": "Lecturas 1–17. Exámenes excluidos del conteo.",
+  "total_ejercicios_originales": 98,
+  "lecturas": [
+    {
+      "lectura": 1,
+      "fuente": "AnM2-LFM-lect01.pdf",
+      "texto_local": "tmp/originales/02/lect01.txt",
+      "capitulos": [
+        1
+      ],
+      "etiqueta_lectura": "lectura:v2-01",
+      "temas": [
+        "álgebras y σ-álgebras",
+        "familias generadas",
+        "Borel y productos"
+      ],
+      "ejercicios_originales": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l01-1",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto no vac´ıo, y sea X una familia no vac´ıa de subconjuntos de X tal que:\n(i) Para todo A ∈ X se tiene X \\ A ∈ X.\n(ii) Para cualesquiera A, B ∈ X se tiene A ∪ B ∈ X.\nDemuestre que X es un ´algebra sobre X."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l01-2",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea X un ´algebra sobre X, y sea {An}∞\nn=1 una sucesi´on en X. Demuestre que\nexiste una sucesi´on {Bn}∞\nn=1 en X tal que:\n(i) Para todo n ∈ N se tiene Bn ⊆ An.\n(ii) Para cualesquiera n, m ∈ N distintos se tiene Bn ∩ Bm = ∅.\n(iii)\nS∞\nn=1\nAn =\nS∞\nn=1\nBn."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-3",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto no vac´ıo, sea Y un subconjunto no vac´ıo de X, y sea X un ´algebra (resp.\nσ-´algebra) sobre X. Pruebe que el conjunto\n{A ∩ Y : A ∈ X}\nes un ´algebra (resp. σ-´algebra) sobre Y ."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-4",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Enliste todas las ´algebras sobre un conjunto con 4 elementos."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-5",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, y sea X una familia no vac´ıa de subconjuntos de X. Demuestre que el ´algebra\nA(X ) es el conjunto de todos los subconjuntos de X obtenidos a partir de los elementos de X usando una\nsucesi´on finita de intersecciones y complementos."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-6",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, d) un espacio m´etrico separable. Demuestre que la σ-´algebra generada por la familia de\ntodas las bolas abiertas de X coincide con la σ-´algebra de Borel de X."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-7",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que la σ-´algebra de Borel de R es la σ-´algebra generada por todos los intervalos de la\nforma ]α, +∞[ al variar α ∈ R."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-8",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto con dos o m´as elementos. Demuestre que el conjunto\nX = {A × B : A, B ⊆ X}\nno es un ´algebra sobre X × X. ¿Cu´al es A(X )? Justifique."
+        },
+        {
+          "numero_original": 9,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l01-9",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean X, Y dos conjuntos no vac´ıos, sea Y una σ-´algebra sobre Y y sea f : X → Y una funci´on. ¿El\nconjunto\n{f\n−1\n(A) : A ∈ Y}\nes una σ-´algebra sobre X? Justifique.\n3"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Intervalos o complementos no forman álgebra: contraejemplo y reemplazo por uniones finitas."
+      ]
+    },
+    {
+      "lectura": 2,
+      "fuente": "AnM2-LFM-lect02.pdf",
+      "texto_local": "tmp/originales/02/lect02.txt",
+      "capitulos": [
+        1
+      ],
+      "etiqueta_lectura": "lectura:v2-02",
+      "temas": [
+        "medidas",
+        "continuidad y subaditividad",
+        "semifinitud",
+        "Borel–Cantelli"
+      ],
+      "ejercicios_originales": 8,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-1",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible, sea µ : X → [0, +∞] una medida sobre (X, X), y sea A ∈ X un\nconjunto medible fijo. Demuestre que la funci´on λ : X → [0, +∞] dada por\n∀ B ∈ X (λ(B) = µ(A ∩ B))\nes una medida sobre (X, X)."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l02-2",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible.\n3(i) Si µ1, . . . , µn son medidas sobre (X, X) y α1, . . . , αn son n´umeros reales no negativos, demuestre\nque la funci´on\n∀ A ∈ X (λ(A) = α1µ1(A) + · · · + αnµn(A))\nes una medida sobre (X, X).\n(ii) Si {µn}∞\nn=1 es una sucesi´on de medidas finitas sobre (X, X) y {αn}∞\nn=1 es una sucesi´on de n´umeros\nreales no negativos, demuestre que la funci´on\n∀ A ∈ X\n \nλ(A) = X∞\nn=1\nαnµn(A)\n!\nes una medida sobre (X, X)."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-3",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida, y sea {An}∞\nn=1 una sucesi´on decreciente de conjuntos medibles,\nes decir, An+1 ⊆ An para todo n ∈ N. Si µ(An) < +∞ para alg´un n ∈ N, pruebe que\nµ\n \\∞\nn=1\nAn\n!\n= limn→∞µ(An).\nAdem´as, d´e un contraejemplo que muestre que la hip´otesis ∃ n ∈ N (µ(An) < +∞) es necesaria."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-4",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida, y sea {An}∞\nn=1 una sucesi´on arbitraria de conjuntos medibles.\nDemuestre que2\nµ\n\u0010\nlim inf\nn→∞\nAn\n\u0011\n≤ lim inf\nn→∞\nµ(An)."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-5",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida, y sea {An}∞\nn=1 una sucesi´on arbitraria de conjuntos medibles.\nSi µ (\nS∞\nn=1 An) < +∞, demuestre que\nlim sup\nn→∞\nµ(An) ≤ µ\nÅ\nlim sup\nn→∞\nAn\nã\n."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-6",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida, y sea µ\n∗\n: X → [0, +∞] la funci´on definida como\n∀ A ∈ X (µ\n∗\n(A) = sup{µ(B) : B ∈ X, B ⊆ A, µ(B) < +∞}).\nDemuestre que µ\n∗\nes una medida sobre (X, X), la cual coincide con µ si µ es σ-finita."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-7",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida, y sea {An}∞\nn=1 una sucesi´on de conjuntos medibles tal que la\nserie P∞\nn=1\nµ(An) es convergente en R. Muestre que el conjunto lim sup\nn→∞\nAn tiene medida cero."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l02-8",
+          "archivo": "capitulos/01.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida. Pruebe que µ es σ-finita si y solo si existe una sucesi´on creciente\n{An}∞\nn=1 en X tal que\n∀ n ∈ N (µ(An) < +∞), X =\n[∞\nn=1\nAn.\n2Dada una sucesi´on de conjuntos {An}∞n=1, definimos el l´ımite superior y el l´ımite inferior de esta sucesi´on como los\nconjuntos\nlim sup\nn→∞\nAn =\n\\∞\nm=1 Ñ\n[\nn≥m\nAn\né\n, lim inf\nn→∞\nAn =\n[∞\nm=1 Ñ\n\\\nn≥m\nAn\né\n.\nSe puede demostrar que\nlim sup\nn→∞\nAn = {x : {n ∈ N : x ∈ An} es infinito}, lim inf\nn→∞\nAn = {x : {n ∈ N : x 6∈ An} es finito}.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Disjuntización: retirar todos los conjuntos anteriores."
+      ]
+    },
+    {
+      "lectura": 3,
+      "fuente": "AnM2-LFM-lect03.pdf",
+      "texto_local": "tmp/originales/02/lect03.txt",
+      "capitulos": [
+        2
+      ],
+      "etiqueta_lectura": "lectura:v2-03",
+      "temas": [
+        "medibilidad",
+        "operaciones y límites",
+        "semicontinuidad y aproximación continua"
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l03-1",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible. Demuestre que una funci´on f : X → R es medible si y solo si\nf\n−1\n(A) ∈ X para todo subconjunto abierto A de R.\nSugerencia: Primero demuestre que f es medible si y solo si la imagen inversa bajo f de todo intervalo\nabierto es un conjunto medible; luego use el ejercicio 6 de la lectura 1."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l03-2",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Enuncie y demuestre las proposiciones 4 y 5 para funciones medibles de X en R."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l03-3",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "D´e un ejemplo de una funci´on f de un espacio medible (X, X) en R que no sea medible, pero tal\nque |f| y f\n2\nsean medibles."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv"
+          ],
+          "etiqueta": "ej:v2-l03-4",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, d) un espacio m´etrico.1 Decimos que una funci´on f : X → R es semicontinua superior\nen un punto x0 ∈ X si para todo y > f(x0) existe una vecindad V de x0 tal que f(x) < y para todo\nx ∈ U. Decimos que f es semicontinua inferior en x0 si para todo y < f(x0) existe una vecindad V de\nx0 tal que f(x) > y para todo x ∈ U. Decimos que f es semicontinua superior (resp. inferior) en X si es\nsemicontinua superior (resp. inferior) en todo punto de X. Demuestre lo siguiente:\n(i) Una funci´on f : X → R es continua en X si y solo si es semicontinua superior e inferior en X.\n(ii) La funci´on piso x 7→ bxc es semicontinua superior en todo R.\n(iii) f es semicontinua superior (resp. inferior) en X si y solo si para todo α ∈ R el conjunto\n{x ∈ X : f(x) < α} (resp. {x ∈ X : f(x) > α})\nes abierto en X.\n(iv) Un conjunto A ⊆ X es abierto (resp. cerrado) en X si y solo si la funci´on caracter´ıstica χA : X → R\nes semicontinua inferior (resp. superior) en X.\nSe puede demostrar que, si (X, d) es un espacio m´etrico, entonces toda funci´on semicontinua inferior (resp.\nsuperior) es el l´ımite de una sucesi´on creciente (resp. decreciente) de funciones continuas de X en R.\nTambi´en se puede demostrar que si X es compacto, entonces toda funci´on semicontinua superior (resp.\ninferior) alcanza su valor m´aximo (resp. m´ınimo) en R."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l03-5",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible, sea f : X → R una funci´on medible, y sea g : R → R una funci´on\nsemicontinua inferior o superior. Demuestre que g ◦ f es una funci´on medible."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l03-6",
+          "archivo": "capitulos/02.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X) un espacio medible, y sea {fn : X → R}∞\nn=1 una sucesi´on de funciones medibles.\nDemuestre que el conjunto\nn\nx ∈ X : existe limn→∞fn(x) en R\no\nes medible.\n1S´ı, la definici´on tambi´en aplica para funciones definidas sobre espacios topol´ogicos, pero mejor vayamos paso a paso.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Operaciones extendidas: explicitar dónde están definidas."
+      ]
+    },
+    {
+      "lectura": 4,
+      "fuente": "AnM2-LFM-lect04.pdf",
+      "texto_local": "tmp/originales/02/lect04.txt",
+      "capitulos": [
+        3
+      ],
+      "etiqueta_lectura": "lectura:v2-04",
+      "temas": [
+        "medidas exteriores",
+        "Carathéodory",
+        "completitud"
+      ],
+      "ejercicios_originales": 5,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l04-1",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, X, µ) un espacio de medida. Decimos que la σ-´algebra X es completa con respecto a µ si\ntodo subconjunto de un conjunto medible de medida cero es medible:\n∀ A, B ⊆ X (A ⊆ B, B ∈ X, µ(B) = 0 ⇒ A ∈ X).\nDemuestre que la σ-´algebra X del teorema 5 es completa con respecto a la medida µ\n∗\n|X."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l04-2",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean µ\n∗\n, ν∗ dos medidas exteriores sobre un conjunto X. Demuestre que la funci´on µ\n∗∧ν∗ definida\ncomo\n∀ A ⊆ X ((µ\n∗ ∧ ν∗\n)(A) = inf{µ\n∗\n(B) + ν\n∗\n(A \\ B) : B ⊆ A})\nes una medida exterior sobre X."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l04-3",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, y sea Y un subconjunto de X. Pruebe lo siguiente:\n(i) Si µ\n∗\nes una medida exterior sobre X, entonces µ\n∗\n|P(Y ) es una medida exterior sobre Y .\n(ii) Si A ⊆ X es µ\n∗\n-medible, entonces A ∩ Y es µ\n∗\n|P(Y )-medible."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l04-4",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean X y Y dos conjuntos, y sea R una relaci´on de X en Y , es decir, R ⊆ X × Y . Si µ\n∗\nes una\nmedida exterior sobre X, demuestre que la funci´on A 7→ µ\n∗\n(R−1(A)) de P(Y ) en [0, +∞] es una medida\nexterior sobre Y , llamada la medida exterior inducida por R sobre Y ."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l04-5",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea µ\n∗ una medida exterior sobre X y sea E un conjunto µ∗\n-medible. De\u0002muestre que µ\n∗\n(E ∩ A) + µ\n∗\n(E ∪ A) = µ\n∗\n(E) + µ\n∗\n(A) para todo subconjunto A de X.\n3"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": []
+    },
+    {
+      "lectura": 5,
+      "fuente": "AnM2-LFM-lect05.pdf",
+      "texto_local": "tmp/originales/02/lect05.txt",
+      "capitulos": [
+        3
+      ],
+      "etiqueta_lectura": "lectura:v2-05",
+      "temas": [
+        "anillos",
+        "premedidas",
+        "extensión por cubiertas numerables"
+      ],
+      "ejercicios_originales": 4,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l05-1",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea A un ´algebra sobre X, y sea v un volumen sobre (X, A) tal que v(X) = 1.\nSi A1, . . . , An ∈ A son tales que v(A1) + · · · + v(An) > n − 1, demuestre que T∞\nn=1\nAk 6= ∅."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l05-2",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea A un anillo sobre X y sea v un volumen sobre (X, A). Demuestre que v\nes σ-aditivo si y solo si v es σ-subaditivo, es decir, para cualquier sucesi´on {An}∞\nn=1 en A y para cualquier\nB ∈ A tal que B ⊆\nS∞\nn=1\nAn tenemos\nv(B) ≤\nX∞\nn=1\nv(An).\nSugerencia: Para la necesidad, imite la demostraci´on de la proposici´on 6. Para la suficiencia, use la\nproposici´on 6 y tome l´ımite cuando n → ∞."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l05-3",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea A un ´algebra sobre X y sea v un volumen sobre (X, A). Pruebe que v\nes σ-aditivo si y solo si v es continuo por debajo, es decir, si para toda sucesi´on creciente {An}∞\nn=1 en A\ntenemos\nlimn→∞v(An) = v\n [∞\nn=1\nAn\n!\n."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l05-4",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea X un conjunto, sea A un ´algebra sobre X y sea v un volumen sobre (X, A) tal que v(X) < +∞.\nSupongamos que X admite una partici´on por elementos de A, es decir, que existe una familia\nB = {Aα : α ∈ I} ⊆ A\n3de conjuntos disjuntos a pares cuya uni´on es X. Demuestre que, si v(A) > 0 para todo A ∈ B, entonces\nB es a lo sumo numerable.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "La extensión exterior requiere cubiertas numerables, no un único conjunto del anillo.",
+        "Las uniones numerables de intervalos (a,b] no forman σ-anillo.",
+        "La continuidad desde abajo requiere que la unión pertenezca al dominio."
+      ]
+    },
+    {
+      "lectura": 6,
+      "fuente": "AnM2-LFM-lect06.pdf",
+      "texto_local": "tmp/originales/02/lect06.txt",
+      "capitulos": [
+        3
+      ],
+      "etiqueta_lectura": "lectura:v2-06",
+      "temas": [
+        "Lebesgue en R y R^d",
+        "regularidad",
+        "invariancia",
+        "Cantor",
+        "no medibilidad"
+      ],
+      "ejercicios_originales": 11,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-1",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea U un subconjunto abierto de R. Demuestre que U es uni´on de una sucesi´on disjunta de inter\u0002valos semiabiertos.\nSugerencia: Demuestre que la proposici´on se cumple para todo intervalo abierto ]a, b[; luego use que U es\nuni´on a lo sumo numerable de intervalos abiertos disjuntos."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-2",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que el conjunto de Cantor C tiene medida de Lebesgue 0."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-3",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que el concepto de medida cero conocido de la integral de Riemann y el concepto de\nmedida de Lebesgue cero son equivalentes. Es decir, si un conjunto A tiene medida cero, entonces tiene\nmedida de Lebesgue cero y viceversa."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-4",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que un conjunto A ⊆ R es Lebesgue-medible si y solo si existen un conjunto B Fσ y un\nconjunto Z de medida cero en R tales que A = B ∪ Z."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-5",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Pruebe que la medida exterior de Lebesgue es invariante bajo traslaci´on:\n∀ A ⊆ R ∀ α ∈ R (λ\n∗\n(A + α) = λ\n∗\n(A))."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-6",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea µ una medida sobre (R, B(R)) tal que le asigna un valor finito a cada conjunto de Borel acotado\ny es invariante bajo traslaci´on. Si µ(R) > 0, demuestre que existe α > 0 tal que µ(A) = αλ(A) para todo\nconjunto de Borel A de R.\nSugerencia: Tome α = µ(]0, 1[) y utilice el teorema 4 con la funci´on ν(A) = µ(A)/α."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-7",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "El conjunto de Smith-Volterra-Cantor. Sea C0 = [0, 1]. Definimos C1 como el conjunto C0 quit´andole\nel intervalo central abierto de longitud 1/4. Note que C1 es uni´on de dos intervalos cerrados disjuntos.\n1Recordemos que A − B = {a − b : a ∈ A, b ∈ B} para todo par de subconjuntos A, B de R.\n3Dado n ∈ N, una vez construidos los conjuntos C0, C1, . . . , Cn construimos el conjunto Cn+1 extrayendo\nde cada intervalo cerrado que conforma a Cn el intervalo central abierto de longitud 1/4\nn+1. Notemos que\nCn es la uni´on de 2n intervalos cerrados disjuntos para todo n ∈ N. Sea C =\nT∞\nn=0\nCn.\nDemuestre que C es un conjunto cerrado, no vac´ıo, con interior vac´ıo, sin puntos aislados, cuya medida\nde Lebesgue es 1/2."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-8",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que existe un conjunto de Borel A de R tal que 0 < λ(I ∩A) < λ(I) para todo intervalo\nacotado abierto I de R.\nSugerencia: Considere el conjunto construido en el ejercicio 5."
+        },
+        {
+          "numero_original": 9,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-9",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que existe una sucesi´on decreciente {An}∞\nn=1 de subconjuntos de [0, 1] tal que λ\n∗\n(An) = 1\npara todo n ∈ N y\nT∞\nn=1\nAn = ∅.\nSugerencia: Sea B una base de R como espacio vectorial racional, y sea {Bn}∞\nn=1 una sucesi´on estricta\u0002mente creciente de conjuntos tal que B =\nS∞\nn=1\nBn. Para cada n ∈ N sea Vn el subespacio de R spanQ(Bn),\ny sea An = [0, 1] ∩ (R \\ Vn). Use el teorema 5 para demostrar que todo subconjunto de Borel de Vn tiene\nmedida cero y concluya que λ\n∗\n(An) = 1."
+        },
+        {
+          "numero_original": 10,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-10",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "D´e la definici´on de la medida de Lebesgue para R\nn. Adem´as, enuncie y demuestre las proposi\u0002ciones 2 a 4 para la medida de Lebesgue de R\nn. Tambi´en pruebe los ejercicios 4, 5 y 6 para esta medida."
+        },
+        {
+          "numero_original": 11,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l06-11",
+          "archivo": "capitulos/03.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que la medida de Lebesgue en R\n2\nes invariante bajo isometr´ıas del plano.\nSugerencia: Demuestre que la medida de Lebesgue es invariante bajo reflexiones a trav´es de rectas. Para\nel caso general, puede usar sin demostraci´on que toda isometr´ıa del plano euclidiano es composici´on de a\nlo m´as tres de estas reflexiones.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": []
+    },
+    {
+      "lectura": 7,
+      "fuente": "AnM2-LFM-lect07.pdf",
+      "texto_local": "tmp/originales/02/lect07.txt",
+      "capitulos": [
+        4
+      ],
+      "etiqueta_lectura": "lectura:v2-07",
+      "temas": [
+        "funciones simples",
+        "aproximación monótona"
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": []
+    },
+    {
+      "lectura": 8,
+      "fuente": "AnM2-LFM-lect08.pdf",
+      "texto_local": "tmp/originales/02/lect08.txt",
+      "capitulos": [
+        4
+      ],
+      "etiqueta_lectura": "lectura:v2-08",
+      "temas": [
+        "integral no negativa",
+        "linealidad y monotonía"
+      ],
+      "ejercicios_originales": 4,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l08-1",
+          "archivo": "capitulos/04.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ϕ una funci´on simple no negativa, y sea Pn\nk=1\nαkχAk una representaci´on (no necesariamente\nest´andar) de ϕ. Demuestre que\nZ\nX\nϕ dµ =\nXn\nk=1\nαkµ(Ak)."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l08-2",
+          "archivo": "capitulos/04.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean ϕ, ψ : X → R dos funciones simples no negativas. Suponga que ϕ ≤ ψ c.t.p. en X. Demuestre\nque\nZ\nX\nϕ dµ ≤\nZ\nX\nψ dµ."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l08-3",
+          "archivo": "capitulos/04.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f : X → R una funci´on medible no negativa. Suponga que R\nX\nf dµ < +∞. Pruebe lo siguiente:\n(i) El conjunto Y = {x ∈ X : f(x) > 0} es σ-finito.\n(ii) El conjunto Z = {x ∈ X : f(x) = +∞} tiene medida cero."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l08-4",
+          "archivo": "capitulos/04.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Consideremos el espacio de medida (N,P(N), µc), donde µc es la medida de conteo, y sea f = {an}∞\nn=1\nuna sucesi´on de n´umeros reales no negativos. Demuestre que\nZ\nN\nf dµc =\nX∞\nn=1\nan.\n3"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Coeficientes negativos con medidas infinitas pueden producir infinito menos infinito."
+      ]
+    },
+    {
+      "lectura": 9,
+      "fuente": "AnM2-LFM-lect09.pdf",
+      "texto_local": "tmp/originales/02/lect09.txt",
+      "capitulos": [
+        5
+      ],
+      "etiqueta_lectura": "lectura:v2-09",
+      "temas": [
+        "integrabilidad",
+        "nulidad",
+        "Markov",
+        "Riemann y Lebesgue"
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l09-1",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea A ⊆ X un conjunto medible, y sea f : X → R una funci´on medible. Decimos que f es integrable\nsobre A si la funci´on fχA es integrable sobre X. En este caso, definimos la {integral de f sobre A como el\nn´umero real\nZ\nA\nf dµ =\nZ\nX\nfχA dµ.\nDemuestre lo siguiente (f, g : X → R son funciones medibles, a, b ∈ R, A, B ⊆ X son conjuntos medibles):\n(i) Si f y g son integrables sobre A, entonces af + bg es integrable sobre A y\nZ\nA\n(af + fg)dµ = a\nZ\nA\nf dµ + b\nZ\nA\ng dµ.\n(ii) Si f es integrable sobre A y sobre B, entonces f es integrable sobre A ∪ B y sobre A ∩ B y\nZ\nA∪B\nf dµ =\nZ\nA\nf dµ +\nZ\nB\nf dµ −\nZ\nA∩B\nf dµ.\n(iii) Si f ≤ g en todo A, entonces R\nA\nf dµ ≤\nR\nA\ng dµ."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l09-2",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "D´e un ejemplo de una funci´on f : X → R que no sea medible tal que |f| sea integrable sobre X."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l09-3",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f : X → R una funci´on medible no negativa, y sea ε > 0. Si\nAε = {x ∈ X : f(x) ≥ ε},\ndemuestre que\nµ(Aε) ≤\n1\nε\nZ\nAε\nf dµ ≤\n1\nε\nZ\nX\nf dµ.\nDeduzca lo siguiente:\n3(i) Si f es integrable sobre X, entonces f es finita c.t.p. en X.\n(ii) Si f es integrable sobre X y\nR\nX\n|f| dµ = 0, entonces f = 0 c.t.p. en X.\n(iii) Si f es integrable sobre X y\nR\nA\nf dµ ≥ 0 para todo conjunto medible A ⊆ X, entonces f ≥ 0 c.t.p.\nen X."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l09-4",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "D´e dos funciones f, g : X → R que sean integrables sobre X tales que fg no sea integrable sobre X.\nSugerencia: Considere X = N con la σ-´algebra P(N) medida de conteo."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l09-5",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f : X → R una funci´on integrable sobre X, y sea g : X → R una funci´on medible tal que f ≤ g\nc.t.p. en X. Pruebe que la integral de g sobre X existe en R y\nZ\nX\nf dµ ≤\nZ\nX\ng dµ."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l09-6",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f : [a, b] → R una funci´on Riemann-integrable sobre [a, b]. Demuestre que f es Lebesgue\u0002integrable sobre [a, b] y las integrales de Riemann y de Lebesgue de f sobre [a, b] son iguales.\nSugerencia: Primero suponga que f es no negativa. Recuerde c´omo se define la integral de Riemann.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "La pista de conteo en N no da un producto de dos L1 fuera de L1.",
+        "Integral extendida existente no significa finita."
+      ]
+    },
+    {
+      "lectura": 10,
+      "fuente": "AnM2-LFM-lect10.pdf",
+      "texto_local": "tmp/originales/02/lect10.txt",
+      "capitulos": [
+        5
+      ],
+      "etiqueta_lectura": "lectura:v2-10",
+      "temas": [
+        "convergencia monótona",
+        "Fatou",
+        "dominada",
+        "parámetros",
+        "núcleos"
+      ],
+      "ejercicios_originales": 9,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-1",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Teorema de convergencia mon´otona de Beppo Levi. Sea {fn}∞\nn=1 una sucesi´on de funciones medibles\nno negativas. Demuestre que\nZ\nX\nX∞\nn=1\nfn dµ =\nX∞\nn=1\nZ\nX\nfn dµ."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-2",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea A ⊆ R, y sea {fα : α ∈ A} una familia de funciones integrables sobre X tal que\n∀ α ∈ A\n\u0010\nfα(x) = limt→αft(x)\n\u0011\n3para casi todo x ∈ X. Supongamos que existe una funci´on g : X → R integrable sobre X tal que |fα| ≤ g\nc.t.p. en X para todo α ∈ A. Demuestre que la funci´on α 7→\nR\nX\nfα dµ es continua en A."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii",
+            "iv"
+          ],
+          "etiqueta": "ej:v2-l10-3",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "La transformada de Laplace. Sea f : [0, +∞[ → R una funci´on Lebesgue-medible. Definimos la\ntransformada de Laplace de f como la funci´on\nLf(s) = Z ∞\n0\ne\n−sxf(x) dµ(x)\npara todo s ∈ R donde esta integral est´a definida. Pruebe lo siguiente:\n(i) Si s ∈ dom(Lf) y s\n0 ≥ s, entonces s0 ∈ dom(Lf).\n(ii) Lf es diferenciable en el interior de su dominio.\n(iii) Si Lf est´a definida en todo R, entonces lims→∞Lf(s) = 0.\n(iv) La transformada de Laplace es aditiva: L(f + g) = Lf + Lg."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-4",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {fn : X → R}∞\nn=1 una sucesi´on de funciones integrables sobre X. Supongamos que existe una\nfunci´on g : X → R integrable sobre X tal que |fn| ≤ g c.t.p. en X para todo n ∈ N. Demuestre que la\nfunci´on lim sup\nn→∞\nfn es integrable sobre X y\nZ\nX\nÅ\nlim sup\nn→∞\nfn\nã\ndµ ≥ lim sup\nn→∞ Z\nXfn dµ."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-5",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Considere la sucesi´on {fn}∞\nn=1 de funciones medibles dada por\n∀ n ∈ N, x ∈ R\nÅ\nfn(x) = −\n1\nn\nχ[0,n](x)\nã\n.\nDemuestre que la sucesi´on {fn}∞\nn=1 converge uniformemente a la funci´on 0, pero\nlim inf\nn→∞ Z\nR\nfn dλ < Z\nR\n\u0010\nlim inf\nn→∞\nfn\n\u0011\ndµ."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-6",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {fn}∞\nn=1 una sucesi´on de funciones medibles. Suponga que existe una funci´on h : X → R medible\nno negativa tal que R\nX\nh dµ < +∞. Si −h ≤ fn en X, demuestre que\nZ\nX\n\u0010\nlim inf\nn→∞\nfn\n\u0011\ndµ ≤ lim inf\nn→∞ Z\nX\nfn dµ.\n¿Por qu´e este ejercicio no puede aplicarse al ejercicio anterior? Justifique."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l10-7",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que el teorema de convergencia mon´otona sigue manteni´endose si se asume que la\nfunci´on f1 es integrable, a´un si f1 no es necesariamente no negativa."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l10-8",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean (X, X) y (Y, Y) dos espacios medibles. Una funci´on K : X × Y → [0, +∞] es llamada un kernel\nde X en Y si:\n(i) Para todo x ∈ X la funci´on A 7→ K(x, A) es una medida sobre (Y, Y).\n(ii) Para todo A ∈ Y la funci´on x 7→ K(x, A) es medible en (X, X).\nSea K un kernel de X en Y , sea µ una medida sobre (X, X) y sea f : Y → [0, +∞] una funci´on medible.\nPruebe lo siguiente:\n(i) La funci´on A 7→\nR\nX K(x, A) dµ(x) es una medida sobre (Y, Y).\n4(ii) La funci´on x 7→\nR\nY\nf(y)K(x, dy) es una funci´on medible sobre (X, X).\n(iii) Si ν es la medida sobre (Y, Y) definida en el inciso (i), entonces\nZ\nY\nf(y) dν(y) = Z\nX\nÅZ\nY\nf(y)K(x, dy)\nã\ndµ(x).\nSugerencia: Primero suponga que f es simple."
+        },
+        {
+          "numero_original": 9,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l10-9",
+          "archivo": "capitulos/05.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "En el ejercicio anterior, suponga que µ es una medida finita, que sup{K(x, Y ) : x ∈ X} es finito y\nque f es una funci´on acotada (no necesariamente no negativa). Demuestre lo siguiente:\n(i) La funci´on x 7→\nR\nY\nf(y)K(x, dy) es una funci´on medible acotada sobre (X, X).\n(ii) Si ν es la medida sobre (Y, Y) definida en el inciso (i) del ejercicio 8, entonces\nZ\nY\nf(y) dν(y) = Z\nX\nÅZ\nY\nf(y)K(x, dy)\nã\ndµ(x).\n5"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Dominio del núcleo: X por la σ-álgebra de llegada.",
+        "El dominio de una transformada de suma puede superar la intersección de dominios."
+      ]
+    },
+    {
+      "lectura": 11,
+      "fuente": "AnM2-LFM-lect11.pdf",
+      "texto_local": "tmp/originales/02/lect11.txt",
+      "capitulos": [
+        6
+      ],
+      "etiqueta_lectura": "lectura:v2-11",
+      "temas": [
+        "medida producto",
+        "clase monótona",
+        "Tonelli",
+        "convolución"
+      ],
+      "ejercicios_originales": 7,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-1",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que la intersecci´on de toda familia no vac´ıa de clases mon´otonas, si es no vac´ıa, es una\nclase mon´otona.\n1En los conjuntos donde no est´an definidos, se pueden definir las funciones f y g como cero."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-2",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Criterio de Tonelli-Hobson. Demuestre que una funci´on f : X × Y → R es integrable en X × Y si\ny solo si alguna de las integrales\nZ\nX\nZ\nY\n|F| dνdµ, Z\nY\nZ\nX\n|F| dµdν\nes finita."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-3",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {am,n}∞\nn,m=1 la sucesi´on doble definida como\n∀ n, m ∈ N\n\n\n\n1 si m = n\n−1 si m + 1 = n\n0 en otro caso\n.\nDemuestre que\nX∞\nm=1\nX∞\nn=1\nam,n = 0,\nX∞\nn=1\nX∞\nm=1\nam,n = 1.\nLuego la hip´otesis de integrabilidad en el teorema de Fubini no puede suprimirse."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-4",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "El producto tensorial. Sean f : X → R, g : Y → R funciones integrables, y sea h : X × Y la funci´on\n∀ (x, y) ∈ X × Y (h(x, y) = f(x)g(y)).\nPruebe que h es integrable sobre X × Y y\nZ\nX×Y\nh dπ =\nÅZ\nX\nf dµã ÅZ\nY\ng dνã."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-5",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean X = Y = [0, 1] con la σ-´algebra de Borel. Dotamos a X con la medida de Lebesgue λ y a Y\ncon la medida de conteo µc. Sea D = {(x, x) : x ∈ [0, 1]}. Demuestre que D es medible en X × Y , pero\nZ\nX\nµc(Dx) dλ(x) 6=\nZ\nY\nλ(Dy) dµc(y).\nLuego, la hip´otesis de que las medidas sean σ-finitas no puede suprimirse."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "i",
+            "ii",
+            "iii"
+          ],
+          "etiqueta": "ej:v2-l11-6",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "La convoluci´on en R. Sean f, g : R → R dos funciones Lebesgue-integrables. Demuestre lo\nsiguiente:\n(i) La funci´on (x, y) 7→ f(x − y)g(y) es medible en R\n2\n.\n(ii) La funci´on f ∗ g : R → R definida como\n∀ x ∈ R\nÅ\nf ∗ g(x) = Z\nR\nf(x − y)g(y) dλ(x)\nã\nest´a definida c.t.p. en R. Sugerencia: Use el criterio de Tonelli-Hobson y la igualdad\nZ\nR\n|f(x − y)| dλ(x) = Z\nR\n|f| dλ.\n(iii) Se tiene\nZ\nR\n|f ∗ g| dλ ≤\nÅZ\nX\n|f| dλã ÅZ\nY\n|g| dλã\n.\n4La funci´on f ∗ g es llamada la convoluci´on de f por g. Se puede demostrar que\nZ\nR2\nf ∗ g dλ =\nÅZ\nX\nf dλã ÅZ\nY\ng dλã.\nTambi´en se puede demostrar que la convoluci´on es asociativa y conmutativa."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l11-7",
+          "archivo": "capitulos/06.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean A, B ∈ X ⊗ Y tales que ν(Ax) = ν(Bx) para casi todo x ∈ X. Demuestre que π(A) = π(B).\n5"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Medibilidad y σ-finitud precisadas en Tonelli–Hobson.",
+        "Variable diferencial y dominio corregidos en convolución.",
+        "Tras revisión independiente se explicita σ-finitud global desde Integrar por secciones y en Fubini, con excepción deliberada del ejercicio11.5."
+      ]
+    },
+    {
+      "lectura": 12,
+      "fuente": "AnM2-LFM-lect12.pdf",
+      "texto_local": "tmp/originales/02/lect12.txt",
+      "capitulos": [
+        5,
+        6
+      ],
+      "etiqueta_lectura": "lectura:v2-12",
+      "temas": [
+        "integración compleja",
+        "Fubini"
+      ],
+      "ejercicios_originales": 0,
+      "ejercicios": [],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": []
+    },
+    {
+      "lectura": 13,
+      "fuente": "AnM2-LFM-lect13.pdf",
+      "texto_local": "tmp/originales/02/lect13.txt",
+      "capitulos": [
+        8
+      ],
+      "etiqueta_lectura": "lectura:v2-13",
+      "temas": [
+        "seminormas",
+        "cocientes",
+        "L1 como clases"
+      ],
+      "ejercicios_originales": 3,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l13-1",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "El primer teorema de isomorfismo. Sean V, V 0espacios vectoriales y sea T : V → V\n0 una transfor\u0002maci´on lineal. Demuestre que\nV /ker(T) ' im(T)."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l13-2",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea V un espacio vectorial, y sea W ≤ V . Se define la codimensi´on de W en V como codimV (W) =\ndim(V /W). Demuestre que dim(V ) = codimV (W) +dim(W). Usando el ejercicio 1 deduzca el teorema\nde la dimensi´on."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l13-3",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sean V, V 0espacios vectoriales, sea T : V → V\n0 una transformaci´on lineal, y sea W un subespacio de\nV contenido en ker(T). Demuestre que T induce de manera natural una transformaci´on lineal de V /W\nen V\n0\n.\n3"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "La norma uniforme requiere funciones acotadas o dominio compacto."
+      ]
+    },
+    {
+      "lectura": 14,
+      "fuente": "AnM2-LFM-lect14.pdf",
+      "texto_local": "tmp/originales/02/lect14.txt",
+      "capitulos": [
+        7
+      ],
+      "etiqueta_lectura": "lectura:v2-14",
+      "temas": [
+        "modos de convergencia",
+        "Egorov",
+        "extracción casi en todas partes"
+      ],
+      "ejercicios_originales": 4,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l14-1",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {fn : X → R}∞\nn=1 una sucesi´on de funciones medibles que converge uniformemente a una funci´on\nmedible f. Demuestre que {fn}∞\nn=1 converge a f en medida."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l14-2",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que en el espacio de medida (N,P(N), µc) la convergencia en medida es equivalente a\nla convergencia uniforme."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l14-3",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {fn}∞\nn=1 una sucesi´on de funciones Lebesgue-medibles de [0, 1] en R que converge casi en todas\npartes a la funci´on 0. Demuestre que existe una sucesi´on de n´umeros positivos {an}∞\nn=1 que diverge a\n+∞ tal que la sucesi´on {anfn}∞\nn=1 converge casi en todas partes a 0."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l14-4",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "El siguiente resultado es un an´alogo del teorema de Egoroff para espacios de medida infinita. Sea\n{fn : X → R}∞\nn=1 una sucesi´on de funciones medibles que converge casi en todas partes a una funci´on\nmedible f : X → R. Suponga que existe una funci´on integrable g : X → R tal que\n∀ n ∈ N (|fn| ≤ g c.t.p. en X).\nDemuestre que la sucesi´on {fn}∞\nn=1 converge casi uniformemente a f.\nSugerencia: Considere los conjuntos G0 = {x ∈ X : g(x) > 1} y Gn = {x ∈ X : 1/2\nn < g(x) ≤ 1/2n−1}.\nDado ε > 0, aplique el teorema de Egoroff a cada Gn para encontrar conjuntos An (n ≥ 0 en Z) tales que\nla convergencia de la sucesi´on {fn}∞\nn=1 es uniforme en cada An y\nµ(G0 \\ A0) <\nε\n2\n, ∀ n ∈ N\n\u0010\nµ(Gn \\ An) <\nε\n4\nn\n\u0011\n.\nTome A =\nS∞\nn=0\nAn ∪ {x ∈ X : ∀ n ∈ N (fn(x) = 0)}.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Ejemplo gaussiano de Maximenko: n tiende a infinito, eta queda fijo."
+      ]
+    },
+    {
+      "lectura": 15,
+      "fuente": "AnM2-LFM-lect15.pdf",
+      "texto_local": "tmp/originales/02/lect15.txt",
+      "capitulos": [
+        7
+      ],
+      "etiqueta_lectura": "lectura:v2-15",
+      "temas": [
+        "Cauchy en medida",
+        "completitud",
+        "convergencia casi uniforme",
+        "composición"
+      ],
+      "ejercicios_originales": 8,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-1",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "En la demostraci´on del punto (i) del teorema 3, demuestre que la subsucesi´on {fa(n)}∞\nn=1 converge\na f casi uniformemente."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-2",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "¿La convergencia casi uniforme implica convergencia uniforme fuera de un conjunto de medida cero?\nJustifique."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-3",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea la sucesi´on de funciones Lebesgue-medibles {fn : R → R}∞\nn=1 dada por\n∀ n ∈ N\n\nfn = χ[n,n+1]\u0001.\nDemuestre que esta sucesi´on converge a la funci´on 0 en todas partes, pero no converge ni en medida ni\ncasi uniformemente."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-4",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que toda subsucesi´on de una sucesi´on de Cauchy en medida es una sucesi´on de Cauchy\nen medida."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-5",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ϕ : R → R una funci´on Borel-medible. Demuestre que ϕ es continua en R si y solo si para toda\nsucesi´on {fn : X → R}n=1 → ∞ de funciones medibles que converge casi en todas partes a una funci´on\nmedible f : X → R se tiene que la sucesi´on {ϕ ◦ fn}∞\nn=1 converge casi en todas partes a ϕ ◦ f."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-6",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea ϕ : R → R una funci´on uniformemente continua, y sea {fn : X → R}n=1 → ∞ una sucesi´on\nde funciones medibles que converge uniformemente a una funci´on medible f : X → R. Demuestre que la\n3sucesi´on {ϕ ◦ fn}∞\nn=1 converge uniformemente a ϕ ◦ f."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-7",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Pruebe el ejercicio 6 asumiendo que la convergencia es casi uniformemente o en medida."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l15-8",
+          "archivo": "capitulos/07.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre el rec´ıproco del ejercicio 6: si la funci´on Borel-medible ϕ : R → R no es uniformemente\ncontinua, entonces existe una sucesi´on {fn : X → R}n=1 → ∞ de funciones medibles en alg´un espacio de\nmedida X que converge uniformemente a una funci´on f : X → R, pero tal que la sucesi´on {ϕ ◦ fn}∞\nn=1 no\nconverge en medida a ϕ ◦ f.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "La caracterización de continuidad requiere medida total positiva o cuantificar todos los espacios."
+      ]
+    },
+    {
+      "lectura": 16,
+      "fuente": "AnM2-LFM-lect16.pdf",
+      "texto_local": "tmp/originales/02/lect16.txt",
+      "capitulos": [
+        8
+      ],
+      "etiqueta_lectura": "lectura:v2-16",
+      "temas": [
+        "completitud L1",
+        "densidad",
+        "separabilidad"
+      ],
+      "ejercicios_originales": 6,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l16-1",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea R([a, b]) el espacio de todas las funciones Riemann-integrables sobre [a, b] dotado con la semi\u0002norma\nkfk =\nZ b\na\n|f(x)| dx.\n3Demuestre que L\n1\n([a, b]) es una completaci´on de R([a, b]).\nSugerencia: Demuestre que el conjunto de todas las funciones escalonadas en [a, b], es decir, el conjunto\nde todas las combinaciones lineales de funciones caracter´ısticas de intervalos, es denso en R([a, b]) y en\nL\n1\n([a, b])."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l16-2",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, d) un espacio pseudom´etrico. Demuestre lo siguiente:\n(i) La relaci´on ∼ definida sobre X como\n∀ x, y ∈ X (x ∼ y si y sollo si d(x, y) = 0)\nes una relaci´on de equivalencia sobre X.\n(ii) La funci´on de: X/ ∼ ×X/ ∼→ R dada por\n∀ [x], [y] ∈ X/ ∼\nÄ\nde([x], [y]) = d(x, y)\nä\nest´a bien definida y es una m´etrica sobre X/ ∼, llamada la m´etrica cociente inducida por la pseu\u0002dom´etrica d."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "i",
+            "ii"
+          ],
+          "etiqueta": "ej:v2-l16-3",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea (X, d) un espacio pseudom´etrico. Demuestre que lo siguiente es equivalente:\n(i) El espacio (X/ ∼, de) es separable.\n(ii) Existe una sucesi´on {xn}∞\nn=1 en X con la siguiente propiedad: para todo x ∈ X y para todo ε > 0\nexiste n ∈ N tal que d(x, xn) < ε. Una sucesi´on de este tipo es llamada una sucesi´on densa en el\nespacio pseudom´etrico (X, d)."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l16-4",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que el espacio de medida (N,P(N), µc) no es separable. Esto provee un contraejemplo\npara el rec´ıproco del teorema 7, pues sabemos que `\n1 = L1\n(N) es separable. Note que en este caso µc es\nσ-finita."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l16-5",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que L\n1\n(R) es separable."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l16-6",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea R dotado con la σ-´algebra conumerable\nX = {A ⊆ R : A es numerable o R \\ A es numerable}\ny la medida de conteo. Demuestre que L\n1\n(R, X, µc) es separable, pero µc no es σ-finita.\nSugerencia: Recuerde c´omo se demuestra que `\n1\nes separable.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "La norma L1 lleva valor absoluto.",
+        "La seudométrica acotada difiere de la medida de diferencia simétrica.",
+        "Semifinitud exige medida positiva finita.",
+        "Conteo en R da L1 no separable; ejemplo corregido con medida cero-infinito."
+      ]
+    },
+    {
+      "lectura": 17,
+      "fuente": "AnM2-LFM-lect17.pdf",
+      "texto_local": "tmp/originales/02/lect17.txt",
+      "capitulos": [
+        8
+      ],
+      "etiqueta_lectura": "lectura:v2-17",
+      "temas": [
+        "media",
+        "Vitali",
+        "Jensen",
+        "composición",
+        "traslaciones"
+      ],
+      "ejercicios_originales": 8,
+      "ejercicios": [
+        {
+          "numero_original": 1,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-1",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea {fn : X → R}∞\nn=1 una sucesi´on de funciones integrables sobre X que converge en promedio a\nuna funci´on f. Si una subsucesi´on {fa(n)}∞\nn=1 de {fn}∞\nn=1 converge en promedio a una funci´on g ∈ L\n1\n(X),\ndemuestre que f = g en L\n1\n(X)."
+        },
+        {
+          "numero_original": 2,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-2",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Considere la sucesi´on en L\n1\n([0, 1])\n∀ n ∈ N\n\nfn = nχ[1/n,2/n]\n\u0001\n.\nDemuestre que {fn}∞\nn=1 converge a la funci´on 0 en medida, pero no converge en promedio."
+        },
+        {
+          "numero_original": 3,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-3",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre la siguiente versi´on del teorema de convergencia dominada de Lebesgue: Sea {fn : X →\nR}∞\nn=1 una sucesi´on de funciones medibles que converge en medida a una funci´on medible f : X → R. Si\nexiste g ∈ L\n1\n(X) tal que\n∀ n ∈ N (|fn| ≤ g c.t.p. en X),\nentonces f, f1, f2, · · · ∈ L\n1\n(X) y\nZ\nX\nf dµ = limn→∞ Z\nX\nfn dµ."
+        },
+        {
+          "numero_original": 4,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-4",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Demuestre que, bajo la hip´otesis de dominaci´on, las condiciones (ii) y (iii) del teorema de conver\u0002gencia de Vitali son equivalentes."
+        },
+        {
+          "numero_original": 5,
+          "incisos_originales": [
+            "i"
+          ],
+          "etiqueta": "ej:v2-l17-5",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Desigualdad de Jensen. Suponga µ(X) = 1. Sea ϕ : R → R una funci´on convexa. Demuestre lo\nsiguiente:\n(i) ϕ es continua en R, luego Borel-medible.\n3(ii) Para toda f ∈ L\n1\n(X) se tiene\nϕ\nÅZ\n: Xf dµã≤\nZ\nX\n(ϕ ◦ f) dµ.\nEn particular, la integral del lado derecho existe en R. Sugerencia: Demuestre que para cada x0 ∈ R\nexiste una recta y = ax + b que pasa por el punto x0, ϕ(x0) y est´a siempre por debajo de la gr´afica de\nϕ. Luego, para una elecci´on conveniente de a, b se tiene ϕ\nR\n: Xf dµ\u0001=\nR\nX\n(af + b) dµ."
+        },
+        {
+          "numero_original": 6,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-6",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Suponga µ(X) < +∞. Sea ϕ : R → R una funci´on continua tal que existe K > 0 que cumple\n|ϕ(x)| ≤ K|x| siempre que |x| ≥ K. Pruebe que ϕ ◦ f ∈ L\n1\n(X) para toda f ∈ L\n1\n(X). Demuestre,\nadem´as, que la condici´on se sigue cumpliendo para µ(X) = +∞ si la desigualdad |ϕ(x)| ≤ K|x| es v´alida\npara todo x ∈ R."
+        },
+        {
+          "numero_original": 7,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-7",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Bajo las hip´otesis del ejercicio 6, demuestre que si la sucesi´on {fn}∞\nn=1 converge a f en promedio,\nentonces la sucesi´on {ϕ ◦ fn}∞\nn=1 converge en promedio a ϕ ◦ f."
+        },
+        {
+          "numero_original": 8,
+          "incisos_originales": [
+            "enunciado único"
+          ],
+          "etiqueta": "ej:v2-l17-8",
+          "archivo": "capitulos/08.tex",
+          "estado": "resuelto; corrección explícita cuando corresponde",
+          "enunciado_fuente_extraido": "Sea f ∈ L\n1\n(R), y sea fx(t) = f(t − x) para todo t, x ∈ R. Demuestre que\nlimx→x0kfx − fx0k1 = 0.\n4"
+        }
+      ],
+      "huecos_teoricos": "Desarrollados en las demostraciones; no sumados al conteo de listas explícitas.",
+      "correcciones": [
+        "Markov requiere menor o igual.",
+        "Vitali requiere conjunto de control exterior de medida finita.",
+        "Jensen puede dar integral positiva infinita."
+      ]
+    }
+  ]
+}

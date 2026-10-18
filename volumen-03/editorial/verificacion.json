@@ -1,0 +1,44 @@
+{
+  "fecha": "2026-10-18",
+  "volumen": 3,
+  "titulo": "Análisis funcional y álgebras de operadores",
+  "paginas_pdf": 176,
+  "bytes_pdf": 1094628,
+  "sha256_pdf": "86b635086e628f9d6e2ec948d8fcc270dd6f9879ef8a955c41d7204a72aaa1b8",
+  "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex",
+  "compilacion_exit_code": 0,
+  "lecturas": 37,
+  "capitulos": 18,
+  "partes": 6,
+  "ejercicios_originales": 194,
+  "ejercicios_complementarios": 4,
+  "soluciones": 198,
+  "referencias_bibliograficas": 16,
+  "entradas_indice": 93,
+  "enlaces_pdf": 912,
+  "enlaces_internos_invalidos": 0,
+  "etiquetas_duplicadas": 0,
+  "referencias_indefinidas": 0,
+  "citas_indefinidas": 0,
+  "overfull": 0,
+  "underfull": 8,
+  "glifos_ausentes": 0,
+  "revision_visual": {
+    "1-100": "Aprobada: revisión de todas las páginas en hojas de contacto y ampliación de portada; sin cortes, solapamientos o títulos de ejercicios huérfanos.",
+    "101-150": "Aprobada por revisor independiente: revisión de todas las páginas en hojas de contacto y ampliación de la página 102; sin cortes, solapamientos o títulos huérfanos.",
+    "151-176": "Aprobada por revisor independiente: hojas de contacto y ampliación de referencias finales; índices y tabla de correspondencia legibles, sin cortes, solapamientos o títulos huérfanos.",
+    "pagina_77": "Revisión adicional independiente aprobada: inicio del capítulo 9 y desarrollo de Tychonoff."
+  },
+  "revision_matematica_independiente": {
+    "06": "Fredholm y teoría espectral de compactos, cotejados con lecturas 10–11: nueve ejercicios y todos sus incisos aprobados; comprobadas las dependencias del teorema de rango cerrado.",
+    "07": "Clases de Schatten, traza, Hilbert–Schmidt y polar, cotejados con lectura 12: pruebas y ejercicios aprobados sin cambios necesarios.",
+    "09": "Alaoglu, Eberlein–Šmulian, Goldstine, reflexividad y 16 ejercicios: revisión independiente aprobada; James identificado como panorama externo no usado.",
+    "13_16_18": "Aplicadas precisiones independientes sobre contractividad, generadores de álgebras, separación en H^n y representación mediante subálgebra C* separable."
+  },
+  "advertencias_no_materiales": [
+    "Ocho avisos underfull hbox de espaciado; no hay desbordamientos ni caracteres ausentes.",
+    "Sustitución de tamaños de fuentes matemáticas en títulos grandes sin defecto visual detectado.",
+    "Decisión de paginación aceptada: las páginas físicas 22, 66 y 102 contienen cierres breves antes de capítulos nuevos. Se conserva esta distribución, sin pérdida de contenido ni dificultad de lectura."
+  ],
+  "estado": "Edición completa, verificada y congelada; lista para publicación."
+}

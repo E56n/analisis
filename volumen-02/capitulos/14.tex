@@ -1,0 +1,150 @@
+\chapter{Representación del dual de \texorpdfstring{$L^1$}{L1} y del dual de \texorpdfstring{$L^\infty$}{L infinito}}\label{v2:cap14}\label{cap:v2-14}
+\section{Pegar representaciones locales}\label{lectura:v2-28}
+En un conjunto de medida finita, un funcional sobre $L^1$ determina una medida mediante sus valores en indicadores. Radon--Nikodym transforma esa medida en una función. Para trabajar en un espacio que no es $\sigma$-finito, debemos reunir una familia posiblemente no numerable de representaciones locales sin tomar una unión no numerable de excepciones nulas. La localizabilidad proporciona precisamente la herramienta adecuada. Este capítulo desarrolla las lecturas 28 y 29 de \cite{valencia2}.
+\begin{lema}[Pegado medible]\label{v2:pegado-medible}
+Supóngase que $\mu$ es localizable. Sean $f_\alpha:D_\alpha\to\R$ funciones medibles sobre dominios medibles, con $f_\alpha=f_\beta$ casi en todas partes en $D_\alpha\cap D_\beta$. Entonces existe una función medible $f:X\to\R$ cuya restricción a cada $D_\alpha$ coincide casi en todas partes con $f_\alpha$. La afirmación vale también para funciones complejas.
+\end{lema}
+\begin{proof}
+Para cada racional $r$, sea $E_{\alpha,r}=\{x\in D_\alpha:f_\alpha(x)>r\}$ y elijamos un supremo esencial $E_r$ de esta familia. Fijemos $\beta$. La compatibilidad implica
+\[
+ \mu\bigl(E_{\alpha,r}\setminus(X\setminus(D_\beta\setminus E_{\beta,r}))\bigr)=0
+\]
+para todo $\alpha$: la diferencia consiste en puntos comunes a ambos dominios donde $f_\alpha>r$ y $f_\beta\le r$. La minimalidad del supremo esencial da $\mu((E_r\cap D_\beta)\setminus E_{\beta,r})=0$. La propiedad de mayorante da $\mu(E_{\beta,r}\setminus E_r)=0$. Así ambas secciones coinciden salvo un conjunto nulo.
+
+Definimos $f_*(x)=\sup\{r\in\Q:x\in E_r\}$ en la recta extendida, con supremo del vacío igual a $-\infty$. Es medible, pues $\{f_*>a\}=\bigcup_{r\in\Q,\ r>a}E_r$. Fuera de la unión numerable de las diferencias simétricas anteriores, para cada $x\in D_\beta$ se cumple
+\[
+ x\in E_r\quad\Longleftrightarrow\quad f_\beta(x)>r\qquad(r\in\Q),
+\]
+y por densidad de los racionales $f_*(x)=f_\beta(x)$. Sustituimos $f_*$ por cero en el conjunto medible donde vale $\pm\infty$; obtenemos la función finita requerida. En cada dominio el cambio afecta solo a un conjunto nulo, aunque no afirmamos que la unión de todas esas excepciones sea nula. Para funciones complejas pegamos por separado partes real e imaginaria. Deben usarse superniveles $f_\alpha>r$ con un supremo: subniveles $f_\alpha\le r$ producirían un supremo infinito y no reconstruirían la función.
+\end{proof}
+\begin{teorema}[Dual de $L^1$ en un espacio general]\label{v2:dual-l1-general}
+La aplicación $\Phi:L^\infty(\mu)\to(L^1(\mu))^*$, $\Phi(g)(f)=\int fg\,d\mu$, es una isometría si y solo si $\mu$ es semifinita. Es una isometría lineal sobreyectiva si y solo si $\mu$ es localizable.
+\end{teorema}
+\begin{proof}
+La primera equivalencia ya está demostrada en la proposición \ref{v2:l1-isometria}. Probamos las dos direcciones de la segunda.
+
+\emph{Localizabilidad implica representación.} Sea $\varphi\in(L^1)^*$ y $M=\norm\varphi$. Para cada $A$ de medida finita, definimos $\nu_A(B)=\varphi(\ind{A\cap B})$. Es finitamente aditiva, y $|\nu_A(B)|\le M\mu(A\cap B)$ demuestra directamente continuidad verdadera. Radon--Nikodym da una $g_A\in L^1(\mu)$ con $\nu_A(B)=\int_Bg_A\,d\mu$. Se anula casi en todas partes fuera de $A$, por unicidad de las densidades.
+
+Afirmamos $|g_A|\le M$ casi en todas partes. Para toda función simple $h$ soportada en $A$, la representación da $\varphi(h)=\int hg_A$. Se extiende a funciones acotadas soportadas en $A$ por aproximación uniforme: esta converge en $L^1(\mu)$, porque $\mu(A)<\infty$, y también hace converger la integral contra $g_A\in L^1$. Si $E=\{x\in A:|g_A(x)|>M+\eps\}$ tuviera medida positiva, la función acotada $h=\ind E\,\overline{g_A}/|g_A|$ daría
+\[
+ (M+\eps)\mu(E)<\int_E|g_A|=\varphi(h)\le M\norm h_1=M\mu(E),
+\]
+contradicción. Por tanto la cota está probada. Gracias a ella, la representación se extiende a todo $L^1(A)$ por densidad de las simples integrables.
+
+En $A\cap B$ las dos densidades representan al mismo funcional sobre indicadores. Su diferencia integra cero sobre cada subconjunto de la intersección; por unicidad de la densidad, $g_A=g_B$ casi en todas partes allí. Aplicamos el lema de pegado a $g_A|_A$ y obtenemos una función medible $g$ en $X$. En cada conjunto de medida finita se cumple $|g|\le M$ casi en todas partes. Si $\{|g|>M\}$ tuviera medida positiva, la semifinitud produciría un subconjunto de medida positiva finita, contradicción. Así $g\in L^\infty$ y $\norm g_\infty\le M$. Para todo indicador integrable, $\varphi(\ind A)=\int_Ag$; por linealidad y densidad, $\varphi(f)=\int fg$ para todo $f\in L^1$. La isometría previamente demostrada da igualdad de normas.
+
+\emph{Una isometría sobreyectiva implica localizabilidad.} Ya sabemos que $\mu$ es semifinita. Sea $\mathcal E\subset\Acal$ una familia y sea $\mathcal D$ la familia de uniones finitas de sus miembros, incluyendo el vacío. Para $f\ge0$ de $L^1$, ponemos
+\[
+ P(f)=\sup_{D\in\mathcal D}\int_D f\,d\mu.
+\]
+Tenemos $0\le P(f)\le\norm f_1$. Es aditiva en el cono positivo. La cota $P(f+h)\le P(f)+P(h)$ es inmediata; para la inversa elegimos $D_1,D_2$ que aproximen los dos supremos y usamos $D_1\cup D_2\in\mathcal D$, obteniendo un error arbitrariamente pequeño. También es homogénea para escalares no negativos. Definimos $P(f)=P(f^+)-P(f^-)$ para funciones reales; la aditividad en el cono garantiza que esto es lineal, pues cualquier descomposición $f=a-b$ con $a,b\ge0$ da el mismo valor: de $a-b=c-d$ se sigue $a+d=c+b$. Extendemos linealmente al caso complejo. La positividad da $|P(f)|\le P(|f|)\le\norm f_1$: en el caso complejo multiplicamos $P(f)$ por una fase que lo vuelva real positivo y usamos $\operatorname{Re}(e^{i\theta}f)\le|f|$.
+
+Por sobreyectividad existe $g\in L^\infty$ que representa a $P$. La positividad sobre indicadores de medida finita y la semifinitud implican que $g$ es real y no negativa casi en todas partes: una parte imaginaria no nula o una parte real negativa se detectaría en un conjunto de medida positiva finita y contradiría los valores reales no negativos de $P$. Elegimos tal representante y ponemos $H=\{g>0\}$.
+
+Si $E\in\mathcal E$ y $F\subset E\setminus H$ tiene medida finita, entonces $P(\ind F)=\mu(F)$, porque $E\in\mathcal D$, mientras que $\int_Fg=0$. Así $\mu(F)=0$. Por semifinitud $\mu(E\setminus H)=0$. Si $G$ contiene esencialmente a todos los miembros de $\mathcal E$, también contiene a cada $D\in\mathcal D$. Para $F\subset H\setminus G$ de medida finita tenemos $P(\ind F)=\sup_D\mu(F\cap D)=0$, y por representación $\int_Fg=0$. Como $g>0$ en $F$, se sigue $\mu(F)=0$; semifinitud implica $\mu(H\setminus G)=0$. Por tanto $H$ es el supremo esencial requerido.
+\end{proof}
+
+\section{Cargas de variación acotada}\label{lectura:v2-29}
+\begin{definicion}
+Una \emph{carga} es una función finitamente aditiva $\nu:\Acal\to\F$ con $\nu(\varnothing)=0$. Definimos su variación por
+\[
+ |\nu|(A)=\sup\left\{\sum_{j=1}^m|\nu(A_j)|:A=\mathop{\dot\bigcup}_{j=1}^mA_j,\ A_j\in\Acal\right\}.
+\]
+Sea $\operatorname{ba}(\Acal)$ el espacio de cargas de variación total finita y sea $\operatorname{ba}_\mu(\Acal)$ el subespacio de las que se anulan sobre conjuntos $\mu$-nulos. Esta última condición es continuidad absoluta en nulos, no continuidad absoluta uniforme. La lectura usa las notaciones $T$ y $T_\mu$ para estos espacios.\index{carga}\index{medida!finitamente aditiva}
+\end{definicion}
+\begin{proposicion}\label{v2:ba-banach}
+La variación de una carga es una función positiva finitamente aditiva, posiblemente infinita. Para una carga de rango acotado,
+\[
+ \sup_{B\subset A}|\nu(B)|\le|\nu|(A)\le4\sup_{B\subset A}|\nu(B)|.
+\]
+Por tanto rango acotado equivale a variación finita. Con la norma $\norm\nu=|\nu|(X)$, $\operatorname{ba}(\Acal)$ es Banach y $\operatorname{ba}_\mu(\Acal)$ es un subespacio cerrado.
+\end{proposicion}
+\begin{proof}
+Si $A,B$ son disjuntos, toda partición de $A\cup B$ se refina intersectando sus piezas con $A,B$, y la desigualdad triangular da $|\nu|(A\cup B)\le|\nu|(A)+|\nu|(B)$. Uniendo particiones que aproximan los dos supremos se obtiene la desigualdad contraria. Esto prueba aditividad finita; no afirma aditividad numerable.
+
+La cota inferior usa la partición $B,A\setminus B$. Para la superior, dada una partición $A_j$ de $A$, agrupamos las piezas donde $\operatorname{Re}\nu(A_j)$ es no negativa y donde es negativa. Por aditividad finita, la suma de los valores absolutos de estas partes reales es a lo sumo $2\sup_{B\subset A}|\nu(B)|$. Agrupando del mismo modo las partes imaginarias y usando $|z|\le|\operatorname{Re}z|+|\operatorname{Im}z|$, obtenemos la constante cuatro. En el caso real basta dos.
+
+Las propiedades de norma proceden de las particiones, como para medidas. Si $(\nu_n)$ es de Cauchy en esta norma, los valores convergen uniformemente sobre $\Acal$ a una función $\nu$ finitamente aditiva. Para cada partición finita, pasamos al límite en $\sum_j|\nu_n(A_j)-\nu_m(A_j)|\le\eps$ y tomamos después supremo; resulta $\norm{\nu_n-\nu}\le\eps$. Esto prueba variación finita y completitud sin exigir continuidad sobre sucesiones de conjuntos. Si todas las $\nu_n$ se anulan sobre un conjunto nulo $A$, el límite también lo hace. La condición es asimismo estable por combinaciones lineales, de donde la cerradura del subespacio.
+\end{proof}
+
+\section{Integración contra una carga}
+Para una función simple $s=\sum_jc_j\ind{A_j}$ definimos $I_\nu(s)=\sum_jc_j\nu(A_j)$. Una refinación común de las particiones muestra que no depende de la representación y que
+\[
+ |I_\nu(s)-I_\nu(t)|\le\norm\nu\,\sup_X|s-t|,\qquad
+ |I_\nu(s)|\le I_{|\nu|}(|s|).
+\]
+Toda función medible acotada $f$ se aproxima uniformemente por simples, mediante particiones finitas de su recorrido. Por la primera cota, sus integrales forman una sucesión de Cauchy; definimos $I_\nu(f)$ como su límite. Si se desean aproximaciones con módulos crecientes, se aproxima $|f|$ por los escalones diádicos inferiores $r_n=2^{-n}\lfloor2^n|f|\rfloor$ y su argumento por ángulos de una cuadrícula de paso $2\pi2^{-n}$. La simple $s_n=r_ne^{i\theta_n}$ tiene $|s_n|=r_n\uparrow|f|$ y error uniforme a lo sumo $2^{-n}+2\pi\norm f_{\mathrm{sup}}2^{-n}$. En el caso real se conserva el signo y solo se discretiza el módulo.
+
+La cota anterior prueba independencia de la aproximación y continuidad para la norma uniforme. La linealidad pasa al límite desde las simples. También pasa al límite la desigualdad
+\[
+ \left|\int f\,d\nu\right|\le\int|f|\,d|\nu|,
+\]
+pues $s_n\to f$ uniformemente implica $|s_n|\to|f|$ uniformemente y $|\nu|$ tiene masa finita. Si $\nu\in\operatorname{ba}_\mu$ y $A$ es nulo, todos sus subconjuntos medibles son nulos, de modo que $|\nu|(A)=0$. Por ello una función acotada nula casi en todas partes tiene integral cero. Para una clase $f\in L^\infty$, elegimos un representante acotado suprimiendo sus valores mayores que $\norm f_\infty$ en el conjunto nulo correspondiente. La integral obtenida es independiente del representante acotado. En general esta integral no satisface convergencia monótona ni dominada; únicamente se ha utilizado continuidad uniforme.
+\begin{teorema}[Dual de $L^\infty$]\label{v2:dual-linfty}
+La aplicación $\nu\mapsto I_\nu$ es una isometría lineal sobreyectiva de $\operatorname{ba}_\mu(\Acal)$ sobre $(L^\infty(\mu))^*$.
+\end{teorema}
+\begin{proof}
+La construcción anterior da $|I_\nu(f)|\le\norm\nu\norm f_\infty$, luego $\norm{I_\nu}\le\norm\nu$. Dada una partición $A_1,\ldots,A_m$, elegimos $c_j=\overline{\nu(A_j)}/|\nu(A_j)|$ cuando $\nu(A_j)\ne0$ y cero en otro caso. Entonces $s=\sum_jc_j\ind{A_j}$ tiene norma esencial a lo sumo uno y
+\[
+ I_\nu(s)=\sum_j|\nu(A_j)|.
+\]
+Tomar el supremo sobre particiones da $\norm{I_\nu}\ge\norm\nu$.
+
+Si $\varphi\in(L^\infty)^*$, definimos $\nu(A)=\varphi(\ind A)$. La linealidad prueba aditividad finita. Si $A$ es nulo, su indicador es el vector cero de $L^\infty$, luego $\nu(A)=0$. Para toda partición y las fases anteriores,
+$\sum_j|\nu(A_j)|=\varphi(s)\le\norm\varphi$; por tanto $\nu\in\operatorname{ba}_\mu$. El funcional y la integral coinciden sobre indicadores, después sobre simples y finalmente sobre todo $L^\infty$ por densidad en norma. Así la aplicación es sobreyectiva. Su isometría implica inyectividad.
+\end{proof}
+
+\section{Ejercicios resueltos: aditividad finita y ultrafiltros}
+\begin{ejercicio}[Lectura 29, ejercicio 1: enunciado falso]\label{ej:v2-l29-1}
+La lectura afirma: si $\nu$ es finitamente aditiva y $(A_n)$ es disjunta, la convergencia de $\sum_n\nu(A_n)$ implica que su suma es $\nu(\bigcup_nA_n)$. Examinarla.
+\end{ejercicio}
+\begin{solucion}
+Es falso. La carga $\nu(A)=L(\ind A)$ construida en el ejercicio \ref{ej:v2-l27-1} cumple $\nu(\{n\})=0$ para todo $n$, porque cada vector canónico converge a cero, pero $\nu(\N)=1$. Por tanto $\sum_n\nu(\{n\})=0$ es una serie convergente cuya suma difiere de la medida de la unión. También sirve la carga de un ultrafiltro libre del ejercicio \ref{ej:v2-l29-5}. La hipótesis que falta es continuidad del resto: si $B=\bigcup_nA_n$, la igualdad deseada equivale a $\nu(B\setminus\bigcup_{n\le m}A_n)\to0$, por aditividad finita. Exigir esa continuidad para todas las familias equivale a aditividad numerable.
+\end{solucion}
+\begin{ejercicio}[Lectura 29, ejercicio 2]\label{ej:v2-l29-2}
+Para una carga de variación acotada, demostrar: (i) la integral de una simple no depende de su representación; (ii) la integral de una función medible acotada no depende de la sucesión de simples que converge uniformemente a ella.
+\end{ejercicio}
+\begin{solucion}
+(i) Dadas dos representaciones $s=\sum_j a_j\ind{A_j}=\sum_kb_k\ind{B_k}$, refinamos por todas las intersecciones y complementos de los conjuntos que aparecen. Son una partición finita de $X$. En cada pieza, las dos sumas de coeficientes tienen el mismo valor, porque representan la misma función. La aditividad finita de $\nu$ transforma ambas integrales en la misma suma sobre esa partición. El argumento también cubre representaciones con conjuntos solapados.
+
+(ii) Si $s_n,t_n\to f$ uniformemente, entonces $\norm{s_n-t_n}_{\mathrm{sup}}\le\norm{s_n-f}_{\mathrm{sup}}+\norm{t_n-f}_{\mathrm{sup}}\to0$. Por la cota de integración, $|I_\nu(s_n)-I_\nu(t_n)|\le\norm\nu\norm{s_n-t_n}_{\mathrm{sup}}\to0$, luego los límites son iguales. La condición de variación acotada es necesaria para este procedimiento de extensión continua; no se supone automáticamente para una función finitamente aditiva arbitraria.
+\end{solucion}
+\begin{ejercicio}[Lectura 29, ejercicio 3]\label{ej:v2-l29-3}
+Sea $X\ne\varnothing$ y sea $\nu:\mathcal P(X)\to\{0,1\}$ finitamente aditiva, con $\nu(X)=1$. Para $\mathcal U=\{A:\nu(A)=1\}$, demostrar: (i) $\varnothing\notin\mathcal U$; (ii) $A\in\mathcal U$, $A\subset B$ implica $B\in\mathcal U$; (iii) $A,B\in\mathcal U$ implica $A\cap B\in\mathcal U$; (iv) si $A\notin\mathcal U$, entonces $X\setminus A\in\mathcal U$. Deducir una correspondencia biyectiva entre estas cargas y los ultrafiltros sobre $X$.
+\end{ejercicio}
+\begin{solucion}
+(i) La medida del vacío es cero. (ii) $\nu(B)=\nu(A)+\nu(B\setminus A)\ge1$, luego vale uno. (iii) De $\nu(X\setminus B)=0$ se sigue $\nu(A\setminus B)=0$ por monotonía; así $1=\nu(A)=\nu(A\cap B)$. (iv) $\nu(A)+\nu(X\setminus A)=1$ y los valores son cero o uno.
+
+Un filtro es una familia no vacía que cumple (i)--(iii); un ultrafiltro es un filtro que, para cada $A$, contiene $A$ o su complemento. Nunca puede contener ambos, porque su intersección sería vacía. Dado un ultrafiltro, definimos $\nu(A)=1$ cuando $A\in\mathcal U$ y cero en otro caso. Para $A,B$ disjuntos no pueden pertenecer ambos a $\mathcal U$. Además $A\cup B\in\mathcal U$ si y solo si al menos uno pertenece: si ninguno perteneciera, los dos complementos pertenecerían y su intersección excluiría la unión. Esto demuestra aditividad finita. Las dos construcciones se invierten, y por tanto son biyectivas.
+\end{solucion}
+\begin{ejercicio}[Lectura 29, ejercicio 4: excepción del funcional cero]\label{ej:v2-l29-4}
+Para $\nu\in\operatorname{ba}_\mu(\Acal)$, caracterizar la identidad
+\[
+ \int fg\,d\nu=\left(\int f\,d\nu\right)\left(\int g\,d\nu\right)
+ \qquad(f,g\in L^\infty).
+\]
+La lectura afirma equivalencia con una carga cero-uno de masa uno.
+\end{ejercicio}
+\begin{solucion}
+Si vale la identidad, probamos con $f=g=\ind A$: se obtiene $\nu(A)=\nu(A)^2$, de modo que $\nu(A)\in\{0,1\}$. Si $\nu\ne0$, existe un $A$ con $\nu(A)=1$ y la identidad con $f=\ind A$, $g=1$ obliga a $\nu(X)=1$. Pero la medida cero también satisface la identidad; esta es la excepción omitida.
+
+Recíprocamente, para una carga cero-uno de masa uno, en cada partición finita de $X$ hay exactamente una pieza de medida uno. La integral de una simple es su valor en esa pieza. Refinando simultáneamente las particiones de dos simples, la integral de su producto es el producto de sus integrales. Para funciones acotadas, elegimos aproximaciones uniformes $s_n\to f$, $t_n\to g$. Las sucesiones están uniformemente acotadas y $s_nt_n\to fg$ uniformemente, porque $|s_nt_n-fg|\le|s_n|\,|t_n-g|+|g|\,|s_n-f|$. La continuidad de la integral pasa la identidad al límite. Para clases de $L^\infty$ usamos representantes acotados. Por tanto la caracterización exacta es: medida cero o carga cero-uno de masa uno.
+\end{solucion}
+\begin{ejercicio}[Lectura 29, ejercicio 5]\label{ej:v2-l29-5}
+Un ultrafiltro $\mathcal U$ es libre si $\bigcap\mathcal U=\varnothing$, y fijo en otro caso. Demostrar: (i) si es fijo, existe $x$ con $\mathcal U=\{A:x\in A\}$; (ii) en un conjunto finito todos son fijos, y en uno infinito existen libres; (iii) la carga asociada a uno libre se anula en los conjuntos finitos; (iv) para un ultrafiltro libre en $\N$ y una sucesión real acotada $x$,
+\[
+ \liminf_nx_n\le\int_\N x\,d\nu\le\limsup_nx_n.
+\]
+Deducir que la integral extiende el límite de las sucesiones convergentes.
+\end{ejercicio}
+\begin{solucion}
+(i) Elijamos $x\in\bigcap\mathcal U$. Todo miembro contiene a $x$. Si un conjunto $A$ contiene a $x$ y no pertenece al ultrafiltro, su complemento pertenecería y no contendría a $x$, contradicción. Así el ultrafiltro es exactamente el indicado.
+
+(ii) Si $X$ es finito y la intersección fuera vacía, para cada $x\in X$ elegiríamos un $A_x\in\mathcal U$ que no lo contiene. La intersección finita de los $A_x$ sería vacía, contradiciendo la propiedad de filtro. Si $X$ es infinito, la familia cofinita es un filtro propio. Ordenamos por inclusión los filtros propios que lo contienen. La unión de una cadena sigue siendo un filtro propio: una cantidad finita de miembros pertenece a un mismo filtro de la cadena, y el vacío no pertenece a ninguno. El lema de Zorn produce un maximal $\mathcal U$. Es un ultrafiltro: si $A$ no pertenece y tampoco su complemento, todos los conjuntos $F\cap A$, $F\in\mathcal U$, son no vacíos y generan un filtro propio estrictamente mayor. Esto contradice maximalidad. Contiene cada $X\setminus\{x\}$, luego su intersección es vacía y es libre.
+
+(iii) Si un conjunto finito perteneciera al ultrafiltro, alguno de sus singletons tendría que pertenecer: de lo contrario, intersectar los complementos de todos esos singletons excluiría al conjunto. Un singleton en el ultrafiltro lo hace principal por (i), contradicción. Por tanto los finitos tienen medida cero.
+
+(iv) La integral para una carga positiva preserva el orden: primero se verifica para simples y después por aproximación uniforme. Si $a=\liminf x_n$ y $b=\limsup x_n$, para cada $\eps>0$ tenemos $a-\eps\le x_n\le b+\eps$ salvo finitos índices. Modificar esos índices no cambia la integral, por (iii), y $\nu(\N)=1$. Por monotonía, $a-\eps\le\int x\,d\nu\le b+\eps$. Hacemos $\eps\downarrow0$. Si $x_n\to\ell$, ambos extremos son $\ell$, de modo que $\int x\,d\nu=\ell$. En particular, una sucesión que tiende a cero tiene integral cero.
+\end{solucion}
+\section{Dos representaciones, dos clases de objetos}
+El dual de $L^1$ se representa mediante funciones esencialmente acotadas cuando la medida permite pegar datos locales. El dual de $L^\infty$ se representa siempre mediante cargas de variación acotada que respetan los conjuntos nulos. Las cargas de ultrafiltros muestran por qué sustituir aditividad finita por aditividad numerable cambiaría ese dual y perdería funcionales continuos.

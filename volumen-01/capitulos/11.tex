@@ -524,5 +524,238 @@ y, sumando desde $k=K$ hasta $L$,
 Si la primera serie converge uniformemente, la última cota puede hacerse menor que $\eps$ para todo $L\ge K$ y todo $x$. La serie condensada es entonces uniformemente de Cauchy. Omitir o incluir su término $k=0$ no altera la convergencia.
 \end{solucion}
 
+\section{El problema de Cauchy como ecuación entre funciones}\label{ampl:picard}
+Hasta ahora hemos construido límites de funciones y comprobado qué propiedades conservan. Podemos emplear esos resultados para construir una función desconocida a partir de una ecuación. En un problema de Cauchy se prescribe una velocidad que depende del tiempo y del estado, junto con el estado inicial:
+\[
+ u'(t)=f(t,u(t)),\qquad u(t_0)=\xi.
+\]
+La idea es integrar antes de buscar la solución. Así la incógnita aparece como punto fijo de una transformación sobre un espacio completo de funciones, y el teorema~\ref{ch11:banach} del capítulo~\ref{cap:nuevo04} se vuelve aplicable.
+
+Las dos demostraciones siguientes retoman las estrategias de Maximenko \cite{max-picard}. Aquí trabajamos en un intervalo compacto y permitimos valores en $\R^d$. No exigimos que $f$ sea acotada en todo el cilindro $I\times\R^d$: la continuidad basta para que su composición con cada curva continua sea acotada. Esta precisión permite incluir ecuaciones lineales como $u'=u$.
+\index{Picard, teorema de}\index{problema de Cauchy}\index{norma!ponderada}\index{aproximaciones sucesivas}
+
+\begin{teorema}[Picard en un intervalo compacto]\label{ampl:picard-teorema}
+Sea $I=[a,b]$, $a<b$, y sea $f:I\times\R^d\to\R^d$ continua. Suponga que existe $L\ge0$ tal que, para todo $t\in I$ y todo $x,y\in\R^d$,
+\[
+ \norm{f(t,x)-f(t,y)}_\infty\le L\norm{x-y}_\infty.
+\]
+Dados $t_0\in I$ y $\xi\in\R^d$, existe una única solución $u\in C^1(I,\R^d)$ del problema de Cauchy. En los extremos del intervalo se entienden derivadas laterales. Desde cualquier $u_0\in C(I,\R^d)$, las aproximaciones
+\[
+ u_{n+1}(t)=\xi+\int_{t_0}^t f(s,u_n(s))\,ds
+\]
+convergen uniformemente a esa solución.
+\end{teorema}
+
+\begin{proof}[Preparación común a las dos demostraciones]
+El espacio $X=C(I,\R^d)$ es Banach para
+\[
+ \norm u_\infty=\sup_{t\in I}\norm{u(t)}_\infty
+\]
+por los teoremas~\ref{ch25:completitud} y~\ref{ch25:cerradocb}; $\R^d$ es completo y toda curva continua sobre $I$ es acotada. La integral vectorial se define integrando cada coordenada. La desigualdad escalar para integrales y el máximo de las coordenadas dan
+\[
+ \left\|\int_c^d v(s)\,ds\right\|_\infty
+ \le\int_{\min(c,d)}^{\max(c,d)}\norm{v(s)}_\infty\,ds.
+\]
+Para $u\in X$, la función $s\mapsto f(s,u(s))$ es continua. Por el teorema fundamental del cálculo,
+\[
+ (Su)(t)=\xi+\int_{t_0}^t f(s,u(s))\,ds
+\]
+pertenece a $C^1(I,\R^d)$ y, en particular, a $X$. Un punto fijo de $S$ es una solución del problema de Cauchy; recíprocamente, integrar la ecuación de cualquier solución muestra que es punto fijo. Es suficiente probar existencia, unicidad y convergencia de las iteraciones de $S$. Si $T=\max\{t_0-a,b-t_0\}$, la estimación directa sólo da
+\[
+ \norm{Su-Sv}_\infty\le LT\norm{u-v}_\infty.
+\]
+Cuando $LT\ge1$ esta cota no permite aplicar Banach directamente. No significa que la solución deje de existir; significa que necesitamos una estimación mejor.
+\end{proof}
+
+\begin{proof}[Primera demostración: una norma ponderada]
+Elijamos $\beta>0$ con $\beta\ge L$ y definamos
+\[
+ \norm u_\beta=\sup_{t\in I}e^{-\beta|t-t_0|}\norm{u(t)}_\infty.
+\]
+Es una norma: la positividad del peso asegura que sólo se anula en la función cero, y homogeneidad y desigualdad triangular se verifican punto por punto antes de tomar el supremo. Además,
+\begin{equation}\label{ampl:picard-equivalencia}
+ e^{-\beta T}\norm u_\infty\le\norm u_\beta\le\norm u_\infty.
+\end{equation}
+Así una sucesión de Cauchy para la norma ponderada lo es para la uniforme, y su límite uniforme también es límite en la ponderada. Por tanto $X$ sigue siendo completo.
+
+Para $r=|t-t_0|$, parametrizamos el segmento entre $t_0$ y $t$ por su distancia $s$ al punto inicial; esto evita cambiar signos cuando $t<t_0$. Obtenemos
+\[
+ \begin{split}
+ e^{-\beta r}\norm{Su(t)-Sv(t)}_\infty
+ &\le L e^{-\beta r}\norm{u-v}_\beta\int_0^r e^{\beta s}\,ds\\
+ &=\frac L\beta(1-e^{-\beta r})\norm{u-v}_\beta.
+ \end{split}
+\]
+Al tomar supremos, $S$ es una contracción con constante
+\begin{equation}\label{ampl:picard-constante}
+ q=\frac L\beta(1-e^{-\beta T})<1.
+\end{equation}
+Si $L=0$, $q=0$; si $L>0$, usamos $L/\beta\le1$ y $1-e^{-\beta T}<1$. Banach da un único punto fijo y convergencia de todas las iteraciones en $\norm{\cdot}_\beta$. La equivalencia~\eqref{ampl:picard-equivalencia} convierte esa convergencia en uniforme. La preparación anterior identifica el punto fijo con la solución requerida.
+\end{proof}
+
+\begin{proof}[Segunda demostración: una potencia contractiva]
+Demostraremos por inducción que, para todo $n\ge0$,
+\begin{equation}\label{ampl:picard-factorial}
+ \norm{S^nu(t)-S^nv(t)}_\infty
+ \le\frac{L^n|t-t_0|^n}{n!}\norm{u-v}_\infty.
+\end{equation}
+Para $n=0$, la afirmación es la definición de norma uniforme; interpretamos $L^0=1$. Supongamos cierta la cota para $n$. Al aplicar $S$ una vez más y parametrizar de nuevo el segmento desde $t_0$,
+\[
+ \norm{S^{n+1}u(t)-S^{n+1}v(t)}_\infty
+ \le L\int_0^{|t-t_0|}\frac{L^ns^n}{n!}\norm{u-v}_\infty\,ds,
+\]
+que es la cota deseada con $n+1$. En consecuencia,
+\[
+ \norm{S^nu-S^nv}_\infty\le\frac{(LT)^n}{n!}\norm{u-v}_\infty.
+\]
+Si $L=0$, $S$ ya es constante. Si $L>0$, los números $(LT)^n/n!$ tienden a cero: a partir de un índice, el cociente entre dos consecutivos es $LT/(n+1)\le1/2$. Existe, pues, $N\ge1$ para el cual $S^N$ es contracción.
+
+Sea $u$ su único punto fijo. Como $S$ conmuta con $S^N$,
+$S^N(Su)=S(S^Nu)=Su$; así $Su$ es otro punto fijo de $S^N$ y, por unicidad, $Su=u$. Cualquier punto fijo de $S$ lo es de $S^N$, por lo que también es único. Esto desarrolla el mecanismo del ejercicio~\ref{ej:lectura-11-1}.
+
+Finalmente, para cualquier $u_0$, Banach da $S^{kN}u_0\to u$. Para cada residuo $0\le j<N$, la aplicación $S^j$ es continua por~\eqref{ampl:picard-factorial}; luego
+$S^{kN+j}u_0\to S^ju=u$. Hay sólo un número finito de residuos, de modo que las $N$ subsucesiones juntas forman una sucesión que converge a $u$. La convergencia es uniforme y concluye la segunda prueba.
+\end{proof}
+
+\begin{proposicion}[Un error que puede calcularse]\label{ampl:picard-error}
+En el teorema anterior, inicie con $u_0(t)=\xi$ y ponga
+$M=\max_{t\in I}\norm{f(t,\xi)}_\infty$. Para $n\ge0$,
+\[
+ \norm{u-u_n}_\infty
+ \le MT\sum_{k=n}^{\infty}\frac{(LT)^k}{(k+1)!}
+ \le MT e^{LT}\frac{(LT)^n}{(n+1)!}.
+\]
+Cuando $L=0$, las iteraciones son exactas desde $u_1$; para $n=0$ se interpreta $(LT)^0=1$.
+\end{proposicion}
+\begin{proof}
+La primera diferencia satisface $\norm{u_1(t)-u_0(t)}_\infty\le M|t-t_0|$. El mismo argumento inductivo por integración da
+\[
+ \norm{u_{k+1}(t)-u_k(t)}_\infty
+ \le\frac{ML^k|t-t_0|^{k+1}}{(k+1)!}.
+\]
+Sumar desde $k=n$ hasta $m-1$ y dejar $m\to\infty$ produce la primera cota, pues $u_m\to u$ uniformemente. Para la segunda, escribimos $k=n+j$ y usamos
+$(n+j+1)!\ge(n+1)!j!$. La suma restante queda acotada por $\sum_{j\ge0}(LT)^j/j!=e^{LT}$. La cota muestra por qué las integraciones repetidas pueden mejorar mucho el control: aparece un factorial en el denominador.
+\end{proof}
+
+\section{Ejercicios sobre existencia, iteración y estabilidad}
+Los cinco ejercicios de esta sección son desarrollos propios de esta edición a partir del método explicado en \cite{max-picard}; no son una lista reproducida de ese apunte.
+
+\begin{ejercicio}[Ampliación: iteraciones que revelan la solución]\label{ej:ampl-picard-1}
+Resuelva $u'=u+t$, $u(0)=1$, en $[0,2]$ mediante Picard. Partiendo de $u_0=1$, encuentre una fórmula para $u_n$ y una cota uniforme explícita del error. Explique por qué la estimación directa del operador no basta para aplicar Banach en la norma uniforme.
+\end{ejercicio}
+\begin{solucion}
+La función $f(t,x)=x+t$ es continua y Lipschitz en $x$ con $L=1$. Con $T=2$ la estimación directa da $LT=2$. Más aún, para dos funciones cuya diferencia es la constante $1$, la diferencia de sus imágenes es $t$, de norma $2$; el operador no es contracción en esa norma.
+
+La recurrencia es $u_{n+1}(t)=1+\int_0^t(u_n(s)+s)\,ds$. Afirmamos que, para $n\ge0$,
+\[
+ u_n(t)=2\sum_{k=0}^n\frac{t^k}{k!}-1-t+\frac{t^{n+1}}{(n+1)!}.
+\]
+Para $n=0$ el lado derecho es $1$. Si la fórmula vale para $n$, sumar $s$ cancela el término $-s$, e integrar da
+\[
+ u_{n+1}(t)=1+2\sum_{k=0}^n\frac{t^{k+1}}{(k+1)!}-t
+ +\frac{t^{n+2}}{(n+2)!},
+\]
+que es la misma fórmula con $n+1$. La serie exponencial converge uniformemente en $[0,2]$ por el criterio M, y $t^{n+1}/(n+1)!\to0$ uniformemente. Por tanto
+\[
+ u(t)=2e^t-1-t.
+\]
+La derivación directa verifica $u'=2e^t-1=u+t$ y $u(0)=1$. Finalmente,
+\[
+ |u(t)-u_n(t)|
+ \le2\sum_{k=n+1}^{\infty}\frac{2^k}{k!}
+ \le2e^2\frac{2^{n+1}}{(n+1)!}.
+\]
+En la última desigualdad se usa $(n+1+j)!\ge(n+1)!j!$. Es una cota válida para todo $t$; no presupone que ya conozcamos el punto donde ocurre el mayor error.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: una ecuación no lineal en un intervalo largo]\label{ej:ampl-picard-2}
+Para $u'=\sin u+t$, $u(0)=0$, en $[0,2]$, verifique las hipótesis de Picard, calcule $u_1,u_2$ desde $u_0=0$ y obtenga cotas del error mediante la norma $\norm v_1=\sup_{0\le t\le2}e^{-t}|v(t)|$ y mediante el factorial.
+\end{ejercicio}
+\begin{solucion}
+El valor medio da $|\sin x-\sin y|\le|x-y|$, de modo que $L=1$. La función es continua en todo el cilindro y el teorema asegura una solución única. Las dos primeras aproximaciones son
+\[
+ u_1(t)=t^2/2,\qquad
+ u_2(t)=t^2/2+\int_0^t\sin(s^2/2)\,ds.
+\]
+No necesitamos una primitiva elemental de la última integral: define una función continua y puede aproximarse mediante integración.
+
+Para $\beta=1$, la constante de contracción es $q=1-e^{-2}$. Como la derivada de $e^{-t}t^2/2$ es $e^{-t}t(2-t)/2\ge0$ en $[0,2]$,
+$\norm{u_1-u_0}_1=2e^{-2}$. La cota de Banach y la equivalencia de normas dan
+\[
+ \norm{u-u_n}_\infty
+ \le e^2\frac{q^n}{1-q}\norm{u_1-u_0}_1
+ =2e^2(1-e^{-2})^n.
+\]
+Por otra parte, $M=\max_{[0,2]}|f(t,0)|=2$, y la proposición~\ref{ampl:picard-error} da
+\[
+ \norm{u-u_n}_\infty\le4e^2\frac{2^n}{(n+1)!}.
+\]
+Ambas cotas garantizan convergencia. La segunda utiliza la estructura integral repetida y no sólo una constante de contracción; su factorial ofrece un control más fino para índices grandes.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: estabilidad frente a datos perturbados]\label{ej:ampl-picard-3}
+Sean $u,v$ las soluciones en $I$ de $u'=f(t,u)$, $v'=g(t,v)$ con $u(t_0)=\xi$, $v(t_0)=\eta$. Suponga las hipótesis de Picard para ambas ecuaciones, que $f$ tiene constante Lipschitz $L$, y que $\norm{f(t,x)-g(t,x)}_\infty\le\delta$ para todo $t,x$. Demuestre, con $r=|t-t_0|$, que para $L>0$,
+\[
+ \norm{u(t)-v(t)}_\infty
+ \le e^{Lr}\norm{\xi-\eta}_\infty
+       +\delta\frac{e^{Lr}-1}{L}.
+\]
+Obtenga la versión para $L=0$ y deduzca dependencia continua respecto del dato inicial.
+\end{ejercicio}
+\begin{solucion}
+Trabajamos primero a la derecha de $t_0$. Ponga $h(r)=\norm{u(t_0+r)-v(t_0+r)}_\infty$ y $A=\norm{\xi-\eta}_\infty$. Restar las ecuaciones integrales y añadir y restar $f(t,v(t))$ produce
+\[
+ h(r)\le A+\delta r+L\int_0^r h(s)\,ds=:H(r).
+\]
+La función $h$ es continua, luego $H$ es derivable y
+$H'(r)=\delta+Lh(r)\le\delta+LH(r)$. Multiplicar por $e^{-Lr}$ da
+\[
+ (e^{-Lr}H(r))'\le\delta e^{-Lr}.
+\]
+Integrando entre $0$ y $r$, con $H(0)=A$, obtenemos
+$H(r)\le Ae^{Lr}+\delta(e^{Lr}-1)/L$ si $L>0$. Como $h\le H$, esta es la cota buscada. A la izquierda de $t_0$, usamos $h(r)=\norm{u(t_0-r)-v(t_0-r)}_\infty$ y la orientación de la integral desaparece al tomar normas; se obtiene la misma desigualdad.
+
+Para $L=0$, la desigualdad integral inicial ya dice $h(r)\le A+\delta r$. Si $f=g$, entonces $\delta=0$, y en todo el intervalo
+\[
+ \norm{u-v}_\infty\le e^{LT}\norm{\xi-\eta}_\infty.
+\]
+Por ello, datos iniciales próximos producen soluciones uniformemente próximas. La estimación también cuantifica el efecto de modificar la ecuación, siempre que la perturbación esté uniformemente controlada.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: versión local y explosión de una solución]\label{ej:ampl-picard-4}
+Sea $f$ continua en $[t_0-a,t_0+a]\times\{x:\norm{x-\xi}_\infty\le b\}$, con $a,b>0$, acotada allí por $M$ y Lipschitz en $x$ con constante $L$. Si $0<h\le a$, $Mh\le b$ y $Lh<1$, pruebe existencia y unicidad en $[t_0-h,t_0+h]$ entre las soluciones que permanecen en esa bola. Aplique el resultado a $u'=u^2$, $u(0)=1$, y explique por qué no puede concluirse existencia en todo $[0,2]$.
+\end{ejercicio}
+\begin{solucion}
+Sea $J=[t_0-h,t_0+h]$ y
+\[
+ E=\{u\in C(J,\R^d):\norm{u-\xi}_\infty\le b\}.
+\]
+Es no vacío porque contiene la función constante $\xi$, y es cerrado en el Banach $C(J,\R^d)$, por continuidad de la norma. Por tanto es completo. El operador integral $S$ está definido en $E$, pues todas las parejas $(t,u(t))$ permanecen en el cilindro. Además
+\[
+ \norm{Su-\xi}_\infty\le Mh\le b,\qquad
+ \norm{Su-Sv}_\infty\le Lh\norm{u-v}_\infty.
+\]
+Así $S:E\to E$ es contracción. Su único punto fijo proporciona la solución y cualquier otra solución que permanezca en la bola sería otro punto fijo de $S$.
+
+Para $f(t,x)=x^2$, tome $a=b=1$, $\xi=1$. En $0\le x\le2$ tenemos $|f|\le4$ y $|x^2-y^2|\le4|x-y|$, de modo que $M=L=4$. Por ejemplo, $h=1/8$ cumple todas las condiciones. La función $u(t)=1/(1-t)$ resuelve la ecuación cerca de cero. De hecho, cualquier solución en un intervalo a la derecha de cero es positiva: su derivada es $u^2\ge0$ y $u(0)=1$. Entonces $(1/u)'=-1$, y por integración $1/u(t)=1-t$. Una solución en $[0,2]$ daría, en $t=1$, $1/u(1)=0$, imposible para un valor real finito positivo. La condición Lipschitz global del teorema~\ref{ampl:picard-teorema} falla: la derivada $2x$ no está acotada en $\R$.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: continuidad sin unicidad]\label{ej:ampl-picard-5}
+Para el problema $u'=2\sqrt{|u|}$, $u(0)=0$, en $[0,1]$, pruebe que para cada $c\in[0,1]$,
+\[
+ u_c(t)=\begin{cases}0,&0\le t\le c,\\(t-c)^2,&c\le t\le1\end{cases}
+\]
+es una solución. Identifique exactamente qué hipótesis de unicidad falta, incluso si se restringe el estado a un intervalo compacto alrededor de cero.
+\end{ejercicio}
+\begin{solucion}
+Las dos fórmulas coinciden en $t=c$. Sus derivadas son $0$ a la izquierda y $2(t-c)$ a la derecha, que también coinciden en $c$ y son continuas. Así $u_c$ es $C^1$, satisface el dato inicial y cumple $u_c'=2\sqrt{|u_c|}$ en ambos tramos y en su unión. Distintos tiempos $c<d$ producen funciones distintas: para $c<t<d$ se tiene $u_c(t)>0=u_d(t)$. Incluyendo $c=1$ obtenemos también la solución idénticamente cero.
+
+La función $x\mapsto2\sqrt{|x|}$ es continua, pero no es Lipschitz en ninguna vecindad de cero, pues para $x>0$,
+\[
+ \frac{|2\sqrt{x}-0|}{|x-0|}=\frac2{\sqrt{x}}\longrightarrow\infty.
+\]
+Acotar el estado no repara esa falta local. El ejemplo muestra que continuidad del campo y existencia de soluciones no garantizan unicidad; en Picard el control uniforme de las diferencias respecto del estado tiene una función independiente de la continuidad.
+\end{solucion}
+
 \section{Cómo elegir una herramienta de convergencia}
 La convergencia uniforme conserva la continuidad y permite pasar integrales al límite en intervalos compactos. Para derivar, se necesita controlar las derivadas y fijar un valor. El criterio de Cauchy construye el límite sin conocer su fórmula; Dini añade orden y compacidad a la convergencia puntual. El criterio M usa una cota sumable, mientras Dirichlet aprovecha cancelaciones. Estas diferencias determinan qué hipótesis deben comprobarse. Los capítulos~\ref{cap:nuevo12} y~\ref{cap:nuevo13} aplicarán este control a la compacidad, la extensión y la aproximación de funciones.

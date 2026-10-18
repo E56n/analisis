@@ -1,0 +1,221 @@
+\chapter{Fourier en grupos abelianos localmente compactos}\label{cap:v4-15}
+En los grupos concretos, Fourier asigna a una función un número por cada frecuencia. La definición abstracta conserva exactamente esa idea: integramos la función contra un carácter. El problema nuevo es demostrar que esas frecuencias forman el espacio correcto para estudiar el álgebra de convolución, con la topología correcta. La lectura 26 de \cite{valencia4} contiene esta identificación; desarrollaremos sus pasos, en particular la recuperación de un carácter a partir de un funcional multiplicativo.
+
+En todo el capítulo $G$ es LCA y $\mu$ es una medida de Haar fija. Usamos $L_xf(y)=f(x^{-1}y)$, $f^*(x)=\overline{f(x^{-1})}$ y la convención
+\[
+ \widehat f(\chi)=\int_G f(x)\chi(x)\,d\mu(x).
+\]
+No hay conjugado en el carácter de la integral. Para $\chi_\xi(x)=e^{i\xi x}$ coincide con el signo positivo empleado antes; una normalización unitaria euclidiana se incorpora eligiendo la escala de Haar correspondiente. La medida dual se determinará en el capítulo siguiente, y no debe adivinarse multiplicando factores sin especificar ambas medidas.
+
+\section{El espectro de un álgebra sin unidad}\label{lectura:v4-26}
+\index{espectro!de un algebra de Banach@de un álgebra de Banach}\index{Gelfand!transformada de}
+\begin{definicion}
+Para un álgebra de Banach conmutativa $A$, con unidad o sin ella, un carácter es un funcional lineal continuo, multiplicativo y no nulo $\varphi:A\to\C$. Escribimos $\Delta(A)$ para el conjunto de estos caracteres, con la topología débil estrella heredada de $A^*$: convergencia de $\varphi_\alpha$ significa convergencia de $\varphi_\alpha(a)$ para cada $a\in A$.
+\end{definicion}
+La palabra «carácter» se aplica aquí a un álgebra, mientras que en el capítulo anterior se aplicaba a un grupo. Los dominios y las propiedades son diferentes; Fourier establecerá una correspondencia entre ambas nociones.
+
+\begin{proposicion}\label{v4:espectro-no-unitario}
+Todo $\varphi\in\Delta(A)$ satisface $\norm\varphi\le1$. El conjunto $\Delta(A)\cup\{0\}$ es compacto Hausdorff en la topología débil estrella, y $\Delta(A)$ es localmente compacto Hausdorff.
+\end{proposicion}
+\begin{proof}
+Para $a\in A$ y $n\ge1$, multiplicatividad y continuidad dan
+\[
+ |\varphi(a)|^n=|\varphi(a^n)|\le\norm\varphi\norm{a^n}
+ \le\norm\varphi\norm a^n.
+\]
+Si $a\ne0$, tomar raíces $n$-ésimas y dejar $n\to\infty$ da $|\varphi(a)|\le\norm a$; para $a=0$ es inmediato. Así todos los caracteres están en la bola unidad del dual, compacta débil estrella por Banach--Alaoglu, desarrollado en el volumen III, capítulo 9, «Compacidad débil y reflexividad».
+
+Dentro de esa bola, las ecuaciones
+\[
+ \varphi(ab)=\varphi(a)\varphi(b)\qquad(a,b\in A)
+\]
+son condiciones cerradas para la convergencia puntual. Sus soluciones son exactamente los caracteres y el funcional cero. Por tanto $\Delta(A)\cup\{0\}$ es cerrado en una bola compacta Hausdorff, y es compacto Hausdorff. Al quitar el punto cerrado $0$ queda un abierto de un compacto Hausdorff, que es localmente compacto: dado un punto, la regularidad permite elegir una vecindad cuya clausura evite $0$ y sea compacta. Si $A$ tiene unidad, los caracteres satisfacen $\varphi(1)=1$; entonces el punto cero es incluso aislado en este compacto ampliado.
+\end{proof}
+
+\begin{teorema}\label{v4:gelfand-cero-infinito}
+La transformada de Gelfand $a\mapsto\widehat a$, $\widehat a(\varphi)=\varphi(a)$, es un homomorfismo contractivo de $A$ en $C_0(\Delta(A))$.
+\end{teorema}
+\begin{proof}
+La definición de topología débil estrella hace continua a cada evaluación $\widehat a$. Linealidad y multiplicatividad se verifican evaluando en cada $\varphi$, y la proposición anterior da $\norm{\widehat a}_\infty\le\norm a$. Para $\eps>0$, el conjunto
+\[
+ K_\eps=\{\varphi\in\Delta(A)\cup\{0\}:|\varphi(a)|\ge\eps\}
+\]
+es cerrado en el compacto ampliado y no contiene al funcional cero. Es, por tanto, un compacto de $\Delta(A)$. Esa es exactamente la condición de que $\widehat a$ se anule en el infinito. No basta decir que $K_\eps$ es cerrado en un espacio localmente compacto: se necesita el compacto ampliado para justificar su compacidad.
+\end{proof}
+
+\section{La integral que asigna una frecuencia a una función}
+\index{Fourier!transformada en grupos LCA}
+\begin{proposicion}\label{v4:fourier-identidades-lca}
+Para $f,g\in L^1(G)$ y $\chi\in\widehat G$, la transformada satisface
+\[
+ |\widehat f(\chi)|\le\norm f_1,\qquad
+ \widehat{f*g}=\widehat f\,\widehat g,\qquad
+ \widehat{f^*}=\overline{\widehat f},
+\]
+\[
+ \widehat{L_xf}(\chi)=\chi(x)\widehat f(\chi),\qquad
+ \widehat{\eta f}(\chi)=\widehat f(\eta\chi)\quad(\eta\in\widehat G).
+\]
+Además, $\Phi_\chi:f\mapsto\widehat f(\chi)$ es un carácter de $L^1(G)$.
+\end{proposicion}
+\begin{proof}
+El módulo del integrando es $|f|$, por lo que la integral existe y satisface la primera cota. Para la convolución, la integral absoluta doble queda acotada por
+\[
+ \int_G\int_G|f(y)||g(y^{-1}x)|\,d\mu(x)d\mu(y)
+ =\norm f_1\norm g_1.
+\]
+Fubini y el cambio $x=yz$ dan
+\[
+ \widehat{f*g}(\chi)=\int_G\int_Gf(y)g(z)\chi(yz)\,d\mu(z)d\mu(y)
+ =\widehat f(\chi)\widehat g(\chi).
+\]
+Los cambios de variable en un grupo LCA no introducen función modular: es unimodular. En particular, $x\mapsto x^{-1}$ preserva Haar, y
+\[
+ \widehat{f^*}(\chi)=\int_G\overline{f(y)}\chi(y^{-1})\,d\mu(y)
+ =\overline{\widehat f(\chi)}.
+\]
+El cambio $y=xz$ en la traslación da el factor $\chi(x)$; la identidad de modulación se sigue de multiplicar los dos caracteres dentro de la integral.
+
+Queda verificar que el funcional no sea cero. Elija $h\in C_c(G)$ no negativa con $\int h=1$, posible por la positividad de Haar en abiertos no vacíos. Para $f=h\overline\chi$ se tiene $\widehat f(\chi)=1$. La linealidad, continuidad y multiplicatividad ya probadas completan la verificación.
+\end{proof}
+
+En grupos LCA generales, Haar no tiene por qué ser sigmafinita en todo $G$. Las aplicaciones de Fubini anteriores se justifican con la versión para Haar y funciones integrables del capítulo de convolución: cada función de $L^1$ se aproxima por funciones de soporte compacto y queda concentrada, salvo un conjunto nulo, en una unión numerable de compactos. Se reducen así las integrales pertinentes a piezas sigmafinitas; no se está añadiendo una hipótesis de segunda numerabilidad al grupo.
+
+\begin{lema}[Una integral con valores en $L^1$]\label{v4:convolucion-funcional}
+Si $f\in C_c(G)$, $g\in L^1(G)$ y $\varphi\in(L^1(G))^*$, entonces
+\[
+ \varphi(f*g)=\int_G f(x)\varphi(L_xg)\,d\mu(x).
+\]
+\end{lema}
+\begin{proof}
+La aplicación $x\mapsto L_xg$ es continua en norma $L^1$ por la continuidad de traslaciones ya demostrada. En el compacto $K=\supp f$ podemos cubrir por un número finito de conjuntos en los que $\norm{L_xg-L_{x_j}g}_1<\eps$. Refinando la cubierta en una partición boreliana finita $E_j$ de $K$, aproximamos la convolución por
+\[
+ v_\eps=\sum_j\left(\int_{E_j}f\,d\mu\right)L_{x_j}g.
+\]
+La desigualdad de la norma integral, obtenida por Tonelli, da
+$\norm{f*g-v_\eps}_1\le\eps\norm f_1$. A su vez, la diferencia entre la integral del enunciado y $\varphi(v_\eps)$ tiene módulo a lo sumo $\norm\varphi\eps\norm f_1$. Al dejar $\eps\downarrow0$ y usar continuidad de $\varphi$ obtenemos la identidad. Esta prueba explicita por qué puede pasarse el funcional a través de la integral, sin presuponer una teoría general de integración vectorial.
+\end{proof}
+
+\section{Todo carácter del álgebra procede de una frecuencia}
+\begin{teorema}\label{v4:espectro-luno-biyeccion}
+La aplicación $\chi\mapsto\Phi_\chi$ es una biyección de $\widehat G$ sobre $\Delta(L^1(G))$.
+\end{teorema}
+\begin{proof}
+Para la inyectividad, suponga $\Phi_\chi=\Phi_\eta$. Si $\chi(x_0)-\eta(x_0)\ne0$, la continuidad permite elegir un escalar $c$ de módulo uno y una vecindad relativamente compacta $U$ de $x_0$ en la que $\operatorname{Re}(c(\chi-\eta))>a>0$. Elija $h\in C_c(U)$ no negativa, no nula. Entonces
+\[
+ \operatorname{Re}\int_G ch(x)(\chi(x)-\eta(x))\,d\mu(x)>0,
+\]
+porque $\int h>0$. Esto contradice la igualdad de los dos funcionales aplicada a $ch$. Así los caracteres coinciden en todo punto.
+
+Para la sobreyectividad, sea $\varphi\in\Delta(L^1(G))$. Por densidad de $C_c(G)$ y continuidad de $\varphi$, existe $g\in C_c(G)$ con $\varphi(g)\ne0$. Definimos
+\[
+ \chi(x)=\frac{\varphi(L_xg)}{\varphi(g)}.
+\]
+Es continua por continuidad de las traslaciones en $L^1$, y $\chi(e)=1$. En un grupo abeliano,
+$L_xg*L_yg=L_{xy}(g*g)=(L_{xy}g)*g$; esto se comprueba en la integral de convolución cambiando la variable por una traslación. Aplicar $\varphi$ y dividir por $\varphi(g)^2$ da $\chi(x)\chi(y)=\chi(xy)$.
+
+Es importante verificar el módulo. La cota del funcional y la isometría de las traslaciones dan
+\[
+ |\chi(x)|\le\frac{\norm\varphi\norm g_1}{|\varphi(g)|}=:C
+ \qquad(x\in G).
+\]
+Por multiplicatividad, $\chi(x)\chi(x^{-1})=1$, de modo que ningún valor es cero. Para cada entero positivo $n$, $|\chi(x)|^n=|\chi(x^n)|\le C$; al tomar raíces se obtiene $|\chi(x)|\le1$. Aplicar lo mismo a $x^{-1}$ da la desigualdad contraria. Así $|\chi(x)|=1$ y $\chi\in\widehat G$.
+
+Para $f\in C_c(G)$, el lema anterior y la multiplicatividad dan
+\[
+ \int_Gf(x)\chi(x)\,d\mu(x)
+ =\frac{\varphi(f*g)}{\varphi(g)}=\varphi(f).
+\]
+Ambos lados son funcionales continuos de $f$ en norma $L^1$, por lo que la densidad extiende la igualdad a todo $L^1(G)$. Esto demuestra sobreyectividad. El argumento de las potencias evita inferencias no justificadas sobre convergencia puntual de redes de Dirac.
+\end{proof}
+
+\section{Por qué coinciden las dos topologías}
+La convergencia débil estrella controla las integrales contra cada función de $L^1$. La topología compacto-abierta controla simultáneamente los valores de un carácter en cada compacto de $G$. La implicación de las integrales al control uniforme requiere el siguiente argumento cuantitativo.
+
+\begin{lema}\label{v4:dual-vecindades-integrales}
+Dados $\chi_0\in\widehat G$, un compacto $K\subset G$ y $\eps>0$, existen $f_0,\ldots,f_m\in L^1(G)$ y $\delta>0$ tales que
+\[
+ |\widehat f_j(\chi)-\widehat f_j(\chi_0)|<\delta\quad(0\le j\le m)
+ \quad\Longrightarrow\quad
+ \sup_K|\chi-\chi_0|<\eps.
+\]
+\end{lema}
+\begin{proof}
+Basta tratar $0<\eps\le1$ y $\chi_0=1$. El caso general se reduce a éste reemplazando $\chi$ por $\chi\overline{\chi_0}$ y cada función de prueba $h$ por $h\overline{\chi_0}$.
+
+Elija $h\in C_c(G)$ no negativa con $\int h=1$. La continuidad en $L^1$ de las traslaciones permite elegir una vecindad $U$ de $e$ con
+$\norm{L_uh-h}_1<\eps/8$ para $u\in U$. Cubra $K$ por $x_1U,\ldots,x_mU$ y tome $f_0=h$, $f_j=L_{x_j}h$. Sus transformadas en el carácter trivial valen $1$. Elija $\delta=\eps/16$ y suponga las desigualdades del enunciado. Escribiendo $a=\widehat h(\chi)$ tenemos $|a-1|<\delta$, de donde $|a|>1/2$. Además,
+\[
+ |\chi(x_j)-1|\,|a|
+ \le|\chi(x_j)a-1|+|1-a|<2\delta,
+\]
+por lo que $|\chi(x_j)-1|<4\delta=\eps/4$. Para $u\in U$,
+\[
+ |\chi(u)-1|\,|a|
+ =|\widehat{L_uh}(\chi)-\widehat h(\chi)|
+ \le\norm{L_uh-h}_1<\eps/8,
+\]
+y $|\chi(u)-1|<\eps/4$. Si $x=x_ju\in K$, entonces
+$|\chi(x)-1|\le|\chi(x_j)-1|+|\chi(u)-1|<\eps/2$. El supremo es a lo sumo $\eps/2<\eps$, como se quería.
+\end{proof}
+
+\begin{teorema}\label{v4:dual-espectro-homeomorfismo}
+La biyección $\widehat G\to\Delta(L^1(G))$ del teorema~\ref{v4:espectro-luno-biyeccion} es un homeomorfismo. En particular, $\widehat G$ es LCA y $\widehat f\in C_0(\widehat G)$ para toda $f\in L^1(G)$.
+\end{teorema}
+\begin{proof}
+Si $\chi_\alpha\to\chi$ uniformemente en compactos, dado $f\in L^1$ elija $g\in C_c$ con $\norm{f-g}_1<\eps/4$. Entonces
+\[
+ |\widehat f(\chi_\alpha)-\widehat f(\chi)|
+ \le2\norm{f-g}_1+\norm g_1\sup_{\supp g}|\chi_\alpha-\chi|.
+\]
+El último término acaba siendo menor que $\eps/2$; si $g=0$ se omite. Esto prueba continuidad hacia la topología débil estrella. Para la continuidad inversa, toda vecindad definida por un compacto y un error contiene, por el lema anterior, una vecindad dada por un número finito de evaluaciones del espectro. Las intersecciones finitas permiten tratar vecindades generales.
+
+El espectro es localmente compacto Hausdorff por la proposición~\ref{v4:espectro-no-unitario}; el dual ya es un grupo topológico abeliano por el capítulo anterior. Finalmente, bajo este homeomorfismo la transformada de Fourier es precisamente la de Gelfand de $L^1(G)$, y el teorema~\ref{v4:gelfand-cero-infinito} demuestra la propiedad $C_0$.
+\end{proof}
+
+Esta última conclusión es el teorema de Riemann--Lebesgue para un grupo LCA. Cuando el grupo dual es discreto, significa que fuera de un conjunto finito las frecuencias tienen amplitud menor que cualquier tolerancia fijada. Cuando no es discreto, la palabra «finito» se reemplaza por «compacto».
+
+\section{Ejercicios complementarios de interpretación}
+La lectura 26 no contiene una lista numerada de ejercicios; sus verificaciones propuestas se han incluido en las pruebas anteriores. Los siguientes ejercicios son propios de esta edición y ayudan a distinguir las normalizaciones y las topologías.
+
+\begin{ejercicio}[Ampliación: dos escalas de Haar]\label{ej:v4-ampl-15-1}
+Si se reemplaza $\mu$ por $c\mu$, con $c>0$, determine cómo cambian la norma $L^1$, la convolución y la transformada de Fourier. Compruebe que la identidad de convolución sigue siendo válida con esas tres modificaciones simultáneas.
+\end{ejercicio}
+\begin{solucion}
+La norma pasa a $\norm f_{1,c\mu}=c\norm f_{1,\mu}$; la convolución pasa a $f*_{c\mu}g=c(f*_{\mu}g)$; la transformada pasa a $\widehat f_{c\mu}=c\widehat f_\mu$. Por ello
+\[
+ \widehat{f*_{c\mu}g}_{c\mu}
+ =c^2\widehat{f*_{\mu}g}_{\mu}
+ =c^2\widehat f_\mu\widehat g_\mu
+ =\widehat f_{c\mu}\widehat g_{c\mu}.
+\]
+Modificar sólo una de esas operaciones sin ajustar las demás introduciría un factor incorrecto. La escala de la medida dual que conserva Plancherel será $c^{-1}$, como se comprobará después.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: traslación, modulación y signo]\label{ej:v4-ampl-15-2}
+En $G=\R$ con Lebesgue y $\chi_\xi(x)=e^{i\xi x}$, calcule la transformada de $e^{i\eta x}f(x-a)$ en términos de $\widehat f$. Determine también la transformada de $\overline{f(-x)}$.
+\end{ejercicio}
+\begin{solucion}
+El cambio $y=x-a$ produce
+\[
+ \int_\R e^{i\eta x}f(x-a)e^{i\xi x}\,dx
+ =e^{i(\xi+\eta)a}\int_\R f(y)e^{i(\xi+\eta)y}\,dy
+ =e^{i(\xi+\eta)a}\widehat f(\xi+\eta).
+\]
+La fase contiene $\xi+\eta$, no sólo $\xi$, porque primero se evalúa la modulación en el punto trasladado. Para la segunda función, el cambio $y=-x$ da
+\[
+ \int_\R\overline{f(-x)}e^{i\xi x}\,dx
+ =\int_\R\overline{f(y)}e^{-i\xi y}\,dy
+ =\overline{\widehat f(\xi)}.
+\]
+Ambas integrales existen absolutamente porque las operaciones preservan la integrabilidad.
+\end{solucion}
+
+\begin{ejercicio}[Ampliación: una frecuencia que escapa al infinito]\label{ej:v4-ampl-15-3}
+En $\widehat\R\simeq\R$, considere $\chi_n(x)=e^{inx}$. Pruebe que los funcionales $\Phi_{\chi_n}$ convergen débil estrella al funcional cero, aunque ninguno es cero, y que $(\chi_n)$ no converge en $\widehat\R$.
+\end{ejercicio}
+\begin{solucion}
+Para todo $f\in L^1(\R)$, el teorema anterior da $\widehat f\in C_0(\R)$. Como $n$ sale de todo compacto de $\R$, $\Phi_{\chi_n}(f)=\widehat f(n)\to0$. Esto es precisamente convergencia débil estrella al funcional cero. Si $(\chi_n)$ convergiera en el dual, el homeomorfismo de la proposición~\ref{v4:duales-modelos} haría converger la sucesión de parámetros $n$ en $\R$, imposible. El límite existe en el compacto ampliado $\Delta(L^1)\cup\{0\}$ y no en el espectro sin el cero. Este ejemplo explica por qué la compacidad del espectro de un álgebra sin unidad no puede darse por supuesta.
+\end{solucion}
+
+La transformada ya es un homomorfismo contractivo hacia funciones que se anulan en el infinito. Falta probar que distingue funciones y construir una transformación unitaria en $L^2$. El álgebra de operadores de convolución permitirá resolver ambas cuestiones sin suponer de antemano la dualidad de Pontryagin.

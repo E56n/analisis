@@ -1,0 +1,261 @@
+\chapter{Transformada euclidiana e inversión}\label{cap:v4-07}
+La transformada en la recta reemplaza las frecuencias enteras por un parámetro continuo. Conservaremos el signo positivo del curso original y mantendremos una notación distinta para la transformada unitaria que aparecerá en el capítulo siguiente. Las pruebas se desarrollan en $\R^d$ cuando no hay una dificultad adicional; los argumentos específicos de la recta se identifican expresamente.
+
+\section{La transformada de funciones integrables}\label{lectura:v4-10}
+\index{Fourier!transformada euclidiana}\index{Riemann--Lebesgue, lema de}
+Para $f\in L^1(\R^d)$ definimos
+\[
+ \widehat f(\xi)=\int_{\R^d}f(x)e^{ix\cdot\xi}\,dx.
+\]
+La integral existe para todo $\xi$, $|\widehat f(\xi)|\leq\norm f_1$ y no depende del representante de $f$. El signo difiere del empleado para los coeficientes periódicos; cambiarlo únicamente refleja la variable de frecuencia.
+\begin{teorema}\label{v4:fourier-L1}
+La transformada es una aplicación lineal continua de norma uno de $L^1(\R^d)$ en $C_0(\R^d)$. Además
+\[
+ \widehat{f*g}=\widehat f\,\widehat g,\quad
+ \widehat{f(\cdot+a)}(\xi)=e^{-ia\cdot\xi}\widehat f(\xi),\quad
+ \widehat{e^{ia\cdot x}f(x)}(\xi)=\widehat f(\xi+a).
+\]
+\end{teorema}
+\begin{proof}
+La linealidad y la cota de norma proceden de la integral. Si $f\geq0$, $\widehat f(0)=\norm f_1$, de modo que la norma del operador es uno. Para continuidad uniforme,
+\[
+ \sup_\xi|\widehat f(\xi+h)-\widehat f(\xi)|
+ \leq\int|f(x)|\,|e^{ix\cdot h}-1|\,dx\longrightarrow0
+\]
+por convergencia dominada, con mayorante $2|f|$.
+
+Para la indicadora de un rectángulo acotado $Q=\prod_j[a_j,b_j]$, Fubini expresa la transformada como el producto de las integrales unidimensionales $\int_{a_j}^{b_j}e^{ix_j\xi_j}dx_j$. Cada factor está acotado por $b_j-a_j$ y, si $\xi_j\ne0$, por $2/|\xi_j|$. Si $|\xi|\to\infty$, alguna coordenada tiene módulo al menos $|\xi|/\sqrt d$, y el producto tiende a cero. Las funciones escalonadas en rectángulos son densas en $L^1(\R^d)$ por regularidad de Lebesgue; la cota $\norm{\widehat f-\widehat g}_\infty\leq\norm{f-g}_1$ extiende la desaparición en infinito a todo $f$.
+
+Para convolución, la integral doble de $|f(y)g(x-y)|$ es $\norm f_1\norm g_1$. Fubini y $z=x-y$ dan
+\[
+ \widehat{f*g}(\xi)=\int\int f(y)g(z)e^{i(y+z)\cdot\xi}\,dzdy
+ =\widehat f(\xi)\widehat g(\xi).
+\]
+Los cambios de variable $y=x+a$ y la identidad $e^{ia\cdot x}e^{i\xi\cdot x}=e^{i(\xi+a)\cdot x}$ prueban las dos últimas fórmulas.
+\end{proof}
+
+\section{Caracteres y derivación}\label{lectura:v4-11}
+\index{caracter@carácter!de la recta}
+\begin{proposicion}\label{v4:caracteres-R}
+Todo homomorfismo continuo $\chi:(\R,+)\to\C^\times$ tiene la forma $\chi(t)=e^{zt}$, $z\in\C$. Si toma valores en $\T$, entonces $z=i\xi$ para un único $\xi\in\R$. Los caracteres de $\R^d$ son exactamente $x\mapsto e^{ix\cdot\xi}$.
+\end{proposicion}
+\begin{proof}
+Sea $F(t)=\int_0^t\chi(s)ds$. Como $F'(0)=\chi(0)=1$, existe $a$ con $F(a)\ne0$. La propiedad de homomorfismo da
+\[
+ F(a)\chi(t)=\int_t^{t+a}\chi(s)ds=F(t+a)-F(t).
+\]
+Así $\chi$ es diferenciable. Dividir $\chi(t+h)-\chi(t)=\chi(t)(\chi(h)-1)$ entre $h$ y pasar al límite da $\chi'(t)=\chi'(0)\chi(t)$. La derivada de $e^{-zt}\chi(t)$ es cero para $z=\chi'(0)$; su valor en cero es uno, por lo que $\chi(t)=e^{zt}$. Si $|\chi(t)|=1$, entonces $e^{t\Re z}=1$ para todo $t$, de donde $\Re z=0$. La derivada en cero prueba unicidad. En $\R^d$, restringimos a cada eje y multiplicamos las imágenes de $x_1e_1+\cdots+x_de_d$.
+\end{proof}
+\begin{proposicion}\label{v4:derivacion-fourier}
+Si $x_jf\in L^1(\R^d)$, entonces $\partial_{\xi_j}\widehat f=\widehat{ix_jf}$. En la recta, si $f$ es localmente absolutamente continua y $f,f'\in L^1$, entonces
+\[
+ \widehat{f'}(\xi)=-i\xi\widehat f(\xi),\qquad
+ f(x)=-\int_x^\infty f'(t)dt=\int_{-\infty}^xf'(t)dt.
+\]
+\end{proposicion}
+\begin{proof}
+El cociente incremental del exponencial está acotado por $|x_j|$, pues $|e^{iu}-1|\leq|u|$. Convergencia dominada permite derivar bajo la integral; además el error del cociente incremental está dominado independientemente de $\xi$, de modo que la convergencia es uniforme en la frecuencia.
+
+Para la segunda afirmación, la continuidad absoluta local da $f(b)-f(a)=\int_a^bf'$. Como $f'$ es integrable, los límites de $f$ en ambos infinitos existen. Deben ser cero: un límite no nulo contradice $f\in L^1$. Pasar al límite en la identidad anterior da las dos fórmulas. La integración por partes en $[-R,R]$ produce
+\[
+ \int_{-R}^Rf'(x)e^{ix\xi}dx
+ =[f(x)e^{ix\xi}]_{-R}^R-i\xi\int_{-R}^Rf(x)e^{ix\xi}dx.
+\]
+El término de frontera tiende a cero y las integrales convergen absolutamente. La hipótesis de continuidad absoluta local se hace explícita porque la mera existencia de una derivada integrable no justifica automáticamente el teorema fundamental de Lebesgue.
+\end{proof}
+
+\section{La gaussiana como puente de inversión}
+\index{gaussiana}\index{nucleo@núcleo!del calor}
+\begin{lema}\label{v4:gaussiana}
+Se cumple $\int_\R e^{-x^2}dx=\sqrt\pi$ y
+\[
+ \widehat{e^{-a|x|^2}}(\xi)=\left(\frac\pi a\right)^{d/2}e^{-|\xi|^2/(4a)}\quad(a>0).
+\]
+Por tanto, para $t>0$,
+\[
+ H_t(x)=(4\pi t)^{-d/2}e^{-|x|^2/(4t)},\quad
+ \widehat H_t(\xi)=e^{-t|\xi|^2},\quad
+ H_t(x)=(2\pi)^{-d}\int e^{-t|\xi|^2}e^{-ix\cdot\xi}d\xi.
+\]
+\end{lema}
+\begin{proof}
+La integral $I=\int e^{-x^2}dx$ es positiva y finita por comparación en las colas con $e^{-|x|}$. Tonelli y coordenadas polares dan
+\[
+ I^2=\int_{\R^2}e^{-(x^2+y^2)}dxdy
+ =2\pi\int_0^\infty re^{-r^2}dr=\pi.
+\]
+Si $F(\xi)=\int e^{-x^2}e^{ix\xi}dx$, la proposición anterior y $(e^{-x^2})'=-2xe^{-x^2}$ dan $F'(\xi)=-\xi F(\xi)/2$. Puesto que $F(0)=\sqrt\pi$, se obtiene $F(\xi)=\sqrt\pi e^{-\xi^2/4}$. El cambio $u=\sqrt a\,x$ y la factorización en coordenadas por Fubini prueban la fórmula general. Aplicar esa fórmula directamente a la gaussiana en la variable $\xi$ da la última identidad; todavía no se ha usado ningún teorema de inversión.
+\end{proof}
+Las funciones $H_t$ son no negativas y tienen integral uno. Para cada $\delta>0$, el cambio $x=\sqrt t\,u$ muestra $\int_{|x|\geq\delta}H_t(x)dx\to0$ cuando $t\downarrow0$. Forman, por tanto, una identidad aproximada y $f*H_t\to f$ en $L^p$ para $p<\infty$.
+\begin{teorema}[Inversión]\label{v4:inversion-Rn}
+Si $f\in L^1(\R^d)$ y $\widehat f\in L^1(\R^d)$, entonces
+\[
+ f(x)=(2\pi)^{-d}\int_{\R^d}\widehat f(\xi)e^{-ix\cdot\xi}d\xi
+\]
+casi en todas partes. La igualdad vale en todo punto de continuidad de $f$ y, más generalmente, en todo punto de Lebesgue.
+\end{teorema}
+\begin{proof}
+La fórmula explícita de $H_t$ y Fubini, cuya hipótesis se verifica con $\norm f_1\int e^{-t|\xi|^2}d\xi<\infty$, dan
+\[
+ f*H_t(x)=(2\pi)^{-d}\int\widehat f(\xi)e^{-t|\xi|^2}e^{-ix\cdot\xi}d\xi.
+\]
+Si $\widehat f\in L^1$, convergencia dominada hace tender el lado derecho uniformemente en $x$ a la integral de inversión: la cota del error es $(2\pi)^{-d}\int|\widehat f||e^{-t|\xi|^2}-1|$. Por otro lado, $f*H_t\to f$ en $L^1$. Una sucesión $t_j\downarrow0$ posee una subsucesión convergente casi en todas partes, pues se puede escoger con errores $L^1$ sumables y aplicar Tonelli. La unicidad del límite prueba la fórmula casi en todas partes.
+
+Precisemos la afirmación puntual. Sea $x$ punto de Lebesgue y $A(r)=\int_{|y|<r}|f(x-y)-f(x)|dy=o(r^d)$. Escribamos $h_t(r)=(4\pi t)^{-d/2}e^{-r^2/(4t)}$. Como $h_t(r)=\int_r^\infty-h_t'(s)ds$, Tonelli da
+\[
+ \int |f(x-y)-f(x)|H_t(y)dy
+ =\int_0^\infty[-h_t'(s)]A(s)ds.
+\]
+Dado $\eps>0$, elegimos $\delta$ con $A(s)\leq\eps v_ds^d$ para $s<\delta$, donde $v_d$ es el volumen de la bola unidad. La integral en ese intervalo es a lo sumo $\eps$, porque $\int_0^\infty[-h_t'(s)]v_ds^d ds=\int H_t=1$. Para $s\geq\delta$ usamos $A(s)\leq\norm f_1+|f(x)|v_ds^d$. La contribución queda acotada por
+\[
+ \norm f_1h_t(\delta)+|f(x)|\left(v_d\delta^dh_t(\delta)+\int_{|y|\geq\delta}H_t(y)dy\right),
+\]
+integrando por partes el segundo término. Esta cota tiende a cero: la exponencial $e^{-\delta^2/(4t)}$ domina cualquier potencia de $1/t$ y la cola gaussiana tiende a cero. Así $f*H_t(x)\to f(x)$ y la fórmula puntual queda probada. Todo punto de continuidad es de Lebesgue.
+\end{proof}
+La prueba mediante calor sigue el enfoque de Maximenko~\cite{maximenkoInversion}, desarrollando también las constantes y el argumento en $\R^d$. En particular se aplica al error $f(x-y)-f(x)$, indispensable en el cálculo del punto de Lebesgue.
+
+\section{Inversión truncada y localización en la recta}
+\begin{proposicion}[Criterio de Dini en $\R$]\label{v4:dini-R}
+Sea $f\in L^1(\R)$ y $S_Rf(x)=(2\pi)^{-1}\int_{-R}^R\widehat f(\xi)e^{-ix\xi}d\xi$. Si
+\[
+ \int_0^\delta\frac{|f(x+t)+f(x-t)-2f(x)|}{t}dt<\infty
+\]
+para algún $\delta>0$, entonces $S_Rf(x)\to f(x)$.
+\end{proposicion}
+\begin{proof}
+Fubini se aplica al dominio finito de frecuencias, pues la integral absoluta es a lo sumo $2R\norm f_1$. Integrando el exponencial se obtiene
+\[
+ S_Rf(x)=\frac1\pi\int_0^\infty[f(x+t)+f(x-t)]\frac{\sin Rt}{t}dt.
+\]
+Usamos la integral impropia $\int_0^\infty\sin(Rt)/t\,dt=\pi/2$ para $R>0$. Para verificarla, la integral amortiguada $J_a(R)=\int_0^\infty e^{-at}\sin(Rt)/t\,dt$ satisface $J_a'(R)=a/(a^2+R^2)$ y $J_a(0)=0$, luego $J_a(R)=\arctan(R/a)$. Integración por partes da la cota uniforme $|\int_M^Ne^{-at}\sin(Rt)/t\,dt|\leq3/(RM)$ para $a\geq0$. Se pasa primero $a\downarrow0$ en un intervalo finito y después $M\to\infty$, obteniendo $\pi/2$.
+
+Restamos $f(x)$ usando esa integral y separamos $(0,\delta)$ del resto. En el primer intervalo, la condición de Dini y Riemann--Lebesgue hacen tender a cero la integral del error. En $(\delta,\infty)$, $[f(x+t)+f(x-t)]/t$ es integrable, por lo que su integral oscilante tiende a cero. El término constante restante es un múltiplo de $\int_\delta^\infty\sin(Rt)/t\,dt$, acotado por $3/(R\delta)$ y por ello convergente a cero. Es necesario tratar este término aparte: la función constante dividida entre $t$ no es integrable en infinito, contrario al uso directo de Riemann--Lebesgue sugerido en la lectura 10.
+\end{proof}
+
+\section{Ejercicios de la transformada integrable}
+\begin{ejercicio}[Lectura 10, ejercicio 1: transferencia]\label{ej:v4-l10-1}
+Si $f,g\in L^1(\R^d)$, probar $\int f\widehat g=\int\widehat f g$.
+\end{ejercicio}
+\begin{solucion}
+Ambos productos son integrables porque cada transformada es acotada. La integral doble de $|f(x)g(y)e^{ix\cdot y}|$ es $\norm f_1\norm g_1$. Por Fubini,
+\[
+ \int f(x)\widehat g(x)dx=\int\int f(x)g(y)e^{ix\cdot y}dydx
+ =\int\widehat f(y)g(y)dy.
+\]
+Esta es una identidad bilineal; los conjugados aparecerán en la versión de producto interno.
+\end{solucion}
+\begin{ejercicio}[Lectura 10, ejercicio 2: involución]\label{ej:v4-l10-2}
+Definir $f^*(x)=\overline{f(-x)}$. Probar que es una involución isométrica de $L^1(\R^d)$ y que $\widehat{f^*}=\overline{\widehat f}$. Explicar por qué $L^1(\R)$ no es un álgebra $C^*$ con esa norma.
+\end{ejercicio}
+\begin{solucion}
+La conjugación hace a $*$ antilineal, $f^{**}=f$ y el cambio $x\mapsto-x$ da $\norm{f^*}_1=\norm f_1$. Cambiar variables en la convolución da $(f*g)^*=g^**f^*$. Además,
+\[
+ \widehat{f^*}(\xi)=\int\overline{f(-x)}e^{ix\cdot\xi}dx
+ =\overline{\int f(y)e^{iy\cdot\xi}dy}.
+\]
+El conjugado en $f^*$ es necesario en el caso complejo.
+
+Para refutar la identidad $C^*$ tomemos $f=\mathbf1_{[0,1]}-\mathbf1_{[1,2]}$, con $\norm f_1=2$. Su autocorrelación $f*f^*$ es par y vale $2-3x$ para $0\leq x\leq1$, $x-2$ para $1\leq x\leq2$ y cero para $x\geq2$. Esto se obtiene contando las longitudes de intersección de los dos intervalos y sus traslaciones. Por integración,
+\[
+ \norm{f*f^*}_1=2\left(\int_0^{2/3}(2-3x)dx+\int_{2/3}^1(3x-2)dx+\int_1^2(2-x)dx\right)=\frac83<4=\norm f_1^2.
+\]
+Así la afirmación de que no es $C^*$ queda demostrada, además de la parte pedida explícitamente.
+\end{solucion}
+\begin{ejercicio}[Lectura 10, ejercicio 3]\label{ej:v4-l10-3}
+Si $(k_j)$ es una sucesión de Dirac en $L^1(\R^d)$, demostrar $\widehat k_j(\xi)\to1$ y que, para todo $h\in C_0(\R^d)$, $\norm{h\widehat k_j-h}_\infty\to0$.
+\end{ejercicio}
+\begin{solucion}
+Como $\int k_j=1$,
+\[
+ |\widehat k_j(\xi)-1|\leq\int k_j(x)|e^{ix\cdot\xi}-1|dx.
+\]
+Si $|\xi|\leq R$, la parte con $|x|<\delta$ es a lo sumo $R\delta$ y la otra a lo sumo $2\int_{|x|\geq\delta}k_j$. Elegir primero $\delta$ y después $j$ prueba convergencia uniforme en cada compacto de frecuencias. Además $|\widehat k_j|\leq1$. Para $h\in C_0$, fuera de una bola grande $|h|<\eps$, y el error del producto es a lo sumo $2\eps$; dentro se aplica la convergencia uniforme recién probada. No se afirma $\widehat k_j\to1$ uniformemente en toda la recta: cada transformada se anula en infinito, mientras que la constante uno no.
+\end{solucion}
+
+\section{Ejercicios de inversión y funciones de Schwartz}
+\index{Schwartz!espacio de}
+\begin{ejercicio}[Lectura 11, ejercicio 1]\label{ej:v4-l11-1}
+Si $f\in L^1(\R^d)$ y $\widehat f=0$, demostrar que $f=0$ casi en todas partes.
+\end{ejercicio}
+\begin{solucion}
+La función nula pertenece a $L^1$, por lo que $f$ satisface las hipótesis de inversión. La integral inversa es cero en todo punto, y el teorema~\ref{v4:inversion-Rn} implica $f=0$ casi en todas partes. También se puede usar $f*H_t=0$ y pasar al límite en $L^1$.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 2: factor de normalización]\label{ej:v4-l11-2}
+Calcular la transformada de $\mathbf1_{[-1,1]}$ y demostrar que no es integrable.
+\end{ejercicio}
+\begin{solucion}
+Para $\xi\ne0$, $\int_{-1}^1e^{ix\xi}dx=2\sin\xi/\xi$; en cero vale dos. El factor dos faltaba en el inciso original. Para $k\geq1$, en $I_k=[k\pi+\pi/6,k\pi+5\pi/6]$ se tiene $|\sin\xi|\geq1/2$ y $\xi\leq(k+1)\pi$. Así
+\[
+ \int_{I_k}\left|\frac{2\sin\xi}{\xi}\right|d\xi
+ \geq\frac{2}{3(k+1)}.
+\]
+Los intervalos son disjuntos y la suma de esas cotas diverge. Debe estimarse el valor absoluto, pues la integral impropia sin valor absoluto sí converge.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 3: Parseval integrable]\label{ej:v4-l11-3}
+Si $f,g,\widehat f,\widehat g\in L^1(\R^d)$, demostrar
+$\int\widehat f\,\overline{\widehat g}=(2\pi)^d\int f\overline g$.
+\end{ejercicio}
+\begin{solucion}
+La inversión implica que $g$ coincide casi en todas partes con una función acotada, por lo que $f\overline g$ es integrable. También $\widehat f\,\overline{\widehat g}$ es integrable porque $\widehat g$ es acotada. Conjugando la inversión de $g$ y aplicando Fubini, justificado por $\norm f_1\norm{\widehat g}_1$,
+\[
+ \int f(x)\overline{g(x)}dx
+ =(2\pi)^{-d}\int\overline{\widehat g(\xi)}\int f(x)e^{ix\cdot\xi}dx\,d\xi.
+\]
+La integral interior es $\widehat f(\xi)$.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 4]\label{ej:v4-l11-4}
+Para $\varphi(x)=e^{-x^2}$, calcular su integral y transformada. Probar que $k_n(x)=n\pi^{-1/2}e^{-n^2x^2}$ forma una sucesión de Dirac que satisface la fórmula de inversión.
+\end{ejercicio}
+\begin{solucion}
+El lema~\ref{v4:gaussiana} da $\int\varphi=\sqrt\pi$ y $\widehat\varphi(\xi)=\sqrt\pi e^{-\xi^2/4}$. El cambio $u=nx$ muestra $\int k_n=1$, y
+\[
+ \int_{|x|\geq\delta}k_n(x)dx=\pi^{-1/2}\int_{|u|\geq n\delta}e^{-u^2}du\longrightarrow0.
+\]
+Su transformada es $e^{-\xi^2/(4n^2)}$, integrable. Integrando directamente esta gaussiana con el signo inverso se obtiene $k_n$; esto prueba la fórmula sin usar previamente el teorema que la toma como herramienta.
+\end{solucion}
+\begin{ejercicio}[Lectura 11, ejercicio 5]\label{ej:v4-l11-5}
+Una función $f\in C^\infty(\R^d)$ es de Schwartz si $\sup_x|x^\alpha\partial^\beta f(x)|<\infty$ para todos los multiíndices $\alpha,\beta$. Probar: (i) $C_c^\infty\subset\Sscr$ y las gaussianas pertenecen a $\Sscr$ sin tener soporte compacto; $\Sscr$ es denso en $L^p$, $p<\infty$; (ii) Fourier preserva $\Sscr$; (iii) $L^1(\R)$ tiene divisores de cero.
+\end{ejercicio}
+\begin{solucion}
+(i) Para una función suave de soporte compacto, cada derivada tiene soporte en el mismo compacto, así que el producto por cualquier monomio es acotado. Las derivadas de una gaussiana son polinomios por la misma gaussiana; la exponencial domina todas las potencias, por lo que también es de Schwartz, y es estrictamente positiva en toda la recta. La densidad de $C_c^\infty$ se probó en dimensión uno en el lema~\ref{v4:densidad-suave}; en dimensión $d$ se toman productos de las funciones de corte para aproximar indicadoras de rectángulos y después funciones simples. Esto da densidad de $\Sscr$.
+
+(ii) Toda derivada de una función de Schwartz, multiplicada por un monomio, es integrable: se domina su valor absoluto por $C(1+|x|)^{-d-1}$. Derivar bajo la integral y después integrar por partes en cada coordenada da
+\[
+ \partial_\xi^\alpha\widehat f=i^{|\alpha|}\widehat{x^\alpha f},\qquad
+ \xi^\beta\partial_\xi^\alpha\widehat f
+ =i^{|\alpha|+|\beta|}\widehat{\partial_x^\beta(x^\alpha f)}.
+\]
+Los términos de frontera se anulan por decaimiento rápido. La última transformada está acotada por la norma $L^1$ de su argumento, lo que prueba todas las seminormas de Schwartz. La inversión muestra además que Fourier es una biyección de $\Sscr$ sobre sí mismo.
+
+(iii) Sea $b(\xi)=e^{-1/(1-\xi^2)}$ si $|\xi|<1$, y cero fuera. La prueba de suavidad del lema~\ref{v4:densidad-suave}, aplicada a $1-\xi^2$, muestra $b\in C_c^\infty$. Las funciones $b(\xi)$ y $b(\xi-3)$ son no nulas y tienen soportes disjuntos. Sus transformadas inversas $u,v$ pertenecen a $\Sscr\subset L^1$ y son no nulas por inversión. Como $\widehat{u*v}=b(\xi)b(\xi-3)=0$, el ejercicio~\ref{ej:v4-l11-1} da $u*v=0$. Son divisores de cero explícitamente construidos.
+\end{solucion}
+
+\section{Los caracteres del álgebra de convolución}\label{lectura:v4-12}
+\index{caracter@carácter!de L1}\index{Gelfand!transformada de}
+Un carácter de un álgebra de Banach compleja es un funcional lineal multiplicativo, continuo y no nulo. Cada evaluación $\phi_\xi(f)=\widehat f(\xi)$ es un carácter de $L^1(\R^d)$ por el teorema de convolución; es no nulo, por ejemplo, sobre una gaussiana modulada.
+\begin{lema}
+Todo carácter $\phi$ de un álgebra de Banach satisface $\norm\phi\leq1$.
+\end{lema}
+\begin{proof}
+Si $|\phi(a)|>\norm a$, pongamos $b=a/\phi(a)$. Entonces $\phi(b)=1$ y $\norm b<1$. La serie $x=-\sum_{n\geq1}b^n$ converge absolutamente y satisface $b+x=bx$. Aplicar $\phi$ daría $1+\phi(x)=\phi(x)$, imposible. El argumento no requiere una unidad en el álgebra.
+\end{proof}
+\begin{teorema}\label{v4:caracteres-L1R}
+Todo carácter de $L^1(\R^d)$ es $f\mapsto\widehat f(\xi)$ para una única frecuencia $\xi$. Esta identificación es un homeomorfismo entre $\R^d$ y el espacio de caracteres con su topología débil estrella.
+\end{teorema}
+\begin{proof}
+Por la representación del dual de $L^1(\R^d)$ existe $h\in L^\infty$ con $\phi(f)=\int fh$. Para $R_yf(x)=f(x-y)$, Fubini y multiplicatividad dan, para cada $f,g\in L^1$,
+\[
+ \int g(y)\phi(R_yf)dy=\phi(f*g)=\phi(f)\phi(g)=\int g(y)\phi(f)h(y)dy.
+\]
+La integral doble es absolutamente convergente por $\norm h_\infty\norm f_1\norm g_1$. Como $g$ es arbitraria, $\phi(R_yf)=\phi(f)h(y)$ para casi todo $y$.
+
+Elijamos $f_0$ con $\phi(f_0)\ne0$ y definamos $H(y)=\phi(R_yf_0)/\phi(f_0)$. La continuidad de traslaciones hace a $H$ continua y acotada, y $H=h$ casi en todas partes. Para cualquier $f$, las funciones continuas $y\mapsto\phi(R_yf)$ y $y\mapsto\phi(f)H(y)$ coinciden casi en todas partes, luego en todo punto: una diferencia continua no nula sería no nula en un abierto de medida positiva. Así se obtiene una identidad válida para cada $f$ y todo $y$, sin elegir ilegítimamente un único nulo para todos los $f$.
+
+Aplicándola a $R_zf_0$, se deduce $H(y+z)=H(y)H(z)$ y $H(0)=1$. En particular $H$ nunca se anula. La acotación y las potencias positivas y negativas implican $|H(y)|=1$; si fuese mayor o menor que uno, alguna sucesión de potencias sería no acotada. Por la proposición~\ref{v4:caracteres-R}, $H(y)=e^{iy\cdot\xi}$, y por tanto $\phi=\phi_\xi$. Si dos frecuencias dan el mismo funcional, sus exponenciales son iguales casi en todas partes por dualidad y luego en todo punto por continuidad; restringir a los ejes y derivar en cero prueba que las frecuencias coinciden.
+
+La continuidad de $\xi\mapsto\phi_\xi$ es la continuidad de cada $\widehat f$. Para la inversa, si una red $\phi_{\xi_\alpha}\to\phi_\xi$ débil estrella, evaluamos en $f(x)=e^{-|x|^2}e^{-ix\cdot\xi}$. Su transformada es $\pi^{d/2}e^{-|\eta-\xi|^2/4}$. La convergencia de esas evaluaciones implica $e^{-|\xi_\alpha-\xi|^2/4}\to1$, y de ahí $\xi_\alpha\to\xi$. Esto prueba continuidad inversa incluso para redes.
+\end{proof}
+La transformada de Gelfand asigna a $f$ la función $\phi\mapsto\phi(f)$ sobre el espacio de caracteres. Bajo el homeomorfismo anterior es exactamente la transformada de Fourier. La lectura 12 no contiene una lista de ejercicios; sus resultados de norma, continuidad del representante y topología del espectro se han demostrado aquí.
+
+\paragraph{Del álgebra a la geometría.}
+La transformada ya distingue funciones integrables y respeta su producto de convolución. El siguiente paso cambia de norma: Plancherel extenderá Fourier a todo $L^2$, incluso cuando la integral que lo define no converja absolutamente.

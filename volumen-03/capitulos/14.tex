@@ -1,0 +1,311 @@
+\chapter{Positividad, orden y estados}\label{cap:v3-14}
+
+En una álgebra $C^*$, la expresión $a^*a$ desempeña el papel de un cuadrado no negativo. Demostrar que su espectro es realmente no negativo requiere un argumento: no basta trasladar sin prueba la intuición de los números reales. Una vez establecido ese hecho, el orden y los funcionales positivos permitirán observar los elementos del álgebra mediante valores escalares.
+
+\section{Partes positiva y negativa}\label{lec:v3-27}
+\fuentelectura{27}{Elementos positivos en álgebras C*}
+
+En este capítulo $A$ es un álgebra $C^*$ unitaria no nula. Para evitar circularidad, distinguiremos al principio entre ser de la forma $b^*b$ y ser autoadjunto con espectro no negativo.
+
+\begin{proposicion}\label{v3:partes-positivas}
+Si $a=a^*$, existen únicos autoadjuntos $a_+,a_-$ con espectros contenidos en $[0,\infty)$ tales que
+\[
+ a=a_+-a_-,\qquad a_+a_-=a_-a_+=0.
+\]
+Están dados por $a_+=f(a)$ y $a_-=g(a)$, donde $f(t)=\max(t,0)$ y $g(t)=\max(-t,0)$.
+\end{proposicion}
+\begin{proof}
+Las funciones $f,g$ son continuas y reales en el espectro real de $a$. El cálculo continuo conserva conjugación, productos y diferencias, de modo que sus imágenes son autoadjuntas, su diferencia es $a$ y su producto es cero. El mapeo espectral da los espectros no negativos.
+
+Para la unicidad, suponga $a=u-v$, $uv=vu=0$, con $u,v$ autoadjuntos de espectro no negativo. El binomio da $a^n=u^n+(-v)^n$ para $n\ge1$, pues todos los términos mixtos contienen $uv$. Luego $p(a)=p(u)+p(-v)$ para polinomios con término constante cero. Elija un intervalo compacto real que contenga $\sigma(a),\sigma(u),\sigma(-v)$ y cero. Por Weierstrass, aproxime $f$ uniformemente por polinomios $q_n$ y ponga $p_n=q_n-q_n(0)$; entonces $p_n(0)=0$ y $p_n\to f$ uniformemente, ya que $f(0)=0$. Pasar al límite en la identidad polinomial da $a_+=f(u)+f(-v)=u+0$. Así $u=a_+$ y $v=a_-$.
+\end{proof}
+
+\begin{lema}\label{v3:cono-espectral}
+Sea $P_{\mathrm{esp}}$ el conjunto de autoadjuntos con espectro no negativo. Para $h=h^*$ y $t\ge\norm h$,
+\[
+ h\in P_{\mathrm{esp}}\quad\Longleftrightarrow\quad\norm{t1-h}\le t.
+\]
+El conjunto $P_{\mathrm{esp}}$ es un cono convexo cerrado y $P_{\mathrm{esp}}\cap(-P_{\mathrm{esp}})=\{0\}$.
+\end{lema}
+\begin{proof}
+Por normalidad y mapeo espectral, $\norm{t1-h}=\max_{\lambda\in\sigma(h)}|t-\lambda|$. Como $\sigma(h)\subset[-t,t]$, la cota por $t$ equivale a $\lambda\ge0$ para todos sus puntos. Si $h,k\in P_{\mathrm{esp}}$, con $s=\norm h$, $t=\norm k$,
+\[
+ \norm{(s+t)1-(h+k)}\le\norm{s1-h}+\norm{t1-k}\le s+t.
+\]
+Como $s+t\ge\norm{h+k}$, la equivalencia prueba que $h+k\in P_{\mathrm{esp}}$. Multiplicar por escalares no negativos conserva el espectro no negativo. Si $h_n\to h$ y todos están en el cono, $h=h^*$; elija $t$ mayor que todas las normas y pase al límite en $\norm{t1-h_n}\le t$. Finalmente, si $h$ y $-h$ están en el cono, $\sigma(h)\subset\{0\}$ y, por normalidad, $\norm h=0$.
+\end{proof}
+
+\begin{teorema}[Caracterizaciones de positividad]\label{v3:positividad-equivalencias}
+Para $a\in A$ son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item $a=b^*b$ para algún $b\in A$;
+\item $a$ es autoadjunto y $\sigma(a)\subset[0,\infty)$;
+\item $a=c^2$ para algún $c=c^*$;
+\item $a=a^*$ y $\norm{t1-a}\le t$ para todo $t\ge\norm a$;
+\item $a=a^*$ y esa desigualdad vale para algún $t\ge\norm a$.
+\end{enumerate}
+Si se supone de antemano que $a$ es normal, en (ii) basta la condición espectral: el cálculo continuo hace entonces $a=a^*$ cuando su espectro es real.
+\end{teorema}
+\begin{proof}
+El lema anterior prueba (ii)$\Leftrightarrow$(iv)$\Leftrightarrow$(v). Si (ii) vale, el cálculo continuo aplicado a $\sqrt t$ produce un autoadjunto $c$ con $c^2=a$, y (iii) implica (i) porque $c^2=c^*c$.
+
+Falta (i)$\Rightarrow$(ii), que es el paso sustancial. Suponga $a=b^*b$ y use su descomposición $a=a_+-a_-$. Ponga $y=ba_-$. Como $a_+a_-=0$,
+\[
+ y^*y=a_-aa_-=-a_-^3.
+\]
+Luego $\sigma(y^*y)\subset(-\infty,0]$. Los espectros de $y^*y$ y $yy^*$ coinciden fuera de cero, así también $\sigma(yy^*)\subset(-\infty,0]$. Escriba $y=u+iv$ con $u,v$ autoadjuntos. El desarrollo de ambos productos da
+\[
+ y^*y=2u^2+2v^2-yy^*.
+\]
+Los tres sumandos del miembro derecho pertenecen a $P_{\mathrm{esp}}$: los cuadrados por mapeo espectral y el último por la inclusión recién probada. El lema del cono, que se demostró sin asumir positividad de $b^*b$, implica $y^*y\in P_{\mathrm{esp}}$. Su espectro está por tanto en $\{0\}$; como es autoadjunto, $\norm{y^*y}=0$. Así $a_-^3=0$, y la normalidad de $a_-$ obliga $a_-=0$. Finalmente $a=a_+\in P_{\mathrm{esp}}$.
+\end{proof}
+
+\begin{corolario}[Raíz cuadrada positiva]\label{v3:raiz-positiva}
+Cada $a\ge0$ tiene una única raíz cuadrada \emph{positiva}, denotada $a^{1/2}$. Está en $C^*(1,a)$ y conmuta con cualquier elemento que conmute con $a$ y $a^*$.
+\end{corolario}
+\begin{proof}
+La existencia proviene de $t\mapsto\sqrt t$ y el mapeo espectral. Si $c\ge0$ y $c^2=a$, el cálculo continuo en $C^*(1,c)$ da $(c^2)^{1/2}=c$, pues $\sqrt{t^2}=t$ en $\sigma(c)\subset[0,\infty)$. El cálculo de $a$ es el mismo en la subálgebra y en $A$ por permanencia espectral, así $c=a^{1/2}$. La última afirmación se prueba aproximando uniformemente la raíz por polinomios en $a$. La unicidad entre \emph{todos} los autoadjuntos sería falsa: $1$ y $-1$ tienen ambos cuadrado $1$.
+\end{proof}
+
+\section{Orden de los elementos autoadjuntos}
+
+Definimos $a\le b$ si $b-a\ge0$, para $a,b\in A_{\mathrm{sa}}=\{x:x=x^*\}$. El cono demostrado antes garantiza reflexividad, transitividad y antisimetría. Se tiene además $-\norm a1\le a\le\norm a1$ para todo autoadjunto, por mapeo espectral.
+
+\begin{proposicion}\label{v3:propiedades-orden}
+Si $a\le b$, entonces:
+\begin{enumerate}[label=(\roman*)]
+\item $a+c\le b+c$ para cada autoadjunto $c$;
+\item $ta\le tb$ para $t\ge0$;
+\item $c^*ac\le c^*bc$ para todo $c\in A$;
+\item si $0\le a$, entonces $\norm a\le\norm b$;
+\item si $0<a\le b$ y ambos son invertibles, entonces $b^{-1}\le a^{-1}$;
+\item si $0\le a\le b$, entonces $a^{1/2}\le b^{1/2}$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+(i) y (ii) son las propiedades de traslación y escala del cono. Para (iii), escriba $b-a=d^*d$; entonces $c^*(b-a)c=(dc)^*(dc)\ge0$. Para (iv), $0\le a\le b\le\norm b1$. Por mapeo espectral en $C^*(1,a)$, la positividad de $\norm b1-a$ implica $\sigma(a)\subset[0,\norm b]$, y por normalidad $\norm a\le\norm b$.
+
+Para (v), el cálculo continuo da que las raíces e inversas de elementos positivos invertibles son positivas. Congruencia por $a^{-1/2}$ produce $1\le d=a^{-1/2}ba^{-1/2}$. Su espectro está en $[1,\infty)$, de donde $d^{-1}\le1$. Como $d^{-1}=a^{1/2}b^{-1}a^{1/2}$, otra congruencia por $a^{-1/2}$ da $b^{-1}\le a^{-1}$. La hipótesis de positividad es necesaria: $a=-1\le1=b$, pero $b^{-1}=1\not\le-1=a^{-1}$.
+
+Para (vi) probaremos primero: si $p,q\ge0$ y $p^2\le q^2$, entonces $p\le q$. Fije $t>0$ y escriba
+\[
+ (t1+q+p)(t1+q-p)=u+iv,
+ \quad u=t^21+2tq+q^2-p^2\ge t^21,
+\]
+con $u,v$ autoadjuntos (son las partes real e imaginaria del producto). El elemento $u$ es positivo invertible. El autoadjunto $s=u^{-1/2}vu^{-1/2}$ tiene espectro real, por lo que $1+is$ es invertible. Así $u+iv=u^{1/2}(1+is)u^{1/2}$ es invertible. En consecuencia $t1+q-p$ tiene inversa izquierda. Un autoadjunto con inversa izquierda $c$ también tiene inversa derecha $c^*$; de $cB=1=Bc^*$ se deduce $c=cBc^*=c^*$, y por tanto es invertible. Hemos probado que $-t\notin\sigma(q-p)$ para todo $t>0$. Como $q-p$ es autoadjunto, su espectro es no negativo y $p\le q$. Aplique esto a $p=a^{1/2}$ y $q=b^{1/2}$.
+\end{proof}
+
+\subsection{Normas de homomorfismos y de cocientes}
+\begin{proposicion}\label{v3:homomorfismo-cstar-norma}
+Todo $*$-homomorfismo $\pi:A\to B$ entre álgebras $C^*$ unitarias es contractivo, aunque no se suponga continuo ni unital. Si es inyectivo, es isométrico. Para todo $a\in A$,
+\[
+ \norm{\pi(a)}=\inf_{k\in\ker\pi}\norm{a-k}.
+\]
+\end{proposicion}
+\begin{proof}
+Sea $p=\pi(1)$. Es una proyección y $\pi(A)\subset pBp$, una álgebra $C^*$ unitaria con identidad $p$. Si $p=0$, $\pi=0$ y las afirmaciones pertinentes son inmediatas. En otro caso, considere $\pi$ como aplicación unital hacia ese rincón. Una inversa se conserva bajo homomorfismos unitales, así $\sigma_{pBp}(\pi(a^*a))\subset\sigma_A(a^*a)$. Por normalidad,
+\[
+ \norm{\pi(a)}^2=\norm{\pi(a^*a)}
+ =r_{pBp}(\pi(a^*a))\le r_A(a^*a)=\norm a^2.
+\]
+Esto prueba continuidad sin asumirla.
+
+La compatibilidad $\pi(f(h))=f(\pi(h))$ para $h=h^*$ y $f$ continua en un intervalo que contiene ambos espectros se sigue de aproximar $f$ por polinomios y de la contractividad. Si $\pi$ es inyectivo y $\norm{\pi(h)}<\norm h$ para un positivo $h$, elija una función continua $f$ que se anule en $[0,\norm{\pi(h)}]$ y satisfaga $f(\norm h)=1$. Como $\norm h\in\sigma(h)$, $f(h)\ne0$, mientras $\pi(f(h))=f(\pi(h))=0$, contradicción. Aplicar este resultado a $h=a^*a$ demuestra isometría en todo $A$.
+
+Para la fórmula del cociente, la contractividad da $\norm{\pi(a)}\le\norm{a-k}$ para cada $k\in\ker\pi$. Para la otra cota sea $m=\norm{\pi(a)}$, $\eps>0$, $h=a^*a$, y defina en $[0,\norm h]$
+\[
+ q(t)=\begin{cases}\min(1,(m+\eps)/\sqrt t),&t>0,\\1,&t=0.\end{cases}
+\]
+Es continua, y $q=1$ en $\sigma(\pi(h))\subset[0,m^2]$. Por tanto $\pi(a-aq(h))=0$. Además
+\[
+ \norm{aq(h)}^2=\norm{q(h)hq(h)}
+ =\max_{t\in\sigma(h)}tq(t)^2\le(m+\eps)^2.
+\]
+Tomar $k=a-aq(h)$ demuestra que la distancia al núcleo es a lo sumo $m+\eps$. Finalmente deje $\eps\downarrow0$.
+\end{proof}
+
+\section{Ejercicios sobre raíces, orden y descomposición polar}
+
+\begin{ejercicio}\label{ej:v3-l27-1}
+Para $n\ge1$ y $a\ge0$, pruebe que existe un único $b\ge0$ con $b^n=a$.
+\end{ejercicio}
+\begin{solucion}
+El cálculo de la función $t^{1/n}$ da una raíz positiva. Si $c\ge0$ satisface $c^n=a$, la composición del cálculo continuo da $(c^n)^{1/n}=c$, porque $(t^n)^{1/n}=t$ en el espectro no negativo de $c$. Por compatibilidad del cálculo en subálgebras, el miembro izquierdo es la raíz construida a partir de $a$; esto prueba unicidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-2}
+Pruebe $\norm a=\max(\norm{a_+},\norm{a_-})$ para $a=a^*$.
+\end{ejercicio}
+\begin{solucion}
+El cálculo continuo isométrico da $\norm{a_+}=\max_{t\in\sigma(a)}\max(t,0)$ y $\norm{a_-}=\max_{t\in\sigma(a)}\max(-t,0)$. El máximo de esos dos números es $\max_{t\in\sigma(a)}|t|=\norm a$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-3}
+Si $\pi:A\to B$ es un $*$-homomorfismo, pruebe $\norm{\pi(a)}=\inf\{\norm{a-b}:\pi(b)=0\}$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:homomorfismo-cstar-norma} da ambas desigualdades y la aproximación explícita $b=a-aq(a^*a)$ al núcleo. El resultado significa que el isomorfismo algebraico $A/\ker\pi\to\pi(A)$ también es isométrico para la norma cociente. Como el núcleo es cerrado y $A$ es completo, la imagen es completa y por tanto cerrada en $B$. Así, en el contexto $C^*$ sí se obtiene el control topológico que falla para un homomorfismo general de álgebras normadas.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-4}
+Pruebe que los positivos forman un cono: $a,b\ge0$ y $t\ge0$ implican $a+b,ta\ge0$.
+\end{ejercicio}
+\begin{solucion}
+El teorema~\ref{v3:positividad-equivalencias} identifica los positivos con $P_{\mathrm{esp}}$, y el lema~\ref{v3:cono-espectral} prueba que éste es un cono. En particular, la desigualdad
+$\norm{(\norm a+\norm b)1-(a+b)}\le\norm a+\norm b$
+es válida sin exigir $ab=ba$. No sería correcto deducir positividad de una suma usando únicamente una fórmula de suma de espectros reservada al caso conmutativo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-5}
+Pruebe que todo elemento de $A$ es combinación lineal de elementos unitarios.
+\end{ejercicio}
+\begin{solucion}
+Si $h=h^*$ y $\norm h\le1$, $1-h^2\ge0$. Sea $k=(1-h^2)^{1/2}$; como es función continua de $h$, conmuta con él. Entonces $u=h+ik$ satisface $u^*u=uu^*=h^2+k^2=1$, y $h=(u+u^*)/2$. Un autoadjunto general se reduce a una contracción dividiendo por su norma, salvo el cero, que no presenta dificultad. Finalmente escriba $a=h+i\ell$ con $h,\ell$ autoadjuntos. Cada uno es combinación de dos unitarios, así $a$ es combinación de a lo sumo cuatro.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-6}
+Para $a$ invertible defina $|a|=(a^*a)^{1/2}$. Pruebe que existe un unitario $u$ con $a=u|a|$.
+\end{ejercicio}
+\begin{solucion}
+El positivo $a^*a$ es invertible y su raíz también, por mapeo espectral. Defina $u=a|a|^{-1}$. Entonces $u^*u=|a|^{-1}a^*a|a|^{-1}=1$. Además $u$ es invertible, producto de invertibles; por ello la identidad izquierda $u^*u=1$ obliga $u^*=u^{-1}$ y también $uu^*=1$. La factorización es inmediata y el unitario es único porque necesariamente $u=a|a|^{-1}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-7}
+Pruebe que un $*$-homomorfismo preserva el orden.
+\end{ejercicio}
+\begin{solucion}
+Si $b-a=c^*c$, entonces $\pi(b)-\pi(a)=\pi(c)^*\pi(c)\ge0$. Además conserva autoadjuntos porque $\pi(a)^*=\pi(a^*)$. No se requiere inyectividad ni que preserve la identidad.
+\end{solucion}
+
+\section{Funcionales positivos y estados}\label{lec:v3-28}
+\fuentelectura{28}{El espacio de estados de un álgebra C*}
+
+\begin{definicion}
+Un funcional complejo lineal $\varphi$ es \emph{hermitiano} si $\varphi(a^*)=\overline{\varphi(a)}$, y \emph{positivo} si $\varphi(a)\ge0$ para cada $a\ge0$. Un \emph{estado} es un funcional positivo con $\varphi(1)=1$. Su conjunto se denota $S(A)$.
+\end{definicion}
+\index{estado}\index{funcional positivo}
+
+Un funcional es hermitiano si y sólo si toma valores reales en los autoadjuntos: una implicación resulta de $h=h^*$; para la otra, escriba $a=h+ik$ y compare $a^*=h-ik$. Todo funcional positivo es hermitiano, porque cada autoadjunto es diferencia de sus partes positivas. La positividad implica además continuidad; no ocurre lo mismo con la sola condición hermitiana.
+
+\begin{lema}[Cauchy--Schwarz para funcionales positivos]\label{v3:cs-positivo}
+Si $\varphi$ es positivo, entonces
+\[
+ |\varphi(b^*a)|^2\le\varphi(a^*a)\varphi(b^*b).
+\]
+Además $\varphi$ es continuo y $\norm\varphi=\varphi(1)$.
+\end{lema}
+\begin{proof}
+La forma $[a,b]=\varphi(b^*a)$ es lineal en la primera variable, conjugada lineal en la segunda y hermitiana. Si $[b,b]>0$, expanda $[a-\lambda b,a-\lambda b]\ge0$ y tome $\lambda=[a,b]/[b,b]$; queda $[a,a]-|[a,b]|^2/[b,b]\ge0$. Si $[b,b]=0$, la misma expansión, con un escalar de fase adecuada y módulo arbitrariamente grande, fuerza $[a,b]=0$. Esto demuestra la desigualdad incluso cuando la forma es degenerada.
+
+Como $0\le a^*a\le\norm a^21$, la positividad da $\varphi(a^*a)\le\norm a^2\varphi(1)$. Aplicando Cauchy--Schwarz con $b=1$ se obtiene $|\varphi(a)|\le\varphi(1)\norm a$. Así es continuo, con norma a lo sumo $\varphi(1)$; evaluar en $1$ da la igualdad. Si $\varphi(1)=0$, la misma cota muestra que $\varphi=0$.
+\end{proof}
+
+\begin{proposicion}
+Para un funcional hermitiano \emph{continuo},
+\[
+ \norm\varphi=\sup\{\varphi(h):h=h^*,\ \norm h\le1\}.
+\]
+\end{proposicion}
+\begin{proof}
+Si $\norm a\le1$, elija $\zeta\in\mathbb T$ con $\varphi(\zeta a)=|\varphi(a)|$. El autoadjunto $h=(\zeta a+(\zeta a)^*)/2$ tiene norma a lo sumo uno y $\varphi(h)=\operatorname{Re}\varphi(\zeta a)=|\varphi(a)|$. Tomar el supremo da una desigualdad; la otra es inmediata por la definición de norma.
+\end{proof}
+
+\begin{teorema}[Criterio de positividad]\label{v3:estado-norma}
+Un funcional continuo $\varphi$ es positivo si y sólo si $\norm\varphi=\varphi(1)$.
+\end{teorema}
+\begin{proof}
+Una dirección está en el lema anterior. Para la otra, el caso de norma cero es trivial; divida por la norma y suponga $\norm\varphi=\varphi(1)=1$. Si $h=h^*$ y $\varphi(h)=a+ib$, para todo $t\in\R$,
+\[
+ |1+it\varphi(h)|^2\le\norm{1+ith}^2
+ =\norm{1+t^2h^2}\le1+t^2\norm h^2.
+\]
+El miembro izquierdo es $1-2tb+t^2(a^2+b^2)$. Al dividir por $t$ y dejar $t\to0$ por ambos signos se obtiene $b=0$. Así $\varphi$ es hermitiano. Si $h\ge0$ y $M=\norm h>0$, el espectro de $1-h/M$ está en $[0,1]$, por lo que $|1-\varphi(h)/M|\le1$. Como $\varphi(h)$ es real, esto implica $\varphi(h)\ge0$. El caso $h=0$ es inmediato.
+\end{proof}
+
+\begin{teorema}[Estados que realizan valores espectrales]\label{v3:estado-espectral}
+Si $a\in A$ y $\lambda\in\sigma(a)$, existe $\varphi\in S(A)$ con $\varphi(a)=\lambda$. En particular $S(A)\ne\varnothing$.
+\end{teorema}
+\begin{proof}
+En $E=\operatorname{span}\{1,a\}$ defina $\varphi_0(\alpha a+\beta1)=\alpha\lambda+\beta$. Está bien definida: si $\alpha a+\beta1=0$ y $\alpha\ne0$, entonces $a=-\beta/\alpha$ y su único valor espectral es ese escalar; si $\alpha=0$, también $\beta=0$. Por mapeo espectral afín, $\alpha\lambda+\beta\in\sigma(\alpha a+\beta1)$ y por tanto $|\varphi_0(\alpha a+\beta1)|\le\norm{\alpha a+\beta1}$. Como $\varphi_0(1)=1$, su norma es uno. Hahn--Banach complejo la extiende a un funcional de norma uno en $A$, todavía con valor uno en $1$. El criterio anterior hace que la extensión sea un estado.
+\end{proof}
+
+\begin{proposicion}\label{v3:estados-compactos-separan}
+El conjunto $S(A)$ es convexo y compacto Hausdorff en la topología débil estrella. Además:
+\[
+ \begin{aligned}
+ a=0&\ \Longleftrightarrow\ \varphi(a)=0\text{ para todo estado};\\
+ a=a^*&\ \Longleftrightarrow\ \varphi(a)\in\R\text{ para todo estado};\\
+ a\ge0&\ \Longleftrightarrow\ \varphi(a)\ge0\text{ para todo estado}.
+ \end{aligned}
+\]
+\end{proposicion}
+\begin{proof}
+Las combinaciones convexas de estados conservan positividad y valor uno en la identidad. Todos tienen norma uno. Dentro de la bola dual cerrada, $S(A)$ está definido por las condiciones cerradas $\varphi(1)=1$ y $\varphi(h)\in[0,\infty)$ para cada $h\ge0$. Banach--Alaoglu da compacidad; la topología débil estrella es Hausdorff.
+
+Si todos los estados anulan $a=h+ik$, con $h,k$ autoadjuntos, sus valores en $h,k$ son reales y necesariamente ambos cero. Por el teorema~\ref{v3:estado-espectral}, $\sigma(h)=\sigma(k)=\{0\}$; la igualdad de norma y radio para autoadjuntos da $h=k=0$. Si todos los valores de $a$ son reales, todos los estados anulan $a-a^*$, y el caso anterior implica autoadjunción. Finalmente, si todos los valores son no negativos, $a$ es autoadjunto y todo punto de su espectro es valor de un estado, de modo que el espectro es no negativo y $a\ge0$. Las implicaciones directas resultan de las definiciones.
+\end{proof}
+
+\section{Ejercicios sobre estados y estados puros}
+
+\begin{ejercicio}\label{ej:v3-l28-1}
+Examine la afirmación: ``todo funcional lineal hermitiano en un álgebra $C^*$ es continuo''. Dé una demostración si es verdadera o un contraejemplo si es falsa, e indique una hipótesis suficiente válida.
+\end{ejercicio}
+\begin{solucion}
+La afirmación original es falsa. En el espacio real $C([0,1],\R)$, los monomios $1,t,t^2,\ldots$ son linealmente independientes. Defina sobre su espacio generado un funcional real $L$ con $L(1)=0$ y $L(t^n)=n$ para $n\ge1$, y extiéndalo algebraicamente a todo el espacio mediante una base de Hamel. Defina en $C([0,1],\C)$
+\[
+ \varphi(f)=L(\operatorname{Re}f)+iL(\operatorname{Im}f).
+\]
+Es compleja lineal: en particular $\varphi(if)=i\varphi(f)$, y respeta conjugación, así es hermitiano. Pero $\norm{t^n}_\infty=1$ y $|\varphi(t^n)|=n$, por lo que no es continuo. La hipótesis suficiente correcta es \emph{positividad}: el lema~\ref{v3:cs-positivo} prueba entonces continuidad y la igualdad exacta $\norm\varphi=\varphi(1)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-2}
+Si $\norm\xi=1$ en un espacio de Hilbert $H$, pruebe que $T\mapsto\ip{T\xi}{\xi}$ es un estado de $\Lcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+Es complejo lineal por nuestra convención del producto interno y está acotado en módulo por $\norm T$. Si $T=S^*S$, su valor es $\norm{S\xi}^2\ge0$. En la identidad vale $\norm\xi^2=1$, de modo que es un estado, llamado estado vectorial.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-3}
+Si $\varphi$ es un estado y $u$ unitario, pruebe que $a\mapsto\varphi(uau^*)$ es un estado.
+\end{ejercicio}
+\begin{solucion}
+La conjugación por $u$ es lineal, multiplicativa y conserva adjuntos. Para $a=b^*b$ se tiene $uau^*=(bu^*)^*(bu^*)\ge0$, y envía $1$ a $1$. Componerla con $\varphi$ conserva, por tanto, positividad y normalización.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-4}
+Si $a$ es normal, pruebe que existe un estado $\varphi$ con $|\varphi(a)|=\norm a$.
+\end{ejercicio}
+\begin{solucion}
+Elija $\lambda\in\sigma(a)$ con $|\lambda|=r(a)=\norm a$ y aplique el teorema~\ref{v3:estado-espectral}. La normalidad es esencial para identificar el radio con la norma.
+\end{solucion}
+
+Los puntos extremos de $S(A)$ se llaman \emph{estados puros}; su conjunto es $P(A)$. El teorema de Krein--Milman, aplicado al espacio dual con topología débil estrella, dice que $S(A)$ es la clausura débil estrella de la envolvente convexa de $P(A)$. Esta aplicación usa la versión para espacios localmente convexos Hausdorff, no la compacidad en norma del dual.
+
+\begin{ejercicio}\label{ej:v3-l28-5}
+Sea $K$ un conjunto convexo compacto no vacío en un espacio localmente convexo Hausdorff y $\ell$ un funcional lineal continuo. Pruebe que $\operatorname{Re}\ell$ alcanza su máximo en algún punto extremo de $K$. En particular, vale para un compacto convexo de un espacio normado.
+\end{ejercicio}
+\begin{solucion}
+Sea $m=\max_K\operatorname{Re}\ell$ y $F=\{x\in K:\operatorname{Re}\ell(x)=m\}$. Es compacto, convexo y no vacío. Es una \emph{cara}: si $tx+(1-t)y\in F$, $0<t<1$, ambos valores reales son a lo sumo $m$, y su combinación sólo puede ser $m$ si ambos son $m$. Por Krein--Milman, $F$ tiene un punto extremo $x_0$. Si $x_0$ fuera una combinación convexa no trivial de puntos de $K$, la propiedad de cara obligaría a que estuvieran en $F$, contradiciendo su extremalidad allí. Por tanto es extremo en $K$ y alcanza el máximo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-6}
+Pruebe: (i) $a=0$ si y sólo si todos los estados puros lo anulan; (ii) $a=a^*$ si y sólo si todos los estados puros toman valores reales en $a$; (iii) $a\ge0$ si y sólo si todos los estados puros toman valores no negativos en $a$; (iv) si $a$ es normal, existe un estado puro $\varphi$ con $|\varphi(a)|=\norm a$.
+\end{ejercicio}
+\begin{solucion}
+(i)--(iii) Cada condición sobre el valor en $a$ define un subconjunto convexo débil estrella cerrado de $S(A)$: los conjuntos escalares $\{0\}$, $\R$ y $[0,\infty)$ son cerrados y convexos. Si la condición vale en $P(A)$, Krein--Milman hace que valga en todo $S(A)$. La proposición~\ref{v3:estados-compactos-separan} concluye cada afirmación; las recíprocas son inmediatas.
+
+(iv) Elija un estado $\psi$ con $|\psi(a)|=\norm a$ y una fase $\zeta\in\mathbb T$ con $\zeta\psi(a)=\norm a$ (si $a=0$, cualquier estado puro sirve). El funcional real continuo $\varphi\mapsto\operatorname{Re}(\zeta\varphi(a))$ tiene máximo $\norm a$, pues todos los estados tienen norma uno. Por el ejercicio anterior lo alcanza un estado puro $\varphi$. Entonces $\norm a=\operatorname{Re}(\zeta\varphi(a))\le|\varphi(a)|\le\norm a$, y todas las desigualdades son igualdades.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-7}
+Pruebe que, si $A$ es \emph{conmutativa}, $P(A)=\Delta(A)$. Explique por qué la hipótesis de conmutatividad no puede omitirse.
+\end{ejercicio}
+\begin{solucion}
+Todo carácter es un estado: tiene norma uno y vale uno en $1$. Sea $\chi=t\varphi+(1-t)\psi$ con estados $\varphi,\psi$ y $0<t<1$. Para $b=a-\chi(a)1$, $\chi(b^*b)=|\chi(b)|^2=0$. Por positividad, $\varphi(b^*b)=\psi(b^*b)=0$, y Cauchy--Schwarz implica $\varphi(b)=\psi(b)=0$. Así ambos coinciden con $\chi$ en todo $a$, y $\chi$ es puro. Esta dirección no requiere conmutatividad.
+
+Suponga ahora $A$ conmutativa y $\varphi$ puro. Para $0\le h\le1$, defina $\varphi_h(a)=\varphi(ha)$. Es positivo: si $a\ge0$, $ha=h^{1/2}ah^{1/2}\ge0$ porque los factores conmutan. Además $\varphi=\varphi_h+\varphi_{1-h}$ y las normas de estos funcionales positivos son $\varphi(h)$ y $1-\varphi(h)$. Si ambos números son positivos, normalizarlos produce una descomposición convexa de $\varphi$, y su pureza fuerza $\varphi_h=\varphi(h)\varphi$. Si uno de los números es cero, el funcional positivo correspondiente tiene norma cero y la misma identidad sigue siendo válida. Así $\varphi(ha)=\varphi(h)\varphi(a)$ para todo $a$ y toda contracción positiva $h$. Cada elemento es combinación lineal de positivos (descomponga sus partes autoadjuntas), y por linealidad se obtiene multiplicatividad en general. Por tanto $\varphi$ es carácter.
+
+En $M_2(\C)$ no hay caracteres: el núcleo de un carácter sería un ideal propio de codimensión uno, pero las unidades matriciales muestran que cualquier ideal no nulo contiene todas las matrices. Sin embargo, el estado vectorial $\omega(a)=\ip{ae_1}{e_1}$ es puro. Para verlo, sea $p$ la proyección sobre $\C e_1$. Si $\omega=t\varphi+(1-t)\psi$, la igualdad $\omega(1-p)=0$ obliga $\varphi(1-p)=\psi(1-p)=0$. Cauchy--Schwarz anula todos los términos que contienen $1-p$ a izquierda o derecha, así $\varphi(a)=\varphi(pap)=\omega(a)\varphi(p)=\omega(a)$, y lo mismo para $\psi$. Esto refuta el enunciado sin la hipótesis conmutativa.
+\end{solucion}
+
+Los estados detectan cero, autoadjunción y positividad, y los estados puros conservan ese poder de separación. En el siguiente capítulo construiremos, a partir de cada funcional positivo, un espacio de Hilbert donde el álgebra actúa por operadores y el funcional aparece como un producto interno. Véanse también \cite{murphy1990,zhu1993,conway1990}.
