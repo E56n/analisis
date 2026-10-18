@@ -13,6 +13,12 @@ Colección de cuatro volúmenes basada en las lecturas de los cursos de Análisi
 
 Cada volumen tendrá su propia carpeta. Los volúmenes 2–4 todavía no están redactados en este repositorio.
 
+## PDF compilado
+
+[Leer o descargar el volumen I](volumen-01/main.pdf).
+
+Edición actual: 209 páginas, 32 capítulos y 206 ejercicios resueltos. Incluye índices general, alfabético y de notación, y bibliografía verificada.
+
 ## Compilar el primer volumen
 
 Se requiere una distribución de TeX con `pdflatex`, `latexmk`, `makeindex` y los paquetes indicados en el preámbulo. Con TeX Live instalado:
