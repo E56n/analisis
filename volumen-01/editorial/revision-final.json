@@ -1,14 +1,16 @@
 {
   "fecha": "2026-10-18",
-  "paginas_pdf": 209,
+  "paginas_pdf": 215,
   "capitulos": 32,
   "ejercicios_numerados": 206,
   "soluciones": 206,
   "entradas_indice": 195,
-  "compilacion": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex",
   "advertencias_latex": [],
   "revision_matematica": "Revisión cruzada independiente de los seis bloques de capítulos; incorporadas las precisiones detectadas.",
-  "revision_visual": "Inspección de las 210 páginas iniciales mediante hojas de contacto y páginas seleccionadas ampliadas; ajuste de la tabla de cobertura y del índice de notación. Versión final: 209 páginas.",
+  "revision_visual": "Inspección independiente de las 215 páginas finales mediante nueve hojas de contacto y ampliaciones. Corregidos títulos de ejercicios aislados, última entrada del índice general y agrupación de letras del índice alfabético.",
   "bibliografia": "Cinco referencias reales, con metadatos contrastados y enlaces registrados en referencias-verificadas.md.",
-  "sha256_pdf": "87d987ae5b1e8bd4adb8ede9c04d112485565b7e1d2dcfdc6d7044c113360421"
+  "sha256_pdf": "3665e6f0b9fe5efcdce82e01bc2f7e47930c242946f7cdf4391570dac9ad1b52",
+  "diseno": "ESFM-IPN; Noto Sans; guinda #6C1D45 y dorado/ocre #836F3D. Fuentes en identidad-esfm-ipn.md.",
+  "contenido_conservado": "Verificada igualdad SHA-256 de los 32 capítulos, referencias, notación y cobertura respecto de la versión anterior."
 }

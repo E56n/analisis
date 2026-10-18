@@ -1,9 +1,10 @@
 \documentclass[11pt,letterpaper,oneside,openany]{book}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\setmainfont{NotoSans}[Path=assets/fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
+\setsansfont{NotoSans}[Path=assets/fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
 \usepackage[provide=*,spanish]{babel}
-\usepackage{lmodern,microtype}
-\usepackage[margin=26mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{microtype}
+\usepackage[margin=26mm,headheight=22pt,headsep=8mm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
 \usepackage{enumitem,longtable,booktabs,array}
 \usepackage{fancyhdr,emptypage}
@@ -16,7 +17,7 @@
 \setcounter{secnumdepth}{2}
 \setlength{\parindent}{1.2em}
 \setlength{\parskip}{3pt plus 1pt minus 1pt}
-\emergencystretch=2em
+\emergencystretch=5em
 \allowdisplaybreaks[1]
 \setlist[enumerate,1]{label=(\roman*),leftmargin=*,itemsep=2pt}
 \setlist[itemize]{leftmargin=*,itemsep=2pt}
@@ -60,29 +61,12 @@
 \DeclareMathOperator{\spanop}{span}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\id}{id}
+\input{estilo-esfm}
 \begin{document}
 \renewcommand{\bibname}{Referencias}
 \frontmatter
 \hypersetup{pageanchor=false}
-\begin{titlepage}
-\centering
-\vspace*{17mm}
-{\large ANÁLISIS\par}
-\vspace{5mm}
-{\large Volumen I\par}
-\vspace{20mm}
-{\Huge\bfseries Espacios métricos,\par normados y de Hilbert\par}
-\vspace{10mm}
-\rule{0.65\textwidth}{0.5pt}\par
-\vspace{8mm}
-{\Large Eder Said Martinez Ramirez\par}
-\vfill
-{\large Teoría desarrollada y ejercicios resueltos\par}
-\vspace{4mm}
-{\normalsize Edición ampliada de las lecturas de Análisis Matemático 1\par}
-\vspace{14mm}
-{\large 2026\par}
-\end{titlepage}
+\input{portada}
 \hypersetup{pageanchor=true}
 \chapter*{Presentación}
 \addcontentsline{toc}{chapter}{Presentación}
@@ -103,6 +87,7 @@ Los capítulos 1--6 establecen el lenguaje de las distancias y de la topología.
 Salvo indicación contraria, $\N=\{1,2,\ldots\}$ y $\F$ es $\R$ o $\C$. El producto interno es lineal en su primer argumento. Las bolas abiertas y cerradas se distinguen del cierre de una bola abierta: en un espacio métrico arbitrario esos dos últimos conjuntos pueden ser diferentes. El dual $V^*$ contiene solamente los funcionales lineales continuos.
 
 Rudin \cite{rudin1976} ofrece un desarrollo de topología métrica, sucesiones de funciones y aproximación; Munkres \cite{munkres2000} amplía el contexto topológico; Kreyszig \cite{kreyszig1978} y Conway \cite{conway1990} permiten continuar hacia espacios normados, Hilbert y operadores. La bibliografía final identifica obras reales y ediciones comprobadas. Las referencias externas son orientación y contraste; las demostraciones desarrolladas aquí deben poder seguirse a partir de los resultados previos indicados, sin buscar una página no especificada en otro libro.
+\hypertarget{indice-general}{}
 \tableofcontents
 \mainmatter
 \input{chapters/01}

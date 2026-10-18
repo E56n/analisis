@@ -2,6 +2,8 @@
 
 Autor de la edición ampliada: **Eder Said Martinez Ramirez**.
 
+Escuela Superior de Física y Matemáticas, Instituto Politécnico Nacional. Maestría en Ciencias Fisicomatemáticas; línea de investigación: Matemáticas Puras.
+
 Colección de cuatro volúmenes basada en las lecturas de los cursos de Análisis Matemático de Miguel Ángel Valencia Bucio. Se desarrollan demostraciones, se explicitan hipótesis, se corrigen enunciados cuando es necesario y se resuelven los ejercicios.
 
 ## Volúmenes
@@ -17,15 +19,15 @@ Cada volumen tendrá su propia carpeta. Los volúmenes 2–4 todavía no están 
 
 [Leer o descargar el volumen I](volumen-01/main.pdf).
 
-Edición actual: 209 páginas, 32 capítulos y 206 ejercicios resueltos. Incluye índices general, alfabético y de notación, y bibliografía verificada.
+Edición actual: 215 páginas, 32 capítulos y 206 ejercicios resueltos. Incluye índices general, alfabético y de notación, y bibliografía verificada. El diseño emplea Noto Sans, guinda IPN y acentos dorados de la ESFM; véanse las [fuentes y decisiones de identidad](volumen-01/editorial/identidad-esfm-ipn.md).
 
 ## Compilar el primer volumen
 
-Se requiere una distribución de TeX con `pdflatex`, `latexmk`, `makeindex` y los paquetes indicados en el preámbulo. Con TeX Live instalado:
+Se requiere una distribución de TeX con `xelatex`, `latexmk`, `makeindex` y los paquetes indicados en `main.tex` y `estilo-esfm.tex`. Las cuatro variantes de Noto Sans están incluidas con su licencia OFL. Con TeX Live instalado:
 
 ```sh
 cd volumen-01
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 `latexmk` compila el documento, genera el índice alfabético y repite las pasadas necesarias para resolver referencias. El resultado es `volumen-01/main.pdf`.

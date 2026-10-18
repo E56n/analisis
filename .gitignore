@@ -8,6 +8,7 @@
 *.out
 *.toc
 *.synctex.gz
+*.xdv
 *.pdf
 
 # Conservar el PDF final del volumen en el repositorio.

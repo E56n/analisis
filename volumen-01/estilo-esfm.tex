@@ -1,0 +1,71 @@
+% Identidad gráfica: fuentes y criterios en editorial/identidad-esfm-ipn.md.
+\usepackage{xcolor,graphicx,tikz,titlesec,needspace}
+\usepackage[titles]{tocloft}
+\usepackage[skins,breakable]{tcolorbox}
+\definecolor{ipnGuinda}{HTML}{6C1D45}
+\definecolor{ipnGris}{HTML}{63666A}
+% Acentos muestreados del escudo original publicado por la ESFM.
+\definecolor{esfmOcre}{HTML}{836F3D}
+\definecolor{tinta}{HTML}{232225}
+\color{tinta}
+\hypersetup{colorlinks=true,linkcolor=ipnGuinda,citecolor=ipnGuinda,urlcolor=ipnGuinda}
+\renewcommand{\contentsname}{Índice general}
+\renewcommand{\proofname}{Demostración}
+\renewcommand{\qedsymbol}{\textcolor{ipnGuinda}{\ensuremath{\square}}}
+
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\color{ipnGris}\nouppercase{\leftmark}}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{ipnGuinda}ESFM\enspace/\enspace IPN}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{ipnGris}Eder Said Martinez Ramirez}
+\fancyfoot[R]{\fontsize{8}{10}\selectfont\hyperlink{indice-general}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{ipnGuinda}\leaders\hrule height\headrulewidth\hfill}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{ipnGris}Análisis\enspace/\enspace Volumen I}
+  \fancyfoot[R]{\fontsize{8}{10}\selectfont\hyperlink{indice-general}{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{ipnGuinda}\raggedright}
+  {\parbox[b]{.72\textwidth}{\fontsize{10}{13}\selectfont\mdseries
+     Análisis\enspace/\enspace Volumen I\\[3pt]
+     {\color{ipnGris}Capítulo \thechapter}}
+   \hfill{\setlength{\fboxsep}{8pt}\colorbox{ipnGuinda}{%
+     \makebox[19mm]{\color{white}\fontsize{38}{42}\selectfont\thechapter}}}}
+  {14pt}{\fontsize{25}{30}\selectfont}
+  [\vspace{9pt}{\color{esfmOcre}\titlerule[1pt]}]
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\bfseries\color{ipnGuinda}\raggedright}
+  {}{0pt}{\fontsize{25}{30}\selectfont}
+  [\vspace{9pt}{\color{esfmOcre}\titlerule[1pt]}]
+\titlespacing*{\chapter}{0pt}{-5pt}{24pt}
+\titleformat{\section}{\normalfont\large\bfseries\color{ipnGuinda}}{\thesection}{.7em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{tinta}}{\thesubsection}{.7em}{}
+\titlespacing*{\section}{0pt}{18pt plus 3pt minus 2pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt plus 2pt minus 2pt}{5pt}
+% La reserva evita separar el título de ejercicios de su primer recuadro.
+\NewCommandCopy{\seccionOriginal}{\section}
+\RenewDocumentCommand{\section}{s o m}{%
+  \IfBooleanTF{#1}{\seccionOriginal*{#3}}{%
+    \ifstrequal{#3}{Ejercicios resueltos}{\Needspace{8\baselineskip}}{}%
+    \IfNoValueTF{#2}{\seccionOriginal{#3}}{\seccionOriginal[#2]{#3}}}}
+
+\renewcommand{\cftchapfont}{\bfseries\color{ipnGuinda}}
+\renewcommand{\cftchappagefont}{\bfseries\color{ipnGuinda}}
+\renewcommand{\cftsecfont}{\small}
+\renewcommand{\cftsecpagefont}{\small}
+\setlength{\cftbeforechapskip}{7pt}
+\setlength{\cftbeforesecskip}{1pt}
+\setlength{\cftchapnumwidth}{2.4em}
+\setlength{\cftsecindent}{2.4em}
+\setlength{\cftsecnumwidth}{3em}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% El recuadro crece hacia el margen para conservar la anchura de las fórmulas.
+\tcolorboxenvironment{ejercicio}{enhanced,breakable,lines before break=4,sharp corners,
+  colback=esfmOcre!4!white,colframe=ipnGuinda!45!white,boxrule=.45pt,
+  borderline west={2pt}{0pt}{esfmOcre},
+  grow to left by=7pt,grow to right by=7pt,
+  boxsep=0pt,left=6.55pt,right=6.55pt,top=5pt,bottom=5pt,
+  before skip=10pt,after skip=8pt}
