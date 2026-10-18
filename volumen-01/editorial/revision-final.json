@@ -1,6 +1,6 @@
 {
   "fecha": "2026-10-18",
-  "paginas_pdf": 215,
+  "paginas_pdf": 207,
   "capitulos": 32,
   "ejercicios_numerados": 206,
   "soluciones": 206,
@@ -8,9 +8,9 @@
   "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex",
   "advertencias_latex": [],
   "revision_matematica": "Revisión cruzada independiente de los seis bloques de capítulos; incorporadas las precisiones detectadas.",
-  "revision_visual": "Inspección independiente de las 215 páginas finales mediante nueve hojas de contacto y ampliaciones. Corregidos títulos de ejercicios aislados, última entrada del índice general y agrupación de letras del índice alfabético.",
+  "revision_visual": "Revisión independiente de las 207 páginas mediante hojas de contacto y ampliaciones; verificación final de portada, ejercicios e índices. Las entradas del índice permanecen junto a su primera subentrada.",
   "bibliografia": "Cinco referencias reales, con metadatos contrastados y enlaces registrados en referencias-verificadas.md.",
-  "sha256_pdf": "3665e6f0b9fe5efcdce82e01bc2f7e47930c242946f7cdf4391570dac9ad1b52",
-  "diseno": "ESFM-IPN; Noto Sans; guinda #6C1D45 y dorado/ocre #836F3D. Fuentes en identidad-esfm-ipn.md.",
+  "sha256_pdf": "36205d5b432b2aeeb1e9791e3257373afb0b4beae89d9e0bb0b273f4cb561963",
+  "diseno": "Edición clásica de matemáticas: Latin Modern Roman, portada centrada con escudo ESFM, capítulos a la derecha y recuadros finos guinda.",
   "contenido_conservado": "Verificada igualdad SHA-256 de los 32 capítulos, referencias, notación y cobertura respecto de la versión anterior."
 }

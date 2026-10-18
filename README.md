@@ -19,11 +19,11 @@ Cada volumen tendrá su propia carpeta. Los volúmenes 2–4 todavía no están 
 
 [Leer o descargar el volumen I](volumen-01/main.pdf).
 
-Edición actual: 215 páginas, 32 capítulos y 206 ejercicios resueltos. Incluye índices general, alfabético y de notación, y bibliografía verificada. El diseño emplea Noto Sans, guinda IPN y acentos dorados de la ESFM; véanse las [fuentes y decisiones de identidad](volumen-01/editorial/identidad-esfm-ipn.md).
+Edición actual: 207 páginas, 32 capítulos y 206 ejercicios resueltos. Incluye índices general, alfabético y de notación, y bibliografía verificada. El diseño combina la tipografía clásica Latin Modern Roman con números de capítulo guinda, recuadros finos para ejercicios y el escudo de la ESFM; véanse las [fuentes y decisiones de diseño](volumen-01/editorial/identidad-esfm-ipn.md).
 
 ## Compilar el primer volumen
 
-Se requiere una distribución de TeX con `xelatex`, `latexmk`, `makeindex` y los paquetes indicados en `main.tex` y `estilo-esfm.tex`. Las cuatro variantes de Noto Sans están incluidas con su licencia OFL. Con TeX Live instalado:
+Se requiere una distribución de TeX con `xelatex`, `latexmk`, `makeindex`, las fuentes Latin Modern y los paquetes indicados en `main.tex` y `estilo-esfm.tex`. Con TeX Live instalado:
 
 ```sh
 cd volumen-01
