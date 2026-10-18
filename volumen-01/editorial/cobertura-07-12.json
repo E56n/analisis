@@ -1,0 +1,356 @@
+{
+  "bloque": "07-12",
+  "fuente": "Lecturas completas de Análisis Matemático 1, Miguel Ángel Valencia Bucio",
+  "capitulos": [
+    {
+      "capitulo": 7,
+      "archivo": "chapters/07.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": []
+        },
+        {
+          "numero": 2,
+          "incisos": [
+            "i",
+            "ii"
+          ]
+        },
+        {
+          "numero": 3,
+          "incisos": []
+        },
+        {
+          "numero": 4,
+          "incisos": []
+        },
+        {
+          "numero": 5,
+          "incisos": [
+            "extensión a la clausura",
+            "contraejemplo con codominio incompleto"
+          ]
+        },
+        {
+          "numero": 6,
+          "incisos": [
+            "necesidad",
+            "suficiencia: selección separada de imágenes"
+          ]
+        },
+        {
+          "numero": 7,
+          "incisos": [
+            "inyectividad",
+            "inversa Lipschitz",
+            "apertura"
+          ]
+        }
+      ],
+      "correcciones": [
+        "Lipschitz exige desigualdad no estricta para admitir x=y.",
+        "Discreto significa uniformemente discreto para la afirmación de continuidad uniforme universal; se aporta contraejemplo topológicamente discreto.",
+        "Prueba de no uniformidad de x² sustituida por pares explícitos.",
+        "Distancia a un conjunto requiere conjunto no vacío.",
+        "Ejercicio 5 sí utiliza clausura de A en PDF; barra conservada."
+      ],
+      "pendientes": []
+    },
+    {
+      "capitulo": 8,
+      "archivo": "chapters/08.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": [
+            "métrica",
+            "ultramétrica"
+          ]
+        },
+        {
+          "numero": 2,
+          "incisos": [
+            "supremo implica completitud",
+            "completitud implica supremo"
+          ]
+        },
+        {
+          "numero": 3,
+          "incisos": []
+        },
+        {
+          "numero": 4,
+          "incisos": [
+            "c",
+            "c0"
+          ]
+        },
+        {
+          "numero": 5,
+          "incisos": [
+            "dos factores",
+            "n factores"
+          ]
+        },
+        {
+          "numero": 6,
+          "incisos": [
+            "completitud",
+            "ausencia de puntos aislados"
+          ]
+        },
+        {
+          "numero": 7,
+          "incisos": [
+            "expansión ternaria",
+            "incontabilidad"
+          ]
+        }
+      ],
+      "correcciones": [
+        "Espacio discreto completo requiere métrica uniformemente discreta, no sólo topología discreta.",
+        "Estimación p-ádica de colas es ≤, no igualdad en general.",
+        "Argumento cardinal p-ádico completado probando que dígitos distintos no comparten límite.",
+        "Prueba ℓp separa índice fijo de Cauchy e índice que tiende a infinito.",
+        "Producto de espacios: no vacuidad de factores explicitada."
+      ],
+      "pendientes": []
+    },
+    {
+      "capitulo": 9,
+      "archivo": "chapters/09.tex",
+      "ejercicios_originales": [
+        1
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": [
+            "existencia",
+            "isometría",
+            "sobreyectividad",
+            "unicidad añadida"
+          ]
+        }
+      ],
+      "correcciones": [
+        "Construcción de completación con aproximaciones 2^-n elegidas antes del epsilon de verificación.",
+        "Norma integral usa |f|; compacto arbitrario puede dar seminorma, por ejemplo singleton.",
+        "Ejemplo concreto C([0,1]) no completo demostrado con rampas."
+      ],
+      "pendientes": [],
+      "referencias_diferidas": [
+        "La identificación del modelo abstracto de completación de C([0,1]) con L1([0,1]) se señala como resultado del volumen II; no se presupone ni se usa en las pruebas de este volumen.",
+        "Estructura de cuerpo y expansiones p-ádicas sí se desarrollan en el capítulo."
+      ]
+    },
+    {
+      "capitulo": 10,
+      "archivo": "chapters/10.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": []
+        },
+        {
+          "numero": 2,
+          "incisos": []
+        },
+        {
+          "numero": 3,
+          "incisos": [
+            "completitud implica intersección",
+            "recíproco"
+          ]
+        },
+        {
+          "numero": 4,
+          "incisos": []
+        },
+        {
+          "numero": 5,
+          "incisos": []
+        },
+        {
+          "numero": 6,
+          "incisos": []
+        },
+        {
+          "numero": 7,
+          "incisos": []
+        },
+        {
+          "numero": 8,
+          "incisos": [
+            "irracionales",
+            "densidad",
+            "incontabilidad"
+          ]
+        },
+        {
+          "numero": 9,
+          "incisos": [
+            "i: refutación literal y versión correcta",
+            "ii"
+          ]
+        },
+        {
+          "numero": 10,
+          "incisos": [
+            "i",
+            "ii"
+          ]
+        }
+      ],
+      "correcciones": [
+        "No vacuidad en teorema de segunda categoría y sus corolarios.",
+        "No vacuidad de cerrados en ejercicio 3.",
+        "Ejercicio 9(i) falso literalmente: Dirichlet es discontinua en todo irracional; se demuestra imposibilidad de discontinuidades exactamente irracionales.",
+        "Barras de clausura de definición y ejercicio 4 presentes en PDF, conservadas.",
+        "Se distingue base de Hamel de Schauder."
+      ],
+      "pendientes": [],
+      "alcance_metamatematico": "La equivalencia entre Baire y elección dependiente no se formula como resultado demostrado del volumen; se explica el uso de elecciones sucesivas y su evitación en una base numerable ya fijada."
+    },
+    {
+      "capitulo": 11,
+      "archivo": "chapters/11.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": [
+            "existencia",
+            "unicidad"
+          ]
+        },
+        {
+          "numero": 2,
+          "incisos": []
+        },
+        {
+          "numero": 3,
+          "incisos": []
+        },
+        {
+          "numero": 4,
+          "incisos": [
+            "contracción",
+            "completitud de C([0,r])",
+            "punto fijo"
+          ]
+        },
+        {
+          "numero": 5,
+          "incisos": [
+            "X completo implica hiperspacio completo",
+            "recíproco"
+          ]
+        },
+        {
+          "numero": 6,
+          "incisos": [
+            "invariancia",
+            "contracción",
+            "iteraciones",
+            "cota de error"
+          ]
+        }
+      ],
+      "correcciones": [
+        "No vacuidad de espacio en Banach y conjuntos del hiperspacio.",
+        "Prueba de Banach incorpora unicidad y cotas de error.",
+        "Aplicación a rectángulos requiere rectángulo cerrado e invariancia.",
+        "Sistema de tres ecuaciones: verificación completa y punto fijo exacto (1/2,0,-π/6); unicidad sólo de rama considerada.",
+        "Tabla iterativa distingue decimales mostrados y error certificado."
+      ],
+      "pendientes": []
+    },
+    {
+      "capitulo": 12,
+      "archivo": "chapters/12.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3
+      ],
+      "ejercicios_resueltos": [
+        {
+          "numero": 1,
+          "incisos": []
+        },
+        {
+          "numero": 2,
+          "incisos": [
+            "i",
+            "ii: refutación y correcciones válidas"
+          ]
+        },
+        {
+          "numero": 3,
+          "incisos": [
+            "reducción de cubierta",
+            "partición",
+            "soportes"
+          ]
+        }
+      ],
+      "correcciones": [
+        "Definición de convergencia uniforme con N y cuantificadores n≥N.",
+        "Residuos de Tietze usan sumas parciales finitas y serie geométrica correctamente indexada.",
+        "Caso no acotado: factor 1/(1+dist(x,V)) evita extremos de arctan antes de aplicar tan.",
+        "Ejercicio 2(ii) requiere 0 en [a,b] para soporte en U≠X; contraejemplo y dos versiones válidas.",
+        "Soporte es clausura del conjunto no nulo, confirmado visualmente; se controla clausura estrictamente dentro de U."
+      ],
+      "pendientes": []
+    }
+  ],
+  "verificacion_visual": {
+    "pdfs": [
+      "AnM1-LFM-lect07.pdf",
+      "AnM1-LFM-lect10.pdf",
+      "AnM1-LFM-lect11.pdf",
+      "AnM1-LFM-lect12.pdf"
+    ],
+    "fuente": "PDF originales de las lecturas 7–12"
+  },
+  "referencias_bibliograficas_inventadas": false
+}

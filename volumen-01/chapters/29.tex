@@ -1,0 +1,264 @@
+\chapter{Producto interno y geometría de Hilbert}\label{chap:29}
+\index{producto interno}\index{Hilbert, espacio de}
+
+Una norma mide longitudes; un producto interno permite además medir ángulos y separar componentes perpendiculares. Esta información adicional convierte ciertos problemas de aproximación en problemas geométricos. El objetivo del capítulo es construir cuidadosamente ese puente, incluyendo los espacios de sucesiones con un conjunto de índices no necesariamente numerable. Se presuponen las propiedades de las normas, la convergencia de series numéricas y la completitud. Seguimos los temas de la lectura 29 de \cite{valencia}, corrigiendo las hipótesis indicadas en los ejercicios.
+
+\section{La convención y sus consecuencias}
+\begin{definicion}
+Sea $V$ un espacio vectorial sobre $\F=\R$ o $\C$. Un \emph{producto interno} es una función $\ip{\cdot}{\cdot}:V\times V\to\F$ que cumple
+\[
+ \ip{x}{x}\geq0,\qquad \ip{x}{x}=0\Longleftrightarrow x=0,
+\]
+\[
+ \ip{\alpha x+\beta y}{z}=\alpha\ip{x}{z}+\beta\ip{y}{z},
+ \qquad \ip{x}{y}=\overline{\ip{y}{x}}.
+\]
+La última propiedad se llama \emph{simetría conjugada}. En todo este volumen el producto interno es lineal en la primera entrada.
+\end{definicion}
+La segunda entrada es antilineal, pues
+\[
+ \ip{x}{\alpha y+\beta z}
+ =\overline{\ip{\alpha y+\beta z}{x}}
+ =\bar\alpha\ip{x}{y}+\bar\beta\ip{x}{z}.
+\]
+Sobre $\R$ no aparecen conjugados. Es útil escribirlos siempre al principio: muchos errores sobre adjuntos proceden de cambiar inadvertidamente la convención.
+
+\begin{teorema}[Cauchy--Schwarz]\label{ch29:cs}
+\index{Cauchy--Schwarz, desigualdad de}
+Si $\norm{x}=\sqrt{\ip{x}{x}}$, entonces
+\[
+ |\ip{x}{y}|\leq\norm{x}\norm{y}.
+\]
+\end{teorema}
+\begin{proof}
+Si $y=0$, ambos miembros son cero. Si $y\ne0$, para cualquier $\alpha\in\F$,
+\[
+0\leq\norm{x-\alpha y}^{2}
+=\norm{x}^{2}-\bar\alpha\ip{x}{y}-\alpha\ip{y}{x}
+ +|\alpha|^{2}\norm{y}^{2}.
+\]
+La elección $\alpha=\ip{x}{y}/\norm{y}^{2}$ cancela la componente de $x$ paralela a $y$ y da
+\[
+0\leq\norm{x}^{2}-\frac{|\ip{x}{y}|^{2}}{\norm{y}^{2}}.
+\]
+Multiplicar por $\norm{y}^{2}$ y tomar raíces produce la desigualdad.
+\end{proof}
+
+\begin{proposicion}\label{ch29:norma}
+\index{paralelogramo, identidad del}
+La función $x\mapsto\sqrt{\ip{x}{x}}$ es una norma. Además,
+\begin{align}
+ \norm{x+y}^{2}&=\norm{x}^{2}+2\operatorname{Re}\ip{x}{y}+\norm{y}^{2},\label{ch29:expansion}\\
+ \norm{x+y}^{2}+\norm{x-y}^{2}&=2\norm{x}^{2}+2\norm{y}^{2}.\label{ch29:paralelogramo}
+\end{align}
+\end{proposicion}
+\begin{proof}
+La positividad y la separación del cero son axiomas. La sesquilinealidad da $\ip{\alpha x}{\alpha x}=|\alpha|^{2}\ip{x}{x}$ y, por tanto, homogeneidad absoluta de la norma. Desarrollar $\ip{x+y}{x+y}$ demuestra \eqref{ch29:expansion}; Cauchy--Schwarz implica
+\[
+ \norm{x+y}^{2}\leq \norm{x}^{2}+2\norm{x}\norm{y}+\norm{y}^{2}
+ =(\norm{x}+\norm{y})^{2}.
+\]
+La raíz cuadrada preserva el orden de números no negativos, de modo que se obtiene la desigualdad triangular. Sumar las expansiones correspondientes a $x+y$ y $x-y$ cancela los términos cruzados y prueba \eqref{ch29:paralelogramo}.
+\end{proof}
+
+\begin{definicion}
+Un espacio con producto interno es un \emph{espacio de Hilbert} cuando es completo para la norma inducida. Sin completitud se habla también de espacio \emph{prehilbertiano}.
+\end{definicion}
+
+\begin{ejemplo}[Tres modelos]
+En $\F^{n}$ se utiliza $\ip{x}{y}=\sum_{j=1}^{n}x_j\bar y_j$. Es un espacio de Hilbert porque una sucesión de Cauchy converge coordenada a coordenada y, al haber solamente $n$ coordenadas, converge en norma.
+
+En $\ell^{2}$, el producto $\ip{x}{y}=\sum_{j\geq1}x_j\bar y_j$ está bien definido: Cauchy--Schwarz para sumas finitas acota $\sum_{j=1}^{N}|x_jy_j|$ por $\norm{x}_2\norm{y}_2$. La completitud se demostrará, en mayor generalidad, en el ejercicio 8.
+
+Si $a<b$, en $C([a,b])$ se tiene
+\[
+ \ip{f}{g}=\frac1{b-a}\int_a^b f(t)\overline{g(t)}\,dt.
+\]
+Si $f$ no es cero, existe un intervalo de longitud positiva donde $|f|$ está acotado inferiormente por una constante positiva. Por ello $\int|f|^{2}>0$. Sin embargo, este espacio no es completo. En $[0,1]$ considérese $f_n$ igual a cero hasta $1/2$, lineal de cero a uno entre $1/2$ y $1/2+1/n$, e igual a uno después. Si $s=\mathbf1_{(1/2,1]}$, entonces $\int|f_n-s|^{2}\leq1/n$, por lo que $(f_n)$ es de Cauchy. Si convergiera en la norma integral a una función continua $f$, la desigualdad triangular daría $\int|f-s|^{2}=0$. La continuidad obligaría a $f=0$ en $(0,1/2)$ y a $f=1$ en $(1/2,1)$, incompatible con la continuidad en $1/2$. Un cambio afín de variable traslada el ejemplo a cualquier $[a,b]$.
+\end{ejemplo}
+
+\section{Ortogonalidad, sumas y desigualdad de Bessel}
+\index{ortogonalidad}\index{Bessel, desigualdad de}
+Se escribe $x\perp y$ si $\ip{x}{y}=0$. Para $S\subset V$ se define
+\[
+ S^{\perp}=\{x\in V:\ip{x}{s}=0\text{ para todo }s\in S\}.
+\]
+La linealidad demuestra que $S^{\perp}$ es un subespacio. Es cerrado: si $x_n\in S^{\perp}$ y $x_n\to x$, entonces, para cada $s\in S$,
+$|\ip{x}{s}|=|\ip{x-x_n}{s}|\leq\norm{x-x_n}\norm{s}\to0$.
+El único vector perpendicular a todos los vectores de $V$ es cero, porque es entonces perpendicular a sí mismo. Dos vectores ortogonales \emph{no nulos} son linealmente independientes: de $\alpha x+\beta y=0$ se obtiene $\alpha\norm{x}^{2}=0$ y $\beta\norm{y}^{2}=0$. La condición de no nulidad es indispensable.
+
+\begin{teorema}[Pitágoras]\label{ch29:pitagoras}
+\index{Pitagoras@Pitágoras, teorema de}
+Si $x_1,\dots,x_n$ son ortogonales a pares, entonces
+\[
+ \Big\|\sum_{j=1}^{n}x_j\Big\|^{2}=\sum_{j=1}^{n}\norm{x_j}^{2}.
+\]
+\end{teorema}
+\begin{proof}
+Por sesquilinealidad, el miembro izquierdo es $\sum_{j,k}\ip{x_j}{x_k}$. Los términos con $j\ne k$ son cero; los restantes son $\ip{x_j}{x_j}=\norm{x_j}^{2}$. Esta expansión también explica por qué la suma de varios vectores perpendiculares a $y$ sigue siendo perpendicular a $y$.
+\end{proof}
+
+\begin{definicion}\label{ch29:suma}
+Para una familia $(a_s)_{s\in S}$ de números no negativos se define
+\[
+ \sum_{s\in S}a_s=\sup\Big\{\sum_{s\in F}a_s:F\subset S\text{ finito}\Big\}.
+\]
+Cada índice se cuenta una sola vez. Un conjunto $E\subset V$ es \emph{ortonormal} si sus vectores tienen norma uno y son ortogonales dos a dos.
+\end{definicion}
+\index{suma!familia no numerable}\index{conjunto ortonormal}
+
+\begin{lema}\label{ch29:soporte}
+Si $A=\sum_{s\in S}a_s<\infty$, entonces $\{s:a_s>0\}$ es a lo sumo numerable. Cualquier enumeración sin repeticiones de ese conjunto tiene suma $A$.
+\end{lema}
+\begin{proof}
+Para cada $m\geq1$, el conjunto $S_m=\{s:a_s>1/m\}$ es finito: si contuviera $r$ elementos distintos, $r/m<\sum_{s\in F}a_s\leq A$; no pueden existir subconjuntos finitos de cardinal arbitrariamente grande. Como todo número positivo supera $1/m$ para algún $m$, el soporte es $\bigcup_m S_m$. Si lo enumeramos como $s_1,s_2,\dots$, las sumas parciales crecen y están acotadas por $A$, de modo que tienen límite $L\leq A$. Para cualquier conjunto finito $F$, sus índices con coeficiente no nulo aparecen entre los primeros $N$ términos para algún $N$, y entonces $\sum_{s\in F}a_s\leq L$. Tomar el supremo da $A\leq L$. El soporte finito o vacío se trata mediante una suma finita o la suma cero.
+\end{proof}
+
+\begin{teorema}[Bessel]\label{ch29:bessel}
+Si $E$ es ortonormal, entonces para todo $x\in V$,
+\[
+ \sum_{e\in E}|\ip{x}{e}|^{2}\leq\norm{x}^{2}.
+\]
+\end{teorema}
+\begin{proof}
+Para $F\subset E$ finito, sea $p_F=\sum_{e\in F}\ip{x}{e}e$. Para cada $u\in F$,
+\[
+ \ip{x-p_F}{u}=\ip{x}{u}-\sum_{e\in F}\ip{x}{e}\ip{e}{u}=0.
+\]
+Por tanto, $x-p_F\perp p_F$ y Pitágoras da
+\[
+ \norm{x}^{2}=\norm{x-p_F}^{2}+\norm{p_F}^{2}
+ =\norm{x-p_F}^{2}+\sum_{e\in F}|\ip{x}{e}|^{2}.
+\]
+Tomamos el supremo sobre $F$. El lema anterior demuestra que, para este $x$ fijo, solamente una cantidad a lo sumo numerable de coeficientes es distinta de cero. No demuestra que $E$ mismo sea numerable; en $\ell^{2}(S)$ puede haber un vector coordenado por cada elemento de un conjunto no numerable $S$.
+\end{proof}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 29, ejercicio 1]
+Caracterizar la igualdad en Cauchy--Schwarz.
+\end{ejercicio}
+\begin{solucion}
+Si uno de los vectores es cero, hay igualdad y el conjunto es linealmente dependiente. Si $y\ne0$, la prueba del teorema \ref{ch29:cs} muestra exactamente
+\[
+ \Big\|x-\frac{\ip{x}{y}}{\norm{y}^{2}}y\Big\|^{2}
+ =\norm{x}^{2}-\frac{|\ip{x}{y}|^{2}}{\norm{y}^{2}}.
+\]
+La igualdad equivale a que el miembro izquierdo sea cero, es decir, a que $x$ sea múltiplo de $y$. Recíprocamente, si $x=\alpha y$, ambos miembros de Cauchy--Schwarz son $|\alpha|\norm{y}^{2}$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 2: corrección del recíproco]
+Analizar si $\norm{v_1+\cdots+v_n}^{2}=\sum_j\norm{v_j}^{2}$ implica ortogonalidad por pares en un espacio real.
+\end{ejercicio}
+\begin{solucion}
+Para dos vectores sí: \eqref{ch29:expansion} implica $2\ip{v_1}{v_2}=0$. Para tres o más es falso. En $\R$, con producto usual, tómense $v_1=1$, $v_2=1$, $v_3=-1/2$. La norma al cuadrado de su suma es $9/4$, igual a $1+1+1/4$, pero ninguno de los productos por pares es cero. En general la igualdad solamente afirma $\sum_{i<j}\ip{v_i}{v_j}=0$; distintos términos pueden cancelarse. Una versión correcta exige la igualdad de Pitágoras para \emph{cada par}. Otra exige $\norm{\sum_j t_jv_j}^{2}=\sum_j t_j^{2}\norm{v_j}^{2}$ para todos los escalares reales $t_j$: basta elegir dos coeficientes iguales a uno y los demás cero. Sobre $\C$, incluso la igualdad para un solo par solo fuerza $\operatorname{Re}\ip{x}{y}=0$; se necesita además aplicarla al par $x,iy$ para anular la parte imaginaria.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 3: identidad del paralelogramo]
+Demostrar que una norma procede de un producto interno si y solo si
+\[
+ \norm{x+y}^{2}+\norm{x-y}^{2}=2\norm{x}^{2}+2\norm{y}^{2}.
+\]
+Aplicarlo a (i) $\ell^{1}$ y (ii) la norma uniforme en $B(S,W)$.
+\end{ejercicio}
+\begin{solucion}
+Los factores $2$ son necesarios: con $y=0$ se detecta inmediatamente su omisión en el enunciado original. La necesidad ya se probó. Para la suficiencia escribamos $q(x)=\norm{x}^{2}$ y, considerando primero el espacio vectorial real subyacente,
+\[
+ B(x,y)=\frac{q(x+y)-q(x-y)}4.
+\]
+Es simétrica porque $q(-z)=q(z)$, continua y satisface $B(x,x)=q(x)$. El paralelogramo, aplicado a $(x+y,z)$ y $(x-y,z)$ y restando, da
+\[
+ B(x+z,y)+B(x-z,y)=2B(x,y).
+\]
+Con $z=x$ obtenemos $B(2x,y)=2B(x,y)$. Sustituyendo después $x=(u+v)/2$, $z=(u-v)/2$, se deduce $B(u+v,y)=B(u,y)+B(v,y)$. La aditividad implica homogeneidad para enteros y racionales; por continuidad y aproximación racional, también para todos los reales. La simetría da bilinealidad. Así $B$ es el producto interno buscado sobre $\R$.
+
+Sobre $\C$, $q(ix)=q(x)$ implica $B(ix,iy)=B(x,y)$ y, sustituyendo $y$ por $-iy$, $B(ix,y)=-B(x,iy)$. Definamos
+\[
+ \ip{x}{y}=B(x,y)+iB(x,iy).
+\]
+La bilinealidad real y las dos identidades anteriores dan $\ip{ix}{y}=i\ip{x}{y}$ y, por ello, linealidad compleja en la primera entrada. Además, $B(y,ix)=B(ix,y)=-B(x,iy)$, lo que prueba simetría conjugada. Finalmente $B(x,ix)=-B(ix,x)$ y la simetría obligan a $B(x,ix)=0$; así $\ip{x}{x}=q(x)$.
+
+\emph{(i)} En $\ell^{1}$, para $x=e_1$ y $y=e_2$, el miembro izquierdo del paralelogramo vale $2^2+2^2=8$, mientras el derecho vale $4$.
+
+\emph{(ii)} Se necesita una salvedad: si $S$ contiene al menos dos puntos y $W\ne\{0\}$, elegimos $w\in W$ de norma uno y funciones $f,g$ que valen $w$ en dos puntos distintos, respectivamente, y cero en los restantes. Entonces $\norm{f\pm g}_\infty=1$ y $\norm{f}_\infty=\norm{g}_\infty=1$; los dos miembros valen $2$ y $4$. Si $S$ es un solo punto, $B(S,W)$ es isométrico a $W$, y la afirmación general sería falsa cuando la norma de $W$ sí procede de un producto interno. Si $W=\{0\}$, o si $S$ es vacío y se identifica el espacio de funciones con el espacio cero, la norma también es hilbertiana.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 4]
+Demostrar la continuidad conjunta del producto interno.
+\end{ejercicio}
+\begin{solucion}
+Si $x_n\to x$ y $y_n\to y$, la sucesión $(x_n)$ está acotada, digamos por $C$. Entonces
+\[
+ |\ip{x_n}{y_n}-\ip{x}{y}|
+ \leq |\ip{x_n}{y_n-y}|+|\ip{x_n-x}{y}|
+ \leq C\norm{y_n-y}+\norm{x_n-x}\norm{y}\longrightarrow0.
+\]
+Como el dominio es métrico, este criterio secuencial demuestra continuidad. La estimación también proporciona directamente la prueba con $\eps$ y $\delta$ al restringir $\norm{x'-x}<1$, pues entonces $\norm{x'}\leq\norm{x}+1$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 5: identidad polar]
+\index{polarizacion@polarización, identidad de}
+Si $\zeta$ es una raíz primitiva de la unidad de orden $n\geq3$, probar
+\[
+ \ip{x}{y}=\frac1n\sum_{k=0}^{n-1}\zeta^k\norm{x+\zeta^ky}^{2}.
+\]
+\end{ejercicio}
+\begin{solucion}
+La expansión del sumando es
+\[
+ \zeta^k\norm{x+\zeta^ky}^{2}
+ =\zeta^k(\norm{x}^{2}+\norm{y}^{2})+\ip{x}{y}+\zeta^{2k}\ip{y}{x}.
+\]
+Las sumas de $\zeta^k$ y de $\zeta^{2k}$ son cero: ambas son sumas geométricas, sus razones son distintas de uno y la potencia $n$-ésima de cada razón es uno. Para la segunda razón se utiliza $n\geq3$. Solo permanecen $n$ copias de $\ip{x}{y}$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 6]
+Sea $h:[a,b]\to\F$ continua y sin ceros, con $a<b$. Determinar cuándo $\ip{f}{g}_h=\int_a^b f\bar g h$ es producto interno, y discutir el caso continuo a trozos.
+\end{ejercicio}
+\begin{solucion}
+Si $h>0$, la sesquilinealidad y la simetría conjugada se verifican integrando; la positividad definida se obtiene en un intervalo donde $|f|$ y $h$ tienen cotas inferiores positivas.
+
+Recíprocamente, la realidad de $\ip{f}{f}_h$ implica $\int|f|^{2}\operatorname{Im}h=0$ para toda $f$ continua. Si $\operatorname{Im}h$ fuera positiva en un punto, lo sería con una cota positiva en un intervalo relativo; una función triangular no nula soportada allí daría integral positiva, contradicción. El mismo argumento aplicado a $-\operatorname{Im}h$ descarta valores negativos. Así $h$ es real. Si $h$ fuera negativa en algún punto, la misma función triangular daría $\ip{f}{f}_h<0$. Por tanto $h\geq0$; al no tener ceros, $h>0$.
+
+Para una función acotada continua a trozos, sus valores en los puntos de discontinuidad no afectan a la integral. Por ejemplo, $h=1$ salvo $h(c)=-1$ en un punto interior produce el producto interno usual aunque no sea positiva en todo punto. La caracterización general es: $h$ debe ser real y no negativa casi en todas partes, y $\int_J h>0$ para todo intervalo relativo $J$ de longitud positiva. La necesidad de la primera condición se prueba con funciones triangulares alrededor de puntos de continuidad; los posibles puntos excepcionales son finitos. Si $\int_Jh=0$, una función continua no nula soportada en el interior de $J$ tiene norma cero. Para la suficiencia, si $f\ne0$, existe un intervalo $J$ y $c>0$ con $|f|\geq c$ en $J$, luego $\int|f|^{2}h\geq c^{2}\int_Jh>0$. Aquí «casi en todas partes» puede leerse como «excepto en un conjunto de longitud cero»; en los ejemplos basta un conjunto finito.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 7]
+\index{ell2@\ensuremath{\ell^2}!ponderado}
+Para $w_n>0$, sea $\ell^{2}_w=\{x:\sum_n w_n|x_n|^{2}<\infty\}$. Probar (i) que es espacio vectorial, (ii) que $\ip{x}{y}_w=\sum_nw_nx_n\bar y_n$ es producto interno y (iii) que es completo.
+\end{ejercicio}
+\begin{solucion}
+\emph{(i)} La desigualdad $|\alpha x_n+\beta y_n|^{2}\leq2|\alpha|^{2}|x_n|^{2}+2|\beta|^{2}|y_n|^{2}$ prueba la estabilidad al sumar y multiplicar por escalares, después de multiplicar por $w_n$ y sumar.
+\emph{(ii)} Definamos $U(x)_n=\sqrt{w_n}x_n$. Es una biyección lineal de $\ell^{2}_w$ a $\ell^{2}$, con inversa $U^{-1}(z)_n=z_n/\sqrt{w_n}$. La serie del producto converge absolutamente por Cauchy--Schwarz en $\ell^{2}$ y es precisamente $\ip{Ux}{Uy}_{\ell^{2}}$, por lo que hereda todos los axiomas.
+\emph{(iii)} Si $(x^{(j)})$ es de Cauchy en la norma ponderada, $(Ux^{(j)})$ es de Cauchy en $\ell^{2}$, converge a algún $z$, y $x^{(j)}\to U^{-1}z$. No se requiere que los pesos estén acotados ni separados de cero: la transformación $U$ incorpora exactamente esos pesos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 8]
+\index{ell2@\ensuremath{\ell^2}!indices arbitrarios@índices arbitrarios}
+Para cualquier conjunto $S$, definir $\ell^{2}(S)$ por $\sum_{s\in S}|f(s)|^{2}<\infty$, con la suma de la definición \ref{ch29:suma}. Probar (i) la estructura vectorial, (ii) la existencia del producto $\ip{f}{g}=\sum_{s\in S}f(s)\overline{g(s)}$ y (iii) la completitud.
+\end{ejercicio}
+\begin{solucion}
+Los conjuntos finitos en la definición deben tener índices distintos: permitir repeticiones haría que cualquier valor no nulo pudiera sumarse arbitrariamente muchas veces.
+
+\emph{(i)} Para cada $F\subset S$ finito,
+\[
+ \sum_F|\alpha f+\beta g|^{2}
+ \leq2|\alpha|^{2}\norm{f}_2^{2}+2|\beta|^{2}\norm{g}_2^{2}.
+\]
+Tomar el supremo prueba que $\alpha f+\beta g\in\ell^{2}(S)$.
+
+\emph{(ii)} El lema \ref{ch29:soporte} muestra que los soportes de $f$ y $g$ son numerables. Sobre su unión, Cauchy--Schwarz finita da $\sum_F|f(s)g(s)|\leq\norm{f}_2\norm{g}_2$. La serie es absolutamente convergente, independiente de la enumeración. Su linealidad y simetría conjugada se deducen de esas propiedades para series absolutamente convergentes; su valor en $(f,f)$ es la suma de los cuadrados. Si vale cero, cada $|f(s)|^{2}$ es cero.
+
+\emph{(iii)} Sea $(f_j)$ de Cauchy. Para cada $s$, $|f_j(s)-f_k(s)|\leq\norm{f_j-f_k}_2$, así que existe $f(s)=\lim_j f_j(s)$. La sucesión está acotada por algún $C$. Para todo $F$ finito, al pasar al límite en una suma finita,
+\[
+ \sum_{s\in F}|f(s)|^{2}=\lim_j\sum_{s\in F}|f_j(s)|^{2}\leq C^{2}.
+\]
+Por tanto $f\in\ell^{2}(S)$. Dado $\eps>0$, elija $N$ tal que $\norm{f_j-f_k}_2<\eps$ para $j,k\geq N$. Fijando $j\geq N$ y un $F$ finito, y haciendo $k\to\infty$, resulta
+\[
+ \sum_{s\in F}|f_j(s)-f(s)|^{2}\leq\eps^{2}.
+\]
+Tomar el supremo sobre $F$ demuestra $\norm{f_j-f}_2\leq\eps$. Esto prueba completitud sin suponer que $S$ sea numerable.
+\end{solucion}
+
+\section{Lo que aporta la geometría}
+La identidad del paralelogramo caracteriza las normas que admiten ángulos, y Bessel cuantifica cuánta longitud se captura al conservar componentes ortogonales. El siguiente capítulo convertirá esta idea en un procedimiento de mejor aproximación: la proyección ortogonal.

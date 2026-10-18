@@ -1,0 +1,166 @@
+\chapter{Bolas, vecindades, interior y clausura}\label{chap:02}
+\section{De una distancia a una noción de entorno}
+Una distancia asigna números a pares de puntos. La topología conserva la información necesaria para hablar de proximidad y límites: cuáles conjuntos rodean a un punto y cuáles contienen sus puntos límite. El capítulo desarrolla la lectura 2 de \cite{valencia}. Solo utiliza las métricas y desigualdades del capítulo~\ref{chap:01}.
+
+\begin{definicion}\label{ch02:bolas}\index{bola!abierta}\index{bola!cerrada}\index{esfera}
+En un espacio métrico $(X,d)$, para $r>0$, se definen
+\[
+B(x,r)=\{y:d(x,y)<r\},\quad
+\overline B(x,r)=\{y:d(x,y)\le r\},\quad
+S(x,r)=\{y:d(x,y)=r\}.
+\]
+Se llaman bola abierta, bola cerrada y esfera, respectivamente. El símbolo $\overline B(x,r)$ designa aquí la bola definida por $\le r$; todavía no afirma que sea la clausura de $B(x,r)$.
+\end{definicion}
+En la métrica discreta, $B(x,r)=\{x\}$ para $0<r\le1$ y $B(x,r)=X$ para $r>1$. La bola cerrada es $\{x\}$ para $0<r<1$ y $X$ para $r\ge1$. En $\R^n$ con la norma euclidiana,
+\[
+B(x,r)=\left\{y:\sum_{k=1}^n(x_k-y_k)^2<r^2\right\}.
+\]
+Se usa el cuadrado de la diferencia, no la diferencia de los cuadrados.
+
+En $C(K)$ con la norma uniforme,
+\[
+B(f,r)=\{g\in C(K):\max_{t\in K}|g(t)-f(t)|<r\}.
+\]
+Como $K$ es compacto y $f,g$ continuas, esto equivale a $|g(t)-f(t)|<r$ para todo $t\in K$: el máximo se alcanza en algún punto y, en ese punto, la desigualdad también es estricta. En un dominio no compacto, las desigualdades estrictas punto a punto no garantizan un supremo estrictamente menor que $r$; por ejemplo, $t/(1+t)<1$ en $[0,\infty)$, pero su supremo es $1$.
+
+\begin{definicion}\index{vecindad}\label{ch02:vecindad}
+Un conjunto $V\subset X$ es una vecindad de $x$ si existe $r>0$ tal que $B(x,r)\subset V$. Toda vecindad contiene al punto, porque $d(x,x)=0<r$.
+\end{definicion}
+Una vecindad no tiene por qué ser una bola ni un conjunto abierto. En $\R$, $[-1,1]\cup\{4\}$ es una vecindad de $0$, pues contiene $B(0,1)$.
+
+\begin{proposicion}\label{ch02:vecindades}
+Si $U,V$ son vecindades de $x$, también lo es $U\cap V$. Todo conjunto que contiene una vecindad de $x$ es vecindad de $x$.
+\end{proposicion}
+\begin{proof}
+Elijamos radios $r,s>0$ con $B(x,r)\subset U$ y $B(x,s)\subset V$. Entonces $B(x,\min\{r,s\})\subset U\cap V$. La segunda afirmación se deduce conservando la bola contenida en la vecindad original.
+\end{proof}
+Con el orden dado por inclusión, la intersección es la máxima cota inferior de dos vecindades: está contenida en ambas, y cualquier conjunto contenido en ambas está contenido en su intersección. La elección del radio mínimo explica por qué funciona una familia finita; para una familia infinita, el ínfimo de los radios puede ser cero.
+
+\section{Interior y clausura}
+\begin{definicion}\index{interior}\index{clausura}\label{ch02:interiorclausura}
+El interior y la clausura de $A\subset X$ son
+\begin{align*}
+\interior A&=\{x:\text{existe }r>0\text{ con }B(x,r)\subset A\},\\
+\cl A&=\{x:\text{para todo }r>0,\ B(x,r)\cap A\ne\varnothing\}.
+\end{align*}
+La segunda condición equivale a que toda vecindad de $x$ intersecte a $A$. Un conjunto es abierto si coincide con su interior y cerrado si coincide con su clausura.
+\end{definicion}
+La equivalencia sobre vecindades tiene dos direcciones: las bolas son vecindades; y, si toda bola intersecta a $A$, una vecindad cualquiera también lo hace porque contiene una bola. Este razonamiento permite reducir muchas pruebas a bolas, pero es necesario explicar por qué la reducción conserva la propiedad buscada.
+
+\begin{proposicion}\label{ch02:operaciones}
+Para $A,B\subset X$ se cumple:
+\begin{enumerate}[label=(\roman*)]
+\item $\interior A\subset A\subset\cl A$.
+\item Si $A\subset B$, entonces $\interior A\subset\interior B$ y $\cl A\subset\cl B$.
+\item $\interior{(\interior A)}=\interior A$ y $\cl{\cl A}=\cl A$.
+\item $\interior A\cup\interior B\subset\interior{(A\cup B)}$ y $\interior{(A\cap B)}=\interior A\cap\interior B$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item Si una bola centrada en $x$ está contenida en $A$, entonces $x\in A$. Si $x\in A$, cada bola centrada en $x$ intersecta a $A$ en el propio $x$.
+\item Una bola contenida en $A$ está contenida en $B$; una bola que intersecta a $A$ también intersecta a $B$. Estas dos observaciones dan las respectivas inclusiones.
+\item Sea $x\in\interior A$ y elijamos $r>0$ con $B(x,r)\subset A$. Para $y\in B(x,r)$, el número $s=r-d(x,y)$ es positivo. Si $d(y,z)<s$, la desigualdad triangular da $d(x,z)<r$, por lo que $B(y,s)\subset A$. Así cada $y\in B(x,r)$ pertenece a $\interior A$, y $B(x,r)\subset\interior A$. Esto prueba $x\in\interior{(\interior A)}$; la otra inclusión es (i).
+
+Ahora sea $x\in\cl{\cl A}$ y fijemos $r>0$. Existe $y\in\cl A$ con $d(x,y)<r/2$, y existe $z\in A$ con $d(y,z)<r/2$. Por tanto $d(x,z)<r$ y $B(x,r)$ intersecta a $A$. Como $r$ era arbitrario, $x\in\cl A$. La inclusión inversa se sigue de (i).
+\item Si $x\in\interior A\cup\interior B$, alguna bola centrada en $x$ está contenida en uno de esos conjuntos y, por tanto, en su unión. Si $x$ pertenece a ambos interiores, la proposición~\ref{ch02:vecindades} da una bola contenida en $A\cap B$. Recíprocamente, una bola contenida en $A\cap B$ está contenida tanto en $A$ como en $B$.
+\end{enumerate}
+\end{proof}
+La idempotencia significa que tomar interior o clausura una segunda vez no añade información. En particular, el interior siempre es abierto y la clausura siempre es cerrada. El interior describe puntos con margen para moverse dentro del conjunto; la clausura agrega todos los puntos que pueden aproximarse desde él.
+
+\begin{ejemplo}
+En $\R$, para $A=(0,1]\cup\{2\}$, se tiene $\interior A=(0,1)$ y $\cl A=[0,1]\cup\{2\}$. En cambio, para $A=\Q$, el interior es vacío y la clausura es $\R$. Un conjunto puede ser cerrado sin ser abierto, abierto sin ser cerrado, ambas cosas o ninguna; estas palabras no son negaciones lógicas entre sí.
+\end{ejemplo}
+
+\begin{definicion}[Diámetro]\index{diametro@diámetro}
+El diámetro de un subconjunto no vacío $A$ de $(X,d)$ es
+\[
+ \diam A=\sup\{d(x,y):x,y\in A\}\in[0,\infty].
+\]
+Adoptamos $\diam\varnothing=0$. El valor infinito expresa que las distancias entre puntos de $A$ no tienen una cota finita. Si $A\subset B(a,r)$, la desigualdad triangular da $d(x,y)<2r$ para $x,y\in A$, y por tanto $\diam A\le2r$. Recíprocamente, si $A\ne\varnothing$ y $\diam A<\infty$, al fijar $a\in A$ obtenemos $A\subset B(a,\diam A+1)$. Así, tener diámetro finito equivale a estar contenido en una bola de radio finito.
+\end{definicion}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 2, ejercicio 1]
+En $\R^{\N}$, sea $A=\{a:|a_n|<1/n\text{ para todo }n\}$. Decidir si $A$ es vecindad de $0$ para (i) la métrica discreta; (ii) la métrica $d(a,b)=1/\min\{n:a_n\ne b_n\}$ cuando $a\ne b$, y $d(a,a)=0$; (iii) la métrica
+\[
+d'(a,b)=\sum_{n=1}^{\infty}\frac{|a_n-b_n|}{2^n(1+|a_n-b_n|)}.
+\]
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Sí: $B(0,1/2)=\{0\}\subset A$.
+\item No. Para cada $r>0$, elijamos $N$ con $1/N<r$ y pongamos $a_N=1/N$ y $a_n=0$ si $n\ne N$. La primera coordenada diferente de cero es la $N$, así que $d(0,a)=1/N<r$, pero $a\notin A$. Por tanto ninguna bola de radio positivo está contenida en $A$.
+
+La función propuesta sí es una métrica: si $a$ y $c$ coinciden hasta el índice $m-1$, y $c$ y $b$ también, entonces $a$ y $b$ coinciden hasta ese índice. En consecuencia, el primer desacuerdo entre $a,b$ no puede preceder al menor de los primeros desacuerdos de los otros dos pares. Al invertir los índices se obtiene la desigualdad ultramétrica. La separación y la simetría están en la definición.
+\item Tampoco. Con la misma sucesión concentrada en $N$,
+\[
+d'(0,a)=\frac{1}{2^N(N+1)}.
+\]
+Este número tiende a cero, de modo que para cualquier $r>0$ podemos elegir $N$ con $d'(0,a)<r$, manteniendo $a\notin A$.
+
+Para verificar que $d'$ es una métrica, la serie converge por comparación con $\sum2^{-n}$. En cada coordenada, $|a_n-b_n|/(1+|a_n-b_n|)$ satisface la desigualdad triangular por el argumento del ejercicio 3 del capítulo~\ref{chap:01}. Es una pseudométrica en todo $\R^{\N}$, pues puede anularse aunque otras coordenadas difieran. La suma sí separa puntos: si $a\ne b$, alguna coordenada aporta un término positivo. La simetría y la triangular se conservan al sumar y pasar al límite.
+\end{enumerate}
+Este ejercicio muestra que una condición impuesta simultáneamente a infinitas coordenadas puede impedir la existencia de una sola tolerancia métrica válida para todas ellas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 2]
+Demostrar que una intersección finita de vecindades de un mismo punto es una vecindad de él.
+\end{ejercicio}
+\begin{solucion}
+Para $V_1,\ldots,V_m$ elegimos $r_j>0$ con $B(x,r_j)\subset V_j$. Al ser una familia finita, $r=\min_jr_j>0$, y $B(x,r)\subset\bigcap_jV_j$. La intersección de una familia vacía se interpreta como $X$, que también es vecindad de $x$. La condición de finitud importa: en $\R$, $\bigcap_{n\ge1}(-1/n,1/n)=\{0\}$ no es vecindad de $0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 3]
+Probar $\cl{A\cup B}=\cl A\cup\cl B$ y $\cl{A\cap B}\subset\cl A\cap\cl B$.
+\end{ejercicio}
+\begin{solucion}
+La monotonía de la clausura da $\cl A\cup\cl B\subset\cl{A\cup B}$. Si $x\notin\cl A\cup\cl B$, existen radios $r,s>0$ cuyas bolas centradas en $x$ no intersectan a $A$ y a $B$, respectivamente. La bola de radio $\min\{r,s\}$ no intersecta a la unión; por tanto $x\notin\cl{A\cup B}$. Esto prueba la otra inclusión por contraposición. Para la intersección, $A\cap B\subset A$ y $A\cap B\subset B$ dan, por monotonía, ambas inclusiones necesarias.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 4]
+Dar ejemplos en los que (i) $\interior{(A\cup B)}\not\subset\interior A\cup\interior B$ y (ii) $\cl A\cap\cl B\not\subset\cl{A\cap B}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Tomemos $A=\Q$ y $B=\R\setminus\Q$. Ambos tienen interior vacío porque todo intervalo contiene racionales e irracionales. Su unión es $\R$, cuyo interior es $\R$.
+\item Con los mismos conjuntos, ambas clausuras son $\R$, pero $A\cap B=\varnothing$ tiene clausura vacía. Como alternativa finita, $A=(0,1)$ y $B=(1,2)$ tienen clausuras que se intersectan en $1$, mientras su intersección es vacía.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 5]
+En un espacio ultramétrico demostrar: (i) si $y\in B(x,r)$, entonces $B(y,r)=B(x,r)$; (ii) las bolas abiertas y las bolas cerradas de radio positivo son conjuntos abiertos y cerrados; (iii) dos bolas que se intersectan están ordenadas por inclusión.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $z\in B(y,r)$, entonces $d(x,z)\le\max\{d(x,y),d(y,z)\}<r$. Esto da una inclusión. Como $x\in B(y,r)$, intercambiar los centros da la otra. Para bolas cerradas, el mismo argumento con $\le r$ muestra que cualquier punto de una bola cerrada es también centro de ella con el mismo radio.
+\item Las bolas abiertas son abiertas por el ejercicio siguiente. Para ver que $B(x,r)$ es cerrada, sea $z\notin B(x,r)$. Si $w\in B(z,r)$, entonces $d(z,w)<r\le d(z,x)$; el ejercicio 7 del capítulo~\ref{chap:01} da $d(x,w)=d(x,z)\ge r$. Por tanto $B(z,r)$ no intersecta a $B(x,r)$, y $z$ no pertenece a su clausura.
+
+La bola cerrada es cerrada por el ejercicio siguiente. Si $y\in\overline B(x,r)$, todo $z\in B(y,r)$ satisface $d(x,z)\le\max\{d(x,y),d(y,z)\}\le r$. Así $B(y,r)\subset\overline B(x,r)$ y esta bola es abierta. La formulación «una bola es abierta si y solo si es cerrada» se entiende aquí en sentido topológico; no afirma que una bola definida con $<$ sea idéntica a la definida con $\le$ para el mismo radio.
+\item Si dos bolas contienen a $z$, por (i) y su versión cerrada podemos tomar $z$ como centro de ambas. Con centro común, la bola de radio menor está contenida en la de radio mayor. Si los radios coinciden, las bolas son iguales cuando son del mismo tipo; si una es abierta y otra cerrada, la abierta está contenida en la cerrada. Esto cubre también el caso de tipos distintos.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 6]
+En cualquier espacio métrico, demostrar que (i) las bolas abiertas son abiertas, (ii) las bolas cerradas son cerradas y (iii) las esferas son cerradas.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $y\in B(x,r)$, tomamos $s=r-d(x,y)>0$. Para $z\in B(y,s)$, la triangular da $d(x,z)<d(x,y)+s=r$. Así la bola original es vecindad de cada punto suyo y coincide con su interior.
+\item Si $y\notin\overline B(x,r)$, sea $s=d(x,y)-r>0$. Para $z\in B(y,s)$, la triangular inversa da $d(x,z)\ge d(x,y)-d(y,z)>r$. Esta bola no intersecta a $\overline B(x,r)$, así que ningún punto exterior pertenece a su clausura.
+\item Si $y\notin S(x,r)$, sea $s=|d(x,y)-r|/2>0$. Para $z\in B(y,s)$, la triangular inversa da $|d(x,z)-d(x,y)|<s$. Si $d(x,z)$ fuera $r$, esto contradiría $|r-d(x,y)|=2s$. Por tanto la bola no intersecta a la esfera y esta es cerrada.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 7]
+Demostrar que (i) $A$ es abierto si y solo si es vecindad de todos sus puntos; (ii) $A$ es cerrado si y solo si todo punto cuyas vecindades intersectan a $A$ pertenece a $A$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Ser vecindad de cada punto de $A$ significa $A\subset\interior A$. Como siempre $\interior A\subset A$, equivale a la igualdad que define apertura.
+\item Los puntos cuyas vecindades intersectan a $A$ son precisamente los de $\cl A$. La condición es $\cl A\subset A$, que, junto con $A\subset\cl A$, equivale a la igualdad que define cerradura.
+\end{enumerate}
+\end{solucion}
+
+\section{Una precaución sobre las bolas}
+Siempre $\cl{B(x,r)}\subset\overline B(x,r)$, porque la bola cerrada es cerrada y contiene a la abierta. La igualdad puede fallar: en un espacio discreto con al menos dos puntos, $B(x,1)=\{x\}$ tiene clausura $\{x\}$, mientras que $\overline B(x,1)=X$. Por eso el tipo de desigualdad que define una bola debe distinguirse de la operación topológica de tomar clausura.

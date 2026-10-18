@@ -1,0 +1,182 @@
+\chapter{Espacios completos y espacios de Banach}\label{chap:08}
+\section{Límites que permanecen dentro del espacio}
+Una sucesión de Cauchy contiene información interna: sus términos terminan siendo tan próximos como se quiera. La completitud asegura que esa información corresponde a un punto del propio espacio. No es una propiedad de cada sucesión por separado, sino una garantía para todas ellas. Usaremos las nociones del capítulo~\ref{chap:07}, la propiedad arquimediana de $\R$ y las desigualdades elementales de las normas $\ell^p$.
+
+\begin{proposicion}\label{ch08:cauchy-basico}
+Toda sucesión convergente es de Cauchy. Toda sucesión de Cauchy es acotada. Si una sucesión de Cauchy tiene una subsucesión convergente a $x$, la sucesión completa converge a $x$.
+\end{proposicion}
+\begin{proof}
+Si $x_n\to x$, dado $\eps>0$ elegimos $N$ tal que $d(x_n,x)<\eps/2$ para $n\geq N$. Entonces $d(x_n,x_m)<\eps$ para $n,m\geq N$. Si $(x_n)$ es de Cauchy, elegimos $N$ con $d(x_n,x_N)<1$ para $n\geq N$. El máximo de $1,d(x_1,x_N),\ldots,d(x_{N-1},x_N)$ es una cota de todas las distancias al centro $x_N$.
+
+Por último, supongamos $x_{n_j}\to x$. Elegimos $N$ con $d(x_n,x_m)<\eps/2$ para $n,m\geq N$, y después $j$ con $n_j\geq N$ y $d(x_{n_j},x)<\eps/2$. Para cualquier $n\geq N$ se tiene $d(x_n,x)\leq d(x_n,x_{n_j})+d(x_{n_j},x)<\eps$.
+\end{proof}
+
+\begin{definicion}
+Un espacio métrico es \emph{completo} si toda sucesión de Cauchy converge en él. Un espacio normado completo para la distancia $d(x,y)=\norm{x-y}$ se llama \emph{espacio de Banach}.
+\end{definicion}
+\index{completitud}\index{Banach, espacio de}
+
+\begin{ejemplo}
+En $\R\setminus\{0\}$, la sucesión $1/n$ es de Cauchy pero no converge en el espacio. De converger allí a $a$, también convergería a $a$ en $\R$, y la unicidad del límite obligaría a $a=0$. En cambio, todo espacio uniformemente discreto es completo: si los puntos distintos distan al menos $c>0$, la condición de Cauchy con tolerancia $c$ obliga a que la sucesión sea eventualmente constante. La mera topología discreta no garantiza completitud: $\{1/n:n\in\N\}$, con su distancia heredada, vuelve a ser un contraejemplo.
+\end{ejemplo}
+
+\section{Un ejemplo aritmético: la distancia p-ádica}
+Fijemos un primo $p$. Todo racional no nulo se escribe como $r=p^k a/b$, donde $k\in\Z$, los enteros $a,b$ no son divisibles por $p$ y $b\ne0$. El exponente $k$ es único: es la potencia de $p$ del numerador menos la del denominador de cualquier fracción que represente a $r$. Los enteros $a,b$ no son únicos si no se exige además que la fracción esté reducida. Definimos $v_p(r)=k$, $|r|_p=p^{-k}$ y $|0|_p=0$. La distancia es
+\[
+ d_p(r,s)=|r-s|_p.
+\]
+Su propiedad decisiva, demostrada en el ejercicio 1, es
+\[
+ |r+s|_p\leq\max\{|r|_p,|s|_p\}.
+\]
+\index{metrica p-adica@métrica p-ádica}\index{ultrametrica@ultramétrica}
+En esta geometría, ser divisible por una potencia grande de $p$ significa estar cerca de cero.
+
+\begin{ejemplo}\label{ch08:padica-incompleta}
+Para una sucesión de dígitos $a_j\in\{0,1,\ldots,p-1\}$ definamos $s_n=\sum_{j=0}^n a_jp^j$. Si $m>n$, la diferencia $s_m-s_n$ es divisible por $p^{n+1}$ y
+\[
+ |s_m-s_n|_p\leq p^{-(n+1)}\longrightarrow0.
+\]
+Se necesita una desigualdad, pues puede haber dígitos nulos adicionales o incluso diferencia cero. Por tanto $(s_n)$ es de Cauchy.
+
+Hay incontables sucesiones de dígitos: si se enumeraran, podríamos cambiar el dígito de posición $n$ de la sucesión número $n$ y construir una que no aparece en la lista. Además, dos sucesiones distintas no pueden dar el mismo límite racional. Si su primer dígito distinto ocupa la posición $k$, para todo $n\geq k$ la diferencia entre sus sumas parciales tiene valoración exactamente $k$, pues el coeficiente de $p^k$ no es divisible por $p$. Las distancias entre esas sumas parciales son entonces constantemente $p^{-k}$; si ambas convergieran al mismo racional, esas distancias tenderían a cero. Como $\Q$ es numerable, no todas las sucesiones construidas pueden converger en $\Q$. Esto prueba que $(\Q,d_p)$ no es completo.
+
+Algunas sí convergen: si $a_j=p-1$ para todo $j$, entonces $s_n=p^{n+1}-1$ y $|s_n-(-1)|_p=p^{-(n+1)}\to0$.
+\end{ejemplo}
+
+\section{Completitud de los espacios de sucesiones}
+Recordemos que, para $1\leq p<\infty$,
+\[
+ \ell^p=\left\{x=(x_k):\sum_{k=1}^\infty|x_k|^p<\infty\right\},
+ \qquad \norm{x}_p=\left(\sum_{k=1}^\infty|x_k|^p\right)^{1/p}.
+\]
+Las coordenadas pueden ser reales o complejas. En el segundo caso, la completitud de los escalares se obtiene aplicando la de $\R$ a partes reales e imaginarias.
+
+\begin{teorema}\label{ch08:lp-completo}
+Para cada $1\leq p<\infty$, el espacio $\ell^p$ es de Banach.
+\end{teorema}
+\begin{proof}
+Sea $(x^{(n)})$ una sucesión de Cauchy en $\ell^p$, donde $x^{(n)}=(x^{(n)}_k)_{k\geq1}$. Distinguimos el índice $n$, que enumera vectores, del índice $k$, que enumera coordenadas. La estimación
+\[
+ |x^{(n)}_k-x^{(m)}_k|\leq\norm{x^{(n)}-x^{(m)}}_p
+\]
+muestra que cada sucesión escalar $(x^{(n)}_k)_n$ es de Cauchy. Definimos $x_k=\lim_nx^{(n)}_k$ y $x=(x_k)$.
+
+Primero verificamos que $x$ pertenece a $\ell^p$. La sucesión de vectores es acotada, así que existe $M$ con $\norm{x^{(n)}}_p\leq M$ para todo $n$. Para cada entero $K$,
+\[
+ \sum_{k=1}^K|x_k|^p
+ =\lim_{n\to\infty}\sum_{k=1}^K|x^{(n)}_k|^p\leq M^p.
+\]
+Aquí sólo se ha pasado el límite a través de una suma \emph{finita}. Las sumas parciales de la serie no negativa están acotadas y, por el axioma del supremo, convergen a un número no mayor que $M^p$.
+
+Ahora probamos convergencia en norma. Dado $\eps>0$, existe $N$ tal que $\norm{x^{(n)}-x^{(m)}}_p<\eps/2$ siempre que $n,m\geq N$. Fijamos $n\geq N$ y $K\in\N$, y hacemos tender $m$ a infinito en
+\[
+ \sum_{k=1}^K|x^{(n)}_k-x^{(m)}_k|^p<(\eps/2)^p.
+\]
+Resulta $\sum_{k=1}^K|x^{(n)}_k-x_k|^p\leq(\eps/2)^p$. Tomando el supremo sobre $K$ obtenemos $\norm{x^{(n)}-x}_p\leq\eps/2<\eps$. El índice $N$ permanece fijo durante este argumento; no se hace tender a infinito un umbral que ya depende de $\eps$.
+\end{proof}
+La estrategia tiene dos partes que conviene distinguir: construir un candidato coordenada a coordenada y probar después una estimación uniforme en el número de coordenadas. La convergencia de cada coordenada, por sí sola, no implica convergencia en norma: los vectores canónicos $e_n$ convergen coordenada a coordenada a cero, pero $\norm{e_n}_p=1$.
+
+\begin{teorema}[Subespacios completos]\label{ch08:cerrado-completo}
+Sea $Y\subset X$ con la distancia heredada. Si $Y$ es completo, entonces es cerrado en $X$. Si $X$ es completo y $Y$ es cerrado en $X$, entonces $Y$ es completo.
+\end{teorema}
+\begin{proof}
+Si $x\in\cl Y$, podemos elegir $y_n\in Y$ con $d(y_n,x)<1/n$. La sucesión es de Cauchy y, por completitud de $Y$, converge a algún $y\in Y$. También converge a $x$ en $X$, por lo que $x=y\in Y$. Esto prueba que $Y$ contiene su clausura. Si $Y$ es vacío, ya es cerrado.
+
+Para la segunda afirmación, una sucesión de Cauchy en $Y$ lo es en $X$ porque las distancias son las mismas. Tiene, pues, un límite $x\in X$. Al ser $Y$ cerrado, todo límite de una sucesión suya pertenece a $Y$; así, $x\in Y$.
+\end{proof}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 8, ejercicio 1]
+Demuestre que $d_p$ es una métrica en $\Q$ y, más precisamente, una ultramétrica.
+\end{ejercicio}
+\begin{solucion}
+La factorización prima garantiza la unicidad de $v_p(r)$ y $v_p(rs)=v_p(r)+v_p(s)$ para racionales no nulos. Sean $r,s\ne0$ y supongamos $v_p(r)=k\leq v_p(s)=l$. Escribiendo $r=p^ka/b$ y $s=p^lc/d$ con denominadores y numeradores no divisibles por $p$, obtenemos
+\[
+ r+s=p^k\frac{ad+p^{l-k}bc}{bd}.
+\]
+El denominador no es divisible por $p$, y el numerador es un entero. Si no es cero, su valoración es no negativa; de aquí $v_p(r+s)\geq k$. Si es cero, $|r+s|_p=0$. En ambos casos
+\[
+ |r+s|_p\leq p^{-k}=\max\{|r|_p,|s|_p\}.
+\]
+Si alguno de los sumandos es cero, la desigualdad se verifica directamente. También $|r|_p\geq0$, con igualdad exactamente para $r=0$, y $|-r|_p=|r|_p$. Por tanto $d_p$ es positiva, separa puntos y es simétrica. Aplicando la desigualdad anterior a $(r-t)+(t-s)$ obtenemos
+\[
+ d_p(r,s)\leq\max\{d_p(r,t),d_p(t,s)\}\leq d_p(r,t)+d_p(t,s).
+\]
+La primera desigualdad es la propiedad ultramétrica y la segunda da la desigualdad triangular usual.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 2]
+Demuestre la equivalencia entre el axioma del supremo y la completitud de $\R$ con su distancia usual.
+\end{ejercicio}
+\begin{solucion}
+Trabajamos con las propiedades de cuerpo ordenado arquimediano de los reales; el contenido del ejercicio es comparar las dos formulaciones de su propiedad de completitud.
+
+Supongamos el axioma del supremo y sea $(x_n)$ de Cauchy. Está acotada. Para cada $N$, definamos $a_N=\inf_{n\geq N}x_n$ y $b_N=\sup_{n\geq N}x_n$. El ínfimo existe aplicando el axioma del supremo al conjunto de los opuestos. La sucesión $(a_N)$ crece, $(b_N)$ decrece y $a_N\leq b_N$. Para cualquier $\eps>0$, la condición de Cauchy aplicada con $\eps/2$ implica que, a partir de cierto $N$, todos los términos de la cola están en un intervalo de longitud $\eps$; por ello $b_N-a_N\leq\eps$. Sea $x=\sup_Na_N$. Para todo $N$, se tiene $a_N\leq x\leq b_N$: la segunda desigualdad se debe a que $b_N$ es una cota superior de todos los $a_M$, también de los correspondientes a $M<N$. Si $n\geq N$, tanto $x_n$ como $x$ están en $[a_N,b_N]$, de modo que $|x_n-x|\leq b_N-a_N\to0$.
+
+Recíprocamente, supongamos que toda sucesión real de Cauchy converge. Sea $A\ne\varnothing$ acotado superiormente. Si tiene máximo, ése es su supremo. En otro caso elegimos $a_0\in A$ y una cota superior $b_0>a_0$. La sucesión de intervalos se construye por bisección: si $m_n=(a_n+b_n)/2$ es cota superior de $A$, ponemos $(a_{n+1},b_{n+1})=(a_n,m_n)$; si no lo es, ponemos $(a_{n+1},b_{n+1})=(m_n,b_n)$. Aquí $a_n$ no tiene por qué pertenecer a $A$, pero nunca es cota superior, y $b_n$ siempre lo es. Los intervalos están anidados y su longitud es $(b_0-a_0)2^{-n}$. Esto hace que ambas sucesiones sean de Cauchy y que tengan el mismo límite $s$.
+
+Todo $a\in A$ satisface $a\leq b_n$ para cada $n$, luego $a\leq s$. Si $t<s$, para algún $n$ se tiene $t<a_n$, y como $a_n$ no es cota superior existe $a\in A$ con $a>a_n>t$. Así, ningún número menor que $s$ es cota superior. Hemos probado $s=\sup A$. Si se desean puntos de $A$ como en la sugerencia original, elegimos $c_n\in A$ con $a_n<c_n\leq b_n$; entonces también $c_n\to s$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 3]
+Demuestre que $\ell^\infty$ es completo.
+\end{ejercicio}
+\begin{solucion}
+Sea $(x^{(n)})$ de Cauchy para $\norm{x}_\infty=\sup_k|x_k|$. Cada coordenada es de Cauchy, porque $|x^{(n)}_k-x^{(m)}_k|\leq\norm{x^{(n)}-x^{(m)}}_\infty$. Definamos $x_k=\lim_nx^{(n)}_k$. Existe $M$ con $\norm{x^{(n)}}_\infty\leq M$, y al pasar al límite para cada $k$ resulta $|x_k|\leq M$; así $x\in\ell^\infty$. Dado $\eps>0$, elegimos $N$ con $\norm{x^{(n)}-x^{(m)}}_\infty<\eps/2$ para $n,m\geq N$. Fijamos $n\geq N$ y dejamos $m\to\infty$: para cada $k$, $|x^{(n)}_k-x_k|\leq\eps/2$. Tomar el supremo en $k$ produce $\norm{x^{(n)}-x}_\infty\leq\eps/2<\eps$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 4]
+Pruebe que los subespacios $c$ y $c_0$ de sucesiones convergentes y de sucesiones convergentes a cero son espacios de Banach con la norma uniforme.
+\end{ejercicio}
+\begin{solucion}
+Ambos son subespacios lineales de $\ell^\infty$: las combinaciones lineales preservan la existencia del límite y, para $c_0$, preservan el límite cero. Por el teorema~\ref{ch08:cerrado-completo}, basta probar que son cerrados.
+
+Sea $x^{(n)}\in c$ y $\norm{x^{(n)}-x}_\infty\to0$. Para $\eps>0$ elegimos $n$ con $\norm{x^{(n)}-x}_\infty<\eps/3$. Como la sucesión escalar $k\mapsto x^{(n)}_k$ converge, existe $K$ con $|x^{(n)}_k-x^{(n)}_j|<\eps/3$ para $k,j\geq K$. Por tanto
+\[
+ |x_k-x_j|\leq|x_k-x^{(n)}_k|+|x^{(n)}_k-x^{(n)}_j|+|x^{(n)}_j-x_j|<\eps.
+\]
+La sucesión de coordenadas de $x$ es de Cauchy en los escalares y converge; de ahí $x\in c$.
+
+Si cada $x^{(n)}\in c_0$, elegimos $n$ con $\norm{x^{(n)}-x}_\infty<\eps/2$ y luego $K$ con $|x^{(n)}_k|<\eps/2$ para $k\geq K$. Entonces $|x_k|<\eps$ para $k\geq K$, luego $x\in c_0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 5]
+Para espacios métricos no vacíos, pruebe que el producto de dos espacios es completo si y sólo si cada factor lo es. Extienda el resultado a todo producto finito.
+\end{ejercicio}
+\begin{solucion}
+Usamos la métrica máxima $D((x,y),(x',y'))=\max\{d(x,x'),\rho(y,y')\}$. Una sucesión es de Cauchy para $D$ exactamente cuando sus dos coordenadas lo son: una cota para $D$ acota ambas distancias, y dos umbrales para las coordenadas se reúnen tomando su máximo. Si ambos factores son completos, las coordenadas convergen a $x,y$, y el máximo de sus distancias a esos límites tiende a cero.
+
+Si el producto es completo, fijamos $y_0\in Y$ y consideramos una sucesión de Cauchy $(x_n)$ de $X$. Los pares $(x_n,y_0)$ forman una sucesión de Cauchy que converge a algún $(x,y)$, y la primera coordenada da $x_n\to x$. Fijando $x_0$ se demuestra lo mismo para $Y$. Para $n$ factores, la métrica $\max_{1\leq j\leq n}d_j(x_j,y_j)$ permite repetir exactamente las dos implicaciones: tomamos el máximo de los $n$ umbrales y, para la necesidad, fijamos las otras $n-1$ coordenadas. La métrica suma y la euclídea de las distancias son equivalentes mediante cotas constantes a la métrica máxima; por ello tienen las mismas sucesiones de Cauchy. La no vacuidad evita que un producto vacío oculte un factor incompleto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 6]
+Demuestre que el conjunto de Cantor, con la distancia heredada de $\R$, es completo y no tiene puntos aislados.
+\end{ejercicio}
+\begin{solucion}
+Sea $C_0=[0,1]$ y sea $C_n$ el conjunto que queda después de eliminar los tercios medios abiertos durante las primeras $n$ etapas. Cada $C_n$ es una unión finita de intervalos cerrados de longitud $3^{-n}$, y $C=\bigcap_{n\geq0}C_n$ es cerrado en $\R$. Como $\R$ es completo, también lo es $C$.
+
+Fijemos $x\in C$ y $\eps>0$. Elegimos $n$ con $3^{-n}<\eps$ y un intervalo componente $[a,b]$ de $C_n$ que contenga $x$. Ambos extremos pertenecen a todas las etapas posteriores: nunca se elimina un extremo al retirar un tercio medio abierto. Por tanto $a,b\in C$. Como $a\ne b$, al menos uno de ellos es distinto de $x$ y dista de $x$ a lo sumo $3^{-n}<\eps$. Ningún punto de $C$ es aislado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 7]
+Demuestre que $C$ es incontable y que
+\[
+ C=\left\{\sum_{n=1}^\infty\frac{a_n}{3^n}:a_n\in\{0,2\}\right\}.
+\]
+\end{ejercicio}
+\begin{solucion}
+Para cada palabra $(a_1,\ldots,a_n)$ de ceros y doses, una componente de $C_n$ es
+\[
+ I(a_1,\ldots,a_n)=\left[\sum_{j=1}^n\frac{a_j}{3^j},\,
+ \sum_{j=1}^n\frac{a_j}{3^j}+3^{-n}\right].
+\]
+Esto se verifica por inducción: escoger el tercio izquierdo agrega el dígito $0$ y escoger el derecho agrega el dígito $2$. Una serie con esos dígitos pertenece al intervalo indicado, pues su cola está entre cero y $\sum_{j>n}2/3^j=3^{-n}$. Pertenece entonces a todo $C_n$ y a $C$.
+
+Recíprocamente, si $x\in C$, en cada etapa está en una componente y la componente de la etapa siguiente está contenida en la anterior. Sus elecciones izquierda/derecha proporcionan dígitos $a_n\in\{0,2\}$. La diferencia entre $x$ y la suma de sus primeros $n$ dígitos está entre cero y $3^{-n}$, por lo que $x$ es la serie correspondiente. No es necesario usar la expansión ternaria convencional en los extremos: por ejemplo, $1/3=0.02222\ldots$ usa sólo dígitos permitidos.
+
+La correspondencia es inyectiva. Si dos sucesiones difieren por primera vez en $k$, la diferencia aportada allí tiene valor absoluto $2/3^k$, mientras que toda la cola posterior puede compensar a lo sumo $\sum_{j>k}2/3^j=1/3^k$. Las sumas difieren al menos en $1/3^k>0$. Finalmente, el conjunto de sucesiones de ceros y doses es incontable por el argumento diagonal: frente a una supuesta enumeración, cambiamos el dígito $n$ de la fila $n$. Su imagen inyectiva $C$ es, pues, incontable.
+\end{solucion}
+
+\section{La completitud como herramienta}
+No basta construir aproximaciones sucesivas: hay que saber en qué espacio convergen. Los espacios $\ell^p$, $c$ y $c_0$ ofrecen modelos completos, mientras que los racionales p-ádicos muestran que una noción distinta de distancia puede exigir nuevos puntos. La completación construye esos puntos de forma sistemática.

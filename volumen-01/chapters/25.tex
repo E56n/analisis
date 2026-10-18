@@ -1,0 +1,177 @@
+\chapter{La métrica uniforme y los espacios de funciones}\label{chap:25}
+\index{metrica uniforme@métrica uniforme}
+
+\section{Por qué necesitamos medir funciones completas}
+Una sucesión de funciones puede aproximar bien un valor en cada punto y, sin embargo, aproximar muy mal la función en alguna región que cambia con el índice. La métrica uniforme mide el mayor error posible en todo el dominio. Esta elección convierte preguntas acerca de funciones en preguntas acerca de puntos de un nuevo espacio métrico.
+
+Utilizaremos la completitud, la continuidad y las propiedades del supremo. El dominio de una función no necesita inicialmente ninguna estructura: para comparar sus valores basta con que el espacio de llegada tenga una distancia. Salvo indicación contraria, los conjuntos considerados son no vacíos. Si el dominio es vacío, existe una sola función con ese dominio, y su espacio de funciones es el espacio métrico de un punto.
+
+\section{Funciones acotadas y distancia del supremo}
+\begin{definicion}
+Sean $S$ un conjunto y $(Y,d)$ un espacio métrico. Una función $f:S\to Y$ es \emph{acotada} si $f(S)$ está contenido en alguna bola de radio finito. Denotamos por $B(S,Y)$ el conjunto de esas funciones. Para $f,g\in B(S,Y)$ definimos
+\[
+ d_\infty(f,g)=\sup_{s\in S}d(f(s),g(s)).
+\]
+\end{definicion}
+
+Antes de verificar los axiomas de una métrica debemos comprobar que el supremo es finito. Si $f(S)\subset B(y_0,R)$ y $g(S)\subset B(y_1,T)$, la desigualdad triangular da
+\[
+ d(f(s),g(s))\le d(f(s),y_0)+d(y_0,y_1)+d(y_1,g(s))
+ <R+d(y_0,y_1)+T.
+\]
+Por tanto, el conjunto cuyo supremo tomamos es no vacío, está acotado superiormente y está formado por números no negativos.
+
+\begin{proposicion}\label{ch25:metrica}
+La función $d_\infty$ es una métrica en $B(S,Y)$.
+\end{proposicion}
+\begin{proof}
+La no negatividad se hereda de $d$. Si $d_\infty(f,g)=0$, entonces
+$0\le d(f(s),g(s))\le 0$ para cada $s$, de modo que $f(s)=g(s)$ en todo $S$. Recíprocamente, si $f=g$, todas las distancias son cero y el supremo es cero. La simetría se obtiene de $d(f(s),g(s))=d(g(s),f(s))$.
+
+Para la desigualdad triangular, fijamos $s\in S$ y escribimos
+\[
+ d(f(s),h(s))\le d(f(s),g(s))+d(g(s),h(s))
+ \le d_\infty(f,g)+d_\infty(g,h).
+\]
+La expresión de la derecha no depende de $s$ y es una cota superior para todos los términos de la izquierda. La propiedad que caracteriza al supremo implica
+$d_\infty(f,h)\le d_\infty(f,g)+d_\infty(g,h)$.
+\end{proof}
+
+\begin{observacion}[Un supremo no tiene que alcanzarse]
+Si $f(s)=s$ y $g(s)=0$ en $S=(0,1)$, entonces $d_\infty(f,g)=1$, aunque $|f(s)-g(s)|<1$ para cada punto. Así, demostrar una desigualdad estricta punto por punto suele producir solamente una desigualdad no estricta después de tomar supremos. Para obtener finalmente un error menor que $\eps$ trabajaremos, por ejemplo, con $\eps/2$.
+\end{observacion}
+
+\begin{lema}\label{ch25:unionacotada}
+Si una familia no vacía $\mathcal A\subset B(S,Y)$ está acotada para $d_\infty$, entonces $\bigcup_{f\in\mathcal A}f(S)$ está acotado en $Y$.
+\end{lema}
+\begin{proof}
+Elegimos $f_0\in\mathcal A$. Como $\mathcal A$ está acotada, existe $M<\infty$ tal que $d_\infty(f,f_0)\le M$ para toda $f\in\mathcal A$. Como $f_0$ es una función acotada, existen $y_0\in Y$ y $R<\infty$ con $d(f_0(s),y_0)\le R$ para todo $s\in S$. En consecuencia,
+\[
+ d(f(s),y_0)\le d(f(s),f_0(s))+d(f_0(s),y_0)\le M+R
+\]
+para toda $f\in\mathcal A$ y todo $s\in S$. La misma bola, de centro $y_0$ y radio $M+R+1$, contiene todas las imágenes.
+\end{proof}
+
+Esta prueba proporciona directamente el control necesario. No hace falta construir una subsucesión con diámetros crecientes. Hay que distinguir dos afirmaciones: cada función de una familia puede ser acotada sin que la familia sea acotada en $d_\infty$. Las funciones constantes $f_n(s)=n$ ilustran esa diferencia.
+
+\section{Por qué la completitud se transmite a las funciones}
+\index{completitud!espacios de funciones}
+\begin{teorema}\label{ch25:completitud}
+Si $Y$ es completo, entonces $(B(S,Y),d_\infty)$ es completo.
+\end{teorema}
+\begin{estrategia}
+La condición de Cauchy uniforme permite construir primero un límite en cada punto. Después debemos resolver dos problemas diferentes: demostrar que esa función límite es acotada y demostrar que la convergencia hacia ella es uniforme. Construir únicamente los límites puntuales no concluye la prueba.
+\end{estrategia}
+\begin{proof}
+Sea $(f_n)$ una sucesión de Cauchy en $B(S,Y)$. Para $s\in S$ fijo tenemos
+\[
+ d(f_n(s),f_m(s))\le d_\infty(f_n,f_m).
+\]
+Por ello $(f_n(s))$ es de Cauchy en $Y$. La completitud de $Y$ proporciona un único punto $f(s)$ al cual converge esa sucesión. Al realizar esta construcción para cada $s$ obtenemos una función $f:S\to Y$.
+
+Tomemos $N$ tal que $d_\infty(f_n,f_m)<1$ para $n,m\ge N$. Fijando $n=N$ y pasando al límite $m\to\infty$, la continuidad de la distancia da
+\[
+ d(f_N(s),f(s))\le 1 \qquad(s\in S).
+\]
+Si $f_N(S)\subset B(y_0,R)$, se sigue que $d(f(s),y_0)\le 1+R$ para todo $s$. Por tanto, $f\in B(S,Y)$.
+
+Ahora sea $\eps>0$. Existe $N_\eps$ tal que $d_\infty(f_n,f_m)<\eps/2$ para $n,m\ge N_\eps$. Para $n\ge N_\eps$ y $s\in S$ fijos, al hacer $m\to\infty$ obtenemos
+\[
+ d(f_n(s),f(s))\le\eps/2.
+\]
+El índice $N_\eps$ fue elegido antes que $s$ y sirve para todos los puntos. Tomando supremos, $d_\infty(f_n,f)\le\eps/2<\eps$. Esto demuestra la convergencia en la métrica uniforme.
+\end{proof}
+
+\begin{ejemplo}[Por qué la hipótesis de completitud es necesaria]
+Si $S=\{s_0\}$, la aplicación $f\mapsto f(s_0)$ es una isometría de $B(S,Y)$ sobre $Y$. Así, un espacio de llegada incompleto ya produce un espacio de funciones incompleto con un dominio de un solo punto. Más generalmente, para cualquier $S$ no vacío, las funciones constantes asociadas a una sucesión de Cauchy sin límite en $Y$ no pueden converger en $B(S,Y)$.
+\end{ejemplo}
+
+\section{Continuidad y límite uniforme}
+\index{convergencia uniforme!continuidad del limite@continuidad del límite}
+Si $X$ es un espacio métrico, escribimos $C_b(X,Y)$ para el conjunto de funciones continuas y acotadas de $X$ a $Y$. El subíndice $b$ recuerda la condición de acotación. Cuando $Y=\F$, usamos $C_b(X)$.
+
+\begin{teorema}\label{ch25:cerradocb}
+El conjunto $C_b(X,Y)$ es cerrado en $B(X,Y)$.
+\end{teorema}
+\begin{proof}
+Sea $(f_n)$ una sucesión de $C_b(X,Y)$ que converge a $f$ en $d_\infty$. Por pertenecer al espacio ambiente, $f$ ya es acotada. Fijemos $x\in X$ y $\eps>0$. Elegimos un índice $n$ tal que $d_\infty(f_n,f)<\eps/3$. Mantenemos fijo ese índice. La continuidad de $f_n$ en $x$ proporciona $\delta>0$ tal que
+\[
+ d_X(x,y)<\delta\quad\Longrightarrow\quad d(f_n(x),f_n(y))<\eps/3.
+\]
+Para esos puntos $y$, la desigualdad triangular da
+\[
+ \begin{split}
+ d(f(x),f(y))&\le d(f(x),f_n(x))+d(f_n(x),f_n(y))+d(f_n(y),f(y))\\
+ &<\eps/3+\eps/3+\eps/3=\eps.
+ \end{split}
+\]
+Por tanto, $f$ es continua en $x$. Como $x$ era arbitrario, es continua en $X$. En un espacio métrico la caracterización secuencial de cerrado permite concluir que $C_b(X,Y)$ es cerrado.
+\end{proof}
+
+El orden de las elecciones es decisivo: primero se fija una función $f_n$ que aproxima a $f$ en \emph{todos} los puntos y luego se usa la continuidad de esa función. No se necesita que el mismo $\delta$ funcione para todas las funciones de la sucesión.
+
+\begin{corolario}
+Si $Y$ es completo, entonces $C_b(X,Y)$ es completo con la métrica uniforme.
+\end{corolario}
+\begin{proof}
+Una sucesión de Cauchy en $C_b(X,Y)$ converge en $B(X,Y)$ por el teorema~\ref{ch25:completitud}. Su límite pertenece a $C_b(X,Y)$ por el teorema~\ref{ch25:cerradocb}. Este es precisamente el significado de completitud del subespacio.
+\end{proof}
+
+\section{La norma uniforme y tres espacios que no deben confundirse}
+\index{norma!uniforme}\index{funciones!de soporte compacto}\index{funciones!que se anulan en el infinito}
+Sea $V$ un espacio normado sobre $\F$. Las operaciones puntuales
+\[
+ (f+g)(s)=f(s)+g(s),\qquad (\lambda f)(s)=\lambda f(s)
+\]
+convierten $B(S,V)$ en un espacio vectorial: las identidades vectoriales se verifican en cada punto; además, la suma y el producto por escalar conservan la acotación porque
+$\norm{f(s)+g(s)}\le\norm{f(s)}+\norm{g(s)}$ y $\norm{\lambda f(s)}=|\lambda|\norm{f(s)}$.
+
+\begin{proposicion}
+La expresión $\norm f_\infty=\sup_{s\in S}\norm{f(s)}$ es una norma en $B(S,V)$ y su métrica asociada es $d_\infty$. Si $V$ es Banach, también lo son $B(S,V)$ y $C_b(X,V)$.
+\end{proposicion}
+\begin{proof}
+La norma es no negativa y se anula exactamente cuando todos los valores $f(s)$ son cero. Para $\lambda\ne0$, multiplicar todas las cantidades de un conjunto por $|\lambda|$ multiplica su supremo por ese factor; así $\norm{\lambda f}_\infty=|\lambda|\norm f_\infty$. Para $\lambda=0$ la igualdad también se cumple. Finalmente,
+\[
+ \norm{f(s)+g(s)}\le\norm{f(s)}+\norm{g(s)}\le\norm f_\infty+\norm g_\infty;
+\]
+tomando supremos se obtiene la desigualdad triangular. La identidad $d_\infty(f,g)=\norm{f-g}_\infty$ se sigue de las definiciones. La completitud ya quedó demostrada. El conjunto $C_b(X,V)$ es un subespacio vectorial porque las operaciones de $V$ son continuas, y es cerrado por el teorema~\ref{ch25:cerradocb}.
+\end{proof}
+
+Para funciones escalares en un espacio métrico $X$ usaremos las notaciones
+\[
+ \begin{split}
+ C_b(X)&=\{f:X\to\F:f\text{ es continua y acotada}\},\\
+ C_c(X)&=\{f:X\to\F:f\text{ es continua y }\supp f\text{ es compacto}\},\\
+ C_0(X)&=\{f:X\to\F:f\text{ es continua y }
+ \{x:|f(x)|\ge\eps\}\text{ es compacto para cada }\eps>0\},
+ \end{split}
+\]
+donde $\supp f=\cl{\{x:f(x)\ne0\}}$. Estos espacios satisfacen $C_c(X)\subset C_0(X)\subset C_b(X)$. Para justificar la segunda inclusión, el conjunto $K=\{|f|\ge1\}$ es compacto y $f$ es acotada en $K$ por continuidad; fuera de $K$, $|f|<1$. La primera inclusión se obtiene porque cada conjunto $\{|f|\ge\eps\}$ es cerrado y está contenido en el soporte compacto.
+
+\begin{observacion}[Corrección de notación de la lectura original]
+El espacio de funciones continuas de soporte compacto no es, en general, $C_b(X)$. En $X=\R$, la función constante $1$ pertenece a $C_b(\R)$ y no pertenece a $C_0(\R)$; la función $e^{-x^2}$ pertenece a $C_0(\R)$ y no pertenece a $C_c(\R)$. Si $X$ es compacto, en cambio, los tres espacios coinciden con $C(X)$.
+\end{observacion}
+
+\begin{proposicion}
+Para un espacio métrico $X$, el espacio $C_0(X)$ es cerrado en $C_b(X)$. Por tanto, es Banach. Si, además, $X$ es localmente compacto, $C_c(X)$ es denso en $C_0(X)$ para la norma uniforme.
+\end{proposicion}
+\begin{proof}
+Supongamos que $f_n\in C_0(X)$ y $\norm{f_n-f}_\infty\to0$. Dado $\eps>0$, elegimos $n$ con $\norm{f_n-f}_\infty<\eps/2$. Entonces
+\[
+ \{|f|\ge\eps\}\subset\{|f_n|\ge\eps/2\}.
+\]
+El conjunto de la izquierda es cerrado en $X$ y el de la derecha es compacto; por ello el primero es compacto. Esto demuestra $f\in C_0(X)$.
+
+Para la densidad, fijemos $f\in C_0(X)$ y $\eps>0$. El conjunto $K=\{|f|\ge\eps/2\}$ es compacto. Si es vacío, la función cero aproxima a $f$ con error a lo sumo $\eps/2$. Si no es vacío, la compacidad local y una subcubierta finita proporcionan un abierto $U$ tal que $K\subset U$ y $\cl U$ es compacto. En efecto, cubrimos $K$ por finitos abiertos cuyas clausuras son compactas y tomamos su unión. Si $U=X$, podemos tomar $\chi=1$. En otro caso, los conjuntos cerrados disjuntos $K$ y $X\setminus U$ permiten definir
+\[
+ \chi(x)=\frac{\dist(x,X\setminus U)}{\dist(x,X\setminus U)+\dist(x,K)}.
+\]
+Las funciones distancia son continuas; el denominador no se anula, pues ello colocaría a $x$ en ambos conjuntos cerrados. Además, $0\le\chi\le1$, $\chi=1$ en $K$ y $\chi=0$ fuera de $U$. Por ello $h=\chi f$ es continua y su soporte está contenido en $\cl U$, luego es compacto. En $K$ tenemos $h=f$; fuera de $K$,
+$|f-h|=|1-\chi|\,|f|<\eps/2$. Así $\norm{f-h}_\infty\le\eps/2<\eps$.
+\end{proof}
+
+\section{Ejercicios resueltos}
+La lectura 25 de la colección de partida no contiene una lista de ejercicios. Las verificaciones que allí aparecen dentro de la teoría han quedado desarrolladas en este capítulo: los axiomas de la métrica y de la norma, el control común de las imágenes, la completitud y la conservación de la continuidad. En particular, la prueba de completitud incluye explícitamente la convergencia uniforme hacia el límite construido.
+
+\section{Qué aporta esta construcción}
+La norma uniforme convierte el control simultáneo de infinitos valores en una sola desigualdad. La completitud permite obtener funciones como límites de aproximaciones; la cerradura de $C_b(X,V)$ garantiza que esas aproximaciones conservan la continuidad. En los capítulos siguientes estudiaremos cuándo una familia admite aproximaciones uniformes, cuándo sus sucesiones tienen subsucesiones convergentes y cuándo las funciones sencillas son densas en todo un espacio de funciones continuas.

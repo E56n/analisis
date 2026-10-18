@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-10-18",
+  "paginas_pdf": 209,
+  "capitulos": 32,
+  "ejercicios_numerados": 206,
+  "soluciones": 206,
+  "entradas_indice": 195,
+  "compilacion": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "advertencias_latex": [],
+  "revision_matematica": "Revisión cruzada independiente de los seis bloques de capítulos; incorporadas las precisiones detectadas.",
+  "revision_visual": "Inspección de las 210 páginas iniciales mediante hojas de contacto y páginas seleccionadas ampliadas; ajuste de la tabla de cobertura y del índice de notación. Versión final: 209 páginas.",
+  "bibliografia": "Cinco referencias reales, con metadatos contrastados y enlaces registrados en referencias-verificadas.md.",
+  "sha256_pdf": "87d987ae5b1e8bd4adb8ede9c04d112485565b7e1d2dcfdc6d7044c113360421"
+}

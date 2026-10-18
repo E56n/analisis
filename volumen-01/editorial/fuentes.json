@@ -1,0 +1,198 @@
+{
+  "autor_original": "Miguel Ángel Valencia Bucio",
+  "curso": "Análisis Matemático 1",
+  "lecturas": [
+    {
+      "lectura": 1,
+      "archivo": "AnM1-LFM-lect01.pdf",
+      "url": "https://drive.google.com/file/d/155PjjLBRPY4FRWTCKR02YzuPXYc7Hzax/view?usp=drivesdk",
+      "sha256_texto_extraido": "77cb91fa9260335a25f203445b9f7f244994d382a50e0241cd41068562d6d568"
+    },
+    {
+      "lectura": 2,
+      "archivo": "AnM1-LFM-lect02.pdf",
+      "url": "https://drive.google.com/file/d/1QLdlPOdHSpHtYpq9S9abA5-Vpau_f2k1/view?usp=drivesdk",
+      "sha256_texto_extraido": "9c0fc411d885f160c89c146945dec98a42d4e1bd6ca9262361d61a5c95612d12"
+    },
+    {
+      "lectura": 3,
+      "archivo": "AnM1-LFM-lect03.pdf",
+      "url": "https://drive.google.com/file/d/10DTc7PGG_9Ak_mubCeILya0LqvQYfXqP/view?usp=drivesdk",
+      "sha256_texto_extraido": "1c48a3e11f47c8b3796db576cca20209aa91a7d4490b019a72bdaec10f3e6428"
+    },
+    {
+      "lectura": 4,
+      "archivo": "AnM1-LFM-lect04.pdf",
+      "url": "https://drive.google.com/file/d/1SrrjTbQ6kvz35LWA7xVaLKQzd9N3oQDy/view?usp=drivesdk",
+      "sha256_texto_extraido": "c4de642c6f95b35439252472c65023d5ab0b02d85fb923370913952042fac11c"
+    },
+    {
+      "lectura": 5,
+      "archivo": "AnM1-LFM-lect05.pdf",
+      "url": "https://drive.google.com/file/d/1h-QKm2sehp2HMdndjQASEG9EE4KZ-S-r/view?usp=drivesdk",
+      "sha256_texto_extraido": "61cd4eaa1e1d625881ec4781ab36d9ceb35686194063ee575e6ccc4006bfaaa9"
+    },
+    {
+      "lectura": 6,
+      "archivo": "AnM1-LFM-lect06.pdf",
+      "url": "https://drive.google.com/file/d/1W5yfYlCY4D_ehuKnDx_1ueWJRQqOS_eO/view?usp=drivesdk",
+      "sha256_texto_extraido": "11f19e0f5d6a3858f131a0c7ad290972f2c2d2fc2530230721bbc3511c124aa4"
+    },
+    {
+      "lectura": 7,
+      "archivo": "AnM1-LFM-lect07.pdf",
+      "url": "https://drive.google.com/file/d/1fZgu0ecJgyVmPj73GPlCDFDw2cTECvLh/view?usp=drivesdk",
+      "sha256_texto_extraido": "89f5741a7fda7c40d34af79a71cba399f0ebd971eac15ffb1da89f12ba66d4de"
+    },
+    {
+      "lectura": 8,
+      "archivo": "AnM1-LFM-lect08.pdf",
+      "url": "https://drive.google.com/file/d/11frCoIexlDiPtSkM8OhNj4PPvCPFBTU6/view?usp=drivesdk",
+      "sha256_texto_extraido": "1c67891eef803b93547d28a0e5a4bbd7b40c5e92d7220e8f5a9d832341ee4ecb"
+    },
+    {
+      "lectura": 9,
+      "archivo": "AnM1-LFM-lect09.pdf",
+      "url": "https://drive.google.com/file/d/1NlhVoG9Wz2noy4INSTQZKC8_oPp4Wdxb/view?usp=drivesdk",
+      "sha256_texto_extraido": "17f083c88983210643c92929dcad331750195ab3a7f28e04b43c58440e2a5191"
+    },
+    {
+      "lectura": 10,
+      "archivo": "AnM1-LFM-lect10.pdf",
+      "url": "https://drive.google.com/file/d/1LzeKFDBBWBJdUr0PbA28ULoGE8YWAQtb/view?usp=drivesdk",
+      "sha256_texto_extraido": "cd3ab4f8ec153aa9025642ed8ba74a6cfc389e7b7ec7215737b68a973f15743c"
+    },
+    {
+      "lectura": 11,
+      "archivo": "AnM1-LFM-lect11.pdf",
+      "url": "https://drive.google.com/file/d/1ZGkUcHcrosChPcA8ksPTKSrL7k6Hqyms/view?usp=drivesdk",
+      "sha256_texto_extraido": "6949d79ef9dbb37640286b72a754360aef91250533c03c61c5370f24bea208c7"
+    },
+    {
+      "lectura": 12,
+      "archivo": "AnM1-LFM-lect12.pdf",
+      "url": "https://drive.google.com/file/d/18xkGy9dhFkTK-VyoAsaAef3VB63ivIdn/view?usp=drivesdk",
+      "sha256_texto_extraido": "c91b59cc9c40cf0431458016229423262dd79718e78bbc5da5b4c91047d1eb9f"
+    },
+    {
+      "lectura": 13,
+      "archivo": "AnM1-LFM-lect13.pdf",
+      "url": "https://drive.google.com/file/d/1qphU_8tGmTX789k8ffZC3fVmuj1TuREf/view?usp=drivesdk",
+      "sha256_texto_extraido": "94d62ddd686d37212150d1df7c42b40e57af799015154cefa675654844d63663"
+    },
+    {
+      "lectura": 14,
+      "archivo": "AnM1-LFM-lect14.pdf",
+      "url": "https://drive.google.com/file/d/1t3oF8DFvn_rj2VK4d5hSn3spGmOUfoXm/view?usp=drivesdk",
+      "sha256_texto_extraido": "545b9061082941efaacb1f49b6e65f2d7f591bd2ed7c307faa95373993c16b35"
+    },
+    {
+      "lectura": 15,
+      "archivo": "AnM1-LFM-lect15.pdf",
+      "url": "https://drive.google.com/file/d/1z7fATjjs4oybutPIMZiAOdH6ZgKelVJ5/view?usp=drivesdk",
+      "sha256_texto_extraido": "c79ae999f17938da4c4aea507e27847b7f7b9d9c8628235eff57f145be01314d"
+    },
+    {
+      "lectura": 16,
+      "archivo": "AnM1-LFM-lect16.pdf",
+      "url": "https://drive.google.com/file/d/1p9KJ2i5wbImDYK_Q9ySepndTredcEyjf/view?usp=drivesdk",
+      "sha256_texto_extraido": "ae140cdcf8947ae57e5d47e1cbd5c1d437761516ff6b8438a14e37f06b166705"
+    },
+    {
+      "lectura": 17,
+      "archivo": "AnM1-LFM-lect17.pdf",
+      "url": "https://drive.google.com/file/d/1-UxP9QRNKK--6S48YfgG-ELuIwHFBjNe/view?usp=drivesdk",
+      "sha256_texto_extraido": "930dc1a1b0634de60e5dc0979918183382b557b82f50ed7f013dc5e97ba9fb18"
+    },
+    {
+      "lectura": 18,
+      "archivo": "AnM1-LFM-lect18.pdf",
+      "url": "https://drive.google.com/file/d/1hHggYKiTtBdc9GkODDGi79UUNKUuwCZu/view?usp=drivesdk",
+      "sha256_texto_extraido": "56b3d7f7071b258147a881f94af7df516e869d00b71acfa0b9e882a8008d4e63"
+    },
+    {
+      "lectura": 19,
+      "archivo": "AnM1-LFM-lect19.pdf",
+      "url": "https://drive.google.com/file/d/1-m9t1qFb6i0yIQNxUe0sbOVFJtxfdPA-/view?usp=drivesdk",
+      "sha256_texto_extraido": "9202d66b85fcd8d10197b31bc12a00a8874298005a1118493dc6d1faa83f2774"
+    },
+    {
+      "lectura": 20,
+      "archivo": "AnM1-LFM-lect20.pdf",
+      "url": "https://drive.google.com/file/d/19Xg6auOujJbZyU_jJKztf5xLelBMIm0q/view?usp=drivesdk",
+      "sha256_texto_extraido": "4be04c0700668e9cae702cac216d99d3cee6f5c0412553b26e76eca597a761cf"
+    },
+    {
+      "lectura": 21,
+      "archivo": "AnM1-LFM-lect21.pdf",
+      "url": "https://drive.google.com/file/d/1hi12h0Q8HAFVmJfnt8CL1Ck8V1wTyFN1/view?usp=drivesdk",
+      "sha256_texto_extraido": "8114a34769a5462fcfd62110892621abd6bda71f8fe8efa6a59638dc5902f325"
+    },
+    {
+      "lectura": 22,
+      "archivo": "AnM1-LFM-lect22.pdf",
+      "url": "https://drive.google.com/file/d/17UNfQHe7T8tAiqXX9uFwiWGLFkaTmk1s/view?usp=drivesdk",
+      "sha256_texto_extraido": "2be70efcbd7ff79f388438fb6b3c939d7a271d6485b00e0149368f7979d0eefb"
+    },
+    {
+      "lectura": 23,
+      "archivo": "AnM1-LFM-lect23.pdf",
+      "url": "https://drive.google.com/file/d/1WRyuqzjlEP-DhNuZ0VZJ128JFA86Gbkz/view?usp=drivesdk",
+      "sha256_texto_extraido": "a0b8b229518a532d949dafe281ef0ad47b391c475a8336268b40d0231deba9db"
+    },
+    {
+      "lectura": 24,
+      "archivo": "AnM1-LFM-lect24.pdf",
+      "url": "https://drive.google.com/file/d/1psfXhsHpKqD0vXaPo9btTvcIGMi21GnQ/view?usp=drivesdk",
+      "sha256_texto_extraido": "e6f1d4afb7cec504ca005ed996dc4c7ed1d73ee6bbc1f258330a92006a6bdf2e"
+    },
+    {
+      "lectura": 25,
+      "archivo": "AnM1-LFM-lect25.pdf",
+      "url": "https://drive.google.com/file/d/1QcqLGcr6RTmL2Uoxi-86M8xcElF09aY4/view?usp=drivesdk",
+      "sha256_texto_extraido": "75816ca9d25c9d8f5ae0b8c5ecbf8cff3ead8fb7b8b79e4f25adad4e6d3ec43f"
+    },
+    {
+      "lectura": 26,
+      "archivo": "AnM1-LFM-lect26.pdf",
+      "url": "https://drive.google.com/file/d/1JoYngzDtTdoM0aO1iLA3OMVgBI3fQEh2/view?usp=drivesdk",
+      "sha256_texto_extraido": "050818d25aed7b8d10ffb8593bb48a4d4f3932b59ba062e63b6d2a2d91fc66da"
+    },
+    {
+      "lectura": 27,
+      "archivo": "AnM1-LFM-lect27.pdf",
+      "url": "https://drive.google.com/file/d/1-i4MilU64b3cZfi9MN6Vnq0Gj2PwEkdw/view?usp=drivesdk",
+      "sha256_texto_extraido": "eb1b4425b9959797af1e173a04fc75066ff10593502bec85f053b92679679df7"
+    },
+    {
+      "lectura": 28,
+      "archivo": "AnM1-LFM-lect28.pdf",
+      "url": "https://drive.google.com/file/d/1_iXBdf5kDzwIgaRlxMuFY9K-VmKtbtI4/view?usp=drivesdk",
+      "sha256_texto_extraido": "1873f782a4be0ce671cf1cfa56f55c6e2e953dc5a7139083c31490c00e587a21"
+    },
+    {
+      "lectura": 29,
+      "archivo": "AnM1-LFM-lect29.pdf",
+      "url": "https://drive.google.com/file/d/1ALngPrSuWIIrsg9EWxwKagnsjgcgtX-x/view?usp=drivesdk",
+      "sha256_texto_extraido": "34424d796fd55f3a8d3c78890d23954bd561563bcd16921bba47ca66683c7310"
+    },
+    {
+      "lectura": 30,
+      "archivo": "AnM1-LFM-lect30.pdf",
+      "url": "https://drive.google.com/file/d/1hvvE2K3k6hhgxzK3jzo2Uq-1kzwu6EBU/view?usp=drivesdk",
+      "sha256_texto_extraido": "6428be9155b7de3ac76f3dd2ba4110321b79ff8962cac39cedf792a263f2c454"
+    },
+    {
+      "lectura": 31,
+      "archivo": "AnM1-LFM-lect31.pdf",
+      "url": "https://drive.google.com/file/d/1wFBsNxzx5APIiluYQfxS-QPSFb7uyOUx/view?usp=drivesdk",
+      "sha256_texto_extraido": "8c1af16f8e7c5db38baaeaf8e222ca988ad916ca19cd4b3b18b75a477f42d342"
+    },
+    {
+      "lectura": 32,
+      "archivo": "AnM1-LFM-lect32.pdf",
+      "url": "https://drive.google.com/file/d/1DCDqlXeeGngEm_29dNuL9NWsDoHC-4w6/view?usp=drivesdk",
+      "sha256_texto_extraido": "fb5bb0245bcc51e8bcc7d85ad448b750552fba9ceab7d7a51719b383a9fd6a72"
+    }
+  ]
+}

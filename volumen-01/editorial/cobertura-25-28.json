@@ -1,0 +1,50 @@
+{
+  "bloque": "25-28",
+  "estado": "redaccion_completa",
+  "capitulos": [
+    {
+      "capitulo": 25,
+      "archivo": "chapters/25.tex",
+      "ejercicios_originales": [],
+      "ejercicios_resueltos": [],
+      "teoria": ["metrica uniforme", "familia acotada e imagenes conjuntamente acotadas", "completitud de B(S,Y)", "cerradura de C_b(X,Y)", "norma uniforme y Banach", "distincion C_c, C_0, C_b"],
+      "correcciones": ["Se sustituye la prueba innecesariamente indirecta del lema de diametros por una cota respecto de una funcion fija.", "Se completa la prueba de completitud demostrando expresamente la convergencia uniforme al limite.", "Se corrige la identificacion de funciones continuas acotadas con funciones de soporte compacto."],
+      "ampliaciones": ["C_0 cerrado en C_b y densidad de C_c en C_0 para espacios metricos localmente compactos, con construccion de corte explicita."],
+      "demostraciones_pendientes": []
+    },
+    {
+      "capitulo": 26,
+      "archivo": "chapters/26.tex",
+      "ejercicios_originales": [1,2,3,4,5,6,7,8],
+      "ejercicios_resueltos": [1,2,3,4,5,6,7,8],
+      "incisos": {"5": ["i", "ii"]},
+      "teoria": ["convergencia puntual y uniforme", "Dini", "series y criterio M", "integrabilidad Riemann del limite uniforme", "intercambio integral limite", "derivacion del limite sin exigir derivadas continuas"],
+      "correcciones": ["La implicacion correcta es uniforme implica puntual.", "El criterio M de funciones vectoriales exige completitud del espacio de llegada.", "Se usa desigualdad del valor medio compleja; la igualdad del valor medio compleja de la fuente es falsa.", "Definicion uniforme mediante cuantificadores permite primeros errores no acotados sin cambiar la convergencia.", "Ejercicio 3: continuidad de g en una bola no basta. Se dan contraejemplos en bola abierta real y bola cerrada de ell^2, y se demuestra la version con continuidad uniforme.", "Ejercicio 5(i): se define el valor en cero y se distingue serie absolutamente convergente de sucesion de terminos.", "Ejercicio 7: las sumas parciales deben estar uniformemente acotadas en dominio e indice; los multiplicadores ordenados son reales aun para V complejo.", "Ejercicio 8: se atiende el caso de valores negativos, en el que ambas series divergen, antes de probar condensacion para valores no negativos. No es preciso imponer positividad adicional para la equivalencia."],
+      "ampliaciones": ["El reciproco del ejercicio 6 falla en R y se demuestra que vale en un dominio metrico compacto.", "Estimaciones explicitas de errores de colas de series."],
+      "demostraciones_pendientes": []
+    },
+    {
+      "capitulo": 27,
+      "archivo": "chapters/27.tex",
+      "ejercicios_originales": [1,2,3,4,5],
+      "ejercicios_resueltos": [1,2,3,4,5],
+      "incisos": {"2": ["i", "ii"], "5": ["i", "ii", "iii"]},
+      "teoria": ["equicontinuidad puntual y uniforme", "potencias x^n", "acotacion uniforme obtenida de equicontinuidad y acotacion puntual", "extension de convergencia desde conjunto denso", "convergencia puntual equicontinua implica uniforme en compacto", "Arzela-Ascoli real y complejo"],
+      "correcciones": ["La compacidad relativa se toma en C(X), no en el dominio X.", "Se justifica la acotacion conjunta, que necesita equicontinuidad ademas de compacidad y acotacion puntual.", "La estimacion central en el paso desde el conjunto denso se evalua en el punto del conjunto denso.", "Se explican los indices crecientes de la diagonal y la compacidad de la clausura, no solamente la extraccion para sucesiones de A."],
+      "ampliaciones": ["Completitud de C^1 con su norma de funcion y derivada.", "Prueba de la propiedad de vecindades de la diagonal compacta requerida por ejercicio2."],
+      "demostraciones_pendientes": []
+    },
+    {
+      "capitulo": 28,
+      "archivo": "chapters/28.tex",
+      "ejercicios_originales": [1,2,3,4],
+      "ejercicios_resueltos": [1,2,3,4],
+      "teoria": ["algebras y ejemplos incluidos cuaternios", "subalgebras y separacion", "aproximacion del valor absoluto con polinomios sin termino constante", "interpolacion en dos puntos", "Stone-Weierstrass real", "Stone-Weierstrass complejo"],
+      "correcciones": ["Unidad bilateral en algebra no conmutativa.", "Los automorfismos acotados son un grupo, no un algebra; I y -I proporcionan contraejemplo a cerradura bajo suma.", "C(X) solo lleva norma uniforme finita si sus funciones son acotadas; se usa C_b(X), que coincide con C(X) en compacto.", "No se requiere que los dos valores interpolados sean distintos.", "La prueba mantiene distinguida A de su clausura B.", "En el paso de interpolacion se prescribe f(y) en y y la cota global se compara con f(z), no con f(x).", "El algebra de ejercicio4 se escribe como polinomios en e^{i theta}, con exponente k ligado al indice del sumando."],
+      "ampliaciones": ["Recurrencia q_(n+1)=q_n+(t^2-q_n^2)/2 mas Dini prueba la aproximacion de abs sin circularidad.", "Distancia exacta uno entre conjugacion z-bar y polinomios analiticos en la circunferencia."],
+      "demostraciones_pendientes": []
+    }
+  ],
+  "referencias_cruzadas": ["chap:25", "chap:26", "ch25:metrica", "ch25:unionacotada", "ch25:completitud", "ch25:cerradocb", "ch26:dini", "ch26:criteriom", "ch26:integracion", "ch26:tvmdesigualdad", "ch26:derivacion", "ch26:ej1", "ch27:equicontuniforme", "ch27:acotacioncomun", "ch27:denso", "ch27:puntualuniforme", "ch27:ascoli", "ch28:abspolinomios", "ch28:interpolacion", "ch28:stone"],
+  "referencias_cruzadas_pendientes": []
+}

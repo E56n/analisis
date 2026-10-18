@@ -1,0 +1,285 @@
+\chapter{Bases ortonormales y desarrollos de Fourier}\label{chap:31}
+\index{base!ortonormal}\index{Fourier, coeficientes de}
+
+Una base de álgebra lineal expresa cada vector mediante una combinación \emph{finita}. En análisis necesitamos permitir límites de combinaciones finitas. La ortogonalidad hace controlable ese límite: la norma de una cola se calcula sumando cuadrados de coeficientes. Desarrollaremos la lectura 31 de \cite{valencia}, incluyendo el argumento de existencia, la construcción explícita de Gram--Schmidt y el ejercicio de Müntz en la norma integral que realmente aparece en el enunciado.
+
+\section{Qué significa aquí una base}
+Una \emph{base de Hamel} es un conjunto linealmente independiente cuyo espacio generado algebraicamente es todo el espacio. Por ejemplo, los vectores coordenados $(e_n)$ no constituyen una base de Hamel de $\ell^{2}$: una combinación finita tiene soporte finito, mientras $(1/n)$ tiene infinitas coordenadas no nulas.
+
+\begin{definicion}
+Un conjunto es \emph{total} si el cierre de su espacio generado es todo el espacio. Una \emph{base ortonormal} de un espacio con producto interno es un conjunto ortonormal total. En el espacio cero, la base ortonormal es el conjunto vacío.
+\end{definicion}
+\index{base!de Hamel}\index{conjunto total}
+La independencia lineal de un conjunto ortonormal se verifica tomando productos internos: si $\sum_{j=1}^{n}\alpha_je_j=0$, el producto con $e_k$ da $\alpha_k=0$. No conviene llamar simplemente «base» a cualquier conjunto independiente total: sin ortogonalidad, estas condiciones no garantizan un desarrollo en serie con coeficientes únicos. Una base de Schauder incorpora precisamente propiedades adicionales de convergencia y unicidad. En este capítulo siempre escribiremos \emph{base ortonormal} cuando nos refiramos a la noción analítica.
+
+\begin{teorema}\label{ch31:existencia}
+Todo espacio de Hilbert tiene una base ortonormal.
+\end{teorema}
+\begin{proof}
+Consideremos todos los subconjuntos ortonormales de $H$, incluido el vacío, ordenados por inclusión. Si $\mathcal C$ es una cadena, su unión es ortonormal: un vector de la unión pertenece a algún miembro y tiene norma uno; dos vectores de la unión pertenecen a dos miembros comparables de la cadena y, por tanto, ambos están en uno de ellos. Si son distintos, son ortogonales. La unión es una cota superior. El lema de Zorn proporciona un conjunto ortonormal maximal $E$.
+
+Sea $M=\cl{\spanop E}$. Es un subespacio cerrado de Hilbert, por lo que tiene proyección ortogonal. Si $M\ne H$, elijamos $x\notin M$ y sea $r=x-P_Mx$. Entonces $r\ne0$ y $r\perp M$. El vector
+\[
+ e=\frac{r}{\norm r}
+\]
+tiene norma uno y es perpendicular a cada miembro de $E$. Por tanto $E\cup\{e\}$ es ortonormal, contradiciendo la maximalidad. La normalización es necesaria: el residuo $r$ no tiene, en general, norma uno. Así $M=H$ y $E$ es una base ortonormal. Para $H=\{0\}$, el mismo argumento da $E=\varnothing$.
+\end{proof}
+
+\section{Coordenadas y teorema de Riesz--Fischer}
+\begin{teorema}[Parseval y expansión]\label{ch31:parseval}
+\index{Parseval, identidad de}
+Si $E=(e_s)_{s\in S}$ es una base ortonormal de $H$, entonces
+\[
+ \norm{x}^{2}=\sum_{s\in S}|\ip{x}{e_s}|^{2},\qquad
+ x=\sum_{s\in S}\ip{x}{e_s}e_s.
+\]
+La segunda suma converge en norma: para todo $\eps>0$ existe $F_0\subset S$ finito tal que cualquier suma sobre un conjunto finito $F\supset F_0$ dista menos de $\eps$ de $x$.
+\end{teorema}
+\begin{proof}
+La identidad de Parseval del ejercicio 2 del capítulo \ref{chap:30}, aplicada a $M=H$, da la primera fórmula. Para $p_F=\sum_{s\in F}\ip{x}{e_s}e_s$, la ortogonalidad da
+\[
+ \norm{x-p_F}^{2}=\norm{x}^{2}-\sum_{s\in F}|\ip{x}{e_s}|^{2}.
+\]
+Como las sumas finitas tienen supremo $\norm{x}^{2}$, existe $F_0$ para el cual la diferencia es menor que $\eps^{2}$. Al ampliar $F_0$ la suma solo aumenta, de modo que la misma estimación vale para todo $F\supset F_0$. Además el soporte de los coeficientes es numerable por Bessel; si se enumera, se obtiene una serie ordinaria con el mismo límite, independiente del orden.
+\end{proof}
+
+\begin{teorema}[Riesz--Fischer]\label{ch31:rieszfischer}
+\index{Riesz--Fischer, teorema de}
+La aplicación
+\[
+ U:H\longrightarrow\ell^{2}(S),\qquad Ux=(\ip{x}{e_s})_{s\in S},
+\]
+es una biyección lineal que preserva normas y productos internos.
+\end{teorema}
+\begin{proof}
+Bessel garantiza que $Ux\in\ell^{2}(S)$. La linealidad en la primera entrada prueba que $U$ es lineal, y Parseval prueba $\norm{Ux}_2=\norm{x}$. En particular, es inyectiva.
+
+Para la suprayectividad, sea $a\in\ell^{2}(S)$. Si su soporte es finito, $x=\sum_s a_se_s$ tiene las coordenadas requeridas. Si es infinito, enumerémoslo como $s_1,s_2,\dots$ y definamos $x_N=\sum_{j=1}^{N}a_{s_j}e_{s_j}$. Para $M>N$, Pitágoras da
+\[
+ \norm{x_M-x_N}^{2}=\sum_{j=N+1}^{M}|a_{s_j}|^{2}\longrightarrow0
+\]
+cuando $N\to\infty$, uniformemente para $M>N$. Por completitud existe $x=\lim_Nx_N\in H$. Para cada $s=s_j$, $\ip{x_N}{e_s}=a_s$ una vez que $N\geq j$; la continuidad del producto interno da $\ip{x}{e_s}=a_s$. Si $s$ está fuera del soporte, todos esos productos son cero y también lo es su límite. Luego $Ux=a$.
+
+Finalmente, si $x_F,y_F$ son truncamientos sobre un conjunto finito común, $\ip{x_F}{y_F}=\sum_{s\in F}\ip{x}{e_s}\overline{\ip{y}{e_s}}$. Las aproximaciones en norma y la continuidad del producto interno permiten pasar al límite. La serie del lado derecho converge absolutamente por Cauchy--Schwarz en $\ell^{2}(S)$. Por ello $\ip{Ux}{Uy}_{\ell^{2}(S)}=\ip{x}{y}$.
+\end{proof}
+Los escalares $\ip{x}{e_s}$ se llaman \emph{coeficientes de Fourier} respecto de $E$. Esta denominación no exige funciones trigonométricas: describe cualquier sistema de coordenadas ortonormales.
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 31, ejercicio 1: Gram--Schmidt]
+\index{Gram--Schmidt, procedimiento de}
+Para una familia finita o numerable linealmente independiente $v_1,v_2,\dots$ en un espacio con producto interno, definir
+\[
+ w_1=v_1,\qquad
+ w_{n+1}=v_{n+1}-\sum_{k=1}^{n}\frac{\ip{v_{n+1}}{w_k}}{\norm{w_k}^{2}}w_k.
+\]
+Probar la ortogonalidad, la no nulidad, la igualdad de los espacios generados y la existencia de una base ortonormal en todo espacio prehilbertiano separable.
+\end{ejercicio}
+\begin{solucion}
+Procedemos por inducción. $w_1\ne0$ por independencia. Supongamos que $w_1,\dots,w_n$ son no nulos, ortogonales y que generan lo mismo que $v_1,\dots,v_n$. Para $j\leq n$,
+\[
+ \ip{w_{n+1}}{w_j}
+ =\ip{v_{n+1}}{w_j}
+ -\sum_{k=1}^{n}\frac{\ip{v_{n+1}}{w_k}}{\norm{w_k}^{2}}\ip{w_k}{w_j}=0.
+\]
+Si $w_{n+1}=0$, la fórmula expresaría $v_{n+1}$ en el espacio generado por $v_1,\dots,v_n$, contradicción. La misma fórmula expresa $w_{n+1}$ mediante $v_1,\dots,v_{n+1}$ y, despejándola, expresa $v_{n+1}$ mediante $w_1,\dots,w_{n+1}$. Esto prueba la igualdad de los espacios generados en cada etapa y, tomando uniones, para las familias enteras. La familia $(w_n)$ es independiente porque es ortogonal y no tiene vectores cero. Finalmente, $e_n=w_n/\norm{w_n}$ es ortonormal y conserva el espacio generado.
+
+Si $V$ es separable y no nulo, elijamos una sucesión densa $(d_n)$. Recorremos esa lista y conservamos $d_n$ únicamente cuando no pertenece al espacio generado por los elementos ya conservados. Cada elemento descartado pertenece al espacio generado por los conservados anteriores. La familia resultante es independiente, finita o numerable, y su espacio generado contiene toda la lista densa. Gram--Schmidt produce una familia ortonormal total. Si $V=\{0\}$, se utiliza la familia vacía. No se necesita completitud porque cada etapa utiliza solamente sumas finitas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 2: primeros polinomios de Legendre]
+\index{Legendre, polinomios de}
+Aplicar Gram--Schmidt a $1,x,x^{2},x^{3},x^{4}$ con $\ip{f}{g}=\int_{-1}^{1}f(x)\overline{g(x)}\,dx$.
+\end{ejercicio}
+\begin{solucion}
+Usaremos $\int_{-1}^{1}x^{2j+1}\,dx=0$ y $\int_{-1}^{1}x^{2j}\,dx=2/(2j+1)$. La paridad evita productos entre un polinomio par y uno impar. Los residuos sin normalizar son
+\begin{align*}
+ w_0&=1, &\norm{w_0}^{2}&=2,\\
+ w_1&=x, &\norm{w_1}^{2}&=2/3,\\
+ w_2&=x^{2}-\tfrac13, &\norm{w_2}^{2}&=8/45,\\
+ w_3&=x^{3}-\tfrac35x, &\norm{w_3}^{2}&=8/175,\\
+ w_4&=x^{4}-\tfrac67x^{2}+\tfrac3{35}, &\norm{w_4}^{2}&=128/11025.
+\end{align*}
+En efecto, la proyección de $x^{2}$ sobre $1$ es $(2/3)/2=1/3$. La proyección de $x^{3}$ sobre $x$ tiene coeficiente $(2/5)/(2/3)=3/5$. Para $x^{4}$, la proyección sobre $1$ es $1/5$ y
+\[
+ \frac{\ip{x^{4}}{w_2}}{\norm{w_2}^{2}}
+ =\frac{2/7-2/15}{8/45}=\frac67.
+\]
+Así $w_4=x^{4}-1/5-(6/7)(x^{2}-1/3)$, que es la expresión escrita. Las normas se obtienen expandiendo los cuadrados; por ejemplo,
+\[
+ \norm{w_2}^{2}=\frac25-\frac49+\frac29=\frac8{45},\qquad
+ \norm{w_3}^{2}=\frac27-\frac{12}{25}+\frac6{25}=\frac8{175}.
+\]
+Para $w_4$, usar la ortogonalidad de sus proyecciones reduce el cálculo a
+\[
+ \norm{w_4}^{2}=\frac29-\left(\frac15\right)^2 2
+ -\left(\frac67\right)^2\frac8{45}=\frac{128}{11025}.
+\]
+La familia ortonormal resultante es
+\begin{align*}
+ e_0&=\frac1{\sqrt2}, &
+ e_1&=\sqrt{\frac32}\,x,\\
+ e_2&=\sqrt{\frac52}\,\frac{3x^{2}-1}{2}, &
+ e_3&=\sqrt{\frac72}\,\frac{5x^{3}-3x}{2},\\
+ e_4&=\frac3{\sqrt2}\,\frac{35x^{4}-30x^{2}+3}{8}.
+\end{align*}
+Los factores polinómicos con valor uno en $x=1$ son $P_0,\dots,P_4$, los primeros polinomios de Legendre. Si continuamos Gram--Schmidt sobre todos los monomios, obtenemos una familia ortonormal total en $C([-1,1])$ para esta norma: los polinomios son uniformemente densos por el teorema de aproximación y $\norm{f}_2\leq\sqrt2\norm{f}_\infty$. Las cinco funciones escritas son solo el comienzo de esa familia.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 3]
+Probar que $(e^{inx})_{n\in\Z}$ es ortonormal en $C([-\pi,\pi])$ con el producto interno normalizado.
+\end{ejercicio}
+\begin{solucion}
+Con $\ip{f}{g}=(2\pi)^{-1}\int_{-\pi}^{\pi}f\bar g$, se tiene
+\[
+ \ip{e^{inx}}{e^{imx}}=\frac1{2\pi}\int_{-\pi}^{\pi}e^{i(n-m)x}\,dx.
+\]
+Si $n=m$, la integral es $2\pi$ y el resultado es uno. Si $k=n-m\ne0$, una primitiva es $e^{ikx}/(ik)$; sus valores en los extremos coinciden porque $e^{ik\pi}=e^{-ik\pi}=(-1)^k$. La integral es cero. Sin el factor $1/(2\pi)$, las funciones seguirían siendo ortogonales, pero tendrían norma $\sqrt{2\pi}$ y habría que dividirlas por ese número para normalizarlas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 4: Müntz en norma integral]
+\index{Muntz@Müntz, teorema de}\index{Gram, determinante de}
+Sean $1\leq n_1<n_2<\cdots$ enteros y $M_k=\spanop\{x^{n_1},\dots,x^{n_k}\}\subset C([0,1])$, con $\norm{f}_2^{2}=\int_0^1|f|^{2}$. Probar que $\bigcup_kM_k$ es denso para esta norma si y solo si $\sum_k1/n_k=\infty$. Desarrollar (i) el cociente de determinantes de Gram y la fórmula de distancia; (ii) el criterio de las series logarítmicas con sus hipótesis; (iii) el análisis del producto resultante.
+\end{ejercicio}
+\begin{solucion}
+La norma es esencial: se trata de densidad en norma integral, no uniforme. Todos los monomios utilizados se anulan en cero, por lo que no podrían aproximar uniformemente la constante uno. En norma integral, un valor en un solo punto no impide aproximar.
+
+\emph{(i), reducción a monomios.} La densidad implica $\dist(x^m,M_k)\to0$ para cada entero $m\geq0$. Recíprocamente, si todos los monomios admiten tales aproximaciones, también todo polinomio: para $p=\sum_{j=0}^{r}a_jx^j$, se eligen aproximantes $q_j$ con errores suficientemente pequeños y se toma un mismo $M_k$ que contenga todos ellos; entonces $\norm{p-\sum a_jq_j}_2\leq\sum|a_j|\norm{x^j-q_j}_2$. La aproximación uniforme por polinomios implica aproximación en norma integral, y demuestra densidad en $C([0,1])$.
+
+Si en la reducción se consideran únicamente $m\geq1$, todavía es suficiente: los polinomios $1-(1-x)^N$, sin término constante, aproximan a uno en norma integral porque
+\[
+ \int_0^1|(1-x)^N|^{2}\,dx=\frac1{2N+1}\longrightarrow0.
+\]
+Así la convención para $\N$ no altera esta reducción, pero la suma $\sum1/n_k$ exige exponentes positivos.
+
+\emph{La fórmula de Gram.} Para vectores independientes $u_1,\dots,u_k$, sea $G=(\ip{u_i}{u_j})$ y sea $u$ otro vector. Restar del último vector su proyección $p$ sobre $\spanop(u_1,\dots,u_k)$ equivale a operaciones de filas y columnas que no cambian el determinante de Gram: se resta a la última fila la combinación correspondiente y a la última columna su conjugada. El último vector queda $r=u-p$, perpendicular a todos los anteriores. La nueva matriz es diagonal por bloques, con bloques $G$ y $\norm r^{2}$. Por ello
+\[
+ \dist(u,\spanop(u_1,\dots,u_k))^{2}
+ =\frac{\det\operatorname{Gram}(u_1,\dots,u_k,u)}{\det G}.
+\]
+El denominador es positivo: si $c\ne0$, $\sum c_iu_i\ne0$, y la forma cuadrática de Gram es su norma al cuadrado. En particular, $G$ es invertible.
+
+Para monomios de exponentes reales $a_i>-1/2$, las entradas son $1/(a_i+a_j+1)$. Usaremos la identidad de Cauchy
+\begin{equation}\label{ch31:cauchydet}
+ \det\left(\frac1{x_i+y_j}\right)_{i,j=1}^{r}
+ =\frac{\prod_{i<j}(x_j-x_i)(y_j-y_i)}{\prod_{i,j}(x_i+y_j)}.
+\end{equation}
+He aquí una justificación algebraica. Para $r=1$ es inmediata. Consideremos ambos miembros como funciones racionales de $x_r$, manteniendo las demás variables fijas y distintas, sin denominadores nulos. Sus únicas singularidades posibles son simples, en $x_r=-y_j$. El coeficiente del término $1/(x_r+y_j)$, llamado aquí \emph{residuo}, se calcula mediante el límite $\lim_{x_r\to-y_j}(x_r+y_j)R(x_r)$; no se necesita teoría de integración compleja. Expandiendo el determinante por su última fila, ese coeficiente es $(-1)^{r+j}$ veces el determinante de orden $r-1$ obtenido suprimiendo la fila $r$ y la columna $j$.
+
+En el cociente de productos, cancelamos el factor $x_r+y_j$ y sustituimos $x_r=-y_j$. Los factores $\prod_{i<r}(x_r-x_i)$ se convierten en $(-1)^{r-1}\prod_{i<r}(x_i+y_j)$ y cancelan los factores restantes de la columna $j$ del denominador. Al dividir los factores de la segunda Vandermonde que contienen $y_j$ por $\prod_{l\ne j}(y_l-y_j)$, queda el signo $(-1)^{j-1}$. El signo total es $(-1)^{r-1}(-1)^{j-1}=(-1)^{r+j}$; el resto es el cociente de orden $r-1$, igual al determinante correspondiente por inducción. Así los coeficientes de todas las singularidades coinciden. La diferencia tiene denominador factorizado en los factores $x_r+y_j$ y ninguno subsiste después de cancelar, por lo que es un polinomio. Ambos miembros tienden a cero cuando $x_r\to\infty$, de modo que ese polinomio es cero. Esto prueba la identidad por inducción; los casos restantes permitidos se obtienen por continuidad.
+
+Tomando $x_i=a_i$, $y_j=a_j+1$, obtenemos
+\[
+ \det\operatorname{Gram}(x^{a_1},\dots,x^{a_r})
+ =\frac{\prod_{i<j}(a_j-a_i)^2}
+ {\prod_i(2a_i+1)\prod_{i<j}(a_i+a_j+1)^2}.
+\]
+Al añadir el exponente $m$ y dividir los dos determinantes, todos los factores antiguos se cancelan y queda
+\begin{equation}\label{ch31:muntzdist}
+ \dist(x^m,M_k)^2
+ =\frac1{2m+1}\prod_{i=1}^{k}\frac{(n_i-m)^2}{(n_i+m+1)^2}.
+\end{equation}
+Si $m=n_i$ para algún índice, ambos lados son cero una vez que ese monomio pertenece a $M_k$; no es necesario aplicar la fórmula de determinante a una familia independiente ampliada en ese caso.
+
+\emph{(ii), el criterio logarítmico.} Para $a_n\geq0$, las series $\sum a_n$ y $\sum\log(1+a_n)$ convergen simultáneamente. En efecto, $\log(1+t)=\int_0^t(1+s)^{-1}\,ds$ da, para $0\leq t\leq1$,
+\[
+ \frac t2\leq\log(1+t)\leq t.
+\]
+Si $a_n\to0$, estas estimaciones comparan las colas. Si $a_n$ no tiende a cero, existe $\delta>0$ superado por infinitos términos y ambas series de términos no negativos divergen. La hipótesis de signo no puede omitirse. Por ejemplo, con
+\[
+ a_{2n-1}=\frac1{\sqrt{n+1}},\qquad a_{2n}=-\frac1{\sqrt{n+1}},
+\]
+la serie de $a_n$ converge a cero, pero la suma de cada par de logaritmos es $\log(1-1/(n+1))=\log(n/(n+1))$; las sumas pares de logaritmos son $-\log(N+1)$ y divergen a $-\infty$.
+
+\emph{(iii), conclusión.} Fijemos $m\geq0$ que no figure entre los $n_i$. Como $n_i\to\infty$, salvo un número finito de factores tenemos $n_i>m$ y
+\[
+ \frac{n_i-m}{n_i+m+1}=1-b_i,
+ \qquad b_i=\frac{2m+1}{n_i+m+1}\in(0,1).
+\]
+Cuando $b_i\leq1/2$, la fórmula integral para el logaritmo da
+\[
+ b_i\leq-\log(1-b_i)=\int_0^{b_i}\frac{dt}{1-t}\leq2b_i.
+\]
+Además $b_i/(1/n_i)\to2m+1>0$. Tomando logaritmos en \eqref{ch31:muntzdist},
+\[
+ \log\dist(x^m,M_k)^2=C_m+2\sum_{i=i_0}^{k}\log(1-b_i),
+\]
+con $C_m$ finito. Por las comparaciones anteriores, esta expresión tiende a $-\infty$ si y solo si $\sum_i1/n_i$ diverge. En tal caso la distancia tiende a cero para todo $m$ ausente; para los exponentes presentes la distancia ya es cero desde alguna etapa. La reducción de (i) prueba densidad.
+
+Si $\sum_i1/n_i<\infty$, tomemos $m=0$, que no aparece porque todos los $n_i$ son positivos. Los logaritmos convergen a un número finito, así que \eqref{ch31:muntzdist} tiene límite estrictamente positivo: la constante uno no puede aproximarse. Esto prueba la necesidad. También aclara una precisión del inciso original: para $m$ que ya aparece en la lista, la distancia es cero independientemente de la convergencia de la serie; la equivalencia logarítmica se aplica a exponentes ausentes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 5]
+Probar que un espacio de Hilbert es separable si y solo si tiene una base ortonormal a lo sumo numerable.
+\end{ejercicio}
+\begin{solucion}
+Si es separable, el procedimiento con una lista densa del ejercicio 1 produce la base requerida. Si tiene una base $E$ finita o numerable, consideremos todas sus combinaciones finitas con coeficientes racionales en el caso real, o de la forma $a+ib$ con $a,b\in\Q$ en el caso complejo. Ese conjunto es numerable: hay una cantidad numerable de conjuntos finitos de índices y de listas finitas de coeficientes de ese tipo. Es denso en $\spanop E$, porque en una combinación finita pueden aproximarse sus coeficientes y Pitágoras controla el error por la suma de sus cuadrados. Como $\spanop E$ es denso en $H$, también lo es ese conjunto numerable. El espacio cero tiene el conjunto denso $\{0\}$.
+
+Además, cualquier conjunto ortonormal de un espacio separable es numerable: las bolas de radio $1/3$ centradas en sus elementos son disjuntas, ya que la distancia entre dos elementos distintos es $\sqrt2$. Cada bola contiene un elemento de una lista densa; asignando el primero de la lista que pertenece a ella se obtiene una inyección en $\N$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 6]
+Calcular los cinco primeros coeficientes respecto de $e_0,\dots,e_4$ del ejercicio 2 para (i) $x^2+x+1$, (ii) $\sin(\pi x)$, (iii) $\cos(\pi x)$ y (iv) $|x|$.
+\end{ejercicio}
+\begin{solucion}
+Los resultados, en el orden $c_j=\ip{f}{e_j}$, son
+\[
+\begin{array}{c|ccccc}
+ f&c_0&c_1&c_2&c_3&c_4\\ \hline
+ x^2+x+1&4\sqrt2/3&\sqrt{2/3}&\frac23\sqrt{2/5}&0&0\\[2pt]
+ \sin(\pi x)&0&\sqrt6/\pi&0&\sqrt{14}(\pi^{-1}-15\pi^{-3})&0\\[2pt]
+ \cos(\pi x)&0&0&-3\sqrt{10}/\pi^2&0&\frac3{\sqrt2}(-20\pi^{-2}+210\pi^{-4})\\[2pt]
+ |x|&1/\sqrt2&0&\frac14\sqrt{5/2}&0&-1/(8\sqrt2)
+\end{array}
+\]
+Justificamos los cálculos para que la tabla no oculte el procedimiento.
+
+\emph{(i)} Integrando los monomios,
+\[
+ c_0=\frac1{\sqrt2}\left(\frac23+2\right)=\frac{4\sqrt2}3,
+ \qquad c_1=\sqrt{\frac32}\frac23=\sqrt{\frac23}.
+\]
+Como $\int P_2=0$ y $xP_2$ es impar,
+$c_2=\sqrt{5/2}\int x^2P_2=\sqrt{5/2}(4/15)=\frac23\sqrt{2/5}$.
+Los polinomios $e_3,e_4$ son ortogonales a todos los de grado menor, por construcción, y los dos coeficientes restantes son cero.
+
+\emph{(ii)} La paridad anula $c_0,c_2,c_4$. Integración por partes da
+\[
+ \int_{-1}^{1}x\sin(\pi x)\,dx=\frac2\pi,
+ \qquad
+ \int_{-1}^{1}x^3\sin(\pi x)\,dx=\frac2\pi-\frac{12}{\pi^3}.
+\]
+Para la segunda integral, la primera integración produce $2/\pi+(3/\pi)\int x^2\cos(\pi x)$ y otra integración da $\int x^2\cos(\pi x)=-4/\pi^2$. Sustituir en $P_3=(5x^3-3x)/2$ da $\int P_3\sin(\pi x)=2/\pi-30/\pi^3$, de donde salen los dos coeficientes no nulos.
+
+\emph{(iii)} La paridad anula $c_1,c_3$, y $\int_{-1}^{1}\cos(\pi x)=0$ anula $c_0$. Las integraciones por partes anteriores y una adicional dan
+\[
+ \int x^2\cos(\pi x)=-\frac4{\pi^2},\qquad
+ \int x^4\cos(\pi x)=-\frac8{\pi^2}+\frac{48}{\pi^4},
+\]
+donde ambas integrales se toman de $-1$ a $1$. Para la última, integrar una vez produce $-(4/\pi)\int x^3\sin(\pi x)$, que utiliza el cálculo previo. Insertar estos momentos en $P_2$ y $P_4$ produce $-6/\pi^2$ y $-20/\pi^2+210/\pi^4$, respectivamente; luego se multiplican por los factores de normalización.
+
+\emph{(iv)} Los coeficientes impares se anulan. Para los pares,
+\[
+ \int_{-1}^{1}|x|\,dx=1,\qquad
+ \int_{-1}^{1}|x|P_2(x)\,dx=\int_0^1x(3x^2-1)\,dx=\frac14,
+\]
+\[
+ \int_{-1}^{1}|x|P_4(x)\,dx
+ =\frac14\left(\frac{35}{6}-\frac{30}{4}+\frac32\right)=-\frac1{24}.
+\]
+Los factores $1/\sqrt2$, $\sqrt{5/2}$ y $3/\sqrt2$ dan la última fila.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 7]
+Si $E$ es ortonormal y $x\in H$, estimar el número $n_k$ de vectores $e\in E$ con $|\ip{x}{e}|>1/k$.
+\end{ejercicio}
+\begin{solucion}
+Por Bessel, el conjunto es finito. Si contiene $n_k>0$ elementos, sumando las desigualdades estrictas de sus cuadrados obtenemos
+\[
+ \frac{n_k}{k^2}<\sum_{|\ip{x}{e}|>1/k}|\ip{x}{e}|^{2}\leq\norm{x}^{2},
+\]
+y, por tanto, $n_k<k^2\norm{x}^{2}$. Si $n_k=0$ y $x\ne0$, la misma conclusión estricta vale porque el lado derecho es positivo. Si $x=0$, entonces $n_k=0$ y la desigualdad estricta original se convierte en $0<0$, que es falsa. La formulación válida para todo $x$ es $n_k\leq k^2\norm{x}^{2}$, con desigualdad estricta cuando $x\ne0$.
+\end{solucion}
+
+\section{Una base como sistema de medición}
+Los coeficientes de Fourier registran las componentes detectadas por cada dirección ortonormal. Bessel limita la energía registrada; Parseval afirma que una base total no pierde ninguna componente; Riesz--Fischer garantiza que toda lista de coeficientes de energía finita procede de un vector. La completitud permite pasar de las sumas finitas, puramente algebraicas, al vector que esas sumas aproximan.

@@ -1,0 +1,354 @@
+\chapter{Convergencia uniforme: límites, series, integrales y derivadas}\label{chap:26}
+\index{convergencia!puntual}\index{convergencia!uniforme}
+
+\section{El orden de los cuantificadores}
+La convergencia puntual responde una pregunta cada vez: después de fijar $x$, ¿se aproxima $f_n(x)$ a $f(x)$? La convergencia uniforme exige controlar simultáneamente todos los puntos con un único índice. Esa diferencia permite conservar continuidad, intercambiar integrales y límites y, con hipótesis adicionales, derivar límites.
+
+Los prerrequisitos son la completitud de los espacios normados, la compacidad y el cálculo diferencial e integral de una variable. Cuando trabajemos con funciones de valores en un espacio $V$, exigiremos que $V$ sea Banach en los resultados que construyen límites mediante el criterio de Cauchy.
+
+\begin{definicion}
+Sean $f_n,f:S\to V$. Decimos que $f_n$ converge \emph{puntualmente} a $f$ si
+\[
+ \forall x\in S\ \forall\eps>0\ \exists N=N(x,\eps)\ \forall n\ge N:
+ \norm{f_n(x)-f(x)}<\eps.
+\]
+Decimos que converge \emph{uniformemente}, y escribimos $f_n\rightrightarrows f$, si
+\[
+ \forall\eps>0\ \exists N=N(\eps)\ \forall n\ge N\ \forall x\in S:
+ \norm{f_n(x)-f(x)}<\eps.
+\]
+\end{definicion}
+
+Esta definición admite funciones no acotadas. Lo que acaba siendo acotado es el error $f_n-f$. Para funciones de $B(S,V)$ equivale a $\norm{f_n-f}_\infty\to0$. Exigir que \emph{todos} los errores, incluso los de los primeros términos, sean acotados añade una restricción innecesaria: modificar un número finito de términos no debe cambiar la convergencia. Adoptaremos la formulación mediante cuantificadores.
+
+\begin{proposicion}
+La convergencia uniforme implica convergencia puntual. El recíproco es falso.
+\end{proposicion}
+\begin{proof}
+El índice que funciona para todos los puntos funciona en particular para cualquier punto fijado. Para refutar el recíproco tomamos $f_n(x)=x^n$ en $[0,1]$. Si $0\le x<1$, la sucesión geométrica $x^n$ tiende a cero; si $x=1$, permanece igual a uno. Por tanto, el límite puntual es
+\[
+ f(x)=\begin{cases}0,&0\le x<1,\\1,&x=1.\end{cases}
+\]
+Para cada $n$, $\sup_{0\le x<1}x^n=1$, de modo que $\norm{f_n-f}_\infty=1$. El error no tiende a cero. También podemos detectar el problema porque el límite es discontinuo, mientras que un límite uniforme de funciones continuas es continuo.
+\end{proof}
+
+\begin{observacion}[Corrección de la lectura original]
+La observación 2 de la lectura 26 invierte esta implicación. La dirección válida es uniforme $\Rightarrow$ puntual; el ejemplo que la acompaña confirma precisamente que la otra dirección no vale.
+\end{observacion}
+
+\section{El teorema de Dini}
+\index{Dini, teorema de}
+\begin{teorema}[Dini]\label{ch26:dini}
+Sean $X$ compacto y $(f_n)$ una sucesión de funciones continuas $X\to\R$ que converge puntualmente a una función continua $f$. Si la sucesión es creciente en todos los puntos, o decreciente en todos los puntos, entonces $f_n\rightrightarrows f$.
+\end{teorema}
+\begin{estrategia}
+La convergencia puntual produce una cubierta por regiones donde el error es pequeño. La compacidad reduce esa cubierta a un número finito de regiones. La monotonía permite reemplazar sus distintos índices por uno solo.
+\end{estrategia}
+\begin{proof}
+Supongamos primero que $f_n(x)\le f_{n+1}(x)$ para todo $x$. Al pasar al límite se obtiene $f_n(x)\le f(x)$. Así, las funciones continuas $g_n=f-f_n$ son no negativas, decrecientes y convergen puntualmente a cero.
+
+Fijemos $\eps>0$ y definamos $U_n=\{x:g_n(x)<\eps/2\}$. Cada $U_n$ es abierto por continuidad y $U_n\subset U_{n+1}$ por monotonía. Para cada $x$, la convergencia $g_n(x)\to0$ asegura que $x\in U_n$ para algún $n$; por tanto, $(U_n)$ cubre $X$. Una subcubierta finita $U_{n_1},\ldots,U_{n_r}$ cubre $X$. Si $N=\max_j n_j$, el carácter creciente de la cubierta implica $X=U_N$, y también $X=U_n$ para $n\ge N$. Por ello
+\[
+ 0\le f(x)-f_n(x)<\eps/2\quad(n\ge N,\ x\in X),
+\]
+lo que implica $\norm{f-f_n}_\infty\le\eps/2<\eps$. Si $(f_n)$ es decreciente, aplicamos la prueba anterior a $(-f_n)$, que es creciente y converge a $-f$.
+\end{proof}
+
+Las hipótesis tienen funciones diferentes. La sucesión $x^n$ en $[0,1]$ muestra que no basta con un límite puntual cualquiera: se necesita continuidad del límite. En $(0,1)$, la misma sucesión tiene límite continuo cero y es decreciente, pero no converge uniformemente; aquí falta compacidad. Sin monotonía podemos construir picos continuos de altura uno con soportes disjuntos que se acercan a cero; convergen puntualmente a cero, pero su norma uniforme permanece igual a uno. Por ejemplo, sirven los triángulos de altura uno centrados en $2^{-n}$ y de semiancho $2^{-n-2}$, extendidos por cero en $[0,1]$.
+
+\section{Series de funciones y el criterio M}
+\index{series de funciones}\index{Weierstrass!criterio M}
+\begin{definicion}
+La serie $\sum_{n=1}^\infty u_n$ converge puntual o uniformemente cuando lo hace su sucesión de sumas parciales $s_N=\sum_{n=1}^N u_n$. Converge \emph{absolutamente en cada punto} si $\sum_n\norm{u_n(x)}<\infty$ para cada $x$. Se dice que converge \emph{normalmente} si $\sum_n\norm{u_n}_\infty<\infty$.
+\end{definicion}
+
+La convergencia normal es una condición de control uniforme de las normas. No debe confundirse con la convergencia absoluta punto por punto, que permite que los controles dependan de $x$.
+
+\begin{teorema}[Criterio M de Weierstrass]\label{ch26:criteriom}
+Sean $V$ Banach y $u_n:S\to V$. Supongamos que existen $M_n\ge0$ tales que $\norm{u_n(x)}\le M_n$ para todo $x\in S$ y que $\sum_n M_n<\infty$. Entonces $\sum_nu_n$ converge uniformemente y absolutamente en cada punto. Si $s$ es su suma,
+\[
+ \norm{s-s_N}_\infty\le\sum_{n>N}M_n.
+\]
+\end{teorema}
+\begin{proof}
+Para $q>p$ y cualquier $x$,
+\[
+ \norm{s_q(x)-s_p(x)}
+ \le\sum_{n=p+1}^q\norm{u_n(x)}\le\sum_{n=p+1}^qM_n.
+\]
+La última expresión tiende a cero uniformemente respecto de $q>p$ cuando $p\to\infty$, pues la serie numérica converge. Para cada $x$, $(s_N(x))$ es de Cauchy y, por completitud, tiene límite $s(x)\in V$. Fijando $p=N$ y haciendo $q\to\infty$ obtenemos
+$\norm{s(x)-s_N(x)}\le\sum_{n>N}M_n$. Tomar el supremo prueba simultáneamente la convergencia uniforme y la estimación del error. Por otra parte, $\sum_n\norm{u_n(x)}\le\sum_nM_n<\infty$, lo que da la convergencia absoluta.
+\end{proof}
+
+\begin{observacion}[La completitud no es decorativa]
+La lectura original formula este criterio para un espacio normado sin explicitar completitud. En el espacio $c_{00}$ de sucesiones de soporte finito, con norma $\ell^1$, la serie de vectores $\sum_n 2^{-n}e_n$ satisface $\sum_n\norm{2^{-n}e_n}=1$, pero su supuesto límite tendría infinitas coordenadas no nulas y no pertenecería a $c_{00}$. Un dominio $S$ de un solo punto convierte este ejemplo en una serie de funciones. Por eso formulamos el criterio en un espacio de Banach.
+\end{observacion}
+
+\section{Integración de límites uniformes}
+\index{integracion@integración!limite uniforme@límite uniforme}
+\begin{teorema}\label{ch26:integracion}
+Si $f_n:[a,b]\to\F$ son Riemann-integrables y $f_n\rightrightarrows f$, entonces $f$ es Riemann-integrable y
+\[
+ \int_a^bf(x)\,dx=\lim_{n\to\infty}\int_a^bf_n(x)\,dx.
+\]
+\end{teorema}
+\begin{proof}
+El caso $a=b$ es inmediato, de modo que supongamos $a<b$. Comenzamos con funciones reales. Elegimos un índice $n_0$ tal que $\norm{f-f_{n_0}}_\infty<1$. Como una función Riemann-integrable es acotada, $f$ también lo es.
+
+Para una partición $P:a=x_0<\cdots<x_r=b$, denotamos por $U(h,P)$ y $L(h,P)$ las sumas superior e inferior de Darboux. Si $\norm{f-f_n}_\infty\le\delta$, en cada subintervalo $I$ se cumple
+\[
+ \sup_I f\le\sup_I f_n+\delta,
+ \qquad \inf_I f\ge\inf_I f_n-\delta.
+\]
+Al multiplicar las diferencias por las longitudes y sumar, resulta
+\[
+ U(f,P)-L(f,P)\le U(f_n,P)-L(f_n,P)+2\delta(b-a).
+\]
+Dado $\eta>0$, elegimos primero $n$ con $\norm{f-f_n}_\infty<\eta/[4(b-a)]$. Después, por integrabilidad de $f_n$, elegimos una partición $P$ con $U(f_n,P)-L(f_n,P)<\eta/2$. La desigualdad anterior proporciona $U(f,P)-L(f,P)<\eta$. El criterio de Darboux demuestra que $f$ es integrable.
+
+Para funciones complejas, las partes real e imaginaria de $f_n$ son integrables y convergen uniformemente a las partes correspondientes de $f$, pues $|\operatorname{Re}z|,|\operatorname{Im}z|\le|z|$. El argumento real demuestra la integrabilidad de ambas componentes y, por definición, la de $f$.
+
+Finalmente, para una función integrable $h$ real o compleja, cada suma de Riemann satisface
+\[
+ \left|\sum_j h(\xi_j)(x_j-x_{j-1})\right|
+ \le\sum_j|h(\xi_j)|(x_j-x_{j-1})
+ \le(b-a)\norm h_\infty.
+\]
+El paso al límite da $|\int_a^b h|\le(b-a)\norm h_\infty$. Aplicado a $h=f_n-f$, obtenemos
+\[
+ \left|\int_a^bf_n-\int_a^bf\right|
+ \le(b-a)\norm{f_n-f}_\infty\longrightarrow0.
+\]
+\end{proof}
+
+\begin{corolario}[Integración término a término]
+Si cada $u_n$ es Riemann-integrable en $[a,b]$ y $\sum_nu_n$ converge uniformemente a $s$, entonces
+$\int_a^bs=\sum_n\int_a^bu_n$.
+\end{corolario}
+\begin{proof}
+Las sumas parciales son integrables por linealidad. Aplicamos el teorema~\ref{ch26:integracion} a esas sumas y usamos $\int_a^b\sum_{n=1}^Nu_n=\sum_{n=1}^N\int_a^bu_n$.
+\end{proof}
+
+\section{Derivación de límites: la hipótesis correcta}
+\index{derivacion@derivación!limite uniforme@límite uniforme}
+La convergencia uniforme de funciones no controla sus derivadas. Por ejemplo, $f_n(x)=\sin(nx)/n$ converge uniformemente a cero en $\R$, pero $f_n'(0)=1$ para todo $n$, mientras que la derivada del límite es cero. El resultado válido comienza con convergencia uniforme de las \emph{derivadas} y fija además una constante de integración mediante el valor en un punto.
+
+\begin{lema}[Desigualdad del valor medio para funciones complejas]\label{ch26:tvmdesigualdad}
+Si $h:[u,v]\to\C$ es continua y es derivable, respecto de la variable real, en $(u,v)$, y $|h'(t)|\le M$, entonces $|h(v)-h(u)|\le M(v-u)$.
+\end{lema}
+\begin{proof}
+Si $h(v)=h(u)$, la desigualdad es inmediata. En otro caso elegimos $\lambda\in\C$ con $|\lambda|=1$ y $\lambda(h(v)-h(u))=|h(v)-h(u)|$. La función real $\phi(t)=\operatorname{Re}(\lambda h(t))$ satisface el teorema del valor medio real. Existe $\xi\in(u,v)$ tal que
+\[
+ |h(v)-h(u)|=\phi(v)-\phi(u)=(v-u)\phi'(\xi)
+ \le(v-u)|h'(\xi)|\le(v-u)M.
+\]
+\end{proof}
+
+En general no existe un punto $\xi$ que satisfaga la igualdad compleja $h(v)-h(u)=h'(\xi)(v-u)$. Por ejemplo, para $h(t)=e^{it}$ en $[0,2\pi]$ el lado izquierdo es cero y la derivada nunca se anula. La desigualdad anterior es el sustituto adecuado para la demostración.
+
+\begin{teorema}\label{ch26:derivacion}
+Sean $a<b$ finitos y $f_n:(a,b)\to\C$ derivables. Supongamos que para algún $x_0\in(a,b)$ converge $(f_n(x_0))$ y que $f_n'\rightrightarrows g$ en $(a,b)$. Entonces existe $f$ con $f_n\rightrightarrows f$ en $(a,b)$, la función $f$ es derivable y $f'=g$.
+\end{teorema}
+\begin{proof}
+La convergencia uniforme de $f_n'$ implica que, para $n,m$ suficientemente grandes, $\sup_{(a,b)}|f_n'-f_m'|$ es finito y pequeño. Aplicando el lema anterior a $h=f_n-f_m$ entre $x_0$ y $x$, obtenemos
+\[
+ |f_n(x)-f_m(x)|
+ \le |f_n(x_0)-f_m(x_0)|+|x-x_0|\sup_{(a,b)}|f_n'-f_m'|
+ \le |f_n(x_0)-f_m(x_0)|+(b-a)\sup_{(a,b)}|f_n'-f_m'|.
+\]
+La última cota no depende de $x$ y tiende a cero cuando $n,m\to\infty$. El criterio de Cauchy uniforme, demostrado en el ejercicio~\ref{ch26:ej1}, produce $f_n\rightrightarrows f$.
+
+Para demostrar la derivabilidad fijamos $c\in(a,b)$ y definimos los cocientes prolongados
+\[
+ q_n(x)=\begin{cases}
+ \dfrac{f_n(x)-f_n(c)}{x-c},&x\ne c,\\[4pt]
+ f_n'(c),&x=c.
+ \end{cases}
+\]
+La derivabilidad de $f_n$ implica exactamente que $q_n$ es continua en $c$. Para $x\ne c$, el lema aplicado a $f_n-f_m$ proporciona
+\[
+ |q_n(x)-q_m(x)|\le\sup_{(a,b)}|f_n'-f_m'|.
+\]
+La misma desigualdad vale para $x=c$ por la definición del cociente prolongado. Por tanto, $(q_n)$ es de Cauchy uniformemente y converge uniformemente a alguna función $q$.
+
+El límite $q$ es continuo en $c$. Para verificarlo sin exigir continuidad de $q_n$ en otros puntos, dado $\eps>0$ elegimos $n$ con $\sup|q-q_n|<\eps/3$ y luego $\delta>0$ con $|q_n(x)-q_n(c)|<\eps/3$ si $|x-c|<\delta$. La desigualdad triangular da $|q(x)-q(c)|<\eps$.
+
+Si $x\ne c$, la convergencia puntual de $f_n$ implica
+$q(x)=(f(x)-f(c))/(x-c)$. En $x=c$ tenemos
+$q(c)=\lim_n f_n'(c)=g(c)$. Por continuidad de $q$ en $c$,
+\[
+ \lim_{x\to c}\frac{f(x)-f(c)}{x-c}=q(c)=g(c).
+\]
+Así $f'(c)=g(c)$, y $c$ era arbitrario.
+\end{proof}
+
+No hemos supuesto que las derivadas sean continuas. Tampoco se obtiene una afirmación sobre valores arbitrariamente asignados en los extremos $a,b$: el teorema se refiere al intervalo abierto. La finitud de su longitud interviene en el factor $b-a$.
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 26, ejercicio 1]\label{ch26:ej1}
+Sea $V$ Banach y $f_n:S\to V$. Demuestre que $(f_n)$ converge uniformemente si y solo si para todo $\eps>0$ existe $N$ tal que $\norm{f_n(x)-f_m(x)}<\eps$ para todos $n,m\ge N$ y $x\in S$.
+\end{ejercicio}
+\begin{solucion}
+Si $f_n\rightrightarrows f$, elegimos $N$ con $\norm{f_n(x)-f(x)}<\eps/2$ para todo $n\ge N$ y $x$. Para $n,m\ge N$, la desigualdad triangular da el resultado.
+
+Recíprocamente, para cada $x$ la hipótesis hace de $(f_n(x))$ una sucesión de Cauchy en $V$. La completitud define $f(x)=\lim_nf_n(x)$. Dado $\eps>0$, elegimos $N$ usando $\eps/2$ en la hipótesis. Fijamos $n\ge N$ y $x$ y hacemos $m\to\infty$; obtenemos $\norm{f_n(x)-f(x)}\le\eps/2<\eps$. Como el índice $N$ es independiente de $x$, la convergencia es uniforme. No necesitamos que cada $f_n$ sea acotada: solo controlamos las diferencias de los términos suficientemente avanzados.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 2]
+Sean $(f_n)$ y $(g_n)$ sucesiones de funciones escalares sobre $S$, acotadas en $B(S,\F)$, que convergen uniformemente. Demuestre que $(f_ng_n)$ converge uniformemente. Dé un contraejemplo al suprimir el control de acotación.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $f_n\rightrightarrows f$ y $g_n\rightrightarrows g$. Existen $A,B<\infty$ con $\norm{f_n}_\infty\le A$ y $\norm{g_n}_\infty\le B$. Al pasar al límite en cada punto, $\norm f_\infty\le A$ y $\norm g_\infty\le B$. La identidad
+\[
+ f_ng_n-fg=f_n(g_n-g)+(f_n-f)g
+\]
+proporciona
+\[
+ \norm{f_ng_n-fg}_\infty
+ \le A\norm{g_n-g}_\infty+B\norm{f_n-f}_\infty\longrightarrow0.
+\]
+Si las funciones no están acotadas, tomemos $S=\R$, $f_n(x)=x$ y $g_n(x)=1/n$. Ambas sucesiones convergen uniformemente, respectivamente a $f(x)=x$ y a cero. Sin embargo, $f_n(x)g_n(x)=x/n$ no converge uniformemente a cero porque su error no está acotado en $\R$ para ningún $n$. Es suficiente que falle el control de uno de los factores.
+
+Si todas las funciones pertenecen a $B(S,\F)$ y la convergencia es uniforme, la acotación de toda la sucesión se deduce automáticamente: una cola está a distancia menor que uno del límite, y los primeros términos son un conjunto finito de funciones acotadas. La hipótesis expresa, por tanto, el contexto de funciones acotadas en el cual el producto es continuo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 3: enunciado corregido]
+Sean $V,W$ Banach, $f_n\rightrightarrows f$ y $\norm{f_n}_\infty\le\alpha$. La lectura propone que la continuidad de $g$ en la bola de radio $\alpha$ basta para que $g\circ f_n\rightrightarrows g\circ f$. Examine la afirmación y pruebe una versión válida.
+\end{ejercicio}
+\begin{solucion}
+La condición adecuada es que $g$ sea \emph{uniformemente continua} en un conjunto que contenga todas las imágenes $f_n(S)$ y $f(S)$. Con esa hipótesis, dado $\eps>0$ existe $\delta>0$ tal que
+$\norm{u-v}<\delta$ implica $\norm{g(u)-g(v)}<\eps$. La convergencia uniforme da un índice $N$ con $\norm{f_n(x)-f(x)}<\delta$ para todo $n\ge N$ y $x$. Al aplicar $g$ obtenemos el resultado. En particular, basta continuidad de $g$ sobre un conjunto compacto que contenga todas esas imágenes.
+
+Si la bola del enunciado es abierta, incluso puede ocurrir que $f$ tome valores en su frontera y $g\circ f$ no esté definido. La afirmación falla también cuando todas las composiciones sí están definidas: en $S=(0,1)$, $V=W=\R$, tomemos
+\[
+ f(x)=x,\qquad f_n(x)=(1-1/n)x,\qquad g(t)=\frac1{1-t}\quad(-1<t<1).
+\]
+Tenemos $\norm{f_n-f}_\infty=1/n$ y $\norm{f_n}_\infty\le1$, pero para cada $n$ el valor $g(f(x))$ tiende a infinito cuando $x\uparrow1$, mientras $g(f_n(x))$ permanece acotado por $n$. La diferencia no está uniformemente acotada.
+
+Interpretar la bola como cerrada tampoco salva el enunciado en dimensión infinita. En $V=\ell^2$, sea $(e_k)$ la sucesión de vectores canónicos. En la bola cerrada unidad definimos
+\[
+ g(u)=\sum_{k=1}^\infty k\max\{0,1-4\norm{u-e_k}_2\}.
+\]
+Esta función es continua. Para justificarlo, observamos que $\norm{e_j-e_k}_2=\sqrt2$ si $j\ne k$. Cada punto tiene una vecindad que intersecta a lo sumo una de las bolas $B(e_k,1/4)$: por ejemplo, si dos de esas bolas intersectaran $B(u,1/10)$, la distancia entre sus centros sería menor que $2(1/4+1/10)<\sqrt2$. Así, cerca de cada punto la suma es cero o coincide con una sola función continua. Definamos en $S=\N$
+\[
+ f(k)=e_k,\qquad f_n(k)=(1-1/n)e_k.
+\]
+Las imágenes están en la bola cerrada unidad y $\norm{f_n-f}_\infty=1/n$. Para $n>4$, $g(f(k))=k$ y $g(f_n(k))=k(1-4/n)$. La diferencia $4k/n$ no es acotada en $k$. Esto demuestra por qué continuidad sobre una bola acotada no sustituye a continuidad uniforme.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 4]
+Sean $V$ Banach y $f_n:S\to V$. Suponga que $\norm{f_{n+1}(x)-f_n(x)}\le M_n$ para todo $x$, donde $\sum_nM_n<\infty$. Demuestre que $(f_n)$ converge uniformemente.
+\end{ejercicio}
+\begin{solucion}
+Para $q>p$, la identidad telescópica da
+\[
+ f_q(x)-f_p(x)=\sum_{n=p}^{q-1}(f_{n+1}(x)-f_n(x)),
+ \qquad \norm{f_q(x)-f_p(x)}\le\sum_{n=p}^{q-1}M_n.
+\]
+El último miembro es pequeño para todo $q>p$ cuando $p$ es grande, con independencia de $x$. El criterio de Cauchy del ejercicio~\ref{ch26:ej1} concluye la prueba. Además, al pasar al límite $q\to\infty$ obtenemos la estimación útil $\norm{f-f_p}_\infty\le\sum_{n=p}^\infty M_n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 5]
+Estudie la relación entre convergencia absoluta y uniforme:
+\begin{enumerate}[label=(\roman*)]
+\item En el dominio $[0,1]$, para $x>0$ sea $u_n(x)=\sin(\pi/x)\mathbf1_{[1/(n+1),1/n]}(x)$ y defina $u_n(0)=0$. Analice la convergencia absoluta puntual de $\sum_nu_n$ y la convergencia uniforme.
+\item Demuestre que $\sum_{n=1}^\infty(-1)^n(x^2+n)/n^2$ converge uniformemente en $[0,1]$, pero no absolutamente en ningún punto.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item En cada punto $x>0$ hay a lo sumo dos intervalos $[1/(n+1),1/n]$ que contienen a $x$. Si hay dos, $x=1/m$ y $\sin(\pi/x)=\sin(m\pi)=0$. Por tanto, en cada punto hay a lo sumo un término no nulo, y $\sum_n|u_n(x)|<\infty$. En cero todos los términos son cero. La suma puntual es $s(x)=\sin(\pi/x)$ para $x>0$ y $s(0)=0$.
+
+Para cada $n$, el punto $x_n=1/(n+1/2)$ está en el interior del intervalo que soporta $u_n$ y satisface $|u_n(x_n)|=1$. Así $\norm{u_n}_\infty=1$. Una serie uniformemente convergente debe tener términos que tiendan uniformemente a cero, pues $u_n=s_n-s_{n-1}$; esta condición falla. Por tanto, la serie no converge uniformemente. La propia sucesión $(u_n)$ converge puntualmente a cero y tampoco converge uniformemente. Esta distinción aclara el uso de «convergencia absoluta de la sucesión» en la lectura: la convergencia absoluta corresponde propiamente a una \emph{serie}.
+\item Descomponemos la serie como
+\[
+ x^2\sum_{n=1}^\infty\frac{(-1)^n}{n^2}
+ +\sum_{n=1}^\infty\frac{(-1)^n}{n}.
+\]
+La primera converge uniformemente por el criterio M, pues $|x^2/n^2|\le1/n^2$. La segunda es una serie numérica convergente por el criterio de Leibniz y sus sumas parciales, vistas como funciones constantes de $x$, convergen uniformemente. Para verlo directamente, el error de la segunda serie es a lo sumo $1/(N+1)$, independientemente de $x$. La suma de dos errores que tienden uniformemente a cero también tiende uniformemente a cero. Sin embargo,
+\[
+ \sum_{n=1}^\infty\left|(-1)^n\frac{x^2+n}{n^2}\right|
+ =\sum_{n=1}^\infty\left(\frac{x^2}{n^2}+\frac1n\right)=\infty
+\]
+para todo $x\in[0,1]$.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 6]
+Si $f_n:X\to V$ son continuas y convergen uniformemente a $f$, demuestre que $f_n(x_n)\to f(x)$ siempre que $x_n\to x$. ¿Vale el recíproco?
+\end{ejercicio}
+\begin{solucion}
+El límite uniforme $f$ es continuo por el argumento de tres términos del capítulo anterior, que también vale sin acotación global. Entonces
+\[
+ \norm{f_n(x_n)-f(x)}
+ \le\norm{f_n(x_n)-f(x_n)}+\norm{f(x_n)-f(x)}\longrightarrow0.
+\]
+El primer término está controlado por la convergencia uniforme y el segundo por continuidad de $f$.
+
+El recíproco falla en un espacio no compacto. En $X=\R$ tomemos
+\[
+ f_n(t)=\max\{0,1-|t-n|\},\qquad f(t)=0.
+\]
+Si $x_n\to x$, la sucesión $(x_n)$ es acotada. Para $n$ suficientemente grande, $|x_n-n|>1$, y por ello $f_n(x_n)=0$. Se cumple la propiedad pedida, pero $\norm{f_n}_\infty=1$ para todo $n$.
+
+En un espacio métrico compacto sí vale el recíproco. Si no hubiera convergencia uniforme, existirían $\eps>0$, índices estrictamente crecientes $n_j$ y puntos $y_j$ con $\norm{f_{n_j}(y_j)-f(y_j)}\ge\eps$. La propiedad para las sucesiones constantes implica primero $f_n(y)\to f(y)$ en cada punto. Además, implica continuidad de $f$: si $z_j\to z$ y $f(z_j)\not\to f(z)$, elegimos índices crecientes $m_j$ tales que $\norm{f_{m_j}(z_j)-f(z_j)}<1/j$, y definimos $x_{m_j}=z_j$, $x_n=z$ en los demás índices. Entonces $x_n\to z$ y la propiedad obliga a $f_{m_j}(z_j)\to f(z)$, contradicción. Por compacidad podemos extraer $y_{j_k}\to y$. Definimos $x_{n_{j_k}}=y_{j_k}$ y $x_n=y$ en los demás índices. La propiedad da $f_{n_{j_k}}(y_{j_k})\to f(y)$; la continuidad recién probada da $f(y_{j_k})\to f(y)$. Contradice la cota inferior $\eps$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 7: Dirichlet uniforme]
+Sean $V$ Banach, $u_n:S\to V$ y $v_n:S\to\R$. Suponga que, para algún $M<\infty$,
+\[
+ \sup_{x\in S}\left\|\sum_{k=1}^nu_k(x)\right\|\le M\quad(n\ge1),
+\]
+que $v_n\rightrightarrows0$ y que $v_{n+1}(x)\le v_n(x)$ para todo $x$. Demuestre que $\sum_nv_nu_n$ converge uniformemente.
+\end{ejercicio}
+\begin{solucion}
+La monotonía y el límite cero implican $v_n(x)\ge0$. Es importante que las sumas parciales de $u_n$ estén acotadas por un \emph{mismo} $M$, independiente tanto de $n$ como de $x$; la acotación puntual no basta para esta prueba.
+
+Fijemos $p\le q$ y pongamos $A_k(x)=\sum_{j=p}^ku_j(x)$, con $A_{p-1}=0$. Como $A_k$ es diferencia de dos sumas parciales, $\norm{A_k(x)}\le2M$. La identidad de sumación por partes es
+\[
+ \sum_{k=p}^qv_k u_k
+ =v_qA_q+\sum_{k=p}^{q-1}(v_k-v_{k+1})A_k.
+\]
+Para verificarla, sustituimos $u_k=A_k-A_{k-1}$ y agrupamos el coeficiente de cada $A_k$: para $p\le k<q$ es $v_k-v_{k+1}$ y para $k=q$ es $v_q$. Como todos esos coeficientes son no negativos,
+\[
+ \left\|\sum_{k=p}^qv_k(x)u_k(x)\right\|
+ \le2M\left(v_q(x)+\sum_{k=p}^{q-1}(v_k(x)-v_{k+1}(x))\right)
+ =2Mv_p(x).
+\]
+La convergencia uniforme $v_p\to0$ hace pequeña esta cota para todo $q\ge p$ y todo $x$. El criterio de Cauchy uniforme concluye la prueba. Cuando el espacio de escalares de $V$ es $\C$, los multiplicadores $v_n$ siguen siendo reales: el orden $v_{n+1}\le v_n$ no es un orden de números complejos arbitrarios.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 8: condensación uniforme de Cauchy]
+Sea $(u_n)$ una sucesión de funciones reales sobre $S$, decreciente respecto de $n$ en cada punto. Demuestre que $\sum_{n=1}^\infty u_n$ y $\sum_{k=1}^\infty 2^ku_{2^k}$ convergen uniformemente o dejan de hacerlo simultáneamente.
+\end{ejercicio}
+\begin{solucion}
+Primero atendemos al signo, que el enunciado no especifica. Si para algún $x$ y $n_0$ se tiene $u_{n_0}(x)<0$, la monotonía implica $u_n(x)\le u_{n_0}(x)<0$ para todo $n\ge n_0$. La primera serie diverge en ese punto y los términos $2^ku_{2^k}(x)$ de la segunda ni siquiera tienden a cero. Ninguna puede converger uniformemente. Por tanto, solo queda considerar el caso $u_n(x)\ge0$ para todos $n,x$.
+
+Para cada $k\ge0$, la monotonía produce las desigualdades de bloques
+\[
+ 2^ku_{2^{k+1}}(x)
+ \le\sum_{n=2^k}^{2^{k+1}-1}u_n(x)
+ \le2^ku_{2^k}(x).
+\]
+Si la serie condensada converge uniformemente, dado $\eps>0$ elegimos $K$ tal que toda suma de sus términos con índices al menos $K$ sea menor que $\eps$, uniformemente en $x$. Para $q\ge p\ge2^K$, sea $L$ tal que $q<2^{L+1}$. Por no negatividad,
+\[
+ 0\le\sum_{n=p}^qu_n(x)
+ \le\sum_{k=K}^L\sum_{n=2^k}^{2^{k+1}-1}u_n(x)
+ \le\sum_{k=K}^L2^ku_{2^k}(x)<\eps.
+\]
+Así la primera serie satisface el criterio de Cauchy uniforme.
+
+Recíprocamente, para $k\ge1$ cada término del bloque $2^{k-1}\le n<2^k$ es al menos $u_{2^k}$. Por ello
+\[
+ 2^ku_{2^k}(x)\le2\sum_{n=2^{k-1}}^{2^k-1}u_n(x),
+\]
+y, sumando desde $k=K$ hasta $L$,
+\[
+ 0\le\sum_{k=K}^L2^ku_{2^k}(x)
+ \le2\sum_{n=2^{K-1}}^{2^L-1}u_n(x).
+\]
+Si la primera serie converge uniformemente, la última cota puede hacerse menor que $\eps$ para todo $L\ge K$ y todo $x$. La serie condensada es entonces uniformemente de Cauchy. Omitir o incluir su término $k=0$ no altera la convergencia.
+\end{solucion}
+
+\section{Cómo elegir una herramienta de convergencia}
+El criterio de Cauchy permite construir un límite antes de conocer su fórmula. Dini usa orden y compacidad para fortalecer un límite puntual ya identificado. El criterio M controla series mediante una cota numérica sumable; Dirichlet aprovecha cancelaciones cuando las normas no son sumables. Para pasar una integral al límite basta la convergencia uniforme en un intervalo compacto; para pasar una derivada al límite debemos controlar las derivadas y fijar el valor de las funciones en un punto. Distinguir estos mecanismos evita utilizar un teorema correcto bajo hipótesis que no satisface el problema.

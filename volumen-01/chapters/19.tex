@@ -1,0 +1,233 @@
+\chapter{Geometría y series en espacios normados}\label{chap:19}
+
+Un espacio normado reúne dos estructuras: podemos sumar y multiplicar vectores, y también medir distancias. La utilidad del concepto depende de que ambas estructuras sean compatibles. Este capítulo explica esa compatibilidad y muestra cómo la completitud, que inicialmente se formula mediante sucesiones, también puede reconocerse mediante series. El lema de Riesz proporcionará después una manera de detectar la dimensión infinita.
+
+Trabajaremos sobre $\F=\R$ o $\C$. Se requieren las nociones de espacio métrico completo, separabilidad, compacidad y el teorema de Baire. Una dimensión sin calificativo será la dimensión algebraica, es decir, la cardinalidad de una base de Hamel: las combinaciones lineales de esa base son siempre finitas.
+
+\section{Operaciones, bolas y dimensión finita}
+
+\begin{proposicion}\label{ch19:operaciones}
+En un espacio normado $V$, la suma $V\times V\to V$ y el producto $\F\times V\to V$ son continuos. La norma es una función de Lipschitz de constante $1$.
+\end{proposicion}
+\begin{proof}
+La desigualdad triangular, aplicada en ambos sentidos, da
+\[
+ \big|\norm{x}-\norm{y}\big|\leq\norm{x-y}.
+\]
+Para la suma, fijados $x_0,y_0$, tenemos
+\[
+ \norm{(x+y)-(x_0+y_0)}\leq\norm{x-x_0}+\norm{y-y_0}.
+\]
+Si ambos sumandos del lado derecho son menores que $\eps/2$, el resultado es menor que $\eps$. Para el producto, separamos los dos cambios mediante la identidad
+\[
+ \alpha x-\alpha_0x_0=\alpha(x-x_0)+(\alpha-\alpha_0)x_0.
+\]
+Si $|\alpha-\alpha_0|<\delta\leq1$, entonces $|\alpha|<|\alpha_0|+1$. Por tanto, si además $\norm{x-x_0}<\delta$, resulta
+\[
+ \norm{\alpha x-\alpha_0x_0}
+ <\bigl(|\alpha_0|+1+\norm{x_0}\bigr)\delta.
+\]
+Basta elegir $\delta=\min\{1,\eps/(|\alpha_0|+1+\norm{x_0})\}$. La elección depende del punto de continuidad, como permite la definición.
+\end{proof}
+
+\begin{corolario}\label{ch19:limites}
+Si $x_n\to x$, $y_n\to y$ y $\alpha_n\to\alpha$, entonces $x_n+y_n\to x+y$ y $\alpha_nx_n\to\alpha x$.
+\end{corolario}
+\begin{proof}
+Aplicamos las dos estimaciones anteriores a los pares de términos de las sucesiones. En la segunda, $\alpha_n$ es acotada porque converge, de modo que $|\alpha_n|\norm{x_n-x}+|\alpha_n-\alpha|\norm{x}\to0$.
+\end{proof}
+
+\begin{observacion}
+En el corolario de la lectura original aparece $\alpha_n+v_n$ donde corresponde $\alpha_nv_n$. En un espacio vectorial general ni siquiera está definida la suma de un escalar con un vector.
+\end{observacion}
+
+\begin{lema}[Coordenadas en dimensión finita]\label{ch19:coordenadas}
+Si $v_1,\ldots,v_m$ son linealmente independientes en $V$, existen $c,C>0$ tales que
+\[
+ c\max_i|a_i|\leq\norm{\sum_{i=1}^m a_iv_i}\leq C\max_i|a_i|
+ \qquad(a_1,\ldots,a_m\in\F).
+\]
+En particular, todo subespacio de dimensión finita es completo y cerrado en $V$.
+\end{lema}
+\begin{proof}
+La cota superior vale con $C=\sum_i\norm{v_i}$. Definamos $L(a)=\sum_i a_iv_i$. Esa misma cota da $\norm{L(a)-L(b)}\leq C\norm{a-b}_\infty$, así que $a\mapsto\norm{L(a)}$ es continua. La esfera $S=\{a\in\F^m:\norm a_\infty=1\}$ es compacta por Heine--Borel en el espacio euclidiano $\R^m$ o $\R^{2m}$. La función alcanza allí un mínimo $c$. La independencia implica $L(a)\ne0$ en $S$, y por ello $c>0$. Para $a\ne0$, aplicamos esta cota a $a/\norm a_\infty$ y multiplicamos por $\norm a_\infty$; para $a=0$ la desigualdad es inmediata.
+
+Sea ahora $x_n=L(a^{(n)})$ una sucesión de Cauchy en el subespacio generado. La cota inferior implica que cada sucesión de coordenadas es de Cauchy en $\F$. Si $a^{(n)}\to a$, la cota superior da $x_n\to L(a)$ en el subespacio. Este es completo. Si una sucesión del subespacio converge en $V$, es de Cauchy y el límite que acabamos de obtener pertenece al subespacio; la unicidad del límite demuestra que este es cerrado. El subespacio $\{0\}$ satisface ambas conclusiones directamente.
+\end{proof}
+
+Este lema se ha demostrado aquí porque lo necesitan Baire y algunos ejercicios antes del tratamiento sistemático de la dimensión finita del capítulo~\ref{chap:22}. Evita utilizar anticipadamente un resultado sin justificación.
+
+\begin{proposicion}\label{ch19:geometria}
+Sea $V$ un espacio normado y $r>0$.
+\begin{enumerate}[label=(\roman*)]
+\item $\interior{\overline B(x,r)}=B(x,r)$ y $\cl{B(x,r)}=\overline B(x,r)$.
+\item $V$ es conexo por caminos; dos puntos distintos pueden unirse por un arco.
+\item Si $V\ne\{0\}$, entonces $V$ no es compacto.
+\item $V$ es separable si y solo si contiene un subespacio denso de dimensión a lo sumo numerable.
+\item Si $V$ es de Banach, su dimensión es finita o infinita no numerable.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+(i) La continuidad de la norma muestra que la bola abierta es abierta y la cerrada es cerrada. Por ello $B(x,r)\subseteq\interior{\overline B(x,r)}$ y $\cl{B(x,r)}\subseteq\overline B(x,r)$. Si $\norm{y-x}=r$, los puntos $x+(1+s)(y-x)$, con $s>0$ tendiendo a cero, están fuera de la bola cerrada y convergen a $y$. Así, $y$ no es interior. En cambio, $x+(1-s)(y-x)$ pertenece a la bola abierta para $0<s<1$ y converge a $y$, lo que prueba la otra igualdad. Si $V=\{0\}$ no hay puntos de frontera y las igualdades siguen siendo ciertas.
+
+(ii) Dados $u,v$, la función $\gamma(t)=(1-t)u+tv$, $0\leq t\leq1$, es continua por la proposición~\ref{ch19:operaciones}. Une $u$ con $v$. Si $u\ne v$, es inyectiva, pues $\gamma(s)=\gamma(t)$ implica $(s-t)(v-u)=0$ y, por tanto, $s=t$. Como su dominio es compacto y el codominio es Hausdorff, es un homeomorfismo sobre su imagen. La conexión por caminos implica conexión: una separación del espacio induciría una separación del intervalo a través de un camino que una puntos de las dos partes.
+
+(iii) Elija $v\ne0$. La sucesión $nv$ tiene normas $n\norm v$ no acotadas. Por tanto $V$ no es acotado, mientras que todo compacto métrico sí lo es. La excepción $V=\{0\}$ es necesaria: ese espacio es compacto.
+
+(iv) Si $D$ es numerable y denso, $M=\spanop D$ contiene a $D$, es denso y tiene una base a lo sumo numerable. Recíprocamente, supongamos $M=\spanop\{v_1,v_2,\ldots\}$ y $\cl M=V$. Sea $\F_0=\Q$ en el caso real y $\F_0=\Q+i\Q$ en el complejo. El conjunto $D$ de todas las combinaciones finitas de los $v_j$ con coeficientes en $\F_0$ es numerable: es una unión numerable de conjuntos numerables. Si $x=\sum_{j=1}^m a_jv_j$, elegimos $q_j\in\F_0$ tan cercanos a $a_j$ que $\sum_{j=1}^m|q_j-a_j|\norm{v_j}<\eps$. Entonces $\norm{x-\sum q_jv_j}<\eps$. Así $M\subseteq\cl D$, y al tomar cierres obtenemos $V=\cl D$.
+
+(v) Si existiera una base infinita numerable $v_1,v_2,\ldots$, tendríamos $V=\bigcup_{n\geq1}M_n$, con $M_n=\spanop\{v_1,\ldots,v_n\}$. Cada $M_n$ es cerrado por el lema~\ref{ch19:coordenadas}. Tiene interior vacío: si $B(x,r)\subseteq M_n$, entonces $x\in M_n$, y restar $x$ da $B(0,r)\subseteq M_n$; al multiplicar por escalares se obtiene $M_n=V$, contradicción. Baire prohíbe que el espacio completo $V$ sea esa unión de cerrados con interior vacío.
+\end{proof}
+
+\index{separabilidad!espacios normados}
+\index{base de Hamel}
+\begin{observacion}
+Separabilidad y dimensión algebraica numerable no son equivalentes. Por ejemplo, un espacio de Banach separable e infinito dimensional puede tener un subespacio denso generado por una sucesión, pero esa sucesión no constituye una base de Hamel de todo el espacio. La diferencia consiste en permitir límites además de sumas finitas.
+\end{observacion}
+
+\section{Series y completitud}
+
+\begin{definicion}
+Dada una sucesión $(v_n)$ de $V$, la serie $\sum_{n=1}^{\infty}v_n$ converge a $s$ cuando sus sumas parciales $s_N=\sum_{n=1}^N v_n$ convergen a $s$. Se llama \emph{absolutamente convergente} cuando $\sum_{n=1}^{\infty}\norm{v_n}<\infty$.
+\end{definicion}
+\index{serie!absolutamente convergente}
+
+\begin{teorema}\label{ch19:series}
+Un espacio normado $V$ es completo si y solo si toda serie absolutamente convergente en $V$ converge en $V$.
+\end{teorema}
+\begin{proof}
+Si $V$ es completo y $\sum\norm{v_n}<\infty$, para $m>n$ tenemos
+\[
+ \norm{s_m-s_n}\leq\sum_{j=n+1}^m\norm{v_j}.
+\]
+Las colas de una serie real convergente de términos no negativos tienden a cero. Por ello $(s_n)$ es de Cauchy, y la completitud proporciona su límite en $V$.
+
+Para el recíproco, sea $(x_n)$ de Cauchy. Elegimos inductivamente enteros $n_1<n_2<\cdots$ tales que
+\[
+ p,q\geq n_j\quad\Longrightarrow\quad\norm{x_p-x_q}<2^{-j}.
+\]
+La condición de Cauchy da un umbral para cada $j$; aumentarlo permite exigir además $n_{j+1}>n_j$. Definimos $v_1=x_{n_1}$ y $v_{j+1}=x_{n_{j+1}}-x_{n_j}$. Entonces
+\[
+ \sum_{j=1}^{\infty}\norm{v_j}
+ \leq\norm{x_{n_1}}+\sum_{j=1}^{\infty}2^{-j}<\infty.
+\]
+Por hipótesis la serie converge a algún $x\in V$. Su suma parcial número $j$ es $x_{n_j}$, porque todos los términos intermedios se cancelan. Tenemos, pues, una subsucesión convergente.
+
+Falta justificar que converge toda la sucesión. Dado $\eps>0$, elija $N$ tal que $\norm{x_p-x_q}<\eps/2$ para $p,q\geq N$. Después elija $j$ con $n_j\geq N$ y $\norm{x_{n_j}-x}<\eps/2$. Para todo $n\geq N$,
+\[
+ \norm{x_n-x}\leq\norm{x_n-x_{n_j}}+\norm{x_{n_j}-x}<\eps.
+\]
+Así $V$ es completo.
+\end{proof}
+
+La subsucesión anterior no se elige para simplificar una notación: convierte diferencias pequeñas en una serie numérica sumable. Es una técnica que reaparecerá en construcciones por aproximaciones sucesivas.
+
+\section{Subespacios cerrados y lema de Riesz}
+
+\begin{proposicion}\label{ch19:cierre-subespacio}
+El cierre de un subespacio vectorial $M\subseteq V$ es un subespacio vectorial.
+\end{proposicion}
+\begin{proof}
+Contiene al cero. Si $x,y\in\cl M$, existen $x_n,y_n\in M$ con $x_n\to x$ e $y_n\to y$. Para $\alpha,\beta\in\F$, cada $\alpha x_n+\beta y_n$ pertenece a $M$ y converge a $\alpha x+\beta y$ por el corolario~\ref{ch19:limites}. Este límite pertenece a $\cl M$.
+\end{proof}
+
+\begin{lema}[Riesz]\label{ch19:riesz}
+Si $M$ es un subespacio propio cerrado de $V$, para todo $0<\theta<1$ existe $v\in V$ con $\norm v=1$ y $\dist(v,M)>\theta$. En particular, para todo $\eps>0$ puede conseguirse $\dist(v,M)\geq1-\eps$.
+\end{lema}
+\index{Riesz, lema de}
+\begin{proof}
+Tome $u\notin M$ y $d=\dist(u,M)$. El número $d$ es positivo porque $M$ es cerrado: si fuera cero, habría puntos de $M$ que convergen a $u$. Como $d/\theta>d$, la definición de ínfimo permite elegir $w\in M$ tal que $\norm{u-w}<d/\theta$. Sea $v=(u-w)/\norm{u-w}$. Para cualquier $z\in M$, el vector $w+\norm{u-w}z$ también pertenece a $M$, y por ello
+\[
+ \norm{v-z}
+ =\frac{\norm{u-(w+\norm{u-w}z)}}{\norm{u-w}}
+ \geq\frac d{\norm{u-w}}>\theta.
+\]
+La cota inferior es independiente de $z$, de modo que también vale para el ínfimo. Si $0<\eps<1$, tome $\theta=1-\eps$; si $\eps\geq1$, cualquier vector unitario cumple la desigualdad solicitada. Tal vector existe porque $M$ es propio.
+\end{proof}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 19, ejercicio 1]
+Para $u,v\ne0$, ponga $u'=u/\norm u$ y $v'=v/\norm v$. Demuestre que
+\[\norm{u'-v'}\leq\frac{2\norm{u-v}}{\norm u}.\]
+\end{ejercicio}
+\begin{solucion}
+Introducimos $v/\norm u$, de modo que una diferencia mida el cambio de vector y la otra el cambio de escala:
+\begin{align*}
+ \norm{u'-v'}
+ &\leq\frac{\norm{u-v}}{\norm u}
+ +\norm v\left|\frac1{\norm u}-\frac1{\norm v}\right|\\
+ &=\frac{\norm{u-v}+|\norm v-\norm u|}{\norm u}
+ \leq\frac{2\norm{u-v}}{\norm u}.
+\end{align*}
+La última desigualdad es la desigualdad triangular inversa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 2]
+Para $A,B\subseteq V$, sea $A+B=\{a+b:a\in A,b\in B\}$. Pruebe: (i) si $A$ es abierto, $A+B$ es abierto; (ii) si $A,B$ son compactos, $A+B$ es compacto; (iii) si $A$ es cerrado y $B$ compacto, $A+B$ es cerrado. Dé además dos conjuntos cerrados cuya suma no sea cerrada.
+\end{ejercicio}
+\begin{solucion}
+(i) Cada traslación $x\mapsto x+b$ es un homeomorfismo, pues ella y su inversa preservan distancias. Así $A+B=\bigcup_{b\in B}(A+b)$ es una unión de abiertos.
+
+(ii) El producto finito $A\times B$ es compacto y la suma es continua por la proposición~\ref{ch19:operaciones}. Su imagen es exactamente $A+B$, luego es compacta.
+
+(iii) Si $a_n+b_n\to x$, la compacidad de $B$ da una subsucesión $b_{n_j}\to b\in B$. Entonces $a_{n_j}=(a_{n_j}+b_{n_j})-b_{n_j}\to x-b$. La cerradura de $A$ implica $x-b\in A$, y así $x\in A+B$. En un espacio métrico este criterio de sucesiones equivale a que el conjunto sea cerrado. Si alguno de los conjuntos es vacío, todas las conclusiones son inmediatas.
+
+Para el contraejemplo tome, en $\R^2$,
+\[
+ A=\{(x,y):xy=1\},\qquad B=\R\times\{0\}.
+\]
+Ambos son cerrados, como conjuntos de ceros de funciones continuas. Su suma es $\R\times(\R\setminus\{0\})$: para obtener $(s,t)$ con $t\ne0$ se suma $(1/t,t)$ a $(s-1/t,0)$, y ningún sumando puede producir segunda coordenada cero. Esta suma no es cerrada, pues $(0,1/n)\to(0,0)$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 3]
+Demuestre que todo subespacio propio $M$ de $V$ tiene interior vacío.
+\end{ejercicio}
+\begin{solucion}
+Si $B(x,r)\subseteq M$, entonces $x\in M$ y, restándolo, $B(0,r)\subseteq M$. Para cualquier $v\ne0$, el vector $(r/(2\norm v))v$ pertenece a esa bola; multiplicarlo por $2\norm v/r$ muestra que $v\in M$. También $0\in M$. Esto da $M=V$, contradicción. No se necesita que $M$ sea cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 4]
+Pruebe que $V$ es separable si y solo si $\overline B(0,1)$ es separable.
+\end{ejercicio}
+\begin{solucion}
+Si $V$ es separable, todo subespacio métrico es separable. Para recordar el argumento, tome una base numerable de bolas de $V$ y elija un punto de $\overline B(0,1)$ en cada miembro de la base que lo interseque. Los puntos elegidos forman un conjunto numerable y denso en la bola: toda vecindad relativa contiene una de esas bolas básicas alrededor de alguno de sus puntos.
+
+Recíprocamente, si $D$ es numerable y denso en $\overline B(0,1)$, el conjunto $E=\bigcup_{m=1}^{\infty}mD$ es numerable. Dados $v\in V$ y $\eps>0$, elija un entero $m\geq\max\{1,\norm v\}$. Hay $d\in D$ con $\norm{v/m-d}<\eps/m$, y entonces $md\in E$ satisface $\norm{v-md}<\eps$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 5]
+Si $(v_n)$ es de Cauchy, $v_n\ne0$, y no converge a $0$, pruebe que $(v_n/\norm{v_n})$ es de Cauchy. Deduzca que $V$ es de Banach si y solo si $\overline B(0,1)$ es completa.
+\end{ejercicio}
+\begin{solucion}
+Por la desigualdad triangular inversa, $(\norm{v_n})$ es una sucesión real de Cauchy. Sea $a$ su límite. Si $a=0$, tendríamos $v_n\to0$, contrario a la hipótesis; luego $a>0$. Para $n$ suficientemente grande, $\norm{v_n}\geq a/2$. El ejercicio 1 da entonces
+\[
+ \norm{\frac{v_n}{\norm{v_n}}-\frac{v_m}{\norm{v_m}}}\leq\frac4a\norm{v_n-v_m},
+\]
+que tiende uniformemente a cero cuando $m,n\to\infty$.
+
+Si $V$ es completo, su bola cerrada es un subconjunto cerrado y por ello completo. Para el recíproco puede usarse una observación aún más directa: toda sucesión de Cauchy $(x_n)$ es acotada. Elija $R>0$ con $\norm{x_n}\leq R$ para todo $n$. Entonces $(x_n/R)$ es de Cauchy en la bola cerrada unitaria, converge a un $y$ de esa bola y $x_n\to Ry$ en $V$. La primera parte explica además cómo controlar las direcciones de una sucesión que permanece alejada del origen.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 6]
+Sean $M_1,M_2\leq V$ tales que $\cl{M_1}\cap M_2=\{0\}$ y $M_1+M_2$ es cerrado. Demuestre que $M_1$ es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Como $M_1\subseteq M_1+M_2$ y este último es cerrado, $\cl{M_1}\subseteq M_1+M_2$. Para $x\in\cl{M_1}$ escriba $x=a+b$, con $a\in M_1$ y $b\in M_2$. La proposición~\ref{ch19:cierre-subespacio} implica que $b=x-a\in\cl{M_1}$. Así $b\in\cl{M_1}\cap M_2=\{0\}$, y $x=a\in M_1$. Hemos probado $\cl{M_1}\subseteq M_1$. La barra sobre $M_1$ en la hipótesis, visible en el PDF original, es indispensable para este argumento.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 7]
+Si $v_n\to v$, demuestre que las medias de Cesàro $u_n=(v_1+\cdots+v_n)/n$ convergen a $v$.
+\end{ejercicio}
+\begin{solucion}
+Dado $\eps>0$, elija $N$ con $\norm{v_j-v}<\eps/2$ para $j\geq N$. Para $n\geq N$,
+\[
+ \norm{u_n-v}\leq
+ \frac1n\sum_{j=1}^{N-1}\norm{v_j-v}
+ +\frac{n-N+1}{n}\frac\eps2.
+\]
+La primera suma tiene un número fijo de términos, por lo que, dividida entre $n$, es menor que $\eps/2$ para $n$ suficientemente grande. El segundo término no supera $\eps/2$. Así $u_n\to v$. El argumento separa una parte inicial, cuyo peso desaparece, de una cola cuyos términos ya están cerca del límite.
+\end{solucion}
+
+\section{Perspectiva}
+La continuidad de las operaciones permite usar límites sin abandonar el álgebra lineal. La completitud transforma estimaciones de colas en existencia de sumas, y el lema de Riesz muestra que un subespacio cerrado propio siempre deja fuera alguna dirección de tamaño controlado. Son las tres herramientas que organizan el estudio de operadores de los capítulos siguientes.

@@ -1,0 +1,302 @@
+{
+  "source": "Lecturas 1–6 de Análisis Matemático 1, Miguel Ángel Valencia Bucio",
+  "total_original_exercises": 46,
+  "total_resolved_exercises": 46,
+  "chapters": [
+    {
+      "chapter": 1,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "incisos": {
+        "2": [
+          "i",
+          "ii",
+          "iii"
+        ]
+      },
+      "corrections": [
+        "Las expresiones integrales en C(K) son seminormas para K compacto Jordan-medible arbitrario; se prueba norma para [a,b], a<b, y se explicita la condición suficiente de soporte pleno.",
+        "En el ejemplo de ℓ^p se toma 1<p<∞; p=1 se trata por separado."
+      ],
+      "expanded_theory": [
+        "Métrica inducida",
+        "Young",
+        "Hölder finito, series e integral, incluidos factores nulos",
+        "Minkowski y cierre de ℓ^p bajo suma",
+        "Normas de funciones y Jordan-medibilidad"
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    },
+    {
+      "chapter": 2,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "incisos": {
+        "1": [
+          "i",
+          "ii",
+          "iii"
+        ],
+        "4": [
+          "i",
+          "ii"
+        ],
+        "5": [
+          "i",
+          "ii",
+          "iii"
+        ],
+        "6": [
+          "i",
+          "ii",
+          "iii"
+        ],
+        "7": [
+          "i",
+          "ii"
+        ]
+      },
+      "corrections": [
+        "La bola euclidiana usa suma de (x_k-y_k)^2.",
+        "La bola en C(K) exige g continua; la equivalencia entre desigualdades estrictas puntuales y máximo estricto usa compacidad.",
+        "Ejercicio 5(ii): precisar que bolas abiertas y cerradas de radio positivo son topológicamente abiertas y cerradas, no iguales para un mismo radio."
+      ],
+      "expanded_theory": [
+        "Vecindades y orden",
+        "Interior, clausura e idempotencia",
+        "Clausura de bola abierta no necesariamente bola cerrada"
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    },
+    {
+      "chapter": 3,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "incisos": {
+        "1": [
+          "i",
+          "ii"
+        ],
+        "2": [
+          "i",
+          "ii"
+        ],
+        "8": [
+          "intersección",
+          "unión",
+          "ambas inclusiones estrictas"
+        ],
+        "9": [
+          "i",
+          "ii",
+          "iii"
+        ]
+      },
+      "corrections": [
+        "Ejercicio Hausdorff: y∈V en vez de y∈X.",
+        "Prueba para conjuntos finitos sin acumulación cubre puntos exteriores y conjuntos de cero o un elemento."
+      ],
+      "expanded_theory": [
+        "Operaciones con abiertos/cerrados",
+        "Caracterización por bolas",
+        "Clausura A∪A'",
+        "Selección recursiva de sucesión de puntos distintos",
+        "Distancia a conjunto 1-Lipschitz"
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    },
+    {
+      "chapter": 4,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "incisos": {
+        "2": [
+          "i",
+          "ii"
+        ]
+      },
+      "corrections": [
+        "Distribución de (V∪B)∩Y produce V∪B_Y, no intersección.",
+        "Ejercicio 3: extremos finitos irracionales; incluye casos de semirrectas, todo Q y vacío.",
+        "Ejercicio 5 falso: contraejemplo x_1=0, x_{n+1}=1/n; versión correcta cl S=S∪{l} y criterio para cerradura relativa.",
+        "Ejercicio 6: refutación y fórmula correcta de interior relativo."
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    },
+    {
+      "chapter": 5,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "incisos": {
+        "1": [
+          "i",
+          "ii"
+        ],
+        "4": [
+          "i",
+          "ii"
+        ],
+        "7": [
+          "i",
+          "ii",
+          "iii"
+        ]
+      },
+      "corrections": [
+        "Ejercicio 1(ii): B no definido sustituido por A en cl(f^{-1}(A))⊂f^{-1}(cl A), verificado en PDF original.",
+        "Ejercicio 4: f,g deben tener dominio X.",
+        "Ejercicio 6: recíproco falso; función escalón no nula tiene soporte R y frontera vacía; versión válida agrega continuidad de f restringida al soporte.",
+        "Negación de continuidad usa ≥epsilon.",
+        "Teorema 5 repetido sobre subespacios incorporado mediante resultados de inclusión/restricción."
+      ],
+      "expanded_theory": [
+        "Cuatro criterios globales",
+        "Criterio epsilon-delta",
+        "Criterio secuencial completo",
+        "Mapas abiertos/cerrados y ejemplos",
+        "Homeomorfismo R con (-1,1)",
+        "Extensión por cero y pegado"
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    },
+    {
+      "chapter": 6,
+      "original_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "resolved_exercises": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "incisos": {
+        "5": [
+          "necesidad",
+          "suficiencia",
+          "factores vacíos"
+        ],
+        "6": [
+          "ambas afirmaciones originales",
+          "ampliación abierto denso"
+        ]
+      },
+      "corrections": [
+        "Prueba de base numerable corrige mezcla de índices: radios 2^{-k} y reserva de tolerancia.",
+        "Ejercicio 5 requiere factores no vacíos para la equivalencia; excepción explicada.",
+        "Ejercicio 6: segunda afirmación original denso y cerrado implica X; se resuelve literalmente y se añade versión útil con abierto denso.",
+        "Definición denso en ninguna parte usa interior de clausura, barra confirmada en PDF."
+      ],
+      "all_original_incisos_resolved": true,
+      "pending_proofs": [],
+      "pending_cross_references": []
+    }
+  ]
+}

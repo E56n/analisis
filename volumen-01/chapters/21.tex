@@ -1,0 +1,326 @@
+\chapter{El dual, los isomorfismos y la extensión de funcionales}\label{chap:21}
+
+Una funcional lineal asigna un escalar a cada vector y respeta la estructura lineal. Puede interpretarse como una medición: su núcleo registra los vectores que esa medición no detecta. El dual reúne todas las mediciones continuas. Para que esta interpretación sea útil necesitaremos saber que hay suficientes funcionales para distinguir vectores; esa afirmación requiere el teorema de Hahn--Banach, cuya demostración se incluye aquí porque uno de los ejercicios lo necesita.
+
+Los prerrequisitos son la norma de operador, su completitud cuando el codominio es completo y el lema de Zorn. Este último afirma que un conjunto parcialmente ordenado en el que toda cadena tiene una cota superior posee un elemento maximal. En la prueba de extensión, una cadena consiste en extensiones compatibles y su unión será la cota superior.
+
+\section{Funcionales e hiperplanos}
+
+\begin{definicion}
+El \emph{dual continuo} de $V$ es $V^*=\Bcal(V,\F)$. Sus elementos son funcionales lineales continuas y llevan la norma de operador
+\[\norm\varphi=\sup_{\norm v\leq1}|\varphi(v)|.\]
+El dual algebraico contiene todas las funcionales lineales, sin exigir continuidad, y puede ser mayor que $V^*$.
+\end{definicion}
+\index{dual!continuo}\index{funcional lineal}
+
+\begin{proposicion}
+El espacio $V^*$ es de Banach, aunque $V$ no sea completo.
+\end{proposicion}
+\begin{proof}
+Los cuerpos $\R$ y $\C$ son completos. Aplicamos el teorema~\ref{ch20:banach-operadores} con $W=\F$.
+\end{proof}
+
+\begin{proposicion}\label{ch21:kernel-proporcional}
+Dos funcionales lineales no nulas tienen el mismo núcleo si y solo si son múltiplos escalares no nulos una de la otra.
+\end{proposicion}
+\begin{proof}
+Si $\psi=c\varphi$ y $c\ne0$, sus conjuntos de ceros coinciden. Recíprocamente, si sus núcleos coinciden, elija $v_0$ con $\varphi(v_0)=1$. Esto es posible: primero elija un vector donde $\varphi$ no se anule y divídalo entre su valor. Para cualquier $v$, el vector $v-\varphi(v)v_0$ pertenece a $\ker\varphi$, pues
+\[
+ \varphi(v-\varphi(v)v_0)=\varphi(v)-\varphi(v)\cdot1=0.
+\]
+También pertenece a $\ker\psi$, de modo que $\psi(v)=\psi(v_0)\varphi(v)$. El escalar $\psi(v_0)$ no es cero, porque $v_0$ no está en el núcleo común. Si se admiten funcionales nulas, la igualdad de núcleos igual a $V$ significa que ambas son cero.
+\end{proof}
+
+\begin{teorema}\label{ch21:hiperplanos}
+Los subespacios propios maximales de un espacio vectorial $V$ son exactamente los núcleos de funcionales lineales no nulas. Cada uno tiene codimensión $1$. La correspondencia es biyectiva si se identifican funcionales que difieren por un factor escalar no nulo.
+\end{teorema}
+\index{hiperplano}
+\begin{proof}
+Si $M=\ker\varphi$ y $\varphi(v_0)=1$, todo $v$ admite la descomposición
+\[
+ v=\underbrace{v-\varphi(v)v_0}_{\in M}+\varphi(v)v_0.
+\]
+Es única, porque $M\cap\F v_0=\{0\}$. Así $V=M\oplus\F v_0$. Todo subespacio que contiene estrictamente a $M$ contiene algún $w$ con $\varphi(w)\ne0$; la misma descomposición usando $w/\varphi(w)$ muestra que ese subespacio es $V$. Por ello $M$ es maximal.
+
+Recíprocamente, si $M$ es propio maximal, elija $v_0\notin M$. El subespacio $M+\F v_0$ contiene estrictamente a $M$, por lo que es $V$. Como la suma es directa, la regla $\varphi(m+\alpha v_0)=\alpha$ está bien definida, es lineal, no nula y tiene núcleo $M$. La proposición~\ref{ch21:kernel-proporcional} prueba que la única indeterminación es un factor no nulo.
+\end{proof}
+
+\begin{proposicion}\label{ch21:kernel-cerrado}
+Una funcional lineal $\varphi$ en un espacio normado es continua si y solo si $\ker\varphi$ es cerrado.
+\end{proposicion}
+\begin{proof}
+Si es continua, su núcleo es la preimagen del cerrado $\{0\}$. Para la otra dirección, si $\varphi=0$ ya es continua. Suponga $\varphi\ne0$, $M=\ker\varphi$ cerrado, y elija $v_0$ con $\varphi(v_0)=1$. Entonces $d=\dist(v_0,M)>0$. Para $v$ con $\varphi(v)\ne0$,
+\[
+ \frac{v}{\varphi(v)}-v_0\in M,
+\]
+y, como $M$ es un subespacio,
+\[
+ d\leq\norm{\frac v{\varphi(v)}}=\frac{\norm v}{|\varphi(v)|}.
+\]
+Resulta $|\varphi(v)|\leq d^{-1}\norm v$. Si $\varphi(v)=0$, la misma desigualdad vale directamente. Así $\varphi$ es acotada y continua.
+\end{proof}
+
+En consecuencia, los hiperplanos cerrados corresponden a las clases de funcionales continuas no nulas. Además, el núcleo de una funcional discontinua es denso: su cierre es un subespacio que contiene al núcleo; por maximalidad, ese cierre es el propio núcleo o todo $V$. La primera posibilidad lo haría cerrado y forzaría continuidad.
+
+\section{Isomorfismos y cotas inferiores}
+
+\begin{definicion}
+Un \emph{isomorfismo de espacios normados} $T:V\to W$ es una transformación lineal biyectiva para la cual $T$ y $T^{-1}$ son continuas. Una aplicación lineal es una \emph{isometría lineal} si $\norm{Tv}=\norm v$ para todo $v$; no se exige sobreyectividad. Un isomorfismo isométrico es, además, biyectivo. Una aplicación puede ser un isomorfismo de $V$ sobre su imagen sin ser sobreyectiva sobre $W$.
+\end{definicion}
+\index{isomorfismo!de espacios normados}
+
+\begin{teorema}\label{ch21:cota-inferior}
+Un operador lineal $T:V\to W$ es un isomorfismo de $V$ sobre $T(V)$ si y solo si existen $a,b>0$ tales que
+\[
+ a\norm v\leq\norm{Tv}\leq b\norm v\qquad(v\in V).
+\]
+Para concluir que es un isomorfismo de $V$ sobre $W$ hay que exigir además $T(V)=W$.
+\end{teorema}
+\begin{proof}
+Si $T$ es un isomorfismo sobre su imagen y $V\ne\{0\}$, la continuidad da
+\[
+ \norm{Tv}\leq\norm T\norm v,
+ \qquad\norm v=\norm{T^{-1}Tv}\leq\norm{T^{-1}}\norm{Tv}.
+\]
+Por tanto sirven $a=1/\norm{T^{-1}}$ y $b=\norm T$. Para el espacio nulo pueden elegirse cualesquiera constantes positivas.
+
+Recíprocamente, la cota superior hace continuo a $T$. Si $Tv=0$, la inferior obliga a que $v=0$, por lo que $T$ es inyectivo. Tiene una inversa definida en $T(V)$, y para $w=Tv$,
+\[
+ \norm{T^{-1}w}=\norm v\leq a^{-1}\norm w.
+\]
+Esta inversa es continua. No hemos probado que cada $w\in W$ sea de la forma $Tv$, porque tal afirmación no se deduce de las desigualdades.
+\end{proof}
+
+\begin{observacion}[Corrección de la lectura original]
+La inclusión $T:\R\to\R^2$, $T(t)=(t,0)$, es una isometría y satisface ambas cotas con $a=b=1$, pero no es sobreyectiva. Es un contraejemplo al enunciado original si ``isomorfismo'' se entiende sobre todo el codominio. La formulación anterior distingue la imagen del codominio.
+\end{observacion}
+
+La inversa de un isomorfismo es un isomorfismo, y la composición de dos isomorfismos también: la inversa de $ST$ es $T^{-1}S^{-1}$, y la composición de operadores continuos es continua. Cuando $V\ne\{0\}$,
+\[
+ 1=\norm{I_V}=\norm{T^{-1}T}\leq\norm{T^{-1}}\norm T.
+\]
+El factor $2I$ es un isomorfismo pero no una isometría. Por otra parte, si $V$ es completo y $T$ tiene cota inferior positiva, $T(V)$ es cerrado en $W$: de $Tv_n\to w$ se deduce que $(v_n)$ es de Cauchy; si $v_n\to v$, la continuidad da $w=Tv$.
+
+\section{La extensión de Hahn--Banach}
+
+La construcción de funcionales a partir de una base de Hamel produce funcionales algebraicas, pero no controla su norma. El siguiente argumento conserva una cota durante la extensión. Se presenta con detalle para que la identificación isométrica con una parte del bidual no dependa de un resultado todavía no demostrado.
+
+\begin{definicion}
+En un espacio vectorial real, $p:V\to\R$ es \emph{sublineal} si
+\[
+ p(x+y)\leq p(x)+p(y),\qquad p(tx)=tp(x)\quad(t\geq0).
+\]
+No se exige $p(-x)=p(x)$. Una norma es un ejemplo, pero los funcionales asociados a conjuntos convexos pueden no ser simétricos.
+\end{definicion}
+
+\begin{teorema}[Hahn--Banach real, forma dominada]\label{ch21:hb-real}
+Sea $p$ sublineal en un espacio vectorial real $V$, sea $M\leq V$ y sea $f:M\to\R$ lineal con $f(m)\leq p(m)$ para todo $m\in M$. Existe una funcional lineal $F:V\to\R$ que extiende a $f$ y satisface $F(v)\leq p(v)$ para todo $v\in V$.
+\end{teorema}
+\index{Hahn--Banach, teorema de}
+\begin{proof}
+Primero extendemos una sola dimensión. Si $x_0\notin M$, cualquier extensión a $M+\R x_0$ tiene la forma
+\[
+ f_1(m+tx_0)=f(m)+tc,
+\]
+donde $c$ es el valor que asignaremos a $x_0$. La representación es única porque $x_0\notin M$. Para que $f_1\leq p$ necesitamos
+\[
+ \sup_{y\in M}\{f(y)-p(y-x_0)\}\leq c
+ \leq\inf_{z\in M}\{p(z+x_0)-f(z)\}.
+\]
+El intervalo no es vacío. En efecto, para $y,z\in M$,
+\[
+ f(y)+f(z)=f(y+z)\leq p(y+z)
+ \leq p(y-x_0)+p(z+x_0).
+\]
+Reordenando obtenemos que cada término del extremo izquierdo es menor o igual que cada término del derecho. Además ambos extremos son finitos: tomar $y=0$ proporciona una cota inferior finita para el supremo, y tomar $z=0$ proporciona una cota superior finita; la desigualdad cruzada controla las otras dos cotas. Podemos elegir un número real $c$ en ese intervalo.
+
+Si $t>0$, la cota superior aplicada a $z=m/t$ da
+\[
+ f(m)+tc\leq t\,p(m/t+x_0)=p(m+tx_0).
+\]
+Si $t=-s<0$, la cota inferior aplicada a $y=m/s$ da
+\[
+ f(m)-sc\leq s\,p(m/s-x_0)=p(m-sx_0).
+\]
+Para $t=0$ se trata de la hipótesis inicial. Hemos construido la extensión de una dimensión.
+
+Considere ahora todos los pares $(N,g)$ donde $M\subseteq N\subseteq V$ es un subespacio, $g$ extiende a $f$ y $g\leq p$ en $N$. Ordénelos por extensión. La familia no es vacía porque contiene $(M,f)$. En una cadena, las funciones coinciden en los dominios comunes. Por ello la unión de sus dominios es un subespacio y la unión de sus funciones es una funcional lineal bien definida dominada por $p$. Es una cota superior de la cadena. Zorn proporciona un par maximal $(N,g)$. Si $N\ne V$, el paso de una dimensión lo extendería a un subespacio mayor, contradiciendo maximalidad. Así $N=V$.
+\end{proof}
+
+\begin{corolario}[Extensión con conservación de la norma]\label{ch21:hb-norma}
+Si $M$ es un subespacio de un espacio normado real o complejo $V$ y $f\in M^*$, existe $F\in V^*$ con $F|_M=f$ y $\norm F=\norm f$.
+\end{corolario}
+\begin{proof}
+En el caso real aplique el teorema a $p(v)=\norm f\norm v$. Obtenemos $F(v)\leq\norm f\norm v$. Aplicar la misma desigualdad a $-v$ da $-F(v)\leq\norm f\norm v$, luego $|F(v)|\leq\norm f\norm v$ y $\norm F\leq\norm f$. La restricción da la desigualdad contraria.
+
+En el caso complejo considere $V$ y $M$ como espacios reales. La función $g=\operatorname{Re}f$ es real lineal y está dominada por $p(v)=\norm f\norm v$. Extiéndala a una funcional real lineal $G$ dominada por $p$, y defina
+\[
+ F(v)=G(v)-iG(iv).
+\]
+Es aditiva y real homogénea. Además,
+\[
+ F(iv)=G(iv)-iG(-v)=G(iv)+iG(v)=iF(v),
+\]
+lo que implica homogeneidad compleja. Para $m\in M$, $G(m)=\operatorname{Re}f(m)$ y $G(im)=\operatorname{Re}(if(m))=-\operatorname{Im}f(m)$, así que $F(m)=f(m)$.
+
+Si $F(v)\ne0$, elija un escalar $\lambda$ de módulo $1$ con $\lambda F(v)=|F(v)|$. Entonces
+\[
+ |F(v)|=\operatorname{Re}F(\lambda v)=G(\lambda v)
+ \leq\norm f\norm{\lambda v}=\norm f\norm v.
+\]
+Si $F(v)=0$, la desigualdad es inmediata. Así $\norm F\leq\norm f$; la restricción vuelve a dar igualdad.
+\end{proof}
+
+\begin{corolario}\label{ch21:funcional-normante}
+Para cada $v\ne0$ existe $\varphi\in V^*$ con $\norm\varphi=1$ y $\varphi(v)=\norm v$. En consecuencia,
+\[\norm v=\sup_{\norm\varphi\leq1}|\varphi(v)|.\]
+\end{corolario}
+\begin{proof}
+En $M=\F v$ defina $f(\alpha v)=\alpha\norm v$. Esta funcional tiene norma $1$, porque $|f(\alpha v)|=\norm{\alpha v}$. Extiéndala por el corolario anterior. La desigualdad $|\varphi(v)|\leq\norm\varphi\norm v$ da una cota superior para el supremo, y la extensión construida alcanza esa cota. Para $v=0$, todos los valores son cero.
+\end{proof}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 21, ejercicio 1]
+Demuestre que el espacio de todas las funcionales lineales de $\F^n$ es isomorfo a $\F^n$.
+\end{ejercicio}
+\begin{solucion}
+Una funcional queda determinada por $a_j=\varphi(e_j)$, porque $\varphi(x)=\sum_{j=1}^n a_jx_j$. Así $J(a)(x)=\sum_j a_jx_j$ es una biyección lineal entre $\F^n$ y su dual algebraico. No introducimos conjugados en esta fórmula porque queremos que $J$ sea lineal también cuando $\F=\C$.
+
+Con la norma uniforme en el dominio de las funcionales,
+\[
+ |J(a)(x)|\leq\sum_j|a_j|\quad\text{si }\norm x_\infty\leq1.
+\]
+Elija $x_j=\overline{a_j}/|a_j|$ cuando $a_j\ne0$ y $x_j=1$ cuando $a_j=0$; en el caso real son simplemente signos. Entonces $a_jx_j=|a_j|$, y obtenemos $\norm{J(a)}=\sum_j|a_j|$. Todas las funcionales son continuas y $J$ es una isometría si el espacio de coeficientes lleva norma $\ell^1$. Como $\norm a_\infty\leq\sum_j|a_j|\leq n\norm a_\infty$, también es un isomorfismo para la norma uniforme, y el lema~\ref{ch19:coordenadas} permite cualquier otra norma en dimensión finita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 2]
+Sea $\varphi\in V^*$ y $M=\ker\varphi$. Pruebe que
+\[|\varphi(v)|=\norm\varphi\,\dist(v,M)\qquad(v\in V).\]
+\end{ejercicio}
+\begin{solucion}
+Si $\varphi=0$, entonces $M=V$ y ambos lados son cero. Suponga $\varphi\ne0$. Para $m\in M$,
+\[
+ |\varphi(v)|=|\varphi(v-m)|\leq\norm\varphi\norm{v-m}.
+\]
+Tomar el ínfimo da $|\varphi(v)|\leq\norm\varphi\dist(v,M)$. Si $\varphi(v)=0$, $v\in M$ y ya hay igualdad. En otro caso, por la definición de norma existen $u_j$ con $\norm{u_j}\leq1$ y $|\varphi(u_j)|\to\norm\varphi>0$. Descartamos términos iniciales si hace falta para que $\varphi(u_j)\ne0$. El vector
+\[
+ m_j=v-\frac{\varphi(v)}{\varphi(u_j)}u_j
+\]
+pertenece a $M$. Por tanto
+\[
+ \dist(v,M)\leq\norm{v-m_j}
+ \leq\frac{|\varphi(v)|}{|\varphi(u_j)|}.
+\]
+Al pasar al límite obtenemos la desigualdad inversa. No hemos supuesto que la norma de $\varphi$ se alcance.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 3]
+Sea $A\subseteq V$ no vacío y $U=\overline B(0,1)$. Pruebe
+\[
+ \cl{A+U}=\{v\in V:\dist(v,A)\leq1\}.
+\]
+Deduzca que $A+U$ es cerrado si y solo si todo $v$ con $\dist(v,A)=1$ admite $a\in A$ con $\norm{v-a}=1$.
+\end{ejercicio}
+\begin{solucion}
+La función distancia a un conjunto no vacío es continua: la desigualdad triangular da $|\dist(x,A)-\dist(y,A)|\leq\norm{x-y}$. El conjunto del lado derecho es por ello cerrado. Contiene a $A+U$, así que también contiene su cierre.
+
+Si $\dist(v,A)\leq1$, elija $a_n\in A$ con $\norm{v-a_n}<1+1/n$. Defina
+\[
+ u_n=\frac{v-a_n}{\max\{1,\norm{v-a_n}\}},\qquad z_n=a_n+u_n.
+\]
+Tenemos $\norm{u_n}\leq1$ y $z_n\in A+U$. Si $\norm{v-a_n}\leq1$, entonces $z_n=v$. Si es mayor que $1$, la diferencia entre $v-a_n$ y su normalización tiene norma $\norm{v-a_n}-1<1/n$. Por tanto $z_n\to v$, y queda demostrada la igualdad.
+
+Cuando $\dist(v,A)<1$, la definición de ínfimo ya proporciona $a\in A$ con $\norm{v-a}<1$, de modo que $v\in A+U$. Solo pueden faltar en la suma puntos de distancia exactamente $1$. Para esos puntos, pertenecer a $A+U$ equivale a que exista un $a\in A$ con $\norm{v-a}\leq1$; como la distancia es $1$, tal desigualdad debe ser igualdad. Esto prueba el criterio. Si $A=\varnothing$, la suma es vacía y cerrada, y la identidad se interpreta con $\dist(v,\varnothing)=+\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 4]
+Sea $\norm\varphi=1$, $M=\ker\varphi$ y $U=\overline B(0,1)$. Demuestre
+\[
+ \cl{M+U}=\{v:|\varphi(v)|\leq1\}.
+\]
+Pruebe que $M+U$ es cerrado si y solo si existe $u\in U$ con $|\varphi(u)|=1$.
+\end{ejercicio}
+\begin{solucion}
+La primera igualdad se sigue de los ejercicios 2 y 3 porque $\dist(v,M)=|\varphi(v)|$. Si $M+U$ es cerrado, elija $v$ con $\varphi(v)=1$, posible porque una funcional no nula es sobreyectiva sobre $\F$. La igualdad del cierre da $v=m+u$, con $m\in M$ y $u\in U$. De ahí $\varphi(u)=1$.
+
+Recíprocamente, suponga $u_0\in U$ y $|\varphi(u_0)|=1$. Si $|\varphi(v)|\leq1$, defina
+\[
+ u=\frac{\varphi(v)}{\varphi(u_0)}u_0.
+\]
+Entonces $\norm u\leq1$ y $\varphi(v-u)=0$. Así $v=(v-u)+u\in M+U$. La suma coincide con el cerrado $\{v:|\varphi(v)|\leq1\}$.
+
+La conclusión original escribe $|v|=1$ donde debe aparecer $|\varphi(v)|=1$: la condición relevante es que la funcional alcance su norma. No sucede siempre. En $c_0$ con norma uniforme,
+\[
+ \varphi(x)=\sum_{n=1}^{\infty}2^{-n}x_n
+\]
+tiene norma $1$, porque la desigualdad triangular da la cota y las sucesiones con sus primeros $N$ términos iguales a $1$ dan valores $1-2^{-N}$. Si $\norm x_\infty\leq1$ y $|\varphi(x)|=1$, entonces $\sum_n2^{-n}|x_n|=1$, lo que obliga a $|x_n|=1$ para todo $n$: cualquier déficit positivo en un término haría la suma menor que $1$. Eso contradice $x_n\to0$. En este ejemplo $M+U$ no es cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 5]
+Sea $V$ de Banach y $T\in\Bcal(V,V)$ con $\sum_{n=0}^{\infty}\norm{T^n}<\infty$. Demuestre que $I-T$ es un isomorfismo y calcule su inversa.
+\end{ejercicio}
+\begin{solucion}
+El espacio $\Bcal(V,V)$ es completo. Por el teorema~\ref{ch19:series}, la serie $S=\sum_{n=0}^{\infty}T^n$ converge en norma de operador. Sus sumas parciales satisfacen
+\[
+ (I-T)\sum_{n=0}^NT^n=I-T^{N+1}
+ =\left(\sum_{n=0}^NT^n\right)(I-T).
+\]
+Como la serie de normas converge, $\norm{T^{N+1}}\to0$. La continuidad de la composición, probada en el ejercicio 5 del capítulo~\ref{chap:20}, permite pasar al límite y obtener $(I-T)S=S(I-T)=I$. Por tanto $(I-T)^{-1}=S$ es continuo. En particular, si $\norm T<1$, la hipótesis se cumple porque $\norm{T^n}\leq\norm T^n$.
+\end{solucion}
+\index{Neumann, serie de}
+
+\begin{ejercicio}[Lectura 21, ejercicio 6]
+Sean $V,W$ de Banach y $T:V\to W$ un isomorfismo. Si $\norm{S-T}<1/\norm{T^{-1}}$, demuestre que $S$ es un isomorfismo. Deduzca que los isomorfismos forman un abierto de $\Bcal(V,W)$.
+\end{ejercicio}
+\begin{solucion}
+Supongamos $V\ne\{0\}$; cuando $V=W=\{0\}$ solo existe un operador y la conclusión de apertura es inmediata. Defina $E=T^{-1}(S-T)$. Entonces $\norm E\leq\norm{T^{-1}}\norm{S-T}<1$ y
+\[
+ S=T(I+E).
+\]
+El ejercicio anterior aplicado a $-E$ da que $I+E$ es invertible. Así
+\[
+ S^{-1}=(I+E)^{-1}T^{-1},\qquad
+ \norm{S^{-1}}\leq\frac{\norm{T^{-1}}}{1-\norm E}.
+\]
+Cada isomorfismo $T$ tiene, por tanto, una bola abierta de radio $1/\norm{T^{-1}}$ formada por isomorfismos. Esa es precisamente la definición de que el conjunto sea abierto. Si no existen isomorfismos, el conjunto vacío también es abierto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 7]
+Sea $T$ un isomorfismo de $V$ sobre un subespacio de $W$. Pruebe que, si $\norm{T'-T}$ es suficientemente pequeña, $T'$ es un isomorfismo sobre su imagen.
+\end{ejercicio}
+\begin{solucion}
+El teorema~\ref{ch21:cota-inferior} proporciona $a>0$ con $\norm{Tv}\geq a\norm v$. Si $\delta=\norm{T'-T}<a$, entonces
+\[
+ \norm{T'v}\geq\norm{Tv}-\norm{(T'-T)v}\geq(a-\delta)\norm v.
+\]
+También $\norm{T'v}\leq\norm{T'}\norm v$. El mismo teorema muestra que $T'$ es un isomorfismo de $V$ sobre $T'(V)$, con inversa de norma a lo sumo $1/(a-\delta)$. No se afirma que las imágenes de $T$ y $T'$ sean iguales.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 8]
+Pruebe que la evaluación canónica
+\[
+ J:V\longrightarrow V^{**},\qquad J(v)(\varphi)=\varphi(v),
+\]
+es una isometría lineal.
+\end{ejercicio}
+\begin{solucion}
+Para cada $v$, la aplicación $J(v)$ es lineal en $\varphi$, y
+\[
+ |J(v)(\varphi)|=|\varphi(v)|\leq\norm\varphi\norm v.
+\]
+Así $J(v)\in V^{**}$ y $\norm{J(v)}\leq\norm v$. Además, para $\alpha,\beta\in\F$,
+\[
+ J(\alpha v+\beta w)(\varphi)
+ =\varphi(\alpha v+\beta w)
+ =\alpha J(v)(\varphi)+\beta J(w)(\varphi),
+\]
+de modo que $J$ es lineal. Si $v\ne0$, el corolario~\ref{ch21:funcional-normante} proporciona una funcional $\varphi$ de norma $1$ con $\varphi(v)=\norm v$. Por tanto
+\[
+ \norm{J(v)}\geq|J(v)(\varphi)|=\norm v.
+\]
+Para $v=0$ la igualdad es directa. En consecuencia $\norm{J(v)}=\norm v$ para todo $v$, y $J$ es inyectiva. Su sobreyectividad es una propiedad adicional, llamada reflexividad, que no se deduce de esta prueba.
+\end{solucion}
+
+\section{Perspectiva}
+Los núcleos describen hiperplanos, las cotas inferiores describen isomorfismos sobre la imagen y Hahn--Banach garantiza funcionales capaces de recuperar exactamente la norma de un vector. La última afirmación explica por qué el dual no es solamente una colección auxiliar: conserva toda la geometría métrica de $V$ a través de su inclusión en el bidual.

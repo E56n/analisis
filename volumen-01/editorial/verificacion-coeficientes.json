@@ -1,0 +1,8 @@
+{
+  "comprobacion": "20 coeficientes de Legendre, ejercicio31.6, cuadratura Simpson compuesta independiente",
+  "subintervalos": 20000,
+  "error_maximo": 1.8678984285240102e-15,
+  "umbral": 1e-10,
+  "resultado": "correcto",
+  "alcance": "Comprobación numérica de los valores; las derivaciones simbólicas figuran en el capítulo."
+}

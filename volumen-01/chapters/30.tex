@@ -1,0 +1,206 @@
+\chapter{Proyecciones ortogonales y mejor aproximación}\label{chap:30}
+\index{proyeccion ortogonal@proyección ortogonal}\index{mejor aproximacion@mejor aproximación}
+
+En geometría euclidiana, el punto de una recta más cercano a un punto exterior se obtiene trazando una perpendicular. El mismo principio funciona en dimensión infinita, pero la existencia del punto más cercano exige atención. Este capítulo desarrolla la lectura 30 de \cite{valencia}: separaremos la \emph{caracterización} del mejor aproximante de su \emph{existencia}, y veremos exactamente dónde interviene la completitud.
+
+\section{La perpendicular caracteriza al mejor aproximante}
+\begin{teorema}\label{ch30:caracterizacion}
+Sea $V$ un espacio con producto interno y $M\subset V$ un subespacio. Para $x\in V$ y $m\in M$ son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+ \item $x-m\in M^{\perp}$;
+ \item $\norm{x-m}=\dist(x,M)$.
+\end{enumerate}
+Si se cumplen, $m$ es único y para todo $u\in M$,
+\[
+ \norm{x-u}^{2}=\norm{x-m}^{2}+\norm{m-u}^{2}.
+\]
+En particular, $\dist(x,M)^{2}=\norm{x}^{2}-\norm{m}^{2}$.
+\end{teorema}
+\begin{proof}
+Si $x-m\perp M$, entonces $x-m\perp m-u$, de modo que Pitágoras da la igualdad anunciada. Para $u\ne m$, el segundo sumando es positivo; por ello $m$ es el único minimizador. Con $u=0$ obtenemos la fórmula de la distancia.
+
+Recíprocamente, supongamos que $m$ minimiza. Fijemos $u\in M\setminus\{0\}$ y sea $r=x-m$. Como $m+\alpha u\in M$ para cada $\alpha\in\F$,
+\[
+0\leq\norm{r-\alpha u}^{2}-\norm{r}^{2}
+=-2\operatorname{Re}(\bar\alpha\ip{r}{u})+|\alpha|^{2}\norm{u}^{2}.
+\]
+Elegimos $\alpha=\ip{r}{u}/\norm{u}^{2}$. El lado derecho se vuelve $-|\ip{r}{u}|^{2}/\norm{u}^{2}$. Debe ser no negativo, por lo que $\ip{r}{u}=0$. Para $u=0$ la igualdad ya se cumple. Así $r\in M^{\perp}$.
+\end{proof}
+
+\begin{definicion}
+El vector del teorema se llama \emph{proyección ortogonal} de $x$ sobre $M$ y se escribe $P_Mx$. Un subespacio es \emph{ortogonalmente complementado}, o \emph{distinguido} en las lecturas originales, cuando dicha proyección existe para todo $x\in V$.
+\end{definicion}
+\index{subespacio!distinguido}\index{subespacio!ortogonalmente complementado}
+
+\begin{ejemplo}[La distancia puede no alcanzarse]
+En $\ell^{2}$, sea $M=c_{00}=\spanop\{e_n:n\geq1\}$. Los truncamientos de cualquier sucesión convergen en norma, de modo que $M$ es denso. Para $x=(1/n)_{n\geq1}$ tenemos $\dist(x,M)=0$, pero $x\notin M$. Si $u\in M$ y $u_n=0$ para $n\geq N$, entonces
+\[
+ \norm{x-u}^{2}\geq\sum_{n=N}^{\infty}\frac1{n^{2}}>0.
+\]
+Por ello ningún $u$ alcanza la distancia. El obstáculo es que el límite de una sucesión de aproximantes puede salir del subespacio.
+\end{ejemplo}
+
+\section{Existencia y descomposición ortogonal}
+\begin{teorema}[Teorema de proyección]\label{ch30:proyeccion}
+En un espacio con producto interno:
+\begin{enumerate}[label=(\roman*)]
+ \item todo subespacio ortogonalmente complementado es cerrado;
+ \item todo subespacio completo es ortogonalmente complementado.
+\end{enumerate}
+Por tanto, en un espacio de Hilbert, un subespacio admite proyección ortogonal si y solo si es cerrado.
+\end{teorema}
+\begin{proof}
+\emph{(i)} Si $x\in\cl M$, entonces $\dist(x,M)=0$. Si $m=P_Mx$ existe, $\norm{x-m}=0$, luego $x=m\in M$.
+
+\emph{(ii)} Fijemos $x$ y escribamos $d=\dist(x,M)$. Por definición de ínfimo, para cada $n$ se puede elegir $m_n\in M$ con $d\leq\norm{x-m_n}<d+1/n$. El paralelogramo aplicado a $x-m_n$ y $x-m_k$ da
+\[
+ \norm{m_n-m_k}^{2}
+ =2\norm{x-m_n}^{2}+2\norm{x-m_k}^{2}
+ -4\left\|x-\frac{m_n+m_k}{2}\right\|^{2}.
+\]
+El punto medio pertenece a $M$, de modo que su distancia a $x$ es al menos $d$. Por ello
+\[
+0\leq\norm{m_n-m_k}^{2}
+\leq2\norm{x-m_n}^{2}+2\norm{x-m_k}^{2}-4d^{2}\longrightarrow0.
+\]
+Esto prueba que $(m_n)$ es de Cauchy. Por completitud de $M$, converge a $m\in M$, y la continuidad de la norma implica $\norm{x-m}=d$. El teorema \ref{ch30:caracterizacion} termina la prueba.
+
+Si el espacio ambiente es Hilbert, sus subespacios cerrados son completos: el límite ambiente de una sucesión de Cauchy permanece en el subespacio por cerradura. Esto explica la última equivalencia.
+\end{proof}
+
+\begin{teorema}\label{ch30:descomposicion}
+\index{descomposicion ortogonal@descomposición ortogonal}
+Un subespacio $M$ es ortogonalmente complementado si y solo si
+\[
+ V=M\oplus M^{\perp}.
+\]
+En ese caso $(M^{\perp})^{\perp}=M$, y $M^{\perp}$ también es ortogonalmente complementado.
+\end{teorema}
+\begin{proof}
+Si existe $P_Mx$, escribimos $x=P_Mx+(x-P_Mx)$, con el primer sumando en $M$ y el segundo en $M^{\perp}$. Además $M\cap M^{\perp}=\{0\}$, pues un vector de la intersección es perpendicular a sí mismo. La descomposición es, por tanto, única.
+
+Recíprocamente, si $x=m+n$ con $m\in M$ y $n\in M^{\perp}$, el teorema \ref{ch30:caracterizacion} demuestra que $m=P_Mx$. Es el componente en $M$, no el componente perpendicular.
+
+Siempre $M\subset(M^{\perp})^{\perp}$. Si $x\in(M^{\perp})^{\perp}$, descompongamos $x=m+n$. Entonces $0=\ip{x}{n}=\ip{m}{n}+\ip{n}{n}=\norm{n}^{2}$, y $x=m\in M$. Así $V=M^{\perp}\oplus(M^{\perp})^{\perp}$; la equivalencia ya demostrada prueba que $M^{\perp}$ es complementado.
+\end{proof}
+
+\begin{corolario}\label{ch30:doble}
+\index{complemento ortogonal!doble}
+Si $H$ es Hilbert y $S\subset H$, entonces
+\[
+ (S^{\perp})^{\perp}=\cl{\spanop S}.
+\]
+\end{corolario}
+\begin{proof}
+Un vector perpendicular a $S$ es perpendicular a todas sus combinaciones lineales y a sus límites, por continuidad del producto interno. Por tanto, con $M=\cl{\spanop S}$ se tiene $S^{\perp}=M^{\perp}$. Como $M$ es cerrado en Hilbert, es complementado y el teorema anterior da $(M^{\perp})^{\perp}=M$.
+\end{proof}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 30, ejercicio 1]
+Sea $C$ un subconjunto convexo, completo y no vacío de un espacio con producto interno. Probar que para cada $x$ existe un único $c\in C$ tal que $\norm{x-c}=\dist(x,C)$.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $d=\dist(x,C)$ y elijamos $c_n\in C$ con $\norm{x-c_n}\to d$. La convexidad asegura $(c_n+c_k)/2\in C$. La misma identidad del paralelogramo de la prueba del teorema \ref{ch30:proyeccion} da
+\[
+ \norm{c_n-c_k}^{2}\leq2\norm{x-c_n}^{2}+2\norm{x-c_k}^{2}-4d^{2}\to0.
+\]
+Como $C$ es completo, $c_n\to c\in C$; por continuidad, $\norm{x-c}=d$. Si $c'$ fuera otro minimizador, el paralelogramo daría
+\[
+ \norm{c-c'}^{2}=4d^{2}-4\left\|x-\frac{c+c'}2\right\|^{2}\leq0.
+\]
+Así $c=c'$. Esta prueba utiliza solamente que los puntos medios permanecen en $C$; la completitud garantiza que el límite también permanece.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 30, ejercicio 2: Parseval sobre un subespacio]
+Sea $M$ ortogonalmente complementado y $E\subset M$ ortonormal con $\spanop E$ denso en $M$. Para $x\in V$ y $m=P_Mx$, probar
+\[
+ \norm{m}^{2}=\sum_{e\in E}|\ip{x}{e}|^{2}.
+\]
+\end{ejercicio}
+\begin{solucion}
+Como $x-m\perp M$, $\ip{x}{e}=\ip{m}{e}$. Para $F\subset E$ finito, pongamos $p_F=\sum_{e\in F}\ip{m}{e}e$. Entonces $m-p_F\perp\spanop F$ y
+\[
+ \norm{m-p_F}^{2}=\norm{m}^{2}-\sum_{e\in F}|\ip{m}{e}|^{2}.
+\]
+Dado $\eps>0$, la densidad proporciona $q\in\spanop E$ con $\norm{m-q}<\eps$. El vector $q$ es una combinación de un conjunto finito $F_0$. Para todo $F\supset F_0$, $p_F$ es el mejor aproximante en $\spanop F$, por lo que $\norm{m-p_F}\leq\norm{m-q}<\eps$. Así las sumas finitas se acercan a $\norm{m}^{2}$ desde abajo. Su supremo es exactamente ese valor. La prueba no exige que $V$ o $M$ sean completos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 30, ejercicio 3: tres perpendiculares]
+Sean $M\subset N$ subespacios ortogonalmente complementados. Probar $P_MP_Nx=P_Mx$.
+\end{ejercicio}
+\begin{solucion}
+Pongamos $m=P_Mx$ y $n=P_Nx$. Como $x-n\in N^{\perp}\subset M^{\perp}$ y $x-m\in M^{\perp}$, su diferencia $n-m=(x-m)-(x-n)$ pertenece a $M^{\perp}$. Puesto que $m\in M$, la caracterización del mejor aproximante dice que $m=P_Mn$. También $P_NP_Mx=P_Mx$, porque $P_Mx\in M\subset N$. Se obtiene así $P_MP_N=P_NP_M=P_M$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 30, ejercicio 4: complementos ortogonales]
+Para subespacios $M,N$, estudiar
+\begin{enumerate}[label=(\roman*)]
+ \item $(M+N)^{\perp}=M^{\perp}\cap N^{\perp}$;
+ \item $(M\cap N)^{\perp}=\cl{M^{\perp}+N^{\perp}}$;
+ \item $M\subset(M^{\perp})^{\perp}$.
+\end{enumerate}
+En (ii) suponemos que $M,N$ son subespacios cerrados de un espacio de Hilbert. Explicaremos por qué no basta, en general, suponer que $M,N$ sean distinguidos en un espacio incompleto. Los incisos (i) y (iii) no requieren cerradura ni completitud.
+\end{ejercicio}
+\begin{solucion}
+\emph{(i)} Si $x\perp M+N$, tomando sucesivamente $n=0$ y $m=0$ obtenemos $x\perp M$ y $x\perp N$. Si estas dos condiciones se cumplen, $\ip{x}{m+n}=\ip{x}{m}+\ip{x}{n}=0$, y $x\perp M+N$.
+
+\emph{(iii)} Si $m\in M$ y $y\in M^{\perp}$, $\ip{m}{y}=\overline{\ip{y}{m}}=0$, por lo que $m\in(M^{\perp})^{\perp}$.
+
+\emph{(ii), caso Hilbert.} Si $M,N$ son distinguidos, son cerrados y satisfacen $M^{\perp\perp}=M$, $N^{\perp\perp}=N$. Por (i),
+\[
+ (M^{\perp}+N^{\perp})^{\perp}=M\cap N.
+\]
+Tomamos complementos otra vez y aplicamos el corolario \ref{ch30:doble}. Esto produce exactamente el cierre que aparece en el enunciado. No se puede suprimir: las sumas de subespacios cerrados no son necesariamente cerradas.
+
+\emph{Por qué hace falta cuidar el espacio ambiente.} Damos un contraejemplo completo a la generalidad prehilbertiana. Sea $A$ el álgebra real de funciones sobre $[0,1]$ generada por $t$ y $(1+t^{2})^{-1}$; sus elementos son funciones racionales continuas. En $V=A\times A$ definamos
+\[
+ \ip{(f,g)}{(u,v)}=f(0)u(0)+g(0)v(0)
+ +\int_0^1(fu+gv)\,dt.
+\]
+Es un producto interno: la anulación de la integral de $f^{2}+g^{2}$, por continuidad, obliga a $f=g=0$. Los operadores
+\[
+ P(f,g)=(f,0),\qquad
+ Q(f,g)=\frac{f+tg}{1+t^{2}}(1,t)
+\]
+preservan $V$, son idempotentes y sus matrices en cada $t$ son simétricas. Por integración, $\ip{Px}{y}=\ip{x}{Py}$ y $\ip{Qx}{y}=\ip{x}{Qy}$. Sus imágenes $M=P(V)$ y $N=Q(V)$ son distinguidas: $x=Px+(x-Px)$ y el segundo sumando es perpendicular a la imagen, y lo mismo para $Q$.
+
+Ahora $M=\{(f,0):f\in A\}$ y $N=\{(b,tb):b\in A\}$. La intersección es cero, porque $tb(t)=0$ para $t>0$ implica $b=0$ también en $0$ por continuidad. Además,
+\[
+ M^{\perp}=\{(0,g):g\in A\},\qquad
+ N^{\perp}=\{(-tb,b):b\in A\},
+\]
+pues son los núcleos de $P$ y $Q$, respectivamente. Todo vector de su suma tiene primera componente cero en $0$. Esta condición se conserva al tomar límites en $V$, ya que $|f(0)|\leq\norm{(f,g)}$. Por tanto $(1,0)\notin\cl{M^{\perp}+N^{\perp}}$, mientras $(M\cap N)^{\perp}=V$. La igualdad original requiere, pues, una hipótesis adicional; el contexto Hilbert proporciona la versión utilizada en los capítulos posteriores.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 30, ejercicio 5]
+Probar que $P_M$ es lineal, continuo, idempotente y simétrico respecto al producto interno. Determinar su norma.
+\end{ejercicio}
+\begin{solucion}
+Si $x=m_x+n_x$ y $y=m_y+n_y$ son las descomposiciones en $M\oplus M^{\perp}$, entonces
+\[
+ \alpha x+\beta y=(\alpha m_x+\beta m_y)+(\alpha n_x+\beta n_y).
+\]
+La unicidad de la descomposición da $P_M(\alpha x+\beta y)=\alpha P_Mx+\beta P_My$. Por Pitágoras, $\norm{P_Mx}\leq\norm{x}$, por lo que es continuo y $\norm{P_M}\leq1$. Si $M\ne\{0\}$, tomamos $m\in M$ de norma uno: $P_Mm=m$, y $\norm{P_M}=1$. Si $M=\{0\}$, la norma es cero, excepción que debe añadirse al enunciado original.
+
+Como $P_Mx\in M$ y la proyección de un vector de $M$ es él mismo, $P_M^{2}=P_M$. Finalmente,
+\[
+ \ip{P_Mx}{y}=\ip{m_x}{m_y+n_y}=\ip{m_x}{m_y}
+ =\ip{m_x+n_x}{m_y}=\ip{x}{P_My}.
+\]
+En particular, la proyección perpendicular es una contracción: no amplifica distancias, pues $\norm{P_Mx-P_My}\leq\norm{x-y}$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 30, ejercicio 6]
+Sea $P:V\to V$ lineal, $P^{2}=P$, y $\ip{Px}{y}=\ip{x}{Py}$ para todos $x,y$. Probar que $P$ es una proyección ortogonal.
+\end{ejercicio}
+\begin{solucion}
+Sea $M=P(V)$. Para $m=Py\in M$,
+\[
+ \ip{x-Px}{m}=\ip{x-Px}{Py}=\ip{P(x-Px)}{y}=0.
+\]
+Por tanto $Px\in M$ y $x-Px\in M^{\perp}$: la caracterización del teorema \ref{ch30:caracterizacion} da $Px=P_Mx$. El ejercicio anterior demuestra automáticamente su continuidad; no era necesario suponerla. Además $\ker P=M^{\perp}$: si $Px=0$, la descomposición dice $x\in M^{\perp}$; si $x\in M^{\perp}$, la unicidad de la descomposición obliga a $Px=0$.
+\end{solucion}
+
+\section{Interpretación de la descomposición}
+La fórmula $x=P_Mx+(x-P_Mx)$ separa la información representable en $M$ del error perpendicular. La perpendicularidad no es solamente una imagen geométrica: demuestra unicidad, controla la norma del error y convierte la aproximación por un sistema ortonormal en una suma de cuadrados. En el siguiente capítulo haremos esa suma con todos los vectores de una base.

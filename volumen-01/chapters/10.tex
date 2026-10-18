@@ -1,0 +1,195 @@
+\chapter{Categoría de Baire y consecuencias de la completitud}\label{chap:10}
+\section{De bolas cada vez menores a un punto}
+La completitud no sólo garantiza límites de sucesiones: permite satisfacer simultáneamente una familia numerable de condiciones abiertas y densas. El teorema de Baire expresa esta posibilidad. Su prueba se basa en encerrar una sucesión en bolas cada vez menores, cuidando que sus límites permanezcan dentro de las condiciones impuestas.
+
+\begin{teorema}[Bolas cerradas anidadas]\label{ch10:bolas}
+Sea $X$ completo y sea $\overline B(x_n,r_n)$ una sucesión de bolas cerradas no vacías con
+\[
+ \overline B(x_{n+1},r_{n+1})\subset\overline B(x_n,r_n),
+ \qquad r_n\longrightarrow0.
+\]
+Su intersección contiene exactamente un punto.
+\end{teorema}
+\begin{proof}
+Para $m,k\geq n$, ambos centros pertenecen a $\overline B(x_n,r_n)$, y por tanto $d(x_m,x_k)\leq2r_n$. Esto prueba que $(x_n)$ es de Cauchy. Sea $x$ su límite. Fijado $n$, toda la cola $x_m$ con $m\geq n$ está en la bola cerrada número $n$; su límite también pertenece a ella. Como $n$ era arbitrario, $x$ pertenece a la intersección. Si $y$ perteneciera también, tendríamos $d(x,y)\leq2r_n$ para todo $n$, y dejar $n\to\infty$ da $x=y$.
+\end{proof}
+La bola cerrada $\overline B(x,r)=\{y:d(x,y)\leq r\}$ no debe confundirse automáticamente con la clausura de $B(x,r)$: en un espacio métrico general pueden ser diferentes. La construcción siguiente usará directamente bolas cerradas.
+
+\section{Conjuntos pequeños en sentido topológico}
+\begin{definicion}\index{F sigma@$F_\sigma$}\index{G delta@$G_\delta$}
+Un conjunto es de tipo $F_\sigma$ si es unión numerable de cerrados, y de tipo $G_\delta$ si es intersección numerable de abiertos. Por las leyes de De Morgan, el complemento de un $F_\sigma$ es un $G_\delta$, y recíprocamente. Estas denominaciones se usarán para describir conjuntos de continuidad y de discontinuidad.
+\end{definicion}
+
+
+\begin{definicion}
+Un subconjunto $A\subset X$ es \emph{denso en ninguna parte} si $\interior{\cl A}=\varnothing$. Es \emph{de primera categoría}, o \emph{magro}, si es unión numerable de conjuntos densos en ninguna parte. Es \emph{de segunda categoría} si no es de primera categoría. Un conjunto cuyo complemento es magro se llama \emph{residual}.
+\end{definicion}
+\index{Baire, teorema de}\index{categoria de Baire@categoría de Baire}\index{denso en ninguna parte}\index{conjunto!magro}\index{conjunto!residual}
+El uso de la clausura es esencial. Los racionales tienen interior vacío en $\R$, pero su clausura es $\R$ y por ello no son densos en ninguna parte. Sí son magros: son unión numerable de conjuntos unipuntuales, cada uno cerrado y de interior vacío.
+
+\begin{ejemplo}
+En un espacio discreto, todo subconjunto es abierto y cerrado; por tanto, el único conjunto denso en ninguna parte es el vacío. Todo subconjunto no vacío es de segunda categoría. Así, $\Z$ es magro dentro de $\R$, porque es numerable y cada punto tiene interior vacío, pero es de segunda categoría dentro de sí mismo con la topología heredada, que es discreta. La categoría siempre se refiere a un espacio ambiente concreto.
+\end{ejemplo}
+
+\begin{teorema}[Baire, forma densa]\label{ch10:baire}
+En un espacio métrico completo, la intersección de una familia numerable de abiertos densos es densa. Equivalentemente, el complemento de todo conjunto magro es denso.
+\end{teorema}
+\begin{proof}
+Sean $G_1,G_2,\ldots$ abiertos densos, y sea $U$ un abierto no vacío. Vamos a construir un punto de $U\cap\bigcap_nG_n$. La densidad de $G_1$ hace no vacío al abierto $U\cap G_1$. Elegimos $x_1$ en él y $r_1>0$ suficientemente pequeño para que
+\[
+ \overline B(x_1,r_1)\subset U\cap G_1,\qquad r_1<1/2.
+\]
+La elección es posible porque, si $B(x_1,s)\subset U\cap G_1$, cualquier $0<r_1<s$ sirve. Suponiendo construida la bola número $n$, el conjunto $B(x_n,r_n)\cap G_{n+1}$ es abierto no vacío. Elegimos en él un punto $x_{n+1}$ y un radio $r_{n+1}>0$ con
+\[
+ \overline B(x_{n+1},r_{n+1})\subset B(x_n,r_n)\cap G_{n+1},
+ \qquad r_{n+1}<2^{-(n+1)}.
+\]
+Las bolas cerradas son anidadas y sus radios tienden a cero. Por el teorema~\ref{ch10:bolas}, tienen un punto común $x$. La primera bola asegura $x\in U$, y la bola número $n$ asegura $x\in G_n$. Esto prueba densidad.
+
+Si $A=\bigcup_nA_n$ con $\interior{\cl{A_n}}=\varnothing$, entonces $G_n=X\setminus\cl{A_n}$ es abierto y denso. La intersección de los $G_n$ está contenida en $X\setminus A$, que también será denso. A la inversa, para abiertos densos $G_n$, cada complemento $X\setminus G_n$ es cerrado de interior vacío, y el complemento de su unión es $\bigcap_nG_n$. Las dos formulaciones son, pues, equivalentes.
+\end{proof}
+
+\begin{corolario}\label{ch10:segunda}
+Todo espacio métrico completo no vacío es de segunda categoría en sí mismo. Todo espacio métrico completo no vacío y sin puntos aislados es incontable.
+\end{corolario}
+\begin{proof}
+Si $X$ fuera magro en sí mismo, el teorema daría que su complemento vacío es denso, imposible cuando $X\ne\varnothing$. Si además no tiene puntos aislados, cada singleton $\{x\}$ es cerrado de interior vacío. Si $X$ fuera numerable, sería unión numerable de esos conjuntos y resultaría magro, contradiciendo la primera afirmación.
+\end{proof}
+
+\begin{observacion}[Qué elecciones utiliza la demostración]
+La construcción escoge una nueva bola a partir de la anterior. Trabajamos con el marco usual de teoría de conjuntos con elección, que permite estas elecciones sucesivas. En un espacio separable con una base numerable ya enumerada, se puede tomar en cada paso la primera bola básica que satisfaga las inclusiones y la cota de radio; así la regla queda determinada. La discusión de la equivalencia lógica entre versiones del teorema y principios de elección dependiente pertenece a los fundamentos de la teoría de conjuntos y no interviene en ninguna demostración del volumen. Lo que necesitaremos en análisis es el enunciado métrico que acabamos de demostrar.
+\end{observacion}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 10, ejercicio 1]
+Determine si es necesario que las bolas del teorema de bolas anidadas sean cerradas.
+\end{ejercicio}
+\begin{solucion}
+Sí, si se pretende esa conclusión bajo las restantes hipótesis. En $\R$, las bolas abiertas $B(1/n,1/n)=(0,2/n)$ están anidadas y sus radios tienden a cero, pero su intersección es vacía. Todo número positivo queda fuera cuando $n>2/x$, y cero no pertenece a ninguna bola. Las bolas cerradas correspondientes tienen intersección $\{0\}$. El papel de ser cerrado es conservar el límite de los centros.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 2]
+Enuncie y pruebe el recíproco del teorema de bolas cerradas anidadas.
+\end{ejercicio}
+\begin{solucion}
+El recíproco afirma: si toda sucesión de bolas cerradas anidadas con radios tendientes a cero tiene intersección no vacía, entonces $X$ es completo. Sea $(x_n)$ de Cauchy. Para cada $k\geq1$ elegimos índices estrictamente crecientes $n_k$ de modo que
+\[
+ d(x_m,x_l)<2^{-k-2}\qquad(m,l\geq n_k).
+\]
+Podemos aumentar cualquier umbral para garantizar $n_{k+1}>n_k$. Pongamos $B_k=\overline B(x_{n_k},2^{-k})$. Si $z\in B_{k+1}$, entonces
+\[
+ d(z,x_{n_k})\leq2^{-k-1}+d(x_{n_{k+1}},x_{n_k})
+ <2^{-k-1}+2^{-k-2}<2^{-k},
+\]
+por lo que $B_{k+1}\subset B_k$. La hipótesis proporciona $x\in\bigcap_kB_k$, y $d(x,x_{n_k})\leq2^{-k}\to0$. La sucesión original es de Cauchy y tiene esta subsucesión convergente; por la proposición~\ref{ch08:cauchy-basico}, converge a $x$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 3]
+Pruebe que $X$ es completo si y sólo si toda sucesión de cerrados \emph{no vacíos} $A_{n+1}\subset A_n$ con $\diam(A_n)\to0$ tiene intersección no vacía.
+\end{ejercicio}
+\begin{solucion}
+Se explicita la no vacuidad, necesaria porque la sucesión constante $A_n=\varnothing$ refutaría el enunciado sin ella. Si $X$ es completo, elegimos $a_n\in A_n$. Para $m,k\geq n$, ambos puntos pertenecen a $A_n$ y $d(a_m,a_k)\leq\diam(A_n)\to0$. La sucesión es de Cauchy y converge a $a\in X$. Para cada $n$, una cola está en el cerrado $A_n$, de donde $a\in A_n$. La intersección es incluso un singleton porque dos puntos suyos distarían a lo sumo $\diam(A_n)$ para todo $n$.
+
+Para la vuelta, sea $(x_n)$ de Cauchy y pongamos $A_n=\cl{\{x_k:k\geq n\}}$. Son cerrados no vacíos y anidados. Si las distancias entre términos de la cola son menores que $\eps$, las distancias entre puntos de su clausura son a lo sumo $\eps$: se aproximan dos puntos de la clausura por términos de la cola y se pasa al límite en la desigualdad triangular. Por tanto $\diam(A_n)\to0$. Sea $x$ un punto de la intersección. Para $k\geq n$, tenemos $x,x_k\in A_n$, así que $d(x,x_k)\leq\diam(A_n)\to0$. Luego $x_n\to x$ y $X$ es completo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 4]
+Pruebe que $A$ es denso en ninguna parte si y sólo si $X\setminus\cl A$ es denso en $X$.
+\end{ejercicio}
+\begin{solucion}
+Un conjunto $D$ es denso si y sólo si todo abierto no vacío lo intersecta. Aplicado a $D=X\setminus\cl A$, esto dice que ningún abierto no vacío está contenido en $\cl A$, es decir, $\interior{\cl A}=\varnothing$. La clausura escrita en el ejercicio original es esencial: reemplazar $X\setminus\cl A$ por $X\setminus A$ sólo detectaría que $A$ tiene interior vacío.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 5]
+Demuestre que todo subconjunto de un conjunto magro es magro.
+\end{ejercicio}
+\begin{solucion}
+Sea $A=\bigcup_nA_n$ con cada $A_n$ denso en ninguna parte, y sea $B\subset A$. Entonces $B=\bigcup_n(B\cap A_n)$. La inclusión $\cl{B\cap A_n}\subset\cl{A_n}$ implica $\interior{\cl{B\cap A_n}}\subset\interior{\cl{A_n}}=\varnothing$. Cada término es denso en ninguna parte y la unión es magra. El mismo argumento muestra que una unión numerable de conjuntos magros es magra, reenumerando los pares de índices mediante una enumeración de $\N\times\N$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 6]
+Sea $X$ completo no vacío y sea $X=\bigcup_{n\geq1}F_n$, donde los $F_n$ son cerrados. Pruebe que alguno tiene interior no vacío.
+\end{ejercicio}
+\begin{solucion}
+Si todos tuvieran interior vacío, por ser cerrados serían densos en ninguna parte. La igualdad expresaría $X$ como un conjunto magro en sí mismo, contra el corolario~\ref{ch10:segunda}. No se concluye que todos los $F_n$ tengan interior, sino que al menos uno debe tenerlo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 7]
+Demuestre que un espacio de Banach de dimensión infinita posee una base algebraica y que toda base algebraica suya es incontable.
+\end{ejercicio}
+\begin{solucion}
+Por base se entiende aquí \emph{base de Hamel}: cada vector es combinación lineal \emph{finita} de sus elementos. Primero justificamos la existencia mediante el lema de Zorn: un conjunto parcialmente ordenado en el que toda cadena admite una cota superior tiene un elemento maximal. Ordenamos por inclusión los subconjuntos linealmente independientes de $V$. La familia contiene al vacío. La unión de una cadena es independiente, porque cualquier relación lineal utiliza solo finitos vectores, y una de las familias de la cadena contiene a todos ellos. Esa unión es una cota superior. Zorn produce un conjunto independiente maximal $E$. Si existiera $v\notin\spanop E$, el conjunto $E\cup\{v\}$ seguiría siendo independiente: una relación con coeficiente no nulo de $v$ lo expresaría como combinación de $E$, y una relación con coeficiente cero contradice la independencia de $E$. Así $E$ genera $V$ y es una base.
+
+Supongamos que $V$ tiene una base numerable $(v_n)$ y pongamos $E_n=\spanop\{v_1,\ldots,v_n\}$. Entonces $V=\bigcup_nE_n$.
+
+Justificamos dos hechos. Primero, todo subespacio de dimensión finita es cerrado. Para una base $w_1,\ldots,w_m$ de tal subespacio, existe $c>0$ con
+\[
+ \left\|\sum_{j=1}^m a_jw_j\right\|\geq c\max_j|a_j|.
+\]
+Si no existiera, habría vectores de coeficientes $a^{(k)}$ con $\max_j|a_j^{(k)}|=1$ y cuyas combinaciones tendieran a cero. Por Bolzano--Weierstrass en dimensión finita, una subsucesión de coeficientes converge a $a$ con $\max_j|a_j|=1$. La desigualdad triangular muestra continuidad de la combinación lineal, así que $\sum_ja_jw_j=0$, contra la independencia. La cota probada implica que una sucesión convergente de combinaciones tiene coeficientes de Cauchy; éstos convergen y su combinación representa el límite. El subespacio es cerrado.
+
+Segundo, un subespacio lineal propio no tiene interior. Si contuviera $B(a,r)$, al restar $a$ contendría $B(0,r)$. Para cualquier $v\in V$, un múltiplo $tv$ con $t>0$ suficientemente pequeño estaría en esa bola; al multiplicar por $1/t$, también $v$ pertenecería al subespacio, que ya no sería propio.
+
+Cada $E_n$ es, pues, cerrado de interior vacío. Esto contradice Baire porque $V$ es completo y no vacío. El resultado no excluye bases de Schauder numerables, en las que se admiten series convergentes; ésa es otra noción de base.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 8]
+Sea $(q_n)$ una enumeración de $\Q$, y para $\eps>0$ defina
+\[
+ A_\eps=\bigcup_{n\geq1}(q_n-\eps2^{-n-1},q_n+\eps2^{-n-1}).
+\]
+Determine si $E=\bigcap_{\eps>0}A_\eps$ contiene puntos irracionales además de los racionales.
+\end{ejercicio}
+\begin{solucion}
+Cada $A_\eps$ es abierto y contiene a $\Q$, por lo que es denso en $\R$. Como $A_\delta\subset A_\eps$ cuando $\delta\leq\eps$, se cumple
+\[
+ E=\bigcap_{m\geq1}A_{1/m}.
+\]
+Una inclusión es inmediata; para la otra, dado $\eps>0$ elegimos $m$ con $1/m\leq\eps$ y usamos la inclusión de los conjuntos. Por Baire, $E$ es denso. Más aún,
+\[
+ E\setminus\Q=\bigcap_{m\geq1}A_{1/m}\ \cap\ \bigcap_{n\geq1}(\R\setminus\{q_n\})
+\]
+es una intersección numerable de abiertos densos; por Baire es densa y, en particular, no vacía. Por tanto hay irracionales en $E$, incluso en todo intervalo abierto.
+
+De hecho, $E$ es incontable. Su complemento es magro, por ser unión de los cerrados de interior vacío $\R\setminus A_{1/m}$. Si $E$ fuera numerable, también sería magro, y $\R$ sería unión de dos conjuntos magros, contra Baire. La suma de longitudes de los intervalos de $A_\eps$ es $\sum_n\eps2^{-n}=\eps$. Este dato anticipa una distinción importante para el siguiente volumen: ser grande por categoría y ser grande por longitud son nociones diferentes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 9]
+\begin{enumerate}[label=(\roman*)]
+\item Examine la afirmación original: «No existe una función $f:\R\to\R$ discontinua en todo número irracional». Formule y demuestre la versión correcta referente al conjunto exacto de discontinuidades.
+\item Para cada conjunto a lo sumo numerable $A\subset\R$, construya una función cuyas discontinuidades sean exactamente los puntos de $A$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\textbf{(i)} La afirmación literal es falsa: $\mathbf1_{\Q}$ es discontinua en todos los puntos, y por tanto también en todos los irracionales. La versión correcta es que ninguna función $\R\to\R$ tiene como conjunto de discontinuidades \emph{exactamente} $\R\setminus\Q$.
+
+Para demostrarlo introducimos la oscilación de una función $f:X\to Y$ entre espacios métricos:
+\[
+ \omega_f(x)=\inf_{r>0}\diam f(B(x,r))\in[0,\infty].
+\]
+La función es continua en $x$ si y sólo si $\omega_f(x)=0$. En un sentido, la continuidad con tolerancia $\eps/2$ hace que la imagen de una bola tenga diámetro a lo sumo $\eps$. En el otro, si una bola tiene imagen de diámetro menor que $\eps$, entonces $\rho(f(y),f(x))<\eps$ para todos sus puntos $y$.
+
+Para $a>0$, el conjunto $D_a=\{x:\omega_f(x)\geq a\}$ es cerrado. Si $x\notin D_a$, existe $r>0$ con $\diam f(B(x,r))<a$. Cuando $d(x,y)<r/2$, la bola $B(y,r/2)$ está contenida en $B(x,r)$ y $\omega_f(y)<a$. Así el complemento de $D_a$ es abierto. El conjunto de discontinuidades es, por tanto,
+\[
+ D(f)=\bigcup_{m\geq1}D_{1/m},
+\]
+una unión numerable de cerrados. Si fuera exactamente el conjunto de irracionales, cada cerrado $D_{1/m}$ carecería de interior, pues cualquier intervalo contiene racionales. Serían todos densos en ninguna parte. Al agregar los singletons racionales, expresaríamos $\R$ como una unión numerable de conjuntos densos en ninguna parte, contradicción con Baire.
+
+\textbf{(ii)} Si $A=\varnothing$, sirve la función cero. Si $A$ es finito o numerable no vacío, enumeremos sus puntos distintos como $a_1,a_2,\ldots$ (deteniéndonos si es finito), y definamos
+\[
+ f(x)=\begin{cases}2^{-n},&x=a_n,\\0,&x\notin A.\end{cases}
+\]
+Si $x\notin A$ y $\eps>0$, elijamos $N$ con $2^{-N}<\eps$. Una bola suficientemente pequeña alrededor de $x$ evita los finitos puntos $a_1,\ldots,a_N$ que existan. En ella $|f(y)|<\eps$, por lo que $f$ es continua en $x$. En cambio, todo intervalo contiene puntos fuera de $A$, ya que un intervalo es incontable. Podemos elegir $y_k\notin A$ con $y_k\to a_n$, de modo que $f(y_k)=0\not\to2^{-n}=f(a_n)$. Así, $f$ es discontinua en cada $a_n$ y sólo allí.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 10]
+Construya funciones $\R\to\R$ discontinuas en todos los puntos de: \begin{enumerate}[label=(\roman*)]\item $\Q$;\item el conjunto de Cantor.\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+En (i) podemos obtener incluso exactamente ese conjunto: enumeramos $\Q=\{q_n\}$ y ponemos $f(q_n)=2^{-n}$ y $f(x)=0$ para $x$ irracional. El ejercicio anterior demuestra que sus discontinuidades son exactamente $\Q$.
+
+En (ii) tomamos $g=\mathbf1_C$. Fuera de $C$, la función vale cero en una vecindad porque $C$ es cerrado. En un punto $x\in C$, existen puntos de $\R\setminus C$ arbitrariamente próximos. Para justificarlo, si un intervalo abierto estuviera contenido en $C$, también estaría contenido en cada $C_n$; como un intervalo conexo no puede atravesar los huecos de $C_n$, tendría que estar dentro de una componente de longitud $3^{-n}$ para todo $n$, imposible para un intervalo de longitud positiva. Por tanto $C$ tiene interior vacío. Podemos elegir $x_k\notin C$ con $x_k\to x$, y $g(x_k)=0$ mientras $g(x)=1$. Las discontinuidades de $g$ son exactamente $C$.
+\end{solucion}
+
+\section{Alcance del teorema}
+Baire distingue una unión numerable de restricciones pequeñas de un espacio completo entero. Esta distinción explica la incontabilidad de ciertos conjuntos, impide bases algebraicas numerables en espacios de Banach infinitodimensionales y controla los conjuntos de discontinuidad. Más adelante sostendrá los grandes principios sobre operadores lineales.

@@ -1,0 +1,194 @@
+\chapter{Equicontinuidad y el teorema de Arzelà--Ascoli}\label{chap:27}
+\index{equicontinuidad}\index{Arzela--Ascoli, teorema de@Arzelà--Ascoli, teorema de}
+
+\section{Compacidad en un espacio de dimensión infinita}
+En $\R^n$, una sucesión acotada tiene una subsucesión convergente. En el espacio $C([0,1])$ con la norma uniforme, la acotación por sí sola no basta: las funciones $x^n$ tienen norma uno y su único posible límite puntual es discontinuo. Ninguna subsucesión puede converger uniformemente. Necesitamos impedir que las funciones desarrollen cambios bruscos en regiones cada vez más pequeñas.
+
+La condición que controla esos cambios es la \emph{equicontinuidad}. El teorema de Arzelà--Ascoli combina ese control con acotación puntual y proporciona una caracterización de compacidad relativa. Usaremos compacidad métrica, conjuntos densos numerables, Bolzano--Weierstrass y la completitud de $C(X)$ demostrada en el capítulo~\ref{chap:25}.
+
+\section{Un control común de continuidad}
+\begin{definicion}
+Una familia $\mathcal A$ de funciones $X\to\F$ es \emph{equicontinua en $x$} si para cada $\eps>0$ existe $\delta>0$ tal que
+\[
+ d(x,y)<\delta\quad\Longrightarrow\quad
+ |f(x)-f(y)|<\eps\quad\text{para toda }f\in\mathcal A.
+\]
+Es \emph{equicontinua} si lo es en cada punto. Es \emph{uniformemente equicontinua} si el mismo $\delta$ puede elegirse para todos los puntos $x$.
+\end{definicion}
+
+En esta definición $\delta$ puede depender de $\eps$ y, para la equicontinuidad puntual, de $x$, pero no de la función $f$. Cada miembro de una familia equicontinua es continuo: basta usar el $\delta$ común para ese miembro particular. La definición equivalente con $\sup_{f\in\mathcal A}|f(x)-f(y)|<\eps$ se obtiene ajustando la tolerancia, por ejemplo utilizando primero $\eps/2$.
+
+\begin{ejemplo}[Potencias en el intervalo unidad]
+La familia $f_n(t)=t^n$ es equicontinua en todo $x\in[0,1)$ y no lo es en $1$. Para el primer punto, elegimos $r$ con $x<r<1$ y una vecindad relativa de $x$ contenida en $[0,r]$. Dado $\eps>0$, elegimos $N$ con $r^N<\eps/2$. Si $n\ge N$ y $y$ está en esa vecindad, tanto $x^n$ como $y^n$ pertenecen a $[0,\eps/2)$, de modo que $|x^n-y^n|<\eps/2$. Para cada uno de los índices $1\le n<N$, la continuidad de $t^n$ proporciona una vecindad donde $|x^n-y^n|<\eps$. La intersección de esas finitísimas vecindades y de la primera sigue siendo una vecindad de $x$ y funciona para toda la familia. El argumento incluye $x=0$ al trabajar con vecindades relativas.
+
+En cambio, $y_n=2^{-1/n}$ converge a $1$ y
+$|f_n(1)-f_n(y_n)|=1/2$. Si hubiera equicontinuidad en $1$ con tolerancia $1/3$, un único radio $\delta$ controlaría a todas las funciones. Para $n$ suficientemente grande, $|1-y_n|<\delta$, lo que produciría la contradicción $1/2<1/3$.
+\end{ejemplo}
+
+\begin{proposicion}\label{ch27:equicontuniforme}
+Si $X$ es compacto y $\mathcal A\subset C(X,\F)$ es equicontinua, entonces es uniformemente equicontinua.
+\end{proposicion}
+\begin{proof}
+Dado $\eps>0$, para cada $z\in X$ elegimos $r_z>0$ tal que
+$d(z,w)<r_z$ implica $|f(z)-f(w)|<\eps/2$ para toda $f\in\mathcal A$. Las bolas $B(z,r_z/2)$ cubren $X$, y la compacidad proporciona una subcubierta finita de centros $z_1,\ldots,z_m$. Sea $\delta=\frac12\min_jr_{z_j}>0$.
+
+Si $d(x,y)<\delta$, elegimos $j$ con $d(x,z_j)<r_{z_j}/2$. Entonces
+\[
+ d(y,z_j)\le d(y,x)+d(x,z_j)<\delta+r_{z_j}/2\le r_{z_j}.
+\]
+Para toda $f\in\mathcal A$ tenemos
+$|f(x)-f(y)|\le|f(x)-f(z_j)|+|f(z_j)-f(y)|<\eps$. El radio $\delta$ es independiente tanto de $x,y$ como de $f$.
+\end{proof}
+
+\begin{proposicion}\label{ch27:acotacioncomun}
+Si $X$ es compacto, $\mathcal A$ es equicontinua y cada conjunto de valores $\mathcal A(x)=\{f(x):f\in\mathcal A\}$ es acotado, entonces $\mathcal A$ está acotada en la norma uniforme.
+\end{proposicion}
+\begin{proof}
+Por equicontinuidad, para cada $x$ existe una vecindad $U_x$ donde $|f(y)-f(x)|<1$ para toda $f\in\mathcal A$. Elegimos finitos centros $x_1,\ldots,x_m$ cuyas vecindades cubran $X$. Por acotación puntual existen $M_j<\infty$ tales que $|f(x_j)|\le M_j$ para toda $f$. Para cualquier $y\in X$ elegimos $j$ con $y\in U_{x_j}$ y obtenemos
+$|f(y)|\le|f(y)-f(x_j)|+|f(x_j)|<1+\max_jM_j$. Esta cota no depende de $y$ ni de $f$.
+\end{proof}
+
+La compacidad del dominio, por sí sola, no convierte la acotación puntual de una familia en acotación uniforme. La prueba utiliza expresamente la equicontinuidad. Por ejemplo, picos continuos con soportes disjuntos alrededor de $2^{-n}$ y alturas $n$ dan una familia puntualmente acotada en $[0,1]$ cuyas normas no están acotadas.
+
+\section{De un conjunto denso a todo el espacio}
+\begin{proposicion}\label{ch27:denso}
+Sea $(f_n)$ una sucesión equicontinua de funciones $X\to\F$. Si $f_n(y)$ converge para cada punto de un conjunto denso $D\subset X$, entonces $f_n(x)$ converge para todo $x\in X$.
+\end{proposicion}
+\begin{proof}
+Fijemos $x\in X$ y $\eps>0$. Por equicontinuidad elegimos $\delta>0$ con $|f_n(x)-f_n(y)|<\eps/3$ para todo $n$ cuando $d(x,y)<\delta$. Como $D$ es denso, existe $y\in D\cap B(x,\delta)$. La sucesión $(f_n(y))$ converge y, por tanto, es de Cauchy. Existe $N$ con $|f_n(y)-f_m(y)|<\eps/3$ para $n,m\ge N$. Así,
+\[
+ |f_n(x)-f_m(x)|\le|f_n(x)-f_n(y)|+|f_n(y)-f_m(y)|+|f_m(y)-f_m(x)|<\eps.
+\]
+La completitud de $\F$ da un límite en $x$. Obsérvese que la diferencia central debe evaluarse en $y$, donde conocemos convergencia. Este resultado no necesita compacidad del dominio.
+\end{proof}
+
+\begin{proposicion}\label{ch27:puntualuniforme}
+Si $X$ es compacto y $(f_n)$ es equicontinua y converge puntualmente a $f$, entonces $f_n\rightrightarrows f$ y $f$ es continua.
+\end{proposicion}
+\begin{proof}
+Dado $\eps>0$, la proposición~\ref{ch27:equicontuniforme} proporciona $\delta>0$ con $|f_n(x)-f_n(y)|<\eps/4$ para todo $n$ si $d(x,y)<\delta$. El límite puntual en esa desigualdad da $|f(x)-f(y)|\le\eps/4$ para esos puntos.
+
+Por compacidad, existen $x_1,\ldots,x_m$ con $X=\bigcup_jB(x_j,\delta)$. La convergencia en esos finitos puntos permite elegir un único $N$ tal que $|f_n(x_j)-f(x_j)|<\eps/4$ para todo $j$ y $n\ge N$. Para cualquier $x$ elegimos un centro $x_j$ a distancia menor que $\delta$ y obtenemos
+\[
+ |f_n(x)-f(x)|
+ \le |f_n(x)-f_n(x_j)|+|f_n(x_j)-f(x_j)|+|f(x_j)-f(x)|
+ \le3\eps/4<\eps.
+\]
+Esto prueba la convergencia uniforme. La continuidad de $f$ se sigue del teorema del límite uniforme; también se deduce directamente del control obtenido al pasar al límite.
+\end{proof}
+
+\section{La extracción diagonal y Arzelà--Ascoli}
+\begin{teorema}[Arzelà--Ascoli real]\label{ch27:ascoli}
+Sea $X$ un espacio métrico compacto. Una familia $\mathcal A\subset C(X,\R)$ tiene clausura compacta en la norma uniforme si y solo si es equicontinua y $\mathcal A(x)$ es acotado en $\R$ para todo $x\in X$.
+\end{teorema}
+\begin{estrategia}
+La acotación permite extraer una subsucesión convergente en un punto. Un procedimiento diagonal hace que una misma subsucesión converja en un conjunto denso numerable. La equicontinuidad extiende ese control a todos los puntos, y la compacidad del dominio lo convierte en control uniforme. Finalmente hay que comprobar la compacidad de la clausura, no solamente la existencia de subsucesiones para sucesiones de la familia original.
+\end{estrategia}
+\begin{proof}
+Supongamos primero equicontinuidad y acotación puntual. Si $\mathcal A$ es vacía no hay nada que probar. Como $X$ es compacto métrico, para cada $r\ge1$ tiene una red finita $D_r$ de radio $1/r$. El conjunto $D=\bigcup_rD_r$ es a lo sumo numerable y es denso: toda bola de radio positivo contiene un punto de $D_r$ cuando $1/r$ es suficientemente pequeño. Podemos enumerarlo como $d_1,d_2,\ldots$, repitiendo puntos si es finito.
+
+Sea $(f_n)$ una sucesión de $\mathcal A$. La acotación de $\mathcal A(d_1)$ y Bolzano--Weierstrass producen una subsucesión $(f_{n^{(1)}_j})_j$ cuyos valores en $d_1$ convergen. De esa subsucesión extraemos otra $(f_{n^{(2)}_j})_j$ cuyos valores en $d_2$ convergen. La nueva sucesión conserva la convergencia en $d_1$. Por inducción construimos sucesiones de índices crecientes anidadas, de modo que la sucesión de nivel $r$ converge en $d_1,\ldots,d_r$.
+
+Elegimos ahora la diagonal $h_j=f_{n^{(j)}_j}$. Los índices diagonales son estrictamente crecientes: al ser la sucesión del nivel $j+1$ una subsucesión de la del nivel $j$, su término $j+1$ tiene índice al menos $n^{(j)}_{j+1}>n^{(j)}_j$. Para cada $r$ fijo, la cola $(h_j)_{j\ge r}$ está tomada de la sucesión del nivel $r$, en orden creciente. Por ello $(h_j(d_r))$ converge. La subsucesión diagonal converge puntualmente en todo $D$.
+
+La proposición~\ref{ch27:denso} proporciona convergencia puntual en $X$ y la proposición~\ref{ch27:puntualuniforme} proporciona convergencia uniforme a una función continua $h$. La completitud de los escalares interviene al construir los límites de las sucesiones de Cauchy; equivalentemente, podemos ver el último paso como una construcción de una sucesión de Cauchy en el Banach $C(X,\R)$.
+
+Ahora sea $(g_n)$ una sucesión en $\cl{\mathcal A}$. Para cada $n$ elegimos $f_n\in\mathcal A$ con $\norm{g_n-f_n}_\infty<1/n$. Por lo demostrado, una subsucesión $f_{n_j}$ converge uniformemente a $h$. Entonces
+\[
+ \norm{g_{n_j}-h}_\infty
+ \le1/n_j+\norm{f_{n_j}-h}_\infty\longrightarrow0.
+\]
+Como $\cl{\mathcal A}$ es cerrado, $h\in\cl{\mathcal A}$. Su clausura es secuencialmente compacta y, por ser un espacio métrico, es compacta.
+
+Para la necesidad, supongamos que $K=\cl{\mathcal A}$ es compacto. La evaluación en un punto $x$ es continua, pues $|f(x)-g(x)|\le\norm{f-g}_\infty$. Su imagen $\{f(x):f\in K\}$ es compacta en $\R$, luego acotada, y contiene $\mathcal A(x)$.
+
+Fijemos $x\in X$ y $\eps>0$. Por compacidad de $K$ existen $h_1,\ldots,h_r\in K$ tales que las bolas de radio $\eps/3$ y esos centros cubren $K$. Cada $h_j$ es continua en $x$, así que existe $\delta_j>0$ con $|h_j(x)-h_j(y)|<\eps/3$ si $d(x,y)<\delta_j$. Sea $\delta=\min_j\delta_j$. Para $f\in\mathcal A$ escogemos $h_j$ con $\norm{f-h_j}_\infty<\eps/3$. Si $d(x,y)<\delta$, obtenemos
+\[
+ |f(x)-f(y)|
+ \le |f(x)-h_j(x)|+|h_j(x)-h_j(y)|+|h_j(y)-f(y)|<\eps.
+\]
+El radio $\delta$ es independiente de $f$, y esto demuestra la equicontinuidad.
+\end{proof}
+
+\begin{observacion}[Dónde vive el conjunto compacto]
+La compacidad relativa del teorema corresponde al espacio de funciones $C(X,\R)$ con su norma uniforme. La familia $\mathcal A$ no es un subconjunto del dominio $X$. Esta distinción corrige una imprecisión de la formulación original.
+\end{observacion}
+
+\section{Ejercicios resueltos}
+En estos ejercicios, $X$ es un espacio métrico compacto, salvo indicación contraria.
+\begin{ejercicio}[Lectura 27, ejercicio 1]
+Demuestre que $\mathcal A\subset C(X,\R)$ es compacta si y solo si es cerrada, acotada en norma y equicontinua.
+\end{ejercicio}
+\begin{solucion}
+Si $\mathcal A$ es compacta, es cerrada y acotada por las propiedades generales de espacios métricos; además es equicontinua por Arzelà--Ascoli. Recíprocamente, la acotación en norma implica acotación puntual porque $|f(x)|\le\norm f_\infty$. La equicontinuidad y la acotación puntual hacen compacta su clausura. Como $\mathcal A$ es cerrada, coincide con esa clausura y es compacta. La condición de cerrado no puede omitirse si se desea compacidad y no solo compacidad relativa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 2]
+Sea $v:C(X,\R)\times X\to\R$ la evaluación $v(f,x)=f(x)$.
+\begin{enumerate}[label=(\roman*)]
+\item Demuestre que $v$ es continua.
+\item Para $\mathcal A\subset C(X,\R)$ y $\eps>0$, demuestre que
+\[
+ U_\eps=\{((f,x),(g,y)):|f(x)-g(y)|<\eps\}
+\]
+es abierto en $(\mathcal A\times X)^2$ y contiene la diagonal. Si $\mathcal A$ es compacta, deduzca la necesidad de Arzelà--Ascoli.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Fijemos $(f,x)$ y $\eps>0$. Por continuidad de $f$, existe $\delta>0$ con $|f(y)-f(x)|<\eps/2$ si $d(x,y)<\delta$. Si además $\norm{g-f}_\infty<\eps/2$, entonces
+\[
+ |v(g,y)-v(f,x)|\le|g(y)-f(y)|+|f(y)-f(x)|<\eps.
+\]
+Esto demuestra continuidad para la topología producto. No necesitamos una estimación de continuidad común para todas las funciones del espacio: trabajamos cerca de una función fija $f$.
+\item La aplicación $((f,x),(g,y))\mapsto|v(f,x)-v(g,y)|$ es continua por el inciso anterior y por continuidad de la resta y del valor absoluto. Por tanto, $U_\eps$ es la preimagen del abierto $(-\infty,\eps)$ y es abierto. Si $(f,x)=(g,y)$, la diferencia vale cero; así la diagonal está contenida en $U_\eps$.
+
+Supongamos ahora que $\mathcal A$ es compacta y no vacía. El producto $K=\mathcal A\times X$, con métrica
+$\rho((f,x),(g,y))=\max\{\norm{f-g}_\infty,d(x,y)\}$, es compacto. Justificamos la propiedad de vecindad de la diagonal usada en el ejercicio: si no existiera $\delta>0$ tal que $\rho(p,q)<\delta$ implicara $(p,q)\in U_\eps$, podríamos elegir $p_n,q_n\in K$ con $\rho(p_n,q_n)<1/n$ y $(p_n,q_n)\notin U_\eps$. Una subsucesión de $p_n$ converge a algún $p\in K$, y la desigualdad triangular obliga a que la correspondiente subsucesión de $q_n$ converja al mismo $p$. El complemento de $U_\eps$ es cerrado, por lo que contendría a $(p,p)$, contradiciendo que $U_\eps$ incluye la diagonal.
+
+Para $p=(f,x)$ y $q=(f,y)$ tenemos $\rho(p,q)=d(x,y)$. Así, el $\delta$ anterior asegura $|f(x)-f(y)|<\eps$ simultáneamente para toda $f\in\mathcal A$, lo que prueba equicontinuidad uniforme. Para cada $x$, la imagen de $\mathcal A$ por la evaluación es compacta y, por tanto, acotada. Si la familia inicial es solo relativamente compacta, aplicamos este argumento a su clausura y restringimos después a la familia.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 3]
+En $C^1([a,b],\R)$ consideramos $\norm f_{C^1}=\norm f_\infty+\norm{f'}_\infty$. Demuestre que la inclusión $J:C^1([a,b])\to C([a,b])$, $Jf=f$, es lineal y compacta.
+\end{ejercicio}
+\begin{solucion}
+La linealidad se verifica punto por punto y $\norm{Jf}_\infty\le\norm f_{C^1}$ demuestra continuidad. Sea $\mathcal E$ un conjunto acotado para la norma $C^1$; existe $M$ con $\norm f_\infty+\norm{f'}_\infty\le M$ para toda $f\in\mathcal E$. En particular, $|f(x)|\le M$. El teorema del valor medio da
+$|f(x)-f(y)|\le M|x-y|$ para todos $x,y\in[a,b]$. Si $M>0$, elegir $\delta=\eps/M$ demuestra equicontinuidad; si $M=0$, todas las funciones son cero. Por Arzelà--Ascoli, $J(\mathcal E)$ tiene clausura compacta. Esto es la definición de operador compacto.
+
+Como complemento, la norma usada convierte $C^1([a,b])$ en Banach. Si $(f_n)$ es de Cauchy para ella, existen límites uniformes $f_n\to f$ y $f_n'\to g$ en $C([a,b])$. El teorema~\ref{ch26:derivacion}, junto con continuidad en los extremos, implica $f'=g$ en el interior; las derivadas laterales en los extremos se obtienen pasando al límite en los cocientes o integrando $g$. Concretamente, $f_n(x)-f_n(a)=\int_a^x f_n'$ y el límite uniforme da $f(x)-f(a)=\int_a^xg$, de donde $f\in C^1([a,b])$. Las dos convergencias uniformes equivalen a $\norm{f_n-f}_{C^1}\to0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 4]
+Sea $\mathcal A\subset C([a,b],\R)$ una familia cuyas funciones son derivables en $(a,b)$. Si $|f'(x)|\le M$ para todas las funciones y todos los puntos interiores, demuestre que $\mathcal A$ es equicontinua.
+\end{ejercicio}
+\begin{solucion}
+Para $x<y$ en $[a,b]$, la función $f$ es continua en $[x,y]$ y derivable en $(x,y)$, incluso si $x=a$ o $y=b$. El teorema del valor medio proporciona $\xi\in(x,y)$ tal que $f(y)-f(x)=f'(\xi)(y-x)$. Así $|f(y)-f(x)|\le M|y-x|$. Si $M>0$, el radio $\delta=\eps/(2M)$ funciona para toda la familia y todos los puntos. Si $M=0$, la misma estimación implica que cada función es constante, y cualquier $\delta>0$ funciona. Las constantes pueden variar sin estar acotadas entre funciones: equicontinuidad por sí sola no implica acotación puntual.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 5: versión compleja]
+Sea $\mathcal A\subset C(X,\C)$ y ponga $\mathcal A_1=\{\operatorname{Re}f:f\in\mathcal A\}$, $\mathcal A_2=\{\operatorname{Im}f:f\in\mathcal A\}$.
+\begin{enumerate}[label=(\roman*)]
+\item Pruebe que $\mathcal A$ es equicontinua si y solo si lo son $\mathcal A_1$ y $\mathcal A_2$.
+\item Demuestre que $\Phi:C(X,\R)\times C(X,\R)\to C(X,\C)$, $\Phi(u,v)=u+iv$, es continua.
+\item Deduzca Arzelà--Ascoli complejo: $\mathcal A$ es relativamente compacta si y solo si es equicontinua y cada $\mathcal A(x)$ es acotado.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Las desigualdades $|\operatorname{Re}z|,|\operatorname{Im}z|\le|z|$ demuestran que un radio válido para la familia compleja funciona para sus dos partes. Recíprocamente, dados $x$ y $\eps$, elegimos radios que controlen las diferencias de las partes real e imaginaria por $\eps/2$ y tomamos el mínimo. La desigualdad $|z|\le|\operatorname{Re}z|+|\operatorname{Im}z|$ produce el control $\eps$ para toda la familia compleja.
+\item Para $u,v,u',v'$ reales continuas,
+\[
+ \norm{\Phi(u,v)-\Phi(u',v')}_\infty
+ \le\norm{u-u'}_\infty+\norm{v-v'}_\infty.
+\]
+Así $\Phi$ es Lipschitz para la norma producto suma y, en particular, continua.
+\item Supongamos equicontinuidad y acotación puntual de $\mathcal A$. Sus partes real e imaginaria tienen esas mismas propiedades, así que $K_j=\cl{\mathcal A_j}$ es compacto por el teorema real. El producto $K_1\times K_2$ es compacto, y su imagen por $\Phi$ es un compacto de $C(X,\C)$ que contiene a $\mathcal A$. Esa imagen es cerrada, por ser compacta en un espacio métrico. Por ello contiene también a $\cl{\mathcal A}$, que es un subconjunto cerrado de un compacto y resulta compacto.
+
+Recíprocamente, las aplicaciones $f\mapsto\operatorname{Re}f$ y $f\mapsto\operatorname{Im}f$ son continuas y llevan la clausura compacta de $\mathcal A$ a conjuntos compactos reales. Las clausuras de $\mathcal A_1,\mathcal A_2$ son entonces compactas. El teorema real y el inciso (i) proporcionan equicontinuidad de $\mathcal A$. Para cada $x$, la evaluación compleja es continua y su imagen sobre la clausura es compacta en $\C$, luego acotada.
+\end{enumerate}
+\end{solucion}
+
+\section{La información que se vuelve finita}
+Arzelà--Ascoli convierte dos controles sobre una familia infinita en una propiedad de extracción: de cualquier sucesión puede elegirse una subsucesión convergente uniformemente. El mecanismo combina un conjunto numerable de puntos para la extracción diagonal y una cubierta finita para controlar el error en todo el dominio. Las aplicaciones a operadores compactos, como la inclusión de $C^1$ en $C$, descansan en esa reducción y no en una supuesta extensión de Heine--Borel a todos los espacios normados.

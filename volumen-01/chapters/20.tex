@@ -1,0 +1,239 @@
+\chapter{Operadores acotados y acotación uniforme}\label{chap:20}
+
+En álgebra lineal una transformación se estudia mediante el modo en que respeta sumas y escalares. En análisis aparece una pregunta adicional: ¿puede una perturbación pequeña de la entrada producir un cambio enorme en la salida? Para una transformación lineal, toda la cuestión se reduce a una desigualdad global. La norma de operador cuantifica esa desigualdad.
+
+Usaremos las propiedades de espacios normados del capítulo~\ref{chap:19}. Al final, el teorema de Baire permitirá pasar de una familia de cotas que depende de cada vector a una sola cota para toda una familia de operadores. La completitud del dominio es decisiva en ese paso.
+
+\section{Continuidad y norma de operador}
+
+\begin{teorema}\label{ch20:acotado}
+Para una transformación lineal $T:V\to W$ entre espacios normados, son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item $T$ es continua en todo $V$;
+\item $T$ es continua en $0$;
+\item existe $C\geq0$ tal que $\norm{Tv}\leq C\norm v$ para todo $v\in V$.
+\end{enumerate}
+Cuando se cumplen, $T$ es una función de Lipschitz y, por tanto, uniformemente continua.
+\end{teorema}
+\begin{proof}
+La primera afirmación implica la segunda. Supongamos continuidad en cero. Como $T0=0$, existe $\delta>0$ tal que $\norm u<\delta$ implica $\norm{Tu}<1$. Si $v\ne0$, tome $u=\delta v/(2\norm v)$. Entonces $\norm u=\delta/2<\delta$ y, por linealidad,
+\[
+ \frac\delta{2\norm v}\norm{Tv}<1.
+\]
+De aquí $\norm{Tv}\leq (2/\delta)\norm v$. Para $v=0$ la misma desigualdad vale porque ambos lados son cero.
+
+Finalmente, si se cumple (iii), para $x,y\in V$ obtenemos
+\[
+ \norm{Tx-Ty}=\norm{T(x-y)}\leq C\norm{x-y}.
+\]
+Si $C>0$, elegir $\norm{x-y}<\eps/C$ garantiza $\norm{Tx-Ty}<\eps$, con una elección independiente de $x,y$. Si $C=0$, $T$ es el operador cero y la conclusión es inmediata.
+\end{proof}
+
+\begin{definicion}
+Denotamos por $\Bcal(V,W)$ el espacio de operadores lineales continuos de $V$ en $W$. También se llaman \emph{operadores acotados}. Sus operaciones son puntuales:
+\[
+ (S+T)v=Sv+Tv,\qquad (\alpha T)v=\alpha(Tv).
+\]
+Definimos
+\[
+ \norm T=\sup_{\norm v\leq1}\norm{Tv}.
+\]
+\end{definicion}
+\index{operador!acotado}\index{norma!de operador}
+
+El término ``acotado'' no significa que $T(V)$ sea un conjunto acotado. Un operador lineal no nulo tiene imagen no acotada, porque $T(nv)=nTv$. Significa que manda conjuntos acotados en conjuntos acotados.
+
+\begin{proposicion}\label{ch20:norma}
+Las operaciones anteriores hacen de $\Bcal(V,W)$ un espacio vectorial, y $\norm{\cdot}$ es una norma. Se tiene
+\[
+ \norm T=\inf\{C\geq0:\norm{Tv}\leq C\norm v\text{ para todo }v\in V\}.
+\]
+Si $V\ne\{0\}$, también
+\[
+ \norm T=\sup_{v\ne0}\frac{\norm{Tv}}{\norm v}
+ =\sup_{\norm v=1}\norm{Tv}.
+\]
+En particular, $\norm{Tv}\leq\norm T\norm v$ para todo $v$.
+\end{proposicion}
+\begin{proof}
+Las identidades vectoriales se verifican evaluando en cada $v$ y usando las correspondientes identidades en $W$. Además, si $S,T$ están acotados por $C_S,C_T$, entonces
+\[
+ \norm{(S+T)v}\leq(C_S+C_T)\norm v,
+ \qquad\norm{(\alpha T)v}\leq|\alpha|C_T\norm v.
+\]
+Esto prueba que las operaciones permanecen dentro de $\Bcal(V,W)$.
+
+El supremo de la definición es finito por el teorema~\ref{ch20:acotado}. Es no negativo. Si vale cero, para $v\ne0$ tenemos $\norm{T(v/\norm v)}=0$, y por linealidad $Tv=0$; también $T0=0$, así que $T=0$. El operador cero tiene norma cero. Para cualquier escalar,
+\[
+ \norm{\alpha T}=\sup_{\norm v\leq1}|\alpha|\norm{Tv}=|\alpha|\norm T.
+\]
+Y para $\norm v\leq1$,
+\[
+ \norm{(S+T)v}\leq\norm{Sv}+\norm{Tv}\leq\norm S+\norm T.
+\]
+Tomar el supremo da la desigualdad triangular.
+
+Si $v\ne0$, la normalización $u=v/\norm v$ muestra
+\[
+ \norm{Tv}=\norm v\norm{Tu}\leq\norm T\norm v.
+\]
+Por ello $\norm T$ es una constante admisible en el ínfimo. Toda constante admisible $C$ satisface $\norm{Tv}\leq C$ en la bola unitaria, de modo que $\norm T\leq C$. Queda probada la igualdad con el ínfimo.
+
+Finalmente, cada cociente $\norm{Tv}/\norm v$ es el valor de $\norm{Tu}$ en un vector unitario. Y si $0<\norm v\leq1$, entonces $\norm{Tv}\leq\norm{T(v/\norm v)}$. Estos dos hechos dan las igualdades entre los tres supremos. Cuando $V=\{0\}$ solo existe el operador cero; su norma se define mediante la bola, que contiene al cero, y vale cero. No es necesario asignar una norma mediante el supremo sobre una esfera vacía.
+\end{proof}
+
+\begin{ejemplo}
+En $C([a,b])$ con norma uniforme, la evaluación $E_t(f)=f(t)$ tiene norma $1$: $|f(t)|\leq\norm f_\infty$ da la cota superior y la función constante $1$ da la inferior. El operador $Tf(x)=\int_a^x f(s)\,ds$ satisface $\norm T=b-a$ si $a<b$, porque $|Tf(x)|\leq(b-a)\norm f_\infty$ y la misma función constante alcanza la cota. Estos cálculos siguen un patrón: primero una estimación para todo vector, después un vector que la alcanza o una sucesión que se aproxima a ella.
+\end{ejemplo}
+
+\section{Límites de operadores y completitud}
+
+\begin{lema}\label{ch20:limite-puntual}
+Supongamos que $T_n\in\Bcal(V,W)$, que $\sup_n\norm{T_n}=M<\infty$ y que $T_nv\to Tv$ en $W$ para cada $v\in V$. Entonces $T$ es lineal y continuo, con $\norm T\leq M$.
+\end{lema}
+\begin{proof}
+Para $x,y\in V$ y $\alpha,\beta\in\F$, la continuidad de las operaciones en $W$ da
+\[
+ T(\alpha x+\beta y)=\lim_nT_n(\alpha x+\beta y)
+ =\alpha\lim_nT_nx+\beta\lim_nT_ny=\alpha Tx+\beta Ty.
+\]
+La continuidad de la norma permite además pasar al límite en $\norm{T_nv}\leq M\norm v$ y obtener $\norm{Tv}\leq M\norm v$. El teorema~\ref{ch20:acotado} concluye la prueba.
+\end{proof}
+
+\begin{teorema}\label{ch20:banach-operadores}
+Si $W$ es de Banach, entonces $\Bcal(V,W)$ es de Banach, aunque $V$ no sea completo.
+\end{teorema}
+\begin{proof}
+Sea $(T_n)$ de Cauchy en norma de operador. Para cada $v$,
+\[
+ \norm{T_nv-T_mv}\leq\norm{T_n-T_m}\norm v,
+\]
+por lo que $(T_nv)$ es de Cauchy en $W$. La completitud de $W$ permite definir $Tv=\lim_nT_nv$. Como toda sucesión de Cauchy es acotada, $\sup_n\norm{T_n}<\infty$, y el lema anterior muestra que $T\in\Bcal(V,W)$.
+
+Aún debemos demostrar convergencia en norma, que es más fuerte que la convergencia puntual utilizada para construir $T$. Dado $\eps>0$, elija $N$ tal que $\norm{T_n-T_m}<\eps/2$ para $n,m\geq N$. Fije $n\geq N$ y $v$ con $\norm v\leq1$. Al hacer $m\to\infty$,
+\[
+ \norm{(T_n-T)v}=\lim_m\norm{(T_n-T_m)v}\leq\eps/2.
+\]
+La cota no depende de $v$, así que el supremo sobre la bola da $\norm{T_n-T}\leq\eps/2<\eps$ para todo $n\geq N$.
+\end{proof}
+
+La convergencia en norma equivale, por definición, a la convergencia uniforme sobre la bola unitaria. La convergencia puntual solo controla cada vector por separado; la diferencia entre ambas reaparecerá en el ejercicio 7.
+
+\section{El principio de acotación uniforme}
+
+\begin{teorema}[Banach--Steinhaus]\label{ch20:uniforme}
+Sea $V$ de Banach, sea $W$ normado y sea $\mathcal T\subseteq\Bcal(V,W)$. Si para cada $v\in V$ el conjunto $\{Tv:T\in\mathcal T\}$ es acotado, entonces
+\[\sup_{T\in\mathcal T}\norm T<\infty.\]
+\end{teorema}
+\index{acotacion uniforme@acotación uniforme, principio de}
+\index{Banach--Steinhaus, teorema de}
+\begin{proof}
+Si $\mathcal T$ es vacía no hay nada que demostrar. Para cada entero $n\geq1$, defina
+\[
+ E_n=\{v\in V:\norm{Tv}\leq n\text{ para todo }T\in\mathcal T\}.
+\]
+Cada $E_n$ es cerrado: es la intersección, sobre $T\in\mathcal T$, de las preimágenes de la bola cerrada de radio $n$. La hipótesis puntual implica $V=\bigcup_{n\geq1}E_n$, porque para cada $v$ existe un entero que supera todas las normas $\norm{Tv}$.
+
+Por Baire, algún $E_{n_0}$ tiene interior no vacío. Existen $v_0\in V$ y $r>0$ con $B(v_0,r)\subseteq E_{n_0}$. Si $\norm h<r$, los vectores $v_0+h$ y $v_0-h$ pertenecen a $E_{n_0}$. Para cada $T\in\mathcal T$,
+\begin{align*}
+ 2\norm{Th}
+ &=\norm{T(v_0+h)-T(v_0-h)}\\
+ &\leq\norm{T(v_0+h)}+\norm{T(v_0-h)}\leq2n_0.
+\end{align*}
+Si $\norm u=1$ y $0<s<r$, aplicamos esta estimación a $h=su$ y obtenemos $\norm{Tu}\leq n_0/s$. Al dejar $s\uparrow r$, resulta $\norm{Tu}\leq n_0/r$. Tomando el supremo en $u$, $\norm T\leq n_0/r$ para todo $T\in\mathcal T$. Si $V=\{0\}$ la conclusión vale directamente.
+\end{proof}
+
+\begin{observacion}
+La hipótesis intercambia los cuantificadores de una manera muy precisa:
+\[
+ \forall v\ \exists C_v\ \forall T:\norm{Tv}\leq C_v
+ \quad\Longrightarrow\quad
+ \exists C\ \forall v\ \forall T:\norm{Tv}\leq C\norm v.
+\]
+No se hace ese intercambio por álgebra; Baire es la herramienta que lo justifica. Sin completitud puede fallar. En $c_{00}$ con norma uniforme, las funcionales $T_n(x)=nx_n$ son continuas y tienen norma $n$. Para cada sucesión de soporte finito $x$, sin embargo, $T_n(x)=0$ salvo para un número finito de índices. La familia está puntualmente acotada y sus normas no lo están.
+\end{observacion}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 20, ejercicio 1]
+Si $T\in\Bcal(V_1,V_2)$ y $S\in\Bcal(V_2,V_3)$, demuestre que $ST\in\Bcal(V_1,V_3)$ y $\norm{ST}\leq\norm S\norm T$.
+\end{ejercicio}
+\begin{solucion}
+La composición es lineal porque
+\[
+ ST(\alpha x+\beta y)=S(\alpha Tx+\beta Ty)=\alpha STx+\beta STy.
+\]
+Para todo $v$,
+\[
+ \norm{STv}\leq\norm S\norm{Tv}\leq\norm S\norm T\norm v.
+\]
+El teorema~\ref{ch20:acotado} da continuidad y la caracterización del ínfimo de constantes da la desigualdad de normas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 2]
+Pruebe que un operador lineal es continuo si y solo si manda sucesiones acotadas en sucesiones acotadas.
+\end{ejercicio}
+\begin{solucion}
+Si $T$ es continuo y $\sup_n\norm{v_n}=M<\infty$, entonces $\norm{Tv_n}\leq\norm T M$. Para el recíproco, si $T$ no fuera continuo, no existiría una constante que lo acote. Para cada $n$ podríamos elegir $x_n\ne0$ con $\norm{Tx_n}>n\norm{x_n}$. Los vectores $v_n=x_n/\norm{x_n}$ forman una sucesión acotada, pero $\norm{Tv_n}>n$, contradicción.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 3]
+Si $T:V\to W$ es lineal continuo y $F\leq W$ tiene dimensión finita, demuestre que $T^{-1}(F)$ es un subespacio cerrado. Deduzca que $\ker T$ es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Si $x,y\in T^{-1}(F)$, entonces $Tx,Ty\in F$. Para $\alpha,\beta\in\F$, $T(\alpha x+\beta y)=\alpha Tx+\beta Ty\in F$, así que la preimagen es un subespacio. Por el lema~\ref{ch19:coordenadas}, $F$ es cerrado. La preimagen de un cerrado por una función continua es cerrada. Aplicamos esto a $F=\{0\}$ para obtener la afirmación sobre el núcleo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 4]
+Demuestre que un operador lineal es continuo si y solo si es continuo en algún punto de su dominio.
+\end{ejercicio}
+\begin{solucion}
+Una función continua en todo el dominio lo es en cualquier punto. Si $T$ es continuo en $v_0$, dado $\eps>0$ existe $\delta>0$ tal que $\norm{x-v_0}<\delta$ implica $\norm{Tx-Tv_0}<\eps$. Ponga $x=v_0+h$. Como $Tx-Tv_0=Th$, se obtiene $\norm h<\delta\Rightarrow\norm{Th}<\eps$. Así $T$ es continuo en cero, y el teorema~\ref{ch20:acotado} termina la prueba.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 5]
+Si $T_n\to T$ en $\Bcal(V_1,V_2)$ y $S_n\to S$ en $\Bcal(V_2,V_3)$, demuestre que $S_nT_n\to ST$ en norma.
+\end{ejercicio}
+\begin{solucion}
+La sucesión convergente $(S_n)$ es acotada; sea $M=\sup_n\norm{S_n}<\infty$. Usamos la identidad
+\[
+ S_nT_n-ST=S_n(T_n-T)+(S_n-S)T.
+\]
+La desigualdad del ejercicio 1 da
+\[
+ \norm{S_nT_n-ST}\leq M\norm{T_n-T}+\norm{S_n-S}\norm T\longrightarrow0.
+\]
+La acotación de $S_n$ es necesaria para controlar el producto del primer término; no basta anunciar un ``álgebra de límites'' sin identificar esa cota.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 6]
+En $\R^2$ con norma uniforme, sea $T$ el operador de matriz $\begin{pmatrix}a&b\\c&d\end{pmatrix}$. Demuestre que
+\[\norm T=\max\{|a|+|b|,|c|+|d|\}.\]
+\end{ejercicio}
+\begin{solucion}
+Para $\norm{(x,y)}_\infty\leq1$,
+\[
+ |ax+by|\leq|a|+|b|,\qquad |cx+dy|\leq|c|+|d|.
+\]
+Esto prueba la cota superior. Si el máximo lo da la primera fila, elija $x=\operatorname{sgn}(a)$ e $y=\operatorname{sgn}(b)$, tomando el valor $1$ cuando el coeficiente sea cero. Entonces $\norm{(x,y)}_\infty=1$ y $ax+by=|a|+|b|$. Si el máximo lo da la segunda fila, elija de la misma manera los signos de $c,d$, para que $cx+dy=|c|+|d|$. En ambos casos la norma de la salida alcanza la cota.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 7]
+Sea $(T_n)$ una sucesión acotada en $\Bcal(V,W)$ que converge puntualmente a $T$. Si $A\subseteq V$ es totalmente acotado, pruebe que la convergencia es uniforme en $A$.
+\end{ejercicio}
+\begin{solucion}
+Sea $M=\sup_n\norm{T_n}$. El lema~\ref{ch20:limite-puntual} da $\norm T\leq M$. Si $A$ es vacío o $M=0$, la conclusión es inmediata. Suponga $M>0$. Dado $\eps>0$, la acotación total proporciona puntos $a_1,\ldots,a_k\in V$ tales que cada $v\in A$ está a distancia menor que $\delta=\eps/(6M)$ de alguno de ellos. Para cada $i$, $T_na_i\to Ta_i$. Como hay solo un número finito de centros, existe un mismo $N$ tal que
+\[
+ \norm{T_na_i-Ta_i}<\eps/3\quad(n\geq N,\ 1\leq i\leq k).
+\]
+Para $v\in A$, elija un centro con $\norm{v-a_i}<\delta$. Entonces
+\begin{align*}
+ \norm{T_nv-Tv}
+ &\leq\norm{T_n(v-a_i)}+\norm{T_na_i-Ta_i}+\norm{T(a_i-v)}\\
+ &<M\delta+\eps/3+M\delta=2\eps/3.
+\end{align*}
+Por tanto $\sup_{v\in A}\norm{T_nv-Tv}\leq2\eps/3<\eps$ para $n\geq N$. La cota finita de centros convierte un umbral dependiente del punto en un umbral común.
+\end{solucion}
+
+\section{Perspectiva}
+La norma de operador permite tratar transformaciones como puntos de un nuevo espacio normado. La completitud de ese espacio procede del codominio; la acotación uniforme, en cambio, exige completitud del dominio. Distinguir estos dos papeles evita aplicar los teoremas con hipótesis intercambiadas.

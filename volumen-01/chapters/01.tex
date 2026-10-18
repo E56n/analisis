@@ -1,0 +1,219 @@
+\chapter{Distancias y normas}\label{chap:01}
+\section{Qué significa medir la proximidad}
+En cálculo se estudia la cercanía de números mediante $|x-y|$. En este curso los objetos serán también vectores, sucesiones, funciones y operadores. Una distancia permite formular la misma pregunta para todos ellos: ¿cuánto difieren dos objetos? Una norma añade información compatible con la suma y la multiplicación por escalares. Los prerrequisitos de este capítulo son las propiedades del valor absoluto, las series de términos no negativos y la integral de Riemann de funciones continuas. La lectura 1 de las notas de partida \cite{valencia} organiza estos conceptos; aquí desarrollamos también las desigualdades que justifican sus ejemplos.
+
+\begin{definicion}\label{ch01:metrica}\index{metrica@métrica}
+Una \emph{métrica} en un conjunto $X$ es una función $d:X\times X\to[0,\infty)$ tal que, para $x,y,z\in X$,
+\[
+d(x,y)=0\Longleftrightarrow x=y,\qquad d(x,y)=d(y,x),\qquad
+d(x,y)\le d(x,z)+d(z,y).
+\]
+El par $(X,d)$ es un espacio métrico. La última condición es la desigualdad triangular.
+\end{definicion}
+La desigualdad triangular expresa que pasar por un punto intermedio no acorta la distancia directa. No presupone que existan segmentos o caminos en $X$. El conjunto vacío admite formalmente una métrica; salvo indicación expresa trabajaremos con espacios no vacíos.
+
+\begin{ejemplo}[Métrica discreta]\index{metrica@métrica!discreta}
+En cualquier conjunto, $d(x,y)=1$ si $x\ne y$ y $d(x,x)=0$ define una métrica. Para comprobar la desigualdad triangular, si $x=y$ el lado izquierdo es cero. Si $x\ne y$, no pueden cumplirse simultáneamente $x=z$ y $z=y$; al menos uno de los dos sumandos del lado derecho es $1$, de modo que su suma es al menos $d(x,y)=1$.
+\end{ejemplo}
+En $\R$ y $\C$, $d(x,y)=|x-y|$ es una métrica: la separación y la simetría se deducen del valor absoluto, y $|x-y|=|(x-z)+(z-y)|\le|x-z|+|z-y|$.
+
+\begin{definicion}\label{ch01:norma}\index{norma}
+Sea $V$ un espacio vectorial sobre $\F=\R$ o $\C$. Una norma es una función $\norm{\cdot}:V\to[0,\infty)$ tal que
+\[
+\norm{v}=0\Longleftrightarrow v=0,\qquad
+\norm{\alpha v}=|\alpha|\norm{v},\qquad
+\norm{u+v}\le\norm{u}+\norm{v}.
+\]
+El par $(V,\norm{\cdot})$ es un espacio normado. Una \emph{seminorma} satisface las mismas condiciones salvo que puede anularse en vectores no nulos.
+\end{definicion}
+\begin{proposicion}\label{ch01:inducida}
+Toda norma induce la métrica $d(u,v)=\norm{u-v}$.
+\end{proposicion}
+\begin{proof}
+La norma es no negativa y $\norm{u-v}=0$ equivale a $u-v=0$. La homogeneidad con escalar $-1$ da $\norm{u-v}=\norm{v-u}$. Finalmente,
+\[
+\norm{u-v}=\norm{(u-w)+(w-v)}\le\norm{u-w}+\norm{w-v}.
+\]
+Estas son exactamente las tres propiedades de una métrica.
+\end{proof}
+La métrica inducida es invariante por traslación: $d(u+a,v+a)=d(u,v)$, y satisface $d(\alpha u,\alpha v)=|\alpha|d(u,v)$. Una métrica arbitraria no tiene por qué poseer estas propiedades.
+
+\section{Las desigualdades de Hölder y Minkowski}
+En los ejemplos con varias variables, un compacto $K\subset\R^m$ se llama \emph{Jordan-medible} si su función indicadora $\mathbf1_K$ es integrable en el sentido de Riemann en un rectángulo que lo contiene. La integral $\int_K h$ se entiende como la integral en ese rectángulo de la función igual a $h$ en $K$ y a cero fuera de él. Para $h$ continua en $K$, esta extensión es integrable: sus posibles discontinuidades exteriores a la continuidad relativa están en la frontera de $K$, que tiene contenido de Jordan cero. El lector que solo haya estudiado cálculo de una variable puede tomar $K=[a,b]$, $a<b$, en todas las pruebas integrales de este capítulo; los argumentos de Hölder y Minkowski son idénticos y no requieren todavía teoría de la medida.
+Para justificar las normas $p$ no basta con afirmar que la desigualdad triangular es conocida. La herramienta decisiva es Hölder. Para $1<p<\infty$, el exponente conjugado es $q=p/(p-1)$; así $1/p+1/q=1$. Para $p=1$ se toma $q=\infty$, y para $p=\infty$ se toma $q=1$.
+
+\begin{lema}[Desigualdad de Young]\label{ch01:young}\index{Young, desigualdad de}
+Si $a,b\ge0$ y $1<p<\infty$, entonces $ab\le a^p/p+b^q/q$.
+\end{lema}
+\begin{proof}
+Fijado $b$, consideremos $h(t)=t^p/p-bt$ para $t\ge0$. Si $b=0$, la afirmación es inmediata. Si $b>0$, $h'(t)=t^{p-1}-b$ cambia de negativo a positivo en $t=b^{1/(p-1)}$. Ese punto es el mínimo global; su valor es $-b^q/q$. Por tanto $a^p/p-ab\ge-b^q/q$.
+\end{proof}
+
+\begin{teorema}[Hölder]\label{ch01:holder}\index{Holder@Hölder, desigualdad de}
+Para familias finitas de escalares,
+\[
+\sum_{k=1}^N|a_kb_k|\le
+\left(\sum_{k=1}^N|a_k|^p\right)^{1/p}
+\left(\sum_{k=1}^N|b_k|^q\right)^{1/q},\qquad 1<p<\infty.
+\]
+La misma desigualdad vale para series si ambos factores del lado derecho son finitos. En los extremos, se reemplaza el factor de exponente infinito por el supremo. Para funciones continuas en un compacto Jordan-medible $K\subset\R^m$, vale también
+\[
+\int_K|fg|\le \left(\int_K|f|^p\right)^{1/p}
+\left(\int_K|g|^q\right)^{1/q}.
+\]
+\end{teorema}
+\begin{proof}
+Para sumas finitas, escribamos $A=(\sum|a_k|^p)^{1/p}$ y $B=(\sum|b_k|^q)^{1/q}$. Si alguno es cero, todos sus términos son cero y la desigualdad queda probada. Si $A,B>0$, Young aplicada a $|a_k|/A$ y $|b_k|/B$ da
+\[
+\frac{|a_kb_k|}{AB}\le\frac{|a_k|^p}{pA^p}+\frac{|b_k|^q}{qB^q}.
+\]
+Al sumar se obtiene $\sum|a_kb_k|/(AB)\le1/p+1/q=1$. Para series, cada suma parcial está acotada por el producto de las normas completas; las sumas parciales son crecientes, por lo que convergen y satisfacen la misma cota. En el caso $p=1$, basta sumar $|a_kb_k|\le|a_k|\sup_j|b_j|$; el caso $p=\infty$ intercambia los papeles.
+
+Para integrales con ambos factores positivos se aplica Young a $|f|/A$ y $|g|/B$ punto a punto y se integra; la linealidad y la monotonía de la integral producen nuevamente $1/p+1/q$. Si $\int_K|f|^p=0$, Hölder no puede usarse todavía para concluir que el producto tiene integral cero. Para $\delta>0$, la desigualdad de Young aplicada a $|f|/\delta$ y $|g|$ da
+\[
+\int_K|fg|\le \frac{\delta^{1-p}}p\int_K|f|^p+
+\frac\delta q\int_K|g|^q=\frac\delta q\int_K|g|^q.
+\]
+Como esto vale para todo $\delta>0$, la integral del producto es cero. El otro caso nulo se trata intercambiando factores. En los extremos se integra $|fg|\le |f|\norm{g}_\infty$, o su versión intercambiada.
+\end{proof}
+
+\begin{teorema}[Minkowski]\label{ch01:minkowski}\index{Minkowski, desigualdad de}
+Para $1\le p<\infty$, las expresiones $p$ de sumas finitas, series e integrales satisfacen la desigualdad triangular.
+\end{teorema}
+\begin{proof}
+Para $p=1$ se suma o integra $|a+b|\le|a|+|b|$. Supongamos $p>1$ y comencemos por una suma finita. Si $S=(\sum|a_k+b_k|^p)^{1/p}=0$, no hay nada que probar. En otro caso,
+\begin{align*}
+S^p&\le\sum|a_k|\,|a_k+b_k|^{p-1}+\sum|b_k|\,|a_k+b_k|^{p-1}\\
+&\le\left[\left(\sum|a_k|^p\right)^{1/p}
++\left(\sum|b_k|^p\right)^{1/p}\right]
+\left(\sum|a_k+b_k|^{(p-1)q}\right)^{1/q}.
+\end{align*}
+Como $(p-1)q=p$, el último factor es $S^{p-1}$. Dividir por ese número positivo prueba la desigualdad. Si $a,b$ tienen sumas $p$ finitas, aplicamos la desigualdad a sus primeras $N$ coordenadas. Las sumas parciales de $\sum|a_k+b_k|^p$ quedan acotadas por $(\norm a_p+\norm b_p)^p$. Su límite es finito y, al pasar al límite, se obtiene la desigualdad para series. Este argumento demuestra a la vez que la suma pertenece al espacio: no lo presupone.
+
+Para funciones continuas en $K$, $|f+g|^p$ es integrable. Si su integral es positiva, se repite el cálculo anterior con integrales y Hölder; el factor final es $(\int|f+g|^p)^{1/q}$. Si la integral es cero, la desigualdad es automática. Para el supremo, $|f(x)+g(x)|\le\norm f_\infty+\norm g_\infty$ para cada $x$, y tomar el supremo concluye la prueba.
+\end{proof}
+
+\section{Los espacios modelo}
+\begin{ejemplo}[Normas en dimensión finita]\index{norma!p en dimension finita@$p$ en dimensión finita}
+En $\F^n$, para $n\ge1$,
+\[
+\norm x_1=\sum_{k=1}^n|x_k|,\qquad
+\norm x_p=\left(\sum_{k=1}^n|x_k|^p\right)^{1/p},\qquad
+\norm x_\infty=\max_{1\le k\le n}|x_k|.
+\]
+Todas son normas. La separación se sigue de que una suma de términos no negativos solo es cero si cada término lo es; para el máximo se usa el mismo razonamiento. La homogeneidad se obtiene sacando $|\alpha|^p$ de la suma, o $|\alpha|$ del máximo. La desigualdad triangular es Minkowski para $1<p<\infty$, la desigualdad del valor absoluto para $p=1$, y la estimación del supremo para $p=\infty$. La norma $2$ es euclidiana; la norma $1$ produce la distancia del taxista.
+\end{ejemplo}
+
+\begin{definicion}\index{ell p@\(\ell^p\)}\index{ell infinito@\(\ell^\infty\)}
+Para $1\le p<\infty$, se define
+\[
+\ell^p=\left\{a=(a_k)_{k\ge1}:\sum_{k=1}^{\infty}|a_k|^p<\infty\right\},
+\qquad \norm a_p=\left(\sum_{k=1}^{\infty}|a_k|^p\right)^{1/p}.
+\]
+Además, $\ell^\infty$ es el espacio de sucesiones acotadas, con $\norm a_\infty=\sup_k|a_k|$.
+\end{definicion}
+El cero pertenece a cada espacio; la multiplicación por escalares conserva la condición de pertenencia porque multiplica la serie por $|\alpha|^p$; y la suma la conserva por la prueba de Minkowski. En $\ell^\infty$, la cota $|a_k+b_k|\le\norm a_\infty+\norm b_\infty$ prueba lo mismo. Las verificaciones de separación y homogeneidad son las de dimensión finita, coordenada por coordenada. Así se justifica que estos objetos sean espacios vectoriales normados. Hölder dice en particular que si $a\in\ell^p$ y $b\in\ell^q$, entonces el producto coordenado $ab$ está en $\ell^1$.
+
+\begin{ejemplo}[Funciones continuas]\index{C(K)@$C(K)$}\label{ch01:funciones}
+En un compacto no vacío $K\subset\R^m$, la norma uniforme es
+\[
+\norm f_\infty=\max_{x\in K}|f(x)|,\qquad f\in C(K).
+\]
+El máximo existe por el teorema elemental de valores extremos para funciones continuas en compactos euclidianos. La separación se comprueba evaluando en cada punto; la homogeneidad y la desigualdad triangular se siguen de las propiedades del máximo.
+
+Si $a<b$, también son normas en $C([a,b])$ las expresiones
+\[
+\norm f_p=\left(\int_a^b|f(t)|^p\,dt\right)^{1/p},\qquad 1\le p<\infty.
+\]
+Solo falta justificar la separación. Si $f(t_0)\ne0$, la continuidad proporciona un intervalo relativo de longitud positiva en el que $|f(t)|>|f(t_0)|/2$. La integral de $|f|^p$ es al menos esa longitud multiplicada por $(|f(t_0)|/2)^p$, y es positiva. La homogeneidad sigue de la integral y la triangular de Minkowski.
+\end{ejemplo}
+\begin{observacion}[Corrección de la hipótesis del dominio]\index{seminorma}
+En un compacto Jordan-medible arbitrario, la expresión integral puede ser solo una seminorma. Si $K=\{0\}$ y $f(0)=1$, entonces $f\ne0$ pero $\int_K|f|^p=0$. Una condición suficiente para que sea norma es que toda vecindad relativa no vacía de $K$ tenga medida positiva. En ese caso la continuidad vuelve a producir un conjunto de medida positiva donde $|f|$ tiene una cota inferior positiva. Esta condición suele expresarse diciendo que la medida tiene \emph{soporte pleno} en $K$. No se necesita imponerla para la norma uniforme ni para las desigualdades de Hölder y Minkowski.
+\end{observacion}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 1, ejercicio 1]
+Sea $d:X\times X\to\R$ tal que $d(x,y)=0$ si y solo si $x=y$ y $d(x,y)\le d(x,z)+d(y,z)$ para todo $x,y,z$. Demostrar que $d$ es una métrica.
+\end{ejercicio}
+\begin{solucion}
+Tomando $z=x$ se obtiene $d(x,y)\le d(y,x)$, pues $d(x,x)=0$. Intercambiando $x,y$ se obtiene la desigualdad opuesta, y por tanto la simetría. Tomando $y=x$ en la desigualdad dada resulta $0\le2d(x,z)$: así se deduce la no negatividad, que no figuraba entre las hipótesis. La condición de separación ya está supuesta. Finalmente, por simetría la desigualdad dada es $d(x,y)\le d(x,z)+d(z,y)$, la desigualdad triangular usual.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 2]
+Sean $d_1,\ldots,d_n$ métricas en $X$. Demostrar que (i) su suma y (ii) su máximo son métricas. (iii) Dar un ejemplo en el que $\min(d_1,d_2)$ no lo sea.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item La suma es no negativa y simétrica. Si se anula, cada sumando no negativo se anula y $x=y$; si $x=y$, todos son cero. Al sumar las $n$ desigualdades triangulares se obtiene la de la suma.
+\item El máximo es no negativo, simétrico y se anula exactamente en la diagonal. Para cada $i$,
+\[
+d_i(x,y)\le d_i(x,z)+d_i(z,y)\le \max_j d_j(x,z)+\max_jd_j(z,y).
+\]
+El lado derecho no depende de $i$, por lo que también acota el máximo del lado izquierdo.
+\item En $X=\{a,b,c\}$, definamos las distancias entre puntos distintos por
+\[
+\begin{array}{c|ccc}
+&ab&bc&ac\\\hline
+d_1&1&3&3\\
+d_2&3&1&3
+\end{array}
+\]
+y extendamos por simetría, con diagonal cero. Cada terna de longitudes es $(1,3,3)$; su longitud mayor es menor o igual que la suma de las otras dos, así que ambas funciones son métricas. Su mínimo da distancias $1,1,3$, y falla $d(a,c)\le d(a,b)+d(b,c)$.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 3]
+Si $d$ es una métrica, demostrar que $d'(x,y)=d(x,y)/(1+d(x,y))$ también lo es.
+\end{ejercicio}
+\begin{solucion}
+La función $h(t)=t/(1+t)$ es creciente en $[0,\infty)$, es no negativa y solo se anula en $0$. Además, para $s,t\ge0$,
+\[
+\frac{s+t}{1+s+t}=\frac{s}{1+s+t}+\frac{t}{1+s+t}
+\le\frac{s}{1+s}+\frac{t}{1+t}.
+\]
+Por tanto $h(d(x,y))\le h(d(x,z)+d(z,y))\le h(d(x,z))+h(d(z,y))$. La simetría y la separación se heredan de $d$. Nótese que la nueva métrica está acotada por $1$ aunque la original no lo esté.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 4]
+Sean $(d_n)$ métricas en $X$ y $a_n>0$ con $\sum_na_n<\infty$. Demostrar que
+\[
+D(x,y)=\sum_{n=1}^{\infty}a_n\frac{d_n(x,y)}{1+d_n(x,y)}
+\]
+es una métrica.
+\end{ejercicio}
+\begin{solucion}
+Cada término está entre $0$ y $a_n$, así que la serie converge y define un número real finito. La simetría se verifica término a término. Si $x=y$, todos los términos son cero. Si $x\ne y$, el primer término es estrictamente positivo, por lo que $D(x,y)>0$. Cada cociente es una métrica por el ejercicio anterior; al multiplicar su desigualdad triangular por $a_n$ y sumar de $1$ a $N$, obtenemos la desigualdad para sumas parciales. El paso al límite conserva la desigualdad porque las tres series convergen. No se está intercambiando una suma con un ínfimo o un supremo: solo se pasa al límite en una desigualdad entre números reales.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 5]
+Para métricas $d_1,\ldots,d_n$ y $p>1$, demostrar que
+\[
+d_p(x,y)=\left(\sum_{i=1}^n d_i(x,y)^p\right)^{1/p}
+\]
+es una métrica.
+\end{ejercicio}
+\begin{solucion}
+La no negatividad, simetría y separación siguen de las de cada $d_i$. Poniendo $a_i=d_i(x,z)$ y $b_i=d_i(z,y)$, la desigualdad triangular de cada métrica y la monotonía de $t\mapsto t^p$ dan
+\[
+d_p(x,y)\le\left(\sum_i(a_i+b_i)^p\right)^{1/p}
+\le\left(\sum_i a_i^p\right)^{1/p}+\left(\sum_i b_i^p\right)^{1/p}.
+\]
+La última desigualdad es Minkowski, demostrada en el teorema~\ref{ch01:minkowski}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 6]
+Demostrar que $|d(x,z)-d(z,y)|\le d(x,y)$.
+\end{ejercicio}
+\begin{solucion}
+De $d(x,z)\le d(x,y)+d(y,z)$ se deduce $d(x,z)-d(y,z)\le d(x,y)$. Intercambiando $x,y$ resulta $d(y,z)-d(x,z)\le d(x,y)$. Estas dos desigualdades equivalen a la del valor absoluto. Esta \emph{desigualdad triangular inversa} será la base de la continuidad de las funciones distancia.\index{desigualdad triangular!inversa}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 7]\index{ultrametrica@ultramétrica}
+Una métrica es ultramétrica si $d(x,y)\le\max\{d(x,z),d(y,z)\}$. Demostrar que, cuando $d(x,z)\ne d(y,z)$, se tiene igualdad.
+\end{ejercicio}
+\begin{solucion}
+Supongamos $a=d(x,z)>b=d(y,z)$. La desigualdad ultramétrica da $d(x,y)\le a$. Aplicándola ahora al par $x,z$ con punto intermedio $y$, obtenemos $a\le\max\{d(x,y),b\}$. Como $b<a$, el máximo solo puede ser al menos $a$ si $d(x,y)\ge a$. Por tanto $d(x,y)=a$. Si $b>a$, se intercambian $x$ y $y$ en este mismo argumento. Geométricamente, en un triángulo ultramétrico los dos lados más largos tienen igual longitud.
+\end{solucion}
+
+\section{Lo que conviene retener}
+Una norma genera una distancia, pero las distancias tienen un ámbito más amplio. Hölder controla productos y Minkowski controla sumas. Antes de llamar norma a una expresión, hay que verificar que esté definida, que su dominio sea un espacio vectorial y que únicamente se anule en el vector cero. Esta última comprobación es esencial cuando aparecen integrales.

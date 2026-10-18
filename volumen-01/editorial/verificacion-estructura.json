@@ -1,0 +1,16 @@
+{
+  "capitulos": 32,
+  "ejercicios": 206,
+  "soluciones": 206,
+  "entradas_indice": 195,
+  "etiquetas_duplicadas": [],
+  "referencias_internas_faltantes": [],
+  "citas": [
+    "conway1990",
+    "kreyszig1978",
+    "munkres2000",
+    "rudin1976",
+    "valencia"
+  ],
+  "palabras_aproximadas_fuentes_latex": 71891
+}

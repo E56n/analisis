@@ -1,0 +1,235 @@
+[
+  {
+    "capitulo": 13,
+    "fuente": "AnM1-LFM-lect13.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Precisar cubierta discreta como familia de singletons y bola unitaria cerrada de ell-infinito.",
+      "Número de Lebesgue: tratar espacio vacío y cubierta vacía."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 13232
+  },
+  {
+    "capitulo": 14,
+    "fuente": "AnM1-LFM-lect14.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Ejercicio 6: subnivel en W, dominio de f, no en todo X.",
+      "Hacer explícitas cerraduras de colas y construcción creciente de índices."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 13324
+  },
+  {
+    "capitulo": 15,
+    "fuente": "AnM1-LFM-lect15.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Preservar barras de cerradura de proposición 4; verificadas en PDF, no son error del original.",
+      "Proposición 8: elegir el punto cercano y dentro de A y distinguir bolas abiertas/cerradas.",
+      "Ejercicio 5: formular f igual a 1 sobre A, con tratamiento de A vacío."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 13366
+  },
+  {
+    "capitulo": 16,
+    "fuente": "AnM1-LFM-lect16.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Compactificación exige encaje homeomorfo sobre la imagen, no mera inyección continua.",
+      "Teorema 9 requiere X no vacío; prueba completa de sobreyección Cantor a compacto por árbol de cubiertas.",
+      "Fórmula binaria corregida a suma b_n/2^n.",
+      "Codificación del espacio de Baire ajustada a naturales desde 1 usando bloques de x_n-1 ceros.",
+      "Ejercicio 3 es falso con encajes: Cantor no compactifica un discreto infinito; contraejemplo y compactificación correcta {0} union {1/n}.",
+      "Toro producto S1xS1 está naturalmente en R4; se proporciona modelo homeomorfo en R3."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 23078
+  },
+  {
+    "capitulo": 17,
+    "fuente": "AnM1-LFM-lect17.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Fibras del producto: x_j=a_j para j distinto de i, no desigualdad.",
+      "Ejercicio 1 requiere subconjunto propio no vacío.",
+      "Producto conexo si y solo si factores conexos: exigir factores no vacíos.",
+      "Espacio discreto conexo: admitir vacío y singleton."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 16720
+  },
+  {
+    "capitulo": 18,
+    "fuente": "AnM1-LFM-lect18.pdf (texto extraído)",
+    "teoria_original_cubierta": "Todas las definiciones, ejemplos, proposiciones, teoremas y observaciones de la lectura, con pruebas y justificaciones desarrolladas.",
+    "ejercicios_originales": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "ejercicios_resueltos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "incisos": "Todos los incisos originales resueltos; enunciados falsos examinados y corregidos.",
+    "correcciones": [
+      "Separar camino continuo de arco inyectivo; conexión de un punto consigo mismo por convención.",
+      "Demostrar recorte de arcos para sustituir concatenación potencialmente no inyectiva.",
+      "Corregir prueba de seno topológico mediante primer tiempo de llegada a eje vertical.",
+      "Teorema de abiertos conexos válido en normados, completitud innecesaria.",
+      "Ejercicio 3 requiere puntos distintos.",
+      "Ejercicio 7 precisa igualdad o arco para obtener reflexividad."
+    ],
+    "demostraciones_pendientes": [],
+    "referencias_cruzadas": [
+      "chap:13",
+      "chap:14",
+      "chap:15",
+      "chap:16",
+      "chap:17",
+      "chap:18"
+    ],
+    "caracteres": 17623
+  }
+]

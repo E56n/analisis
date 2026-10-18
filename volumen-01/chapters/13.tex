@@ -1,0 +1,148 @@
+\chapter{Compacidad: del control local al control global}\label{chap:13}
+
+\section{Motivación y prerrequisitos}
+Una función continua controla su variación cerca de cada punto, pero el tamaño de esa vecindad puede cambiar de un punto a otro. La compacidad permite reducir una familia de controles locales a una cantidad finita y, después, tomar el mínimo de los radios o el máximo de las cotas. Esta es la razón de su presencia en tantos argumentos de análisis. Usaremos abiertos relativos, continuidad, sucesiones de Cauchy y cerradura. Este capítulo desarrolla la lectura 13 de \cite{valencia}.
+
+\section{Cubiertas y conjuntos compactos}
+\begin{definicion}
+Una \emph{cubierta abierta}\index{cubierta abierta} de $X$ es una familia $\mathcal U$ de abiertos de $X$ cuya unión es $X$. Una \emph{subcubierta} es una subfamilia que todavía cubre $X$. El espacio $X$ es \emph{compacto}\index{compacidad} si toda cubierta abierta tiene una subcubierta finita. Un subconjunto $K\subset X$ es compacto cuando lo es con su topología relativa. El conjunto vacío es compacto: la subfamilia vacía basta para cubrirlo.
+\end{definicion}
+Para un radio fijo $r>0$, las bolas $B(x,r)$, $x\in X$, cubren $X$. Si $D$ es denso, también las bolas con centros en $D$: dado $x\in X$, existe $a\in D\cap B(x,r)$ y la simetría de la distancia da $x\in B(a,r)$. En $\R$, los intervalos $(n,\infty)$, $n\in\Z$, cubren la recta pero ninguna cantidad finita la cubre. En un espacio discreto la familia pertinente es $\{\{x\}:x\in X\}$; sus elementos son conjuntos, mientras que los elementos de $X$ son puntos. Esta cubierta no admite quitar un solo miembro.
+
+\begin{proposicion}\label{ch13:criterios}
+Sean $\mathcal B$ una base de la topología de $X$ y $K\subset X$.
+\begin{enumerate}[label=(\roman*)]
+\item $X$ es compacto si y solo si toda cubierta de $X$ formada por miembros de $\mathcal B$ admite una subcubierta finita.
+\item $K$ es compacto si y solo si toda familia de abiertos de $X$ que cubre $K$ admite una subfamilia finita que cubre $K$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+Para (i), una dirección es parte de la definición. Para la otra, dada una cubierta abierta $\mathcal U$, tomamos todos los $B\in\mathcal B$ que estén contenidos en algún $U\in\mathcal U$. Cubren $X$: si $x\in U$, la propiedad de base proporciona $x\in B\subset U$. Una subcubierta $B_1,\ldots,B_m$ permite elegir $U_i$ con $B_i\subset U_i$, y estos $U_i$ cubren $X$.
+
+Para (ii), si $K$ es compacto, los abiertos relativos $K\cap U$ forman una cubierta de $K$ y por tanto basta una cantidad finita. Recíprocamente, toda cubierta relativa tiene la forma $\{K\cap U_\alpha\}$ con $U_\alpha$ abierto en $X$. Aplicar la hipótesis a $\{U_\alpha\}$ da la subcubierta relativa requerida.
+\end{proof}
+
+\begin{ejemplo}[Espacios finitos e intervalos cerrados]
+Todo espacio finito es compacto: se elige un miembro de la cubierta para cada punto. Un espacio discreto infinito no lo es, por su cubierta de singletons.
+
+El intervalo $[a,b]$ es compacto. Presentamos la prueba, en lugar de dar por conocida esta propiedad del cálculo. Sea $\mathcal U$ una cubierta y definamos
+\[
+E=\{t\in[a,b]:[a,t]\text{ se cubre con finitos miembros de }\mathcal U\}.
+\]
+El conjunto contiene $a$ y tiene supremo $c\in[a,b]$. Si $c<b$, un abierto $U\ni c$ contiene $(c-\delta,c+\delta)\cap[a,b]$ para algún $\delta>0$. Por la definición de supremo hay $t\in E$ con $t>c-\delta/2$; si $c=a$ podemos tomar $t=a$. Una cubierta finita de $[a,t]$, junto con $U$, cubre $[a,\min(b,c+\delta/2)]$, contradiciendo que $c$ sea cota superior. Así $c=b$. Tomando ahora un abierto que contenga $b$ y un $t\in E$ suficientemente próximo a $b$, obtenemos una cubierta finita de todo $[a,b]$.
+\end{ejemplo}
+
+\section{Imágenes, cerrados y continuidad uniforme}
+\begin{teorema}\label{ch13:imagen}
+La imagen continua de un espacio compacto es compacta.
+\end{teorema}
+\begin{proof}
+Sea $f:X\to Y$ continua y $\mathcal U$ una familia de abiertos de $Y$ que cubre $f(X)$. Las preimágenes $f^{-1}(U)$ son abiertas y cubren $X$. Elegimos $U_1,\ldots,U_m$ cuyas preimágenes cubran $X$. Si $y=f(x)$, entonces $x\in f^{-1}(U_i)$ para algún $i$, de donde $y\in U_i$. La proposición \ref{ch13:criterios} termina la prueba.
+\end{proof}
+
+\begin{proposicion}\label{ch13:cerrados}
+En un espacio métrico, todo compacto es cerrado y acotado. Todo subconjunto cerrado de un compacto es compacto.
+\end{proposicion}
+\begin{proof}
+Sea $K$ compacto no vacío y $x\notin K$. Para $y\in K$ pongamos $r_y=d(x,y)/3>0$. Elegimos $y_1,\ldots,y_m$ tales que $K\subset\bigcup_iB(y_i,r_i)$ y ponemos $r=\min_i r_i>0$. Si $z\in B(x,r)$ y $y\in K$, elegimos $i$ con $d(y,y_i)<r_i$. La desigualdad triangular, escrita en sentido inverso, da
+\[
+d(z,y)\ge d(x,y_i)-d(x,z)-d(y,y_i)>3r_i-r-r_i\ge r.
+\]
+Así $z\notin K$ y $B(x,r)\subset X\setminus K$. Esto prueba que $K$ es cerrado. Para la acotación, fijemos $x_0\in X$; las bolas $B(x_0,n)$, $n\in\N$, cubren $K$. Una subcubierta finita queda contenida en la de mayor radio.
+
+Si $F$ es cerrado en el compacto $K$, una cubierta relativa de $F$ por abiertos de $K$, junto con $K\setminus F$, cubre $K$. Extraemos una subcubierta finita y eliminamos $K\setminus F$ si aparece. Los miembros restantes cubren $F$.
+\end{proof}
+
+\begin{teorema}[Heine--Cantor]\label{ch13:heinecantor}
+Toda función continua $f:X\to Y$ entre espacios métricos, con $X$ compacto, es uniformemente continua.
+\end{teorema}
+\begin{proof}
+Fijemos $\eps>0$. Para cada $x\in X$ elegimos $r_x>0$ tal que $d(x,z)<r_x$ implique $d_Y(f(x),f(z))<\eps/2$. Extraemos una subcubierta finita $B(x_i,r_i/2)$ y ponemos $\delta=\frac12\min_i r_i$. Dados $u,v$ con $d(u,v)<\delta$, elegimos $i$ con $u\in B(x_i,r_i/2)$. Entonces
+\[
+d(v,x_i)\le d(v,u)+d(u,x_i)<\delta+r_i/2\le r_i.
+\]
+Las imágenes de $u$ y $v$ están a distancia menor que $\eps/2$ de $f(x_i)$, por lo que $d_Y(f(u),f(v))<\eps$. El radio $\delta$ se eligió antes que $u,v$: esta independencia es exactamente la continuidad uniforme.
+\end{proof}
+
+\begin{corolario}[Máximo y mínimo]\label{ch13:extremos}
+Si $K$ es compacto no vacío y $f:K\to\R$ es continua, existen $x_-,x_+\in K$ tales que $f(x_-)\le f(x)\le f(x_+)$ para todo $x\in K$.
+\end{corolario}
+\begin{proof}
+La imagen es compacta, luego cerrada y acotada. Si $M=\sup f(K)$, para cada $n$ existe $y_n\in f(K)$ con $M-1/n<y_n\le M$. Por cerradura, $M\in f(K)$. Aplicamos el mismo argumento a $-f$ para el mínimo.
+\end{proof}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 13, ejercicio 1]
+Una familia no vacía $\mathcal F$ tiene la propiedad de intersección finita cuando toda intersección de una cantidad finita de sus miembros es no vacía. Probar que $X$ es compacto si y solo si toda familia de cerrados con esta propiedad tiene intersección no vacía.
+\end{ejercicio}
+\begin{solucion}
+Si $X$ es compacto y $\bigcap\mathcal F=\varnothing$, los complementos $X\setminus F$ forman una cubierta abierta. Una subcubierta finita implicaría $F_1\cap\cdots\cap F_m=\varnothing$, contradicción. En sentido inverso, si una cubierta abierta no tuviera subcubierta finita, los complementos de sus miembros serían cerrados con intersecciones finitas no vacías. Su intersección total, sin embargo, sería vacía. Si $X=\varnothing$, ambas propiedades se cumplen; no existe en él una familia de cerrados no vacíos con la propiedad indicada.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 2]
+Probar que una unión finita de subconjuntos compactos es compacta.
+\end{ejercicio}
+\begin{solucion}
+Sea $K=K_1\cup\cdots\cup K_m$ y sea $\mathcal U$ una cubierta por abiertos del espacio ambiente. Para cada $i$, la compacidad de $K_i$ proporciona una subfamilia finita $\mathcal U_i\subset\mathcal U$ que lo cubre. La unión de las $m$ subfamilias es finita y cubre $K$. No se exige que los compactos sean disjuntos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 3]
+En un compacto $X$, una sucesión decreciente de cerrados no vacíos $F_n$ tiene intersección no vacía. Deducir que $X$ es completo.
+\end{ejercicio}
+\begin{solucion}
+La intersección de finitos $F_n$ coincide con el que tenga el índice mayor, así que la familia tiene la propiedad de intersección finita. Aplicamos el ejercicio 1. Si $(x_n)$ es de Cauchy, consideramos
+\[
+F_n=\cl{\{x_k:k\ge n\}}.
+\]
+Son cerrados, no vacíos y decrecientes; elegimos $x\in\bigcap_nF_n$. Dado $\eps>0$, existe $N$ con $d(x_j,x_k)<\eps/2$ cuando $j,k\ge N$. Como $x\in F_N$, hay $k\ge N$ con $d(x,x_k)<\eps/2$. Entonces, para todo $j\ge N$, $d(x_j,x)<\eps$. Por tanto $x_n\to x$ y $X$ es completo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 4]
+Probar que la bola unitaria cerrada de $\ell^\infty$ es cerrada y acotada, pero no compacta.
+\end{ejercicio}
+\begin{solucion}
+La norma es continua porque $|\norm{x}_\infty-\norm{y}_\infty|\le\norm{x-y}_\infty$. Así la bola $K=\{x:\norm{x}_\infty\le1\}$ es cerrada y tiene diámetro a lo sumo $2$. Sean $e_n$ las sucesiones con un único $1$, en la coordenada $n$. Para $n\ne m$, $\norm{e_n-e_m}_\infty=1$. Las bolas abiertas de radio $1/3$ centradas en todos los puntos de $K$ forman una cubierta relativa. Cada bola contiene a lo sumo un $e_n$, pues dos puntos de la misma bola están a distancia menor que $2/3$. Ninguna subfamilia finita cubre todos los $e_n$. La misma separación ocurre entre cualesquiera dos sucesiones distintas de ceros y unos, como sugiere la lectura.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 5]
+Si $X$ es compacto y $f:X\to Y$ es continua e inyectiva, probar que $f^{-1}:f(X)\to X$ es continua.
+\end{ejercicio}
+\begin{solucion}
+Para todo cerrado $F\subset X$, el conjunto $F$ es compacto, su imagen $f(F)$ es compacta y, por ser $Y$ métrico, es cerrada en $Y$ y en $f(X)$. Pero $f(F)$ es precisamente la preimagen de $F$ por $f^{-1}$. La caracterización de continuidad mediante cerrados prueba el resultado. La compacidad convierte aquí una biyección continua en un homeomorfismo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 6]
+Sean $X$ compacto, $f:X\to Y$ continua y $A\subset X$ tal que $f(X\setminus A)\subset Y\setminus f(A)$. Probar: (i) $f|_A:A\to f(A)$ es cerrada; (ii) si además es inyectiva, es un homeomorfismo.
+\end{ejercicio}
+\begin{solucion}
+La hipótesis dice que ningún punto exterior a $A$ comparte imagen con un punto de $A$; equivalentemente, $f^{-1}(f(A))=A$. Para (i), sea $F$ cerrado en $A$, de modo que $F=A\cap C$ con $C$ cerrado en $X$. Afirmamos
+\[
+f(F)=f(C)\cap f(A).
+\]
+Una inclusión es inmediata por las dos pertenencias. Si $y=f(c)\in f(C)\cap f(A)$, la hipótesis impide $c\notin A$; luego $c\in C\cap A=F$. Ahora $C$ es compacto y $f(C)$ cerrado en $Y$, de modo que $f(F)$ es cerrado en $f(A)$. Para (ii), la restricción es continua y biyectiva sobre su imagen. Ser cerrada significa que su inversa tiene preimagen cerrada para cada cerrado de $A$, por lo que la inversa es continua. No hemos supuesto que $A$ sea cerrado ni compacto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 7]
+Si $X,Y$ son compactos, probar que $X\times Y$, con la métrica máximo, es compacto.
+\end{ejercicio}
+\begin{solucion}
+Los rectángulos $B_X(x,r)\times B_Y(y,s)$ son abiertos y forman una base: contienen y son contenidos localmente en bolas de la métrica máximo. Sea $\mathcal U$ una cubierta abierta del producto. Para cada $(x,y)$ elegimos un rectángulo $V_{xy}\times W_{xy}$ que contenga $(x,y)$ y esté contenido en algún $U_{xy}\in\mathcal U$. Fijado $x$, los $W_{xy}$ cubren $Y$; elegimos $y_1,\ldots,y_{m_x}$ y ponemos $V_x=\bigcap_jV_{xy_j}$. Este es un abierto que contiene $x$, y
+\[
+V_x\times Y\subset\bigcup_{j=1}^{m_x}U_{xy_j}.
+\]
+Los $V_x$ cubren $X$; una cantidad finita $V_{x_1},\ldots,V_{x_k}$ basta. Los conjuntos $U_{x_i y_j}$ seleccionados para estos $x_i$ constituyen una subcubierta finita del producto. Si uno de los factores es vacío, el producto vacío ya es compacto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 8]
+Probar que toda cubierta abierta $\mathcal U$ de un compacto métrico admite un número de Lebesgue: existe $r>0$ tal que todo subconjunto de diámetro menor que $r$ está contenido en algún miembro de $\mathcal U$.
+\end{ejercicio}
+\begin{solucion}
+Suponemos $X\ne\varnothing$; para el espacio vacío el resultado se interpreta para subconjuntos no vacíos, o para cubiertas no vacías. Para cada $x$ elegimos $U_x\in\mathcal U$ y $r_x>0$ con $B(x,r_x)\subset U_x$. Una cantidad finita $B(x_i,r_i/2)$ cubre $X$; fijemos $r=\frac12\min_i r_i$. Si $A\ne\varnothing$ y $\diam A<r$, tomamos $a\in A$ e $i$ con $d(a,x_i)<r_i/2$. Para todo $b\in A$,
+\[
+d(b,x_i)\le d(b,a)+d(a,x_i)<r+r_i/2\le r_i.
+\]
+Luego $A\subset U_{x_i}$. El conjunto vacío está contenido en cualquier miembro de la cubierta. Un número de Lebesgue controla conjuntos completos de diámetro pequeño, no solamente bolas con un centro preestablecido.\index{numero de Lebesgue@número de Lebesgue}
+\end{solucion}
+
+\section{Idea que conviene conservar}
+La compacidad no significa simplemente que un conjunto sea pequeño en diámetro. Significa que cualquier descripción local mediante abiertos puede reducirse a finitos datos. La extracción de esa subfamilia finita es el paso que produce controles uniformes, extremos y continuidad de inversas.

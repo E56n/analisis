@@ -1,0 +1,183 @@
+\chapter{Abiertos, cerrados y sucesiones}\label{chap:03}
+\section{Operaciones que preservan la topología}
+El interior y la clausura permiten reconocer abiertos y cerrados. Ahora estudiaremos cómo se comportan al reunir conjuntos y cómo se detecta la clausura mediante sucesiones. Estas son las herramientas de la lectura 3 de \cite{valencia}. Un objetivo central es distinguir un punto que simplemente pertenece al conjunto de un punto al que se aproximan \emph{otros} puntos de él.
+
+\begin{proposicion}\label{ch03:axiomas}\index{topologia@topología!axiomas}
+En un espacio métrico $X$, una unión arbitraria de abiertos es abierta y una intersección finita de abiertos es abierta. Los conjuntos $\varnothing$ y $X$ son abiertos.
+\end{proposicion}
+\begin{proof}
+Sea $G=\bigcup_{i\in I}G_i$, con cada $G_i$ abierto. Si $x\in G$, existe $i$ con $x\in G_i$. Alguna bola centrada en $x$ está contenida en $G_i$ y, por ello, en $G$. Si $I$ es vacío, la unión es vacía y no hay punto en el que verificar la condición.
+
+Para $x\in\bigcap_{j=1}^mG_j$, elijamos $r_j>0$ con $B(x,r_j)\subset G_j$. La bola de radio $\min_jr_j$ está contenida en la intersección. Por último, $X$ contiene cualquier bola centrada en cualquiera de sus puntos; $\varnothing$ es abierto porque la afirmación «es vecindad de todos sus puntos» no tiene contraejemplos.
+\end{proof}
+
+\begin{teorema}\label{ch03:complemento}
+Un conjunto $F\subset X$ es cerrado si y solo si $X\setminus F$ es abierto.
+\end{teorema}
+\begin{proof}
+Si $F$ es cerrado y $x\notin F=\cl F$, alguna bola centrada en $x$ no intersecta a $F$. Esa bola está contenida en el complemento, que es por tanto vecindad de cada punto suyo. Recíprocamente, si el complemento es abierto y $x\notin F$, existe una bola centrada en $x$ contenida en él. Entonces $x\notin\cl F$. Hemos probado $\cl F\subset F$, y la inclusión opuesta vale siempre.
+\end{proof}
+
+\begin{corolario}\label{ch03:cerrados}
+Las intersecciones arbitrarias de cerrados y las uniones finitas de cerrados son cerradas. Los conjuntos $\varnothing$ y $X$ son cerrados.
+\end{corolario}
+\begin{proof}
+Las identidades de De Morgan dan
+\[
+X\setminus\bigcap_iF_i=\bigcup_i(X\setminus F_i),\qquad
+X\setminus\bigcup_{j=1}^mF_j=\bigcap_{j=1}^m(X\setminus F_j).
+\]
+Los lados derechos son abiertos por la proposición~\ref{ch03:axiomas}. Sus complementos son cerrados por el teorema anterior. Los complementos de $\varnothing$ y $X$ son abiertos, lo que prueba la última afirmación. Se admite la intersección vacía, igual a $X$.
+\end{proof}
+Por ejemplo, $S(x,r)=\overline B(x,r)\cap(X\setminus B(x,r))$ es intersección de dos cerrados. Esta es una segunda prueba de que las esferas son cerradas.
+
+\begin{teorema}\label{ch03:unionbolas}
+Un conjunto es abierto si y solo si es unión de bolas abiertas.
+\end{teorema}
+\begin{proof}
+Si $G$ es abierto, para cada $x\in G$ elijamos $r_x>0$ con $B(x,r_x)\subset G$. Todo $x\in G$ pertenece a su propia bola, así que $G=\bigcup_{x\in G}B(x,r_x)$. Si $G=\varnothing$, se toma la unión vacía. Recíprocamente, cada bola abierta es abierta por el capítulo~\ref{chap:02}, y una unión de abiertos es abierta.
+\end{proof}
+Este teorema permite comprobar propiedades de todos los abiertos a partir de bolas, siempre que la propiedad sea compatible con uniones. Esa compatibilidad habrá que verificarla en cada aplicación.
+
+\section{Adherencia, acumulación y aislamiento}
+\begin{definicion}\index{punto!de adherencia}\index{punto!de acumulacion@de acumulación}\index{conjunto derivado}
+Un punto interior de $A$ pertenece a $\interior A$; un punto de adherencia pertenece a $\cl A$. Un punto $x$ es de acumulación de $A$ si
+\[
+B(x,r)\cap(A\setminus\{x\})\ne\varnothing\quad\text{para todo }r>0.
+\]
+El conjunto de estos puntos se denota $A'$ y se llama conjunto derivado. Un punto de $A$ que no está en $A'$ es aislado en $A$.
+\end{definicion}
+Todo punto de acumulación es de adherencia, porque la condición de intersectar a $A\setminus\{x\}$ implica la de intersectar a $A$. Más precisamente,
+\begin{equation}\label{ch03:clderivada}
+\cl A=A\cup A'.
+\end{equation}
+En efecto, si $x\in\cl A\setminus A$, cada bola intersecta a $A$, y el punto encontrado es diferente de $x$ porque $x\notin A$. Esto da $x\in A'$. La inclusión contraria usa $A\subset\cl A$ y $A'\subset\cl A$.
+
+Un conjunto finito no tiene puntos de acumulación. Para verlo en un punto arbitrario $x$, consideremos el conjunto finito de distancias $d(x,a)$ con $a\in A\setminus\{x\}$. Si ese conjunto es vacío, cualquier bola sirve. Si no lo es, su mínimo $m$ es positivo y $B(x,m)$ no contiene puntos de $A\setminus\{x\}$. Esta prueba cubre también los puntos exteriores a $A$ y los conjuntos con cero o un elemento.
+
+\begin{lema}\label{ch03:infinitospuntos}
+Si $x\in A'$, toda bola centrada en $x$ contiene infinitos puntos de $A$.
+\end{lema}
+\begin{proof}
+Si $B(x,r)\cap(A\setminus\{x\})$ fuera finito, eligiendo un radio menor que $r$ y menor que todas las distancias positivas de $x$ a esos puntos obtendríamos una bola sin puntos de $A\setminus\{x\}$. Esto contradice la definición de acumulación.
+\end{proof}
+
+\section{Sucesiones como pruebas de clausura}
+\begin{definicion}\index{sucesion@sucesión!convergente}
+Una sucesión $(x_n)$ converge a $x$ si para cada $\eps>0$ existe $N\in\N$ tal que $d(x_n,x)<\eps$ para todo $n\ge N$. Se escribe $x_n\to x$.
+\end{definicion}
+El índice $N$ depende de la precisión $\eps$. No basta con encontrar un término cerca de $x$; todos los términos a partir de cierto momento deben estar cerca de él.
+
+\begin{teorema}\label{ch03:secuencial}
+Para $A\subset X$ y $x\in X$:
+\begin{enumerate}[label=(\roman*)]
+\item $x\in\cl A$ si y solo si existe una sucesión de puntos de $A$ que converge a $x$.
+\item $x\in A'$ si y solo si existe una sucesión de puntos de $A$ distintos dos a dos que converge a $x$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item Si $x\in\cl A$, para cada $n$ elegimos $x_n\in A\cap B(x,1/n)$. Dado $\eps>0$, tomamos $N$ con $1/N<\eps$; entonces $n\ge N$ implica $d(x_n,x)<1/n\le1/N<\eps$. Recíprocamente, si $x_n\in A$ y $x_n\to x$, cualquier bola $B(x,r)$ contiene todos los términos a partir de cierto índice; por ello intersecta a $A$.
+\item Si $x\in A'$, el lema~\ref{ch03:infinitospuntos} permite elegir recursivamente
+\[
+x_n\in A\cap B(x,1/n)\setminus\{x,x_1,\ldots,x_{n-1}\}.
+\]
+Solo se excluye un conjunto finito de una intersección infinita, así que siempre hay una elección. Las distancias menores que $1/n$ prueban la convergencia. En sentido inverso, dada una bola $B(x,r)$, la convergencia pone en ella todos los términos suficientemente avanzados. Como son distintos dos a dos, a lo sumo uno es igual a $x$; existe, por tanto, un término de la bola diferente de $x$. Esto prueba acumulación.
+\end{enumerate}
+\end{proof}
+\begin{corolario}\label{ch03:cerradosecuencial}
+Un subconjunto $F$ de un espacio métrico es cerrado si y solo si contiene el límite de toda sucesión de puntos de $F$ que converja en $X$.
+\end{corolario}
+\begin{proof}
+Si $F$ es cerrado, el teorema anterior coloca cualquier límite en $\cl F=F$. Si contiene todos esos límites, cada $x\in\cl F$ es límite de una sucesión en $F$ y pertenece a $F$; así $\cl F=F$.
+\end{proof}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 3, ejercicio 1]
+Demostrar que (i) $\interior A$ es la unión de todos los abiertos contenidos en $A$ y (ii) $\cl A$ es la intersección de todos los cerrados que contienen a $A$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $G$ es abierto y $G\subset A$, la monotonía del interior da $G=\interior G\subset\interior A$. Por otra parte, $\interior A$ es abierto y está contenido en $A$, de modo que él mismo figura en la familia de la unión. Esto prueba las dos inclusiones.
+\item Si $F$ es cerrado y $A\subset F$, entonces $\cl A\subset\cl F=F$. Además, $\cl A$ es un cerrado que contiene a $A$, por lo que figura entre los conjuntos que se intersectan. Así es exactamente esa intersección.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 2]
+Demostrar que (i) $c_0$, el conjunto de sucesiones que convergen a cero, es cerrado en $\ell^\infty$; (ii) fijado $t\in K$, el conjunto $\{f\in C(K):f(t)=0\}$ es cerrado en la norma uniforme.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Sean $a^{(m)}\in c_0$ y $\norm{a^{(m)}-a}_\infty\to0$. Debemos mostrar que $a_n\to0$ cuando cambia el índice de coordenada $n$, no el índice $m$ de aproximación. Dado $\eps>0$, elegimos un solo $m$ con $\norm{a^{(m)}-a}_\infty<\eps/2$. Como $a^{(m)}\in c_0$, existe $N$ con $|a^{(m)}_n|<\eps/2$ para $n\ge N$. Entonces
+\[
+|a_n|\le |a_n-a^{(m)}_n|+|a^{(m)}_n|<\eps.
+\]
+Así $a\in c_0$, y el corolario~\ref{ch03:cerradosecuencial} prueba cerradura.
+\item Si $f_m(t)=0$ y $\norm{f_m-f}_\infty\to0$, entonces $|f(t)|=|f(t)-f_m(t)|\le\norm{f-f_m}_\infty$. Al pasar al límite obtenemos $|f(t)|=0$. Todo límite en $C(K)$ permanece en el conjunto, por lo que este es cerrado.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 3]\index{Hausdorff, propiedad de}
+Para $x\ne y$, encontrar abiertos disjuntos $U,V$ con $x\in U$ y $y\in V$. Deducir la unicidad del límite de una sucesión.
+\end{ejercicio}
+\begin{solucion}
+Sea $r=d(x,y)/3>0$. Las bolas $U=B(x,r)$ y $V=B(y,r)$ son abiertas. Si $z$ perteneciera a ambas, $d(x,y)\le d(x,z)+d(z,y)<2r<d(x,y)$, contradicción. Si una sucesión convergiera a $x$ y a $y$, a partir de un índice estaría en $U$ y a partir de otro estaría en $V$. Desde el mayor de ambos índices estaría en la intersección vacía. Por tanto dos límites deben coincidir. En el enunciado original se sustituye la expresión accidental $y\in X$ por la condición necesaria $y\in V$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 4]
+Demostrar que $\{x\}$ es la intersección de todas las vecindades cerradas de $x$, y deducir que todo conjunto finito es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Todas esas vecindades contienen a $x$. Si $y\ne x$, la bola cerrada $\overline B(x,d(x,y)/2)$ es vecindad de $x$ y no contiene a $y$. Así ningún otro punto pertenece a la intersección. La intersección de cerrados es cerrada, por lo que cada singleton $\{x\}$ es cerrado. Una unión finita de estos singletons es cerrada; el conjunto finito vacío también es cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 5]
+En $\ell^1$, sea $e_k=(\delta_{n,k})_{n\ge1}$ y $A=\{e_k:k\in\N\}$. Demostrar que $A$ no tiene puntos de acumulación.
+\end{ejercicio}
+\begin{solucion}
+Para $j\ne k$, $\norm{e_j-e_k}_1=2$, pues hay exactamente dos coordenadas de valor absoluto $1$. Una bola de radio $1/2$ contiene a lo sumo un elemento de $A$: si contuviera dos, su distancia sería menor que $1$ por la desigualdad triangular. Pero una bola centrada en un punto de acumulación tendría que contener infinitos elementos de $A$, por el lema~\ref{ch03:infinitospuntos}. No existe tal punto. Este es un conjunto infinito sin puntos de acumulación, incluso aunque todos sus elementos tienen norma $1$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 6]
+Demostrar que $A$ es cerrado si y solo si $A'\subset A$.
+\end{ejercicio}
+\begin{solucion}
+Por \eqref{ch03:clderivada}, $\cl A=A\cup A'$. Si $A$ es cerrado, $A'\subset\cl A=A$. Si $A'\subset A$, entonces $\cl A=A\cup A'=A$, de modo que $A$ es cerrado. El enunciado no dice que todo punto de un cerrado sea de acumulación: puede tener puntos aislados.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 7]\index{distancia!a un conjunto}
+Para $A\ne\varnothing$, sea $d(x,A)=\inf\{d(x,a):a\in A\}$. Probar $x\in\cl A$ si y solo si $d(x,A)=0$.
+\end{ejercicio}
+\begin{solucion}
+El ínfimo existe y es finito: las distancias son no negativas y alguna de ellas es finita porque $A$ no es vacío. Si $x\in\cl A$, para todo $\eps>0$ hay $a\in A$ con $d(x,a)<\eps$, así que $0\le d(x,A)<\eps$ y el ínfimo es cero. Si el ínfimo es cero, para cada $r>0$ debe existir $a\in A$ con $d(x,a)<r$; de otro modo $r$ sería una cota inferior positiva. Por tanto toda bola intersecta a $A$.
+
+Además, esta distancia es $1$-Lipschitz: para $\eps>0$ elijamos $a\in A$ con $d(y,a)<d(y,A)+\eps$. Entonces $d(x,A)\le d(x,a)\le d(x,y)+d(y,A)+\eps$. Haciendo $\eps\downarrow0$ e intercambiando $x,y$, obtenemos $|d(x,A)-d(y,A)|\le d(x,y)$. No se supuso que el ínfimo se alcanzara.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 8]
+Para una familia no vacía $\mathcal S$ de subconjuntos de $X$, demostrar
+\[
+\left(\bigcap_{A\in\mathcal S}A\right)'\subset\bigcap_{A\in\mathcal S}A',\qquad
+\bigcup_{A\in\mathcal S}A'\subset\left(\bigcup_{A\in\mathcal S}A\right)',
+\]
+y dar ejemplos de inclusiones estrictas.
+\end{ejercicio}
+\begin{solucion}
+Si $E\subset F$, cualquier bola que contiene un punto de $E$ distinto de su centro contiene también un punto de $F$ distinto del centro; por tanto $E'\subset F'$. Aplicamos esta monotonía a $\bigcap\mathcal S\subset A$ para cada $A$ y a $A\subset\bigcup\mathcal S$ para cada $A$.
+
+Para la primera inclusión, en $\R$ tomemos $A=(-1,0)$ y $B=(0,1)$. La intersección es vacía y tiene derivado vacío, mientras que $0\in A'\cap B'$. Para la segunda, sea $\mathcal S=\{\{1/n\}:n\ge1\}$. Cada singleton tiene derivado vacío, pero $0$ pertenece al derivado de la unión, pues $1/n\to0$ y los puntos son distintos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 9]
+En un espacio ultramétrico demostrar: (i) las relaciones $d(x,y)<r$ y $d(x,y)\le r$, con $r>0$, son de equivalencia; (ii) las bolas abiertas de radio $r$ particionan $X$, y lo mismo las cerradas; (iii) si $0<s<r$, una bola $B(x,r)$ es particionada por las bolas abiertas de radio $s$ que la intersectan.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item La reflexividad usa $d(x,x)=0<r$; la simetría es la de la métrica. Si $d(x,y)<r$ y $d(y,z)<r$, la desigualdad ultramétrica da $d(x,z)\le\max\{d(x,y),d(y,z)\}<r$. Sustituir ambas desigualdades estrictas por $\le r$ demuestra la transitividad de la segunda relación.
+\item La clase de equivalencia de $x$ para la primera relación es exactamente $B(x,r)$; para la segunda es $\overline B(x,r)$. Las clases de una relación de equivalencia cubren el conjunto y dos clases son iguales o disjuntas, así que proporcionan las particiones afirmadas. La colección de bolas se entiende sin repetir conjuntos iguales.
+\item Si $B(y,s)$ intersecta a $B(x,r)$, elijamos $z$ en la intersección. Entonces $d(x,y)\le\max\{d(x,z),d(z,y)\}<r$, y para $w\in B(y,s)$ se obtiene $d(x,w)\le\max\{d(x,y),d(y,w)\}<r$. Por tanto $B(y,s)\subset B(x,r)$. Todo punto $y$ de la bola grande pertenece a su bola $B(y,s)$, que la intersecta. Las bolas pequeñas son iguales o disjuntas por (ii), de modo que cubren la bola grande sin superposición entre elementos distintos de la colección.
+\end{enumerate}
+\end{solucion}
+
+\section{La función de las sucesiones}
+En espacios métricos, las sucesiones detectan exactamente la clausura y la cerradura. El requisito de términos distintos detecta acumulación y elimina la información trivial de las sucesiones constantes. Estas distinciones serán decisivas al estudiar compacidad, donde las sucesiones dejarán de ser solo una herramienta de lenguaje y se convertirán en una fuente de existencia de límites.

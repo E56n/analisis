@@ -1,0 +1,286 @@
+\chapter{Representación de Riesz y operadores adjuntos}\label{chap:32}
+\index{Riesz!representacion en Hilbert@representación en Hilbert}\index{operador!adjunto}
+
+Una matriz y su transpuesta conjugada describen la misma relación entre vectores vista desde lados opuestos del producto interno. En Hilbert esa relación sigue existiendo sin elegir coordenadas. La herramienta que la hace posible es el teorema de representación de Riesz. La lectura 32 de \cite{valencia} lo utiliza posponiendo su prueba; aquí lo demostraremos antes de aplicarlo. Cerraremos el volumen relacionando los adjuntos con la aproximación de operadores compactos por operadores de rango finito.
+
+\section{Cada funcional continuo es un producto interno}
+\begin{teorema}[Representación de Riesz]\label{ch32:riesz}
+Sea $H$ un espacio de Hilbert y $\varphi:H\to\F$ un funcional lineal continuo. Existe un único $v\in H$ tal que
+\[
+ \varphi(x)=\ip{x}{v}\quad(x\in H),\qquad \norm{\varphi}=\norm v.
+\]
+\end{teorema}
+\begin{proof}
+Si $\varphi=0$, tomamos $v=0$. Supongamos $\varphi\ne0$. Su núcleo $M$ es un subespacio cerrado: si $x_n\in M$ converge a $x$, la continuidad da $\varphi(x)=\lim\varphi(x_n)=0$. Elijamos $z$ con $\varphi(z)\ne0$ y sea $r=z-P_Mz$. Entonces $r\in M^{\perp}$ y $\varphi(r)=\varphi(z)\ne0$, por lo que $r\ne0$.
+
+Para cada $x$, el vector $x-\varphi(x)r/\varphi(r)$ pertenece al núcleo. Tomando su producto interno con $r$,
+\[
+0=\ip{x}{r}-\frac{\varphi(x)}{\varphi(r)}\norm r^{2}.
+\]
+Así $\varphi(x)=\varphi(r)\ip{x}{r}/\norm r^{2}$. Con nuestra convención de linealidad, el vector representante es
+\[
+ v=\frac{\overline{\varphi(r)}}{\norm r^{2}}r,
+\]
+pues el escalar que multiplica a la segunda entrada sale conjugado. Si $v,w$ representan el mismo funcional, $\ip{x}{v-w}=0$ para todo $x$; con $x=v-w$ se obtiene $v=w$.
+
+Cauchy--Schwarz da $|\varphi(x)|\leq\norm x\norm v$, de modo que $\norm{\varphi}\leq\norm v$. Si $v\ne0$, tomando $x=v/\norm v$ obtenemos $|\varphi(x)|=\norm v$, y la desigualdad opuesta. Para $v=0$ las dos normas son cero.
+\end{proof}
+
+El representante depende antilinealmente del funcional: el representante de $\alpha\varphi+\beta\psi$ es $\bar\alpha v+\bar\beta w$. Esta observación evita confundir la identificación entre $H$ y $H^*$ con una aplicación compleja lineal.
+
+\section{Formas sesquilineales y operadores}
+\begin{definicion}
+Para espacios de Hilbert complejos $H_1,H_2$, una forma $\xi:H_1\times H_2\to\C$ es \emph{sesquilineal} si es lineal en la primera variable y antilineal en la segunda. Es \emph{acotada} si existe $C\geq0$ tal que
+\[
+ |\xi(x,y)|\leq C\norm x\norm y.
+\]
+\end{definicion}
+\index{forma sesquilineal}
+Esta condición equivale a continuidad conjunta. En efecto, si existe tal cota,
+\[
+ |\xi(x',y')-\xi(x,y)|
+ \leq C\norm{x'-x}\norm{y'}+C\norm x\norm{y'-y},
+\]
+que tiende a cero cuando $(x',y')\to(x,y)$. Recíprocamente, la continuidad en $(0,0)$ proporciona $\delta>0$ tal que $|\xi(u,v)|<1$ si $\norm u,\norm v<\delta$. Para $x,y\ne0$ aplicamos esto a $u=\delta x/(2\norm x)$ y $v=\delta y/(2\norm y)$; por sesquilinealidad,
+$|\xi(x,y)|\leq4\norm x\norm y/\delta^2$. Si alguno es cero, la desigualdad se cumple porque $\xi$ vale cero.
+
+Si $T\in\Bcal(H_1,H_2)$ y $S\in\Bcal(H_2,H_1)$, las formas $\ip{Tx}{y}$ y $\ip{x}{Sy}$ son acotadas, con cotas $\norm T$ y $\norm S$ por Cauchy--Schwarz y la definición de norma de operador.
+
+\begin{teorema}\label{ch32:formas}
+Toda forma sesquilineal acotada $\xi:H_1\times H_2\to\C$ tiene una representación única
+\[
+ \xi(x,y)=\ip{Tx}{y},\qquad T\in\Bcal(H_1,H_2).
+\]
+\end{teorema}
+\begin{proof}
+Para cada $x$ fijo, $\varphi_x(y)=\overline{\xi(x,y)}$ es un funcional \emph{lineal} continuo sobre $H_2$ y $\norm{\varphi_x}\leq C\norm x$. Por Riesz existe un único vector $Tx$ con $\overline{\xi(x,y)}=\ip{y}{Tx}$, o equivalentemente $\xi(x,y)=\ip{Tx}{y}$.
+
+Para $x,z\in H_1$ y $\alpha,\beta\in\C$,
+\[
+ \ip{T(\alpha x+\beta z)}{y}=\xi(\alpha x+\beta z,y)
+ =\ip{\alpha Tx+\beta Tz}{y}\quad\text{para todo }y.
+\]
+La unicidad del vector representado da $T(\alpha x+\beta z)=\alpha Tx+\beta Tz$. La igualdad de normas de Riesz da $\norm{Tx}=\norm{\varphi_x}\leq C\norm x$, por lo que $T$ es acotado. Si $S$ representara la misma forma, $\ip{(T-S)x}{y}=0$ para todo $y$, y tomando $y=(T-S)x$ se obtiene $Tx=Sx$ para cada $x$.
+\end{proof}
+
+\section{Existencia, norma y ejemplos del adjunto}
+\begin{teorema}\label{ch32:adjunto}
+Para $T\in\Bcal(H_1,H_2)$ existe un único $T^*\in\Bcal(H_2,H_1)$ tal que
+\[
+ \ip{Tx}{y}_{H_2}=\ip{x}{T^*y}_{H_1}.
+\]
+Además $\norm{T^*}=\norm T$ y $\norm{T^*T}=\norm T^2$.
+\end{teorema}
+\begin{proof}
+Para cada $y$, el funcional $x\mapsto\ip{Tx}{y}$ es lineal y tiene norma a lo sumo $\norm T\norm y$. Riesz proporciona el vector $T^*y$. Para probar linealidad, notemos que
+\[
+ \ip{x}{T^*(\alpha y+\beta z)}
+ =\bar\alpha\ip{Tx}{y}+\bar\beta\ip{Tx}{z}
+ =\ip{x}{\alpha T^*y+\beta T^*z}.
+\]
+La unicidad implica la igualdad de los segundos argumentos. Riesz también da $\norm{T^*y}\leq\norm T\norm y$, luego $\norm{T^*}\leq\norm T$. La unicidad del adjunto se obtiene de la misma identidad: si $S$ satisface la relación, $\ip{x}{(T^*-S)y}=0$ para todo $x$, y $(T^*-S)y=0$.
+
+Tomar conjugados en la identidad del adjunto da $\ip{T^*y}{x}=\ip{y}{Tx}$; por unicidad, $(T^*)^*=T$. Aplicando la desigualdad de normas recién demostrada a $T^*$ obtenemos $\norm T\leq\norm{T^*}$ y, por tanto, igualdad.
+
+Para cada $x$,
+\[
+ \norm{Tx}^{2}=\ip{x}{T^*Tx}\leq\norm x\norm{T^*Tx}
+ \leq\norm{T^*T}\norm x^{2}.
+\]
+Tomar el supremo sobre $\norm x=1$ da $\norm T^{2}\leq\norm{T^*T}$. Por otro lado, la desigualdad de composición proporciona
+$\norm{T^*T}\leq\norm{T^*}\norm T=\norm T^{2}$. Si $H_1=\{0\}$, todas las normas son cero y no hace falta tomar un supremo sobre una esfera vacía.
+\end{proof}
+
+\begin{ejemplo}[Matrices y corrimientos]
+En bases ortonormales finitas, si $T$ tiene matriz $(a_{ij})$, entonces $T^*$ tiene matriz $(\bar a_{ji})$: basta expandir $\sum_{i,j}a_{ij}x_j\bar y_i$ y agrupar por $j$ para obtener $\ip{x}{T^*y}$.
+
+En $\ell^{2}(\N)$, sean $R(x_1,x_2,\dots)=(0,x_1,x_2,\dots)$ y $L(x_1,x_2,\dots)=(x_2,x_3,\dots)$. Ambos son acotados y tienen norma uno. Como las series convergen absolutamente,
+\[
+ \ip{Rx}{y}=\sum_{n=2}^{\infty}x_{n-1}\bar y_n
+ =\sum_{n=1}^{\infty}x_n\bar y_{n+1}=\ip{x}{Ly}.
+\]
+Así $R^*=L$. Se tiene $LR=I$, pero $RLx=x-x_1e_1$. El corrimiento derecho preserva el producto interno y no es suprayectivo; esta distinción será decisiva en el ejercicio sobre operadores unitarios.
+\end{ejemplo}
+
+\section{Ejercicios resueltos}
+
+\begin{ejercicio}[Lectura 32, ejercicio 1]
+Probar las reglas (i) $(\alpha S+\beta T)^*=\bar\alpha S^*+\bar\beta T^*$; (ii) $(ST)^*=T^*S^*$; (iii) $T^{**}=T$; (iv) $I^*=I$; (v) $(T^{-1})^*=(T^*)^{-1}$ para $T$ invertible.
+\end{ejercicio}
+\begin{solucion}
+En todas las verificaciones utilizamos la unicidad del adjunto, una vez identificada la transformación que satisface su relación definitoria.
+
+\emph{(i)} Para $x\in H_1,y\in H_2$,
+\[
+ \ip{(\alpha S+\beta T)x}{y}
+ =\alpha\ip{x}{S^*y}+\beta\ip{x}{T^*y}
+ =\ip{x}{(\bar\alpha S^*+\bar\beta T^*)y}.
+\]
+\emph{(ii)} Para $T:H_1\to H_2$, $S:H_2\to H_3$,
+$\ip{STx}{z}=\ip{Tx}{S^*z}=\ip{x}{T^*S^*z}$.
+\emph{(iii)} La identidad $\ip{Tx}{y}=\ip{x}{T^*y}$, al conjugar, se convierte en $\ip{T^*y}{x}=\ip{y}{Tx}$, que caracteriza al adjunto de $T^*$.
+\emph{(iv)} $\ip{Ix}{y}=\ip{x}{Iy}$.
+\emph{(v)} De $T^{-1}T=TT^{-1}=I$, las reglas (ii) y (iv) dan
+$T^*(T^{-1})^*=I$ y $(T^{-1})^*T^*=I$. Así $(T^{-1})^*$ es la inversa bilateral de $T^*$. Aquí invertible en $\Bcal(H)$ significa que la inversa es acotada; para una biyección acotada entre espacios de Banach esa propiedad se deduce del teorema de la aplicación abierta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 2]
+\index{operador!normal}
+Si $T$ es normal, es decir, $T^*T=TT^*$, probar $\norm{Tx}=\norm{T^*x}$ y que $T-\alpha I$ es normal para todo $\alpha\in\C$.
+\end{ejercicio}
+\begin{solucion}
+La identidad de adjunción da
+\[
+ \norm{Tx}^{2}=\ip{x}{T^*Tx}=\ip{x}{TT^*x}=\norm{T^*x}^{2}.
+\]
+Ambas normas son no negativas, por lo que sus raíces coinciden. Además,
+\begin{align*}
+ (T-\alpha I)^*(T-\alpha I)
+ &=T^*T-\alpha T^*-\bar\alpha T+|\alpha|^2I,\\
+ (T-\alpha I)(T-\alpha I)^*
+ &=TT^*-\bar\alpha T-\alpha T^*+|\alpha|^2I.
+\end{align*}
+La normalidad de $T$ hace iguales estas expresiones.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 3]
+\index{operador!autoadjunto}\index{operador!positivo}
+Probar que $T+T^*$ y $TT^*$ son autoadjuntos, esto es, coinciden con sus adjuntos.
+\end{ejercicio}
+\begin{solucion}
+Las reglas del ejercicio 1 dan $(T+T^*)^*=T^*+T^{**}=T^*+T$ y $(TT^*)^*=(T^*)^*T^*=TT^*$. De manera adicional, $TT^*$ es positivo en el sentido de que $\ip{TT^*x}{x}=\norm{T^*x}^{2}\geq0$; ser autoadjunto, por sí solo, no exige esta desigualdad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 4: isometrías y unitarios]
+\index{operador!unitario}\index{isometria@isometría!lineal}
+Analizar la afirmación: $\ip{Tx}{Ty}=\ip{x}{y}$ para todo $x,y$ si y solo si $T$ es invertible y $T^{-1}=T^*$.
+\end{ejercicio}
+\begin{solucion}
+Tal como está escrita en dimensión infinita, la afirmación es falsa. El corrimiento $R$ preserva productos internos, pero ningún vector tiene imagen $e_1$. La condición escrita define una \emph{isometría lineal}; un operador \emph{unitario} es una isometría lineal \emph{suprayectiva}.
+
+Si $T$ preserva productos, entonces $\ip{x}{T^*Ty}=\ip{Tx}{Ty}=\ip{x}{y}$ para todo $x$, y $T^*Ty=y$. Por tanto $T^*T=I$. Esto da una inversa por la izquierda, sin asegurar una inversa por la derecha. Si además $T$ es suprayectivo, es biyectivo, pues una isometría tiene núcleo cero. Su inversa preserva normas, así que es acotada. Multiplicando $T^*T=I$ por $T^{-1}$ se obtiene $T^*=T^{-1}$.
+
+Recíprocamente, si $T$ es invertible y $T^*=T^{-1}$, entonces
+$\ip{Tx}{Ty}=\ip{x}{T^*Ty}=\ip{x}{y}$; es una isometría suprayectiva. Una formulación equivalente es $T^*T=TT^*=I$: la primera igualdad da inyectividad y preservación del producto, y la segunda expresa cada $y$ como $T(T^*y)$, dando suprayectividad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 5]
+Probar que la proyección ortogonal $P_W$ sobre un subespacio cerrado es autoadjunta.
+\end{ejercicio}
+\begin{solucion}
+Descompongamos $x=w_x+n_x$, $y=w_y+n_y$ en $W\oplus W^{\perp}$. Entonces
+\[
+ \ip{P_Wx}{y}=\ip{w_x}{w_y+n_y}=\ip{w_x}{w_y}
+ =\ip{w_x+n_x}{w_y}=\ip{x}{P_Wy}.
+\]
+La unicidad del adjunto da $P_W^*=P_W$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 6]
+Si $T^*T=0$, probar $T=0$. Decidir si la conclusión vale cuando $TT^*=0$.
+\end{ejercicio}
+\begin{solucion}
+Si $T^*T=0$, para cada $x$ se tiene $\norm{Tx}^{2}=\ip{x}{T^*Tx}=0$, de modo que $Tx=0$. Si $TT^*=0$, aplicamos lo anterior al operador $T^*$: $\norm{T^*x}^{2}=\ip{x}{TT^*x}=0$, así que $T^*=0$ y $T=T^{**}=0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 7]
+Demostrar que $\norm{Tv}=\norm T\norm v$ si y solo si $T^*Tv=\norm T^{2}v$.
+\end{ejercicio}
+\begin{solucion}
+Sea $A=\norm T^{2}I-T^*T$. Es autoadjunto y para todo $x$,
+\[
+ q(x):=\ip{Ax}{x}=\norm T^{2}\norm x^{2}-\norm{Tx}^{2}\geq0.
+\]
+La igualdad de normas propuesta equivale a $q(v)=0$. Demostraremos que esta igualdad implica $Av=0$, un paso que necesita justificación y no se sigue solo de que $A$ sea autoadjunto.
+
+Fijemos $z$ y escribamos $a=\ip{Av}{z}$. Para cualquier escalar $t$, la autoadjunción da
+\[
+0\leq q(v+tz)=2\operatorname{Re}(\bar t a)+|t|^{2}q(z).
+\]
+Si $a\ne0$, elegimos $t=-sa$ con $s>0$. El miembro derecho es $|a|^{2}(-2s+s^{2}q(z))$, negativo para $s$ suficientemente pequeño; contradicción. Por tanto $\ip{Av}{z}=0$ para todo $z$ y, con $z=Av$, se obtiene $Av=0$.
+
+Recíprocamente, si $T^*Tv=\norm T^{2}v$, entonces $\norm{Tv}^{2}=\ip{v}{T^*Tv}=\norm T^{2}\norm v^{2}$; tomando raíces se obtiene la igualdad. Para $v=0$ ambas condiciones se cumplen trivialmente; para hablar de que el operador «alcanza su norma» suele exigirse un vector unitario.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 8]
+Probar $\ker T=(T^*(H))^{\perp}$.
+\end{ejercicio}
+\begin{solucion}
+Para $x\in H$,
+\[
+ x\in(T^*(H))^{\perp}
+ \Longleftrightarrow \ip{x}{T^*y}=0\text{ para todo }y
+ \Longleftrightarrow \ip{Tx}{y}=0\text{ para todo }y
+ \Longleftrightarrow Tx=0.
+\]
+La última equivalencia se prueba tomando $y=Tx$ en una dirección; en la otra, todos los productos son cero. También resulta $\cl{T^*(H)}=(\ker T)^{\perp}$ al tomar complementos y utilizar el doble complemento en Hilbert. El cierre no debe omitirse si no se sabe que el rango es cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 9: polarización de una forma]
+Sea $\xi$ sesquilineal y $\widehat\xi(v)=\xi(v,v)$. Probar (i)
+\[
+ \xi(u,v)=\sum_{k=1}^{4}i^k\widehat\xi\left(\frac{u+i^kv}{2}\right),
+\]
+y (ii) que la forma cuadrática determina la forma sesquilineal.
+\end{ejercicio}
+\begin{solucion}
+\emph{(i)} Por sesquilinealidad,
+\[
+ \widehat\xi\left(\frac{u+i^kv}{2}\right)
+ =\frac14\bigl(\xi(u,u)+\xi(v,v)+i^{-k}\xi(u,v)+i^k\xi(v,u)\bigr).
+\]
+Multiplicando por $i^k$ y sumando, las sumas $\sum_{k=1}^{4}i^k$ y $\sum_{k=1}^{4}i^{2k}$ son cero, mientras que el coeficiente de $\xi(u,v)$ es $4/4=1$. No se utilizó simetría conjugada de $\xi$: la identidad vale para toda forma sesquilineal.
+
+\emph{(ii)} Si dos formas tienen la misma función diagonal, los cuatro términos del lado derecho coinciden para cada par $(u,v)$; la identidad prueba que las formas son iguales. La hipótesis compleja es relevante: para formas bilineales reales generales, la parte antisimétrica se anula en la diagonal y no puede recuperarse de ella.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 10: multiplicación]
+Sea $h\in C([a,b],\C)$, $a<b$, y $T_hf=hf$ en $C([a,b])$ con producto integral. Hallar (i) el adjunto, (ii) cuándo es normal, (iii) cuándo es autoadjunto y (iv) cuándo es unitario.
+\end{ejercicio}
+\begin{solucion}
+Este espacio no es completo para la norma integral. La existencia general de adjuntos de Hilbert no se aplica automáticamente, pero en este caso podemos construir el adjunto explícitamente dentro del espacio. La acotación se obtiene de $\norm{hf}_2\leq\norm h_\infty\norm f_2$.
+
+\emph{(i)} Para $f,g$ continuas,
+\[
+ \ip{T_hf}{g}=\int_a^b hf\bar g
+ =\int_a^b f\,\overline{\bar h g}=\ip{f}{T_{\bar h}g}.
+\]
+El mismo cálculo funciona si el producto está dividido por $b-a$. Por tanto $T_h^*=T_{\bar h}$; la unicidad se prueba usando la positividad del producto interno como antes.
+
+\emph{(ii)} Para toda $h$, $T_h^*T_h=T_{|h|^{2}}=T_hT_h^*$, así que siempre es normal.
+
+\emph{(iii)} Es autoadjunto si y solo si $h=\bar h$, es decir, si $h$ toma valores reales. La necesidad se ve aplicando $T_h=T_{\bar h}$ a la función constante uno; la suficiencia se lee directamente del adjunto calculado.
+
+\emph{(iv)} Es unitario si y solo si $|h(x)|=1$ para todo $x$. Si esto sucede, preserva productos y tiene inversa $T_{\bar h}$. Recíprocamente, la preservación de la norma implica
+\[
+ \int_a^b (|h|^{2}-1)|f|^{2}=0\quad\text{para toda }f\in C([a,b]).
+\]
+Si la función real continua $|h|^{2}-1$ no fuera cero, tendría signo constante y módulo separado de cero en un intervalo. Una función triangular no nula soportada allí daría una integral no nula, contradicción. En este ejemplo, a diferencia del corrimiento, la preservación de normas ya obliga a una inversa explícita dentro de $C([a,b])$.
+\end{solucion}
+
+\section{Complemento: aproximar operadores compactos}
+\index{operador!compacto}\index{operador!rango finito}
+Los siguientes resultados enlazan este capítulo con los operadores compactos estudiados anteriormente. La geometría de Hilbert permite una aproximación en norma de operador, más fuerte que aproximar separadamente cada imagen.
+
+\begin{teorema}\label{ch32:compactos}
+Si $T:H_1\to H_2$ es compacto, existe una sucesión de operadores acotados de rango finito $T_n$ con $\norm{T_n-T}\to0$. Además, $T$ es compacto si y solo si $T^*$ es compacto.
+\end{teorema}
+\begin{proof}
+Sea $B$ la bola unitaria de $H_1$. La compacidad del cierre de $T(B)$ implica total acotación. Para $\eps>0$, elijamos una red finita $y_1,\dots,y_m$ de radio $\eps$ para $T(B)$, y sea $F=\spanop\{y_1,\dots,y_m\}$. Al ser de dimensión finita, $F$ es cerrado y tiene proyección ortogonal $P_F$. Si $x\in B$, existe $j$ con $\norm{Tx-y_j}<\eps$. Como $P_FTx$ es el mejor aproximante en $F$,
+\[
+ \norm{Tx-P_FTx}\leq\norm{Tx-y_j}<\eps.
+\]
+Por tanto $\norm{T-P_FT}\leq\eps$. Elegir $\eps=1/n$ produce $T_n=P_{F_n}T$, de rango finito y acotado. La cota $\norm{P_{F_n}}\leq1$ asegura su acotación también cuando $F_n=\{0\}$.
+
+Si un operador acotado $A:H_1\to H_2$ tiene rango finito, elijamos una base ortonormal $e_1,\dots,e_m$ de ese rango. Para cada $j$, el funcional $x\mapsto\ip{Ax}{e_j}$ tiene, por Riesz, un representante $v_j\in H_1$. Así
+\[
+ Ax=\sum_{j=1}^{m}\ip{x}{v_j}e_j,
+ \qquad A^*y=\sum_{j=1}^{m}\ip{y}{e_j}v_j.
+\]
+La segunda fórmula se verifica sustituyéndola en la identidad del adjunto y conjugando los coeficientes en la segunda entrada. Su rango está contenido en $\spanop(v_1,\dots,v_m)$, luego $A^*$ también tiene rango finito. Todo operador acotado de rango finito es compacto: la imagen de la bola unitaria está acotada en un espacio de dimensión finita, y su cierre allí es compacto.
+
+La continuidad de la adjunción da $\norm{T_n^*-T^*}=\norm{T_n-T}\to0$. Recordemos por qué un límite en norma de operadores compactos es compacto cuando el espacio de llegada es completo. Si $A_n\to A$ en norma, para una tolerancia $\delta>0$ elegimos $n$ con $\norm{A-A_n}<\delta/3$. Una red finita de radio $\delta/3$ para $A_n(B)$ se convierte, por desigualdad triangular, en una red de radio $2\delta/3$ para $A(B)$. Así $A(B)$ es totalmente acotado. Su cierre es completo y totalmente acotado, por lo que es compacto. Aplicado a $T_n^*$, esto demuestra que $T^*$ es compacto. Finalmente, si $T^*$ es compacto, la dirección recién probada aplicada a él muestra que $T^{**}=T$ es compacto.
+\end{proof}
+
+\section{Cierre del volumen}
+El recorrido desde espacios métricos hasta Hilbert muestra cómo se acumulan las estructuras. La métrica hace posible hablar de aproximación; la completitud asegura límites; la linealidad permite construir y comparar aproximantes; el producto interno identifica el mejor de ellos mediante perpendicularidad. Riesz y los adjuntos convierten esa geometría en un lenguaje para estudiar operadores. Estos resultados serán herramientas de los volúmenes de medida e integración, análisis funcional y análisis armónico.

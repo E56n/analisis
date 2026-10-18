@@ -1,0 +1,297 @@
+\chapter{Álgebras de funciones y aproximación de Stone--Weierstrass}\label{chap:28}
+\index{Stone--Weierstrass, teorema de}\index{algebra@álgebra!de funciones}
+
+\section{Cuándo bastan las funciones sencillas}
+El teorema de aproximación de Weierstrass afirma que una función continua en un intervalo compacto puede aproximarse uniformemente por polinomios. Stone--Weierstrass identifica qué propiedades de los polinomios hacen posible esa aproximación: pueden sumarse, multiplicarse y escalarse; distinguen puntos distintos; y no se anulan todos en un mismo punto.
+
+Estudiaremos primero funciones reales. La prueba transformará esas propiedades algebraicas en la posibilidad de construir máximos y mínimos aproximados. Dos aplicaciones de compacidad permitirán ensamblar aproximaciones locales hasta obtener una aproximación en todo el dominio. Para el caso complejo aparecerá una condición adicional: estabilidad bajo conjugación.
+
+Usaremos la norma uniforme, la continuidad de sumas y productos, el teorema de Dini del capítulo~\ref{chap:26} y la compacidad. Construiremos explícitamente los polinomios que aproximan al valor absoluto para evitar utilizar el propio teorema que queremos demostrar.
+
+\section{Álgebras y ejemplos fundamentales}
+\begin{definicion}
+Un \emph{álgebra asociativa} sobre $\F$ es un espacio vectorial $A$ con una aplicación bilineal $(a,b)\mapsto ab$ de $A\times A$ en $A$ que satisface $(ab)c=a(bc)$. La bilinealidad significa
+\[
+ (a+b)c=ac+bc,\quad a(b+c)=ab+ac,\quad
+ (\lambda a)b=a(\lambda b)=\lambda(ab).
+\]
+El álgebra es \emph{conmutativa} si $ab=ba$. Es \emph{unitaria} si tiene un elemento $1$ tal que $1a=a1=a$ para todo $a$. Una norma es \emph{submultiplicativa} si $\norm{ab}\le\norm a\norm b$; un álgebra con esa norma es un \emph{álgebra normada}. Si además es completa, es un \emph{álgebra de Banach}.
+\end{definicion}
+\index{algebra@álgebra!normada}\index{algebra@álgebra!de Banach}
+
+Pedimos que la unidad actúe por ambos lados. Una identidad solamente a la derecha no es, en general, suficiente en un álgebra no conmutativa. Si existen dos unidades bilaterales $e,e'$, entonces $e=ee'=e'$, de modo que la unidad es única.
+
+\begin{ejemplo}[Escalares y matrices]
+$\R$ y $\C$ son álgebras conmutativas unitarias sobre sí mismas; $\C$ es también un álgebra sobre $\R$. Las matrices $M_n(\F)$ forman un álgebra con la suma, el producto por escalar y el producto matricial. La asociatividad se puede verificar calculando cada entrada:
+\[
+ ((AB)C)_{ij}=\sum_k\sum_\ell a_{i\ell}b_{\ell k}c_{kj}
+ =\sum_\ell a_{i\ell}\sum_kb_{\ell k}c_{kj}=(A(BC))_{ij}.
+\]
+La identidad es la matriz $I$. Si $n\ge2$, las matrices elementales satisfacen $E_{12}E_{21}=E_{11}$ y $E_{21}E_{12}=E_{22}$, así que el producto no es conmutativo. Para $n=1$ sí lo es. La norma de operador es submultiplicativa porque $\norm{ABx}\le\norm A\norm B\norm x$.
+\end{ejemplo}
+
+\begin{ejemplo}[Cuaternios: un ejemplo asociativo no conmutativo]
+\index{cuaternios}
+Los cuaternios son las expresiones $q=a+bi+cj+dk$ con coeficientes reales y reglas
+\[
+ i^2=j^2=k^2=-1,\qquad ij=k,\ jk=i,\ ki=j,
+ \qquad ji=-k,\ kj=-i,\ ik=-j.
+\]
+Estas reglas determinan el producto por bilinealidad. Para comprobar su consistencia y asociatividad sin multiplicar todas las combinaciones de tres elementos, escribimos $z=a+bi$, $w=c+di$ y representamos
+\[
+ \rho(q)=\begin{pmatrix}z&w\\-\overline w&\overline z\end{pmatrix}.
+\]
+El conjunto de estas matrices es un subespacio vectorial real y está cerrado bajo producto, pues
+\[
+ \begin{pmatrix}z&w\\-\overline w&\overline z\end{pmatrix}
+ \begin{pmatrix}z'&w'\\-\overline {w'}&\overline {z'}\end{pmatrix}
+ =\begin{pmatrix}
+ zz'-w\overline {w'}&zw'+w\overline {z'}\\
+ -\overline{zw'+w\overline {z'}}&\overline{zz'-w\overline {w'}}
+ \end{pmatrix}.
+\]
+Las matrices de $i,j,k$ satisfacen las reglas indicadas y $\rho$ es inyectiva. La asociatividad del producto de matrices se transmite al producto de cuaternios. El cuaternio conjugado es $\overline q=a-bi-cj-dk$ y la multiplicación da
+$q\overline q=\overline q q=(a^2+b^2+c^2+d^2)1$. Así, si $q\ne0$,
+\[
+ q^{-1}=\frac{\overline q}{a^2+b^2+c^2+d^2}.
+\]
+Todo elemento no nulo es invertible, pero $ij=-ji$, por lo que esta álgebra de división no es un campo conmutativo. La norma euclidiana es multiplicativa: como $\det\rho(q)=a^2+b^2+c^2+d^2$, la igualdad de determinantes de un producto implica $\norm{qr}_2^2=\norm q_2^2\norm r_2^2$.
+\end{ejemplo}
+
+\begin{ejemplo}[Operadores y grupo de invertibles]
+Para un espacio normado $V$, los operadores lineales acotados $\mathcal B(V,V)$ forman un álgebra con el producto dado por composición. La asociatividad es la de la composición; las distributividades provienen de la linealidad, y
+\[
+ \norm{STv}\le\norm S\norm{Tv}\le\norm S\norm T\norm v
+ \quad\Longrightarrow\quad\norm{ST}\le\norm S\norm T.
+\]
+La unidad es $I$. Si $V$ es Banach, el espacio de operadores es completo y constituye un álgebra de Banach.
+
+En cambio,
+\[
+ \operatorname{GL}(V)=\{T\in\mathcal B(V,V):T\text{ tiene inverso acotado}\}
+\]
+es un \emph{grupo} bajo composición, no un álgebra cuando $V\ne\{0\}$. En efecto, $I$ y $-I$ son invertibles y su suma es el operador cero, que no es invertible. Ni siquiera es un subespacio vectorial. La cerradura bajo composición se verifica mediante $(ST)^{-1}=T^{-1}S^{-1}$, y ese inverso es acotado por submultiplicatividad. Esto corrige el ejemplo 2(iv) de la lectura original.
+\end{ejemplo}
+
+\begin{ejemplo}[Funciones continuas]
+Para un espacio métrico $X$, las funciones continuas $C(X,\F)$ forman un álgebra con operaciones puntuales, pues todas las identidades se verifican en cada $x$. Sin embargo, la norma uniforme puede ser infinita si $X$ no es compacto; por ejemplo, $f(x)=x$ en $\R$. El álgebra normada adecuada es $C_b(X,\F)$, donde
+\[
+ |f(x)g(x)|\le\norm f_\infty\norm g_\infty,
+ \qquad\norm{fg}_\infty\le\norm f_\infty\norm g_\infty.
+\]
+Es un álgebra de Banach por el capítulo~\ref{chap:25}; es conmutativa y tiene por unidad la función constante $1$. Si $X$ es compacto, toda función continua es acotada, y entonces $C(X,\F)=C_b(X,\F)$.
+\end{ejemplo}
+
+\begin{definicion}
+Una \emph{subálgebra} $A$ de un álgebra $B$ es un subespacio vectorial cerrado bajo multiplicación. No exigimos que contenga la unidad de $B$. Una familia de funciones $A$ \emph{separa puntos} de $X$ si, para $x\ne y$, existe $h\in A$ con $h(x)\ne h(y)$. Decimos que $A$ \emph{no se anula en ningún punto} si para cada $x$ existe $h\in A$ con $h(x)\ne0$.
+\end{definicion}
+\index{separacion de puntos@separación de puntos}\index{subalgebra@subálgebra}
+
+Los polinomios restringidos a un compacto de $\R$ forman una subálgebra, porque la suma y el producto de polinomios son polinomios. Incluyendo el término de grado cero tenemos la función constante $1$, que garantiza que no hay ceros comunes, y la función $x\mapsto x$ separa puntos. Si solamente se toman potencias de grado positivo y el compacto contiene a cero, todas las funciones de la subálgebra se anulan en ese punto: esa subálgebra no puede ser densa en todo $C(X)$.
+
+\section{Aproximación del valor absoluto sin circularidad}
+\begin{lema}\label{ch28:abspolinomios}
+Para cada $\alpha\ge0$ existen polinomios reales $p_n$ con $p_n(0)=0$ que convergen uniformemente a $|t|$ en $[-\alpha,\alpha]$.
+\end{lema}
+\begin{proof}
+Si $\alpha=0$, basta $p_n=0$. Construiremos primero polinomios en $[-1,1]$. Definimos
+\[
+ q_0(t)=0,\qquad q_{n+1}(t)=q_n(t)+\frac{t^2-q_n(t)^2}{2}.
+\]
+Por inducción, cada $q_n$ es un polinomio y $q_n(0)=0$. Fijemos $t\in[-1,1]$ y escribamos $r=|t|$. Probamos inductivamente que $0\le q_n(t)\le r$ y $q_{n+1}(t)\ge q_n(t)$. Si $0\le q_n(t)\le r$, entonces
+\[
+ q_{n+1}(t)-q_n(t)=\frac{r^2-q_n(t)^2}{2}\ge0,
+\]
+y
+\[
+ r-q_{n+1}(t)
+ =(r-q_n(t))\left(1-\frac{r+q_n(t)}2\right)\ge0,
+\]
+porque $0\le r+q_n(t)\le2$. El caso inicial $q_0=0$ cumple las desigualdades.
+
+Para cada $t$, la sucesión numérica $q_n(t)$ es creciente y está acotada por $r$, por lo que converge a algún $L(t)\in[0,r]$. Al pasar al límite en la recurrencia obtenemos
+$L(t)=L(t)+(t^2-L(t)^2)/2$, de modo que $L(t)^2=t^2$. Como $L(t)\ge0$, se sigue que $L(t)=|t|$.
+
+Hemos construido una sucesión creciente de funciones continuas en el compacto $[-1,1]$ cuyo límite $|t|$ es continuo. El teorema de Dini~\ref{ch26:dini} demuestra que la convergencia es uniforme. Para $\alpha>0$, ponemos $p_n(t)=\alpha q_n(t/\alpha)$. Entonces $p_n(0)=0$ y
+\[
+ \sup_{|t|\le\alpha}|p_n(t)-|t||
+ =\alpha\sup_{|u|\le1}|q_n(u)-|u||\longrightarrow0.
+\]
+\end{proof}
+
+La condición $p_n(0)=0$ tiene una finalidad algebraica: permite escribir $p_n(f)$ usando solo potencias positivas de $f$. Así permaneceremos dentro de una subálgebra aunque no contenga la función constante $1$.
+
+\section{Interpolación en dos puntos}
+\begin{lema}\label{ch28:interpolacion}
+Si una subálgebra $A$ de funciones $S\to\F$ separa puntos y no se anula en ningún punto, entonces para $x\ne y$ y cualesquiera $\alpha,\beta\in\F$ existe $h\in A$ con $h(x)=\alpha$ y $h(y)=\beta$.
+\end{lema}
+\begin{proof}
+Elegimos $g\in A$ con $g(x)\ne g(y)$, $a\in A$ con $a(x)\ne0$ y $b\in A$ con $b(y)\ne0$. Definimos
+\[
+ u=gb-g(x)b,\qquad v=ga-g(y)a.
+\]
+Ambas funciones pertenecen a $A$ porque se obtienen por productos, sumas y múltiplos escalares. No estamos suponiendo que las funciones constantes pertenezcan a $A$: $g(x)b$ es un múltiplo escalar de $b$. Calculando sus valores,
+\[
+ u(x)=0,\quad u(y)=(g(y)-g(x))b(y)\ne0,
+\]
+\[
+ v(y)=0,\quad v(x)=(g(x)-g(y))a(x)\ne0.
+\]
+Por tanto,
+$h=\alpha v/v(x)+\beta u/u(y)$ pertenece a $A$ y tiene los valores prescritos. No se requiere $\alpha\ne\beta$. Para un solo punto $x$ y un valor $\alpha$, basta elegir $a(x)\ne0$ y usar $\alpha a/a(x)$.
+\end{proof}
+
+\section{Demostración completa de Stone--Weierstrass real}
+\begin{teorema}\label{ch28:stone}
+Sea $X$ un espacio métrico compacto. Si $A$ es una subálgebra de $C(X,\R)$ que separa puntos y no se anula en ningún punto, entonces $\cl A=C(X,\R)$ en la norma uniforme.
+\end{teorema}
+\begin{proof}
+Escribamos $B=\cl A$. Dividimos la prueba en pasos que tienen funciones distintas.
+
+\emph{Paso 1: $B$ es una subálgebra cerrada.}
+Para $f,g\in B$ existen sucesiones $f_n,g_n\in A$ con $f_n\to f$ y $g_n\to g$ uniformemente. Las estimaciones
+\[
+ \norm{(f_n+g_n)-(f+g)}_\infty
+ \le\norm{f_n-f}_\infty+\norm{g_n-g}_\infty,
+ \qquad\norm{\lambda f_n-\lambda f}_\infty=|\lambda|\norm{f_n-f}_\infty
+\]
+demuestran que $B$ es un subespacio vectorial. Como $(f_n)$ converge en norma, sus normas están acotadas por algún $M$. Así,
+\[
+ \norm{f_ng_n-fg}_\infty
+ \le M\norm{g_n-g}_\infty+\norm g_\infty\norm{f_n-f}_\infty\longrightarrow0.
+\]
+Cada $f_ng_n$ pertenece a $A$, de modo que $fg\in B$. La cerradura de $B$ es parte de su definición.
+
+\emph{Paso 2: $B$ contiene valores absolutos y máximos y mínimos finitos.}
+Sea $f\in B$ y $\alpha=\norm f_\infty$. El lema~\ref{ch28:abspolinomios} proporciona polinomios $p_n$ sin término constante que aproximan uniformemente al valor absoluto en $[-\alpha,\alpha]$. Cada función $p_n(f)$ pertenece a $B$ porque es combinación lineal de potencias positivas de $f$. Además,
+\[
+ \norm{p_n(f)-|f|}_\infty
+ \le\sup_{|t|\le\alpha}|p_n(t)-|t||\longrightarrow0.
+\]
+La cerradura de $B$ implica $|f|\in B$. Para $f,g\in B$ utilizamos las identidades puntuales
+\[
+ \max(f,g)=\frac{f+g+|f-g|}{2},\qquad
+ \min(f,g)=\frac{f+g-|f-g|}{2}.
+\]
+Ambas pertenecen a $B$. Aplicando reiteradamente las identidades se obtienen máximos y mínimos de cualquier familia finita.
+
+\emph{Paso 3: una aproximación global por abajo que coincide en un punto.}
+Fijemos $f\in C(X,\R)$, una tolerancia $\eta>0$ y un punto $x\in X$. Para cada $y\in X$, el lema~\ref{ch28:interpolacion} proporciona $h_{x,y}\in A$ con
+\[
+ h_{x,y}(x)=f(x),\qquad h_{x,y}(y)=f(y).
+\]
+Si $y=x$ basta la versión de interpolación en un solo punto. El conjunto
+\[
+ U_y=\{z\in X:h_{x,y}(z)>f(z)-\eta\}
+\]
+es abierto por continuidad y contiene a $y$. Por compacidad, finitos de ellos, $U_{y_1},\ldots,U_{y_r}$, cubren $X$. Definimos
+$g_x=\max\{h_{x,y_1},\ldots,h_{x,y_r}\}\in B$. Todos los términos valen $f(x)$ en $x$, por lo que $g_x(x)=f(x)$. Para cualquier $z\in X$, alguno de los abiertos elegidos contiene a $z$ y entonces
+\[
+ g_x(z)\ge h_{x,y_j}(z)>f(z)-\eta.
+\]
+La comparación es con $f(z)$, el valor de la función en el punto variable, y no con la constante $f(x)$.
+
+\emph{Paso 4: controlar también el error por arriba.}
+Como $g_x(x)=f(x)$, el conjunto
+$V_x=\{z:g_x(z)<f(z)+\eta\}$ es abierto y contiene a $x$. Otra aplicación de compacidad produce una subcubierta $V_{x_1},\ldots,V_{x_m}$ de $X$. Ponemos
+\[
+ h=\min\{g_{x_1},\ldots,g_{x_m}\}\in B.
+\]
+Cada $g_{x_j}(z)$ es mayor que $f(z)-\eta$, luego también lo es su mínimo. Por otro lado, para cada $z$ existe $j$ con $z\in V_{x_j}$, y por ello
+$h(z)\le g_{x_j}(z)<f(z)+\eta$. Hemos probado
+\[
+ f(z)-\eta<h(z)<f(z)+\eta\quad(z\in X),
+ \qquad\norm{h-f}_\infty\le\eta.
+\]
+
+Para concluir, dado $\eps>0$ elegimos $\eta=\eps/3$ en la construcción. Como $h\in B=\cl A$, existe $a\in A$ con $\norm{a-h}_\infty<\eps/3$. Entonces
+\[
+ \norm{a-f}_\infty\le\norm{a-h}_\infty+\norm{h-f}_\infty
+ <2\eps/3<\eps.
+\]
+Así cada función continua puede aproximarse arbitrariamente por elementos de $A$, como se quería.
+\end{proof}
+
+La prueba utiliza máximos y mínimos en la \emph{clausura} del álgebra. No afirma que el máximo de dos polinomios sea un polinomio. La última aproximación de $h\in\cl A$ por un elemento de $A$ devuelve el resultado a la familia original.
+
+\begin{ejemplo}[Qué impide la densidad]
+Si todas las funciones de $A$ satisfacen $h(x_0)=0$, todo límite uniforme tiene esa propiedad, pues la evaluación es continua. La función constante $1$ no puede estar en la clausura. Si todas satisfacen $h(x_0)=h(y_0)$ para dos puntos distintos, sus límites uniformes también satisfacen esa igualdad. En un espacio métrico, la función continua $z\mapsto d(z,x_0)$ toma valores distintos en esos dos puntos y, si el espacio es compacto, pertenece a $C(X)$. Por ello la falta de separación impide densidad. Estas observaciones explican las dos hipótesis algebraicas del teorema.
+\end{ejemplo}
+
+\section{Ejercicios resueltos}
+\begin{ejercicio}[Lectura 28, ejercicio 1: aproximación de Weierstrass]
+Sea $f:[a,b]\to\F$ continua. Demuestre que existe una sucesión de polinomios con coeficientes en $\F$ que converge uniformemente a $f$.
+\end{ejercicio}
+\begin{solucion}
+Si $a=b$, basta el polinomio constante $f(a)$. Supongamos $a<b$ y primero $\F=\R$. Las restricciones de polinomios reales a $[a,b]$ forman una subálgebra de $C([a,b],\R)$. La función constante $1$ garantiza que no se anula en ningún punto, y el polinomio $p(x)=x$ separa puntos. Por el teorema~\ref{ch28:stone}, para cada $n$ existe un polinomio $p_n$ con $\norm{f-p_n}_\infty<1/n$. Esa elección da la sucesión requerida.
+
+Si $f$ es compleja, escribimos $f=u+iv$ con $u,v$ reales continuas. Elegimos polinomios reales $p_n,q_n$ con $\norm{u-p_n}_\infty<1/(2n)$ y $\norm{v-q_n}_\infty<1/(2n)$. El polinomio complejo $r_n=p_n+iq_n$ satisface
+$\norm{f-r_n}_\infty\le\norm{u-p_n}_\infty+\norm{v-q_n}_\infty<1/n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 28, ejercicio 2: determinación por momentos]
+Sea $f:[0,1]\to\R$ continua y suponga que $\int_0^1 f(x)x^n\,dx=0$ para todo entero $n\ge0$. Demuestre que $f=0$.
+\end{ejercicio}
+\begin{solucion}
+Por linealidad de la integral, $\int_0^1fp=0$ para cualquier polinomio real $p$, porque $p$ es una combinación finita de monomios. El ejercicio anterior proporciona polinomios $p_n$ con $\norm{p_n-f}_\infty\to0$. La función $f$ es acotada por continuidad en un compacto, y
+\[
+ \left|\int_0^1f(x)p_n(x)\,dx-\int_0^1f(x)^2\,dx\right|
+ \le\int_0^1|f(x)|\,|p_n(x)-f(x)|\,dx
+ \le\norm f_\infty\norm{p_n-f}_\infty\longrightarrow0.
+\]
+La primera integral es cero para todo $n$, de modo que $\int_0^1f^2=0$.
+
+Si existiera $x_0$ con $f(x_0)\ne0$, por continuidad habría una vecindad relativa de $x_0$ en $[0,1]$ donde $|f(x)|>|f(x_0)|/2$. Esa vecindad contiene un intervalo de longitud positiva, incluso cuando $x_0$ es un extremo. La integral de $f^2$ sobre ese intervalo sería al menos su longitud multiplicada por $|f(x_0)|^2/4>0$, contradiciendo $\int_0^1f^2=0$. Por tanto, $f$ se anula en cada punto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 28, ejercicio 3: Stone--Weierstrass complejo]
+Una subálgebra compleja $A\subset C(X,\C)$ es \emph{autoadjunta} si $\overline f\in A$ para toda $f\in A$. Demuestre que, si $A$ es autoadjunta, separa puntos y no se anula en ningún punto, entonces es densa en $C(X,\C)$.
+\end{ejercicio}
+\begin{solucion}
+\index{subalgebra@subálgebra!autoadjunta}
+Consideremos $A_\R=\{f\in A:f(X)\subset\R\}$. Es una subálgebra \emph{real} de $C(X,\R)$: las combinaciones lineales reales y los productos conservan tanto la pertenencia a $A$ como los valores reales. Para $f\in A$, la autoadjunción y la estructura de espacio vectorial complejo dan
+\[
+ \operatorname{Re}f=\frac{f+\overline f}{2}\in A_\R,
+ \qquad\operatorname{Im}f=\frac{f-\overline f}{2i}\in A_\R.
+\]
+Si $x\ne y$, elegimos $f\in A$ con $f(x)\ne f(y)$. Los números complejos no pueden tener simultáneamente iguales partes real e imaginaria si son distintos; por tanto, $\operatorname{Re}f$ o $\operatorname{Im}f$ separa esos puntos. Si para un $x$ elegimos $f\in A$ con $f(x)\ne0$, alguna de sus dos partes es no nula en $x$. Así, $A_\R$ satisface las hipótesis del teorema real y es densa en $C(X,\R)$.
+
+Para $h=u+iv\in C(X,\C)$ y $\eps>0$, elegimos $a,b\in A_\R$ con $\norm{u-a}_\infty<\eps/2$ y $\norm{v-b}_\infty<\eps/2$. Entonces $a+ib\in A$ y
+\[
+ \norm{h-(a+ib)}_\infty\le\norm{u-a}_\infty+\norm{v-b}_\infty<\eps.
+\]
+Esto prueba la densidad compleja.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 28, ejercicio 4: por qué hace falta conjugación]
+Sea $\mathbb T=\{z\in\C:|z|=1\}$ y sea $A$ el álgebra de restricciones a $\mathbb T$ de los polinomios complejos en $z$:
+\[
+ p(e^{i\theta})=\sum_{k=0}^N a_ke^{ik\theta}.
+\]
+Demuestre que $A$ separa puntos y no se anula en ningún punto, pero no es densa en $C(\mathbb T,\C)$.
+\end{ejercicio}
+\begin{solucion}
+La función constante $1$ pertenece a $A$, así que no hay ceros comunes. La función $p(z)=z$ pertenece a $A$ y toma valores distintos en puntos distintos de $\mathbb T$; por tanto, separa puntos. La suma y el producto de dos polinomios en potencias no negativas de $z$ siguen siendo de ese tipo, de modo que $A$ es una subálgebra.
+
+Definamos el funcional
+\[
+ L(h)=\frac1{2\pi}\int_0^{2\pi}h(e^{i\theta})e^{i\theta}\,d\theta
+ \qquad(h\in C(\mathbb T,\C)).
+\]
+Es lineal y satisface $|L(h)|\le\norm h_\infty$, por la desigualdad para integrales del capítulo~\ref{chap:26}; por ello es continuo. Para un monomio $h(z)=z^k$, con $k\ge0$, calculamos
+\[
+ L(z^k)=\frac1{2\pi}\int_0^{2\pi}e^{i(k+1)\theta}\,d\theta
+ =\frac{e^{2\pi i(k+1)}-1}{2\pi i(k+1)}=0.
+\]
+Por linealidad, $L(p)=0$ para todo $p\in A$. La continuidad implica que también se anula en $\cl A$: si $p_n\to h$ uniformemente, $L(h)=\lim_nL(p_n)=0$.
+
+Sin embargo, la función continua $h(z)=\overline z$ satisface
+\[
+ L(h)=\frac1{2\pi}\int_0^{2\pi}e^{-i\theta}e^{i\theta}\,d\theta=1.
+\]
+Así $h\notin\cl A$. Incluso obtenemos una cota cuantitativa: para todo $p\in A$,
+$1=|L(h-p)|\le\norm{h-p}_\infty$. Como el polinomio cero da error uno, la distancia de $h$ a $A$ es exactamente uno. Esta álgebra no es autoadjunta, pues contiene $z$ y no contiene $\overline z$.
+\end{solucion}
+
+\section{Del álgebra a la aproximación}
+El argumento central crea primero interpolaciones exactas en dos puntos y después las ensambla mediante máximos y mínimos. La aproximación polinómica del valor absoluto permite realizar ese ensamblaje dentro de la clausura de una subálgebra. En el caso complejo, la conjugación recupera partes reales e imaginarias y permite usar el teorema real. El último ejercicio muestra que distinguir puntos no basta si se pierde esa operación. Esta relación entre álgebra y norma uniforme será una herramienta central para las álgebras de operadores y para el análisis armónico de los volúmenes siguientes.
