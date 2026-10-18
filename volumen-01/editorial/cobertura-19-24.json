@@ -1,6 +1,13 @@
 {
   "bloque": "19-24",
-  "lecturas_leidas_completas": [19, 20, 21, 22, 23, 24],
+  "lecturas_leidas_completas": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
   "comprobacion_pdf": {
     "19": "Ejercicio 6 contiene cierre de W1 en la hipótesis, confirmado visualmente; ejercicios4–5 utilizan bola cerrada.",
     "21": "Ejercicios3–4 contienen cierre sobre A+U/W+U; ejercicio4 errata final |v|=1 confirmada visualmente; teorema9 omite sobreyectividad.",
@@ -8,69 +15,272 @@
   },
   "capitulos": [
     {
-      "capitulo": 19,
-      "archivo": "chapters/19.tex",
-      "ejercicios_originales": [1, 2, 3, 4, 5, 6, 7],
-      "ejercicios_resueltos": [1, 2, 3, 4, 5, 6, 7],
-      "incisos": {"2": ["i", "ii", "iii", "contraejemplo"]},
-      "teoria": ["continuidad de suma, producto y norma", "geometría de bolas", "arcoconexión", "no compacidad salvo espacio nulo", "separabilidad y subespacio denso numerablemente generado", "Banach sin dimensión algebraica infinita numerable", "caracterización mediante series absolutamente convergentes", "cierre de subespacio", "lema de Riesz"],
-      "correcciones": ["Excluir V={0} en no compacidad", "corolario sobre producto de sucesiones cambia suma alpha_n+v_n por producto alpha_n v_n"],
-      "dependencias_resueltas": ["Lema de coordenadas prueba de antemano cerradura y completitud de dimensión finita, evitando anticipación circular a22."],
-      "pendientes": []
+      "archivo": "capitulos/08.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "incisos": {
+        "2": [
+          "i",
+          "ii",
+          "iii",
+          "contraejemplo"
+        ]
+      },
+      "teoria": [
+        "continuidad de suma, producto y norma",
+        "geometría de bolas",
+        "arcoconexión",
+        "no compacidad salvo espacio nulo",
+        "separabilidad y subespacio denso numerablemente generado",
+        "Banach sin dimensión algebraica infinita numerable",
+        "caracterización mediante series absolutamente convergentes",
+        "cierre de subespacio",
+        "lema de Riesz"
+      ],
+      "correcciones": [
+        "Excluir V={0} en no compacidad",
+        "corolario sobre producto de sucesiones cambia suma alpha_n+v_n por producto alpha_n v_n"
+      ],
+      "dependencias_resueltas": [
+        "Lema de coordenadas prueba de antemano cerradura y completitud de dimensión finita, evitando anticipación circular a22."
+      ],
+      "pendientes": [],
+      "lectura_original": 19
     },
     {
-      "capitulo": 20,
-      "archivo": "chapters/20.tex",
-      "ejercicios_originales": [1, 2, 3, 4, 5, 6, 7],
-      "ejercicios_resueltos": [1, 2, 3, 4, 5, 6, 7],
-      "teoria": ["equivalencias continuidad-acotación", "norma de operador y fórmulas", "completitud del espacio de operadores", "principio de acotación uniforme"],
-      "correcciones": ["Tratamiento separado de dominio nulo para fórmulas sobre esfera vacía", "cambio de variable en demostración de continuidad corregido"],
-      "dependencias_resueltas": ["Preimagen de subespacio finito cerrado usa lema probado19"],
-      "pendientes": []
+      "archivo": "capitulos/09.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "teoria": [
+        "equivalencias continuidad-acotación",
+        "norma de operador y fórmulas",
+        "completitud del espacio de operadores",
+        "principio de acotación uniforme"
+      ],
+      "correcciones": [
+        "Tratamiento separado de dominio nulo para fórmulas sobre esfera vacía",
+        "cambio de variable en demostración de continuidad corregido"
+      ],
+      "dependencias_resueltas": [
+        "Preimagen de subespacio finito cerrado usa lema probado19"
+      ],
+      "pendientes": [],
+      "lectura_original": 20
     },
     {
-      "capitulo": 21,
-      "archivo": "chapters/21.tex",
-      "ejercicios_originales": [1, 2, 3, 4, 5, 6, 7, 8],
-      "ejercicios_resueltos": [1, 2, 3, 4, 5, 6, 7, 8],
-      "teoria": ["dual continuo Banach", "núcleos e hiperplanos", "continuidad equivalente a núcleo cerrado", "isomorfismos sobre imagen y sobre codominio", "Hahn–Banach real dominado", "Hahn–Banach real/complejo con conservación de norma", "funcional normante"],
-      "correcciones": ["Cotas inferior y superior no implican sobreyectividad: inclusión R en R2 como contraejemplo", "Ejercicio4 requiere |phi(v)|=1, no |v|=1", "Distinguir isometría lineal de isomorfismo isométrico sobreyectivo"],
-      "dependencias_resueltas": ["Hahn–Banach desarrollado íntegramente antes de ejercicio8; no remisión a volumenIII"],
-      "pendientes": []
+      "archivo": "capitulos/10.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "teoria": [
+        "dual continuo Banach",
+        "núcleos e hiperplanos",
+        "continuidad equivalente a núcleo cerrado",
+        "isomorfismos sobre imagen y sobre codominio",
+        "Hahn–Banach real dominado",
+        "Hahn–Banach real/complejo con conservación de norma",
+        "funcional normante"
+      ],
+      "correcciones": [
+        "Cotas inferior y superior no implican sobreyectividad: inclusión R en R2 como contraejemplo",
+        "Ejercicio4 requiere |phi(v)|=1, no |v|=1",
+        "Distinguir isometría lineal de isomorfismo isométrico sobreyectivo"
+      ],
+      "dependencias_resueltas": [
+        "Hahn–Banach desarrollado íntegramente antes de ejercicio8; no remisión a volumenIII"
+      ],
+      "pendientes": [],
+      "lectura_original": 21
     },
     {
-      "capitulo": 22,
-      "archivo": "chapters/22.tex",
-      "ejercicios_originales": [1, 2, 3, 4, 5, 6],
-      "ejercicios_resueltos": [1, 2, 3, 4, 5, 6],
-      "teoria": ["suma de cerrado y subespacio finito", "rango finito y núcleo cerrado implican continuidad", "continuidad automática en dominio finito", "equivalencia de normas y completitud", "estabilidad independencia", "Heine–Borel", "dimensión finita equivalente a localmente compacto o bola compacta", "Banach infinito no sigma compacto"],
-      "correcciones": ["Proposición1 aclara que W1 es el subespacio cerrado", "Referencias internas incorrectas de fuente sustituidas por etiquetas correctas", "Caso de espacio nulo separado"],
-      "dependencias_resueltas": ["Ejercicio1 probado por sección lineal de dominio finito sin asumir teorema de aplicación abierta ni continuidad de la aplicación original"],
-      "pendientes": []
+      "archivo": "capitulos/08.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "teoria": [
+        "suma de cerrado y subespacio finito",
+        "rango finito y núcleo cerrado implican continuidad",
+        "continuidad automática en dominio finito",
+        "equivalencia de normas y completitud",
+        "estabilidad independencia",
+        "Heine–Borel",
+        "dimensión finita equivalente a localmente compacto o bola compacta",
+        "Banach infinito no sigma compacto"
+      ],
+      "correcciones": [
+        "Proposición1 aclara que W1 es el subespacio cerrado",
+        "Referencias internas incorrectas de fuente sustituidas por etiquetas correctas",
+        "Caso de espacio nulo separado"
+      ],
+      "dependencias_resueltas": [
+        "Ejercicio1 probado por sección lineal de dominio finito sin asumir teorema de aplicación abierta ni continuidad de la aplicación original"
+      ],
+      "pendientes": [],
+      "lectura_original": 22,
+      "archivos": [
+        "capitulos/08.tex",
+        "capitulos/09.tex"
+      ]
     },
     {
-      "capitulo": 23,
-      "archivo": "chapters/23.tex",
-      "ejercicios_originales": [1, 2, 3, 4],
-      "ejercicios_resueltos": [1, 2, 3, 4],
-      "teoria": ["definición y continuidad de operadores compactos", "caracterización por cierre de imagen de bola compacto", "rango finito acotado compacto", "diagonal1/n en l2 compacta", "identidad compacta equivalente a dimensión finita", "separabilidad de imagen y cierre", "subespacio de compactos", "cerradura en norma con codominio Banach"],
-      "correcciones": ["Rango finito necesita acotación: funcional discontinua explícita en c00 refuta versión sin hipótesis"],
-      "ampliaciones": ["Separabilidad demostrada sin hipótesis innecesaria de completitud del codominio", "Contraejemplo de cerradura de compactos si el codominio c00 no es completo"],
-      "pendientes": []
+      "archivo": "capitulos/09.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "teoria": [
+        "definición y continuidad de operadores compactos",
+        "caracterización por cierre de imagen de bola compacto",
+        "rango finito acotado compacto",
+        "diagonal1/n en l2 compacta",
+        "identidad compacta equivalente a dimensión finita",
+        "separabilidad de imagen y cierre",
+        "subespacio de compactos",
+        "cerradura en norma con codominio Banach"
+      ],
+      "correcciones": [
+        "Rango finito necesita acotación: funcional discontinua explícita en c00 refuta versión sin hipótesis"
+      ],
+      "ampliaciones": [
+        "Separabilidad demostrada sin hipótesis innecesaria de completitud del codominio",
+        "Contraejemplo de cerradura de compactos si el codominio c00 no es completo"
+      ],
+      "pendientes": [],
+      "lectura_original": 23
     },
     {
-      "capitulo": 24,
-      "archivo": "chapters/24.tex",
-      "ejercicios_originales": [1, 2, 3, 4, 5, 6, 7],
-      "ejercicios_resueltos": [1, 2, 3, 4, 5, 6, 7],
-      "incisos": {"2": ["alpha A", "A+B", "T(A)", "T inversa(C)"], "4": ["refutación originali", "refutación originalii", "versión corregidai", "versión corregidaii", "contraejemplo recta vertical"]},
-      "teoria": ["convexidad y ejemplos", "interior y cierre convexos", "envolvente convexa por combinaciones finitas", "envolvente cerrada", "funcional Minkowski sublineal", "separación de abierto y origen", "separación estricta compacto-cerrado", "puntos extremos y caras", "Krein–Milman completo"],
-      "correcciones": ["Usar espacio real subyacente en caso complejo y Re phi en separación", "Punto extremo debe excluir dos extremos distintos, no representación degenerada", "Zorn: intersección de cadena es cota superior, no necesariamente miembro maximal de cadena", "Ejercicio3 omitir conjuntos vacíos o exigir no vacío", "Ejercicio4 falso sin convexidad: contraejemplo compacto {0} unión {e_n/n}; versiones válidas demostradas para A,B convexos"],
-      "dependencias_resueltas": ["Separación derivada íntegramente de Hahn–Banach probado21", "Compacidad de cierre de envolvente de extremos proviene de inclusión en compacto A; no del falso ejercicio4"],
-      "pendientes": []
+      "archivo": "capitulos/10.tex",
+      "ejercicios_originales": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ejercicios_resueltos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "incisos": {
+        "2": [
+          "alpha A",
+          "A+B",
+          "T(A)",
+          "T inversa(C)"
+        ],
+        "4": [
+          "refutación originali",
+          "refutación originalii",
+          "versión corregidai",
+          "versión corregidaii",
+          "contraejemplo recta vertical"
+        ]
+      },
+      "teoria": [
+        "convexidad y ejemplos",
+        "interior y cierre convexos",
+        "envolvente convexa por combinaciones finitas",
+        "envolvente cerrada",
+        "funcional Minkowski sublineal",
+        "separación de abierto y origen",
+        "separación estricta compacto-cerrado",
+        "puntos extremos y caras",
+        "Krein–Milman completo"
+      ],
+      "correcciones": [
+        "Usar espacio real subyacente en caso complejo y Re phi en separación",
+        "Punto extremo debe excluir dos extremos distintos, no representación degenerada",
+        "Zorn: intersección de cadena es cota superior, no necesariamente miembro maximal de cadena",
+        "Ejercicio3 omitir conjuntos vacíos o exigir no vacío",
+        "Ejercicio4 falso sin convexidad: contraejemplo compacto {0} unión {e_n/n}; versiones válidas demostradas para A,B convexos"
+      ],
+      "dependencias_resueltas": [
+        "Separación derivada íntegramente de Hahn–Banach probado21",
+        "Compacidad de cierre de envolvente de extremos proviene de inclusión en compacto A; no del falso ejercicio4"
+      ],
+      "pendientes": [],
+      "lectura_original": 24
     }
   ],
   "total_ejercicios_originales_resueltos": 39,
   "demostraciones_pendientes": [],
-  "referencias_cruzadas_a_completar": []
+  "referencias_cruzadas_a_completar": [],
+  "organizacion": "Registros de las lecturas originales; archivos actualizados a la edición temática."
 }

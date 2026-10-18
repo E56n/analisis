@@ -1,10 +1,12 @@
-\chapter{Geometría y series en espacios normados}\label{chap:19}
+\chapter{Geometría normada y dimensión finita}\label{cap:nuevo08}\label{chap:19}\label{chap:22}
 
-Un espacio normado reúne dos estructuras: podemos sumar y multiplicar vectores, y también medir distancias. La utilidad del concepto depende de que ambas estructuras sean compatibles. Este capítulo explica esa compatibilidad y muestra cómo la completitud, que inicialmente se formula mediante sucesiones, también puede reconocerse mediante series. El lema de Riesz proporcionará después una manera de detectar la dimensión infinita.
+Un espacio normado reúne dos estructuras: podemos sumar y multiplicar vectores, y también medir distancias. Comenzaremos mostrando que ambas estructuras son compatibles; después estudiaremos series, subespacios cerrados y direcciones que permanecen alejadas de un subespacio propio. Estas herramientas permitirán reconocer qué fenómenos dependen realmente de la dimensión finita.
 
-Trabajaremos sobre $\F=\R$ o $\C$. Se requieren las nociones de espacio métrico completo, separabilidad, compacidad y el teorema de Baire. Una dimensión sin calificativo será la dimensión algebraica, es decir, la cardinalidad de una base de Hamel: las combinaciones lineales de esa base son siempre finitas.
+En $\R^n$ todas las normas describen la misma convergencia, toda transformación lineal es continua y los conjuntos cerrados acotados son compactos. No son propiedades de una norma aislada: el número finito de coordenadas es decisivo. Explicaremos tanto estas afirmaciones como las obstrucciones que aparecen en dimensión infinita.
 
-\section{Operaciones, bolas y dimensión finita}
+Trabajaremos sobre $\F=\R$ o $\C$. Se requieren completitud, separabilidad, compacidad y el teorema de Baire. Una dimensión sin calificativo será algebraica: una base de Hamel permite únicamente combinaciones lineales finitas. No se presupone la teoría de operadores del capítulo siguiente; las afirmaciones sobre aplicaciones lineales en dimensión finita se demostrarán directamente mediante coordenadas.
+
+\section{Operaciones, bolas y coordenadas}\label{lectura:19}
 
 \begin{proposicion}\label{ch19:operaciones}
 En un espacio normado $V$, la suma $V\times V\to V$ y el producto $\F\times V\to V$ son continuos. La norma es una función de Lipschitz de constante $1$.
@@ -55,7 +57,7 @@ La cota superior vale con $C=\sum_i\norm{v_i}$. Definamos $L(a)=\sum_i a_iv_i$. 
 Sea ahora $x_n=L(a^{(n)})$ una sucesión de Cauchy en el subespacio generado. La cota inferior implica que cada sucesión de coordenadas es de Cauchy en $\F$. Si $a^{(n)}\to a$, la cota superior da $x_n\to L(a)$ en el subespacio. Este es completo. Si una sucesión del subespacio converge en $V$, es de Cauchy y el límite que acabamos de obtener pertenece al subespacio; la unicidad del límite demuestra que este es cerrado. El subespacio $\{0\}$ satisface ambas conclusiones directamente.
 \end{proof}
 
-Este lema se ha demostrado aquí porque lo necesitan Baire y algunos ejercicios antes del tratamiento sistemático de la dimensión finita del capítulo~\ref{chap:22}. Evita utilizar anticipadamente un resultado sin justificación.
+Este lema se ha demostrado antes de aplicar Baire: sus consecuencias sobre cerradura y completitud se necesitan ya en las propiedades generales que siguen. La sección~\ref{sec:nuevo08:finita} desarrollará después el papel de la dimensión finita de manera sistemática.
 
 \begin{proposicion}\label{ch19:geometria}
 Sea $V$ un espacio normado y $r>0$.
@@ -145,9 +147,119 @@ Tome $u\notin M$ y $d=\dist(u,M)$. El número $d$ es positivo porque $M$ es cerr
 La cota inferior es independiente de $z$, de modo que también vale para el ínfimo. Si $0<\eps<1$, tome $\theta=1-\eps$; si $\eps\geq1$, cualquier vector unitario cumple la desigualdad solicitada. Tal vector existe porque $M$ es propio.
 \end{proof}
 
-\section{Ejercicios resueltos}
+Las operaciones continuas y la caracterización de completitud mediante series describen cualquier espacio normado. El lema de Riesz añade una restricción geométrica: un subespacio cerrado propio no puede aproximar uniformemente todas las direcciones unitarias. Combinaremos ahora esa restricción con las cotas de coordenadas para caracterizar la dimensión finita.
 
-\begin{ejercicio}[Lectura 19, ejercicio 1]
+\section{Subespacios de dimensión finita y continuidad}\label{lectura:22}\label{sec:nuevo08:finita}
+
+\begin{proposicion}\label{ch22:suma-cerrada}
+Si $M$ es un subespacio cerrado de un espacio normado $V$ y $F$ es un subespacio de dimensión finita, entonces $M+F$ es cerrado.
+\end{proposicion}
+\begin{proof}
+Empecemos por $F=\F u$. Si $u\in M$, la suma es $M$ y no hay nada que probar. Si $u\notin M$, sea $d=\dist(u,M)>0$. Para cualquier escalar $t$, la invariancia de $M$ bajo multiplicación da
+\[
+ \dist(tu,M)=|t|d;
+\]
+para $t=0$ ambos lados son cero, y para $t\ne0$ se obtiene cambiando $m$ por $m/t$ en el ínfimo.
+
+Sea $z_n=m_n+t_nu$ una sucesión de $M+\F u$ que converge a $z$ en $V$. Como $m_n-m_k\in M$,
+\[
+ |t_n-t_k|d\leq\norm{z_n-z_k}.
+\]
+La convergencia de $(z_n)$ implica que es de Cauchy, de modo que $(t_n)$ es de Cauchy en $\F$ y converge a algún $t$. Entonces $m_n=z_n-t_nu\to z-tu$. Por cerradura de $M$, $z-tu\in M$, y así $z\in M+\F u$. Esto prueba que la suma es cerrada.
+
+Para $F=\spanop\{u_1,\ldots,u_k\}$, aplique el caso anterior sucesivamente a
+\[
+ M,\quad M+\F u_1,\quad M+\F u_1+\F u_2,\quad\ldots.
+\]
+Cada paso añade una dirección a un subespacio ya cerrado. Después de un número finito de pasos se obtiene $M+F$ cerrado.
+\end{proof}
+
+\begin{corolario}\label{ch22:finito-cerrado}
+Todo subespacio de dimensión finita de un espacio normado es cerrado.
+\end{corolario}
+\begin{proof}
+Tome $M=\{0\}$ en la proposición anterior. Esta conclusión coincide con la obtenida por coordenadas en el lema~\ref{ch19:coordenadas}; la nueva prueba resalta la estabilidad de la cerradura al añadir un número finito de direcciones.
+\end{proof}
+
+
+
+\begin{corolario}\label{ch22:lineal-finito}
+Si $V$ tiene dimensión finita, toda transformación lineal $T:V\to W$ es continua. Todas las normas en $V$ son equivalentes y $V$ es de Banach.
+\end{corolario}
+\index{dimension finita@dimensión finita!equivalencia de normas}
+\begin{proof}
+Si $V=\{0\}$, todas las conclusiones son inmediatas. Supongamos $\dim V=k>0$ y elija una base $v_1,\ldots,v_k$. Por el lema~\ref{ch19:coordenadas} existe $c>0$ tal que $\norm{\sum_j a_jv_j}\geq c\max_j|a_j|$. Para una transformación lineal $T:V\to W$ y $v=\sum_j a_jv_j$, se obtiene la cota explícita
+\[
+ \norm{Tv}\leq\sum_{j=1}^k|a_j|\norm{Tv_j}
+ \leq\frac{\sum_{j=1}^k\norm{Tv_j}}{c}\norm v=:C_T\norm v.
+\]
+Por linealidad, $\norm{Tx-Ty}\leq C_T\norm{x-y}$. Si $C_T>0$, una distancia de entrada menor que $\eps/C_T$ produce una distancia de salida menor que $\eps$; si $C_T=0$, $T$ es el operador cero. Esto demuestra continuidad sin utilizar todavía la teoría general de la norma de operador.
+
+Si $\norm{\cdot}_1$ y $\norm{\cdot}_2$ son dos normas en $V$, la identidad de $(V,\norm{\cdot}_1)$ en $(V,\norm{\cdot}_2)$ y la identidad inversa son lineales. Por lo recién probado, ambas son continuas. Aplicando la cota explícita anterior a ambas identidades, existen $c,C>0$ tales que $c\norm v_1\leq\norm v_2\leq C\norm v_1$. Estas desigualdades son la equivalencia de normas.
+
+Elija una base de $V$ y la norma de coordenadas $\norm{\sum a_jv_j}_0=\max_j|a_j|$. Una sucesión de Cauchy para esa norma es de Cauchy en cada coordenada; la completitud de $\F$ produce sus límites y, por tanto, un límite en $V$. Así $\norm{\cdot}_0$ es completa. Las desigualdades de equivalencia muestran que una sucesión de Cauchy en la norma original lo es en $\norm{\cdot}_0$, y que la convergencia en esta implica convergencia en la original. Por tanto $V$ es de Banach.
+\end{proof}
+
+\begin{proposicion}[Estabilidad de la independencia]\label{ch22:independencia}
+Si $v_1,\ldots,v_k$ son linealmente independientes en $V$, existe $\delta>0$ tal que $\norm{w_j-v_j}<\delta$ para todo $j$ implica que $w_1,\ldots,w_k$ también son linealmente independientes.
+\end{proposicion}
+\begin{proof}
+El lema~\ref{ch19:coordenadas} proporciona $c>0$ con
+\[
+ \norm{\sum_{j=1}^k a_jv_j}\geq c\max_j|a_j|
+ \geq\frac ck\sum_{j=1}^k|a_j|.
+\]
+Tome $\delta=c/(2k)$. Si $\sum_j a_jw_j=0$, entonces
+\begin{align*}
+ \frac ck\sum_j|a_j|
+ &\leq\norm{\sum_j a_jv_j}
+ =\norm{\sum_j a_j(v_j-w_j)}\\
+ &\leq\sum_j|a_j|\norm{v_j-w_j}
+ \leq\frac c{2k}\sum_j|a_j|.
+\end{align*}
+Esto fuerza $\sum_j|a_j|=0$, y por ello todos los coeficientes son cero.
+\end{proof}
+
+\section{Compacidad y dimensión}
+
+\begin{teorema}[Heine--Borel en dimensión finita]\label{ch22:heine-borel}
+En un espacio normado de dimensión finita, un conjunto es compacto si y solo si es cerrado y acotado.
+\end{teorema}
+\begin{proof}
+En todo espacio métrico, los compactos son cerrados y acotados. Para el recíproco, use una base para identificar $V$ linealmente con $\F^k$. El corolario~\ref{ch22:lineal-finito} muestra que la identificación y su inversa son continuas y que las normas se acotan mutuamente. Por tanto la imagen de un cerrado acotado de $V$ es cerrada y acotada en $\F^k$. Heine--Borel euclidiano la hace compacta, y su imagen por la identificación inversa es compacta en $V$.
+\end{proof}
+
+\begin{teorema}\label{ch22:caracterizacion}
+Para un espacio normado $V$, las siguientes condiciones son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item $V$ tiene dimensión finita;
+\item la bola cerrada $\overline B(0,1)$ es compacta;
+\item $V$ es localmente compacto.
+\end{enumerate}
+\end{teorema}
+\index{compacidad!local en espacios normados}
+\begin{proof}
+Si la dimensión es finita, Heine--Borel da la compacidad de todas las bolas cerradas. Cada punto tiene una de esas bolas como vecindad compacta, por lo que (i) implica (ii) y (iii).
+
+Si $V$ es localmente compacto, el origen tiene una vecindad compacta $K$. Existe $r>0$ con $B(0,r)\subseteq K$. La bola cerrada $\overline B(0,r/2)$ es un cerrado de $V$ contenido en $K$, luego es compacta. La homotecia $v\mapsto (2/r)v$ muestra que $\overline B(0,1)$ es compacta. Esto prueba (iii)$\Rightarrow$(ii).
+
+Supongamos (ii). La compacidad implica acotación total, así que la bola unitaria está cubierta por un número finito de bolas abiertas de radio $1/2$, con centros $v_1,\ldots,v_k\in V$. Sea $M=\spanop\{v_1,\ldots,v_k\}$. Es cerrado por ser de dimensión finita. Si $M\ne V$, el lema de Riesz daría $v$ con $\norm v=1$ y $\dist(v,M)>1/2$. Sin embargo, algún centro satisface $\norm{v-v_j}<1/2$, contradicción. Por tanto $M=V$ y $V$ tiene dimensión finita.
+\end{proof}
+
+\begin{corolario}\label{ch22:no-sigma-compacto}
+Un espacio de Banach infinito dimensional no es unión numerable de conjuntos compactos.
+\end{corolario}
+\begin{proof}
+Si $V=\bigcup_nK_n$ con cada $K_n$ compacto, todos son cerrados. Baire da un $K_n$ con interior no vacío. Existe una bola $B(x,r)\subseteq K_n$. La bola cerrada $\overline B(x,r/2)$ es un cerrado contenido en el compacto $K_n$, y por ello es compacta. Trasladar y reescalar hace compacta la bola unitaria de $V$. El teorema anterior contradice la dimensión infinita.
+\end{proof}
+
+\begin{ejemplo}
+En $\ell^2$, los vectores canónicos $e_n$ tienen norma $1$ y $\norm{e_n-e_m}=\sqrt2$ si $n\ne m$. La sucesión no tiene ninguna subsucesión de Cauchy y, por tanto, ninguna convergente. La bola unitaria es cerrada y acotada, pero no compacta. El teorema anterior demuestra que siempre existe una obstrucción de este tipo en dimensión infinita, aunque no haya una base canónica disponible.
+\end{ejemplo}
+
+\section{Ejercicios resueltos: operaciones, series y subespacios}
+
+\begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:lectura-19-1}
 Para $u,v\ne0$, ponga $u'=u/\norm u$ y $v'=v/\norm v$. Demuestre que
 \[\norm{u'-v'}\leq\frac{2\norm{u-v}}{\norm u}.\]
 \end{ejercicio}
@@ -163,7 +275,7 @@ Introducimos $v/\norm u$, de modo que una diferencia mida el cambio de vector y 
 La última desigualdad es la desigualdad triangular inversa.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 2]
+\begin{ejercicio}[Lectura 19, ejercicio 2]\label{ej:lectura-19-2}
 Para $A,B\subseteq V$, sea $A+B=\{a+b:a\in A,b\in B\}$. Pruebe: (i) si $A$ es abierto, $A+B$ es abierto; (ii) si $A,B$ son compactos, $A+B$ es compacto; (iii) si $A$ es cerrado y $B$ compacto, $A+B$ es cerrado. Dé además dos conjuntos cerrados cuya suma no sea cerrada.
 \end{ejercicio}
 \begin{solucion}
@@ -180,14 +292,14 @@ Para el contraejemplo tome, en $\R^2$,
 Ambos son cerrados, como conjuntos de ceros de funciones continuas. Su suma es $\R\times(\R\setminus\{0\})$: para obtener $(s,t)$ con $t\ne0$ se suma $(1/t,t)$ a $(s-1/t,0)$, y ningún sumando puede producir segunda coordenada cero. Esta suma no es cerrada, pues $(0,1/n)\to(0,0)$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 3]
+\begin{ejercicio}[Lectura 19, ejercicio 3]\label{ej:lectura-19-3}
 Demuestre que todo subespacio propio $M$ de $V$ tiene interior vacío.
 \end{ejercicio}
 \begin{solucion}
 Si $B(x,r)\subseteq M$, entonces $x\in M$ y, restándolo, $B(0,r)\subseteq M$. Para cualquier $v\ne0$, el vector $(r/(2\norm v))v$ pertenece a esa bola; multiplicarlo por $2\norm v/r$ muestra que $v\in M$. También $0\in M$. Esto da $M=V$, contradicción. No se necesita que $M$ sea cerrado.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 4]
+\begin{ejercicio}[Lectura 19, ejercicio 4]\label{ej:lectura-19-4}
 Pruebe que $V$ es separable si y solo si $\overline B(0,1)$ es separable.
 \end{ejercicio}
 \begin{solucion}
@@ -196,11 +308,11 @@ Si $V$ es separable, todo subespacio métrico es separable. Para recordar el arg
 Recíprocamente, si $D$ es numerable y denso en $\overline B(0,1)$, el conjunto $E=\bigcup_{m=1}^{\infty}mD$ es numerable. Dados $v\in V$ y $\eps>0$, elija un entero $m\geq\max\{1,\norm v\}$. Hay $d\in D$ con $\norm{v/m-d}<\eps/m$, y entonces $md\in E$ satisface $\norm{v-md}<\eps$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 5]
+\begin{ejercicio}[Lectura 19, ejercicio 5]\label{ej:lectura-19-5}
 Si $(v_n)$ es de Cauchy, $v_n\ne0$, y no converge a $0$, pruebe que $(v_n/\norm{v_n})$ es de Cauchy. Deduzca que $V$ es de Banach si y solo si $\overline B(0,1)$ es completa.
 \end{ejercicio}
 \begin{solucion}
-Por la desigualdad triangular inversa, $(\norm{v_n})$ es una sucesión real de Cauchy. Sea $a$ su límite. Si $a=0$, tendríamos $v_n\to0$, contrario a la hipótesis; luego $a>0$. Para $n$ suficientemente grande, $\norm{v_n}\geq a/2$. El ejercicio 1 da entonces
+Por la desigualdad triangular inversa, $(\norm{v_n})$ es una sucesión real de Cauchy. Sea $a$ su límite. Si $a=0$, tendríamos $v_n\to0$, contrario a la hipótesis; luego $a>0$. Para $n$ suficientemente grande, $\norm{v_n}\geq a/2$. El ejercicio~\ref{ej:lectura-19-1} da entonces
 \[
  \norm{\frac{v_n}{\norm{v_n}}-\frac{v_m}{\norm{v_m}}}\leq\frac4a\norm{v_n-v_m},
 \]
@@ -209,14 +321,14 @@ que tiende uniformemente a cero cuando $m,n\to\infty$.
 Si $V$ es completo, su bola cerrada es un subconjunto cerrado y por ello completo. Para el recíproco puede usarse una observación aún más directa: toda sucesión de Cauchy $(x_n)$ es acotada. Elija $R>0$ con $\norm{x_n}\leq R$ para todo $n$. Entonces $(x_n/R)$ es de Cauchy en la bola cerrada unitaria, converge a un $y$ de esa bola y $x_n\to Ry$ en $V$. La primera parte explica además cómo controlar las direcciones de una sucesión que permanece alejada del origen.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 6]
+\begin{ejercicio}[Lectura 19, ejercicio 6]\label{ej:lectura-19-6}
 Sean $M_1,M_2\leq V$ tales que $\cl{M_1}\cap M_2=\{0\}$ y $M_1+M_2$ es cerrado. Demuestre que $M_1$ es cerrado.
 \end{ejercicio}
 \begin{solucion}
 Como $M_1\subseteq M_1+M_2$ y este último es cerrado, $\cl{M_1}\subseteq M_1+M_2$. Para $x\in\cl{M_1}$ escriba $x=a+b$, con $a\in M_1$ y $b\in M_2$. La proposición~\ref{ch19:cierre-subespacio} implica que $b=x-a\in\cl{M_1}$. Así $b\in\cl{M_1}\cap M_2=\{0\}$, y $x=a\in M_1$. Hemos probado $\cl{M_1}\subseteq M_1$. La barra sobre $M_1$ en la hipótesis, visible en el PDF original, es indispensable para este argumento.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 19, ejercicio 7]
+\begin{ejercicio}[Lectura 19, ejercicio 7]\label{ej:lectura-19-7}
 Si $v_n\to v$, demuestre que las medias de Cesàro $u_n=(v_1+\cdots+v_n)/n$ convergen a $v$.
 \end{ejercicio}
 \begin{solucion}
@@ -229,5 +341,32 @@ Dado $\eps>0$, elija $N$ con $\norm{v_j-v}<\eps/2$ para $j\geq N$. Para $n\geq N
 La primera suma tiene un número fijo de términos, por lo que, dividida entre $n$, es menor que $\eps/2$ para $n$ suficientemente grande. El segundo término no supera $\eps/2$. Así $u_n\to v$. El argumento separa una parte inicial, cuyo peso desaparece, de una cola cuyos términos ya están cerca del límite.
 \end{solucion}
 
-\section{Perspectiva}
-La continuidad de las operaciones permite usar límites sin abandonar el álgebra lineal. La completitud transforma estimaciones de colas en existencia de sumas, y el lema de Riesz muestra que un subespacio cerrado propio siempre deja fuera alguna dirección de tamaño controlado. Son las tres herramientas que organizan el estudio de operadores de los capítulos siguientes.
+\section{Ejercicios resueltos: dimensión y mejores aproximantes}
+
+\begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:lectura-22-4}
+Si $M$ tiene dimensión finita y $v\notin M$, demuestre que existe $m_0\in M$ con $\dist(v,M)=\norm{v-m_0}$. Deduzca que existe $u$ con $\norm u=\dist(u,M)=1$.
+\end{ejercicio}
+\begin{solucion}
+Sea $d=\dist(v,M)$. El subespacio es cerrado, por lo que $d>0$. Elija $m_j\in M$ con $\norm{v-m_j}\to d$. Como $0\in M$, $d\leq\norm v$. Podemos descartar términos iniciales para que $\norm{v-m_j}\leq\norm v+1$. Entonces
+\[
+ \norm{m_j}\leq\norm v+\norm{v-m_j}\leq2\norm v+1.
+\]
+La bola correspondiente de $M$ es compacta por Heine--Borel. Una subsucesión converge a $m_0\in M$, y la continuidad de la norma da $\norm{v-m_0}=d$.
+
+Defina $u=(v-m_0)/d$. Su norma es $1$. Como trasladar por un elemento de $M$ no cambia la distancia a $M$, y multiplicar por $1/d$ la multiplica por $1/d$,
+\[
+ \dist(u,M)=\frac{\dist(v-m_0,M)}d=\frac{\dist(v,M)}d=1.
+\]
+En dimensión finita la distancia se alcanza. El lema de Riesz general solo garantiza distancias arbitrariamente próximas a $1$, porque un subespacio cerrado infinito dimensional puede no tener mejores aproximantes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:lectura-22-5}
+Sea $c_{00}=\spanop\{e_n:n\in\N\}$, el espacio de sucesiones de soporte finito. Demuestre que no es completo con ninguna norma.
+\end{ejercicio}
+\begin{solucion}
+\enlargethispage{\baselineskip}
+Fije una norma arbitraria y sea $M_n=\spanop\{e_1,\ldots,e_n\}$. Cada $M_n$ es cerrado porque tiene dimensión finita. Es propio y, por el ejercicio~\ref{ej:lectura-19-3}, tiene interior vacío. Todo vector de $c_{00}$ pertenece a alguno de los $M_n$ por tener soporte finito; así, $c_{00}=\bigcup_{n=1}^{\infty}M_n$. Si la norma elegida fuera completa, esta unión contradiría Baire. Como no se impuso ninguna condición especial a la norma, ninguna puede hacer completo a $c_{00}$.
+\end{solucion}
+
+En dimensión finita, las coordenadas controlan continuidad, completitud y compacidad. El capítulo siguiente estudia cómo cambian estas propiedades al considerar operadores entre espacios normados, especialmente cuando la dimensión es infinita.
+

@@ -1,9 +1,10 @@
-\chapter{Representación de Riesz y operadores adjuntos}\label{chap:32}
+\chapter{Representación de Riesz y operadores adjuntos}\label{cap:nuevo16}\label{chap:32}
 \index{Riesz!representacion en Hilbert@representación en Hilbert}\index{operador!adjunto}
 
-Una matriz y su transpuesta conjugada describen la misma relación entre vectores vista desde lados opuestos del producto interno. En Hilbert esa relación sigue existiendo sin elegir coordenadas. La herramienta que la hace posible es el teorema de representación de Riesz. La lectura 32 de \cite{valencia} lo utiliza posponiendo su prueba; aquí lo demostraremos antes de aplicarlo. Cerraremos el volumen relacionando los adjuntos con la aproximación de operadores compactos por operadores de rango finito.
+Los desarrollos del capítulo~\ref{cap:nuevo15} describen un vector mediante sus componentes ortogonales. Para estudiar funcionales y operadores necesitamos relacionar esas componentes con el producto interno: una matriz y su transpuesta conjugada describen la misma relación entre vectores vista desde lados opuestos de ese producto. En Hilbert esa relación sigue existiendo sin elegir coordenadas. La herramienta que la hace posible es el teorema de representación de Riesz. La lectura 32 de \cite{valencia} lo utiliza posponiendo su prueba; aquí lo demostraremos antes de aplicarlo. Cerraremos el volumen relacionando los adjuntos con la aproximación de operadores compactos por operadores de rango finito.
 
 \section{Cada funcional continuo es un producto interno}
+\label{lectura:32}
 \begin{teorema}[Representación de Riesz]\label{ch32:riesz}
 Sea $H$ un espacio de Hilbert y $\varphi:H\to\F$ un funcional lineal continuo. Existe un único $v\in H$ tal que
 \[
@@ -99,12 +100,12 @@ En $\ell^{2}(\N)$, sean $R(x_1,x_2,\dots)=(0,x_1,x_2,\dots)$ y $L(x_1,x_2,\dots)
  \ip{Rx}{y}=\sum_{n=2}^{\infty}x_{n-1}\bar y_n
  =\sum_{n=1}^{\infty}x_n\bar y_{n+1}=\ip{x}{Ly}.
 \]
-Así $R^*=L$. Se tiene $LR=I$, pero $RLx=x-x_1e_1$. El corrimiento derecho preserva el producto interno y no es suprayectivo; esta distinción será decisiva en el ejercicio sobre operadores unitarios.
+Así $R^*=L$. Se tiene $LR=I$, pero $RLx=x-x_1e_1$. El corrimiento derecho preserva el producto interno y no es suprayectivo; esta distinción será decisiva en el ejercicio~\ref{ej:lectura-32-4}, sobre operadores unitarios.
 \end{ejemplo}
 
-\section{Ejercicios resueltos}
+\section{Ejercicios de adjunción, normalidad y unitariedad}
 
-\begin{ejercicio}[Lectura 32, ejercicio 1]
+\begin{ejercicio}[Lectura 32, ejercicio 1]\label{ej:lectura-32-1}
 Probar las reglas (i) $(\alpha S+\beta T)^*=\bar\alpha S^*+\bar\beta T^*$; (ii) $(ST)^*=T^*S^*$; (iii) $T^{**}=T$; (iv) $I^*=I$; (v) $(T^{-1})^*=(T^*)^{-1}$ para $T$ invertible.
 \end{ejercicio}
 \begin{solucion}
@@ -124,7 +125,7 @@ $\ip{STx}{z}=\ip{Tx}{S^*z}=\ip{x}{T^*S^*z}$.
 $T^*(T^{-1})^*=I$ y $(T^{-1})^*T^*=I$. Así $(T^{-1})^*$ es la inversa bilateral de $T^*$. Aquí invertible en $\Bcal(H)$ significa que la inversa es acotada; para una biyección acotada entre espacios de Banach esa propiedad se deduce del teorema de la aplicación abierta.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 2]
+\begin{ejercicio}[Lectura 32, ejercicio 2]\label{ej:lectura-32-2}
 \index{operador!normal}
 Si $T$ es normal, es decir, $T^*T=TT^*$, probar $\norm{Tx}=\norm{T^*x}$ y que $T-\alpha I$ es normal para todo $\alpha\in\C$.
 \end{ejercicio}
@@ -143,15 +144,15 @@ Ambas normas son no negativas, por lo que sus raíces coinciden. Además,
 La normalidad de $T$ hace iguales estas expresiones.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 3]
+\begin{ejercicio}[Lectura 32, ejercicio 3]\label{ej:lectura-32-3}
 \index{operador!autoadjunto}\index{operador!positivo}
 Probar que $T+T^*$ y $TT^*$ son autoadjuntos, esto es, coinciden con sus adjuntos.
 \end{ejercicio}
 \begin{solucion}
-Las reglas del ejercicio 1 dan $(T+T^*)^*=T^*+T^{**}=T^*+T$ y $(TT^*)^*=(T^*)^*T^*=TT^*$. De manera adicional, $TT^*$ es positivo en el sentido de que $\ip{TT^*x}{x}=\norm{T^*x}^{2}\geq0$; ser autoadjunto, por sí solo, no exige esta desigualdad.
+Las reglas del ejercicio~\ref{ej:lectura-32-1} dan $(T+T^*)^*=T^*+T^{**}=T^*+T$ y $(TT^*)^*=(T^*)^*T^*=TT^*$. De manera adicional, $TT^*$ es positivo en el sentido de que $\ip{TT^*x}{x}=\norm{T^*x}^{2}\geq0$; ser autoadjunto, por sí solo, no exige esta desigualdad.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 4: isometrías y unitarios]
+\begin{ejercicio}[Lectura 32, ejercicio 4: isometrías y unitarios]\label{ej:lectura-32-4}
 \index{operador!unitario}\index{isometria@isometría!lineal}
 Analizar la afirmación: $\ip{Tx}{Ty}=\ip{x}{y}$ para todo $x,y$ si y solo si $T$ es invertible y $T^{-1}=T^*$.
 \end{ejercicio}
@@ -164,7 +165,7 @@ Recíprocamente, si $T$ es invertible y $T^*=T^{-1}$, entonces
 $\ip{Tx}{Ty}=\ip{x}{T^*Ty}=\ip{x}{y}$; es una isometría suprayectiva. Una formulación equivalente es $T^*T=TT^*=I$: la primera igualdad da inyectividad y preservación del producto, y la segunda expresa cada $y$ como $T(T^*y)$, dando suprayectividad.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 5]
+\begin{ejercicio}[Lectura 32, ejercicio 5]\label{ej:lectura-32-5}
 Probar que la proyección ortogonal $P_W$ sobre un subespacio cerrado es autoadjunta.
 \end{ejercicio}
 \begin{solucion}
@@ -176,14 +177,14 @@ Descompongamos $x=w_x+n_x$, $y=w_y+n_y$ en $W\oplus W^{\perp}$. Entonces
 La unicidad del adjunto da $P_W^*=P_W$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 6]
+\begin{ejercicio}[Lectura 32, ejercicio 6]\label{ej:lectura-32-6}
 Si $T^*T=0$, probar $T=0$. Decidir si la conclusión vale cuando $TT^*=0$.
 \end{ejercicio}
 \begin{solucion}
 Si $T^*T=0$, para cada $x$ se tiene $\norm{Tx}^{2}=\ip{x}{T^*Tx}=0$, de modo que $Tx=0$. Si $TT^*=0$, aplicamos lo anterior al operador $T^*$: $\norm{T^*x}^{2}=\ip{x}{TT^*x}=0$, así que $T^*=0$ y $T=T^{**}=0$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 7]
+\begin{ejercicio}[Lectura 32, ejercicio 7]\label{ej:lectura-32-7}
 Demostrar que $\norm{Tv}=\norm T\norm v$ si y solo si $T^*Tv=\norm T^{2}v$.
 \end{ejercicio}
 \begin{solucion}
@@ -202,7 +203,7 @@ Si $a\ne0$, elegimos $t=-sa$ con $s>0$. El miembro derecho es $|a|^{2}(-2s+s^{2}
 Recíprocamente, si $T^*Tv=\norm T^{2}v$, entonces $\norm{Tv}^{2}=\ip{v}{T^*Tv}=\norm T^{2}\norm v^{2}$; tomando raíces se obtiene la igualdad. Para $v=0$ ambas condiciones se cumplen trivialmente; para hablar de que el operador «alcanza su norma» suele exigirse un vector unitario.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 8]
+\begin{ejercicio}[Lectura 32, ejercicio 8]\label{ej:lectura-32-8}
 Probar $\ker T=(T^*(H))^{\perp}$.
 \end{ejercicio}
 \begin{solucion}
@@ -216,7 +217,7 @@ Para $x\in H$,
 La última equivalencia se prueba tomando $y=Tx$ en una dirección; en la otra, todos los productos son cero. También resulta $\cl{T^*(H)}=(\ker T)^{\perp}$ al tomar complementos y utilizar el doble complemento en Hilbert. El cierre no debe omitirse si no se sabe que el rango es cerrado.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 9: polarización de una forma]
+\begin{ejercicio}[Lectura 32, ejercicio 9: polarización de una forma]\label{ej:lectura-32-9}
 Sea $\xi$ sesquilineal y $\widehat\xi(v)=\xi(v,v)$. Probar (i)
 \[
  \xi(u,v)=\sum_{k=1}^{4}i^k\widehat\xi\left(\frac{u+i^kv}{2}\right),
@@ -234,7 +235,7 @@ Multiplicando por $i^k$ y sumando, las sumas $\sum_{k=1}^{4}i^k$ y $\sum_{k=1}^{
 \emph{(ii)} Si dos formas tienen la misma función diagonal, los cuatro términos del lado derecho coinciden para cada par $(u,v)$; la identidad prueba que las formas son iguales. La hipótesis compleja es relevante: para formas bilineales reales generales, la parte antisimétrica se anula en la diagonal y no puede recuperarse de ella.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 32, ejercicio 10: multiplicación]
+\begin{ejercicio}[Lectura 32, ejercicio 10: multiplicación]\label{ej:lectura-32-10}
 Sea $h\in C([a,b],\C)$, $a<b$, y $T_hf=hf$ en $C([a,b])$ con producto integral. Hallar (i) el adjunto, (ii) cuándo es normal, (iii) cuándo es autoadjunto y (iv) cuándo es unitario.
 \end{ejercicio}
 \begin{solucion}
@@ -258,7 +259,7 @@ El mismo cálculo funciona si el producto está dividido por $b-a$. Por tanto $T
 Si la función real continua $|h|^{2}-1$ no fuera cero, tendría signo constante y módulo separado de cero en un intervalo. Una función triangular no nula soportada allí daría una integral no nula, contradicción. En este ejemplo, a diferencia del corrimiento, la preservación de normas ya obliga a una inversa explícita dentro de $C([a,b])$.
 \end{solucion}
 
-\section{Complemento: aproximar operadores compactos}
+\section{Aproximación de operadores compactos por rango finito}
 \index{operador!compacto}\index{operador!rango finito}
 Los siguientes resultados enlazan este capítulo con los operadores compactos estudiados anteriormente. La geometría de Hilbert permite una aproximación en norma de operador, más fuerte que aproximar separadamente cada imagen.
 
@@ -282,5 +283,5 @@ La segunda fórmula se verifica sustituyéndola en la identidad del adjunto y co
 La continuidad de la adjunción da $\norm{T_n^*-T^*}=\norm{T_n-T}\to0$. Recordemos por qué un límite en norma de operadores compactos es compacto cuando el espacio de llegada es completo. Si $A_n\to A$ en norma, para una tolerancia $\delta>0$ elegimos $n$ con $\norm{A-A_n}<\delta/3$. Una red finita de radio $\delta/3$ para $A_n(B)$ se convierte, por desigualdad triangular, en una red de radio $2\delta/3$ para $A(B)$. Así $A(B)$ es totalmente acotado. Su cierre es completo y totalmente acotado, por lo que es compacto. Aplicado a $T_n^*$, esto demuestra que $T^*$ es compacto. Finalmente, si $T^*$ es compacto, la dirección recién probada aplicada a él muestra que $T^{**}=T$ es compacto.
 \end{proof}
 
-\section{Cierre del volumen}
+\section{De la geometría de Hilbert al estudio de operadores}
 El recorrido desde espacios métricos hasta Hilbert muestra cómo se acumulan las estructuras. La métrica hace posible hablar de aproximación; la completitud asegura límites; la linealidad permite construir y comparar aproximantes; el producto interno identifica el mejor de ellos mediante perpendicularidad. Riesz y los adjuntos convierten esa geometría en un lenguaje para estudiar operadores. Estos resultados serán herramientas de los volúmenes de medida e integración, análisis funcional y análisis armónico.

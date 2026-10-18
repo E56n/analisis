@@ -1,16 +1,19 @@
 {
   "fecha": "2026-10-18",
-  "paginas_pdf": 207,
-  "capitulos": 32,
+  "paginas_pdf": 202,
+  "capitulos": 16,
   "ejercicios_numerados": 206,
   "soluciones": 206,
-  "entradas_indice": 195,
+  "entradas_indice": 193,
   "compilacion": "latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex",
   "advertencias_latex": [],
-  "revision_matematica": "Revisión cruzada independiente de los seis bloques de capítulos; incorporadas las precisiones detectadas.",
-  "revision_visual": "Revisión independiente de las 207 páginas mediante hojas de contacto y ampliaciones; verificación final de portada, ejercicios e índices. Las entradas del índice permanecen junto a su primera subentrada.",
+  "revision_matematica": "Revisión cruzada de las dependencias modificadas, los 206 ejercicios y soluciones; todas las etiquetas originales y conceptos del índice conservados.",
+  "revision_visual": "Inspección por bloques de todas las páginas renderizadas y nueva revisión de las páginas afectadas por los ajustes finales de cierre y paginación.",
   "bibliografia": "Cinco referencias reales, con metadatos contrastados y enlaces registrados en referencias-verificadas.md.",
-  "sha256_pdf": "36205d5b432b2aeeb1e9791e3257373afb0b4beae89d9e0bb0b273f4cb561963",
+  "sha256_pdf": "7c0f43ae9fe3ed185fd446d1a9d0ff99b3bd44fe374a86d20be95b3419d1c1d3",
   "diseno": "Edición clásica de matemáticas: Latin Modern Roman, portada centrada con escudo ESFM, capítulos a la derecha y recuadros finos guinda.",
-  "contenido_conservado": "Verificada igualdad SHA-256 de los 32 capítulos, referencias, notación y cobertura respecto de la versión anterior."
+  "contenido_conservado": "206 ejercicios y soluciones; ninguna etiqueta matemática original perdida. Consolidación de tres bloques duplicados de convergencia uniforme y ajuste documentado del orden de dependencias. La notación y la bibliografía conservan su contenido.",
+  "edicion": "Reorganización temática",
+  "partes": 6,
+  "avisos_de_justificacion": "Cinco avisos underfull hbox menores revisados visualmente; sin desbordamientos ni referencias indefinidas."
 }

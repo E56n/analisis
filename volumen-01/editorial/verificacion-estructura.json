@@ -1,8 +1,10 @@
 {
-  "capitulos": 32,
+  "partes": 6,
+  "capitulos": 16,
+  "lecturas_originales": 32,
   "ejercicios": 206,
   "soluciones": 206,
-  "entradas_indice": 195,
+  "entradas_indice": 193,
   "etiquetas_duplicadas": [],
   "referencias_internas_faltantes": [],
   "citas": [
@@ -12,5 +14,23 @@
     "rudin1976",
     "valencia"
   ],
-  "palabras_aproximadas_fuentes_latex": 71891
+  "palabras_aproximadas_fuentes_latex": 75462,
+  "ejercicios_por_capitulo": {
+    "01": 29,
+    "02": 24,
+    "03": 8,
+    "04": 16,
+    "05": 20,
+    "06": 14,
+    "07": 5,
+    "08": 9,
+    "09": 15,
+    "10": 15,
+    "11": 8,
+    "12": 5,
+    "13": 7,
+    "14": 14,
+    "15": 7,
+    "16": 10
+  }
 }

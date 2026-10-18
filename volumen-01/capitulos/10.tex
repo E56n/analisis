@@ -1,0 +1,636 @@
+\chapter{Dualidad, Hahn--Banach y geometría convexa}\label{cap:nuevo10}\label{chap:21}\label{chap:24}
+
+Una funcional lineal asigna un escalar a cada vector y puede interpretarse como una medición: su núcleo registra los vectores que esa medición no detecta. El dual reúne todas las mediciones continuas. Estudiaremos cómo describen hiperplanos y recuperan la norma de un vector, y cómo las cotas inferiores permiten reconocer isomorfismos sobre la imagen.
+
+El puente hacia la geometría será el teorema de Hahn--Banach: extender una funcional conservando una cota permite separar conjuntos convexos. Sus puntos de máximo identificarán después caras extremas, y el teorema de Krein--Milman reconstruirá un compacto convexo a partir de sus puntos extremos mediante combinaciones convexas y límites. Las demostraciones se presentan aquí en el orden de sus dependencias.
+
+Se requieren la norma de operador y su completitud cuando el codominio es completo, las propiedades de los compactos métricos y el lema de Zorn. Este último afirma que un conjunto parcialmente ordenado en el que toda cadena tiene una cota superior posee un elemento maximal. Lo aplicaremos primero a extensiones compatibles de funcionales y después a subconjuntos extremos compactos. En cada aplicación comprobaremos expresamente la condición sobre las cadenas.
+
+\section{Funcionales e hiperplanos}\label{lectura:21}
+
+\begin{definicion}
+El \emph{dual continuo} de $V$ es $V^*=\Bcal(V,\F)$. Sus elementos son funcionales lineales continuas y llevan la norma de operador
+\[\norm\varphi=\sup_{\norm v\leq1}|\varphi(v)|.\]
+El dual algebraico contiene todas las funcionales lineales, sin exigir continuidad, y puede ser mayor que $V^*$.
+\end{definicion}
+\index{dual!continuo}\index{funcional lineal}
+
+\begin{proposicion}
+El espacio $V^*$ es de Banach, aunque $V$ no sea completo.
+\end{proposicion}
+\begin{proof}
+Los cuerpos $\R$ y $\C$ son completos. Aplicamos el teorema~\ref{ch20:banach-operadores} con $W=\F$.
+\end{proof}
+
+\begin{proposicion}\label{ch21:kernel-proporcional}
+Dos funcionales lineales no nulas tienen el mismo núcleo si y solo si son múltiplos escalares no nulos una de la otra.
+\end{proposicion}
+\begin{proof}
+Si $\psi=c\varphi$ y $c\ne0$, sus conjuntos de ceros coinciden. Recíprocamente, si sus núcleos coinciden, elija $v_0$ con $\varphi(v_0)=1$. Esto es posible: primero elija un vector donde $\varphi$ no se anule y divídalo entre su valor. Para cualquier $v$, el vector $v-\varphi(v)v_0$ pertenece a $\ker\varphi$, pues
+\[
+ \varphi(v-\varphi(v)v_0)=\varphi(v)-\varphi(v)\cdot1=0.
+\]
+También pertenece a $\ker\psi$, de modo que $\psi(v)=\psi(v_0)\varphi(v)$. El escalar $\psi(v_0)$ no es cero, porque $v_0$ no está en el núcleo común. Si se admiten funcionales nulas, la igualdad de núcleos igual a $V$ significa que ambas son cero.
+\end{proof}
+
+\begin{teorema}\label{ch21:hiperplanos}
+Los subespacios propios maximales de un espacio vectorial $V$ son exactamente los núcleos de funcionales lineales no nulas. Cada uno tiene codimensión $1$. La correspondencia es biyectiva si se identifican funcionales que difieren por un factor escalar no nulo.
+\end{teorema}
+\index{hiperplano}
+\begin{proof}
+Si $M=\ker\varphi$ y $\varphi(v_0)=1$, todo $v$ admite la descomposición
+\[
+ v=\underbrace{v-\varphi(v)v_0}_{\in M}+\varphi(v)v_0.
+\]
+Es única, porque $M\cap\F v_0=\{0\}$. Así $V=M\oplus\F v_0$. Todo subespacio que contiene estrictamente a $M$ contiene algún $w$ con $\varphi(w)\ne0$; la misma descomposición usando $w/\varphi(w)$ muestra que ese subespacio es $V$. Por ello $M$ es maximal.
+
+Recíprocamente, si $M$ es propio maximal, elija $v_0\notin M$. El subespacio $M+\F v_0$ contiene estrictamente a $M$, por lo que es $V$. Como la suma es directa, la regla $\varphi(m+\alpha v_0)=\alpha$ está bien definida, es lineal, no nula y tiene núcleo $M$. La proposición~\ref{ch21:kernel-proporcional} prueba que la única indeterminación es un factor no nulo.
+\end{proof}
+
+El criterio de continuidad por cerradura del núcleo ya se demostró en la proposición~\ref{ch21:kernel-cerrado}, al estudiar operadores de rango finito. Aplicado a las funcionales de esta sección, enlaza su descripción algebraica con la topología.
+
+En consecuencia, los hiperplanos cerrados corresponden a las clases de funcionales continuas no nulas. Además, el núcleo de una funcional discontinua es denso: su cierre es un subespacio que contiene al núcleo; por maximalidad, ese cierre es el propio núcleo o todo $V$. La primera posibilidad lo haría cerrado y forzaría continuidad.
+
+\section{Isomorfismos y cotas inferiores}
+
+\begin{definicion}
+Un \emph{isomorfismo de espacios normados} $T:V\to W$ es una transformación lineal biyectiva para la cual $T$ y $T^{-1}$ son continuas. Una aplicación lineal es una \emph{isometría lineal} si $\norm{Tv}=\norm v$ para todo $v$; no se exige sobreyectividad. Un isomorfismo isométrico es, además, biyectivo. Una aplicación puede ser un isomorfismo de $V$ sobre su imagen sin ser sobreyectiva sobre $W$.
+\end{definicion}
+\index{isomorfismo!de espacios normados}
+
+\begin{teorema}\label{ch21:cota-inferior}
+Un operador lineal $T:V\to W$ es un isomorfismo de $V$ sobre $T(V)$ si y solo si existen $a,b>0$ tales que
+\[
+ a\norm v\leq\norm{Tv}\leq b\norm v\qquad(v\in V).
+\]
+Para concluir que es un isomorfismo de $V$ sobre $W$ hay que exigir además $T(V)=W$.
+\end{teorema}
+\begin{proof}
+Si $T$ es un isomorfismo sobre su imagen y $V\ne\{0\}$, la continuidad da
+\[
+ \norm{Tv}\leq\norm T\norm v,
+ \qquad\norm v=\norm{T^{-1}Tv}\leq\norm{T^{-1}}\norm{Tv}.
+\]
+Por tanto sirven $a=1/\norm{T^{-1}}$ y $b=\norm T$. Para el espacio nulo pueden elegirse cualesquiera constantes positivas.
+
+Recíprocamente, la cota superior hace continuo a $T$. Si $Tv=0$, la inferior obliga a que $v=0$, por lo que $T$ es inyectivo. Tiene una inversa definida en $T(V)$, y para $w=Tv$,
+\[
+ \norm{T^{-1}w}=\norm v\leq a^{-1}\norm w.
+\]
+Esta inversa es continua. No hemos probado que cada $w\in W$ sea de la forma $Tv$, porque tal afirmación no se deduce de las desigualdades.
+\end{proof}
+
+\begin{observacion}[Corrección de la lectura original]
+La inclusión $T:\R\to\R^2$, $T(t)=(t,0)$, es una isometría y satisface ambas cotas con $a=b=1$, pero no es sobreyectiva. Es un contraejemplo al enunciado original si ``isomorfismo'' se entiende sobre todo el codominio. La formulación anterior distingue la imagen del codominio.
+\end{observacion}
+
+La inversa de un isomorfismo es un isomorfismo, y la composición de dos isomorfismos también: la inversa de $ST$ es $T^{-1}S^{-1}$, y la composición de operadores continuos es continua. Cuando $V\ne\{0\}$,
+\[
+ 1=\norm{I_V}=\norm{T^{-1}T}\leq\norm{T^{-1}}\norm T.
+\]
+El factor $2I$ es un isomorfismo pero no una isometría. Por otra parte, si $V$ es completo y $T$ tiene cota inferior positiva, $T(V)$ es cerrado en $W$: de $Tv_n\to w$ se deduce que $(v_n)$ es de Cauchy; si $v_n\to v$, la continuidad da $w=Tv$.
+
+\section{La extensión de Hahn--Banach}
+
+La construcción de funcionales a partir de una base de Hamel produce funcionales algebraicas, pero no controla su norma. El siguiente argumento conserva una cota durante la extensión. Se presenta con detalle para justificar tanto la identificación isométrica con una parte del bidual como los teoremas de separación de conjuntos convexos que siguen.
+
+\begin{definicion}
+En un espacio vectorial real, $p:V\to\R$ es \emph{sublineal} si
+\[
+ p(x+y)\leq p(x)+p(y),\qquad p(tx)=tp(x)\quad(t\geq0).
+\]
+No se exige $p(-x)=p(x)$. Una norma es un ejemplo, pero los funcionales asociados a conjuntos convexos pueden no ser simétricos.
+\end{definicion}
+
+\begin{teorema}[Hahn--Banach real, forma dominada]\label{ch21:hb-real}
+Sea $p$ sublineal en un espacio vectorial real $V$, sea $M\leq V$ y sea $f:M\to\R$ lineal con $f(m)\leq p(m)$ para todo $m\in M$. Existe una funcional lineal $F:V\to\R$ que extiende a $f$ y satisface $F(v)\leq p(v)$ para todo $v\in V$.
+\end{teorema}
+\index{Hahn--Banach, teorema de}
+\begin{proof}
+Primero extendemos una sola dimensión. Si $x_0\notin M$, cualquier extensión a $M+\R x_0$ tiene la forma
+\[
+ f_1(m+tx_0)=f(m)+tc,
+\]
+donde $c$ es el valor que asignaremos a $x_0$. La representación es única porque $x_0\notin M$. Para que $f_1\leq p$ necesitamos
+\[
+ \sup_{y\in M}\{f(y)-p(y-x_0)\}\leq c
+ \leq\inf_{z\in M}\{p(z+x_0)-f(z)\}.
+\]
+El intervalo no es vacío. En efecto, para $y,z\in M$,
+\[
+ f(y)+f(z)=f(y+z)\leq p(y+z)
+ \leq p(y-x_0)+p(z+x_0).
+\]
+Reordenando obtenemos que cada término del extremo izquierdo es menor o igual que cada término del derecho. Además ambos extremos son finitos: tomar $y=0$ proporciona una cota inferior finita para el supremo, y tomar $z=0$ proporciona una cota superior finita; la desigualdad cruzada controla las otras dos cotas. Podemos elegir un número real $c$ en ese intervalo.
+
+Si $t>0$, la cota superior aplicada a $z=m/t$ da
+\[
+ f(m)+tc\leq t\,p(m/t+x_0)=p(m+tx_0).
+\]
+Si $t=-s<0$, la cota inferior aplicada a $y=m/s$ da
+\[
+ f(m)-sc\leq s\,p(m/s-x_0)=p(m-sx_0).
+\]
+Para $t=0$ se trata de la hipótesis inicial. Hemos construido la extensión de una dimensión.
+
+Considere ahora todos los pares $(N,g)$ donde $M\subseteq N\subseteq V$ es un subespacio, $g$ extiende a $f$ y $g\leq p$ en $N$. Ordénelos por extensión. La familia no es vacía porque contiene $(M,f)$. En una cadena, las funciones coinciden en los dominios comunes. Por ello la unión de sus dominios es un subespacio y la unión de sus funciones es una funcional lineal bien definida dominada por $p$. Es una cota superior de la cadena. Zorn proporciona un par maximal $(N,g)$. Si $N\ne V$, el paso de una dimensión lo extendería a un subespacio mayor, contradiciendo maximalidad. Así $N=V$.
+\end{proof}
+
+\begin{corolario}[Extensión con conservación de la norma]\label{ch21:hb-norma}
+Si $M$ es un subespacio de un espacio normado real o complejo $V$ y $f\in M^*$, existe $F\in V^*$ con $F|_M=f$ y $\norm F=\norm f$.
+\end{corolario}
+\begin{proof}
+En el caso real aplique el teorema a $p(v)=\norm f\norm v$. Obtenemos $F(v)\leq\norm f\norm v$. Aplicar la misma desigualdad a $-v$ da $-F(v)\leq\norm f\norm v$, luego $|F(v)|\leq\norm f\norm v$ y $\norm F\leq\norm f$. La restricción da la desigualdad contraria.
+
+En el caso complejo considere $V$ y $M$ como espacios reales. La función $g=\operatorname{Re}f$ es real lineal y está dominada por $p(v)=\norm f\norm v$. Extiéndala a una funcional real lineal $G$ dominada por $p$, y defina
+\[
+ F(v)=G(v)-iG(iv).
+\]
+Es aditiva y real homogénea. Además,
+\[
+ F(iv)=G(iv)-iG(-v)=G(iv)+iG(v)=iF(v),
+\]
+lo que implica homogeneidad compleja. Para $m\in M$, $G(m)=\operatorname{Re}f(m)$ y $G(im)=\operatorname{Re}(if(m))=-\operatorname{Im}f(m)$, así que $F(m)=f(m)$.
+
+Si $F(v)\ne0$, elija un escalar $\lambda$ de módulo $1$ con $\lambda F(v)=|F(v)|$. Entonces
+\[
+ |F(v)|=\operatorname{Re}F(\lambda v)=G(\lambda v)
+ \leq\norm f\norm{\lambda v}=\norm f\norm v.
+\]
+Si $F(v)=0$, la desigualdad es inmediata. Así $\norm F\leq\norm f$; la restricción vuelve a dar igualdad.
+\end{proof}
+
+\begin{corolario}\label{ch21:funcional-normante}
+Para cada $v\ne0$ existe $\varphi\in V^*$ con $\norm\varphi=1$ y $\varphi(v)=\norm v$. En consecuencia,
+\[\norm v=\sup_{\norm\varphi\leq1}|\varphi(v)|.\]
+\end{corolario}
+\begin{proof}
+En $M=\F v$ defina $f(\alpha v)=\alpha\norm v$. Esta funcional tiene norma $1$, porque $|f(\alpha v)|=\norm{\alpha v}$. Extiéndala por el corolario anterior. La desigualdad $|\varphi(v)|\leq\norm\varphi\norm v$ da una cota superior para el supremo, y la extensión construida alcanza esa cota. Para $v=0$, todos los valores son cero.
+\end{proof}
+
+La extensión con conservación de la norma asegura que las funcionales continuas distinguen vectores; la forma dominada de Hahn--Banach permite algo más: adaptar una funcional a la geometría de un conjunto que no tiene por qué ser simétrico. Pasamos ahora de hiperplanos y mediciones a conjuntos convexos, antes de construir sus funcionales de separación.
+
+\section{Conjuntos y combinaciones convexas}\label{lectura:24}
+
+Toda convexidad de estas secciones es \emph{real}. Si el espacio es complejo, trabajamos con su espacio vectorial real subyacente. Los coeficientes de las combinaciones convexas son reales no negativos; las desigualdades de separación se escriben para funcionales reales, o para la parte real de una funcional compleja. No existe un orden de los números complejos que permita escribir sin más $\varphi(a)<\varphi(b)$. La convexidad permite interpolar entre puntos sin salir de un conjunto; una funcional que alcanza allí un máximo permitirá identificar sus partes extremas.
+
+
+
+\begin{definicion}
+El segmento entre $x$ e $y$ es
+\[
+ [x,y]=\{(1-t)x+ty:0\leq t\leq1\}.
+\]
+Un conjunto $A$ es \emph{convexo} si $[x,y]\subseteq A$ para todos $x,y\in A$. Un conjunto es un \emph{cono convexo} si $\alpha x+\beta y$ pertenece a él siempre que $x,y$ pertenezcan a él y $\alpha,\beta\geq0$.
+\end{definicion}
+\index{convexidad}\index{cono convexo}
+
+\begin{ejemplo}
+El vacío y todo subespacio vectorial son convexos. Toda bola abierta de un espacio normado es convexa: si $\norm{y-x}<r$, $\norm{z-x}<r$ y $0\leq t\leq1$, entonces
+\[
+ \norm{(1-t)y+tz-x}\leq(1-t)\norm{y-x}+t\norm{z-x}<r.
+\]
+La última desigualdad vale también en $t=0,1$, donde queda una sola de las dos hipótesis. Para la bola cerrada, las mismas estimaciones con $\leq r$ dan $\norm{(1-t)y+tz-x}\leq r$. Un cono convexo es convexo tomando $\alpha=1-t$ y $\beta=t$. Si un cono no es vacío, contiene al cero, porque se permiten ambos coeficientes iguales a cero.
+\end{ejemplo}
+
+\begin{proposicion}\label{ch24:interior-cierre}
+El interior y el cierre de un conjunto convexo de un espacio normado son convexos.
+\end{proposicion}
+\begin{proof}
+Si $x,y\in\interior A$, elija $r>0$ tal que $B(x,r)$ y $B(y,r)$ estén contenidos en $A$. Para $0\leq t\leq1$ y $\norm h<r$, los puntos $x+h,y+h$ pertenecen a $A$. Por convexidad,
+\[
+ (1-t)(x+h)+t(y+h)=(1-t)x+ty+h\in A.
+\]
+Así la bola de radio $r$ alrededor de $(1-t)x+ty$ está en $A$, y ese punto es interior. Si el interior es vacío, su convexidad se cumple por definición.
+
+Para el cierre, si $x,y\in\cl A$, elija sucesiones $x_n,y_n\in A$ convergentes a ellos. Para cada $t\in[0,1]$, los puntos $(1-t)x_n+ty_n$ están en $A$ y convergen a $(1-t)x+ty$ por continuidad de las operaciones. Por ello el límite pertenece a $\cl A$.
+\end{proof}
+
+\begin{definicion}
+La \emph{envolvente convexa}, o cápsula convexa, de $A$, denotada por $\operatorname{co}(A)$, es la intersección de todos los conjuntos convexos que contienen a $A$. La \emph{envolvente convexa cerrada} es la intersección de todos los conjuntos cerrados convexos que contienen a $A$.
+\end{definicion}
+\index{envolvente convexa}\index{envolvente convexa!cerrada}
+
+Estas familias no son vacías, porque contienen a todo el espacio. La intersección de conjuntos convexos es convexa: si dos puntos están en todos los conjuntos de la familia, todo su segmento está en cada uno y por tanto en la intersección. La intersección también es cerrada cuando todos los conjuntos lo son. Así las definiciones producen los menores conjuntos con las propiedades indicadas.
+
+\begin{proposicion}\label{ch24:combinaciones}
+La envolvente convexa de $A$ es el conjunto de todas sus combinaciones convexas finitas:
+\[
+ \operatorname{co}(A)=
+ \left\{\sum_{j=1}^n\alpha_ja_j:
+ n\geq1,\ a_j\in A,\ \alpha_j\geq0,\ \sum_{j=1}^n\alpha_j=1\right\}.
+\]
+Además, su envolvente convexa cerrada es $\cl{\operatorname{co}(A)}$.
+\end{proposicion}
+\begin{proof}
+Denote por $D$ el conjunto del lado derecho. Contiene a $A$ tomando una sola variable con coeficiente $1$. Si $x=\sum_{j=1}^n\alpha_ja_j$ e $y=\sum_{k=1}^m\beta_kb_k$, entonces
+\[
+ (1-t)x+ty=\sum_{j=1}^n(1-t)\alpha_ja_j+\sum_{k=1}^m t\beta_kb_k.
+\]
+Los coeficientes son no negativos y su suma es $(1-t)+t=1$. Por tanto $D$ es convexo, y la minimalidad de $\operatorname{co}(A)$ da $\operatorname{co}(A)\subseteq D$.
+
+Para la otra inclusión, pruebe por inducción que todo conjunto convexo que contiene a $A$ contiene esas combinaciones. Para un término es inmediato. En una combinación de $n+1$ términos, si $\alpha_{n+1}=1$, el resultado es $a_{n+1}$. Si $\alpha_{n+1}<1$, ponga $s=1-\alpha_{n+1}>0$ y
+\[
+ y=\sum_{j=1}^n\frac{\alpha_j}{s}a_j.
+\]
+Por la hipótesis inductiva, $y$ pertenece al conjunto convexo, y la combinación original es $sy+\alpha_{n+1}a_{n+1}$, que también pertenece a él. Esto prueba $D\subseteq\operatorname{co}(A)$.
+
+Por la proposición~\ref{ch24:interior-cierre}, $\cl{\operatorname{co}(A)}$ es cerrado, convexo y contiene a $A$. Cualquier cerrado convexo que contenga a $A$ contiene primero a $\operatorname{co}(A)$ y después a su cierre. Así ese cierre es exactamente la envolvente convexa cerrada. Si $A=\varnothing$, todas las envolventes son vacías y las afirmaciones siguen siendo válidas.
+\end{proof}
+
+\section{Separación: construcción de la funcional}
+
+Para separar conjuntos convexos, primero convertimos la geometría de un abierto convexo en una función sublineal. La simetría no será necesaria; por eso utilizamos la versión real dominada de Hahn--Banach, no solamente su versión para normas.
+
+\begin{lema}[Funcional de Minkowski]\label{ch24:minkowski}
+Sea $U$ abierto convexo en un espacio normado real y suponga $0\in U$. Defina
+\[
+ p_U(x)=\inf\{t>0:x\in tU\}.
+\]
+Entonces $p_U$ es finito, no negativo y sublineal. Si $B(0,r)\subseteq U$, entonces $p_U(x)\leq\norm x/r$. Además,
+\[U=\{x:p_U(x)<1\}.\]
+\end{lema}
+\index{Minkowski, funcional de}
+\begin{proof}
+Como $0$ es interior, existe $r>0$ con $B(0,r)\subseteq U$. Para todo $t>\norm x/r$, el vector $x/t$ está en esa bola y, por tanto, $x\in tU$. Esto prueba finitud y $p_U(x)\leq\norm x/r$. La no negatividad procede de que el ínfimo se toma entre números positivos, y $p_U(0)=0$ porque $0\in tU$ para todo $t>0$.
+
+Para $s>0$, cambiar $t$ por $su$ en la definición da $p_U(sx)=sp_U(x)$; para $s=0$ la igualdad ya está probada. Observe que $0\in U$ y convexidad implican $aU\subseteq bU$ cuando $0<a<b$: si $u\in U$, entonces $(a/b)u+(1-a/b)0\in U$.
+
+Si $a>p_U(x)$, la definición de ínfimo permite elegir $t<a$ con $x\in tU$, y la inclusión anterior da $x\in aU$. Si también $b>p_U(y)$, los puntos $x/a$ e $y/b$ están en $U$. Su combinación convexa
+\[
+ \frac{x+y}{a+b}=\frac a{a+b}\frac xa+\frac b{a+b}\frac yb
+\]
+pertenece a $U$. Así $p_U(x+y)\leq a+b$. Haciendo $a\downarrow p_U(x)$ y $b\downarrow p_U(y)$ obtenemos subaditividad.
+
+Si $p_U(x)<1$, existe $0<t<1$ con $x\in tU$, y por convexidad $tU\subseteq U$. Por tanto $x\in U$. Recíprocamente, si $x\in U$ y $x\ne0$, la apertura de $U$ y la continuidad de $s\mapsto sx$ permiten elegir $s>1$ suficientemente próximo a $1$ con $sx\in U$. Entonces $x\in s^{-1}U$, de modo que $p_U(x)\leq s^{-1}<1$. Para $x=0$ ya se sabe que $p_U(0)=0$.
+\end{proof}
+
+\begin{observacion}
+No hemos afirmado que $p_U(-x)=p_U(x)$. Por ejemplo, para $U=(-1,2)\subseteq\R$, $p_U(1)=1/2$ y $p_U(-1)=1$. La sublinealidad exige homogeneidad solo para escalares no negativos. Esta precisión es esencial para utilizar correctamente la convexidad sin añadir una simetría que el conjunto no tiene.
+\end{observacion}
+
+\begin{lema}\label{ch24:separacion-abierto}
+Si $D$ es abierto, convexo, no vacío y $0\notin D$, existe una funcional real lineal continua $\ell\ne0$ tal que $\ell(d)>0$ para todo $d\in D$.
+\end{lema}
+\begin{proof}
+Elija $a\in D$ y ponga $U=D-a$. Es abierto convexo y contiene al origen. El vector $x_0=-a$ no pertenece a $U$, porque de lo contrario $0\in D$. Por el lema anterior, $p_U(x_0)\geq1$.
+
+En la recta $\R x_0$ defina $f(tx_0)=t p_U(x_0)$. Para $t\geq0$, la homogeneidad de $p_U$ da $f(tx_0)=p_U(tx_0)$. Para $t<0$, $f(tx_0)<0\leq p_U(tx_0)$. Así $f\leq p_U$ en su dominio. Hahn--Banach real, teorema~\ref{ch21:hb-real}, proporciona una extensión $F$ a todo el espacio con $F\leq p_U$.
+
+Si $B(0,r)\subseteq U$, aplicamos la cota del lema tanto a $x$ como a $-x$ y obtenemos
+\[
+ F(x)\leq\norm x/r,\qquad -F(x)=F(-x)\leq\norm x/r.
+\]
+Por ello $F$ es continua. Además $F(x_0)=p_U(x_0)\geq1$, de modo que no es cero. Si $d\in D$, entonces $d-a\in U$ y
+\[
+ F(d)=F(d-a)+F(a)<1-p_U(x_0)\leq0.
+\]
+La funcional $\ell=-F$ satisface la conclusión.
+\end{proof}
+
+\begin{teorema}[Separación estricta de un compacto y un cerrado]\label{ch24:separacion}
+Sean $A,B$ no vacíos, convexos y disjuntos en un espacio normado real, con $A$ compacto y $B$ cerrado. Existe $\ell\in V^*$ tal que
+\[
+ \sup_{a\in A}\ell(a)<\inf_{b\in B}\ell(b).
+\]
+En un espacio complejo, existe una funcional compleja continua $\varphi$ para la cual la misma desigualdad vale con $\operatorname{Re}\varphi$ en lugar de $\ell$.
+\end{teorema}
+\index{separacion@separación!de conjuntos convexos}
+\begin{proof}
+El conjunto $C=B-A$ es convexo. Es cerrado porque es la suma del cerrado $B$ y del compacto $-A$, como se demostró en el ejercicio~\ref{ej:lectura-19-2}. La disjunción implica $0\notin C$. Por cerradura existe $d=\dist(0,C)>0$. Sea $r=d/2$ y
+\[
+ D=C+B(0,r).
+\]
+Es convexo y abierto: la convexidad se comprueba sumando las combinaciones correspondientes, y la apertura procede de que es una unión de traslaciones de la bola abierta. No contiene a cero, porque $c+h=0$ con $\norm h<r$ implicaría $\norm c<d$, imposible.
+
+El lema anterior da $\ell\ne0$ con $\ell(c+h)>0$ para $c\in C$ y $\norm h<r$. La simetría de la bola y la definición de norma de una funcional real implican
+\[
+ \inf_{\norm h<r}\ell(h)=-r\norm\ell.
+\]
+Para justificarlo, la cota $\ell(h)\geq-\norm\ell\norm h$ da un sentido; en el otro, elija vectores unitarios donde $|\ell|$ se aproxime a $\norm\ell$, cambie su signo para obtener valores negativos y multiplíquelos por escalares menores que $r$ que tiendan a $r$. De $\ell(c)+\ell(h)>0$ para todos esos $h$ se deduce
+\[
+ \ell(c)\geq r\norm\ell>0.
+\]
+En particular, para todo $a\in A$ y $b\in B$,
+\[
+ \ell(b)-\ell(a)\geq r\norm\ell.
+\]
+Como $A$ es compacto, $\ell$ alcanza en él un máximo finito. Tomándolo en la desigualdad y después tomando el ínfimo sobre $B$, obtenemos
+\[
+ \inf_B\ell\geq\max_A\ell+r\norm\ell>\max_A\ell.
+\]
+
+En el caso complejo aplique la prueba al espacio real subyacente. A partir de la funcional real $\ell$, defina $\varphi(v)=\ell(v)-i\ell(iv)$. El cálculo del corolario~\ref{ch21:hb-norma} muestra que es compleja lineal y continua, y su parte real es precisamente $\ell$. Esto da la versión compleja sin ordenar números complejos.
+\end{proof}
+
+\section{Puntos extremos y el teorema de Krein--Milman}
+
+\begin{definicion}
+Un punto $x\in A$ es \emph{extremo} si, cuando $x=(1-t)y+tz$ con $y,z\in A$ y $0<t<1$, necesariamente $y=z=x$. El conjunto de puntos extremos se denota $\operatorname{ext}(A)$.
+
+Un subconjunto $F\subseteq A$ es \emph{extremo en $A$} si toda combinación $(1-t)y+tz\in F$, con $y,z\in A$ y $0<t<1$, obliga a que $y,z\in F$. Si además $F$ es convexo, se denomina una \emph{cara} de $A$.
+\end{definicion}
+\index{punto extremo}\index{cara!de un convexo}
+
+La definición equivalente de punto extremo dice que no puede escribirse como combinación convexa estricta de dos puntos \emph{distintos} de $A$. Esa palabra falta en la formulación original: sin ella, $x=(1-t)x+tx$ excluiría a todos los puntos. Una singleton $\{x\}$ es extrema en $A$ exactamente cuando $x$ es un punto extremo.
+
+\begin{lema}\label{ch24:caras}
+Sea $K$ compacto no vacío y sea $\ell$ una funcional real continua. El conjunto
+\[
+ F=\{x\in K:\ell(x)=\max_K\ell\}
+\]
+es no vacío, compacto y extremo en $K$. Si $K$ es convexo, $F$ también lo es. Además, si $G$ es extremo en $F$ y $F$ es extremo en $A$, entonces $G$ es extremo en $A$.
+\end{lema}
+\begin{proof}
+El máximo $m$ existe por compacidad y continuidad. El conjunto $F=K\cap\ell^{-1}(\{m\})$ es un cerrado no vacío de $K$, luego compacto. Si $(1-t)x+ty\in F$ con $x,y\in K$ y $0<t<1$, entonces
+\[
+ 0=m-\ell((1-t)x+ty)
+ =(1-t)(m-\ell(x))+t(m-\ell(y)).
+\]
+Los dos sumandos son no negativos y sus coeficientes son estrictamente positivos. Por ello ambos déficits son cero, de modo que $x,y\in F$. Si $K$ es convexo y $x,y\in F$, el segmento pertenece a $K$ y la linealidad da $\ell((1-t)x+ty)=m$, por lo que está en $F$.
+
+Para la transitividad, si $(1-t)x+ty\in G\subseteq F$ y $x,y\in A$, la extremalidad de $F$ fuerza $x,y\in F$; después la extremalidad de $G$ dentro de $F$ fuerza $x,y\in G$.
+\end{proof}
+
+\begin{teorema}[Krein--Milman para compactos en norma]\label{ch24:krein-milman}
+Si $A$ es no vacío, compacto y convexo en un espacio normado, entonces $\operatorname{ext}(A)\ne\varnothing$ y
+\[
+ A=\cl{\operatorname{co}(\operatorname{ext}(A))}.
+\]
+\end{teorema}
+\index{Krein--Milman, teorema de}
+\begin{proof}
+Primero encontraremos un punto extremo. Sea $\mathcal F$ la familia de los subconjuntos \emph{no vacíos}, compactos y extremos de $A$. No es vacía porque $A\in\mathcal F$. Ordénela por inclusión inversa: $F\preceq G$ significa $G\subseteq F$. Buscamos así un elemento maximal para ese orden, que será un conjunto mínimo por inclusión.
+
+Sea $\mathcal C$ una cadena no vacía de $\mathcal F$. Sus miembros son compactos y, por tanto, cerrados en el compacto $A$. Cualquier intersección finita de miembros de una cadena coincide con el más pequeño de esos miembros y no es vacía. La propiedad de intersección finita de los compactos implica
+\[
+ K=\bigcap_{F\in\mathcal C}F\ne\varnothing.
+\]
+Es compacto por ser cerrado en $A$. Es extremo porque, si una combinación estricta de puntos de $A$ pertenece a $K$, pertenece a cada $F\in\mathcal C$; la extremalidad de cada $F$ obliga a que ambos extremos pertenezcan a todos ellos y, por tanto, a $K$. Así $K\in\mathcal F$ y es una cota superior de la cadena en el orden inverso. Para la cadena vacía, cualquier miembro de $\mathcal F$ es una cota superior. Zorn proporciona un miembro minimal por inclusión $F_0$.
+
+Si $F_0$ contuviera dos puntos distintos $u,v$, Hahn--Banach real aplicado al vector $v-u$ proporcionaría una funcional real continua $\ell$ con $\ell(v-u)=\norm{v-u}>0$. Por tanto $\ell(u)<\ell(v)$. El subconjunto de máximos de $\ell$ en $F_0$ es compacto, no vacío y extremo en $F_0$ por el lema anterior. Por transitividad, es extremo en $A$. Es un subconjunto propio de $F_0$ porque no contiene a $u$, contradiciendo la minimalidad. Así $F_0=\{e\}$ y $e\in\operatorname{ext}(A)$.
+
+Ponga $E=\operatorname{ext}(A)$ y $C=\cl{\operatorname{co}(E)}$. Como $A$ es cerrado convexo y contiene a $E$, se tiene $C\subseteq A$. En particular, $C$ es compacto por ser cerrado en $A$; no estamos usando una afirmación general de compacidad de envolventes convexas.
+
+Si existiera $x\in A\setminus C$, el teorema de separación aplicado a $C$ y $\{x\}$ daría una funcional real continua $\ell$ con
+\[
+ \sup_C\ell<\ell(x)\leq\max_A\ell=:m.
+\]
+La cara $F=\{a\in A:\ell(a)=m\}$ es no vacía, compacta y convexa, y es extrema en $A$. La primera parte de la demostración, aplicada a $F$, proporciona un punto extremo $e$ de $F$. La transitividad del lema hace que $e$ sea extremo en $A$, así que $e\in E\subseteq C$. Pero $\ell(e)=m>\sup_C\ell$, contradicción. En consecuencia $A\subseteq C$, y queda probada la igualdad.
+\end{proof}
+
+El cierre en el enunciado permite límites de combinaciones convexas finitas; no equivale a permitir una suma infinita arbitraria sin comprobar su convergencia. La versión aquí demostrada usa compacidad para la norma. Otras topologías conducen a versiones más generales, pero requieren hipótesis adicionales que no se están utilizando en este capítulo.
+
+\section{Ejercicios resueltos: dualidad, distancia e invertibilidad}
+
+\begin{ejercicio}[Lectura 21, ejercicio 1]\label{ej:lectura-21-1}
+Demuestre que el espacio de todas las funcionales lineales de $\F^n$ es isomorfo a $\F^n$.
+\end{ejercicio}
+\begin{solucion}
+Una funcional queda determinada por $a_j=\varphi(e_j)$, porque $\varphi(x)=\sum_{j=1}^n a_jx_j$. Así $J(a)(x)=\sum_j a_jx_j$ es una biyección lineal entre $\F^n$ y su dual algebraico. No introducimos conjugados en esta fórmula porque queremos que $J$ sea lineal también cuando $\F=\C$.
+
+Con la norma uniforme en el dominio de las funcionales,
+\[
+ |J(a)(x)|\leq\sum_j|a_j|\quad\text{si }\norm x_\infty\leq1.
+\]
+Elija $x_j=\overline{a_j}/|a_j|$ cuando $a_j\ne0$ y $x_j=1$ cuando $a_j=0$; en el caso real son simplemente signos. Entonces $a_jx_j=|a_j|$, y obtenemos $\norm{J(a)}=\sum_j|a_j|$. Todas las funcionales son continuas y $J$ es una isometría si el espacio de coeficientes lleva norma $\ell^1$. Como $\norm a_\infty\leq\sum_j|a_j|\leq n\norm a_\infty$, también es un isomorfismo para la norma uniforme, y el lema~\ref{ch19:coordenadas} permite cualquier otra norma en dimensión finita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:lectura-21-2}
+Sea $\varphi\in V^*$ y $M=\ker\varphi$. Pruebe que
+\[|\varphi(v)|=\norm\varphi\,\dist(v,M)\qquad(v\in V).\]
+\end{ejercicio}
+\begin{solucion}
+Si $\varphi=0$, entonces $M=V$ y ambos lados son cero. Suponga $\varphi\ne0$. Para $m\in M$,
+\[
+ |\varphi(v)|=|\varphi(v-m)|\leq\norm\varphi\norm{v-m}.
+\]
+Tomar el ínfimo da $|\varphi(v)|\leq\norm\varphi\dist(v,M)$. Si $\varphi(v)=0$, $v\in M$ y ya hay igualdad. En otro caso, por la definición de norma existen $u_j$ con $\norm{u_j}\leq1$ y $|\varphi(u_j)|\to\norm\varphi>0$. Descartamos términos iniciales si hace falta para que $\varphi(u_j)\ne0$. El vector
+\[
+ m_j=v-\frac{\varphi(v)}{\varphi(u_j)}u_j
+\]
+pertenece a $M$. Por tanto
+\[
+ \dist(v,M)\leq\norm{v-m_j}
+ \leq\frac{|\varphi(v)|}{|\varphi(u_j)|}.
+\]
+Al pasar al límite obtenemos la desigualdad inversa. No hemos supuesto que la norma de $\varphi$ se alcance.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:lectura-21-3}
+Sea $A\subseteq V$ no vacío y $U=\overline B(0,1)$. Pruebe
+\[
+ \cl{A+U}=\{v\in V:\dist(v,A)\leq1\}.
+\]
+Deduzca que $A+U$ es cerrado si y solo si todo $v$ con $\dist(v,A)=1$ admite $a\in A$ con $\norm{v-a}=1$.
+\end{ejercicio}
+\begin{solucion}
+La función distancia a un conjunto no vacío es continua: la desigualdad triangular da $|\dist(x,A)-\dist(y,A)|\leq\norm{x-y}$. El conjunto del lado derecho es por ello cerrado. Contiene a $A+U$, así que también contiene su cierre.
+
+Si $\dist(v,A)\leq1$, elija $a_n\in A$ con $\norm{v-a_n}<1+1/n$. Defina
+\[
+ u_n=\frac{v-a_n}{\max\{1,\norm{v-a_n}\}},\qquad z_n=a_n+u_n.
+\]
+Tenemos $\norm{u_n}\leq1$ y $z_n\in A+U$. Si $\norm{v-a_n}\leq1$, entonces $z_n=v$. Si es mayor que $1$, la diferencia entre $v-a_n$ y su normalización tiene norma $\norm{v-a_n}-1<1/n$. Por tanto $z_n\to v$, y queda demostrada la igualdad.
+
+Cuando $\dist(v,A)<1$, la definición de ínfimo ya proporciona $a\in A$ con $\norm{v-a}<1$, de modo que $v\in A+U$. Solo pueden faltar en la suma puntos de distancia exactamente $1$. Para esos puntos, pertenecer a $A+U$ equivale a que exista un $a\in A$ con $\norm{v-a}\leq1$; como la distancia es $1$, tal desigualdad debe ser igualdad. Esto prueba el criterio. Si $A=\varnothing$, la suma es vacía y cerrada, y la identidad se interpreta con $\dist(v,\varnothing)=+\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 4]\label{ej:lectura-21-4}
+Sea $\norm\varphi=1$, $M=\ker\varphi$ y $U=\overline B(0,1)$. Demuestre
+\[
+ \cl{M+U}=\{v:|\varphi(v)|\leq1\}.
+\]
+Pruebe que $M+U$ es cerrado si y solo si existe $u\in U$ con $|\varphi(u)|=1$.
+\end{ejercicio}
+\begin{solucion}
+La primera igualdad se sigue de los ejercicios~\ref{ej:lectura-21-2} y~\ref{ej:lectura-21-3} porque $\dist(v,M)=|\varphi(v)|$. Si $M+U$ es cerrado, elija $v$ con $\varphi(v)=1$, posible porque una funcional no nula es sobreyectiva sobre $\F$. La igualdad del cierre da $v=m+u$, con $m\in M$ y $u\in U$. De ahí $\varphi(u)=1$.
+
+Recíprocamente, suponga $u_0\in U$ y $|\varphi(u_0)|=1$. Si $|\varphi(v)|\leq1$, defina
+\[
+ u=\frac{\varphi(v)}{\varphi(u_0)}u_0.
+\]
+Entonces $\norm u\leq1$ y $\varphi(v-u)=0$. Así $v=(v-u)+u\in M+U$. La suma coincide con el cerrado $\{v:|\varphi(v)|\leq1\}$.
+
+La conclusión original escribe $|v|=1$ donde debe aparecer $|\varphi(v)|=1$: la condición relevante es que la funcional alcance su norma. No sucede siempre. En $c_0$ con norma uniforme,
+\[
+ \varphi(x)=\sum_{n=1}^{\infty}2^{-n}x_n
+\]
+tiene norma $1$, porque la desigualdad triangular da la cota y las sucesiones con sus primeros $N$ términos iguales a $1$ dan valores $1-2^{-N}$. Si $\norm x_\infty\leq1$ y $|\varphi(x)|=1$, entonces $\sum_n2^{-n}|x_n|=1$, lo que obliga a $|x_n|=1$ para todo $n$: cualquier déficit positivo en un término haría la suma menor que $1$. Eso contradice $x_n\to0$. En este ejemplo $M+U$ no es cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 5]\label{ej:lectura-21-5}
+Sea $V$ de Banach y $T\in\Bcal(V,V)$ con $\sum_{n=0}^{\infty}\norm{T^n}<\infty$. Demuestre que $I-T$ es un isomorfismo y calcule su inversa.
+\end{ejercicio}
+\begin{solucion}
+El espacio $\Bcal(V,V)$ es completo. Por el teorema~\ref{ch19:series}, la serie $S=\sum_{n=0}^{\infty}T^n$ converge en norma de operador. Sus sumas parciales satisfacen
+\[
+ (I-T)\sum_{n=0}^NT^n=I-T^{N+1}
+ =\left(\sum_{n=0}^NT^n\right)(I-T).
+\]
+Como la serie de normas converge, $\norm{T^{N+1}}\to0$. La continuidad de la composición, probada en el ejercicio~\ref{ej:lectura-20-5}, permite pasar al límite y obtener $(I-T)S=S(I-T)=I$. Por tanto $(I-T)^{-1}=S$ es continuo. En particular, si $\norm T<1$, la hipótesis se cumple porque $\norm{T^n}\leq\norm T^n$.
+\end{solucion}
+\index{Neumann, serie de}
+
+\begin{ejercicio}[Lectura 21, ejercicio 6]\label{ej:lectura-21-6}
+Sean $V,W$ de Banach, con $V\ne\{0\}$, y $T:V\to W$ un isomorfismo. Si $S\in\Bcal(V,W)$ satisface $\norm{S-T}<1/\norm{T^{-1}}$, demuestre que $S$ es un isomorfismo. Deduzca que los isomorfismos forman un abierto de $\Bcal(V,W)$, incluyendo por separado el caso $V=W=\{0\}$.
+\end{ejercicio}
+\begin{solucion}
+Supongamos $V\ne\{0\}$; cuando $V=W=\{0\}$ solo existe un operador y la conclusión de apertura es inmediata. Defina $E=T^{-1}(S-T)$. Entonces $\norm E\leq\norm{T^{-1}}\norm{S-T}<1$ y
+\[
+ S=T(I+E).
+\]
+El ejercicio~\ref{ej:lectura-21-5} aplicado a $-E$ da que $I+E$ es invertible. Así
+\[
+ S^{-1}=(I+E)^{-1}T^{-1},\qquad
+ \norm{S^{-1}}\leq\frac{\norm{T^{-1}}}{1-\norm E}.
+\]
+Cada isomorfismo $T$ tiene, por tanto, una bola abierta de radio $1/\norm{T^{-1}}$ formada por isomorfismos. Esa es precisamente la definición de que el conjunto sea abierto. Si no existen isomorfismos, el conjunto vacío también es abierto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 7]\label{ej:lectura-21-7}
+Sea $T$ un isomorfismo de $V$ sobre un subespacio de $W$. Pruebe que, si $\norm{T'-T}$ es suficientemente pequeña, $T'$ es un isomorfismo sobre su imagen.
+\end{ejercicio}
+\begin{solucion}
+El teorema~\ref{ch21:cota-inferior} proporciona $a>0$ con $\norm{Tv}\geq a\norm v$. Si $\delta=\norm{T'-T}<a$, entonces
+\[
+ \norm{T'v}\geq\norm{Tv}-\norm{(T'-T)v}\geq(a-\delta)\norm v.
+\]
+También $\norm{T'v}\leq\norm{T'}\norm v$. El mismo teorema muestra que $T'$ es un isomorfismo de $V$ sobre $T'(V)$, con inversa de norma a lo sumo $1/(a-\delta)$. No se afirma que las imágenes de $T$ y $T'$ sean iguales.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 8]\label{ej:lectura-21-8}
+Pruebe que la evaluación canónica
+\[
+ J:V\longrightarrow V^{**},\qquad J(v)(\varphi)=\varphi(v),
+\]
+es una isometría lineal.
+\end{ejercicio}
+\begin{solucion}
+Para cada $v$, la aplicación $J(v)$ es lineal en $\varphi$, y
+\[
+ |J(v)(\varphi)|=|\varphi(v)|\leq\norm\varphi\norm v.
+\]
+Así $J(v)\in V^{**}$ y $\norm{J(v)}\leq\norm v$. Además, para $\alpha,\beta\in\F$,
+\[
+ J(\alpha v+\beta w)(\varphi)
+ =\varphi(\alpha v+\beta w)
+ =\alpha J(v)(\varphi)+\beta J(w)(\varphi),
+\]
+de modo que $J$ es lineal. Si $v\ne0$, el corolario~\ref{ch21:funcional-normante} proporciona una funcional $\varphi$ de norma $1$ con $\varphi(v)=\norm v$. Por tanto
+\[
+ \norm{J(v)}\geq|J(v)(\varphi)|=\norm v.
+\]
+Para $v=0$ la igualdad es directa. En consecuencia $\norm{J(v)}=\norm v$ para todo $v$, y $J$ es inyectiva. Su sobreyectividad es una propiedad adicional, llamada reflexividad, que no se deduce de esta prueba.
+\end{solucion}
+
+\section{Ejercicios resueltos: envolventes y separación}
+
+\begin{ejercicio}[Lectura 24, ejercicio 1]\label{ej:lectura-24-1}
+Demuestre que la intersección de una familia no vacía de conjuntos convexos es convexa.
+\end{ejercicio}
+\begin{solucion}
+Sea $C=\bigcap_{A\in\mathcal A}A$. Si $x,y\in C$ y $0\leq t\leq1$, entonces $x,y\in A$ para cada $A\in\mathcal A$. Su convexidad implica $(1-t)x+ty\in A$ para cada miembro de la familia, y por ello el punto pertenece a $C$. Si $C$ es vacío, la condición no tiene pares de puntos que comprobar y también se cumple.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 2]\label{ej:lectura-24-2}
+Si $A,B\subseteq V$ y $C\subseteq W$ son convexos, $\alpha\in\R$ y $T:V\to W$ es lineal, pruebe que $\alpha A$, $A+B$, $T(A)$ y $T^{-1}(C)$ son convexos.
+\end{ejercicio}
+\begin{solucion}
+Para $a_1,a_2\in A$,
+\[
+ (1-t)\alpha a_1+t\alpha a_2=\alpha((1-t)a_1+ta_2)\in\alpha A.
+\]
+Esto vale también para $\alpha=0$ y para $\alpha<0$, porque los coeficientes interiores siguen siendo $1-t,t$. Para dos puntos $a_1+b_1,a_2+b_2\in A+B$,
+\[
+ (1-t)(a_1+b_1)+t(a_2+b_2)
+ =((1-t)a_1+ta_2)+((1-t)b_1+tb_2)\in A+B.
+\]
+Para la imagen, $(1-t)T(a_1)+tT(a_2)=T((1-t)a_1+ta_2)\in T(A)$. Para la preimagen, si $Tx,Ty\in C$, la linealidad da $T((1-t)x+ty)=(1-t)Tx+tTy\in C$, y por tanto $(1-t)x+ty\in T^{-1}(C)$. Los casos de conjuntos vacíos satisfacen la definición de forma vacua.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 3]\label{ej:lectura-24-3}
+Sean $A_1,\ldots,A_n$ conjuntos convexos no vacíos. Demuestre que $\operatorname{co}(A_1\cup\cdots\cup A_n)$ está formado por las combinaciones $\sum_{j=1}^n\alpha_jx_j$, con $x_j\in A_j$, $\alpha_j\geq0$ y $\sum_j\alpha_j=1$.
+\end{ejercicio}
+\begin{solucion}
+Toda combinación de la forma indicada es, por definición, una combinación convexa de puntos de la unión, así que pertenece a su envolvente. Para la otra inclusión, tome una combinación convexa finita de puntos de la unión y asigne cada punto a uno de los $A_j$ que lo contenga. Agrupe los términos según esa asignación. Sea $\alpha_j$ la suma de sus coeficientes. Si $\alpha_j>0$, el grupo se escribe $\alpha_jx_j$, donde $x_j$ es una combinación convexa de puntos de $A_j$ y pertenece a $A_j$ por convexidad. Si $\alpha_j=0$, elija cualquier $x_j\in A_j$; su contribución será cero. La suma de los $\alpha_j$ es $1$, y hemos obtenido la representación buscada.
+
+La condición de no vacío permite elegir $x_j$ incluso cuando su coeficiente sea cero. Si alguno de los conjuntos originales es vacío, debe omitirse de la lista; exigir literalmente un punto de un conjunto vacío haría falsa la representación.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 4: revisión y solución]\label{ej:lectura-24-4}
+La lectura propone, para conjuntos cerrados $A,B$, las afirmaciones: (i) si ambos son compactos, $\operatorname{co}(A\cup B)$ es compacto; (ii) si $A$ es compacto y $B$ acotado, $\operatorname{co}(A\cup B)$ es cerrado. Examine ambas afirmaciones y pruebe sus versiones correctas. Demuestre además que la envolvente convexa de $\{(0,0)\}\cup\{(1,y):y\in\R\}$ no es cerrada.
+\end{ejercicio}
+\begin{solucion}
+\emph{Primero, el defecto en las hipótesis.} Tal como están escritas, ambas afirmaciones son falsas en espacios normados generales: falta convexidad. En $\ell^2$, tome
+\[
+ A=\{0\}\cup\{e_n/n:n\in\N\},\qquad B=\{0\}.
+\]
+El conjunto $A$ es compacto porque $e_n/n\to0$: dada una cubierta abierta, el miembro que contiene a $0$ cubre toda la cola y solo quedan finitos puntos que cubrir. También $B$ es compacto. Toda combinación convexa finita de puntos de $A$ tiene soporte finito. Sin embargo,
+\[
+ z_N=\sum_{n=1}^N2^{-n}\frac{e_n}{n}+2^{-N}0
+ \in\operatorname{co}(A)
+\]
+y $z_N$ converge en $\ell^2$ a $z=\sum_{n=1}^{\infty}2^{-n}e_n/n$, que tiene infinitas coordenadas no nulas y no pertenece a $\operatorname{co}(A)$. La convergencia se verifica, por ejemplo, acotando la norma de la cola por $\sum_{n>N}2^{-n}/n\to0$. Así $\operatorname{co}(A\cup B)$ no es cerrado y, en consecuencia, tampoco compacto. Este único ejemplo contradice los dos incisos originales.
+
+\emph{Versión corregida del inciso (i).} Suponga ahora que $A,B$ son no vacíos, compactos y convexos. Por el ejercicio~\ref{ej:lectura-24-3},
+\[
+ \operatorname{co}(A\cup B)
+ =\{(1-t)a+tb:a\in A,\ b\in B,\ 0\leq t\leq1\}.
+\]
+Es la imagen del compacto $A\times B\times[0,1]$ por la aplicación continua $(a,b,t)\mapsto(1-t)a+tb$. Por ello es compacto.
+
+\emph{Versión corregida del inciso (ii).} Suponga $A$ compacto convexo no vacío y $B$ cerrado, acotado, convexo y no vacío. Si $z_n=(1-t_n)a_n+t_nb_n$ converge a $z$, la compacidad de $A\times[0,1]$ permite pasar a una subsucesión con $a_n\to a\in A$ y $t_n\to t\in[0,1]$. Si $t=0$, la acotación de $B$ da $t_nb_n\to0$, y entonces $z=a\in A$. Si $t>0$, para índices grandes $t_n>0$ y
+\[
+ b_n=\frac{z_n-(1-t_n)a_n}{t_n}
+ \longrightarrow b=\frac{z-(1-t)a}{t}.
+\]
+Como $B$ es cerrado, $b\in B$, y $z=(1-t)a+tb$ pertenece a la envolvente. Por el criterio de sucesiones, esta es cerrada. Si uno de los conjuntos es vacío, la envolvente se reduce al otro conjunto convexo, y las conclusiones correspondientes son directas.
+
+\emph{El ejemplo de la recta vertical.} Sea $A=\{(0,0)\}$ y $B=\{(1,y):y\in\R\}$. Ambos son cerrados convexos y $A$ es compacto, pero $B$ no es acotado. Sus combinaciones son $(1-t)(0,0)+t(1,y)=(t,ty)$. De ahí
+\[
+ \operatorname{co}(A\cup B)
+ =\bigl((0,1]\times\R\bigr)\cup\{(0,0)\}.
+\]
+Los puntos $(1/n,1)$ pertenecen a la envolvente y convergen a $(0,1)$, que no pertenece. La acotación de $B$ en la versión corregida del inciso (ii) no puede eliminarse.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 5]\label{ej:lectura-24-5}
+Si $A$ es convexo, demuestre que $C=\bigcup_{s\geq0}sA$ es un cono convexo.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es vacío, $C$ es vacío y satisface la condición de estabilidad de manera vacua. Suponga $A\ne\varnothing$, por lo que $0\in C$. Sean $u=sa$, $v=tb$, con $s,t\geq0$ y $a,b\in A$, y sean $\alpha,\beta\geq0$. Ponga $q=\alpha s+\beta t$. Si $q=0$, ambos productos son cero y $\alpha u+\beta v=0\in C$. Si $q>0$,
+\[
+ \alpha u+\beta v
+ =q\left(\frac{\alpha s}{q}a+\frac{\beta t}{q}b\right).
+\]
+Los dos coeficientes interiores son no negativos y suman $1$, por lo que el paréntesis pertenece a $A$. Así el resultado pertenece a $qA\subseteq C$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 6]\label{ej:lectura-24-6}
+Demuestre que la envolvente convexa cerrada de un compacto no vacío $A$ es el cierre de su envolvente convexa. Determine si la compacidad es necesaria.
+\end{ejercicio}
+\begin{solucion}
+No es necesaria: la igualdad vale para cualquier subconjunto de un espacio normado, incluso vacío. Por la proposición~\ref{ch24:interior-cierre}, $\cl{\operatorname{co}(A)}$ es cerrado y convexo, y contiene a $A$. Por eso contiene a la envolvente convexa cerrada, que es el menor conjunto con esas propiedades. En sentido inverso, cualquier cerrado convexo $D$ que contenga a $A$ contiene $\operatorname{co}(A)$ por su convexidad y luego contiene su cierre por ser cerrado. Al intersectar todos esos $D$, se obtiene que la envolvente convexa cerrada contiene $\cl{\operatorname{co}(A)}$. Las dos inclusiones dan igualdad. Esta afirmación es de cerradura y convexidad, no una afirmación de compacidad de la envolvente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 24, ejercicio 7]\label{ej:lectura-24-7}
+Sean $A,B$ convexos y disjuntos, y sea $x\in V$. Pruebe que
+\[
+ \operatorname{co}(A\cup\{x\})\cap B=\varnothing
+ \quad\text{o}\quad
+ \operatorname{co}(B\cup\{x\})\cap A=\varnothing.
+\]
+\end{ejercicio}
+\begin{solucion}
+Si $A$ o $B$ es vacío, una de las intersecciones es vacía directamente. Suponga ambos no vacíos y, buscando una contradicción, que ambas intersecciones contienen puntos. Por la convexidad y el ejercicio~\ref{ej:lectura-24-3} existen $a,a_0\in A$, $b,b_0\in B$ y $s,t\in[0,1]$ tales que
+\[
+ a=(1-s)b_0+sx,\qquad b=(1-t)a_0+tx.
+\]
+Los números $s,t$ son positivos: si $s=0$, $a=b_0\in A\cap B$, y si $t=0$, $b=a_0\in A\cap B$. Multiplique la primera igualdad por $t$ y la segunda por $s$, y elimine el término $stx$. Resulta
+\[
+ ta+s(1-t)a_0=sb+t(1-s)b_0.
+\]
+La suma de los coeficientes de cada lado es la misma, $q=t+s-st>0$.
+Al dividir entre $q$, el lado izquierdo es una combinación convexa de puntos de $A$ y el derecho una combinación convexa de puntos de $B$. Por tanto su valor común pertenece a $A\cap B$, contradicción. Al menos una de las dos intersecciones debe ser vacía.
+\end{solucion}

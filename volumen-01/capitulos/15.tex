@@ -1,9 +1,10 @@
-\chapter{Bases ortonormales y desarrollos de Fourier}\label{chap:31}
+\chapter{Bases ortonormales y desarrollos de Fourier}\label{cap:nuevo15}\label{chap:31}
 \index{base!ortonormal}\index{Fourier, coeficientes de}
 
-Una base de álgebra lineal expresa cada vector mediante una combinación \emph{finita}. En análisis necesitamos permitir límites de combinaciones finitas. La ortogonalidad hace controlable ese límite: la norma de una cola se calcula sumando cuadrados de coeficientes. Desarrollaremos la lectura 31 de \cite{valencia}, incluyendo el argumento de existencia, la construcción explícita de Gram--Schmidt y el ejercicio de Müntz en la norma integral que realmente aparece en el enunciado.
+Una base de álgebra lineal expresa cada vector mediante una combinación \emph{finita}. En análisis necesitamos permitir límites de combinaciones finitas. La ortogonalidad hace controlable ese límite: la norma de una cola se calcula sumando cuadrados de coeficientes. Las proyecciones del capítulo~\ref{cap:nuevo14} permiten interpretar cada suma finita como la mejor aproximación disponible en las direcciones elegidas. Desarrollaremos la lectura 31 de \cite{valencia}, incluyendo el argumento de existencia, la construcción explícita de Gram--Schmidt y el ejercicio de Müntz en la norma integral que realmente aparece en el enunciado.
 
-\section{Qué significa aquí una base}
+\section{Bases algebraicas y bases ortonormales}
+\label{lectura:31}
 Una \emph{base de Hamel} es un conjunto linealmente independiente cuyo espacio generado algebraicamente es todo el espacio. Por ejemplo, los vectores coordenados $(e_n)$ no constituyen una base de Hamel de $\ell^{2}$: una combinación finita tiene soporte finito, mientras $(1/n)$ tiene infinitas coordenadas no nulas.
 
 \begin{definicion}
@@ -36,7 +37,7 @@ Si $E=(e_s)_{s\in S}$ es una base ortonormal de $H$, entonces
 La segunda suma converge en norma: para todo $\eps>0$ existe $F_0\subset S$ finito tal que cualquier suma sobre un conjunto finito $F\supset F_0$ dista menos de $\eps$ de $x$.
 \end{teorema}
 \begin{proof}
-La identidad de Parseval del ejercicio 2 del capítulo \ref{chap:30}, aplicada a $M=H$, da la primera fórmula. Para $p_F=\sum_{s\in F}\ip{x}{e_s}e_s$, la ortogonalidad da
+La identidad de Parseval del ejercicio~\ref{ej:lectura-30-2}, aplicada a $M=H$, da la primera fórmula. Para $p_F=\sum_{s\in F}\ip{x}{e_s}e_s$, la ortogonalidad da
 \[
  \norm{x-p_F}^{2}=\norm{x}^{2}-\sum_{s\in F}|\ip{x}{e_s}|^{2}.
 \]
@@ -64,9 +65,9 @@ Finalmente, si $x_F,y_F$ son truncamientos sobre un conjunto finito común, $\ip
 \end{proof}
 Los escalares $\ip{x}{e_s}$ se llaman \emph{coeficientes de Fourier} respecto de $E$. Esta denominación no exige funciones trigonométricas: describe cualquier sistema de coordenadas ortonormales.
 
-\section{Ejercicios resueltos}
+\section{Ejercicios de ortonormalización, aproximación y Fourier}
 
-\begin{ejercicio}[Lectura 31, ejercicio 1: Gram--Schmidt]
+\begin{ejercicio}[Lectura 31, ejercicio 1: Gram--Schmidt]\label{ej:lectura-31-1}
 \index{Gram--Schmidt, procedimiento de}
 Para una familia finita o numerable linealmente independiente $v_1,v_2,\dots$ en un espacio con producto interno, definir
 \[
@@ -87,7 +88,7 @@ Si $w_{n+1}=0$, la fórmula expresaría $v_{n+1}$ en el espacio generado por $v_
 Si $V$ es separable y no nulo, elijamos una sucesión densa $(d_n)$. Recorremos esa lista y conservamos $d_n$ únicamente cuando no pertenece al espacio generado por los elementos ya conservados. Cada elemento descartado pertenece al espacio generado por los conservados anteriores. La familia resultante es independiente, finita o numerable, y su espacio generado contiene toda la lista densa. Gram--Schmidt produce una familia ortonormal total. Si $V=\{0\}$, se utiliza la familia vacía. No se necesita completitud porque cada etapa utiliza solamente sumas finitas.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 2: primeros polinomios de Legendre]
+\begin{ejercicio}[Lectura 31, ejercicio 2: primeros polinomios de Legendre]\label{ej:lectura-31-2}
 \index{Legendre, polinomios de}
 Aplicar Gram--Schmidt a $1,x,x^{2},x^{3},x^{4}$ con $\ip{f}{g}=\int_{-1}^{1}f(x)\overline{g(x)}\,dx$.
 \end{ejercicio}
@@ -126,7 +127,7 @@ La familia ortonormal resultante es
 Los factores polinómicos con valor uno en $x=1$ son $P_0,\dots,P_4$, los primeros polinomios de Legendre. Si continuamos Gram--Schmidt sobre todos los monomios, obtenemos una familia ortonormal total en $C([-1,1])$ para esta norma: los polinomios son uniformemente densos por el teorema de aproximación y $\norm{f}_2\leq\sqrt2\norm{f}_\infty$. Las cinco funciones escritas son solo el comienzo de esa familia.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 3]
+\begin{ejercicio}[Lectura 31, ejercicio 3]\label{ej:lectura-31-3}
 Probar que $(e^{inx})_{n\in\Z}$ es ortonormal en $C([-\pi,\pi])$ con el producto interno normalizado.
 \end{ejercicio}
 \begin{solucion}
@@ -137,7 +138,7 @@ Con $\ip{f}{g}=(2\pi)^{-1}\int_{-\pi}^{\pi}f\bar g$, se tiene
 Si $n=m$, la integral es $2\pi$ y el resultado es uno. Si $k=n-m\ne0$, una primitiva es $e^{ikx}/(ik)$; sus valores en los extremos coinciden porque $e^{ik\pi}=e^{-ik\pi}=(-1)^k$. La integral es cero. Sin el factor $1/(2\pi)$, las funciones seguirían siendo ortogonales, pero tendrían norma $\sqrt{2\pi}$ y habría que dividirlas por ese número para normalizarlas.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 4: Müntz en norma integral]
+\begin{ejercicio}[Lectura 31, ejercicio 4: Müntz en norma integral]\label{ej:lectura-31-4}
 \index{Muntz@Müntz, teorema de}\index{Gram, determinante de}
 Sean $1\leq n_1<n_2<\cdots$ enteros y $M_k=\spanop\{x^{n_1},\dots,x^{n_k}\}\subset C([0,1])$, con $\norm{f}_2^{2}=\int_0^1|f|^{2}$. Probar que $\bigcup_kM_k$ es denso para esta norma si y solo si $\sum_k1/n_k=\infty$. Desarrollar (i) el cociente de determinantes de Gram y la fórmula de distancia; (ii) el criterio de las series logarítmicas con sus hipótesis; (iii) el análisis del producto resultante.
 \end{ejercicio}
@@ -209,17 +210,17 @@ con $C_m$ finito. Por las comparaciones anteriores, esta expresión tiende a $-\
 Si $\sum_i1/n_i<\infty$, tomemos $m=0$, que no aparece porque todos los $n_i$ son positivos. Los logaritmos convergen a un número finito, así que \eqref{ch31:muntzdist} tiene límite estrictamente positivo: la constante uno no puede aproximarse. Esto prueba la necesidad. También aclara una precisión del inciso original: para $m$ que ya aparece en la lista, la distancia es cero independientemente de la convergencia de la serie; la equivalencia logarítmica se aplica a exponentes ausentes.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 5]
+\begin{ejercicio}[Lectura 31, ejercicio 5]\label{ej:lectura-31-5}
 Probar que un espacio de Hilbert es separable si y solo si tiene una base ortonormal a lo sumo numerable.
 \end{ejercicio}
 \begin{solucion}
-Si es separable, el procedimiento con una lista densa del ejercicio 1 produce la base requerida. Si tiene una base $E$ finita o numerable, consideremos todas sus combinaciones finitas con coeficientes racionales en el caso real, o de la forma $a+ib$ con $a,b\in\Q$ en el caso complejo. Ese conjunto es numerable: hay una cantidad numerable de conjuntos finitos de índices y de listas finitas de coeficientes de ese tipo. Es denso en $\spanop E$, porque en una combinación finita pueden aproximarse sus coeficientes y Pitágoras controla el error por la suma de sus cuadrados. Como $\spanop E$ es denso en $H$, también lo es ese conjunto numerable. El espacio cero tiene el conjunto denso $\{0\}$.
+Si es separable, el procedimiento con una lista densa del ejercicio~\ref{ej:lectura-31-1} produce la base requerida. Si tiene una base $E$ finita o numerable, consideremos todas sus combinaciones finitas con coeficientes racionales en el caso real, o de la forma $a+ib$ con $a,b\in\Q$ en el caso complejo. Ese conjunto es numerable: hay una cantidad numerable de conjuntos finitos de índices y de listas finitas de coeficientes de ese tipo. Es denso en $\spanop E$, porque en una combinación finita pueden aproximarse sus coeficientes y Pitágoras controla el error por la suma de sus cuadrados. Como $\spanop E$ es denso en $H$, también lo es ese conjunto numerable. El espacio cero tiene el conjunto denso $\{0\}$.
 
 Además, cualquier conjunto ortonormal de un espacio separable es numerable: las bolas de radio $1/3$ centradas en sus elementos son disjuntas, ya que la distancia entre dos elementos distintos es $\sqrt2$. Cada bola contiene un elemento de una lista densa; asignando el primero de la lista que pertenece a ella se obtiene una inyección en $\N$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 6]
-Calcular los cinco primeros coeficientes respecto de $e_0,\dots,e_4$ del ejercicio 2 para (i) $x^2+x+1$, (ii) $\sin(\pi x)$, (iii) $\cos(\pi x)$ y (iv) $|x|$.
+\begin{ejercicio}[Lectura 31, ejercicio 6]\label{ej:lectura-31-6}
+Calcular los cinco primeros coeficientes respecto de $e_0,\dots,e_4$ del ejercicio~\ref{ej:lectura-31-2} para (i) $x^2+x+1$, (ii) $\sin(\pi x)$, (iii) $\cos(\pi x)$ y (iv) $|x|$.
 \end{ejercicio}
 \begin{solucion}
 Los resultados, en el orden $c_j=\ip{f}{e_j}$, son
@@ -270,7 +271,7 @@ donde ambas integrales se toman de $-1$ a $1$. Para la última, integrar una vez
 Los factores $1/\sqrt2$, $\sqrt{5/2}$ y $3/\sqrt2$ dan la última fila.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 31, ejercicio 7]
+\begin{ejercicio}[Lectura 31, ejercicio 7]\label{ej:lectura-31-7}
 Si $E$ es ortonormal y $x\in H$, estimar el número $n_k$ de vectores $e\in E$ con $|\ip{x}{e}|>1/k$.
 \end{ejercicio}
 \begin{solucion}
@@ -282,4 +283,4 @@ y, por tanto, $n_k<k^2\norm{x}^{2}$. Si $n_k=0$ y $x\ne0$, la misma conclusión 
 \end{solucion}
 
 \section{Una base como sistema de medición}
-Los coeficientes de Fourier registran las componentes detectadas por cada dirección ortonormal. Bessel limita la energía registrada; Parseval afirma que una base total no pierde ninguna componente; Riesz--Fischer garantiza que toda lista de coeficientes de energía finita procede de un vector. La completitud permite pasar de las sumas finitas, puramente algebraicas, al vector que esas sumas aproximan.
+Los coeficientes de Fourier registran las componentes detectadas por cada dirección ortonormal. Bessel limita la energía registrada; Parseval afirma que una base total no pierde ninguna componente; Riesz--Fischer garantiza que toda lista de coeficientes de energía finita procede de un vector. La completitud permite pasar de las sumas finitas, puramente algebraicas, al vector que esas sumas aproximan. En el capítulo~\ref{cap:nuevo16} pasaremos de las coordenadas de un vector a la representación de los funcionales continuos y a la relación de adjunción entre operadores.

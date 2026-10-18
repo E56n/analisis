@@ -1,0 +1,335 @@
+\chapter{Conexidad, componentes y caminos}\label{cap:nuevo06}\label{chap:17}\label{chap:18}
+
+\section{Separaciones, componentes y conexiones}\label{lectura:17}
+La compacidad controla cubiertas; la conexidad controla separaciones. Un espacio conexo no puede dividirse en dos regiones abiertas disjuntas y no vacías. Esta propiedad explica el teorema del valor intermedio y se conserva bajo aplicaciones continuas, aunque no implique todavía que dos puntos puedan unirse mediante una curva. Usaremos topologías relativas, cerraduras y continuidad. Comenzaremos por las separaciones y sus formulaciones equivalentes, estudiaremos después las componentes maximales y distinguiremos finalmente los caminos de los arcos inyectivos. Esta distinción permitirá explicar tanto la curva del seno como la conexión mediante segmentos en abiertos de espacios normados. El capítulo integra las lecturas 17--18 de \cite{valencia}.
+
+\section{Definiciones equivalentes y ejemplos}
+\begin{proposicion}\label{ch17:def}
+Para un espacio métrico $X$ son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item los únicos subconjuntos simultáneamente abiertos y cerrados son $\varnothing$ y $X$;
+\item no existen abiertos disjuntos no vacíos $U,V$ con $X=U\cup V$;
+\item si $U,V$ son abiertos disjuntos y cubren $X$, uno de ellos es vacío.
+\end{enumerate}
+Si se cumplen, $X$ es \emph{conexo}; en caso contrario es \emph{disconexo}. Una pareja $U,V$ como en (ii) se llama una \emph{separación}. Un subconjunto es conexo si lo es con su topología relativa.\index{conexidad}\index{separacion@separación}
+\end{proposicion}
+\begin{proof}
+Un subconjunto $A$ abierto y cerrado, no vacío y distinto de $X$, produce la separación $A,X\setminus A$: ambos son abiertos, disjuntos y no vacíos. En sentido inverso, en una separación $U,V$ tenemos $V=X\setminus U$, de modo que $U$ es abierto y cerrado. Las condiciones (ii) y (iii) son la misma afirmación expresada por negación y por implicación, respectivamente.
+\end{proof}
+El vacío y los singletons son conexos. Un espacio discreto no vacío es conexo si y solo si consta de un punto: si tiene al menos dos, cualquier singleton es abierto y cerrado propio.
+
+\begin{lema}\label{ch17:intervalos}
+Todo intervalo de $\R$ es conexo; se admiten intervalos abiertos, cerrados, semiabiertos, ilimitados, singletons y el vacío.
+\end{lema}
+\begin{proof}
+Sea $I$ un intervalo y supongamos que tiene una separación $U,V$. Elegimos $a\in U$, $b\in V$; intercambiando los nombres si hace falta, podemos suponer $a<b$. El conjunto $E=U\cap[a,b]$ es no vacío y acotado; sea $c=\sup E$. Por ser $I$ intervalo, $[a,b]\subset I$ y $c\in I$. Existe una sucesión de puntos de $E$ que converge a $c$, por la propiedad del supremo; como $U$ es cerrado en $I$, tenemos $c\in U$. En particular $c\ne b$. Como $U$ es abierto relativo, contiene $I\cap(c-r,c+r)$ para algún $r>0$. Elegimos $t$ con $c<t<\min\{c+r,b\}$. Entonces $t\in E$, contradiciendo la definición de $c$. No existe tal separación.
+\end{proof}
+
+\begin{proposicion}\label{ch17:ambiental}
+Un subconjunto $A\subset X$ es disconexo si y solo si existen abiertos disjuntos $U,V$ del ambiente $X$ tales que $A\subset U\cup V$ y ambos $A\cap U$, $A\cap V$ son no vacíos.
+\end{proposicion}
+\begin{proof}
+La suficiencia se obtiene intersectando con $A$: aparecen dos abiertos relativos que lo separan. Para la necesidad, sea $A=A_1\cup A_2$ una separación relativa. Cada punto de $A_1$ tiene una bola que no toca $A_2$, porque $A_1$ es abierto en $A$; por ello $\dist(a,A_2)>0$ para $a\in A_1$. La afirmación correspondiente vale intercambiando los índices. Definimos
+\[
+U=\{x:\dist(x,A_1)<\dist(x,A_2)\},\qquad
+V=\{x:\dist(x,A_2)<\dist(x,A_1)\}.
+\]
+Las distancias a conjuntos no vacíos son funciones continuas, así que $U,V$ son abiertos y disjuntos. En $A_1$ la primera distancia es cero y la segunda positiva; luego $A_1\subset U$. Del mismo modo $A_2\subset V$. Así los abiertos ambientales tienen todas las propiedades requeridas. Es útil construirlos explícitamente: los abiertos ambientales que representan inicialmente una separación relativa no tienen por qué ser disjuntos fuera de $A$.
+\end{proof}
+
+\section{Imágenes y familias de conjuntos conexos}
+\begin{teorema}\label{ch17:imagen}
+La imagen continua de un espacio conexo es conexa.
+\end{teorema}
+\begin{proof}
+Si $f(X)$ tuviera una separación relativa $U,V$, las preimágenes $f^{-1}(U)$ y $f^{-1}(V)$ serían abiertas, disjuntas y cubrirían $X$. Serían no vacías porque ambos miembros de la separación contienen puntos de la imagen. Esto contradice la conexidad de $X$.
+\end{proof}
+
+\begin{corolario}\label{ch17:binario}
+$X$ es conexo si y solo si toda aplicación continua $X\to\{0,1\}$ es constante. Equivalentemente, toda aplicación continua de $X$ a cualquier espacio discreto es constante.
+\end{corolario}
+\begin{proof}
+Si $X$ es conexo, su imagen continua es conexa y una imagen discreta no puede tener dos puntos. Para la otra dirección, una separación $U,V$ define la función que vale $0$ en $U$ y $1$ en $V$. Es continua porque las preimágenes de los singletons son abiertas, y no es constante. El mismo argumento sirve con dos puntos distintos de cualquier espacio discreto de al menos dos elementos. Para el dominio vacío, usamos la convención habitual de que la función vacía es constante en el sentido de que no toma dos valores diferentes.
+\end{proof}
+
+\begin{definicion}
+Una familia no vacía $\mathcal C$ de conjuntos no vacíos es \emph{concatenada}\index{familia concatenada} si para cualesquiera $A,B\in\mathcal C$ existe una cadena finita $A=C_1,\ldots,C_m=B$ de miembros de la familia con $C_i\cap C_{i+1}\ne\varnothing$.
+\end{definicion}
+
+\begin{proposicion}\label{ch17:union}
+La unión de una familia concatenada de conjuntos conexos es conexa. En particular, una familia de conjuntos conexos con un punto común tiene unión conexa.
+\end{proposicion}
+\begin{proof}
+Sea $f:\bigcup\mathcal C\to\{0,1\}$ continua. En cada miembro de $\mathcal C$ es constante, por el corolario \ref{ch17:binario}. Si dos miembros se intersectan, sus valores constantes coinciden al evaluar $f$ en un punto de intersección. Una cadena finita transmite la igualdad entre cualesquiera dos miembros. Así $f$ es constante en toda la unión, que es conexa por el mismo corolario. Si hay un punto común, cualquier pareja de miembros se intersecta y la familia es concatenada. Si una familia contiene conjuntos vacíos, se pueden eliminar sin alterar la unión.
+\end{proof}
+
+\begin{teorema}\label{ch17:producto}
+El producto finito de espacios métricos no vacíos $X_1,\ldots,X_n$, con su topología producto, es conexo si y solo si cada factor es conexo.
+\end{teorema}
+\begin{proof}
+Si el producto es conexo, la proyección sobre cada factor es continua y sobreyectiva; la imagen es conexa. La sobreyectividad requiere que los demás factores sean no vacíos.
+
+Para la otra dirección, supongamos que todos los factores son conexos. Para $a=(a_1,\ldots,a_n)$ y $i$ definimos la fibra
+\[
+L_{a,i}=\{x\in\textstyle\prod_jX_j:x_j=a_j\text{ para todo }j\ne i\}.
+\]
+Aquí se exige igualdad en las coordenadas que no varían; escribir desigualdad cambiaría el conjunto y no permitiría identificarlo con $X_i$. La evaluación de la coordenada $i$ es un homeomorfismo de $L_{a,i}$ sobre $X_i$, con inversa que inserta esa coordenada y deja fijas las demás. Por tanto cada fibra es conexa.
+
+Las fibras cubren el producto y forman una familia concatenada. En efecto, dados puntos $a,b$, las etapas
+\[
+(a_1,\ldots,a_n),\ (b_1,a_2,\ldots,a_n),\ldots,(b_1,\ldots,b_n)
+\]
+cambian una coordenada por vez. Cada etapa consecutiva está en una misma fibra, y las fibras sucesivas comparten el punto de transición. Para conectar dos fibras arbitrarias, tomamos un punto en cada una y añadimos al comienzo y al final esas dos fibras a la cadena construida. Aplicamos la proposición \ref{ch17:union}.
+\end{proof}
+
+\begin{ejemplo}[La intersección puede romper la conexidad]
+Las semicircunferencias superior e inferior de la circunferencia unitaria son conexas: son imágenes continuas de $[0,\pi]$ y $[\pi,2\pi]$ por $t\mapsto(\cos t,\sin t)$. Su intersección es $\{(-1,0),(1,0)\}$, que es disconexa. Por tanto no hay una regla general de estabilidad de la conexidad bajo intersecciones.
+\end{ejemplo}
+
+\section{Ejercicios resueltos: separaciones y continuidad}
+\begin{ejercicio}[Lectura 17, ejercicio 1: precisión del enunciado]\label{ej:lectura-17-1}
+Probar que $X$ es conexo si y solo si todo subconjunto no vacío y \emph{propio} $A\subsetneq X$ tiene frontera no vacía.
+\end{ejercicio}
+\begin{solucion}
+La palabra propio es necesaria, pues $\partial X=\varnothing$ en cualquier espacio. Recordemos $\partial A=\cl A\setminus\interior A$. Si esta frontera es vacía, de $\interior A\subset A\subset\cl A$ se deduce $\interior A=A=\cl A$; por tanto $A$ es abierto y cerrado. Recíprocamente, si $A$ es abierto y cerrado, esas tres expresiones coinciden y su frontera es vacía. Así la condición del ejercicio excluye exactamente los abiertos y cerrados no triviales, que caracterizan la desconexión.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 2]\label{ej:lectura-17-2}
+Probar: (i) los subconjuntos conexos de $\R$ son exactamente los intervalos; (ii) una función real continua sobre un espacio conexo toma todos los valores intermedios entre dos valores de su imagen; (iii) si toma un valor negativo y uno positivo, tiene un cero.
+\end{ejercicio}
+\begin{solucion}
+Para (i), los intervalos son conexos por el lema \ref{ch17:intervalos}. Si $A\subset\R$ no es un intervalo, hay $a,b\in A$ y $c\notin A$ con $a<c<b$. Entonces $A\cap(-\infty,c)$ y $A\cap(c,\infty)$ son dos abiertos relativos disjuntos no vacíos que cubren $A$, de modo que $A$ no es conexo.
+
+Para (ii), si $X$ es conexo y $f:X\to\R$ continua, el teorema \ref{ch17:imagen} muestra que $f(X)$ es conexo, y por (i) es un intervalo. Si $f(x)=a\le b=f(y)$, todo $t\in[a,b]$ pertenece a $f(X)$, lo que significa que existe $z\in X$ con $f(z)=t$. Para (iii), aplicamos (ii) a $t=0$, que está entre el valor negativo y el positivo. Los extremos de $X$ no necesitan existir: el argumento solo exige dos puntos donde se conozcan los signos.\index{teorema del valor intermedio}\index{teorema de Bolzano}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:lectura-17-3}
+Si $A$ es conexo y $A\subset B\subset\cl A$, probar que $B$ es conexo. Deducir que la cerradura de un conexo es conexa.
+\end{ejercicio}
+\begin{solucion}
+Sea $f:B\to\{0,1\}$ continua. Su restricción a $A$ es constante, digamos de valor $0$. Si $b\in B$ tuviera $f(b)=1$, la preimagen $f^{-1}(\{1\})$ sería una vecindad abierta relativa de $b$ que no toca $A$. Pero $b\in\cl A$ y $A\subset B$, de modo que toda vecindad relativa de $b$ en $B$ toca $A$, contradicción. Así $f$ es constante y $B$ es conexo. Para $A=\varnothing$, también $B=\varnothing$ y el resultado es válido. Tomar $B=\cl A$ da la conclusión final.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:lectura-17-4}
+Probar que todo espacio normado es conexo.
+\end{ejercicio}
+\begin{solucion}
+Para $x\in V$, el segmento $[0,x]=\{tx:0\le t\le1\}$ es imagen continua de $[0,1]$: $\norm{tx-sx}=|t-s|\norm{x}$. Es por tanto conexo. Todos estos segmentos contienen $0$, y su unión es $V$. La proposición \ref{ch17:union} prueba que $V$ es conexo. No se requiere completitud; el argumento vale también en un espacio normado complejo usando el parámetro real $t$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 5]\label{ej:lectura-17-5}
+Sea $X$ conexo, $X=A\cup B$ y $A\cap B$ conexo. Probar que $A,B$ son conexos si (i) ambos son cerrados o (ii) ambos son abiertos. En (iii), decidir qué ocurre si $A$ es abierto y $B$ cerrado.
+\end{ejercicio}
+\begin{solucion}
+Si $A\cap B=\varnothing$ y ambos son abiertos, forman una separación salvo que uno sea vacío. Si ambos son cerrados, cada uno es complemento del otro y por tanto también abierto; la misma conclusión se aplica. El miembro no vacío es entonces $X$ y ambos son conexos.
+
+Supongamos ahora $A\cap B\ne\varnothing$. Si $A$ fuera disconexo, existiría una función continua no constante $g:A\to\{0,1\}$. Su restricción al conexo $A\cap B$ sería constante, de valor $c$. Definimos $f=g$ en $A$ y $f=c$ en $B$; las definiciones coinciden en la intersección. Si $A,B$ son abiertos, las preimágenes de abiertos por $f$ son uniones de conjuntos abiertos en $X$, así que $f$ es continua. Si $A,B$ son cerrados, para cada cerrado $F$ del codominio la preimagen es la unión de un cerrado relativo de $A$ y uno de $B$; ambos son cerrados en $X$, luego la unión lo es y $f$ también es continua. En cualquiera de los casos $f$ sería continua no constante sobre $X$, contradicción. Así $A$ es conexo. Intercambiando los papeles de $A$ y $B$, el mismo argumento de pegado prueba que $B$ es conexo.
+
+Para (iii) no se garantiza la conexidad de ninguno de los dos por separado. En $X=\R$, tomemos $A=\R\setminus\{0\}$ y $B=[-1,0]$. El primero es abierto y disconexo, el segundo cerrado, su unión es $\R$ y su intersección $[-1,0)$ es conexa. Para que falle la conexidad de $B$, tomemos $X=[0,2]$, $A=[0,2)$, abierto relativo, y $B=\{1,2\}$, cerrado relativo. Cubren $X$ y su intersección es $\{1\}$, pero $B$ es disconexo. La condición uniforme abierto/abierto o cerrado/cerrado es la que permite el pegado anterior.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 6]\label{ej:lectura-17-6}\label{ch17:ex6}
+Sean $X$ conexo, $A\subset X$ conexo y $B\subset X\setminus A$ abierto y cerrado en $X\setminus A$. Probar que $A\cup B$ es conexo.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es vacío, $B$ es abierto y cerrado en $X$ y por tanto es vacío o todo $X$, ambos conexos. Si $A\ne\varnothing$, sea $f:A\cup B\to\{0,1\}$ continua. En $A$ es constante; cambiando los nombres de $0$ y $1$ podemos suponer que vale $0$. Pongamos $D=f^{-1}(\{1\})\subset B$. Este conjunto es abierto y cerrado en $A\cup B$.
+
+Demostraremos que $D$ es abierto y cerrado en $X$. Como $B$ es cerrado en $X\setminus A$, tenemos $\cl B\subset A\cup B$. Por ello $\cl D\subset A\cup B$ y, puesto que $D$ es cerrado en este subespacio, $\cl D=D$: es cerrado en $X$. Para la apertura, si $x\in D$, existe un abierto $O$ de $X$ con $x\in O$ y $O\cap(A\cup B)\subset D$. Como $B$ es abierto en $X\setminus A$, existe un abierto $P$ de $X$ con $x\in P$ y $P\cap(X\setminus A)\subset B$. Todo punto de $O\cap P$ que estuviera en $A$ o en $B$ estaría en $D$ por la primera condición; todo punto que no estuviera en $A$ estaría en $B$ por la segunda. Así $O\cap P\subset D$, y $D$ es abierto. La conexidad de $X$ fuerza $D=\varnothing$ o $D=X$; la segunda posibilidad es imposible porque $A\ne\varnothing$ y $D\cap A=\varnothing$. Entonces $f$ es constante y $A\cup B$ es conexo.
+
+La sugerencia de la lectura es una versión de pegado que también podemos justificar. Si $f$ es continua por separado en $E$ y $F$, y $E\setminus F$ es abierto y cerrado en la diferencia simétrica $E\mathbin{\triangle}F$, entonces $f$ es continua en $E\cup F$, siempre que las definiciones coincidan en la intersección. Un punto de $E\setminus F$ tiene una vecindad relativa en la unión contenida en $E$, por la apertura en la diferencia simétrica; la cerradura da la afirmación correspondiente para $F\setminus E$. En un punto de $E\cap F$, intersectamos las dos vecindades proporcionadas por la continuidad de las restricciones. En los tres casos obtenemos la continuidad en la unión.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 7]\label{ej:lectura-17-7}
+Construir: (i) un espacio métrico conexo con una bola disconexa; (ii) un conjunto conexo cuyo interior sea disconexo.
+\end{ejercicio}
+\begin{solucion}
+Para (i), en $\R^2$ con la distancia euclídea consideremos
+\[
+X=(\{-1,1\}\times[0,2])\cup([-1,1]\times\{2\}).
+\]
+Es la unión de tres segmentos conexos concatenados, luego es conexo. La bola relativa de centro $(-1,0)$ y radio $\sqrt5$ contiene el brazo izquierdo completo, el tramo superior con $-1\le x<0$, y el tramo derecho $\{1\}\times[0,1)$. No contiene ningún punto con primera coordenada entre $0$ y $1$. Sus intersecciones con los semiplanos $x<1/2$ y $x>1/2$ son abiertos relativos disjuntos no vacíos que la cubren. Por tanto la bola es disconexa.
+
+Para (ii), tomemos la unión $K$ de los discos cerrados de radio $1$ centrados en $(-1,0)$ y $(1,0)$. Cada disco es conexo por convexidad, y ambos se tocan en $(0,0)$; su unión es conexa. Su interior es exactamente la unión de los dos discos abiertos, que son disjuntos. Los puntos de frontera distintos del punto de tangencia no son interiores porque tienen vecindades pequeñas que no tocan el otro disco y contienen puntos exteriores al primero. El punto de tangencia tampoco es interior, pues $(0,t)\notin K$ para todo $t\ne0$. Así el interior tiene dos partes abiertas no vacías separadas por el eje vertical y es disconexo.
+\end{solucion}
+
+La prueba de conexidad puede reducirse a excluir funciones continuas no constantes con valores $0$ y $1$. Esta perspectiva hace transparentes las imágenes continuas, las uniones concatenadas y los argumentos de pegado. La conexidad pertenece a la topología del espacio, mientras que la forma de sus bolas depende de la métrica elegida.
+
+\section{Componentes y desconexión total}\label{lectura:18}
+Un espacio disconexo no siempre se descompone en abiertos conexos. Las componentes proporcionan sus piezas conexas maximales, que son siempre cerradas pero pueden dejar de ser abiertas. Por otra parte, unir dos puntos mediante una curva es una exigencia más concreta que la conexidad. Conviene distinguir un camino continuo de un arco inyectivo, pues la concatenación conserva continuidad pero puede introducir repeticiones. Las propiedades de las imágenes, las uniones y las cerraduras conexas que acabamos de establecer serán las herramientas para describir esas piezas y compararlas con las conexiones mediante curvas.
+
+\begin{proposicion}\label{ch18:componentes}
+En un espacio métrico $X$, definamos $x\sim y$ si existe un subconjunto conexo que contiene a ambos. Esta es una relación de equivalencia. Sus clases, llamadas \emph{componentes conexas}, son precisamente los subconjuntos conexos no vacíos maximales por inclusión. Todas ellas son cerradas.\index{componente conexa}
+\end{proposicion}
+\begin{proof}
+La reflexividad se obtiene del conexo $\{x\}$; la simetría es inmediata porque contener a $x,y$ no depende del orden. Si $x,y\in A$ y $y,z\in B$ con $A,B$ conexos, su intersección contiene $y$, así que $A\cup B$ es conexo y contiene $x,z$. Esto prueba transitividad.
+
+La clase $C_x$ de $x$ es la unión de todos los conjuntos conexos que contienen a $x$. Todos comparten ese punto, luego la unión es conexa. Si un conexo $D$ intersecta $C_x$, la unión $D\cup C_x$ es conexa y contiene $x$; por la definición de la clase, toda la unión está en $C_x$, así que $D\subset C_x$. En particular, no puede ampliarse $C_x$ a un conexo mayor. Recíprocamente, todo conexo no vacío $D$ está contenido en la clase de cualquiera de sus puntos; si es maximal, coincide con esa clase.
+
+Finalmente $\cl{C_x}$ es conexo por el ejercicio \ref{ej:lectura-17-3}. Como contiene a $C_x$, su maximalidad obliga a $\cl{C_x}=C_x$. Esto demuestra la cerradura.
+\end{proof}
+
+\begin{definicion}
+Un espacio es \emph{totalmente disconexo}\index{desconexion total@desconexión total} si sus componentes son singletons; equivalentemente, todo subconjunto conexo no vacío consta de un punto.
+\end{definicion}
+Un espacio no vacío es conexo si y solo si tiene una componente. En un espacio discreto las componentes son puntos, pero el recíproco falla: $\Q$ es totalmente disconexo sin ser discreto. En efecto, si un subconjunto de $\Q$ contiene racionales $a<b$, elegimos un irracional $c\in(a,b)$; sus intersecciones con $(-\infty,c)$ y $(c,\infty)$ lo separan. Además ningún racional está aislado, porque cualquier intervalo a su alrededor contiene otros racionales.
+
+\begin{proposicion}\label{ch18:abiertosEuclideos}
+Todo abierto de $\R^n$ es unión de a lo sumo numerables abiertos conexos disjuntos, sus componentes.
+\end{proposicion}
+\begin{proof}
+Sea $A$ abierto y $C$ una componente de $A$. Para $x\in C$, existe una bola $B(x,r)\subset A$. La bola es convexa, luego conexa: cada punto puede unirse con el centro por un segmento y la unión de esos segmentos es conexa. Como la bola intersecta $C$, su unión con $C$ es conexa y la maximalidad implica $B(x,r)\subset C$. Por tanto cada componente es abierta en $\R^n$. Cada una contiene algún punto de $\Q^n$, pues este conjunto es denso. Fijando una enumeración de $\Q^n$, asignamos a cada componente el primer racional de la enumeración que contenga; componentes distintas reciben racionales distintos, así que hay a lo sumo numerables. Son cerradas en $A$ por la proposición anterior, aunque no necesariamente cerradas en $\R^n$: el intervalo $(0,1)$ es una componente de sí mismo.
+\end{proof}
+
+\section{Caminos, arcos y el problema de las repeticiones}
+\begin{definicion}
+Un \emph{camino}\index{camino} en $X$ es una aplicación continua $\gamma:[0,1]\to X$. Un \emph{arco}\index{arco} es un camino inyectivo. Sus extremos son $\gamma(0),\gamma(1)$. Un espacio es \emph{conexo por caminos} si cada pareja de puntos es extremo de un camino. Es \emph{arcoconexo}\index{arcoconexidad} si cada pareja de puntos \emph{distintos} es extremo de un arco. Por convención, un punto está conectado consigo mismo; no se exige un mapa inyectivo con extremos iguales, pues eso sería imposible. El vacío y el singleton cumplen ambas condiciones con estas convenciones.
+\end{definicion}
+Un arco es un homeomorfismo de $[0,1]$ sobre su imagen, porque es una aplicación continua inyectiva desde un compacto a un espacio métrico. Si dos caminos tienen un extremo común, su concatenación, recorriendo cada uno en la mitad del tiempo, es continua por el lema de pegado sobre los intervalos cerrados $[0,1/2]$ y $[1/2,1]$. Pero incluso si ambos caminos son inyectivos, la concatenación puede visitar un punto dos veces. Para conservar un arco, necesitamos el siguiente recorte.
+
+\begin{lema}[Recorte de dos arcos]\label{ch18:recorte}
+Si hay un arco de $x$ a $y$ y otro de $y$ a $z$, entonces, cuando $x\ne z$, hay un arco de $x$ a $z$ contenido en la unión de sus imágenes.
+\end{lema}
+\begin{proof}
+Sean $p,q:[0,1]\to X$ los arcos con $p(0)=x$, $p(1)=q(0)=y$ y $q(1)=z$. Si $z\in p([0,1])$, la inyectividad da un único $s\in(0,1]$ con $p(s)=z$, y $t\mapsto p(st)$ es el arco buscado.
+
+Si $z\notin p([0,1])$, el conjunto
+\[
+E=\{t\in[0,1]:q(t)\in p([0,1])\}
+\]
+es cerrado, porque la imagen compacta de $p$ es cerrada. Es no vacío, pues contiene $0$, y no contiene $1$. Tiene máximo $t_0<1$. Existe un único $s_0\in[0,1]$ con $p(s_0)=q(t_0)$. Por maximalidad de $t_0$, la imagen de $q$ para $t>t_0$ no toca la imagen de $p$.
+
+Si $s_0=0$, basta el arco $t\mapsto q(t_0+(1-t_0)t)$. Si $s_0>0$, usamos
+\[
+r(t)=\begin{cases}
+p(2s_0t),&0\le t\le1/2,\\
+q(t_0+(2t-1)(1-t_0)),&1/2\le t\le1.
+\end{cases}
+\]
+Las dos expresiones coinciden en $t=1/2$, así que $r$ es continua. Cada tramo es inyectivo y sus imágenes solo se intersectan en el punto de unión, por la elección de $t_0$. Por ello $r$ es inyectiva y tiene extremos $x,z$. Este último control de la intersección es lo que una concatenación sin recorte no garantiza.
+\end{proof}
+
+\begin{proposicion}\label{ch18:arcoimplica}
+Todo espacio conexo por caminos, y en particular todo espacio arcoconexo, es conexo.
+\end{proposicion}
+\begin{proof}
+Si existiera una separación $U,V$, elegiríamos $x\in U$ y $y\in V$. Un camino $\gamma$ entre ambos tendría imagen conexa por ser imagen continua del intervalo $[0,1]$. Sin embargo, $\gamma([0,1])\cap U$ y $\gamma([0,1])\cap V$ serían una separación no trivial de esa imagen. La contradicción excluye la separación de $X$.
+\end{proof}
+
+\begin{ejemplo}[Una curva límite conexa sin conexión por caminos]\label{ch18:seno}
+Consideremos
+\[
+S=\{(x,\sin(1/x)):x\ne0\}\cup(\{0\}\times[-1,1]).
+\]
+La gráfica $\Gamma_+$ para $x>0$ es conexa por ser imagen continua del intervalo $(0,\infty)$; la gráfica $\Gamma_-$ para $x<0$ también lo es. La cerradura de cada una incluye el segmento vertical $L=\{0\}\times[-1,1]$. Para verlo, dado $y\in[-1,1]$, elegimos $\alpha$ con $\sin\alpha=y$ y puntos $x_n=1/(2\pi n+\alpha)>0$ para $n$ grande. Entonces $(x_n,\sin(1/x_n))\to(0,y)$. Para la rama negativa usamos un ángulo $\beta$ con $-\sin\beta=y$ y $x_n=-1/(2\pi n+\beta)$. No hay otros puntos nuevos en las cerraduras: si la primera coordenada límite no es cero, la continuidad de $\sin(1/x)$ determina la segunda; si es cero, la segunda queda en $[-1,1]$. Por tanto $\cl{\Gamma_+}=\Gamma_+\cup L$ y $\cl{\Gamma_-}=\Gamma_-\cup L$. Son conexos y se intersectan en $L$, de modo que su unión $S$ es conexa.
+
+No existe siquiera un camino en $S$ desde $(1,\sin1)$ hasta $(-1,-\sin1)$. Supongamos que $f(t)=(u(t),v(t))$ fuera uno. Por el valor intermedio, $u$ se anula; sea
+\[
+t_0=\min\{t\in[0,1]:u(t)=0\}.
+\]
+El mínimo existe porque el conjunto de ceros es cerrado no vacío en un compacto. Además $t_0>0$ y $u(t)>0$ para $0\le t<t_0$: no puede cambiar de signo sin anularse. Fijemos $0<\eta<t_0$. Tenemos $u(t_0-\eta)>0$. Existen números $a,b$ entre $0$ y $u(t_0-\eta)$ con $\sin(1/a)=1$ y $\sin(1/b)=-1$, tomando denominadores suficientemente grandes de la forma $\pi/2+2\pi n$ y $3\pi/2+2\pi n$. El valor intermedio proporciona $s,r\in(t_0-\eta,t_0)$ con $u(s)=a$, $u(r)=b$. Puesto que sus primeras coordenadas son positivas y $f$ toma valores en $S$, se sigue $v(s)=1$ y $v(r)=-1$.
+
+Esto ocurre para todo $\eta>0$ suficientemente pequeño, así que $v$ no tiene límite por la izquierda en $t_0$, contradiciendo continuidad. El argumento no presupone que los tiempos de una rama y otra formen intervalos, ni identifica límites de composiciones sin justificar qué valores recorre la primera coordenada.
+\end{ejemplo}
+
+\section{Abiertos conexos de espacios normados}
+\begin{definicion}
+En un espacio vectorial real o complejo, el \emph{segmento}\index{segmento} entre $x,y$ es
+\[
+[x,y]=\{(1-t)x+ty:0\le t\le1\}.
+\]
+Un conjunto es convexo si contiene el segmento entre cualesquiera dos de sus puntos. Si $x\ne y$, la parametrización del segmento es inyectiva, porque $(t-s)(y-x)=0$ implica $t=s$.
+\end{definicion}
+
+\begin{teorema}\label{ch18:abiertoconexo}
+Todo abierto conexo de un espacio normado es arcoconexo. En particular, la afirmación vale en un espacio de Banach, sin que se necesite su completitud.
+\end{teorema}
+\begin{proof}
+El vacío y los singletons no presentan dificultad. Fijemos $x\in A$ y sea $P$ el conjunto de puntos que son iguales a $x$ o pueden unirse a $x$ mediante un arco contenido en $A$. Mostraremos que $P$ y $A\setminus P$ son abiertos relativos en $A$.
+
+Si $y\in P$, elegimos $r>0$ con $B(y,r)\subset A$. Para $z\in B(y,r)$, el segmento $[y,z]$ está en esa bola, ya que
+\[
+\norm{(1-t)y+tz-y}=t\norm{z-y}<r.
+\]
+Si $y=x$, este segmento proporciona directamente la conexión a $z$; si $y\ne x$, combinamos el arco de $x$ a $y$ con el segmento de $y$ a $z$ y aplicamos el lema de recorte \ref{ch18:recorte}. Los casos de puntos iguales se resuelven por la convención de conexión consigo mismo. Así toda la bola está en $P$ y $P$ es abierto.
+
+Si $y\in A\setminus P$, elegimos otra vez $r>0$ con $B(y,r)\subset A$. Si algún $z$ de esa bola perteneciera a $P$, podríamos unir $x$ a $z$ y después unir $z$ a $y$ por un segmento dentro de la bola; el lema de recorte produciría un arco de $x$ a $y$, contradicción. Por tanto la bola está en $A\setminus P$, y este conjunto también es abierto. Como $A$ es conexo y $x\in P$, debe ser $P=A$. Al haber elegido arbitrariamente el punto inicial $x$, cualesquiera dos puntos distintos de $A$ se unen por un arco.
+\end{proof}
+
+\section{Ejercicios resueltos: componentes, Cantor y arcos}
+\begin{ejercicio}[Lectura 18, ejercicio 1]\label{ej:lectura-18-1}
+Si un espacio métrico tiene una cantidad finita de componentes, probar que cada componente es abierta.
+\end{ejercicio}
+\begin{solucion}
+Sean $C_1,\ldots,C_m$ las componentes. Cada una es cerrada, y para un índice $i$,
+\[
+X\setminus C_i=\bigcup_{j\ne i}C_j
+\]
+es una unión finita de cerrados, por tanto cerrada. Su complemento $C_i$ es abierto. La finitud es esencial para este argumento: en $\Q$ hay infinitas componentes unipuntuales y ninguna es abierta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 2]\label{ej:lectura-18-2}
+Probar que todo espacio ultramétrico es totalmente disconexo.
+\end{ejercicio}
+\begin{solucion}
+Recordemos que una ultramétrica satisface $d(x,z)\le\max\{d(x,y),d(y,z)\}$. Toda bola abierta $B(a,r)$ es también cerrada. En efecto, si $y\notin B(a,r)$, entonces $d(a,y)\ge r$. Para $z\in B(y,d(a,y))$, si $d(a,z)<d(a,y)$, la desigualdad ultramétrica daría
+\[
+d(a,y)\le\max\{d(a,z),d(z,y)\}<d(a,y),
+\]
+una contradicción. Así $d(a,z)\ge d(a,y)\ge r$, y la bola alrededor de $y$ queda en el complemento de $B(a,r)$. El complemento es abierto.
+
+Dados $x\ne y$, la bola $B(x,d(x,y))$ contiene a $x$ y no a $y$, y es abierta y cerrada. Sus intersecciones con cualquier conjunto que contenga ambos puntos lo separan. Por tanto ningún conexo puede contener dos puntos distintos, que es la desconexión total.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 3]\label{ej:lectura-18-3}
+Un espacio es totalmente separado si para cualesquiera puntos \emph{distintos} $x,y$ hay una separación $U,V$ del espacio con $x\in U$, $y\in V$. Probar que Cantor es totalmente separado.
+\end{ejercicio}
+\begin{solucion}
+Usamos la construcción por eliminación de tercios del ejercicio \ref{ej:lectura-8-6}. En la etapa $n$, el conjunto $C_n$ es unión de $2^n$ intervalos cerrados, disjuntos entre sí, de longitud $3^{-n}$; dos intervalos distintos están separados por un intervalo abierto de longitud positiva. Además $C\subset C_n$ y $C=\bigcap_n C_n$.
+
+Dados $x,y\in C$ distintos, elegimos $n$ con $3^{-n}<|x-y|$. No pueden estar en el mismo intervalo de $C_n$, porque el diámetro de cada uno es $3^{-n}$. Sea $I$ el intervalo de esa etapa que contiene a $x$ y sea $J$ la unión de los demás. Definimos
+\[
+U=C\cap I,\qquad V=C\cap J.
+\]
+Ambos son cerrados relativos en $C$: $I$ es cerrado y $J$ es una unión finita de cerrados. Son disjuntos, su unión es $C$ y contienen respectivamente a $x$ y a $y$. Al ser complementarios, ambos son también abiertos relativos. Así constituyen la separación requerida. La precisión ``distintos'' es necesaria: un mismo punto no puede pertenecer a dos abiertos disjuntos.\index{separacion total@separación total}
+
+Esta prueba también tendrá una interpretación por coordenadas cuando establezcamos el homeomorfismo $C\cong\{0,1\}^{\N}$ en la proposición \ref{ch16:cantor}. Dos puntos distintos corresponden entonces a sucesiones que difieren en alguna coordenada $k$. Los conjuntos $\{b:b_k=0\}$ y $\{b:b_k=1\}$ son abiertos en la topología producto, pues la proyección de coordenada es continua y los singletons de $\{0,1\}$ son abiertos. Son complementarios y no vacíos; transportados a $C$, separan los dos puntos. Si los dígitos aparecen en el orden contrario, se intercambian los conjuntos. Esta segunda descripción no se necesita para la prueba mediante intervalos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 4]\label{ej:lectura-18-4}
+Si $A\subset X$ es abierto y cerrado, probar que es unión de componentes de $X$.
+\end{ejercicio}
+\begin{solucion}
+Si una componente $C$ toca $A$, los conjuntos $C\cap A$ y $C\cap(X\setminus A)$ son abiertos y cerrados relativos, disjuntos, y cubren $C$. La conexidad de $C$ y el hecho de que $C\cap A$ sea no vacío obligan a que el otro sea vacío. Por tanto $C\subset A$. Cada punto de $A$ pertenece a una componente, y acabamos de probar que esa componente entera está en $A$. Así $A$ es la unión de las componentes que toca. No se afirma que toda unión de componentes sea abierta: en $\Q$ un singleton es una unión de componentes pero no es abierto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 5]\label{ej:lectura-18-5}
+Probar que $A=\{(x,x\sin(1/x)):x\ne0\}\cup\{(0,0)\}$ es arcoconexo.
+\end{ejercicio}
+\begin{solucion}
+Definimos $h:\R\to\R$ por $h(x)=x\sin(1/x)$ para $x\ne0$ y $h(0)=0$. Fuera del cero es continua, y en cero la estimación $|h(x)|\le|x|$ prueba continuidad. El mapa $F(x)=(x,h(x))$ es continuo e inyectivo, y su inversa sobre $A$ es la primera proyección, que es continua. Por tanto $A$ es homeomorfo a $\R$. Explícitamente, para dos puntos distintos $F(a),F(b)$, el mapa
+\[
+\gamma(t)=F((1-t)a+tb),\qquad0\le t\le1,
+\]
+es continuo e inyectivo porque $a\ne b$ y la primera coordenada es estrictamente monótona. Tiene los extremos requeridos y su imagen está en $A$. El factor $x$ amortigua las oscilaciones y permite atravesar el origen, a diferencia del ejemplo \ref{ch18:seno}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 6]\label{ej:lectura-18-6}
+Sean $X$ conexo, $A\subset X$ conexo y $B$ una componente de $X\setminus A$. Probar que $X\setminus B$ es conexo.
+\end{ejercicio}
+\begin{solucion}
+Si $A=\varnothing$, la única componente del espacio no vacío conexo $X$ es $X$, así que $X\setminus B=\varnothing$ es conexo. Supongamos $A\ne\varnothing$ y que $Y=X\setminus B$ admite una separación $U,V$. Puesto que $A\subset Y$ es conexo, debe estar enteramente en uno de sus miembros; renombramos para que $A\subset U$. El conjunto $V$ es no vacío, abierto y cerrado en $Y=X\setminus B$.
+
+Aplicamos el ejercicio \ref{ej:lectura-17-6} al espacio conexo $X$, al conjunto conexo $B$ y al conjunto $V$, que es abierto y cerrado en su complemento. Obtenemos que $B\cup V$ es conexo. Como $V\cap A=\varnothing$ y $B\subset X\setminus A$, esta unión es un subconjunto conexo de $X\setminus A$. Contiene estrictamente a $B$, porque $V$ es no vacío y disjunto de $B$. Esto contradice la maximalidad de $B$ como componente de $X\setminus A$. Por tanto $Y$ no admite separación.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 7: convención necesaria]\label{ej:lectura-18-7}
+Definamos $x\approx y$ cuando $x=y$ o existe un arco de extremos $x,y$. Probar que es una relación de equivalencia y que sus clases, las componentes arcoconexas, están contenidas en componentes conexas.
+\end{ejercicio}
+\begin{solucion}
+Sin la alternativa $x=y$, la relación escrita con arcos inyectivos no sería reflexiva: una aplicación inyectiva de $[0,1]$ no puede tener los mismos valores en $0$ y $1$. Con la convención corregida, la reflexividad forma parte de la definición. Para simetría, si $p$ es un arco de $x$ a $y$, $t\mapsto p(1-t)$ es un arco de $y$ a $x$. Para transitividad, los casos con puntos iguales son inmediatos por sustitución; si hay arcos de $x$ a $y$ y de $y$ a $z$, el lema \ref{ch18:recorte} produce un arco de $x$ a $z$ cuando son distintos, y si coinciden se aplica la primera alternativa. Así la relación es de equivalencia.
+
+Además, si $p$ une $x$ y $y$, todo punto de su imagen está en la clase de $x$, porque la restricción de $p$ al intervalo que va de $0$ al parámetro de ese punto, reparametrizada linealmente, es un arco, salvo el punto inicial que ya está incluido por igualdad. En consecuencia, las clases son arcoconexas como subespacios, no solo pares de puntos conectables mediante arcos que podrían salir de la clase. Por la proposición \ref{ch18:arcoimplica}, cada clase es conexa; la proposición \ref{ch18:componentes} la sitúa dentro de una componente conexa. También se obtiene directamente de que la imagen de cualquier arco es un conjunto conexo que contiene sus dos extremos.\index{componente arcoconexa}
+\end{solucion}
+
+\section{Separar, descomponer y unir por curvas}
+La conexidad impide las separaciones y se transmite por continuidad; las componentes son las piezas conexas maximales y siempre son cerradas. La conexión por curvas exige un argumento adicional; la curva del seno muestra por qué. En abiertos de espacios normados, la geometría local de las bolas permite construir conexiones y recortar sus repeticiones para obtener arcos. Conexidad, conexión por caminos e inyectividad no deben confundirse en las demostraciones.

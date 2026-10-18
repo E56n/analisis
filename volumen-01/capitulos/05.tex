@@ -1,0 +1,424 @@
+\chapter{Compacidad en espacios métricos}\label{cap:nuevo05}\label{chap:13}\label{chap:14}\label{chap:15}
+
+\section{De los controles locales a la compacidad}\label{lectura:13}
+Una función continua controla su variación cerca de cada punto, pero el tamaño de esa vecindad puede cambiar de un punto a otro. La compacidad permite reducir una familia de controles locales a una cantidad finita y, después, tomar el mínimo de los radios o el máximo de las cotas. Esta es la razón de su presencia en tantos argumentos de análisis. Usaremos abiertos relativos, continuidad, sucesiones de Cauchy y cerradura. Partiremos de las cubiertas abiertas, pasaremos a la extracción de subsucesiones y obtendremos después el criterio de completitud y acotación total. La compacidad relativa y la compacidad local mostrarán cómo usar estas ideas dentro de un espacio ambiente y alrededor de cada punto. Este capítulo integra las lecturas 13--15 de \cite{valencia}.
+
+\section{Cubiertas y conjuntos compactos}
+\begin{definicion}
+Una \emph{cubierta abierta}\index{cubierta abierta} de $X$ es una familia $\mathcal U$ de abiertos de $X$ cuya unión es $X$. Una \emph{subcubierta} es una subfamilia que todavía cubre $X$. El espacio $X$ es \emph{compacto}\index{compacidad} si toda cubierta abierta tiene una subcubierta finita. Un subconjunto $K\subset X$ es compacto cuando lo es con su topología relativa. El conjunto vacío es compacto: la subfamilia vacía basta para cubrirlo.
+\end{definicion}
+Para un radio fijo $r>0$, las bolas $B(x,r)$, $x\in X$, cubren $X$. Si $D$ es denso, también las bolas con centros en $D$: dado $x\in X$, existe $a\in D\cap B(x,r)$ y la simetría de la distancia da $x\in B(a,r)$. En $\R$, los intervalos $(n,\infty)$, $n\in\Z$, cubren la recta pero ninguna cantidad finita la cubre. En un espacio discreto la familia pertinente es $\{\{x\}:x\in X\}$; sus elementos son conjuntos, mientras que los elementos de $X$ son puntos. Esta cubierta no admite quitar un solo miembro.
+
+\begin{proposicion}\label{ch13:criterios}
+Sean $\mathcal B$ una base de la topología de $X$ y $K\subset X$.
+\begin{enumerate}[label=(\roman*)]
+\item $X$ es compacto si y solo si toda cubierta de $X$ formada por miembros de $\mathcal B$ admite una subcubierta finita.
+\item $K$ es compacto si y solo si toda familia de abiertos de $X$ que cubre $K$ admite una subfamilia finita que cubre $K$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+Para (i), una dirección es parte de la definición. Para la otra, dada una cubierta abierta $\mathcal U$, tomamos todos los $B\in\mathcal B$ que estén contenidos en algún $U\in\mathcal U$. Cubren $X$: si $x\in U$, la propiedad de base proporciona $x\in B\subset U$. Una subcubierta $B_1,\ldots,B_m$ permite elegir $U_i$ con $B_i\subset U_i$, y estos $U_i$ cubren $X$.
+
+Para (ii), si $K$ es compacto, los abiertos relativos $K\cap U$ forman una cubierta de $K$ y por tanto basta una cantidad finita. Recíprocamente, toda cubierta relativa tiene la forma $\{K\cap U_\alpha\}$ con $U_\alpha$ abierto en $X$. Aplicar la hipótesis a $\{U_\alpha\}$ da la subcubierta relativa requerida.
+\end{proof}
+
+\begin{ejemplo}[Espacios finitos e intervalos cerrados]
+Todo espacio finito es compacto: se elige un miembro de la cubierta para cada punto. Un espacio discreto infinito no lo es, por su cubierta de singletons.
+
+El intervalo $[a,b]$ es compacto. Presentamos la prueba, en lugar de dar por conocida esta propiedad del cálculo. Sea $\mathcal U$ una cubierta y definamos
+\[
+E=\{t\in[a,b]:[a,t]\text{ se cubre con finitos miembros de }\mathcal U\}.
+\]
+El conjunto contiene $a$ y tiene supremo $c\in[a,b]$. Si $c<b$, un abierto $U\ni c$ contiene $(c-\delta,c+\delta)\cap[a,b]$ para algún $\delta>0$. Por la definición de supremo hay $t\in E$ con $t>c-\delta/2$; si $c=a$ podemos tomar $t=a$. Una cubierta finita de $[a,t]$, junto con $U$, cubre $[a,\min(b,c+\delta/2)]$, contradiciendo que $c$ sea cota superior. Así $c=b$. Tomando ahora un abierto que contenga $b$ y un $t\in E$ suficientemente próximo a $b$, obtenemos una cubierta finita de todo $[a,b]$.
+\end{ejemplo}
+
+\section{Imágenes, cerrados y continuidad uniforme}
+\begin{teorema}\label{ch13:imagen}
+La imagen continua de un espacio compacto es compacta.
+\end{teorema}
+\begin{proof}
+Sea $f:X\to Y$ continua y $\mathcal U$ una familia de abiertos de $Y$ que cubre $f(X)$. Las preimágenes $f^{-1}(U)$ son abiertas y cubren $X$. Elegimos $U_1,\ldots,U_m$ cuyas preimágenes cubran $X$. Si $y=f(x)$, entonces $x\in f^{-1}(U_i)$ para algún $i$, de donde $y\in U_i$. La proposición \ref{ch13:criterios} termina la prueba.
+\end{proof}
+
+\begin{proposicion}\label{ch13:cerrados}
+En un espacio métrico, todo compacto es cerrado y acotado. Todo subconjunto cerrado de un compacto es compacto.
+\end{proposicion}
+\begin{proof}
+Sea $K$ compacto no vacío y $x\notin K$. Para $y\in K$ pongamos $r_y=d(x,y)/3>0$. Elegimos $y_1,\ldots,y_m$ tales que $K\subset\bigcup_iB(y_i,r_i)$ y ponemos $r=\min_i r_i>0$. Si $z\in B(x,r)$ y $y\in K$, elegimos $i$ con $d(y,y_i)<r_i$. La desigualdad triangular, escrita en sentido inverso, da
+\[
+d(z,y)\ge d(x,y_i)-d(x,z)-d(y,y_i)>3r_i-r-r_i\ge r.
+\]
+Así $z\notin K$ y $B(x,r)\subset X\setminus K$. Esto prueba que $K$ es cerrado. Para la acotación, fijemos $x_0\in X$; las bolas $B(x_0,n)$, $n\in\N$, cubren $K$. Una subcubierta finita queda contenida en la de mayor radio.
+
+Si $F$ es cerrado en el compacto $K$, una cubierta relativa de $F$ por abiertos de $K$, junto con $K\setminus F$, cubre $K$. Extraemos una subcubierta finita y eliminamos $K\setminus F$ si aparece. Los miembros restantes cubren $F$.
+\end{proof}
+
+\begin{teorema}[Heine--Cantor]\label{ch13:heinecantor}
+Toda función continua $f:X\to Y$ entre espacios métricos, con $X$ compacto, es uniformemente continua.
+\end{teorema}
+\begin{proof}
+Fijemos $\eps>0$. Para cada $x\in X$ elegimos $r_x>0$ tal que $d(x,z)<r_x$ implique $d_Y(f(x),f(z))<\eps/2$. Extraemos una subcubierta finita $B(x_i,r_i/2)$ y ponemos $\delta=\frac12\min_i r_i$. Dados $u,v$ con $d(u,v)<\delta$, elegimos $i$ con $u\in B(x_i,r_i/2)$. Entonces
+\[
+d(v,x_i)\le d(v,u)+d(u,x_i)<\delta+r_i/2\le r_i.
+\]
+Las imágenes de $u$ y $v$ están a distancia menor que $\eps/2$ de $f(x_i)$, por lo que $d_Y(f(u),f(v))<\eps$. El radio $\delta$ se eligió antes que $u,v$: esta independencia es exactamente la continuidad uniforme.
+\end{proof}
+
+\begin{corolario}[Máximo y mínimo]\label{ch13:extremos}
+Si $K$ es compacto no vacío y $f:K\to\R$ es continua, existen $x_-,x_+\in K$ tales que $f(x_-)\le f(x)\le f(x_+)$ para todo $x\in K$.
+\end{corolario}
+\begin{proof}
+La imagen es compacta, luego cerrada y acotada. Si $M=\sup f(K)$, para cada $n$ existe $y_n\in f(K)$ con $M-1/n<y_n\le M$. Por cerradura, $M\in f(K)$. Aplicamos el mismo argumento a $-f$ para el mínimo.
+\end{proof}
+
+\section{Ejercicios resueltos: cubiertas e imágenes compactas}
+\begin{ejercicio}[Lectura 13, ejercicio 1]\label{ej:lectura-13-1}
+Una familia no vacía $\mathcal F$ tiene la propiedad de intersección finita cuando toda intersección de una cantidad finita de sus miembros es no vacía. Probar que $X$ es compacto si y solo si toda familia de cerrados con esta propiedad tiene intersección no vacía.
+\end{ejercicio}
+\begin{solucion}
+Si $X$ es compacto y $\bigcap\mathcal F=\varnothing$, los complementos $X\setminus F$ forman una cubierta abierta. Una subcubierta finita implicaría $F_1\cap\cdots\cap F_m=\varnothing$, contradicción. En sentido inverso, si una cubierta abierta no tuviera subcubierta finita, los complementos de sus miembros serían cerrados con intersecciones finitas no vacías. Su intersección total, sin embargo, sería vacía. Si $X=\varnothing$, ambas propiedades se cumplen; no existe en él una familia de cerrados no vacíos con la propiedad indicada.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 2]\label{ej:lectura-13-2}
+Probar que una unión finita de subconjuntos compactos es compacta.
+\end{ejercicio}
+\begin{solucion}
+Sea $K=K_1\cup\cdots\cup K_m$ y sea $\mathcal U$ una cubierta por abiertos del espacio ambiente. Para cada $i$, la compacidad de $K_i$ proporciona una subfamilia finita $\mathcal U_i\subset\mathcal U$ que lo cubre. La unión de las $m$ subfamilias es finita y cubre $K$. No se exige que los compactos sean disjuntos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 3]\label{ej:lectura-13-3}
+En un compacto $X$, una sucesión decreciente de cerrados no vacíos $F_n$ tiene intersección no vacía. Deducir que $X$ es completo.
+\end{ejercicio}
+\begin{solucion}
+La intersección de finitos $F_n$ coincide con el que tenga el índice mayor, así que la familia tiene la propiedad de intersección finita. Aplicamos el ejercicio \ref{ej:lectura-13-1}. Si $(x_n)$ es de Cauchy, consideramos
+\[
+F_n=\cl{\{x_k:k\ge n\}}.
+\]
+Son cerrados, no vacíos y decrecientes; elegimos $x\in\bigcap_nF_n$. Dado $\eps>0$, existe $N$ con $d(x_j,x_k)<\eps/2$ cuando $j,k\ge N$. Como $x\in F_N$, hay $k\ge N$ con $d(x,x_k)<\eps/2$. Entonces, para todo $j\ge N$, $d(x_j,x)<\eps$. Por tanto $x_n\to x$ y $X$ es completo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 4]\label{ej:lectura-13-4}
+Probar que la bola unitaria cerrada de $\ell^\infty$ es cerrada y acotada, pero no compacta.
+\end{ejercicio}
+\begin{solucion}
+La norma es continua porque $|\norm{x}_\infty-\norm{y}_\infty|\le\norm{x-y}_\infty$. Así la bola $K=\{x:\norm{x}_\infty\le1\}$ es cerrada y tiene diámetro a lo sumo $2$. Sean $e_n$ las sucesiones con un único $1$, en la coordenada $n$. Para $n\ne m$, $\norm{e_n-e_m}_\infty=1$. Las bolas abiertas de radio $1/3$ centradas en todos los puntos de $K$ forman una cubierta relativa. Cada bola contiene a lo sumo un $e_n$, pues dos puntos de la misma bola están a distancia menor que $2/3$. Ninguna subfamilia finita cubre todos los $e_n$. La misma separación ocurre entre cualesquiera dos sucesiones distintas de ceros y unos, como sugiere la lectura.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 5]\label{ej:lectura-13-5}
+Si $X$ es compacto y $f:X\to Y$ es continua e inyectiva, probar que $f^{-1}:f(X)\to X$ es continua.
+\end{ejercicio}
+\begin{solucion}
+Para todo cerrado $F\subset X$, el conjunto $F$ es compacto, su imagen $f(F)$ es compacta y, por ser $Y$ métrico, es cerrada en $Y$ y en $f(X)$. Pero $f(F)$ es precisamente la preimagen de $F$ por $f^{-1}$. La caracterización de continuidad mediante cerrados prueba el resultado. La compacidad convierte aquí una biyección continua en un homeomorfismo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 6]\label{ej:lectura-13-6}
+Sean $X$ compacto, $f:X\to Y$ continua y $A\subset X$ tal que $f(X\setminus A)\subset Y\setminus f(A)$. Probar: (i) $f|_A:A\to f(A)$ es cerrada; (ii) si además es inyectiva, es un homeomorfismo.
+\end{ejercicio}
+\begin{solucion}
+La hipótesis dice que ningún punto exterior a $A$ comparte imagen con un punto de $A$; equivalentemente, $f^{-1}(f(A))=A$. Para (i), sea $F$ cerrado en $A$, de modo que $F=A\cap C$ con $C$ cerrado en $X$. Afirmamos
+\[
+f(F)=f(C)\cap f(A).
+\]
+Una inclusión es inmediata por las dos pertenencias. Si $y=f(c)\in f(C)\cap f(A)$, la hipótesis impide $c\notin A$; luego $c\in C\cap A=F$. Ahora $C$ es compacto y $f(C)$ cerrado en $Y$, de modo que $f(F)$ es cerrado en $f(A)$. Para (ii), la restricción es continua y biyectiva sobre su imagen. Ser cerrada significa que su inversa tiene preimagen cerrada para cada cerrado de $A$, por lo que la inversa es continua. No hemos supuesto que $A$ sea cerrado ni compacto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 7]\label{ej:lectura-13-7}
+Si $X,Y$ son compactos, probar que $X\times Y$, con la métrica máximo, es compacto.
+\end{ejercicio}
+\begin{solucion}
+Los rectángulos $B_X(x,r)\times B_Y(y,s)$ son abiertos y forman una base: contienen y son contenidos localmente en bolas de la métrica máximo. Sea $\mathcal U$ una cubierta abierta del producto. Para cada $(x,y)$ elegimos un rectángulo $V_{xy}\times W_{xy}$ que contenga $(x,y)$ y esté contenido en algún $U_{xy}\in\mathcal U$. Fijado $x$, los $W_{xy}$ cubren $Y$; elegimos $y_1,\ldots,y_{m_x}$ y ponemos $V_x=\bigcap_jV_{xy_j}$. Este es un abierto que contiene $x$, y
+\[
+V_x\times Y\subset\bigcup_{j=1}^{m_x}U_{xy_j}.
+\]
+Los $V_x$ cubren $X$; una cantidad finita $V_{x_1},\ldots,V_{x_k}$ basta. Los conjuntos $U_{x_i y_j}$ seleccionados para estos $x_i$ constituyen una subcubierta finita del producto. Si uno de los factores es vacío, el producto vacío ya es compacto.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 8]\label{ej:lectura-13-8}
+Probar que toda cubierta abierta $\mathcal U$ de un compacto métrico admite un número de Lebesgue: existe $r>0$ tal que todo subconjunto de diámetro menor que $r$ está contenido en algún miembro de $\mathcal U$.
+\end{ejercicio}
+\begin{solucion}
+Suponemos $X\ne\varnothing$; para el espacio vacío el resultado se interpreta para subconjuntos no vacíos, o para cubiertas no vacías. Para cada $x$ elegimos $U_x\in\mathcal U$ y $r_x>0$ con $B(x,r_x)\subset U_x$. Una cantidad finita $B(x_i,r_i/2)$ cubre $X$; fijemos $r=\frac12\min_i r_i$. Si $A\ne\varnothing$ y $\diam A<r$, tomamos $a\in A$ e $i$ con $d(a,x_i)<r_i/2$. Para todo $b\in A$,
+\[
+d(b,x_i)\le d(b,a)+d(a,x_i)<r+r_i/2\le r_i.
+\]
+Luego $A\subset U_{x_i}$. El conjunto vacío está contenido en cualquier miembro de la cubierta. Un número de Lebesgue controla conjuntos completos de diámetro pequeño, no solamente bolas con un centro preestablecido.\index{numero de Lebesgue@número de Lebesgue}
+\end{solucion}
+
+La compacidad no significa simplemente que un conjunto sea pequeño en diámetro. Significa que cualquier descripción local mediante abiertos puede reducirse a finitos datos. La extracción de esa subfamilia finita es el paso que produce controles uniformes, extremos y continuidad de inversas.
+
+\section{Compacidad secuencial y puntos de acumulación}\label{lectura:14}
+Las cubiertas abiertas expresan bien el significado de compacidad, pero en problemas concretos solemos disponer de sucesiones: aproximaciones, minimizantes o funciones que queremos hacer converger. En espacios métricos ambas perspectivas son equivalentes. La palabra \emph{métrico} es importante: fuera de esta categoría no se pueden intercambiar sin más compacidad y compacidad secuencial. Los resultados sobre cubiertas que acabamos de demostrar permiten ahora construir límites de subsucesiones. Usaremos también puntos de acumulación y bases numerables.
+
+\begin{definicion}
+Un espacio es \emph{secuencialmente compacto}\index{compacidad!secuencial} si toda sucesión tiene una subsucesión convergente a un punto del espacio. Es \emph{compacto por puntos de acumulación}\index{compacidad!por puntos de acumulacion@por puntos de acumulación} si todo subconjunto infinito tiene un punto de acumulación en el espacio.
+\end{definicion}
+
+\begin{lema}\label{ch14:acumulacion}
+Si $a$ es punto de acumulación de $A$ en un espacio métrico, cada bola alrededor de $a$ contiene infinitos puntos de $A$ distintos de $a$.
+\end{lema}
+\begin{proof}
+Si $B(a,r)\cap(A\setminus\{a\})=\{b_1,\ldots,b_m\}$ fuera finito, podríamos elegir $0<s<r$ menor que todas las distancias positivas $d(a,b_j)$. Entonces $B(a,s)$ no contendría ningún punto de $A$ distinto de $a$, contradiciendo la acumulación. Si la lista ya es vacía, la contradicción es directa.
+\end{proof}
+
+\begin{teorema}\label{ch14:equivalencias}
+Para un espacio métrico $X$ son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item $X$ es compacto;
+\item $X$ es secuencialmente compacto;
+\item todo subconjunto infinito de $X$ tiene un punto de acumulación en $X$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\emph{(i)$\Rightarrow$(ii).} Dada $(x_n)$, ponemos $F_n=\cl{\{x_k:k\ge n\}}$. Son cerrados no vacíos y decrecientes. El ejercicio \ref{ej:lectura-13-3} proporciona $x\in\bigcap_nF_n$. Elegimos $n_1$ con $d(x_{n_1},x)<1$. Una vez elegido $n_j$, la pertenencia $x\in F_{n_j+1}$ permite escoger $n_{j+1}>n_j$ con $d(x_{n_{j+1}},x)<1/(j+1)$. Esta es una subsucesión que converge a $x$. La barra de cerradura en $F_n$ es indispensable.
+
+\emph{(ii)$\Rightarrow$(iii).} Si $A$ es infinito, elegimos puntos distintos $a_n\in A$. Una subsucesión converge a cierto $a\in X$. Toda bola alrededor de $a$ contiene términos de esa subsucesión distintos de $a$, porque los términos son distintos entre sí y a lo sumo uno puede ser igual a $a$. Así $a$ es punto de acumulación.
+
+\emph{(iii)$\Rightarrow$(ii).} Dada $(x_n)$, si su recorrido es finito, algún valor aparece infinitas veces: una unión finita de conjuntos finitos de índices no podría ser $\N$. Se obtiene una subsucesión constante. Si el recorrido es infinito, tiene un punto de acumulación $x$. Elegido $n_j$, el lema \ref{ch14:acumulacion} permite hallar en $B(x,1/(j+1))$ un valor del recorrido distinto de $x_1,\ldots,x_{n_j}$. Algún índice que lo produzca debe ser mayor que $n_j$. Se construye así una subsucesión convergente.
+
+\emph{(ii)$\Rightarrow$(i).} Primero demostraremos dos hechos. Para cada $r>0$, finitas bolas de radio $r$ cubren $X$. Si esto fallara, elegiríamos $x_1$ y, sucesivamente, $x_{n+1}\notin\bigcup_{j=1}^nB(x_j,r)$. Las distancias entre términos distintos serían al menos $r$, de modo que ninguna subsucesión sería de Cauchy y ninguna convergería.
+
+Segundo, toda cubierta abierta $\mathcal U$ tiene un número de Lebesgue. En caso contrario, para cada $n$ habría un conjunto no vacío $A_n$ de diámetro menor que $1/n$ que no estuviera contenido en ningún miembro de $\mathcal U$. Elegimos $a_n\in A_n$ y una subsucesión $a_{n_j}\to a$. Tomamos $U\in\mathcal U$ y $r>0$ con $B(a,r)\subset U$. Para $j$ grande, $d(a_{n_j},a)<r/2$ y $1/n_j<r/2$. Todo $z\in A_{n_j}$ satisface $d(z,a)<r$, luego $A_{n_j}\subset U$, contradicción.
+
+Sea $\lambda$ un número de Lebesgue. Cubrimos $X$ con finitas bolas de radio $\lambda/3$. Cada una tiene diámetro a lo sumo $2\lambda/3<\lambda$, por lo que está contenida en algún miembro de $\mathcal U$. Estos miembros forman una subcubierta finita. Esta prueba no usa el lema de Lebesgue para compactos para demostrar su propia hipótesis: acabamos de obtener el lema directamente de la compacidad secuencial.
+\end{proof}
+
+\begin{corolario}\label{ch14:separable}
+Todo compacto métrico es separable y admite una base numerable.
+\end{corolario}
+\begin{proof}
+Para cada $n$ elegimos un conjunto finito $D_n$ cuyos centros de bolas de radio $1/n$ cubran $X$. La unión $D=\bigcup_nD_n$ es a lo sumo numerable. Si $B(x,r)$ es una bola, elegimos $n$ con $1/n<r$ y un centro $a\in D_n$ con $d(x,a)<1/n$. Así $D$ es denso. Las bolas de centro en $D$ y radio racional positivo forman una base: si $B(x,r)$ está dado, elegimos $a\in D$ suficientemente próximo a $x$ y un racional $q$ con $d(a,x)<q<r-d(a,x)$. Entonces $x\in B(a,q)\subset B(x,r)$.
+\end{proof}
+
+\section{Ejercicios resueltos: sucesiones, productos y colas}
+\begin{ejercicio}[Lectura 14, ejercicio 1]\label{ej:lectura-14-1}
+Si cada $(X_n,d_n)$ es compacto, probar que $\prod_{n\ge1}X_n$ es compacto para la métrica
+\[
+D(x,y)=\sum_{n=1}^\infty 2^{-n}\frac{d_n(x_n,y_n)}{1+d_n(x_n,y_n)}.
+\]
+\end{ejercicio}
+\begin{solucion}
+Si algún factor es vacío, el producto es vacío. En el otro caso, la serie converge porque cada sumando es menor que $2^{-n}$. La función $h(t)=t/(1+t)$ es creciente y subaditiva: para $a,b\ge0$,
+\[
+\frac{a+b}{1+a+b}=\frac a{1+a+b}+\frac b{1+a+b}
+\le\frac a{1+a}+\frac b{1+b}.
+\]
+Por ello cada $h\circ d_n$ satisface la desigualdad triangular y también la suma $D$. La positividad, simetría y separación de puntos se comprueban término a término.
+
+Sea $(x^{(k)})$ una sucesión del producto. Extraemos una subsucesión para la cual converge la primera coordenada; de esta, otra para la segunda; continuamos inductivamente. Escribamos $k_j^{(n)}$ los índices de la subsucesión elegida en el paso $n$, ordenados crecientemente, con cada lista contenida en la anterior. Los índices diagonales $k_n^{(n)}$ son estrictamente crecientes: el $(n+1)$-ésimo índice de la lista siguiente es al menos el $(n+1)$-ésimo de la anterior, y este supera su $n$-ésimo. Para cada coordenada fija $i$, la cola de la diagonal pertenece a la subsucesión del paso $i$ y converge a un punto $x_i\in X_i$.
+
+Sea $x=(x_i)$. Dado $\eps>0$, elegimos $N$ con $\sum_{i>N}2^{-i}<\eps/2$. En las primeras $N$ coordenadas la convergencia permite hacer que la suma finita de distancias transformadas sea menor que $\eps/2$. La cola ya está controlada independientemente del índice. Así $D(x^{(k_n^{(n)})},x)<\eps$ para $n$ grande. El producto es secuencialmente compacto y el teorema \ref{ch14:equivalencias} concluye la prueba. Esta estimación prueba también que la convergencia en $D$ equivale a la convergencia en cada coordenada: la otra dirección se obtiene acotando cada sumando por $D$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 2]\label{ej:lectura-14-2}
+Sea $X$ compacto y $U\subset X\times X$ abierto que contiene la diagonal $\Delta_X$. Probar que existe $r>0$ tal que $d(x,y)<r$ implica $(x,y)\in U$.
+\end{ejercicio}
+\begin{solucion}
+Si no existiera tal $r$, elegiríamos $x_n,y_n$ con $d(x_n,y_n)<1/n$ y $(x_n,y_n)\notin U$. Una subsucesión $x_{n_j}$ converge a $x$; la desigualdad $d(y_{n_j},x)\le1/n_j+d(x_{n_j},x)$ muestra que $y_{n_j}\to x$. Entonces $(x_{n_j},y_{n_j})\to(x,x)\in U$. Como $U$ es abierto, la sucesión pertenece eventualmente a $U$, contradicción. El argumento convierte cercanía a la diagonal en una cota uniforme.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 3]\label{ej:lectura-14-3}
+Probar que todo espacio métrico no compacto contiene un subconjunto infinito numerable, cerrado y discreto.
+\end{ejercicio}
+\begin{solucion}
+Existe una sucesión sin subsucesiones convergentes. Ningún valor aparece infinitas veces; su recorrido es infinito. Elegimos inductivamente una subsucesión de valores distintos y llamamos $A$ a su recorrido. Si $A$ tuviera un punto de acumulación, el lema \ref{ch14:acumulacion} permitiría extraer, respetando el orden de los índices, una subsucesión convergente, contradicción. Por tanto $A$ no tiene puntos de acumulación. Todo punto de $\cl A\setminus A$ sería uno de acumulación; así $A$ es cerrado. Para cada $a\in A$, que $a$ no sea de acumulación significa que existe $r_a>0$ con $B(a,r_a)\cap A=\{a\}$. Esta es precisamente la discreción de la topología relativa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 4]\label{ej:lectura-14-4}
+Probar que $X$ es compacto si y solo si toda función continua $X\to\R$ es acotada.
+\end{ejercicio}
+\begin{solucion}
+La dirección directa se sigue de que las imágenes compactas en $\R$ son acotadas. Para la inversa, si $X$ no es compacto, el ejercicio \ref{ej:lectura-14-3} proporciona $A=\{a_n:n\ge1\}$ cerrado y discreto. Construiremos directamente una función continua en todo $X$ que tome el valor $n$ en $a_n$. La discreción permite separar los centros; la cerradura impedirá que los soportes se acumulen fuera de $A$.
+
+Elegimos
+\[
+0<r_n<\min\{1/n,\tfrac13\dist(a_n,A\setminus\{a_n\})\},\qquad
+\varphi_n(x)=\max\{0,1-d(x,a_n)/r_n\}.
+\]
+La distancia del centro al resto es positiva por discreción. El \emph{soporte} de una función $\varphi$ es $\supp\varphi=\cl{\{x:\varphi(x)\ne0\}}$. La familia de soportes $\supp\varphi_n\subset\overline B(a_n,r_n)$ es localmente finita: cada punto tiene una vecindad que toca solo finitos de ellos. En efecto, si $x\notin A$, $\delta=\dist(x,A)>0$; para $n$ grande, $r_n<\delta/3$, y esas bolas no tocan $B(x,\delta/3)$. Si $x=a_k$, poniendo $\delta=\dist(a_k,A\setminus\{a_k\})>0$, toda bola con $n\ne k$ queda a distancia mayor que $2\delta/3$ de $a_k$, ya que $r_n<d(a_n,a_k)/3$. Por tanto
+\[
+f(x)=\sum_{n=1}^\infty n\varphi_n(x)
+\]
+es localmente una suma finita de funciones continuas, luego es continua. Además $f(a_n)=n$. Es una función continua no acotada, contradiciendo la hipótesis.
+
+Una vez demostrado el teorema de Tietze \ref{ch12:tietze}, dispondremos de otra prueba de este paso: la función $a_n\mapsto n$ es continua en el cerrado discreto $A$, y la versión real no necesariamente acotada de dicho teorema permite extenderla continuamente a $X$. La construcción anterior demuestra el resultado sin depender de ese teorema posterior.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 5]\label{ej:lectura-14-5}
+Sea $1\le p<\infty$. Probar que un subconjunto cerrado y acotado $A\subset\ell^p$ es compacto si y solo si
+\[
+\forall\eps>0\ \exists N\ \forall x\in A:\quad
+\sum_{k=N}^\infty |x_k|^p<\eps.
+\]
+Deducir que $K=\{x\in\ell^2:0\le x_n\le1/n\}$ es compacto.
+\end{ejercicio}
+\begin{solucion}
+\emph{Necesidad.} Sea $A$ compacto. Fijamos $\eps>0$ y elegimos $\delta>0$ con $2^p\delta^p<\eps$. Finitas bolas de radio $\delta$, centradas en $a^{(1)},\ldots,a^{(m)}\in A$, cubren $A$. Cada centro pertenece a $\ell^p$, por lo que para un $N$ común a todos ellos sus colas tienen suma menor que $\delta^p$. Dado $x\in A$, elegimos un centro a distancia menor que $\delta$ y usamos $|u+v|^p\le2^{p-1}(|u|^p+|v|^p)$:
+\[
+\sum_{k=N}^\infty|x_k|^p
+\le2^{p-1}\left(\norm{x-a^{(j)}}_p^p+
+\sum_{k=N}^\infty|a_k^{(j)}|^p\right)<2^p\delta^p<\eps.
+\]
+
+\emph{Suficiencia.} Sea $(x^{(j)})$ una sucesión en $A$ y $M$ una cota para sus normas. Como cada coordenada está acotada por $M$, el procedimiento diagonal del ejercicio \ref{ej:lectura-14-1}, usando Bolzano--Weierstrass en $\R$ o $\C$, produce una subsucesión que converge coordenada a coordenada a $x=(x_k)$. Para todo $m$,
+\[
+\sum_{k=1}^m|x_k|^p=\lim_j\sum_{k=1}^m|x_k^{(j)}|^p\le M^p.
+\]
+Las sumas parciales son crecientes y acotadas, por lo que $x\in\ell^p$. Dado $\eta>0$, elegimos $N$ de modo que las colas de todos los elementos de $A$ sean menores que $\eta$. Pasando al límite en cada suma finita de la cola y luego tomando el supremo de esas sumas obtenemos $\sum_{k=N}^\infty|x_k|^p\le\eta$. Así
+\[
+\norm{x^{(j)}-x}_p^p
+\le\sum_{k<N}|x_k^{(j)}-x_k|^p+2^p\eta.
+\]
+Primero hacemos $\eta$ tan pequeño como necesitemos y después hacemos pequeña la suma finita mediante la convergencia coordenada. Se obtiene convergencia en norma. Puesto que $A$ es cerrado, $x\in A$, y la compacidad secuencial prueba la compacidad.
+
+Para $K$, cada condición $0\le x_n\le1/n$ es cerrada porque la evaluación de coordenada es continua. Además $\norm{x}_2^2\le\sum_n1/n^2<\infty$, y las colas están uniformemente acotadas por $\sum_{k\ge N}1/k^2\to0$. El criterio se aplica. La condición de colas es la parte de la compacidad que la mera acotación en dimensión infinita no detecta.\index{cubo de Hilbert}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 6]\label{ej:lectura-14-6}
+Sea $W$ una vecindad compacta de $x$ y $f:W\to[0,\infty)$ continua, con $f(x)=0$ y $f(y)>0$ para $y\in W\setminus\{x\}$. Probar que para toda vecindad $V$ de $x$ existe $r>0$ tal que $\{y\in W:f(y)<r\}\subset V$.
+\end{ejercicio}
+\begin{solucion}
+El subnivel debe tomarse en $W$, que es el dominio de $f$; escribir $y\in X$ sin extender $f$ no define un conjunto. Elegimos un abierto $O$ con $x\in O\subset V$. El conjunto $W\setminus O$ es compacto. Si es vacío, cualquier $r>0$ funciona. Si no, $f$ alcanza en él un mínimo $m$. Ninguno de sus puntos es $x$, luego $m>0$. Tomamos $r=m$. Un punto de $W$ con $f(y)<r$ no puede estar en $W\setminus O$, y por ello pertenece a $O\subset V$. El argumento explica por qué la positividad punto a punto se vuelve una cota positiva uniforme lejos del único cero.
+\end{solucion}
+
+En un compacto métrico siempre podemos extraer una subsucesión convergente. Para reconocer compactos de sucesiones o funciones conviene buscar dos ingredientes: control de finitas coordenadas y una estimación uniforme de la cola. El primero por sí solo no garantiza convergencia en la norma del espacio.
+
+\section{Acotación total y caracterización métrica}\label{lectura:15}
+En $\R^n$, ser cerrado y acotado equivale a ser compacto. En $\ell^\infty$ ya encontramos una bola cerrada que contiene infinitos puntos separados por una distancia fija. La noción que excluye esta situación es la acotación total: a cualquier escala, el espacio debe poder describirse con finitos centros. La completitud garantiza, además, que los límites que esa descripción produce permanezcan dentro del espacio. La caracterización secuencial obtenida en la sección \ref{lectura:14} nos permite precisar ahora esta relación entre aproximación finita y existencia de límites.
+
+\begin{definicion}
+Un espacio métrico $X$ es \emph{totalmente acotado}\index{acotacion total@acotación total} si para cada $\eps>0$ existen $x_1,\ldots,x_m\in X$ tales que $X=\bigcup_{i=1}^mB(x_i,\eps)$. Los centros constituyen una \emph{red finita de radio $\eps$}. Aquí ``red'' significa conjunto de centros, no una familia indexada por un conjunto dirigido.
+\end{definicion}
+Un espacio totalmente acotado no vacío es acotado: basta una cubierta por finitas bolas de radio $1$ y estimar las distancias de los centros a uno de ellos. Todo subconjunto $A$ de un espacio totalmente acotado es totalmente acotado con su métrica relativa. Para probarlo, se cubre el espacio con bolas de radio $\eps/2$ y, de cada bola que toca $A$, se elige un centro nuevo en $A$; las bolas de radio $\eps$ con los nuevos centros cubren $A$. Este cambio de centros evita suponer que los centros originales pertenecen a $A$.
+
+\begin{teorema}\label{ch15:criterio}
+Un espacio métrico es compacto si y solo si es completo y totalmente acotado.
+\end{teorema}
+\begin{proof}
+Si es compacto, es completo por el ejercicio \ref{ej:lectura-13-3}. La cubierta por todas las bolas de un radio fijo tiene una subcubierta finita, lo que prueba la acotación total.
+
+Para el recíproco, sea $(x_n)$ una sucesión. Una cubierta finita por bolas de radio $1/2$ contiene una bola a la que pertenecen infinitos términos: de lo contrario, la unión de las cantidades finitas de índices sería finita. Sea $I_1$ un conjunto infinito de esos índices. Cubrimos ahora $X$ por finitas bolas de radio $1/4$ y elegimos un conjunto infinito $I_2\subset I_1$ cuyos términos estén en una sola bola. Continuamos con radios $2^{-j}$. Elegimos índices $n_j\in I_j$ con $n_{j+1}>n_j$; esto es posible porque cada $I_j$ es infinito. Si $k,l\ge j$, entonces $n_k,n_l\in I_j$ y
+\[
+d(x_{n_k},x_{n_l})<2\cdot2^{-j}.
+\]
+La subsucesión es de Cauchy. La completitud le proporciona un límite en $X$. Así toda sucesión admite una subsucesión convergente y el teorema \ref{ch14:equivalencias} implica compacidad.
+\end{proof}
+
+\begin{observacion}[Heine--Borel y su alcance]
+En $\R^n$, un conjunto acotado está contenido en una caja $[-M,M]^n$. Para cada $\eps>0$, dividimos cada intervalo en finitos subintervalos de longitud menor que $\eps/\sqrt n$. Cada caja pequeña tiene diámetro menor que $\eps$; eligiendo un punto del conjunto en cada caja que lo toque obtenemos una cubierta finita por bolas de radio $\eps$. Por tanto el conjunto es totalmente acotado. Si además es cerrado, es completo como subespacio cerrado del espacio completo $\R^n$, y el teorema da compacidad. La necesidad de cerrado y acotado ya se probó. En dimensión infinita, acotado no implica totalmente acotado, como muestran los vectores $e_n$ de la bola de $\ell^\infty$.\index{teorema de Heine--Borel}
+\end{observacion}
+
+\begin{proposicion}\label{ch15:relativa}
+Para $A\subset X$ son equivalentes:
+\begin{enumerate}[label=(\roman*)]
+\item la cerradura $\cl A^{\,X}$ es compacta;
+\item toda sucesión en $A$ tiene una subsucesión convergente a algún punto de $X$;
+\item $A$ es totalmente acotado y $\cl A^{\,X}$ es completo.
+\end{enumerate}
+Cuando se cumplen, $A$ es \emph{relativamente compacto en $X$}.\index{compacidad!relativa}
+\end{proposicion}
+\begin{proof}
+De (i) se sigue (ii) aplicando compacidad secuencial a la cerradura. También se sigue (iii), porque la cerradura es completa y totalmente acotada, y sus subconjuntos son totalmente acotados.
+
+Para (ii)$\Rightarrow$(i), sea $(z_n)$ una sucesión en $\cl A$. Si $A$ es vacío no hay nada que probar. En otro caso, la definición de cerradura permite elegir $a_n\in A$ con $d(z_n,a_n)<1/n$. Por (ii), una subsucesión $a_{n_j}$ converge a $a\in X$. Entonces
+\[
+d(z_{n_j},a)\le 1/n_j+d(a_{n_j},a)\longrightarrow0.
+\]
+Como $\cl A$ es cerrado, $a\in\cl A$. Así $\cl A$ es secuencialmente compacto. Para (iii)$\Rightarrow$(i), el ejercicio \ref{ej:lectura-15-1} demuestra que $\cl A$ es totalmente acotado; se aplica el teorema \ref{ch15:criterio}.
+\end{proof}
+
+\begin{ejemplo}[El espacio ambiente importa]
+El intervalo $(0,1)$ es relativamente compacto en $\R$, pues su cerradura allí es $[0,1]$. No es relativamente compacto en sí mismo: su cerradura relativa es $(0,1)$ y la sucesión $1/n$ no tiene ninguna subsucesión que converja a un punto de ese espacio. En un ambiente completo, ser relativamente compacto equivale a ser totalmente acotado. En un ambiente incompleto hay que comprobar también la completitud de la cerradura.
+\end{ejemplo}
+
+\section{Compacidad alrededor de cada punto}
+\begin{definicion}
+Un espacio métrico $X$ es \emph{localmente compacto}\index{compacidad!local} si cada punto tiene una vecindad compacta: para cada $x$ existen un abierto $O$ y un compacto $K$ con $x\in O\subset K$. Equivalentemente, cada punto tiene una vecindad cuya cerradura es compacta. Una vecindad no tiene por qué ser abierta.
+\end{definicion}
+La equivalencia se verifica así: una vecindad compacta es cerrada, por lo que es su propia cerradura; si una vecindad tiene cerradura compacta, esa cerradura sigue siendo una vecindad del punto.
+
+\begin{proposicion}\label{ch15:subespacios}
+Todo subespacio abierto o cerrado de un espacio métrico localmente compacto es localmente compacto.
+\end{proposicion}
+\begin{proof}
+Sea $x\in A$ y sea $K$ una vecindad compacta de $x$ en $X$. Si $A$ es cerrado, $K\cap A$ es compacto y contiene una vecindad relativa de $x$ en $A$.
+
+Si $A$ es abierto, elegimos un abierto $O$ con $x\in O\subset K$. Existe $r>0$ con $\overline B(x,r)\subset A\cap O$: basta escoger primero una bola de radio $2r$ contenida en ese abierto. La bola cerrada es un cerrado de $K$, luego es compacta, y constituye una vecindad de $x$ tanto en $X$ como en $A$.
+\end{proof}
+
+\begin{proposicion}\label{ch15:engrosamiento}
+Si $X$ es localmente compacto y $A\subset X$ es compacto, existe $r>0$ tal que $\cl{B(A,r)}$ es compacto, donde $B(A,r)=\{x:\dist(x,A)<r\}$.
+\end{proposicion}
+\begin{proof}
+Para $A=\varnothing$, interpretamos $B(A,r)=\varnothing$. En otro caso, por el ejercicio \ref{ej:lectura-15-3} cada $a\in A$ admite $r_a>0$ con $\overline B(a,r_a)$ compacta. Elegimos una subcubierta finita $B(a_i,r_i/2)$ de $A$, ponemos $r=\frac14\min_i r_i$ y $K=\bigcup_i\overline B(a_i,r_i)$. El conjunto $K$ es compacto. Si $z\in B(A,r)$, hay $a\in A$ con $d(z,a)<r$, y después un $i$ con $d(a,a_i)<r_i/2$. Así $d(z,a_i)<r+r_i/2<r_i$ y $z\in K$. Como $K$ es cerrado, también $\cl{B(A,r)}\subset K$. Esta cerradura es un cerrado de un compacto, luego compacta. No se ha supuesto que todas las bolas cerradas de $X$ sean compactas: solo se emplean radios locales adecuados.
+\end{proof}
+
+\section{Ejercicios resueltos: compacidad local y funciones de corte}
+\begin{ejercicio}[Lectura 15, ejercicio 1]\label{ej:lectura-15-1}
+Si $A\subset X$ es totalmente acotado, probar que su cerradura también lo es.
+\end{ejercicio}
+\begin{solucion}
+Fijado $\eps>0$, cubrimos $A$ con finitas bolas $B(a_i,\eps/2)$. Por ser la unión finita, su cerradura está contenida en la unión de las cerraduras de esas bolas, y cada una de estas está contenida en $\overline B(a_i,\eps/2)\subset B(a_i,\eps)$. En detalle, si un punto estuviera fuera de todas las cerraduras, la intersección de las finitas vecindades que evitan cada bola sería una vecindad que evita su unión. Por tanto las bolas $B(a_i,\eps)$ cubren $\cl A$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 2]\label{ej:lectura-15-2}
+Probar que el recorrido de toda sucesión de Cauchy es totalmente acotado.
+\end{ejercicio}
+\begin{solucion}
+Para $\eps>0$, elegimos $N$ con $d(x_n,x_m)<\eps$ si $n,m\ge N$. La cola está en $B(x_N,\eps)$, y los términos anteriores quedan cubiertos por $B(x_1,\eps),\ldots,B(x_{N-1},\eps)$. Esta es una cubierta finita del recorrido. No necesitamos que la sucesión converja ni que el ambiente sea completo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 3]\label{ej:lectura-15-3}
+Probar que $X$ es localmente compacto si y solo si cada $x$ admite $r_x>0$ con la bola cerrada $\overline B(x,r_x)$ compacta.
+\end{ejercicio}
+\begin{solucion}
+Si $K$ es una vecindad compacta de $x$, existe $s>0$ con $B(x,s)\subset K$. Tomamos $r_x=s/2$; la bola cerrada de ese radio es un cerrado de $K$, luego compacta. Para la inversa, $\overline B(x,r_x)$ contiene la bola abierta $B(x,r_x)$ y por tanto es una vecindad compacta. Se trata de la bola cerrada, no de afirmar que la bola abierta sea compacta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 4]\label{ej:lectura-15-4}
+Probar que $\Q$, con la métrica inducida de $\R$, no es localmente compacto.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que $q\in\Q$ tiene una vecindad compacta $K\subset\Q$. Entonces $\Q\cap(q-r,q+r)\subset K$ para algún $r>0$. Elegimos un irracional $\alpha\in(q-r,q+r)$ y racionales $q_n$ en ese intervalo que converjan en $\R$ a $\alpha$. Todos pertenecen a $K$. Una subsucesión debería converger en $\Q$ a algún $a\in K$; la inclusión continua $\Q\hookrightarrow\R$ daría convergencia a $a$ en $\R$, contradiciendo la unicidad del límite $\alpha\notin\Q$. Así una subparte arbitraria de un espacio localmente compacto puede dejar de ser localmente compacta. Las hipótesis abierto o cerrado de la proposición \ref{ch15:subespacios} son suficientes; no se afirma que sean individualmente necesarias para cada subespacio.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 5]\label{ej:lectura-15-5}
+Sean $X$ localmente compacto, $A\subset X$ compacto y $U\subset X$ abierto con $A\subset U$. Probar:
+\begin{enumerate}[label=(\roman*)]
+\item existen $V$ abierto y $B$ compacto con $A\subset V\subset B\subset U$;
+\item existe $f:X\to[0,1]$ continua, igual a $1$ en $A$, cuyo soporte es compacto y está contenido en $U$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Para (i), cada $a\in A$ admite una bola cerrada compacta de radio $s_a>0$. Como $U$ es abierto, podemos disminuir el radio hasta elegir $r_a>0$ con $\overline B(a,2r_a)\subset U$ y con esa bola todavía compacta, por ser cerrada en la bola original. Extraemos una subcubierta finita $B(a_i,r_i)$ de $A$ y ponemos
+\[
+V=\bigcup_iB(a_i,r_i),\qquad B=\bigcup_i\overline B(a_i,r_i).
+\]
+Entonces $\cl V\subset B\subset U$ y $B$ es compacto.
+
+Para (ii), si $A=\varnothing$, elegimos $f=0$. Para $A\ne\varnothing$ y $X\setminus V\ne\varnothing$, definimos
+\[
+f(x)=\frac{\dist(x,X\setminus V)}{\dist(x,X\setminus V)+\dist(x,A)}.
+\]
+Ambas distancias son continuas. El denominador nunca es cero: si $\dist(x,A)=0$, el cerrado $A$ contiene $x$, y entonces $x\in V$ tiene distancia positiva al cerrado $X\setminus V$. La función toma valores en $[0,1]$, vale $1$ en $A$ y vale $0$ fuera de $V$. Por tanto $\supp f=\cl{\{x:f(x)\ne0\}}\subset\cl V\subset B\subset U$; es cerrado en el compacto $B$, luego compacto. Si $V=X$, las inclusiones de (i) implican $B=X$ compacto y podemos elegir $f=1$. Esta construcción explica por qué se debe reservar espacio entre $A$ y el exterior de $U$.\index{funcion de corte@función de corte}\index{soporte}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 6]\label{ej:lectura-15-6}
+Si el compacto $A$ está cubierto por abiertos $U_1,\ldots,U_n$ de un espacio localmente compacto $X$, construir funciones continuas $f_k:X\to[0,1]$ de soporte compacto contenido en $U_k$, tales que $\sum_k f_k\le1$ en $X$ y $\sum_kf_k=1$ en $A$.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es vacío, tomamos todas las funciones nulas. Para cada $a\in A$, elegimos $k(a)$ con $a\in U_{k(a)}$ y un abierto $V_a$ que contenga $a$ y tenga cerradura compacta contenida en $U_{k(a)}$, mediante el inciso (i) del ejercicio \ref{ej:lectura-15-5} aplicado a $\{a\}$. El inciso (ii) de ese ejercicio, aplicado al compacto $\cl V_a$, produce $h_a:X\to[0,1]$ igual a $1$ en $\cl V_a$, con soporte compacto contenido en $U_{k(a)}$. Elegimos $a_1,\ldots,a_m$ de modo que los $V_{a_j}$ cubran $A$.
+
+Agrupamos por el abierto al que están subordinadas:
+\[
+g_k=\sum_{j:k(a_j)=k}h_{a_j},\qquad S=\sum_{k=1}^n g_k,\qquad
+f_k=\frac{g_k}{\max\{1,S\}}.
+\]
+Una suma sin términos se interpreta como cero. El denominador es continuo y al menos $1$. Como $0\le g_k\le S\le\max\{1,S\}$, tenemos $0\le f_k\le1$. Su soporte está contenido en la unión finita de los soportes de los $h_{a_j}$ correspondientes; esta unión es compacta y está contenida en $U_k$. Finalmente,
+\[
+\sum_k f_k=\frac S{\max\{1,S\}}\le1.
+\]
+Si $x\in A$, algún $V_{a_j}$ contiene $x$, así que $h_{a_j}(x)=1$ y $S(x)\ge1$. Allí la suma vale exactamente $1$. Normalizar por $S$ sin el máximo no serviría en los puntos donde $S=0$.\index{particion de la unidad@partición de la unidad}
+\end{solucion}
+
+\section{De la extracción finita a la localización}
+Las cubiertas, las subsucesiones y las redes finitas son tres formas complementarias de reconocer la compacidad métrica. Las primeras convierten datos locales en controles uniformes; las segundas permiten obtener límites de aproximaciones. La acotación total controla todas las escalas; la completitud retiene sus límites. La compacidad local permite construir funciones de corte y particiones finitas de la unidad, herramientas que más adelante harán posible localizar problemas de integración y aproximación.

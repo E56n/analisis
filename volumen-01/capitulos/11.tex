@@ -1,10 +1,184 @@
-\chapter{Convergencia uniforme: límites, series, integrales y derivadas}\label{chap:26}
-\index{convergencia!puntual}\index{convergencia!uniforme}
+\chapter{Espacios de funciones y convergencia uniforme}\label{cap:nuevo11}\label{chap:25}\label{chap:26}
+\index{metrica uniforme@métrica uniforme}\index{convergencia!puntual}\index{convergencia!uniforme}
 
-\section{El orden de los cuantificadores}
+Una sucesión de funciones puede aproximar bien cada valor y, sin embargo, hacerlo mal en una región que cambia con el índice. La métrica uniforme mide el mayor error en todo el dominio y convierte las funciones en puntos de un nuevo espacio métrico. A partir de esa construcción estudiaremos la conservación de la continuidad, las series de funciones y el paso al límite en integrales y derivadas.
+
+Usaremos completitud, continuidad, compacidad, propiedades del supremo y cálculo diferencial e integral de una variable. Cuando construyamos límites de funciones con valores en un espacio normado $V$, exigiremos que $V$ sea Banach. Para comparar funciones, su dominio no necesita inicialmente ninguna estructura: basta una distancia en el espacio de llegada. Salvo indicación contraria, los conjuntos considerados son no vacíos; si el dominio es vacío, existe una sola función con ese dominio y su espacio de funciones es el espacio métrico de un punto.
+
+\section{Funciones acotadas y distancia del supremo}
+\label{lectura:25}
+\begin{definicion}
+Sean $S$ un conjunto y $(Y,d)$ un espacio métrico. Una función $f:S\to Y$ es \emph{acotada} si $f(S)$ está contenido en alguna bola de radio finito. Denotamos por $B(S,Y)$ el conjunto de esas funciones. Para $f,g\in B(S,Y)$ definimos
+\[
+ d_\infty(f,g)=\sup_{s\in S}d(f(s),g(s)).
+\]
+\end{definicion}
+
+Antes de verificar los axiomas de una métrica debemos comprobar que el supremo es finito. Si $f(S)\subset B(y_0,R)$ y $g(S)\subset B(y_1,T)$, la desigualdad triangular da
+\[
+ d(f(s),g(s))\le d(f(s),y_0)+d(y_0,y_1)+d(y_1,g(s))
+ <R+d(y_0,y_1)+T.
+\]
+Por tanto, el conjunto cuyo supremo tomamos es no vacío, está acotado superiormente y está formado por números no negativos.
+
+\begin{proposicion}\label{ch25:metrica}
+La función $d_\infty$ es una métrica en $B(S,Y)$.
+\end{proposicion}
+\begin{proof}
+La no negatividad se hereda de $d$. Si $d_\infty(f,g)=0$, entonces
+$0\le d(f(s),g(s))\le 0$ para cada $s$, de modo que $f(s)=g(s)$ en todo $S$. Recíprocamente, si $f=g$, todas las distancias son cero y el supremo es cero. La simetría se obtiene de $d(f(s),g(s))=d(g(s),f(s))$.
+
+Para la desigualdad triangular, fijamos $s\in S$ y escribimos
+\[
+ d(f(s),h(s))\le d(f(s),g(s))+d(g(s),h(s))
+ \le d_\infty(f,g)+d_\infty(g,h).
+\]
+La expresión de la derecha no depende de $s$ y es una cota superior para todos los términos de la izquierda. La propiedad que caracteriza al supremo implica
+$d_\infty(f,h)\le d_\infty(f,g)+d_\infty(g,h)$.
+\end{proof}
+
+\begin{observacion}[Un supremo no tiene que alcanzarse]
+Si $f(s)=s$ y $g(s)=0$ en $S=(0,1)$, entonces $d_\infty(f,g)=1$, aunque $|f(s)-g(s)|<1$ para cada punto. Así, demostrar una desigualdad estricta punto por punto suele producir solamente una desigualdad no estricta después de tomar supremos. Para obtener finalmente un error menor que $\eps$ trabajaremos, por ejemplo, con $\eps/2$.
+\end{observacion}
+
+\begin{lema}\label{ch25:unionacotada}
+Si una familia no vacía $\mathcal A\subset B(S,Y)$ está acotada para $d_\infty$, entonces $\bigcup_{f\in\mathcal A}f(S)$ está acotado en $Y$.
+\end{lema}
+\begin{proof}
+Elegimos $f_0\in\mathcal A$. Como $\mathcal A$ está acotada, existe $M<\infty$ tal que $d_\infty(f,f_0)\le M$ para toda $f\in\mathcal A$. Como $f_0$ es una función acotada, existen $y_0\in Y$ y $R<\infty$ con $d(f_0(s),y_0)\le R$ para todo $s\in S$. En consecuencia,
+\[
+ d(f(s),y_0)\le d(f(s),f_0(s))+d(f_0(s),y_0)\le M+R
+\]
+para toda $f\in\mathcal A$ y todo $s\in S$. La misma bola, de centro $y_0$ y radio $M+R+1$, contiene todas las imágenes.
+\end{proof}
+
+Esta prueba proporciona directamente el control necesario. No hace falta construir una subsucesión con diámetros crecientes. Hay que distinguir dos afirmaciones: cada función de una familia puede ser acotada sin que la familia sea acotada en $d_\infty$. Las funciones constantes $f_n(s)=n$ ilustran esa diferencia.
+
+\section{Por qué la completitud se transmite a las funciones}
+\index{completitud!espacios de funciones}
+\begin{teorema}\label{ch25:completitud}
+Si $Y$ es completo, entonces $(B(S,Y),d_\infty)$ es completo.
+\end{teorema}
+\begin{estrategia}
+La condición de Cauchy uniforme permite construir primero un límite en cada punto. Después debemos resolver dos problemas diferentes: demostrar que esa función límite es acotada y demostrar que la convergencia hacia ella es uniforme. Construir únicamente los límites puntuales no concluye la prueba.
+\end{estrategia}
+\begin{proof}
+Sea $(f_n)$ una sucesión de Cauchy en $B(S,Y)$. Para $s\in S$ fijo tenemos
+\[
+ d(f_n(s),f_m(s))\le d_\infty(f_n,f_m).
+\]
+Por ello $(f_n(s))$ es de Cauchy en $Y$. La completitud de $Y$ proporciona un único punto $f(s)$ al cual converge esa sucesión. Al realizar esta construcción para cada $s$ obtenemos una función $f:S\to Y$.
+
+Tomemos $N$ tal que $d_\infty(f_n,f_m)<1$ para $n,m\ge N$. Fijando $n=N$ y pasando al límite $m\to\infty$, la continuidad de la distancia da
+\[
+ d(f_N(s),f(s))\le 1 \qquad(s\in S).
+\]
+Si $f_N(S)\subset B(y_0,R)$, se sigue que $d(f(s),y_0)\le 1+R$ para todo $s$. Por tanto, $f\in B(S,Y)$.
+
+Ahora sea $\eps>0$. Existe $N_\eps$ tal que $d_\infty(f_n,f_m)<\eps/2$ para $n,m\ge N_\eps$. Para $n\ge N_\eps$ y $s\in S$ fijos, al hacer $m\to\infty$ obtenemos
+\[
+ d(f_n(s),f(s))\le\eps/2.
+\]
+El índice $N_\eps$ fue elegido antes que $s$ y sirve para todos los puntos. Tomando supremos, $d_\infty(f_n,f)\le\eps/2<\eps$. Esto demuestra la convergencia en la métrica uniforme.
+\end{proof}
+
+\begin{ejemplo}[Por qué la hipótesis de completitud es necesaria]
+Si $S=\{s_0\}$, la aplicación $f\mapsto f(s_0)$ es una isometría de $B(S,Y)$ sobre $Y$. Así, un espacio de llegada incompleto ya produce un espacio de funciones incompleto con un dominio de un solo punto. Más generalmente, para cualquier $S$ no vacío, las funciones constantes asociadas a una sucesión de Cauchy sin límite en $Y$ no pueden converger en $B(S,Y)$.
+\end{ejemplo}
+
+\section{Continuidad y límite uniforme}
+\index{convergencia uniforme!continuidad del limite@continuidad del límite}
+Si $X$ es un espacio métrico, escribimos $C_b(X,Y)$ para el conjunto de funciones continuas y acotadas de $X$ a $Y$. El subíndice $b$ recuerda la condición de acotación. Cuando $Y=\F$, usamos $C_b(X)$.
+
+\begin{teorema}[Continuidad del límite uniforme]\label{ch25:cerradocb}\label{ch12:limite-continuo}
+Sean $X,Y$ espacios métricos y $f_n:X\to Y$ funciones continuas. Si $f_n$ converge uniformemente a $f:X\to Y$, entonces $f$ es continua, sin necesidad de que las funciones sean acotadas. En particular, el conjunto $C_b(X,Y)$ es cerrado en $B(X,Y)$.
+\end{teorema}
+\begin{proof}
+La convergencia uniforme significa que, dada una tolerancia positiva, todos los valores de $f_n$ están a esa distancia de los de $f$ cuando $n$ es suficientemente grande; el índice se elige antes que el punto. Para funciones acotadas equivale a convergencia en $d_\infty$. Fijemos $x\in X$ y $\eps>0$. Elegimos un índice $n$ tal que $d(f_n(z),f(z))<\eps/3$ para todo $z\in X$. Mantenemos fijo ese índice. La continuidad de $f_n$ en $x$ proporciona $\delta>0$ tal que
+\[
+ d_X(x,y)<\delta\quad\Longrightarrow\quad d(f_n(x),f_n(y))<\eps/3.
+\]
+Para esos puntos $y$, la desigualdad triangular da
+\[
+ \begin{split}
+ d(f(x),f(y))&\le d(f(x),f_n(x))+d(f_n(x),f_n(y))+d(f_n(y),f(y))\\
+ &<\eps/3+\eps/3+\eps/3=\eps.
+ \end{split}
+\]
+Por tanto, $f$ es continua en $x$. Como $x$ era arbitrario, es continua en $X$. La elección uniforme del índice permite controlar a la vez el error en $x$ y en los puntos vecinos, sin exigir acotación global. Para la última afirmación, una sucesión de $C_b(X,Y)$ que converge en $B(X,Y)$ tiene un límite ya acotado por pertenecer a ese espacio ambiente y continuo por lo que acabamos de probar. La caracterización secuencial de cerrado permite concluir que $C_b(X,Y)$ es cerrado.
+\end{proof}
+
+El orden de las elecciones es decisivo: primero se fija una función $f_n$ que aproxima a $f$ en \emph{todos} los puntos y luego se usa la continuidad de esa función. No se necesita que el mismo $\delta$ funcione para todas las funciones de la sucesión.
+
+\begin{corolario}
+Si $Y$ es completo, entonces $C_b(X,Y)$ es completo con la métrica uniforme.
+\end{corolario}
+\begin{proof}
+Una sucesión de Cauchy en $C_b(X,Y)$ converge en $B(X,Y)$ por el teorema~\ref{ch25:completitud}. Su límite pertenece a $C_b(X,Y)$ por el teorema~\ref{ch25:cerradocb}. Este es precisamente el significado de completitud del subespacio.
+\end{proof}
+
+\section{La norma uniforme y tres espacios que no deben confundirse}
+\index{norma!uniforme}\index{funciones!de soporte compacto}\index{funciones!que se anulan en el infinito}
+Sea $V$ un espacio normado sobre $\F$. Las operaciones puntuales
+\[
+ (f+g)(s)=f(s)+g(s),\qquad (\lambda f)(s)=\lambda f(s)
+\]
+convierten $B(S,V)$ en un espacio vectorial: las identidades vectoriales se verifican en cada punto; además, la suma y el producto por escalar conservan la acotación porque
+$\norm{f(s)+g(s)}\le\norm{f(s)}+\norm{g(s)}$ y $\norm{\lambda f(s)}=|\lambda|\norm{f(s)}$.
+
+\begin{proposicion}
+La expresión $\norm f_\infty=\sup_{s\in S}\norm{f(s)}$ es una norma en $B(S,V)$ y su métrica asociada es $d_\infty$. Si $V$ es Banach, también lo son $B(S,V)$ y $C_b(X,V)$.
+\end{proposicion}
+\begin{proof}
+La norma es no negativa y se anula exactamente cuando todos los valores $f(s)$ son cero. Para $\lambda\ne0$, multiplicar todas las cantidades de un conjunto por $|\lambda|$ multiplica su supremo por ese factor; así $\norm{\lambda f}_\infty=|\lambda|\norm f_\infty$. Para $\lambda=0$ la igualdad también se cumple. Finalmente,
+\[
+ \norm{f(s)+g(s)}\le\norm{f(s)}+\norm{g(s)}\le\norm f_\infty+\norm g_\infty;
+\]
+tomando supremos se obtiene la desigualdad triangular. La identidad $d_\infty(f,g)=\norm{f-g}_\infty$ se sigue de las definiciones. La completitud ya quedó demostrada. El conjunto $C_b(X,V)$ es un subespacio vectorial porque las operaciones de $V$ son continuas, y es cerrado por el teorema~\ref{ch25:cerradocb}.
+\end{proof}
+
+Para funciones escalares en un espacio métrico $X$ usaremos las notaciones
+\[
+ \begin{split}
+ C_b(X)&=\{f:X\to\F:f\text{ es continua y acotada}\},\\
+ C_c(X)&=\{f:X\to\F:f\text{ es continua y }\supp f\text{ es compacto}\},\\
+ C_0(X)&=\{f:X\to\F:f\text{ es continua y }
+ \{x:|f(x)|\ge\eps\}\text{ es compacto para cada }\eps>0\},
+ \end{split}
+\]
+donde $\supp f=\cl{\{x:f(x)\ne0\}}$. Estos espacios satisfacen $C_c(X)\subset C_0(X)\subset C_b(X)$. Para justificar la segunda inclusión, el conjunto $K=\{|f|\ge1\}$ es compacto y $f$ es acotada en $K$ por continuidad; fuera de $K$, $|f|<1$. La primera inclusión se obtiene porque cada conjunto $\{|f|\ge\eps\}$ es cerrado y está contenido en el soporte compacto.
+
+\begin{observacion}[Corrección de notación de la lectura original]
+El espacio de funciones continuas de soporte compacto no es, en general, $C_b(X)$. En $X=\R$, la función constante $1$ pertenece a $C_b(\R)$ y no pertenece a $C_0(\R)$; la función $e^{-x^2}$ pertenece a $C_0(\R)$ y no pertenece a $C_c(\R)$. Si $X$ es compacto, en cambio, los tres espacios coinciden con $C(X)$.
+\end{observacion}
+
+\begin{proposicion}
+Para un espacio métrico $X$, el espacio $C_0(X)$ es cerrado en $C_b(X)$. Por tanto, es Banach. Si, además, $X$ es localmente compacto, $C_c(X)$ es denso en $C_0(X)$ para la norma uniforme.
+\end{proposicion}
+\begin{proof}
+Supongamos que $f_n\in C_0(X)$ y $\norm{f_n-f}_\infty\to0$. Dado $\eps>0$, elegimos $n$ con $\norm{f_n-f}_\infty<\eps/2$. Entonces
+\[
+ \{|f|\ge\eps\}\subset\{|f_n|\ge\eps/2\}.
+\]
+El conjunto de la izquierda es cerrado en $X$ y el de la derecha es compacto; por ello el primero es compacto. Esto demuestra $f\in C_0(X)$.
+
+Para la densidad, fijemos $f\in C_0(X)$ y $\eps>0$. El conjunto $K=\{|f|\ge\eps/2\}$ es compacto. Si es vacío, la función cero aproxima a $f$ con error a lo sumo $\eps/2$. Si no es vacío, la compacidad local y una subcubierta finita proporcionan un abierto $U$ tal que $K\subset U$ y $\cl U$ es compacto. En efecto, cubrimos $K$ por finitos abiertos cuyas clausuras son compactas y tomamos su unión. Si $U=X$, podemos tomar $\chi=1$. En otro caso, los conjuntos cerrados disjuntos $K$ y $X\setminus U$ permiten definir
+\[
+ \chi(x)=\frac{\dist(x,X\setminus U)}{\dist(x,X\setminus U)+\dist(x,K)}.
+\]
+Las funciones distancia son continuas; el denominador no se anula, pues ello colocaría a $x$ en ambos conjuntos cerrados. Además, $0\le\chi\le1$, $\chi=1$ en $K$ y $\chi=0$ fuera de $U$. Por ello $h=\chi f$ es continua y su soporte está contenido en $\cl U$, luego es compacto. En $K$ tenemos $h=f$; fuera de $K$,
+$|f-h|=|1-\chi|\,|f|<\eps/2$. Así $\norm{f-h}_\infty\le\eps/2<\eps$.
+\end{proof}
+
+\begin{observacion}[Verificaciones de la lectura 25]
+La lectura 25 de la colección de partida no contiene una lista de ejercicios. Sus verificaciones están desarrolladas en las secciones anteriores: los axiomas de la métrica y de la norma, el control común de las imágenes, la completitud y la conservación de la continuidad. En particular, la prueba de completitud incluye explícitamente la convergencia uniforme hacia el límite construido.
+\end{observacion}
+
+\section{Convergencia puntual y uniforme: el orden de los cuantificadores}
+\label{lectura:26}
 La convergencia puntual responde una pregunta cada vez: después de fijar $x$, ¿se aproxima $f_n(x)$ a $f(x)$? La convergencia uniforme exige controlar simultáneamente todos los puntos con un único índice. Esa diferencia permite conservar continuidad, intercambiar integrales y límites y, con hipótesis adicionales, derivar límites.
 
-Los prerrequisitos son la completitud de los espacios normados, la compacidad y el cálculo diferencial e integral de una variable. Cuando trabajemos con funciones de valores en un espacio $V$, exigiremos que $V$ sea Banach en los resultados que construyen límites mediante el criterio de Cauchy.
+La métrica anterior describe este control cuando las funciones son acotadas. Conviene formular ahora los cuantificadores de manera que también cubran funciones no acotadas y permitan precisar qué operaciones conservan los límites.
 
 \begin{definicion}
 Sean $f_n,f:S\to V$. Decimos que $f_n$ converge \emph{puntualmente} a $f$ si
@@ -64,7 +238,7 @@ La serie $\sum_{n=1}^\infty u_n$ converge puntual o uniformemente cuando lo hace
 
 La convergencia normal es una condición de control uniforme de las normas. No debe confundirse con la convergencia absoluta punto por punto, que permite que los controles dependan de $x$.
 
-\begin{teorema}[Criterio M de Weierstrass]\label{ch26:criteriom}
+\begin{teorema}[Criterio M de Weierstrass]\label{ch26:criteriom}\label{ch12:weierstrass}
 Sean $V$ Banach y $u_n:S\to V$. Supongamos que existen $M_n\ge0$ tales que $\norm{u_n(x)}\le M_n$ para todo $x\in S$ y que $\sum_n M_n<\infty$. Entonces $\sum_nu_n$ converge uniformemente y absolutamente en cada punto. Si $s$ es su suma,
 \[
  \norm{s-s_N}_\infty\le\sum_{n>N}M_n.
@@ -156,7 +330,7 @@ La convergencia uniforme de $f_n'$ implica que, para $n,m$ suficientemente grand
  \le |f_n(x_0)-f_m(x_0)|+|x-x_0|\sup_{(a,b)}|f_n'-f_m'|
  \le |f_n(x_0)-f_m(x_0)|+(b-a)\sup_{(a,b)}|f_n'-f_m'|.
 \]
-La última cota no depende de $x$ y tiende a cero cuando $n,m\to\infty$. El criterio de Cauchy uniforme, demostrado en el ejercicio~\ref{ch26:ej1}, produce $f_n\rightrightarrows f$.
+La última cota no depende de $x$ y tiende a cero cuando $n,m\to\infty$. El criterio de Cauchy uniforme, demostrado en el ejercicio~\ref{ej:lectura-26-1}, produce $f_n\rightrightarrows f$.
 
 Para demostrar la derivabilidad fijamos $c\in(a,b)$ y definimos los cocientes prolongados
 \[
@@ -184,8 +358,8 @@ Así $f'(c)=g(c)$, y $c$ era arbitrario.
 
 No hemos supuesto que las derivadas sean continuas. Tampoco se obtiene una afirmación sobre valores arbitrariamente asignados en los extremos $a,b$: el teorema se refiere al intervalo abierto. La finitud de su longitud interviene en el factor $b-a$.
 
-\section{Ejercicios resueltos}
-\begin{ejercicio}[Lectura 26, ejercicio 1]\label{ch26:ej1}
+\section{Ejercicios sobre límites, productos y series uniformes}
+\begin{ejercicio}[Lectura 26, ejercicio 1]\label{ej:lectura-26-1}\label{ch26:ej1}
 Sea $V$ Banach y $f_n:S\to V$. Demuestre que $(f_n)$ converge uniformemente si y solo si para todo $\eps>0$ existe $N$ tal que $\norm{f_n(x)-f_m(x)}<\eps$ para todos $n,m\ge N$ y $x\in S$.
 \end{ejercicio}
 \begin{solucion}
@@ -194,7 +368,7 @@ Si $f_n\rightrightarrows f$, elegimos $N$ con $\norm{f_n(x)-f(x)}<\eps/2$ para t
 Recíprocamente, para cada $x$ la hipótesis hace de $(f_n(x))$ una sucesión de Cauchy en $V$. La completitud define $f(x)=\lim_nf_n(x)$. Dado $\eps>0$, elegimos $N$ usando $\eps/2$ en la hipótesis. Fijamos $n\ge N$ y $x$ y hacemos $m\to\infty$; obtenemos $\norm{f_n(x)-f(x)}\le\eps/2<\eps$. Como el índice $N$ es independiente de $x$, la convergencia es uniforme. No necesitamos que cada $f_n$ sea acotada: solo controlamos las diferencias de los términos suficientemente avanzados.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 2]
+\begin{ejercicio}[Lectura 26, ejercicio 2]\label{ej:lectura-26-2}
 Sean $(f_n)$ y $(g_n)$ sucesiones de funciones escalares sobre $S$, acotadas en $B(S,\F)$, que convergen uniformemente. Demuestre que $(f_ng_n)$ converge uniformemente. Dé un contraejemplo al suprimir el control de acotación.
 \end{ejercicio}
 \begin{solucion}
@@ -212,7 +386,7 @@ Si las funciones no están acotadas, tomemos $S=\R$, $f_n(x)=x$ y $g_n(x)=1/n$. 
 Si todas las funciones pertenecen a $B(S,\F)$ y la convergencia es uniforme, la acotación de toda la sucesión se deduce automáticamente: una cola está a distancia menor que uno del límite, y los primeros términos son un conjunto finito de funciones acotadas. La hipótesis expresa, por tanto, el contexto de funciones acotadas en el cual el producto es continuo.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 3: enunciado corregido]
+\begin{ejercicio}[Lectura 26, ejercicio 3: enunciado corregido]\label{ej:lectura-26-3}
 Sean $V,W$ Banach, $f_n\rightrightarrows f$ y $\norm{f_n}_\infty\le\alpha$. La lectura propone que la continuidad de $g$ en la bola de radio $\alpha$ basta para que $g\circ f_n\rightrightarrows g\circ f$. Examine la afirmación y pruebe una versión válida.
 \end{ejercicio}
 \begin{solucion}
@@ -236,7 +410,7 @@ Esta función es continua. Para justificarlo, observamos que $\norm{e_j-e_k}_2=\
 Las imágenes están en la bola cerrada unidad y $\norm{f_n-f}_\infty=1/n$. Para $n>4$, $g(f(k))=k$ y $g(f_n(k))=k(1-4/n)$. La diferencia $4k/n$ no es acotada en $k$. Esto demuestra por qué continuidad sobre una bola acotada no sustituye a continuidad uniforme.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 4]
+\begin{ejercicio}[Lectura 26, ejercicio 4]\label{ej:lectura-26-4}
 Sean $V$ Banach y $f_n:S\to V$. Suponga que $\norm{f_{n+1}(x)-f_n(x)}\le M_n$ para todo $x$, donde $\sum_nM_n<\infty$. Demuestre que $(f_n)$ converge uniformemente.
 \end{ejercicio}
 \begin{solucion}
@@ -245,10 +419,10 @@ Para $q>p$, la identidad telescópica da
  f_q(x)-f_p(x)=\sum_{n=p}^{q-1}(f_{n+1}(x)-f_n(x)),
  \qquad \norm{f_q(x)-f_p(x)}\le\sum_{n=p}^{q-1}M_n.
 \]
-El último miembro es pequeño para todo $q>p$ cuando $p$ es grande, con independencia de $x$. El criterio de Cauchy del ejercicio~\ref{ch26:ej1} concluye la prueba. Además, al pasar al límite $q\to\infty$ obtenemos la estimación útil $\norm{f-f_p}_\infty\le\sum_{n=p}^\infty M_n$.
+El último miembro es pequeño para todo $q>p$ cuando $p$ es grande, con independencia de $x$. El criterio de Cauchy del ejercicio~\ref{ej:lectura-26-1} concluye la prueba. Además, al pasar al límite $q\to\infty$ obtenemos la estimación útil $\norm{f-f_p}_\infty\le\sum_{n=p}^\infty M_n$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 5]
+\begin{ejercicio}[Lectura 26, ejercicio 5]\label{ej:lectura-26-5}
 Estudie la relación entre convergencia absoluta y uniforme:
 \begin{enumerate}[label=(\roman*)]
 \item En el dominio $[0,1]$, para $x>0$ sea $u_n(x)=\sin(\pi/x)\mathbf1_{[1/(n+1),1/n]}(x)$ y defina $u_n(0)=0$. Analice la convergencia absoluta puntual de $\sum_nu_n$ y la convergencia uniforme.
@@ -274,11 +448,11 @@ para todo $x\in[0,1]$.
 \end{enumerate}
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 6]
+\begin{ejercicio}[Lectura 26, ejercicio 6]\label{ej:lectura-26-6}
 Si $f_n:X\to V$ son continuas y convergen uniformemente a $f$, demuestre que $f_n(x_n)\to f(x)$ siempre que $x_n\to x$. ¿Vale el recíproco?
 \end{ejercicio}
 \begin{solucion}
-El límite uniforme $f$ es continuo por el argumento de tres términos del capítulo anterior, que también vale sin acotación global. Entonces
+El límite uniforme $f$ es continuo por el teorema~\ref{ch12:limite-continuo}, cuyo argumento de tres términos también vale sin acotación global. Entonces
 \[
  \norm{f_n(x_n)-f(x)}
  \le\norm{f_n(x_n)-f(x_n)}+\norm{f(x_n)-f(x)}\longrightarrow0.
@@ -294,7 +468,7 @@ Si $x_n\to x$, la sucesión $(x_n)$ es acotada. Para $n$ suficientemente grande,
 En un espacio métrico compacto sí vale el recíproco. Si no hubiera convergencia uniforme, existirían $\eps>0$, índices estrictamente crecientes $n_j$ y puntos $y_j$ con $\norm{f_{n_j}(y_j)-f(y_j)}\ge\eps$. La propiedad para las sucesiones constantes implica primero $f_n(y)\to f(y)$ en cada punto. Además, implica continuidad de $f$: si $z_j\to z$ y $f(z_j)\not\to f(z)$, elegimos índices crecientes $m_j$ tales que $\norm{f_{m_j}(z_j)-f(z_j)}<1/j$, y definimos $x_{m_j}=z_j$, $x_n=z$ en los demás índices. Entonces $x_n\to z$ y la propiedad obliga a $f_{m_j}(z_j)\to f(z)$, contradicción. Por compacidad podemos extraer $y_{j_k}\to y$. Definimos $x_{n_{j_k}}=y_{j_k}$ y $x_n=y$ en los demás índices. La propiedad da $f_{n_{j_k}}(y_{j_k})\to f(y)$; la continuidad recién probada da $f(y_{j_k})\to f(y)$. Contradice la cota inferior $\eps$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 7: Dirichlet uniforme]
+\begin{ejercicio}[Lectura 26, ejercicio 7: Dirichlet uniforme]\label{ej:lectura-26-7}
 Sean $V$ Banach, $u_n:S\to V$ y $v_n:S\to\R$. Suponga que, para algún $M<\infty$,
 \[
  \sup_{x\in S}\left\|\sum_{k=1}^nu_k(x)\right\|\le M\quad(n\ge1),
@@ -318,7 +492,7 @@ Para verificarla, sustituimos $u_k=A_k-A_{k-1}$ y agrupamos el coeficiente de ca
 La convergencia uniforme $v_p\to0$ hace pequeña esta cota para todo $q\ge p$ y todo $x$. El criterio de Cauchy uniforme concluye la prueba. Cuando el espacio de escalares de $V$ es $\C$, los multiplicadores $v_n$ siguen siendo reales: el orden $v_{n+1}\le v_n$ no es un orden de números complejos arbitrarios.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 26, ejercicio 8: condensación uniforme de Cauchy]
+\begin{ejercicio}[Lectura 26, ejercicio 8: condensación uniforme de Cauchy]\label{ej:lectura-26-8}
 Sea $(u_n)$ una sucesión de funciones reales sobre $S$, decreciente respecto de $n$ en cada punto. Demuestre que $\sum_{n=1}^\infty u_n$ y $\sum_{k=1}^\infty 2^ku_{2^k}$ convergen uniformemente o dejan de hacerlo simultáneamente.
 \end{ejercicio}
 \begin{solucion}
@@ -351,4 +525,4 @@ Si la primera serie converge uniformemente, la última cota puede hacerse menor 
 \end{solucion}
 
 \section{Cómo elegir una herramienta de convergencia}
-El criterio de Cauchy permite construir un límite antes de conocer su fórmula. Dini usa orden y compacidad para fortalecer un límite puntual ya identificado. El criterio M controla series mediante una cota numérica sumable; Dirichlet aprovecha cancelaciones cuando las normas no son sumables. Para pasar una integral al límite basta la convergencia uniforme en un intervalo compacto; para pasar una derivada al límite debemos controlar las derivadas y fijar el valor de las funciones en un punto. Distinguir estos mecanismos evita utilizar un teorema correcto bajo hipótesis que no satisface el problema.
+La convergencia uniforme conserva la continuidad y permite pasar integrales al límite en intervalos compactos. Para derivar, se necesita controlar las derivadas y fijar un valor. El criterio de Cauchy construye el límite sin conocer su fórmula; Dini añade orden y compacidad a la convergencia puntual. El criterio M usa una cota sumable, mientras Dirichlet aprovecha cancelaciones. Estas diferencias determinan qué hipótesis deben comprobarse. Los capítulos~\ref{cap:nuevo12} y~\ref{cap:nuevo13} aplicarán este control a la compacidad, la extensión y la aproximación de funciones.

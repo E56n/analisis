@@ -1,6 +1,8 @@
-\chapter{Espacios completos y espacios de Banach}\label{chap:08}
+\chapter{Espacios completos y completación}\label{cap:nuevo03}\label{chap:08}\label{chap:09}
+Una sucesión de Cauchy contiene información interna: sus términos terminan siendo tan próximos como se quiera. La completitud asegura que esa información corresponde a un punto del propio espacio, y lo hace para todas las sucesiones de Cauchy. Comenzaremos por reconocer esta propiedad en espacios de sucesiones y en subespacios cerrados; después construiremos una completación para cualquier espacio métrico, conservando las distancias y haciendo que los puntos originales sean densos. La existencia de esa construcción y su unicidad relacionan los ejemplos concretos con una herramienta general. Usaremos la continuidad uniforme del capítulo~\ref{chap:07}, la propiedad arquimediana de $\R$ y las desigualdades elementales de las normas $\ell^p$.
+
 \section{Límites que permanecen dentro del espacio}
-Una sucesión de Cauchy contiene información interna: sus términos terminan siendo tan próximos como se quiera. La completitud asegura que esa información corresponde a un punto del propio espacio. No es una propiedad de cada sucesión por separado, sino una garantía para todas ellas. Usaremos las nociones del capítulo~\ref{chap:07}, la propiedad arquimediana de $\R$ y las desigualdades elementales de las normas $\ell^p$.
+\label{lectura:08}
 
 \begin{proposicion}\label{ch08:cauchy-basico}
 Toda sucesión convergente es de Cauchy. Toda sucesión de Cauchy es acotada. Si una sucesión de Cauchy tiene una subsucesión convergente a $x$, la sucesión completa converge a $x$.
@@ -25,7 +27,7 @@ Fijemos un primo $p$. Todo racional no nulo se escribe como $r=p^k a/b$, donde $
 \[
  d_p(r,s)=|r-s|_p.
 \]
-Su propiedad decisiva, demostrada en el ejercicio 1, es
+Su propiedad decisiva, demostrada en el ejercicio~\ref{ej:lectura-8-1}, es
 \[
  |r+s|_p\leq\max\{|r|_p,|s|_p\}.
 \]
@@ -86,8 +88,8 @@ Si $x\in\cl Y$, podemos elegir $y_n\in Y$ con $d(y_n,x)<1/n$. La sucesión es de
 Para la segunda afirmación, una sucesión de Cauchy en $Y$ lo es en $X$ porque las distancias son las mismas. Tiene, pues, un límite $x\in X$. Al ser $Y$ cerrado, todo límite de una sucesión suya pertenece a $Y$; así, $x\in Y$.
 \end{proof}
 
-\section{Ejercicios resueltos}
-\begin{ejercicio}[Lectura 8, ejercicio 1]
+\section{Ejercicios sobre completitud y espacios de sucesiones}
+\begin{ejercicio}[Lectura 8, ejercicio 1]\label{ej:lectura-8-1}
 Demuestre que $d_p$ es una métrica en $\Q$ y, más precisamente, una ultramétrica.
 \end{ejercicio}
 \begin{solucion}
@@ -106,7 +108,7 @@ Si alguno de los sumandos es cero, la desigualdad se verifica directamente. Tamb
 La primera desigualdad es la propiedad ultramétrica y la segunda da la desigualdad triangular usual.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 2]
+\begin{ejercicio}[Lectura 8, ejercicio 2]\label{ej:lectura-8-2}
 Demuestre la equivalencia entre el axioma del supremo y la completitud de $\R$ con su distancia usual.
 \end{ejercicio}
 \begin{solucion}
@@ -119,14 +121,14 @@ Recíprocamente, supongamos que toda sucesión real de Cauchy converge. Sea $A\n
 Todo $a\in A$ satisface $a\leq b_n$ para cada $n$, luego $a\leq s$. Si $t<s$, para algún $n$ se tiene $t<a_n$, y como $a_n$ no es cota superior existe $a\in A$ con $a>a_n>t$. Así, ningún número menor que $s$ es cota superior. Hemos probado $s=\sup A$. Si se desean puntos de $A$ como en la sugerencia original, elegimos $c_n\in A$ con $a_n<c_n\leq b_n$; entonces también $c_n\to s$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 3]
+\begin{ejercicio}[Lectura 8, ejercicio 3]\label{ej:lectura-8-3}
 Demuestre que $\ell^\infty$ es completo.
 \end{ejercicio}
 \begin{solucion}
 Sea $(x^{(n)})$ de Cauchy para $\norm{x}_\infty=\sup_k|x_k|$. Cada coordenada es de Cauchy, porque $|x^{(n)}_k-x^{(m)}_k|\leq\norm{x^{(n)}-x^{(m)}}_\infty$. Definamos $x_k=\lim_nx^{(n)}_k$. Existe $M$ con $\norm{x^{(n)}}_\infty\leq M$, y al pasar al límite para cada $k$ resulta $|x_k|\leq M$; así $x\in\ell^\infty$. Dado $\eps>0$, elegimos $N$ con $\norm{x^{(n)}-x^{(m)}}_\infty<\eps/2$ para $n,m\geq N$. Fijamos $n\geq N$ y dejamos $m\to\infty$: para cada $k$, $|x^{(n)}_k-x_k|\leq\eps/2$. Tomar el supremo en $k$ produce $\norm{x^{(n)}-x}_\infty\leq\eps/2<\eps$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 4]
+\begin{ejercicio}[Lectura 8, ejercicio 4]\label{ej:lectura-8-4}
 Pruebe que los subespacios $c$ y $c_0$ de sucesiones convergentes y de sucesiones convergentes a cero son espacios de Banach con la norma uniforme.
 \end{ejercicio}
 \begin{solucion}
@@ -141,7 +143,7 @@ La sucesión de coordenadas de $x$ es de Cauchy en los escalares y converge; de 
 Si cada $x^{(n)}\in c_0$, elegimos $n$ con $\norm{x^{(n)}-x}_\infty<\eps/2$ y luego $K$ con $|x^{(n)}_k|<\eps/2$ para $k\geq K$. Entonces $|x_k|<\eps$ para $k\geq K$, luego $x\in c_0$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 5]
+\begin{ejercicio}[Lectura 8, ejercicio 5]\label{ej:lectura-8-5}
 Para espacios métricos no vacíos, pruebe que el producto de dos espacios es completo si y sólo si cada factor lo es. Extienda el resultado a todo producto finito.
 \end{ejercicio}
 \begin{solucion}
@@ -150,7 +152,7 @@ Usamos la métrica máxima $D((x,y),(x',y'))=\max\{d(x,x'),\rho(y,y')\}$. Una su
 Si el producto es completo, fijamos $y_0\in Y$ y consideramos una sucesión de Cauchy $(x_n)$ de $X$. Los pares $(x_n,y_0)$ forman una sucesión de Cauchy que converge a algún $(x,y)$, y la primera coordenada da $x_n\to x$. Fijando $x_0$ se demuestra lo mismo para $Y$. Para $n$ factores, la métrica $\max_{1\leq j\leq n}d_j(x_j,y_j)$ permite repetir exactamente las dos implicaciones: tomamos el máximo de los $n$ umbrales y, para la necesidad, fijamos las otras $n-1$ coordenadas. La métrica suma y la euclídea de las distancias son equivalentes mediante cotas constantes a la métrica máxima; por ello tienen las mismas sucesiones de Cauchy. La no vacuidad evita que un producto vacío oculte un factor incompleto.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 6]
+\begin{ejercicio}[Lectura 8, ejercicio 6]\label{ej:lectura-8-6}
 Demuestre que el conjunto de Cantor, con la distancia heredada de $\R$, es completo y no tiene puntos aislados.
 \end{ejercicio}
 \begin{solucion}
@@ -159,7 +161,7 @@ Sea $C_0=[0,1]$ y sea $C_n$ el conjunto que queda después de eliminar los terci
 Fijemos $x\in C$ y $\eps>0$. Elegimos $n$ con $3^{-n}<\eps$ y un intervalo componente $[a,b]$ de $C_n$ que contenga $x$. Ambos extremos pertenecen a todas las etapas posteriores: nunca se elimina un extremo al retirar un tercio medio abierto. Por tanto $a,b\in C$. Como $a\ne b$, al menos uno de ellos es distinto de $x$ y dista de $x$ a lo sumo $3^{-n}<\eps$. Ningún punto de $C$ es aislado.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 8, ejercicio 7]
+\begin{ejercicio}[Lectura 8, ejercicio 7]\label{ej:lectura-8-7}
 Demuestre que $C$ es incontable y que
 \[
  C=\left\{\sum_{n=1}^\infty\frac{a_n}{3^n}:a_n\in\{0,2\}\right\}.
@@ -178,5 +180,141 @@ Recíprocamente, si $x\in C$, en cada etapa está en una componente y la compone
 La correspondencia es inyectiva. Si dos sucesiones difieren por primera vez en $k$, la diferencia aportada allí tiene valor absoluto $2/3^k$, mientras que toda la cola posterior puede compensar a lo sumo $\sum_{j>k}2/3^j=1/3^k$. Las sumas difieren al menos en $1/3^k>0$. Finalmente, el conjunto de sucesiones de ceros y doses es incontable por el argumento diagonal: frente a una supuesta enumeración, cambiamos el dígito $n$ de la fila $n$. Su imagen inyectiva $C$ es, pues, incontable.
 \end{solucion}
 
-\section{La completitud como herramienta}
-No basta construir aproximaciones sucesivas: hay que saber en qué espacio convergen. Los espacios $\ell^p$, $c$ y $c_0$ ofrecen modelos completos, mientras que los racionales p-ádicos muestran que una noción distinta de distancia puede exigir nuevos puntos. La completación construye esos puntos de forma sistemática.
+\section{Agregar límites sin alterar las distancias}
+\label{lectura:09}
+Los espacios $\ell^p$, $c$ y $c_0$ ofrecen modelos completos, mientras que los racionales p-ádicos muestran que una noción distinta de distancia puede exigir nuevos puntos. Buscamos ahora una construcción que agregue sistemáticamente los límites que faltan. Las distancias entre los puntos originales deben conservarse, y los puntos nuevos deben surgir como límites de puntos antiguos. La completación que construiremos satisface ambas exigencias y es única salvo una identificación que conserva distancias.
+
+\begin{definicion}
+Una aplicación $i:(X,d)\to(Y,\rho)$ es una \emph{isometría} si $\rho(i(x),i(y))=d(x,y)$ para todos $x,y\in X$. Una \emph{completación} de $X$ es un espacio completo $\widehat X$ junto con una isometría $i:X\to\widehat X$ cuya imagen es densa.
+\end{definicion}
+\index{isometria@isometría}\index{completacion@completación}
+Una isometría es inyectiva: imágenes iguales dan distancia cero entre los puntos originales. Es $1$-Lipschitz y, por tanto, uniformemente continua; su inversa sobre la imagen también es una isometría. La inclusión de un subespacio con la distancia heredada es un ejemplo. Si $X$ ya es completo, $(X,\id_X)$ es una completación suya.
+
+\section{Construcción mediante sucesiones de Cauchy}
+\begin{teorema}\label{ch09:existencia}
+Todo espacio métrico tiene una completación.
+\end{teorema}
+\begin{proof}
+El espacio vacío es completo y se completa con él mismo. Supongamos $X\ne\varnothing$ y sea $\mathcal C(X)$ el conjunto de todas las sucesiones de Cauchy de $X$. Este conjunto no es vacío porque contiene todas las sucesiones constantes.
+
+\textbf{Paso 1: una distancia provisional.} Para $u=(u_n)$ y $v=(v_n)$ ponemos
+\[
+ D(u,v)=\lim_{n\to\infty}d(u_n,v_n).
+\]
+Debemos demostrar que el límite existe. La desigualdad triangular, aplicada en los dos sentidos, produce
+\[
+ |d(u_n,v_n)-d(u_m,v_m)|\leq d(u_n,u_m)+d(v_n,v_m).
+\]
+Las dos sucesiones del lado derecho son de Cauchy; así, $(d(u_n,v_n))$ es una sucesión real de Cauchy. Su límite existe por la completitud de $\R$. Además, $D\geq0$, $D(u,u)=0$ y $D(u,v)=D(v,u)$. Si $w=(w_n)$, de $d(u_n,v_n)\leq d(u_n,w_n)+d(w_n,v_n)$ y la preservación de desigualdades al pasar al límite resulta $D(u,v)\leq D(u,w)+D(w,v)$. Por ello $D$ es una pseudométrica; puede anularse sobre sucesiones diferentes, por ejemplo sobre dos sucesiones que converjan al mismo punto.
+
+\textbf{Paso 2: identificar las representaciones del mismo punto.} Definimos $u\sim v$ cuando $D(u,v)=0$. La reflexividad y la simetría provienen de las de $D$; la transitividad se sigue de $D(u,w)\leq D(u,v)+D(v,w)$. Sea
+\[
+ \widehat X=\mathcal C(X)/\!\sim,
+ \qquad \widehat d([u],[v])=D(u,v).
+\]
+Esta fórmula no depende de representantes: si $u\sim u'$ y $v\sim v'$, entonces
+\[
+ |D(u,v)-D(u',v')|\leq D(u,u')+D(v,v')=0.
+\]
+Las propiedades de pseudométrica descienden al cociente y, además, $\widehat d([u],[v])=0$ implica $[u]=[v]$. Tenemos una métrica verdadera.
+
+\textbf{Paso 3: insertar $X$ y probar densidad.} Definimos $i(x)$ como la clase de la sucesión constante $(x,x,\ldots)$. Entonces $\widehat d(i(x),i(y))=\lim_nd(x,y)=d(x,y)$, por lo que $i$ es una isometría. Si $u=[(u_n)]$, se cumple
+\[
+ \widehat d(i(u_n),u)=\lim_{k\to\infty}d(u_n,u_k)\longrightarrow0
+ \quad(n\to\infty).
+\]
+En efecto, dado $\eps>0$, la condición de Cauchy permite que $d(u_n,u_k)<\eps/2$ para $n,k\geq N$; fijando $n\geq N$ y pasando $k$ al límite, queda una distancia no mayor que $\eps/2<\eps$. Esto prueba que $i(X)$ es denso.
+
+\textbf{Paso 4: completar la construcción.} Sea $(U_n)$ una sucesión de Cauchy en $\widehat X$. Por la densidad ya probada, para cada $n$ elegimos $z_n\in X$ con
+\[
+ \widehat d(i(z_n),U_n)<2^{-n}.
+\]
+Estas elecciones se hacen una sola vez, con tolerancias predeterminadas. No dependen del $\eps$ que aparecerá después al comprobar la convergencia. Para $n,m\in\N$,
+\[
+ d(z_n,z_m)\leq 2^{-n}+\widehat d(U_n,U_m)+2^{-m}.
+\]
+Dado $\eps>0$, elegimos $N$ de modo que los dos términos geométricos sumen menos que $\eps/2$ para $n,m\geq N$ y que $\widehat d(U_n,U_m)<\eps/2$. Así $(z_n)$ es de Cauchy en $X$. Sea $Z=[(z_n)]\in\widehat X$. El paso 3 aplicado a esta sucesión da $i(z_n)\to Z$. Finalmente,
+\[
+ \widehat d(U_n,Z)\leq\widehat d(U_n,i(z_n))+\widehat d(i(z_n),Z)
+ <2^{-n}+\widehat d(i(z_n),Z)\longrightarrow0.
+\]
+Toda sucesión de Cauchy de $\widehat X$ converge allí; por tanto es completo.
+\end{proof}
+
+\begin{observacion}[La elección diagonal y sus cuantificadores]
+Si cada $U_n$ se representa por una sucesión $(u_{n,k})_k$, el punto $z_n$ del paso 4 puede tomarse como $u_{n,k_n}$ con $k_n$ suficientemente grande. Se puede imponer además $k_n>k_{n-1}$, porque la aproximación vale para todos los índices de una cola. Lo esencial es escoger $\widehat d(i(u_{n,k_n}),U_n)<2^{-n}$, y no un error fijo $\eps$ antes de definir la diagonal: una sucesión candidata al límite debe estar definida independientemente de la tolerancia con la que más tarde se compruebe que converge.
+\end{observacion}
+
+\section{Dos modelos y una precaución sobre las normas}
+\begin{ejemplo}[Aproximación de funciones discontinuas]\leavevmode\par
+En $C([0,1])$, la fórmula $\norm{f}_1=\int_0^1|f(t)|\,dt$ define una norma. Si una función continua no es cero, su valor absoluto es mayor que una constante positiva en algún intervalo de longitud positiva, y su integral es positiva. El valor absoluto es indispensable: $\int f$ por sí sola no es una norma.
+
+Este espacio normado no es completo. Para $n\geq3$, definamos $f_n$ igual a cero en $[0,1/2]$, lineal de cero a uno en $[1/2,1/2+1/n]$ e igual a uno en el intervalo restante. Si $h$ es cero en $[0,1/2]$ y uno en $(1/2,1]$, entonces
+\[
+ \int_0^1|f_n-h|\leq1/n,
+ \quad\text{y por tanto}\quad
+ \norm{f_n-f_m}_1\leq1/n+1/m.
+\]
+Si existiera un límite continuo $f$ en esta norma, la misma desigualdad triangular daría $\int|f-h|=0$. En cualquier intervalo contenido en $(0,1/2)$, la continuidad obligaría a $f=0$: un valor no nulo produciría una integral positiva en una vecindad. De igual forma, $f=1$ en $(1/2,1)$. Esto contradice la continuidad en $1/2$.
+
+El espacio de clases de funciones Lebesgue-integrables $L^1([0,1])$ proporcionará una realización de esta completación en el volumen de medida e integración. Aquí no se presupone esa teoría: la completación por sucesiones ya está construida. Para un compacto arbitrario $K\subset\R^n$, la integral puede ser sólo una seminorma sobre $C(K)$; por ejemplo, si $K=\{0\}$, todas las integrales respecto del volumen son cero. Por ello la afirmación sobre $C(K)$ requiere hipótesis sobre la medida y su soporte, o pasar primero al cociente por las funciones de seminorma cero.
+\end{ejemplo}
+
+\begin{ejemplo}[Los números p-ádicos]\label{ch09:qp}
+La completación de $(\Q,d_p)$ se denota por $\Q_p$. Para una clase $r=[(r_n)]$, definimos $|r|_p=\widehat d(r,0)=\lim_n|r_n|_p$. La desigualdad ultramétrica pasa al límite, de modo que sigue siendo válida en la completación. Además de ser un espacio completo, conserva las operaciones de cuerpo. Veamos por qué. Si $(r_n)$ y $(s_n)$ son de Cauchy, sus valores absolutos p-ádicos están acotados, y
+\[
+ |r_ns_n-r_ms_m|_p\leq
+ \max\{|r_n|_p|s_n-s_m|_p,\,|s_m|_p|r_n-r_m|_p\}.
+\]
+Esto prueba que los productos forman una sucesión de Cauchy; para la suma, $|(r_n+s_n)-(r_m+s_m)|_p$ está acotado por el máximo de las dos diferencias correspondientes. Las mismas estimaciones muestran que cambiar representantes por sucesiones equivalentes no cambia la clase de su suma o producto. Las identidades de cuerpo se conservan porque valen término a término. También $|rs|_p=|r|_p|s|_p$, pues la identidad racional $|r_ns_n|_p=|r_n|_p|s_n|_p$ pasa al límite de números reales.
+
+Falta justificar la inversa. Para una clase $r\ne0$, su distancia a cero es un número $c>0$. Si $(r_n)$ la representa, entonces $|r_n|_p\to c$, de modo que $|r_n|_p\geq c/2$ en una cola. Allí
+\[
+ |r_n^{-1}-r_m^{-1}|_p
+ =\frac{|r_n-r_m|_p}{|r_n|_p|r_m|_p}
+ \leq \frac{4}{c^2}|r_n-r_m|_p.
+\]
+La sucesión de inversas es de Cauchy y su clase multiplica a $r$ para dar $1$. Los términos iniciales se pueden reemplazar sin alterar la clase. Así $\Q_p$ es un cuerpo.
+
+Todo elemento tiene una expansión
+\[
+ r=\sum_{k\geq k_0}a_kp^k,
+ \qquad k_0\in\Z,\quad a_k\in\{0,\ldots,p-1\},
+\]
+entendida como límite p-ádico de sus sumas parciales. Damos la razón de la existencia. Primero supongamos $|r|_p\leq1$ y tomemos racionales $r_n\to r$. Para cada $m\geq1$, elegimos uno con $|r-r_n|_p<p^{-m}$ y $|r_n|_p\leq1$. Podemos escribirlo $r_n=a/b$ con $p\nmid b$. Como $b$ tiene inversa módulo $p^m$, existe un único entero $c_m\in\{0,\ldots,p^m-1\}$ con $bc_m\equiv a\pmod{p^m}$. Por tanto $|r-c_m|_p\leq p^{-m}$. La unicidad de estos residuos, y la desigualdad ultramétrica, implican $c_{m+1}\equiv c_m\pmod{p^m}$; en consecuencia $c_{m+1}=c_m+a_mp^m$ para un dígito $a_m$. Partiendo de $c_1=a_0$, obtenemos la expansión y la cota $|r-c_m|_p\leq p^{-m}\to0$.
+
+Para un $r$ arbitrario, su norma es finita y podemos multiplicarlo por una potencia positiva de $p$ hasta que su norma sea a lo sumo $1$; deshacer esa multiplicación produce el índice inicial $k_0$ posiblemente negativo. La unicidad de los dígitos se demuestra como en el ejemplo~\ref{ch08:padica-incompleta}: el primer dígito distinto determina la valoración de la diferencia y no puede ser cancelado por términos de mayor potencia. Este argumento muestra también cómo la completación agrega puntos que la aritmética racional no contenía.
+\end{ejemplo}
+
+\section{Unicidad y extensión: ejercicio resuelto}
+\begin{ejercicio}[Lectura 9, ejercicio 1]\label{ej:lectura-9-1}\label{ch09:unicidad}
+Sean $(Y,i)$ y $(Y',i')$ dos completaciones de $X$. Demuestre que existe una isometría sobreyectiva $T:Y\to Y'$ tal que $T\circ i=i'$.
+\end{ejercicio}
+\begin{solucion}
+Si $X=\varnothing$, la densidad fuerza $Y=Y'=\varnothing$, y la afirmación es inmediata. En otro caso, para $y\in Y$ elegimos $x_n\in X$ con $i(x_n)\to y$. Como $i$ es isometría, $(x_n)$ es de Cauchy en $X$, y $(i'(x_n))$ lo es en el espacio completo $Y'$. Definimos
+\[
+ T(y)=\lim_{n\to\infty}i'(x_n).
+\]
+Si otra sucesión $z_n$ satisface $i(z_n)\to y$, entonces
+\[
+ d(x_n,z_n)=\rho(i(x_n),i(z_n))
+ \leq\rho(i(x_n),y)+\rho(y,i(z_n))\longrightarrow0.
+\]
+La distancia entre $i'(x_n)$ e $i'(z_n)$ es la misma; sus límites coinciden y $T$ está bien definida. Para $y,z\in Y$, elegimos aproximaciones $i(x_n)\to y$, $i(z_n)\to z$ y obtenemos
+\[
+ \rho'(T(y),T(z))=\lim_nd(x_n,z_n)=\rho(y,z).
+\]
+Aquí la continuidad de la distancia se justifica por $|\rho(a,b)-\rho(c,d)|\leq\rho(a,c)+\rho(b,d)$. Por tanto $T$ es una isometría. La sucesión constante $x_n=x$ muestra $T(i(x))=i'(x)$.
+
+Para probar sobreyectividad, sea $y'\in Y'$. Elegimos $x_n\in X$ con $i'(x_n)\to y'$. Entonces $(i(x_n))$ es de Cauchy y converge en $Y$ a cierto $y$. Por la definición anterior, $T(y)=y'$. Finalmente, la isometría que cumple la identidad requerida es única: es continua y queda determinada en la imagen densa $i(X)$; si $S$ es otra, para $i(x_n)\to y$ tenemos $S(y)=\lim_ni'(x_n)=T(y)$.
+\end{solucion}
+
+\begin{corolario}[Propiedad de extensión]\label{ch09:extension}
+Toda aplicación uniformemente continua $f:X\to Z$, con $Z$ completo, se extiende de manera única a una aplicación uniformemente continua $\widehat f:\widehat X\to Z$ tal que $\widehat f\circ i=f$.
+\end{corolario}
+\begin{proof}
+La aplicación $f\circ i^{-1}:i(X)\to Z$ es uniformemente continua porque $i^{-1}$ conserva distancias. Aplicamos la construcción y las estimaciones del ejercicio~\ref{ch07:ej-extension} al conjunto denso $i(X)\subset\widehat X$. Su clausura es todo $\widehat X$, por lo que obtenemos exactamente la extensión solicitada y su unicidad.
+\end{proof}
+
+\section{Completitud, construcción y unicidad}
+Un punto nuevo es una clase de aproximaciones que terminan siendo indistinguibles en distancia. La densidad evita añadir puntos ajenos a esa idea, y la unicidad prueba que el resultado no depende de la realización concreta escogida. La completitud convierte después construcciones infinitas en puntos efectivos del espacio.

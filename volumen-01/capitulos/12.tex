@@ -1,7 +1,8 @@
-\chapter{Equicontinuidad y el teorema de Arzelà--Ascoli}\label{chap:27}
+\chapter{Equicontinuidad y teorema de Arzelà--Ascoli}\label{cap:nuevo12}\label{chap:27}
 \index{equicontinuidad}\index{Arzela--Ascoli, teorema de@Arzelà--Ascoli, teorema de}
 
 \section{Compacidad en un espacio de dimensión infinita}
+\label{lectura:27}
 En $\R^n$, una sucesión acotada tiene una subsucesión convergente. En el espacio $C([0,1])$ con la norma uniforme, la acotación por sí sola no basta: las funciones $x^n$ tienen norma uno y su único posible límite puntual es discontinuo. Ninguna subsucesión puede converger uniformemente. Necesitamos impedir que las funciones desarrollen cambios bruscos en regiones cada vez más pequeñas.
 
 La condición que controla esos cambios es la \emph{equicontinuidad}. El teorema de Arzelà--Ascoli combina ese control con acotación puntual y proporciona una caracterización de compacidad relativa. Usaremos compacidad métrica, conjuntos densos numerables, Bolzano--Weierstrass y la completitud de $C(X)$ demostrada en el capítulo~\ref{chap:25}.
@@ -74,7 +75,7 @@ Por compacidad, existen $x_1,\ldots,x_m$ con $X=\bigcup_jB(x_j,\delta)$. La conv
  \le |f_n(x)-f_n(x_j)|+|f_n(x_j)-f(x_j)|+|f(x_j)-f(x)|
  \le3\eps/4<\eps.
 \]
-Esto prueba la convergencia uniforme. La continuidad de $f$ se sigue del teorema del límite uniforme; también se deduce directamente del control obtenido al pasar al límite.
+Esto prueba la convergencia uniforme. La continuidad de $f$ se sigue del teorema~\ref{ch12:limite-continuo}; también se deduce directamente del control obtenido al pasar al límite.
 \end{proof}
 
 \section{La extracción diagonal y Arzelà--Ascoli}
@@ -114,16 +115,16 @@ El radio $\delta$ es independiente de $f$, y esto demuestra la equicontinuidad.
 La compacidad relativa del teorema corresponde al espacio de funciones $C(X,\R)$ con su norma uniforme. La familia $\mathcal A$ no es un subconjunto del dominio $X$. Esta distinción corrige una imprecisión de la formulación original.
 \end{observacion}
 
-\section{Ejercicios resueltos}
+\section{Ejercicios sobre familias equicontinuas y aplicaciones compactas}
 En estos ejercicios, $X$ es un espacio métrico compacto, salvo indicación contraria.
-\begin{ejercicio}[Lectura 27, ejercicio 1]
+\begin{ejercicio}[Lectura 27, ejercicio 1]\label{ej:lectura-27-1}
 Demuestre que $\mathcal A\subset C(X,\R)$ es compacta si y solo si es cerrada, acotada en norma y equicontinua.
 \end{ejercicio}
 \begin{solucion}
 Si $\mathcal A$ es compacta, es cerrada y acotada por las propiedades generales de espacios métricos; además es equicontinua por Arzelà--Ascoli. Recíprocamente, la acotación en norma implica acotación puntual porque $|f(x)|\le\norm f_\infty$. La equicontinuidad y la acotación puntual hacen compacta su clausura. Como $\mathcal A$ es cerrada, coincide con esa clausura y es compacta. La condición de cerrado no puede omitirse si se desea compacidad y no solo compacidad relativa.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 27, ejercicio 2]
+\begin{ejercicio}[Lectura 27, ejercicio 2]\label{ej:lectura-27-2}
 Sea $v:C(X,\R)\times X\to\R$ la evaluación $v(f,x)=f(x)$.
 \begin{enumerate}[label=(\roman*)]
 \item Demuestre que $v$ es continua.
@@ -150,7 +151,7 @@ Para $p=(f,x)$ y $q=(f,y)$ tenemos $\rho(p,q)=d(x,y)$. Así, el $\delta$ anterio
 \end{enumerate}
 \end{solucion}
 
-\begin{ejercicio}[Lectura 27, ejercicio 3]
+\begin{ejercicio}[Lectura 27, ejercicio 3]\label{ej:lectura-27-3}
 En $C^1([a,b],\R)$ consideramos $\norm f_{C^1}=\norm f_\infty+\norm{f'}_\infty$. Demuestre que la inclusión $J:C^1([a,b])\to C([a,b])$, $Jf=f$, es lineal y compacta.
 \end{ejercicio}
 \begin{solucion}
@@ -160,14 +161,14 @@ $|f(x)-f(y)|\le M|x-y|$ para todos $x,y\in[a,b]$. Si $M>0$, elegir $\delta=\eps/
 Como complemento, la norma usada convierte $C^1([a,b])$ en Banach. Si $(f_n)$ es de Cauchy para ella, existen límites uniformes $f_n\to f$ y $f_n'\to g$ en $C([a,b])$. El teorema~\ref{ch26:derivacion}, junto con continuidad en los extremos, implica $f'=g$ en el interior; las derivadas laterales en los extremos se obtienen pasando al límite en los cocientes o integrando $g$. Concretamente, $f_n(x)-f_n(a)=\int_a^x f_n'$ y el límite uniforme da $f(x)-f(a)=\int_a^xg$, de donde $f\in C^1([a,b])$. Las dos convergencias uniformes equivalen a $\norm{f_n-f}_{C^1}\to0$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 27, ejercicio 4]
+\begin{ejercicio}[Lectura 27, ejercicio 4]\label{ej:lectura-27-4}
 Sea $\mathcal A\subset C([a,b],\R)$ una familia cuyas funciones son derivables en $(a,b)$. Si $|f'(x)|\le M$ para todas las funciones y todos los puntos interiores, demuestre que $\mathcal A$ es equicontinua.
 \end{ejercicio}
 \begin{solucion}
 Para $x<y$ en $[a,b]$, la función $f$ es continua en $[x,y]$ y derivable en $(x,y)$, incluso si $x=a$ o $y=b$. El teorema del valor medio proporciona $\xi\in(x,y)$ tal que $f(y)-f(x)=f'(\xi)(y-x)$. Así $|f(y)-f(x)|\le M|y-x|$. Si $M>0$, el radio $\delta=\eps/(2M)$ funciona para toda la familia y todos los puntos. Si $M=0$, la misma estimación implica que cada función es constante, y cualquier $\delta>0$ funciona. Las constantes pueden variar sin estar acotadas entre funciones: equicontinuidad por sí sola no implica acotación puntual.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 27, ejercicio 5: versión compleja]
+\begin{ejercicio}[Lectura 27, ejercicio 5: versión compleja]\label{ej:lectura-27-5}
 Sea $\mathcal A\subset C(X,\C)$ y ponga $\mathcal A_1=\{\operatorname{Re}f:f\in\mathcal A\}$, $\mathcal A_2=\{\operatorname{Im}f:f\in\mathcal A\}$.
 \begin{enumerate}[label=(\roman*)]
 \item Pruebe que $\mathcal A$ es equicontinua si y solo si lo son $\mathcal A_1$ y $\mathcal A_2$.

@@ -1,7 +1,168 @@
-\chapter{Álgebras de funciones y aproximación de Stone--Weierstrass}\label{chap:28}
+\chapter{Extensión y aproximación de funciones continuas}\label{cap:nuevo13}\label{chap:12}\label{chap:28}
+
+Una función definida en una parte de un espacio puede contener información que queremos conservar al ampliar el dominio. La continuidad uniforme permite extenderla a una clausura cuando el espacio de llegada es completo. Tietze resuelve otro problema: extender una función real continua desde un cerrado a todo un espacio métrico, sin exigir continuidad uniforme. La construcción combina separación de cerrados con una serie de correcciones de tamaño decreciente.
+
+Una vez estudiada la extensión, buscaremos aproximaciones uniformes mediante funciones de una forma prescrita. Stone--Weierstrass conecta esa pregunta con las operaciones de un álgebra y la capacidad de distinguir puntos. Los resultados de convergencia uniforme del capítulo~\ref{cap:nuevo11} permiten desarrollar ambas construcciones con control explícito del error.
+
+\section{Separar cerrados mediante funciones}
+\label{lectura:12}
+\begin{teorema}[Lema de Urysohn para espacios métricos]\label{ch12:urysohn}
+Si $A,B$ son cerrados disjuntos de un espacio métrico $X$, existe una función continua $u:X\to[0,1]$ tal que $u|_A=0$ y $u|_B=1$.
+\end{teorema}
+\begin{proof}
+Si $A=\varnothing$, sirve $u=1$; si $B=\varnothing$ y $A\ne\varnothing$, sirve $u=0$. Cuando ambos son no vacíos, definimos
+\[
+ u(x)=\frac{\dist(x,A)}{\dist(x,A)+\dist(x,B)}.
+\]
+Las funciones de distancia son continuas, incluso $1$-Lipschitz. El denominador no se anula: si ambas distancias fueran cero, el carácter cerrado de los conjuntos obligaría a $x\in A\cap B$. Por tanto el cociente es continuo y está entre cero y uno. En $A$, el numerador vale cero; en $B$, la distancia a $B$ es cero y la de $A$ es positiva, por lo que el cociente vale uno. Esto también permite separar los cerrados por los abiertos $u^{-1}([0,1/3))$ y $u^{-1}((2/3,1])$, entendiendo los intervalos como abiertos relativos de $[0,1]$.
+\end{proof}
+\index{Urysohn, lema de}\index{separacion de cerrados@separación de cerrados}
+Los cerrados pueden tener distancia mutua cero; no se exige una separación uniforme. Lo que se necesita es que, para cada punto individual, no se anulen simultáneamente las dos distancias.
+
+\begin{lema}[Una corrección que reduce el error]\label{ch12:correccion}
+Sea $V$ cerrado en $X$, y sea $g:V\to\R$ continua con $|g|\leq\alpha$, donde $\alpha>0$. Existe una función continua $h:X\to\R$ tal que
+\[
+ |h(x)|\leq\alpha/3\quad(x\in X),\qquad
+ |g(x)-h(x)|\leq2\alpha/3\quad(x\in V).
+\]
+\end{lema}
+\begin{proof}
+Los conjuntos
+\[
+ A=\{x\in V:g(x)\leq-\alpha/3\},\qquad
+ B=\{x\in V:g(x)\geq\alpha/3\}
+\]
+son cerrados en $V$ por continuidad, y por tanto cerrados en $X$ porque $V$ lo es. Son disjuntos. Sea $u$ la función del lema de Urysohn con $u=0$ en $A$ y $u=1$ en $B$, y pongamos $h=(\alpha/3)(2u-1)$. Entonces $|h|\leq\alpha/3$, $h=-\alpha/3$ en $A$ y $h=\alpha/3$ en $B$.
+
+Si $x\in A$, los valores de $g(x)$ están entre $-\alpha$ y $-\alpha/3$, de modo que $|g(x)+\alpha/3|\leq2\alpha/3$. En $B$, $g(x)$ está entre $\alpha/3$ y $\alpha$, y $|g(x)-\alpha/3|\leq2\alpha/3$. En $V\setminus(A\cup B)$ se tiene $|g(x)|<\alpha/3$ y $|h(x)|\leq\alpha/3$, así que la desigualdad triangular da el mismo resultado. Estos tres casos cubren todo $V$.
+\end{proof}
+
+Para sumar las correcciones usaremos los resultados del capítulo~\ref{cap:nuevo11}. El criterio M de Weierstrass, teorema~\ref{ch12:weierstrass}, garantiza convergencia uniforme si las cotas de los términos forman una serie numérica convergente, y controla el error por la cola de esa serie. El teorema~\ref{ch12:limite-continuo} asegura después que el límite de las sumas parciales continuas es continuo. En ambos pasos es esencial que el índice que controla el error no dependa del punto. Estos resultados ya están demostrados, también sin exigir acotación global en el teorema de continuidad.
+
+\section{Demostración completa del teorema de extensión}
+\begin{teorema}[Tietze]\label{ch12:tietze}
+Sea $V$ un cerrado de un espacio métrico $X$. Toda función continua $g:V\to\R$ tiene una extensión continua $f:X\to\R$. Si $g(V)\subset[a,b]$, puede elegirse una extensión con valores en el mismo intervalo.
+\end{teorema}
+\index{Tietze, teorema de}\index{extension de funciones@extensión de funciones}
+\begin{proof}
+Si $V=\varnothing$, una función constante resuelve el problema; para la afirmación del intervalo elegimos su valor en $[a,b]$. Si $X=V$, sirve $g$. Tratamos el caso restante.
+
+\textbf{Caso acotado y simétrico.} Supongamos $|g|\leq\alpha$ para algún $\alpha>0$. Aplicamos el lema~\ref{ch12:correccion} a $g$ y obtenemos $h_1$ con $|h_1|\leq\alpha/3$ en $X$ y error a lo sumo $2\alpha/3$ en $V$. El residuo $r_1=g-h_1|_V$ sigue siendo continuo. Aplicamos el mismo lema al residuo con cota $\alpha_1=2\alpha/3$ y obtenemos $h_2$ con
+\[
+ |h_2|\leq\frac\alpha3\frac23,
+ \qquad |g-h_1-h_2|\leq\alpha(2/3)^2\text{ en }V.
+\]
+Inductivamente, si $h_1,\ldots,h_{n-1}$ ya están construidas, aplicamos el lema al residuo continuo $g-\sum_{k=1}^{n-1}h_k|_V$, cuya cota es $\alpha(2/3)^{n-1}$. Esto produce $h_n$ continua en $X$ con
+\[
+ |h_n(x)|\leq\frac\alpha3(2/3)^{n-1}\quad(x\in X),
+ \qquad
+ \left|g(x)-\sum_{k=1}^nh_k(x)\right|\leq\alpha(2/3)^n\quad(x\in V).
+\]
+La suma del error es \emph{finita} en cada etapa; ése es el residuo al que se aplica el siguiente paso. Como
+\[
+ \sum_{n=1}^\infty\frac\alpha3(2/3)^{n-1}=\alpha,
+\]
+el criterio M, teorema~\ref{ch12:weierstrass}, asegura que $f=\sum_nh_n$ converge uniformemente en $X$. Sus sumas parciales son continuas y el teorema~\ref{ch12:limite-continuo} muestra que $f$ es continua. La segunda estimación, al dejar $n\to\infty$, da $f|_V=g$. La primera, sumada, da $|f|\leq\alpha$ en todo $X$.
+
+\textbf{Valores en un intervalo.} Si $a=b$, $g$ es constante y la misma constante la extiende. Si $a<b$, aplicamos el caso anterior a
+\[
+ g_0=g-\frac{a+b}{2},\qquad |g_0|\leq\frac{b-a}{2}.
+\]
+Su extensión $f_0$ con la misma cota produce $f=f_0+(a+b)/2$, cuyos valores están en $[a,b]$ y que coincide con $g$ en $V$.
+
+\textbf{Caso no acotado.} La función $h=\arctan g$ es continua en $V$ y toma valores estrictamente entre $-\pi/2$ y $\pi/2$. Por el caso acotado tiene una extensión continua $H:X\to[-\pi/2,\pi/2]$. No podemos aplicar directamente $\tan H$: fuera de $V$, la extensión podría alcanzar los extremos, donde la tangente no está definida. Para evitarlo, definimos
+\[
+ w(x)=\frac1{1+\dist(x,V)},\qquad \widetilde H(x)=w(x)H(x).
+\]
+Como $V$ es cerrado y no vacío, $w$ es continua, vale $1$ en $V$ y satisface $0<w(x)<1$ fuera de $V$. En $V$, $|H|<\pi/2$ porque $H=h$; fuera de $V$, el factor $w<1$ garantiza $|\widetilde H|<\pi/2$. Por ello
+\[
+ f(x)=\tan(\widetilde H(x))
+\]
+es una función real continua en todo $X$, y en $V$ cumple $f=\tan(\arctan g)=g$. Esto completa el caso que requiere especial cuidado con los extremos del intervalo.
+\end{proof}
+
+\begin{ejemplo}[Por qué se necesita un cerrado]
+La función $g:(0,\infty)\to\R$, $g(x)=\cos(1/x)$, es continua y está acotada por uno. Sin embargo, para
+\[
+ x_n=1/(2\pi n),\qquad y_n=1/((2n+1)\pi)
+\]
+ambas sucesiones tienden a cero y $g(x_n)=1$, $g(y_n)=-1$. Una extensión continua a $\R$ tendría que tener en cero dos límites distintos. La condición de que el dominio original sea cerrado no puede simplemente omitirse.
+\end{ejemplo}
+
+\section{Ejercicios sobre separación, soporte y particiones de la unidad}
+\begin{ejercicio}[Lectura 12, ejercicio 1]\label{ej:lectura-12-1}
+Sin usar el lema de Urysohn, separe dos cerrados disjuntos $A,B\subset X$ por abiertos disjuntos que los contengan.
+\end{ejercicio}
+\begin{solucion}
+Si alguno es vacío, elegimos para él el abierto vacío y para el otro el abierto $X$. Si ambos son no vacíos, tomamos
+\[
+ U=\{x:\dist(x,A)<\tfrac12\dist(x,B)\},\qquad
+ W=\{x:\dist(x,B)<\tfrac12\dist(x,A)\}.
+\]
+Son abiertos porque son conjuntos de positividad o negatividad estricta de diferencias de funciones continuas. Si $a\in A$, entonces $\dist(a,A)=0$ y $\dist(a,B)>0$, por ser $B$ cerrado y disjunto de $A$; de ahí $a\in U$. El mismo argumento da $B\subset W$. Un punto en ambos abiertos satisfaría $\dist(x,A)<\frac14\dist(x,A)$, imposible para un número no negativo. Así $U\cap W=\varnothing$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 12, ejercicio 2]\label{ej:lectura-12-2}\label{ch12:soporte}
+Defina el soporte de una función por
+\[
+ \supp(f)=\cl{\{x\in X:f(x)\ne0\}}.
+\]
+Sean $V$ cerrado y $U$ abierto con $V\subset U$.
+\begin{enumerate}[label=(\roman*)]
+\item Construya $\varphi:X\to[0,1]$ continua, igual a $1$ en $V$, y con $\supp(\varphi)\subset U$.
+\item Examine la afirmación de que toda $g:V\to[a,b]$ continua tiene una extensión continua $h:X\to[a,b]$ con soporte en $U$, y resuelva la versión válida.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\textbf{(i)} Si $V=\varnothing$, tomamos $\varphi=0$; si $U=X$, tomamos $\varphi=1$. En otro caso aplicamos Urysohn a los cerrados disjuntos $V$ y $X\setminus U$ y obtenemos $u:X\to[0,1]$ con $u=0$ en $V$ y $u=1$ en $X\setminus U$. Definimos
+\[
+ \varphi(x)=\max\{0,1-3u(x)\}.
+\]
+Es continua, vale uno en $V$, y sus puntos no nulos están en $\{u<1/3\}$. Al tomar clausuras,
+\[
+ \supp(\varphi)\subset\{u\leq1/3\}\subset U,
+\]
+pues $u=1$ fuera de $U$. El margen entre $1/3$ y $1$ es lo que garantiza la inclusión para la \emph{clausura} del conjunto de no anulación, no sólo para ese conjunto.
+
+\textbf{(ii)} El enunciado requiere una corrección cuando $0\notin[a,b]$ y $U\ne X$. Por ejemplo, si $X=\R$, $V=\{0\}$, $U=(-1,1)$ y $g(0)=1\in[1,2]$, toda función $h:\R\to[1,2]$ es no nula en todo $\R$ y su soporte es $\R$, imposible de contener en $U$. El texto original tampoco hace explícita la igualdad $h|_V=g$, que aquí incluimos para expresar el problema de extensión.
+
+La versión válida conserva todas las propiedades si $0\in[a,b]$. Por Tietze, extendemos $g$ a $\widetilde g:X\to[a,b]$. Tomamos la función $\varphi$ del inciso (i) y ponemos $h=\varphi\widetilde g$. Es continua y coincide con $g$ en $V$. Como $0\leq\varphi\leq1$ y el intervalo contiene a cero, $h(x)$ es una combinación convexa de $\widetilde g(x)$ y cero y permanece en $[a,b]$. Además, $\{h\ne0\}\subset\{\varphi\ne0\}$ y, por clausura, $\supp(h)\subset\supp(\varphi)\subset U$.
+
+Sin exigir $0\in[a,b]$, el mismo procedimiento da siempre una extensión con soporte en $U$ y valores en $[\min\{a,0\},\max\{b,0\}]$. Si se desea conservar exactamente el intervalo original, otra formulación válida fija un $c\in[a,b]$ y exige soporte de $h-c$ en $U$: la función $h=c+\varphi(\widetilde g-c)$ permanece en $[a,b]$, coincide con $g$ en $V$ y vale $c$ fuera del soporte de $\varphi$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 12, ejercicio 3]\label{ej:lectura-12-3}
+Sean $U_1,\ldots,U_n$ abiertos que cubren $X$. Construya funciones continuas $\varphi_i:X\to[0,1]$ con $\supp(\varphi_i)\subset U_i$ y $\sum_{i=1}^n\varphi_i=1$.
+\end{ejercicio}
+\begin{solucion}
+Si $X=\varnothing$, las únicas funciones con ese dominio satisfacen todas las condiciones. Supongamos $X\ne\varnothing$ y $n\geq1$. Para cada $i$ definimos
+\[
+ r_i(x)=\begin{cases}
+ \min\{1,\dist(x,X\setminus U_i)\},&U_i\ne X,\\
+ 1,&U_i=X.
+ \end{cases}
+\]
+Son continuas y no negativas. Si $U_i\ne X$, el complemento es cerrado no vacío y $r_i(x)>0$ exactamente cuando $x\in U_i$; esta afirmación también vale para $U_i=X$. Por la propiedad de cubierta, $S(x)=\sum_i r_i(x)>0$ en todo punto. Pongamos $w_i=r_i/S$. Son continuas, no negativas y suman uno.
+
+No basta tomar directamente $w_i$ como partición subordinada en el sentido del soporte: su conjunto no nulo está en $U_i$, pero su clausura podría alcanzar la frontera. Introducimos un margen:
+\[
+ V_i=\{x:w_i(x)>1/(2n)\},\qquad
+ g_i(x)=\max\{w_i(x)-1/(2n),0\}.
+\]
+Para cada $x$, algún $w_i(x)$ es al menos $1/n$, ya que la suma es uno. Por ello los $V_i$ cubren $X$ y $G=\sum_i g_i$ es estrictamente positiva. Además,
+\[
+ \cl{V_i}\subset\{w_i\geq1/(2n)\}\subset\{w_i>0\}=U_i.
+\]
+Ésta realiza explícitamente la reducción de la cubierta sugerida en la lectura original. Finalmente, definimos $\varphi_i=g_i/G$. Son continuas, están entre cero y uno y suman uno. Su conjunto de no anulación es $V_i$, luego $\supp(\varphi_i)=\cl{V_i}\subset U_i$. Hemos construido una partición finita de la unidad con todas las inclusiones de soporte justificadas.
+\end{solucion}
+\index{particion de la unidad@partición de la unidad}\index{soporte de una funcion@soporte de una función}
+
+Las funciones de separación permiten fijar valores sobre cerrados; las series uniformemente convergentes convierten aproximaciones en una extensión exacta; y las funciones de soporte controlado permiten localizar esa extensión. Una partición de la unidad combina estas ideas para repartir una construcción global entre distintos abiertos sin perder continuidad. Pasaremos ahora de conservar valores en una parte del dominio a aproximar una función en todo un compacto mediante una familia algebraicamente sencilla.
+
 \index{Stone--Weierstrass, teorema de}\index{algebra@álgebra!de funciones}
 
 \section{Cuándo bastan las funciones sencillas}
+\label{lectura:28}
 El teorema de aproximación de Weierstrass afirma que una función continua en un intervalo compacto puede aproximarse uniformemente por polinomios. Stone--Weierstrass identifica qué propiedades de los polinomios hacen posible esa aproximación: pueden sumarse, multiplicarse y escalarse; distinguen puntos distintos; y no se anulan todos en un mismo punto.
 
 Estudiaremos primero funciones reales. La prueba transformará esas propiedades algebraicas en la posibilidad de construir máximos y mínimos aproximados. Dos aplicaciones de compacidad permitirán ensamblar aproximaciones locales hasta obtener una aproximación en todo el dominio. Para el caso complejo aparecerá una condición adicional: estabilidad bajo conjugación.
@@ -218,8 +379,8 @@ La prueba utiliza máximos y mínimos en la \emph{clausura} del álgebra. No afi
 Si todas las funciones de $A$ satisfacen $h(x_0)=0$, todo límite uniforme tiene esa propiedad, pues la evaluación es continua. La función constante $1$ no puede estar en la clausura. Si todas satisfacen $h(x_0)=h(y_0)$ para dos puntos distintos, sus límites uniformes también satisfacen esa igualdad. En un espacio métrico, la función continua $z\mapsto d(z,x_0)$ toma valores distintos en esos dos puntos y, si el espacio es compacto, pertenece a $C(X)$. Por ello la falta de separación impide densidad. Estas observaciones explican las dos hipótesis algebraicas del teorema.
 \end{ejemplo}
 
-\section{Ejercicios resueltos}
-\begin{ejercicio}[Lectura 28, ejercicio 1: aproximación de Weierstrass]
+\section{Ejercicios sobre aproximación polinómica y álgebras complejas}
+\begin{ejercicio}[Lectura 28, ejercicio 1: aproximación de Weierstrass]\label{ej:lectura-28-1}
 Sea $f:[a,b]\to\F$ continua. Demuestre que existe una sucesión de polinomios con coeficientes en $\F$ que converge uniformemente a $f$.
 \end{ejercicio}
 \begin{solucion}
@@ -229,11 +390,11 @@ Si $f$ es compleja, escribimos $f=u+iv$ con $u,v$ reales continuas. Elegimos pol
 $\norm{f-r_n}_\infty\le\norm{u-p_n}_\infty+\norm{v-q_n}_\infty<1/n$.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 28, ejercicio 2: determinación por momentos]
+\begin{ejercicio}[Lectura 28, ejercicio 2: determinación por momentos]\label{ej:lectura-28-2}
 Sea $f:[0,1]\to\R$ continua y suponga que $\int_0^1 f(x)x^n\,dx=0$ para todo entero $n\ge0$. Demuestre que $f=0$.
 \end{ejercicio}
 \begin{solucion}
-Por linealidad de la integral, $\int_0^1fp=0$ para cualquier polinomio real $p$, porque $p$ es una combinación finita de monomios. El ejercicio anterior proporciona polinomios $p_n$ con $\norm{p_n-f}_\infty\to0$. La función $f$ es acotada por continuidad en un compacto, y
+Por linealidad de la integral, $\int_0^1fp=0$ para cualquier polinomio real $p$, porque $p$ es una combinación finita de monomios. El ejercicio~\ref{ej:lectura-28-1} proporciona polinomios $p_n$ con $\norm{p_n-f}_\infty\to0$. La función $f$ es acotada por continuidad en un compacto, y
 \[
  \left|\int_0^1f(x)p_n(x)\,dx-\int_0^1f(x)^2\,dx\right|
  \le\int_0^1|f(x)|\,|p_n(x)-f(x)|\,dx
@@ -244,8 +405,8 @@ La primera integral es cero para todo $n$, de modo que $\int_0^1f^2=0$.
 Si existiera $x_0$ con $f(x_0)\ne0$, por continuidad habría una vecindad relativa de $x_0$ en $[0,1]$ donde $|f(x)|>|f(x_0)|/2$. Esa vecindad contiene un intervalo de longitud positiva, incluso cuando $x_0$ es un extremo. La integral de $f^2$ sobre ese intervalo sería al menos su longitud multiplicada por $|f(x_0)|^2/4>0$, contradiciendo $\int_0^1f^2=0$. Por tanto, $f$ se anula en cada punto.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 28, ejercicio 3: Stone--Weierstrass complejo]
-Una subálgebra compleja $A\subset C(X,\C)$ es \emph{autoadjunta} si $\overline f\in A$ para toda $f\in A$. Demuestre que, si $A$ es autoadjunta, separa puntos y no se anula en ningún punto, entonces es densa en $C(X,\C)$.
+\begin{ejercicio}[Lectura 28, ejercicio 3: Stone--Weierstrass complejo]\label{ej:lectura-28-3}
+Sea $X$ un espacio métrico compacto. Una subálgebra compleja $A\subset C(X,\C)$ es \emph{autoadjunta} si $\overline f\in A$ para toda $f\in A$. Demuestre que, si $A$ es autoadjunta, separa puntos y no se anula en ningún punto, entonces es densa en $C(X,\C)$.
 \end{ejercicio}
 \begin{solucion}
 \index{subalgebra@subálgebra!autoadjunta}
@@ -263,7 +424,7 @@ Para $h=u+iv\in C(X,\C)$ y $\eps>0$, elegimos $a,b\in A_\R$ con $\norm{u-a}_\inf
 Esto prueba la densidad compleja.
 \end{solucion}
 
-\begin{ejercicio}[Lectura 28, ejercicio 4: por qué hace falta conjugación]
+\begin{ejercicio}[Lectura 28, ejercicio 4: por qué hace falta conjugación]\label{ej:lectura-28-4}
 Sea $\mathbb T=\{z\in\C:|z|=1\}$ y sea $A$ el álgebra de restricciones a $\mathbb T$ de los polinomios complejos en $z$:
 \[
  p(e^{i\theta})=\sum_{k=0}^N a_ke^{ik\theta}.
@@ -293,5 +454,5 @@ Así $h\notin\cl A$. Incluso obtenemos una cota cuantitativa: para todo $p\in A$
 $1=|L(h-p)|\le\norm{h-p}_\infty$. Como el polinomio cero da error uno, la distancia de $h$ a $A$ es exactamente uno. Esta álgebra no es autoadjunta, pues contiene $z$ y no contiene $\overline z$.
 \end{solucion}
 
-\section{Del álgebra a la aproximación}
-El argumento central crea primero interpolaciones exactas en dos puntos y después las ensambla mediante máximos y mínimos. La aproximación polinómica del valor absoluto permite realizar ese ensamblaje dentro de la clausura de una subálgebra. En el caso complejo, la conjugación recupera partes reales e imaginarias y permite usar el teorema real. El último ejercicio muestra que distinguir puntos no basta si se pierde esa operación. Esta relación entre álgebra y norma uniforme será una herramienta central para las álgebras de operadores y para el análisis armónico de los volúmenes siguientes.
+\section{Extender, localizar y aproximar}
+Tietze construye una extensión exacta mediante correcciones cuyo error decrece geométricamente; las funciones de soporte controlado permiten localizarla. Stone--Weierstrass resuelve un problema complementario: aproximar una función continua por miembros de una subálgebra. Su argumento crea primero interpolaciones exactas en dos puntos y después las ensambla mediante máximos y mínimos. La aproximación polinómica del valor absoluto permite realizar ese ensamblaje dentro de la clausura de una subálgebra. En el caso complejo, la conjugación recupera partes reales e imaginarias y permite usar el teorema real. El ejercicio~\ref{ej:lectura-28-4} muestra que distinguir puntos no basta si se pierde esa operación. Esta relación entre álgebra y norma uniforme será una herramienta central para las álgebras de operadores y para el análisis armónico de los volúmenes siguientes.

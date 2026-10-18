@@ -1,0 +1,699 @@
+\chapter{Distancias, normas y topología métrica}\label{cap:nuevo01}\label{chap:01}\label{chap:02}\label{chap:03}\label{chap:04}
+
+Este capítulo construye el lenguaje métrico y topológico que se utilizará en todo el volumen. Partiremos de distancias y normas sobre vectores, sucesiones y funciones; pasaremos de las bolas a las vecindades, el interior y la clausura; y terminaremos describiendo la convergencia y el cambio de espacio ambiente. El recorrido integra las lecturas 1--4 de las notas de partida \cite{valencia}, conservando sus desarrollos y ejercicios con una organización continua. Se requieren las propiedades del valor absoluto, el lenguaje de conjuntos y cuantificadores, las series de términos no negativos y la integral de Riemann de funciones continuas. La referencia a integración en varias variables se precisa al introducirla; el caso de un intervalo permite seguir las pruebas sin ese prerrequisito adicional.
+
+\section{Qué significa medir la proximidad}\label{lectura:01}
+Medir la proximidad de números mediante $|x-y|$ sugiere una definición que también pueda aplicarse a vectores, sucesiones, funciones y operadores. Comenzamos por la distancia; después incorporaremos su compatibilidad con la estructura vectorial mediante una norma. Las desigualdades de Hölder y Minkowski justificarán los ejemplos, en lugar de dejar su verificación como una afirmación pendiente.
+
+\begin{definicion}\label{ch01:metrica}\index{metrica@métrica}
+Una \emph{métrica} en un conjunto $X$ es una función $d:X\times X\to[0,\infty)$ tal que, para $x,y,z\in X$,
+\[
+d(x,y)=0\Longleftrightarrow x=y,\qquad d(x,y)=d(y,x),\qquad
+d(x,y)\le d(x,z)+d(z,y).
+\]
+El par $(X,d)$ es un espacio métrico. La última condición es la desigualdad triangular.
+\end{definicion}
+La desigualdad triangular expresa que pasar por un punto intermedio no acorta la distancia directa. No presupone que existan segmentos o caminos en $X$. El conjunto vacío admite formalmente una métrica; salvo indicación expresa trabajaremos con espacios no vacíos.
+
+\begin{ejemplo}[Métrica discreta]\index{metrica@métrica!discreta}
+En cualquier conjunto, $d(x,y)=1$ si $x\ne y$ y $d(x,x)=0$ define una métrica. Para comprobar la desigualdad triangular, si $x=y$ el lado izquierdo es cero. Si $x\ne y$, no pueden cumplirse simultáneamente $x=z$ y $z=y$; al menos uno de los dos sumandos del lado derecho es $1$, de modo que su suma es al menos $d(x,y)=1$.
+\end{ejemplo}
+En $\R$ y $\C$, $d(x,y)=|x-y|$ es una métrica: la separación y la simetría se deducen del valor absoluto, y $|x-y|=|(x-z)+(z-y)|\le|x-z|+|z-y|$.
+
+\begin{definicion}\label{ch01:norma}\index{norma}
+Sea $V$ un espacio vectorial sobre $\F=\R$ o $\C$. Una norma es una función $\norm{\cdot}:V\to[0,\infty)$ tal que
+\[
+\norm{v}=0\Longleftrightarrow v=0,\qquad
+\norm{\alpha v}=|\alpha|\norm{v},\qquad
+\norm{u+v}\le\norm{u}+\norm{v}.
+\]
+El par $(V,\norm{\cdot})$ es un espacio normado. Una \emph{seminorma} satisface las mismas condiciones salvo que puede anularse en vectores no nulos.
+\end{definicion}
+\begin{proposicion}\label{ch01:inducida}
+Toda norma induce la métrica $d(u,v)=\norm{u-v}$.
+\end{proposicion}
+\begin{proof}
+La norma es no negativa y $\norm{u-v}=0$ equivale a $u-v=0$. La homogeneidad con escalar $-1$ da $\norm{u-v}=\norm{v-u}$. Finalmente,
+\[
+\norm{u-v}=\norm{(u-w)+(w-v)}\le\norm{u-w}+\norm{w-v}.
+\]
+Estas son exactamente las tres propiedades de una métrica.
+\end{proof}
+La métrica inducida es invariante por traslación: $d(u+a,v+a)=d(u,v)$, y satisface $d(\alpha u,\alpha v)=|\alpha|d(u,v)$. Una métrica arbitraria no tiene por qué poseer estas propiedades.
+
+\section{Las desigualdades de Hölder y Minkowski}
+En los ejemplos con varias variables, un compacto $K\subset\R^m$ se llama \emph{Jordan-medible} si su función indicadora $\mathbf1_K$ es integrable en el sentido de Riemann en un rectángulo que lo contiene. La integral $\int_K h$ se entiende como la integral en ese rectángulo de la función igual a $h$ en $K$ y a cero fuera de él. Para $h$ continua en $K$, esta extensión es integrable: sus posibles discontinuidades exteriores a la continuidad relativa están en la frontera de $K$, que tiene contenido de Jordan cero. El lector que solo haya estudiado cálculo de una variable puede tomar $K=[a,b]$, $a<b$, en todas las pruebas integrales de este capítulo; los argumentos de Hölder y Minkowski son idénticos y no requieren todavía teoría de la medida.
+Para justificar las normas $p$ no basta con afirmar que la desigualdad triangular es conocida. La herramienta decisiva es Hölder. Para $1<p<\infty$, el exponente conjugado es $q=p/(p-1)$; así $1/p+1/q=1$. Para $p=1$ se toma $q=\infty$, y para $p=\infty$ se toma $q=1$.
+
+\begin{lema}[Desigualdad de Young]\label{ch01:young}\index{Young, desigualdad de}
+Si $a,b\ge0$ y $1<p<\infty$, entonces $ab\le a^p/p+b^q/q$.
+\end{lema}
+\begin{proof}
+Fijado $b$, consideremos $h(t)=t^p/p-bt$ para $t\ge0$. Si $b=0$, la afirmación es inmediata. Si $b>0$, $h'(t)=t^{p-1}-b$ cambia de negativo a positivo en $t=b^{1/(p-1)}$. Ese punto es el mínimo global; su valor es $-b^q/q$. Por tanto $a^p/p-ab\ge-b^q/q$.
+\end{proof}
+
+\begin{teorema}[Hölder]\label{ch01:holder}\index{Holder@Hölder, desigualdad de}
+Para familias finitas de escalares,
+\[
+\sum_{k=1}^N|a_kb_k|\le
+\left(\sum_{k=1}^N|a_k|^p\right)^{1/p}
+\left(\sum_{k=1}^N|b_k|^q\right)^{1/q},\qquad 1<p<\infty.
+\]
+La misma desigualdad vale para series si ambos factores del lado derecho son finitos. En los extremos, se reemplaza el factor de exponente infinito por el supremo. Para funciones continuas en un compacto Jordan-medible $K\subset\R^m$, vale también
+\[
+\int_K|fg|\le \left(\int_K|f|^p\right)^{1/p}
+\left(\int_K|g|^q\right)^{1/q}.
+\]
+\end{teorema}
+\begin{proof}
+Para sumas finitas, escribamos $A=(\sum|a_k|^p)^{1/p}$ y $B=(\sum|b_k|^q)^{1/q}$. Si alguno es cero, todos sus términos son cero y la desigualdad queda probada. Si $A,B>0$, Young aplicada a $|a_k|/A$ y $|b_k|/B$ da
+\[
+\frac{|a_kb_k|}{AB}\le\frac{|a_k|^p}{pA^p}+\frac{|b_k|^q}{qB^q}.
+\]
+Al sumar se obtiene $\sum|a_kb_k|/(AB)\le1/p+1/q=1$. Para series, cada suma parcial está acotada por el producto de las normas completas; las sumas parciales son crecientes, por lo que convergen y satisfacen la misma cota. En el caso $p=1$, basta sumar $|a_kb_k|\le|a_k|\sup_j|b_j|$; el caso $p=\infty$ intercambia los papeles.
+
+Para integrales con ambos factores positivos se aplica Young a $|f|/A$ y $|g|/B$ punto a punto y se integra; la linealidad y la monotonía de la integral producen nuevamente $1/p+1/q$. Si $\int_K|f|^p=0$, Hölder no puede usarse todavía para concluir que el producto tiene integral cero. Para $\delta>0$, la desigualdad de Young aplicada a $|f|/\delta$ y $|g|$ da
+\[
+\int_K|fg|\le \frac{\delta^{1-p}}p\int_K|f|^p+
+\frac\delta q\int_K|g|^q=\frac\delta q\int_K|g|^q.
+\]
+Como esto vale para todo $\delta>0$, la integral del producto es cero. El otro caso nulo se trata intercambiando factores. En los extremos se integra $|fg|\le |f|\norm{g}_\infty$, o su versión intercambiada.
+\end{proof}
+
+\begin{teorema}[Minkowski]\label{ch01:minkowski}\index{Minkowski, desigualdad de}
+Para $1\le p<\infty$, las expresiones $p$ de sumas finitas, series e integrales satisfacen la desigualdad triangular.
+\end{teorema}
+\begin{proof}
+Para $p=1$ se suma o integra $|a+b|\le|a|+|b|$. Supongamos $p>1$ y comencemos por una suma finita. Si $S=(\sum|a_k+b_k|^p)^{1/p}=0$, no hay nada que probar. En otro caso,
+\begin{align*}
+S^p&\le\sum|a_k|\,|a_k+b_k|^{p-1}+\sum|b_k|\,|a_k+b_k|^{p-1}\\
+&\le\left[\left(\sum|a_k|^p\right)^{1/p}
++\left(\sum|b_k|^p\right)^{1/p}\right]
+\left(\sum|a_k+b_k|^{(p-1)q}\right)^{1/q}.
+\end{align*}
+Como $(p-1)q=p$, el último factor es $S^{p-1}$. Dividir por ese número positivo prueba la desigualdad. Si $a,b$ tienen sumas $p$ finitas, aplicamos la desigualdad a sus primeras $N$ coordenadas. Las sumas parciales de $\sum|a_k+b_k|^p$ quedan acotadas por $(\norm a_p+\norm b_p)^p$. Su límite es finito y, al pasar al límite, se obtiene la desigualdad para series. Este argumento demuestra a la vez que la suma pertenece al espacio: no lo presupone.
+
+Para funciones continuas en $K$, $|f+g|^p$ es integrable. Si su integral es positiva, se repite el cálculo anterior con integrales y Hölder; el factor final es $(\int|f+g|^p)^{1/q}$. Si la integral es cero, la desigualdad es automática. Para el supremo, $|f(x)+g(x)|\le\norm f_\infty+\norm g_\infty$ para cada $x$, y tomar el supremo concluye la prueba.
+\end{proof}
+
+\section{Los espacios modelo}
+\begin{ejemplo}[Normas en dimensión finita]\index{norma!p en dimension finita@$p$ en dimensión finita}
+En $\F^n$, para $n\ge1$,
+\[
+\norm x_1=\sum_{k=1}^n|x_k|,\qquad
+\norm x_p=\left(\sum_{k=1}^n|x_k|^p\right)^{1/p},\qquad
+\norm x_\infty=\max_{1\le k\le n}|x_k|.
+\]
+Todas son normas. La separación se sigue de que una suma de términos no negativos solo es cero si cada término lo es; para el máximo se usa el mismo razonamiento. La homogeneidad se obtiene sacando $|\alpha|^p$ de la suma, o $|\alpha|$ del máximo. La desigualdad triangular es Minkowski para $1<p<\infty$, la desigualdad del valor absoluto para $p=1$, y la estimación del supremo para $p=\infty$. La norma $2$ es euclidiana; la norma $1$ produce la distancia del taxista.
+\end{ejemplo}
+
+\begin{definicion}\index{ell p@\(\ell^p\)}\index{ell infinito@\(\ell^\infty\)}
+Para $1\le p<\infty$, se define
+\[
+\ell^p=\left\{a=(a_k)_{k\ge1}:\sum_{k=1}^{\infty}|a_k|^p<\infty\right\},
+\qquad \norm a_p=\left(\sum_{k=1}^{\infty}|a_k|^p\right)^{1/p}.
+\]
+Además, $\ell^\infty$ es el espacio de sucesiones acotadas, con $\norm a_\infty=\sup_k|a_k|$.
+\end{definicion}
+El cero pertenece a cada espacio; la multiplicación por escalares conserva la condición de pertenencia porque multiplica la serie por $|\alpha|^p$; y la suma la conserva por la prueba de Minkowski. En $\ell^\infty$, la cota $|a_k+b_k|\le\norm a_\infty+\norm b_\infty$ prueba lo mismo. Las verificaciones de separación y homogeneidad son las de dimensión finita, coordenada por coordenada. Así se justifica que estos objetos sean espacios vectoriales normados. Hölder dice en particular que si $a\in\ell^p$ y $b\in\ell^q$, entonces el producto coordenado $ab$ está en $\ell^1$.
+
+\begin{ejemplo}[Funciones continuas]\index{C(K)@$C(K)$}\label{ch01:funciones}
+En un compacto no vacío $K\subset\R^m$, la norma uniforme es
+\[
+\norm f_\infty=\max_{x\in K}|f(x)|,\qquad f\in C(K).
+\]
+El máximo existe por el teorema elemental de valores extremos para funciones continuas en compactos euclidianos. La separación se comprueba evaluando en cada punto; la homogeneidad y la desigualdad triangular se siguen de las propiedades del máximo.
+
+Si $a<b$, también son normas en $C([a,b])$ las expresiones
+\[
+\norm f_p=\left(\int_a^b|f(t)|^p\,dt\right)^{1/p},\qquad 1\le p<\infty.
+\]
+Solo falta justificar la separación. Si $f(t_0)\ne0$, la continuidad proporciona un intervalo relativo de longitud positiva en el que $|f(t)|>|f(t_0)|/2$. La integral de $|f|^p$ es al menos esa longitud multiplicada por $(|f(t_0)|/2)^p$, y es positiva. La homogeneidad sigue de la integral y la triangular de Minkowski.
+\end{ejemplo}
+\begin{observacion}[Corrección de la hipótesis del dominio]\index{seminorma}
+En un compacto Jordan-medible arbitrario, la expresión integral puede ser solo una seminorma. Si $K=\{0\}$ y $f(0)=1$, entonces $f\ne0$ pero $\int_K|f|^p=0$. Una condición suficiente para que sea norma es que toda vecindad relativa no vacía de $K$ tenga medida positiva. En ese caso la continuidad vuelve a producir un conjunto de medida positiva donde $|f|$ tiene una cota inferior positiva. Esta condición suele expresarse diciendo que la medida tiene \emph{soporte pleno} en $K$. No se necesita imponerla para la norma uniforme ni para las desigualdades de Hölder y Minkowski.
+\end{observacion}
+
+\section{Ejercicios sobre métricas, normas y ultramétricas}
+\begin{ejercicio}[Lectura 1, ejercicio 1]\label{ej:lectura-1-1}
+Sea $d:X\times X\to\R$ tal que $d(x,y)=0$ si y solo si $x=y$ y $d(x,y)\le d(x,z)+d(y,z)$ para todo $x,y,z$. Demostrar que $d$ es una métrica.
+\end{ejercicio}
+\begin{solucion}
+Tomando $z=x$ se obtiene $d(x,y)\le d(y,x)$, pues $d(x,x)=0$. Intercambiando $x,y$ se obtiene la desigualdad opuesta, y por tanto la simetría. Tomando $y=x$ en la desigualdad dada resulta $0\le2d(x,z)$: así se deduce la no negatividad, que no figuraba entre las hipótesis. La condición de separación ya está supuesta. Finalmente, por simetría la desigualdad dada es $d(x,y)\le d(x,z)+d(z,y)$, la desigualdad triangular usual.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 2]\label{ej:lectura-1-2}
+Sean $d_1,\ldots,d_n$ métricas en $X$. Demostrar que (i) su suma y (ii) su máximo son métricas. (iii) Dar un ejemplo en el que $\min(d_1,d_2)$ no lo sea.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item La suma es no negativa y simétrica. Si se anula, cada sumando no negativo se anula y $x=y$; si $x=y$, todos son cero. Al sumar las $n$ desigualdades triangulares se obtiene la de la suma.
+\item El máximo es no negativo, simétrico y se anula exactamente en la diagonal. Para cada $i$,
+\[
+d_i(x,y)\le d_i(x,z)+d_i(z,y)\le \max_j d_j(x,z)+\max_jd_j(z,y).
+\]
+El lado derecho no depende de $i$, por lo que también acota el máximo del lado izquierdo.
+\item En $X=\{a,b,c\}$, definamos las distancias entre puntos distintos por
+\[
+\begin{array}{c|ccc}
+&ab&bc&ac\\\hline
+d_1&1&3&3\\
+d_2&3&1&3
+\end{array}
+\]
+y extendamos por simetría, con diagonal cero. Cada terna de longitudes es $(1,3,3)$; su longitud mayor es menor o igual que la suma de las otras dos, así que ambas funciones son métricas. Su mínimo da distancias $1,1,3$, y falla $d(a,c)\le d(a,b)+d(b,c)$.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 3]\label{ej:lectura-1-3}
+Si $d$ es una métrica, demostrar que $d'(x,y)=d(x,y)/(1+d(x,y))$ también lo es.
+\end{ejercicio}
+\begin{solucion}
+La función $h(t)=t/(1+t)$ es creciente en $[0,\infty)$, es no negativa y solo se anula en $0$. Además, para $s,t\ge0$,
+\[
+\frac{s+t}{1+s+t}=\frac{s}{1+s+t}+\frac{t}{1+s+t}
+\le\frac{s}{1+s}+\frac{t}{1+t}.
+\]
+Por tanto $h(d(x,y))\le h(d(x,z)+d(z,y))\le h(d(x,z))+h(d(z,y))$. La simetría y la separación se heredan de $d$. Nótese que la nueva métrica está acotada por $1$ aunque la original no lo esté.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 4]\label{ej:lectura-1-4}
+Sean $(d_n)$ métricas en $X$ y $a_n>0$ con $\sum_na_n<\infty$. Demostrar que
+\[
+D(x,y)=\sum_{n=1}^{\infty}a_n\frac{d_n(x,y)}{1+d_n(x,y)}
+\]
+es una métrica.
+\end{ejercicio}
+\begin{solucion}
+Cada término está entre $0$ y $a_n$, así que la serie converge y define un número real finito. La simetría se verifica término a término. Si $x=y$, todos los términos son cero. Si $x\ne y$, el primer término es estrictamente positivo, por lo que $D(x,y)>0$. Cada cociente es una métrica por el ejercicio~\ref{ej:lectura-1-3}; al multiplicar su desigualdad triangular por $a_n$ y sumar de $1$ a $N$, obtenemos la desigualdad para sumas parciales. El paso al límite conserva la desigualdad porque las tres series convergen. No se está intercambiando una suma con un ínfimo o un supremo: solo se pasa al límite en una desigualdad entre números reales.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 5]\label{ej:lectura-1-5}
+Para métricas $d_1,\ldots,d_n$ y $p>1$, demostrar que
+\[
+d_p(x,y)=\left(\sum_{i=1}^n d_i(x,y)^p\right)^{1/p}
+\]
+es una métrica.
+\end{ejercicio}
+\begin{solucion}
+La no negatividad, simetría y separación siguen de las de cada $d_i$. Poniendo $a_i=d_i(x,z)$ y $b_i=d_i(z,y)$, la desigualdad triangular de cada métrica y la monotonía de $t\mapsto t^p$ dan
+\[
+d_p(x,y)\le\left(\sum_i(a_i+b_i)^p\right)^{1/p}
+\le\left(\sum_i a_i^p\right)^{1/p}+\left(\sum_i b_i^p\right)^{1/p}.
+\]
+La última desigualdad es Minkowski, demostrada en el teorema~\ref{ch01:minkowski}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 6]\label{ej:lectura-1-6}
+Demostrar que $|d(x,z)-d(z,y)|\le d(x,y)$.
+\end{ejercicio}
+\begin{solucion}
+De $d(x,z)\le d(x,y)+d(y,z)$ se deduce $d(x,z)-d(y,z)\le d(x,y)$. Intercambiando $x,y$ resulta $d(y,z)-d(x,z)\le d(x,y)$. Estas dos desigualdades equivalen a la del valor absoluto. Esta \emph{desigualdad triangular inversa} será la base de la continuidad de las funciones distancia.\index{desigualdad triangular!inversa}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 7]\label{ej:lectura-1-7}\index{ultrametrica@ultramétrica}
+Una métrica es ultramétrica si $d(x,y)\le\max\{d(x,z),d(y,z)\}$. Demostrar que, cuando $d(x,z)\ne d(y,z)$, se tiene igualdad.
+\end{ejercicio}
+\begin{solucion}
+Supongamos $a=d(x,z)>b=d(y,z)$. La desigualdad ultramétrica da $d(x,y)\le a$. Aplicándola ahora al par $x,z$ con punto intermedio $y$, obtenemos $a\le\max\{d(x,y),b\}$. Como $b<a$, el máximo solo puede ser al menos $a$ si $d(x,y)\ge a$. Por tanto $d(x,y)=a$. Si $b>a$, se intercambian $x$ y $y$ en este mismo argumento. Geométricamente, en un triángulo ultramétrico los dos lados más largos tienen igual longitud.
+\end{solucion}
+
+\section{De una distancia a una noción de entorno}\label{lectura:02}
+La distancia ya permite comparar puntos. A partir de ella construiremos ahora los conjuntos que rodean a un punto y los que contienen sus puntos límite: esta es la información topológica que se extrae de una métrica. Las bolas conectan las estimaciones numéricas anteriores con las nociones de vecindad, interior y clausura.
+
+\begin{definicion}\label{ch02:bolas}\index{bola!abierta}\index{bola!cerrada}\index{esfera}
+En un espacio métrico $(X,d)$, para $r>0$, se definen
+\[
+B(x,r)=\{y:d(x,y)<r\},\quad
+\overline B(x,r)=\{y:d(x,y)\le r\},\quad
+S(x,r)=\{y:d(x,y)=r\}.
+\]
+Se llaman bola abierta, bola cerrada y esfera, respectivamente. El símbolo $\overline B(x,r)$ designa aquí la bola definida por $\le r$; todavía no afirma que sea la clausura de $B(x,r)$.
+\end{definicion}
+En la métrica discreta, $B(x,r)=\{x\}$ para $0<r\le1$ y $B(x,r)=X$ para $r>1$. La bola cerrada es $\{x\}$ para $0<r<1$ y $X$ para $r\ge1$. En $\R^n$ con la norma euclidiana,
+\[
+B(x,r)=\left\{y:\sum_{k=1}^n(x_k-y_k)^2<r^2\right\}.
+\]
+Se usa el cuadrado de la diferencia, no la diferencia de los cuadrados.
+
+En $C(K)$ con la norma uniforme,
+\[
+B(f,r)=\{g\in C(K):\max_{t\in K}|g(t)-f(t)|<r\}.
+\]
+Como $K$ es compacto y $f,g$ continuas, esto equivale a $|g(t)-f(t)|<r$ para todo $t\in K$: el máximo se alcanza en algún punto y, en ese punto, la desigualdad también es estricta. En un dominio no compacto, las desigualdades estrictas punto a punto no garantizan un supremo estrictamente menor que $r$; por ejemplo, $t/(1+t)<1$ en $[0,\infty)$, pero su supremo es $1$.
+
+\begin{definicion}\index{vecindad}\label{ch02:vecindad}
+Un conjunto $V\subset X$ es una vecindad de $x$ si existe $r>0$ tal que $B(x,r)\subset V$. Toda vecindad contiene al punto, porque $d(x,x)=0<r$.
+\end{definicion}
+Una vecindad no tiene por qué ser una bola ni un conjunto abierto. En $\R$, $[-1,1]\cup\{4\}$ es una vecindad de $0$, pues contiene $B(0,1)$.
+
+\begin{proposicion}\label{ch02:vecindades}
+Si $U,V$ son vecindades de $x$, también lo es $U\cap V$. Todo conjunto que contiene una vecindad de $x$ es vecindad de $x$.
+\end{proposicion}
+\begin{proof}
+Elijamos radios $r,s>0$ con $B(x,r)\subset U$ y $B(x,s)\subset V$. Entonces $B(x,\min\{r,s\})\subset U\cap V$. La segunda afirmación se deduce conservando la bola contenida en la vecindad original.
+\end{proof}
+Con el orden dado por inclusión, la intersección es la máxima cota inferior de dos vecindades: está contenida en ambas, y cualquier conjunto contenido en ambas está contenido en su intersección. La elección del radio mínimo explica por qué funciona una familia finita; para una familia infinita, el ínfimo de los radios puede ser cero.
+
+\section{Interior y clausura}
+\begin{definicion}\index{interior}\index{clausura}\label{ch02:interiorclausura}
+El interior y la clausura de $A\subset X$ son
+\begin{align*}
+\interior A&=\{x:\text{existe }r>0\text{ con }B(x,r)\subset A\},\\
+\cl A&=\{x:\text{para todo }r>0,\ B(x,r)\cap A\ne\varnothing\}.
+\end{align*}
+La segunda condición equivale a que toda vecindad de $x$ intersecte a $A$. Un conjunto es abierto si coincide con su interior y cerrado si coincide con su clausura.
+\end{definicion}
+La equivalencia sobre vecindades tiene dos direcciones: las bolas son vecindades; y, si toda bola intersecta a $A$, una vecindad cualquiera también lo hace porque contiene una bola. Este razonamiento permite reducir muchas pruebas a bolas, pero es necesario explicar por qué la reducción conserva la propiedad buscada.
+
+\begin{proposicion}\label{ch02:operaciones}
+Para $A,B\subset X$ se cumple:
+\begin{enumerate}[label=(\roman*)]
+\item $\interior A\subset A\subset\cl A$.
+\item Si $A\subset B$, entonces $\interior A\subset\interior B$ y $\cl A\subset\cl B$.
+\item $\interior{(\interior A)}=\interior A$ y $\cl{\cl A}=\cl A$.
+\item $\interior A\cup\interior B\subset\interior{(A\cup B)}$ y $\interior{(A\cap B)}=\interior A\cap\interior B$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item Si una bola centrada en $x$ está contenida en $A$, entonces $x\in A$. Si $x\in A$, cada bola centrada en $x$ intersecta a $A$ en el propio $x$.
+\item Una bola contenida en $A$ está contenida en $B$; una bola que intersecta a $A$ también intersecta a $B$. Estas dos observaciones dan las respectivas inclusiones.
+\item Sea $x\in\interior A$ y elijamos $r>0$ con $B(x,r)\subset A$. Para $y\in B(x,r)$, el número $s=r-d(x,y)$ es positivo. Si $d(y,z)<s$, la desigualdad triangular da $d(x,z)<r$, por lo que $B(y,s)\subset A$. Así cada $y\in B(x,r)$ pertenece a $\interior A$, y $B(x,r)\subset\interior A$. Esto prueba $x\in\interior{(\interior A)}$; la otra inclusión es (i).
+
+Ahora sea $x\in\cl{\cl A}$ y fijemos $r>0$. Existe $y\in\cl A$ con $d(x,y)<r/2$, y existe $z\in A$ con $d(y,z)<r/2$. Por tanto $d(x,z)<r$ y $B(x,r)$ intersecta a $A$. Como $r$ era arbitrario, $x\in\cl A$. La inclusión inversa se sigue de (i).
+\item Si $x\in\interior A\cup\interior B$, alguna bola centrada en $x$ está contenida en uno de esos conjuntos y, por tanto, en su unión. Si $x$ pertenece a ambos interiores, la proposición~\ref{ch02:vecindades} da una bola contenida en $A\cap B$. Recíprocamente, una bola contenida en $A\cap B$ está contenida tanto en $A$ como en $B$.
+\end{enumerate}
+\end{proof}
+La idempotencia significa que tomar interior o clausura una segunda vez no añade información. En particular, el interior siempre es abierto y la clausura siempre es cerrada. El interior describe puntos con margen para moverse dentro del conjunto; la clausura agrega todos los puntos que pueden aproximarse desde él.
+
+\begin{ejemplo}
+En $\R$, para $A=(0,1]\cup\{2\}$, se tiene $\interior A=(0,1)$ y $\cl A=[0,1]\cup\{2\}$. En cambio, para $A=\Q$, el interior es vacío y la clausura es $\R$. Un conjunto puede ser cerrado sin ser abierto, abierto sin ser cerrado, ambas cosas o ninguna; estas palabras no son negaciones lógicas entre sí.
+\end{ejemplo}
+
+\begin{definicion}[Diámetro]\index{diametro@diámetro}
+El diámetro de un subconjunto no vacío $A$ de $(X,d)$ es
+\[
+ \diam A=\sup\{d(x,y):x,y\in A\}\in[0,\infty].
+\]
+Adoptamos $\diam\varnothing=0$. El valor infinito expresa que las distancias entre puntos de $A$ no tienen una cota finita. Si $A\subset B(a,r)$, la desigualdad triangular da $d(x,y)<2r$ para $x,y\in A$, y por tanto $\diam A\le2r$. Recíprocamente, si $A\ne\varnothing$ y $\diam A<\infty$, al fijar $a\in A$ obtenemos $A\subset B(a,\diam A+1)$. Así, tener diámetro finito equivale a estar contenido en una bola de radio finito.
+\end{definicion}
+
+\section{Ejercicios sobre bolas, interior y clausura}
+\begin{ejercicio}[Lectura 2, ejercicio 1]\label{ej:lectura-2-1}
+En $\R^{\N}$, sea $A=\{a:|a_n|<1/n\text{ para todo }n\}$. Decidir si $A$ es vecindad de $0$ para (i) la métrica discreta; (ii) la métrica $d(a,b)=1/\min\{n:a_n\ne b_n\}$ cuando $a\ne b$, y $d(a,a)=0$; (iii) la métrica
+\[
+d'(a,b)=\sum_{n=1}^{\infty}\frac{|a_n-b_n|}{2^n(1+|a_n-b_n|)}.
+\]
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Sí: $B(0,1/2)=\{0\}\subset A$.
+\item No. Para cada $r>0$, elijamos $N$ con $1/N<r$ y pongamos $a_N=1/N$ y $a_n=0$ si $n\ne N$. La primera coordenada diferente de cero es la $N$, así que $d(0,a)=1/N<r$, pero $a\notin A$. Por tanto ninguna bola de radio positivo está contenida en $A$.
+
+La función propuesta sí es una métrica: si $a$ y $c$ coinciden hasta el índice $m-1$, y $c$ y $b$ también, entonces $a$ y $b$ coinciden hasta ese índice. En consecuencia, el primer desacuerdo entre $a,b$ no puede preceder al menor de los primeros desacuerdos de los otros dos pares. Al invertir los índices se obtiene la desigualdad ultramétrica. La separación y la simetría están en la definición.
+\item Tampoco. Con la misma sucesión concentrada en $N$,
+\[
+d'(0,a)=\frac{1}{2^N(N+1)}.
+\]
+Este número tiende a cero, de modo que para cualquier $r>0$ podemos elegir $N$ con $d'(0,a)<r$, manteniendo $a\notin A$.
+
+Para verificar que $d'$ es una métrica, la serie converge por comparación con $\sum2^{-n}$. En cada coordenada, $|a_n-b_n|/(1+|a_n-b_n|)$ satisface la desigualdad triangular por el argumento del ejercicio~\ref{ej:lectura-1-3}. Es una pseudométrica en todo $\R^{\N}$, pues puede anularse aunque otras coordenadas difieran. La suma sí separa puntos: si $a\ne b$, alguna coordenada aporta un término positivo. La simetría y la triangular se conservan al sumar y pasar al límite.
+\end{enumerate}
+Este ejercicio muestra que una condición impuesta simultáneamente a infinitas coordenadas puede impedir la existencia de una sola tolerancia métrica válida para todas ellas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 2]\label{ej:lectura-2-2}
+Demostrar que una intersección finita de vecindades de un mismo punto es una vecindad de él.
+\end{ejercicio}
+\begin{solucion}
+Para $V_1,\ldots,V_m$ elegimos $r_j>0$ con $B(x,r_j)\subset V_j$. Al ser una familia finita, $r=\min_jr_j>0$, y $B(x,r)\subset\bigcap_jV_j$. La intersección de una familia vacía se interpreta como $X$, que también es vecindad de $x$. La condición de finitud importa: en $\R$, $\bigcap_{n\ge1}(-1/n,1/n)=\{0\}$ no es vecindad de $0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 3]\label{ej:lectura-2-3}
+Probar $\cl{A\cup B}=\cl A\cup\cl B$ y $\cl{A\cap B}\subset\cl A\cap\cl B$.
+\end{ejercicio}
+\begin{solucion}
+La monotonía de la clausura da $\cl A\cup\cl B\subset\cl{A\cup B}$. Si $x\notin\cl A\cup\cl B$, existen radios $r,s>0$ cuyas bolas centradas en $x$ no intersectan a $A$ y a $B$, respectivamente. La bola de radio $\min\{r,s\}$ no intersecta a la unión; por tanto $x\notin\cl{A\cup B}$. Esto prueba la otra inclusión por contraposición. Para la intersección, $A\cap B\subset A$ y $A\cap B\subset B$ dan, por monotonía, ambas inclusiones necesarias.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 4]\label{ej:lectura-2-4}
+Dar ejemplos en los que (i) $\interior{(A\cup B)}\not\subset\interior A\cup\interior B$ y (ii) $\cl A\cap\cl B\not\subset\cl{A\cap B}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Tomemos $A=\Q$ y $B=\R\setminus\Q$. Ambos tienen interior vacío porque todo intervalo contiene racionales e irracionales. Su unión es $\R$, cuyo interior es $\R$.
+\item Con los mismos conjuntos, ambas clausuras son $\R$, pero $A\cap B=\varnothing$ tiene clausura vacía. Como alternativa finita, $A=(0,1)$ y $B=(1,2)$ tienen clausuras que se intersectan en $1$, mientras su intersección es vacía.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 5]\label{ej:lectura-2-5}
+En un espacio ultramétrico demostrar: (i) si $y\in B(x,r)$, entonces $B(y,r)=B(x,r)$; (ii) las bolas abiertas y las bolas cerradas de radio positivo son conjuntos abiertos y cerrados; (iii) dos bolas que se intersectan están ordenadas por inclusión.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $z\in B(y,r)$, entonces $d(x,z)\le\max\{d(x,y),d(y,z)\}<r$. Esto da una inclusión. Como $x\in B(y,r)$, intercambiar los centros da la otra. Para bolas cerradas, el mismo argumento con $\le r$ muestra que cualquier punto de una bola cerrada es también centro de ella con el mismo radio.
+\item Las bolas abiertas son abiertas por el ejercicio~\ref{ej:lectura-2-6}. Para ver que $B(x,r)$ es cerrada, sea $z\notin B(x,r)$. Si $w\in B(z,r)$, entonces $d(z,w)<r\le d(z,x)$; el ejercicio~\ref{ej:lectura-1-7} da $d(x,w)=d(x,z)\ge r$. Por tanto $B(z,r)$ no intersecta a $B(x,r)$, y $z$ no pertenece a su clausura.
+
+La bola cerrada es cerrada por el ejercicio~\ref{ej:lectura-2-6}. Si $y\in\overline B(x,r)$, todo $z\in B(y,r)$ satisface $d(x,z)\le\max\{d(x,y),d(y,z)\}\le r$. Así $B(y,r)\subset\overline B(x,r)$ y esta bola es abierta. La formulación «una bola es abierta si y solo si es cerrada» se entiende aquí en sentido topológico; no afirma que una bola definida con $<$ sea idéntica a la definida con $\le$ para el mismo radio.
+\item Si dos bolas contienen a $z$, por (i) y su versión cerrada podemos tomar $z$ como centro de ambas. Con centro común, la bola de radio menor está contenida en la de radio mayor. Si los radios coinciden, las bolas son iguales cuando son del mismo tipo; si una es abierta y otra cerrada, la abierta está contenida en la cerrada. Esto cubre también el caso de tipos distintos.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 6]\label{ej:lectura-2-6}
+En cualquier espacio métrico, demostrar que (i) las bolas abiertas son abiertas, (ii) las bolas cerradas son cerradas y (iii) las esferas son cerradas.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $y\in B(x,r)$, tomamos $s=r-d(x,y)>0$. Para $z\in B(y,s)$, la triangular da $d(x,z)<d(x,y)+s=r$. Así la bola original es vecindad de cada punto suyo y coincide con su interior.
+\item Si $y\notin\overline B(x,r)$, sea $s=d(x,y)-r>0$. Para $z\in B(y,s)$, la triangular inversa da $d(x,z)\ge d(x,y)-d(y,z)>r$. Esta bola no intersecta a $\overline B(x,r)$, así que ningún punto exterior pertenece a su clausura.
+\item Si $y\notin S(x,r)$, sea $s=|d(x,y)-r|/2>0$. Para $z\in B(y,s)$, la triangular inversa da $|d(x,z)-d(x,y)|<s$. Si $d(x,z)$ fuera $r$, esto contradiría $|r-d(x,y)|=2s$. Por tanto la bola no intersecta a la esfera y esta es cerrada.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 7]\label{ej:lectura-2-7}
+Demostrar que (i) $A$ es abierto si y solo si es vecindad de todos sus puntos; (ii) $A$ es cerrado si y solo si todo punto cuyas vecindades intersectan a $A$ pertenece a $A$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Ser vecindad de cada punto de $A$ significa $A\subset\interior A$. Como siempre $\interior A\subset A$, equivale a la igualdad que define apertura.
+\item Los puntos cuyas vecindades intersectan a $A$ son precisamente los de $\cl A$. La condición es $\cl A\subset A$, que, junto con $A\subset\cl A$, equivale a la igualdad que define cerradura.
+\end{enumerate}
+\end{solucion}
+
+\section{Clausura de una bola y bola cerrada}
+Siempre $\cl{B(x,r)}\subset\overline B(x,r)$, porque la bola cerrada es cerrada y contiene a la abierta. La igualdad puede fallar: en un espacio discreto con al menos dos puntos, $B(x,1)=\{x\}$ tiene clausura $\{x\}$, mientras que $\overline B(x,1)=X$. Por eso el tipo de desigualdad que define una bola debe distinguirse de la operación topológica de tomar clausura.
+
+\section{Operaciones que preservan la topología}\label{lectura:03}
+Una vez definidos el interior y la clausura, podemos reconocer conjuntos abiertos y cerrados. Estudiaremos las operaciones que preservan esas propiedades y cómo la clausura se detecta mediante sucesiones. La distinción decisiva será entre pertenecer simplemente a un conjunto y ser un punto al que se aproximan \emph{otros} puntos de él.
+
+\begin{proposicion}\label{ch03:axiomas}\index{topologia@topología!axiomas}
+En un espacio métrico $X$, una unión arbitraria de abiertos es abierta y una intersección finita de abiertos es abierta. Los conjuntos $\varnothing$ y $X$ son abiertos.
+\end{proposicion}
+\begin{proof}
+Sea $G=\bigcup_{i\in I}G_i$, con cada $G_i$ abierto. Si $x\in G$, existe $i$ con $x\in G_i$. Alguna bola centrada en $x$ está contenida en $G_i$ y, por ello, en $G$. Si $I$ es vacío, la unión es vacía y no hay punto en el que verificar la condición.
+
+Para $x\in\bigcap_{j=1}^mG_j$, elijamos $r_j>0$ con $B(x,r_j)\subset G_j$. La bola de radio $\min_jr_j$ está contenida en la intersección. Por último, $X$ contiene cualquier bola centrada en cualquiera de sus puntos; $\varnothing$ es abierto porque la afirmación «es vecindad de todos sus puntos» no tiene contraejemplos.
+\end{proof}
+
+\begin{teorema}\label{ch03:complemento}
+Un conjunto $F\subset X$ es cerrado si y solo si $X\setminus F$ es abierto.
+\end{teorema}
+\begin{proof}
+Si $F$ es cerrado y $x\notin F=\cl F$, alguna bola centrada en $x$ no intersecta a $F$. Esa bola está contenida en el complemento, que es por tanto vecindad de cada punto suyo. Recíprocamente, si el complemento es abierto y $x\notin F$, existe una bola centrada en $x$ contenida en él. Entonces $x\notin\cl F$. Hemos probado $\cl F\subset F$, y la inclusión opuesta vale siempre.
+\end{proof}
+
+\begin{corolario}\label{ch03:cerrados}
+Las intersecciones arbitrarias de cerrados y las uniones finitas de cerrados son cerradas. Los conjuntos $\varnothing$ y $X$ son cerrados.
+\end{corolario}
+\begin{proof}
+Las identidades de De Morgan dan
+\[
+X\setminus\bigcap_iF_i=\bigcup_i(X\setminus F_i),\qquad
+X\setminus\bigcup_{j=1}^mF_j=\bigcap_{j=1}^m(X\setminus F_j).
+\]
+Los lados derechos son abiertos por la proposición~\ref{ch03:axiomas}. Sus complementos son cerrados por el teorema anterior. Los complementos de $\varnothing$ y $X$ son abiertos, lo que prueba la última afirmación. Se admite la intersección vacía, igual a $X$.
+\end{proof}
+Por ejemplo, $S(x,r)=\overline B(x,r)\cap(X\setminus B(x,r))$ es intersección de dos cerrados. Esta es una segunda prueba de que las esferas son cerradas.
+
+\begin{teorema}\label{ch03:unionbolas}
+Un conjunto es abierto si y solo si es unión de bolas abiertas.
+\end{teorema}
+\begin{proof}
+Si $G$ es abierto, para cada $x\in G$ elijamos $r_x>0$ con $B(x,r_x)\subset G$. Todo $x\in G$ pertenece a su propia bola, así que $G=\bigcup_{x\in G}B(x,r_x)$. Si $G=\varnothing$, se toma la unión vacía. Recíprocamente, cada bola abierta es abierta por el ejercicio~\ref{ej:lectura-2-6}, y una unión de abiertos es abierta.
+\end{proof}
+Este teorema permite comprobar propiedades de todos los abiertos a partir de bolas, siempre que la propiedad sea compatible con uniones. Esa compatibilidad habrá que verificarla en cada aplicación.
+
+\section{Adherencia, acumulación y aislamiento}
+\begin{definicion}\index{punto!de adherencia}\index{punto!de acumulacion@de acumulación}\index{conjunto derivado}
+Un punto interior de $A$ pertenece a $\interior A$; un punto de adherencia pertenece a $\cl A$. Un punto $x$ es de acumulación de $A$ si
+\[
+B(x,r)\cap(A\setminus\{x\})\ne\varnothing\quad\text{para todo }r>0.
+\]
+El conjunto de estos puntos se denota $A'$ y se llama conjunto derivado. Un punto de $A$ que no está en $A'$ es aislado en $A$.
+\end{definicion}
+Todo punto de acumulación es de adherencia, porque la condición de intersectar a $A\setminus\{x\}$ implica la de intersectar a $A$. Más precisamente,
+\begin{equation}\label{ch03:clderivada}
+\cl A=A\cup A'.
+\end{equation}
+En efecto, si $x\in\cl A\setminus A$, cada bola intersecta a $A$, y el punto encontrado es diferente de $x$ porque $x\notin A$. Esto da $x\in A'$. La inclusión contraria usa $A\subset\cl A$ y $A'\subset\cl A$.
+
+Un conjunto finito no tiene puntos de acumulación. Para verlo en un punto arbitrario $x$, consideremos el conjunto finito de distancias $d(x,a)$ con $a\in A\setminus\{x\}$. Si ese conjunto es vacío, cualquier bola sirve. Si no lo es, su mínimo $m$ es positivo y $B(x,m)$ no contiene puntos de $A\setminus\{x\}$. Esta prueba cubre también los puntos exteriores a $A$ y los conjuntos con cero o un elemento.
+
+\begin{lema}\label{ch03:infinitospuntos}
+Si $x\in A'$, toda bola centrada en $x$ contiene infinitos puntos de $A$.
+\end{lema}
+\begin{proof}
+Si $B(x,r)\cap(A\setminus\{x\})$ fuera finito, eligiendo un radio menor que $r$ y menor que todas las distancias positivas de $x$ a esos puntos obtendríamos una bola sin puntos de $A\setminus\{x\}$. Esto contradice la definición de acumulación.
+\end{proof}
+
+\section{Sucesiones como pruebas de clausura}
+\begin{definicion}\index{sucesion@sucesión!convergente}
+Una sucesión $(x_n)$ converge a $x$ si para cada $\eps>0$ existe $N\in\N$ tal que $d(x_n,x)<\eps$ para todo $n\ge N$. Se escribe $x_n\to x$.
+\end{definicion}
+El índice $N$ depende de la precisión $\eps$. No basta con encontrar un término cerca de $x$; todos los términos a partir de cierto momento deben estar cerca de él.
+
+\begin{teorema}\label{ch03:secuencial}
+Para $A\subset X$ y $x\in X$:
+\begin{enumerate}[label=(\roman*)]
+\item $x\in\cl A$ si y solo si existe una sucesión de puntos de $A$ que converge a $x$.
+\item $x\in A'$ si y solo si existe una sucesión de puntos de $A$ distintos dos a dos que converge a $x$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item Si $x\in\cl A$, para cada $n$ elegimos $x_n\in A\cap B(x,1/n)$. Dado $\eps>0$, tomamos $N$ con $1/N<\eps$; entonces $n\ge N$ implica $d(x_n,x)<1/n\le1/N<\eps$. Recíprocamente, si $x_n\in A$ y $x_n\to x$, cualquier bola $B(x,r)$ contiene todos los términos a partir de cierto índice; por ello intersecta a $A$.
+\item Si $x\in A'$, el lema~\ref{ch03:infinitospuntos} permite elegir recursivamente
+\[
+x_n\in A\cap B(x,1/n)\setminus\{x,x_1,\ldots,x_{n-1}\}.
+\]
+Solo se excluye un conjunto finito de una intersección infinita, así que siempre hay una elección. Las distancias menores que $1/n$ prueban la convergencia. En sentido inverso, dada una bola $B(x,r)$, la convergencia pone en ella todos los términos suficientemente avanzados. Como son distintos dos a dos, a lo sumo uno es igual a $x$; existe, por tanto, un término de la bola diferente de $x$. Esto prueba acumulación.
+\end{enumerate}
+\end{proof}
+\begin{corolario}\label{ch03:cerradosecuencial}
+Un subconjunto $F$ de un espacio métrico es cerrado si y solo si contiene el límite de toda sucesión de puntos de $F$ que converja en $X$.
+\end{corolario}
+\begin{proof}
+Si $F$ es cerrado, el teorema anterior coloca cualquier límite en $\cl F=F$. Si contiene todos esos límites, cada $x\in\cl F$ es límite de una sucesión en $F$ y pertenece a $F$; así $\cl F=F$.
+\end{proof}
+
+\section{Ejercicios sobre cerradura, acumulación y sucesiones}
+\begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:lectura-3-1}
+Demostrar que (i) $\interior A$ es la unión de todos los abiertos contenidos en $A$ y (ii) $\cl A$ es la intersección de todos los cerrados que contienen a $A$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Si $G$ es abierto y $G\subset A$, la monotonía del interior da $G=\interior G\subset\interior A$. Por otra parte, $\interior A$ es abierto y está contenido en $A$, de modo que él mismo figura en la familia de la unión. Esto prueba las dos inclusiones.
+\item Si $F$ es cerrado y $A\subset F$, entonces $\cl A\subset\cl F=F$. Además, $\cl A$ es un cerrado que contiene a $A$, por lo que figura entre los conjuntos que se intersectan. Así es exactamente esa intersección.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 2]\label{ej:lectura-3-2}
+Demostrar que (i) $c_0$, el conjunto de sucesiones que convergen a cero, es cerrado en $\ell^\infty$; (ii) fijado $t\in K$, el conjunto $\{f\in C(K):f(t)=0\}$ es cerrado en la norma uniforme.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Sean $a^{(m)}\in c_0$ y $\norm{a^{(m)}-a}_\infty\to0$. Debemos mostrar que $a_n\to0$ cuando cambia el índice de coordenada $n$, no el índice $m$ de aproximación. Dado $\eps>0$, elegimos un solo $m$ con $\norm{a^{(m)}-a}_\infty<\eps/2$. Como $a^{(m)}\in c_0$, existe $N$ con $|a^{(m)}_n|<\eps/2$ para $n\ge N$. Entonces
+\[
+|a_n|\le |a_n-a^{(m)}_n|+|a^{(m)}_n|<\eps.
+\]
+Así $a\in c_0$, y el corolario~\ref{ch03:cerradosecuencial} prueba cerradura.
+\item Si $f_m(t)=0$ y $\norm{f_m-f}_\infty\to0$, entonces $|f(t)|=|f(t)-f_m(t)|\le\norm{f-f_m}_\infty$. Al pasar al límite obtenemos $|f(t)|=0$. Todo límite en $C(K)$ permanece en el conjunto, por lo que este es cerrado.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 3]\label{ej:lectura-3-3}\index{Hausdorff, propiedad de}
+Para $x\ne y$, encontrar abiertos disjuntos $U,V$ con $x\in U$ y $y\in V$. Deducir la unicidad del límite de una sucesión.
+\end{ejercicio}
+\begin{solucion}
+Sea $r=d(x,y)/3>0$. Las bolas $U=B(x,r)$ y $V=B(y,r)$ son abiertas. Si $z$ perteneciera a ambas, $d(x,y)\le d(x,z)+d(z,y)<2r<d(x,y)$, contradicción. Si una sucesión convergiera a $x$ y a $y$, a partir de un índice estaría en $U$ y a partir de otro estaría en $V$. Desde el mayor de ambos índices estaría en la intersección vacía. Por tanto dos límites deben coincidir. En el enunciado original se sustituye la expresión accidental $y\in X$ por la condición necesaria $y\in V$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 4]\label{ej:lectura-3-4}
+Demostrar que $\{x\}$ es la intersección de todas las vecindades cerradas de $x$, y deducir que todo conjunto finito es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Todas esas vecindades contienen a $x$. Si $y\ne x$, la bola cerrada $\overline B(x,d(x,y)/2)$ es vecindad de $x$ y no contiene a $y$. Así ningún otro punto pertenece a la intersección. La intersección de cerrados es cerrada, por lo que cada singleton $\{x\}$ es cerrado. Una unión finita de estos singletons es cerrada; el conjunto finito vacío también es cerrado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 5]\label{ej:lectura-3-5}
+En $\ell^1$, sea $e_k=(\delta_{n,k})_{n\ge1}$ y $A=\{e_k:k\in\N\}$. Demostrar que $A$ no tiene puntos de acumulación.
+\end{ejercicio}
+\begin{solucion}
+Para $j\ne k$, $\norm{e_j-e_k}_1=2$, pues hay exactamente dos coordenadas de valor absoluto $1$. Una bola de radio $1/2$ contiene a lo sumo un elemento de $A$: si contuviera dos, su distancia sería menor que $1$ por la desigualdad triangular. Pero una bola centrada en un punto de acumulación tendría que contener infinitos elementos de $A$, por el lema~\ref{ch03:infinitospuntos}. No existe tal punto. Este es un conjunto infinito sin puntos de acumulación, incluso aunque todos sus elementos tienen norma $1$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 6]\label{ej:lectura-3-6}
+Demostrar que $A$ es cerrado si y solo si $A'\subset A$.
+\end{ejercicio}
+\begin{solucion}
+Por \eqref{ch03:clderivada}, $\cl A=A\cup A'$. Si $A$ es cerrado, $A'\subset\cl A=A$. Si $A'\subset A$, entonces $\cl A=A\cup A'=A$, de modo que $A$ es cerrado. El enunciado no dice que todo punto de un cerrado sea de acumulación: puede tener puntos aislados.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 7]\label{ej:lectura-3-7}\index{distancia!a un conjunto}
+Para $A\ne\varnothing$, sea $d(x,A)=\inf\{d(x,a):a\in A\}$. Probar $x\in\cl A$ si y solo si $d(x,A)=0$.
+\end{ejercicio}
+\begin{solucion}
+El ínfimo existe y es finito: las distancias son no negativas y alguna de ellas es finita porque $A$ no es vacío. Si $x\in\cl A$, para todo $\eps>0$ hay $a\in A$ con $d(x,a)<\eps$, así que $0\le d(x,A)<\eps$ y el ínfimo es cero. Si el ínfimo es cero, para cada $r>0$ debe existir $a\in A$ con $d(x,a)<r$; de otro modo $r$ sería una cota inferior positiva. Por tanto toda bola intersecta a $A$.
+
+Además, esta distancia es $1$-Lipschitz: para $\eps>0$ elijamos $a\in A$ con $d(y,a)<d(y,A)+\eps$. Entonces $d(x,A)\le d(x,a)\le d(x,y)+d(y,A)+\eps$. Haciendo $\eps\downarrow0$ e intercambiando $x,y$, obtenemos $|d(x,A)-d(y,A)|\le d(x,y)$. No se supuso que el ínfimo se alcanzara.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 8]\label{ej:lectura-3-8}
+Para una familia no vacía $\mathcal S$ de subconjuntos de $X$, demostrar
+\[
+\left(\bigcap_{A\in\mathcal S}A\right)'\subset\bigcap_{A\in\mathcal S}A',\qquad
+\bigcup_{A\in\mathcal S}A'\subset\left(\bigcup_{A\in\mathcal S}A\right)',
+\]
+y dar ejemplos de inclusiones estrictas.
+\end{ejercicio}
+\begin{solucion}
+Si $E\subset F$, cualquier bola que contiene un punto de $E$ distinto de su centro contiene también un punto de $F$ distinto del centro; por tanto $E'\subset F'$. Aplicamos esta monotonía a $\bigcap\mathcal S\subset A$ para cada $A$ y a $A\subset\bigcup\mathcal S$ para cada $A$.
+
+Para la primera inclusión, en $\R$ tomemos $A=(-1,0)$ y $B=(0,1)$. La intersección es vacía y tiene derivado vacío, mientras que $0\in A'\cap B'$. Para la segunda, sea $\mathcal S=\{\{1/n\}:n\ge1\}$. Cada singleton tiene derivado vacío, pero $0$ pertenece al derivado de la unión, pues $1/n\to0$ y los puntos son distintos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 9]\label{ej:lectura-3-9}
+En un espacio ultramétrico demostrar: (i) las relaciones $d(x,y)<r$ y $d(x,y)\le r$, con $r>0$, son de equivalencia; (ii) las bolas abiertas de radio $r$ particionan $X$, y lo mismo las cerradas; (iii) si $0<s<r$, una bola $B(x,r)$ es particionada por las bolas abiertas de radio $s$ que la intersectan.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item La reflexividad usa $d(x,x)=0<r$; la simetría es la de la métrica. Si $d(x,y)<r$ y $d(y,z)<r$, la desigualdad ultramétrica da $d(x,z)\le\max\{d(x,y),d(y,z)\}<r$. Sustituir ambas desigualdades estrictas por $\le r$ demuestra la transitividad de la segunda relación.
+\item La clase de equivalencia de $x$ para la primera relación es exactamente $B(x,r)$; para la segunda es $\overline B(x,r)$. Las clases de una relación de equivalencia cubren el conjunto y dos clases son iguales o disjuntas, así que proporcionan las particiones afirmadas. La colección de bolas se entiende sin repetir conjuntos iguales.
+\item Si $B(y,s)$ intersecta a $B(x,r)$, elijamos $z$ en la intersección. Entonces $d(x,y)\le\max\{d(x,z),d(z,y)\}<r$, y para $w\in B(y,s)$ se obtiene $d(x,w)\le\max\{d(x,y),d(y,w)\}<r$. Por tanto $B(y,s)\subset B(x,r)$. Todo punto $y$ de la bola grande pertenece a su bola $B(y,s)$, que la intersecta. Las bolas pequeñas son iguales o disjuntas por (ii), de modo que cubren la bola grande sin superposición entre elementos distintos de la colección.
+\end{enumerate}
+\end{solucion}
+
+\section{El espacio ambiente forma parte de la afirmación}\label{lectura:04}
+Las caracterizaciones anteriores cambian de interpretación cuando restringimos el espacio ambiente. Decir que un conjunto es abierto o cerrado requiere indicar dentro de qué espacio se trabaja: $[0,1]$ es cerrado en $\R$, pero abierto dentro de sí mismo. No hay contradicción, porque las bolas disponibles cambian al restringir el universo. Las propiedades de bolas, abiertos y clausuras ya demostradas permitirán describir con precisión ese cambio.
+
+\begin{definicion}\index{subespacio!metrico@métrico}\label{ch04:subespacio}
+Si $(X,d)$ es métrico y $Y\subset X$, la restricción $d|_{Y\times Y}$ es la métrica inducida en $Y$. El espacio resultante se llama subespacio métrico.
+\end{definicion}
+La restricción es no negativa, simétrica y separa puntos porque conserva los valores de $d$. Para $u,v,w\in Y$, la desigualdad triangular ya es válida en $X$ y, por tanto, en $Y$. Esto prueba todos los axiomas, sin ninguna hipótesis de que $Y$ sea abierto o cerrado.
+
+Indicaremos el ambiente mediante subíndices cuando pueda haber confusión. Para $y\in Y$,
+\begin{equation}\label{ch04:bolas}
+B_Y(y,r)=Y\cap B_X(y,r).
+\end{equation}
+La identidad se deduce porque ambos miembros exigen simultáneamente pertenecer a $Y$ y tener distancia a $y$ menor que $r$. También vale con bolas cerradas y esferas.
+
+\begin{proposicion}\label{ch04:vecindades}
+Un conjunto $V\subset Y$ es vecindad de $y\in Y$ en $Y$ si y solo si existe una vecindad $W$ de $y$ en $X$ tal que $V=W\cap Y$.
+\end{proposicion}
+\begin{proof}
+Si $B_Y(y,r)\subset V$, definamos $W=V\cup B_X(y,r)$. Es vecindad de $y$ en $X$ porque contiene la bola ambiental. Además,
+\[
+W\cap Y=(V\cap Y)\cup(B_X(y,r)\cap Y)
+=V\cup B_Y(y,r)=V.
+\]
+La última igualdad usa $B_Y(y,r)\subset V$. Es una unión, no una intersección, en este cálculo distributivo. En sentido inverso, si $V=W\cap Y$ y $B_X(y,r)\subset W$, entonces $B_Y(y,r)=B_X(y,r)\cap Y\subset V$.
+\end{proof}
+
+\begin{teorema}\label{ch04:relativa}\index{topologia@topología!relativa}
+Para $A\subset Y\subset X$:
+\begin{enumerate}[label=(\roman*)]
+\item $A$ es abierto en $Y$ si y solo si $A=Y\cap G$ para algún abierto $G$ de $X$.
+\item $A$ es cerrado en $Y$ si y solo si $A=Y\cap F$ para algún cerrado $F$ de $X$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item Si $A$ es abierto en $Y$, para cada $a\in A$ elegimos $r_a>0$ con $B_Y(a,r_a)\subset A$. Pongamos $G=\bigcup_{a\in A}B_X(a,r_a)$, abierto en $X$. Entonces
+\[
+Y\cap G=\bigcup_{a\in A}B_Y(a,r_a)=A,
+\]
+pues cada bola está en $A$ y cada $a$ pertenece a su bola. Si $A$ es vacío, se toma $G=\varnothing$. Recíprocamente, si $A=Y\cap G$ y $a\in A$, la apertura de $G$ proporciona una bola $B_X(a,r)\subset G$; su intersección con $Y$ está en $A$ y demuestra apertura relativa.
+\item $A$ es cerrado en $Y$ si y solo si $Y\setminus A$ es abierto en $Y$. Por (i), esto equivale a $Y\setminus A=Y\cap G$ para algún abierto $G$ en $X$. Tomando complementos relativos, $A=Y\cap(X\setminus G)$, donde $X\setminus G$ es cerrado en $X$. En sentido inverso, si $A=Y\cap F$ con $F$ cerrado, $Y\setminus A=Y\cap(X\setminus F)$ es abierto en $Y$ por (i).
+\end{enumerate}
+\end{proof}
+
+\begin{proposicion}\label{ch04:clausura}
+Si $A\subset Y$, entonces $\cl A^{\,Y}=Y\cap\cl A^{\,X}$, donde los superíndices indican el espacio de clausura. En consecuencia, $A$ es cerrado en $Y$ si y solo si $A=Y\cap\cl A^{\,X}$.
+\end{proposicion}
+\begin{proof}
+Para $y\in Y$, la condición de pertenecer a la clausura relativa es que $B_Y(y,r)\cap A\ne\varnothing$ para todo $r>0$. Como $A\subset Y$, esta intersección es exactamente $B_X(y,r)\cap A$. La condición equivale, por tanto, a $y\in\cl A^{\,X}$. Para ser cerrado, $A$ debe coincidir con su clausura relativa.
+\end{proof}
+La clausura ambiental puede añadir puntos que no están disponibles en el subespacio. En $Y=(0,1)$, el conjunto $A=Y$ es cerrado relativamente, pero su clausura en $\R$ es $[0,1]$.
+
+\begin{observacion}[Convergencia relativa]\label{ch04:convergencia}
+Una sucesión de puntos de $Y$ converge a $y\in Y$ en el subespacio si y solo si converge a $y$ en $X$: las distancias numéricas son idénticas. Sin embargo, puede converger en $X$ a un punto exterior a $Y$, en cuyo caso no tiene ese límite en el subespacio. Por ejemplo, $1/n$ converge a $0$ en $\R$, pero no converge en $(0,1]$.
+\end{observacion}
+
+\section{Ejercicios sobre topología relativa}
+\begin{ejercicio}[Lectura 4, ejercicio 1]\label{ej:lectura-4-1}
+Demostrar que los abiertos y cerrados relativos son intersecciones con abiertos y cerrados del espacio ambiente.
+\end{ejercicio}
+\begin{solucion}
+La demostración completa es el teorema~\ref{ch04:relativa}. Su construcción explícita, útil al aplicar el resultado, consiste en elegir para cada $a$ del abierto relativo una bola $B_Y(a,r_a)$ contenida en él y tomar en $X$ la unión $G=\bigcup_aB_X(a,r_a)$. Así se obtiene el abierto ambiental requerido. Para un cerrado relativo $A$, se aplica esa construcción a $Y\setminus A$ y se toma el complemento ambiental del abierto obtenido. Ambas direcciones y el caso vacío quedaron comprobados allí.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 2]\label{ej:lectura-4-2}
+Sea $A\subset Y\subset X$. Probar: (i) si $A$ es abierto en $Y$ y $Y$ abierto en $X$, entonces $A$ es abierto en $X$; (ii) si $A$ es cerrado en $Y$ y $Y$ cerrado en $X$, entonces $A$ es cerrado en $X$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[label=(\roman*)]
+\item Por el teorema~\ref{ch04:relativa}, $A=G\cap Y$ para algún abierto $G$ de $X$. Ambos factores son abiertos en $X$ y una intersección finita de abiertos es abierta.
+\item Ahora $A=F\cap Y$ para algún cerrado $F$ de $X$. La intersección de cerrados es cerrada en $X$.
+\end{enumerate}
+Las hipótesis sobre $Y$ no son superfluas: $[0,1]$ es abierto en sí mismo y no en $\R$; $(0,1)$ es cerrado en sí mismo y no en $\R$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 3]\label{ej:lectura-4-3}
+Considerar $\Q\subset\R$ con la métrica usual. Para un intervalo abierto relativo no vacío y acotado $I=(a,b)\cap\Q$, con $a<b$, demostrar que $I$ es cerrado en $\Q$ si y solo si ambos extremos de su clausura en $\R$ son irracionales. Precisar el caso de intervalos no acotados.
+\end{ejercicio}
+\begin{solucion}
+La densidad de $\Q$ en $\R$ implica $\cl I^{\,\R}=[a,b]$. En detalle, todo punto de $[a,b]$ puede aproximarse por racionales de $(a,b)$; un punto fuera de $[a,b]$ tiene una bola que no intersecta al intervalo. Por la proposición~\ref{ch04:clausura},
+\[
+\cl I^{\,\Q}=[a,b]\cap\Q.
+\]
+Este conjunto coincide con $(a,b)\cap\Q$ exactamente cuando ni $a$ ni $b$ son racionales. Si un extremo es racional, pertenece a la clausura relativa y falta en $I$, por lo que este no es cerrado.
+
+Para $(-\infty,b)\cap\Q$, solo importa el extremo finito $b$: el conjunto es cerrado en $\Q$ exactamente cuando $b\notin\Q$. Para $(a,\infty)\cap\Q$ ocurre lo mismo con $a$. El intervalo $\Q$ entero es abierto y cerrado. Así, en la versión sin acotación debe decirse «todos los extremos finitos son irracionales»; $\pm\infty$ no son números irracionales. El intervalo vacío también es abierto y cerrado y se trata por separado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 4]\label{ej:lectura-4-4}
+Para $A\subset Y\subset X$, demostrar que el derivado relativo $A'_Y$ está contenido en $A'_X$, y dar un ejemplo de inclusión estricta.
+\end{ejercicio}
+\begin{solucion}
+En realidad se tiene la identidad $A'_Y=Y\cap A'_X$. Para $y\in Y$, la condición $B_Y(y,r)\cap(A\setminus\{y\})\ne\varnothing$ equivale a $B_X(y,r)\cap(A\setminus\{y\})\ne\varnothing$, porque $A\subset Y$. Esto prueba la identidad y la inclusión. Como ejemplo, tomemos $X=\R$ y $Y=A=\{1/n:n\ge1\}$. Cada punto $1/n$ es aislado en $Y$; por ello $A'_Y=\varnothing$. En $\R$, el punto $0$ es de acumulación, de modo que la inclusión es estricta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 5: corrección del enunciado]\label{ej:lectura-4-5}
+La lectura propone que la imagen de una subsucesión convergente de una sucesión acotada es cerrada en la imagen de la sucesión original. Examinar la afirmación y establecer una versión válida.
+\end{ejercicio}
+\begin{solucion}
+La afirmación escrita es falsa. En $\R$, definamos $x_1=0$ y $x_{n+1}=1/n$. La sucesión es acotada, su imagen es $Y=\{0\}\cup\{1/n:n\ge1\}$ y la subsucesión $(x_{n+1})$ converge a $0$. Su imagen $S=\{1/n:n\ge1\}$ no es cerrada en $Y$, pues $0\in\cl S^{\,Y}\setminus S$.
+
+La versión correcta es la siguiente: si una subsucesión converge a $\ell\in X$ y $S$ es su imagen, entonces
+\[
+\cl S^{\,X}=S\cup\{\ell\},\qquad
+\cl S^{\,Y}=Y\cap(S\cup\{\ell\}).
+\]
+Para demostrar la primera igualdad, $\ell\in\cl S^{\,X}$ por convergencia y $S\subset\cl S^{\,X}$. Si $z\notin S\cup\{\ell\}$, sea $r=d(z,\ell)/3>0$. Todos los términos suficientemente avanzados están en $B(\ell,r)$, que no intersecta a $B(z,r)$. Los términos anteriores forman un conjunto finito que no contiene a $z$. Podemos reducir $r$ a un radio positivo menor que las distancias de $z$ a esos términos. La bola reducida no intersecta a $S$; así $z\notin\cl S^{\,X}$. La segunda igualdad es la fórmula de clausura relativa.
+
+Por tanto $S$ es cerrado en $Y$ exactamente cuando $\ell\notin Y\setminus S$. En particular, lo es si $\ell\in S$ o si $\ell\notin Y$; y $S\cup\{\ell\}$ siempre es cerrado en $X$. La acotación de la sucesión original no interviene en esta versión correcta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 6]\label{ej:lectura-4-6}
+¿Es cierto que $A\subset Y$ es abierto en $Y$ si y solo si $A=Y\cap\operatorname{int}_X A$?
+\end{ejercicio}
+\begin{solucion}
+No. Tomemos $X=\R$, $Y=[0,1]$ y $A=Y$. El conjunto $A$ es abierto en $Y$, pero $Y\cap\operatorname{int}_{\R}A=(0,1)\ne A$.
+
+La igualdad propuesta sí es suficiente: si $A=Y\cap\operatorname{int}_X A$, es intersección de $Y$ con un abierto de $X$. De hecho, como $\operatorname{int}_X A\subset A\subset Y$, esa igualdad equivale a $A=\operatorname{int}_X A$, es decir, a apertura en el espacio ambiente, condición más fuerte que la apertura relativa.
+
+La fórmula general correcta para el interior relativo es
+\[
+\operatorname{int}_Y A
+=Y\cap\operatorname{int}_X\bigl(A\cup(X\setminus Y)\bigr).
+\]
+Para $y\in Y$, una bola relativa está contenida en $A$ si y solo si la bola ambiental correspondiente está contenida en $A\cup(X\setminus Y)$. La equivalencia se verifica punto a punto: los puntos de la bola que no están en $Y$ no imponen restricciones relativas; los que sí están deben pertenecer a $A$.
+\end{solucion}
+
+\section{Distancias, límites y espacio ambiente}
+Una norma genera una distancia, pero las distancias tienen un ámbito más amplio. Hölder controla productos y Minkowski controla sumas. Antes de llamar norma a una expresión, hay que verificar que esté definida, que su dominio sea un espacio vectorial y que únicamente se anule en el vector cero. Esta última comprobación es esencial cuando aparecen integrales.
+
+En espacios métricos, las sucesiones detectan exactamente la clausura y la cerradura. El requisito de términos distintos detecta acumulación y elimina la información trivial de las sucesiones constantes. Estas distinciones serán decisivas al estudiar compacidad, donde las sucesiones dejarán de ser solo una herramienta de lenguaje y se convertirán en una fuente de existencia de límites.
+
+La clausura relativa se obtiene tomando la clausura ambiental y eliminando los puntos exteriores al subespacio. Para el interior no basta esa misma receta: primero hay que permitir todos los puntos exteriores a $Y$. Registrar el ambiente en la notación evita confundir afirmaciones sobre límites, apertura y cerradura que pueden cambiar al pasar de un espacio a otro.

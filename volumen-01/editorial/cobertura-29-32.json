@@ -1,44 +1,230 @@
 {
   "bloque": "29-32",
-  "fuentes_leidas_integras": ["AnM1-LFM-lect29.pdf (texto extraído)", "AnM1-LFM-lect30.pdf (texto extraído)", "AnM1-LFM-lect31.pdf (texto extraído)", "AnM1-LFM-lect32.pdf (texto extraído)"],
-  "pdf_originales_descargados_para_contraste": ["AnM1-LFM-lect29.pdf", "AnM1-LFM-lect30.pdf", "AnM1-LFM-lect31.pdf", "AnM1-LFM-lect32.pdf"],
+  "fuentes_leidas_integras": [
+    "AnM1-LFM-lect29.pdf (texto extraído)",
+    "AnM1-LFM-lect30.pdf (texto extraído)",
+    "AnM1-LFM-lect31.pdf (texto extraído)",
+    "AnM1-LFM-lect32.pdf (texto extraído)"
+  ],
+  "pdf_originales_descargados_para_contraste": [
+    "AnM1-LFM-lect29.pdf",
+    "AnM1-LFM-lect30.pdf",
+    "AnM1-LFM-lect31.pdf",
+    "AnM1-LFM-lect32.pdf"
+  ],
   "capitulos": [
     {
-      "capitulo": 29,
-      "archivo": "chapters/29.tex",
-      "ejercicios_encontrados": ["1", "2", "3(i)", "3(ii)", "4", "5", "6", "7(i)", "7(ii)", "7(iii)", "8(i)", "8(ii)", "8(iii)"],
-      "ejercicios_resueltos": ["1", "2", "3(i)", "3(ii)", "4", "5", "6", "7(i)", "7(ii)", "7(iii)", "8(i)", "8(ii)", "8(iii)"],
-      "teoria": ["Producto interno y antilinealidad", "Cauchy-Schwarz", "Norma inducida y paralelogramo", "Ejemplos Hilbert y preHilbert incompleto", "Ortogonalidad y complemento cerrado", "Pitágoras", "Sumas sobre familias arbitrarias", "Soporte numerable y supremum de sumas finitas", "Bessel"],
-      "correcciones": ["Simetría conjugada, no antisimetría", "La independencia de dos vectores ortogonales exige no nulidad", "Recíproco de Pitágoras falso para n>=3: contraejemplo y versiones válidas", "Paralelogramo original omite factores 2", "Norma uniforme no hilbertiana requiere al menos dos puntos y codominio no nulo", "Bessel implica numerabilidad del soporte de coeficientes, no del conjunto ortonormal", "Sumas finitas sobre índices distintos; permitir repeticiones desvirtúa definición", "Peso continuo a trozos: los valores excepcionales no determinan positividad de la integral"],
-      "pruebas_pendientes": []
-    },
-    {
-      "capitulo": 30,
-      "archivo": "chapters/30.tex",
-      "ejercicios_encontrados": ["1", "2", "3", "4(i)", "4(ii)", "4(iii)", "5", "6"],
-      "ejercicios_resueltos": ["1", "2", "3", "4(i)", "4(ii)", "4(iii)", "5", "6"],
-      "teoria": ["Equivalencia proyección y mejor aproximación", "Contraejemplo subespacio denso no cerrado", "Distinguido implica cerrado", "Completo implica distinguido", "Proyección sobre subespacio cerrado Hilbert", "Descomposición ortogonal", "Doble complemento", "Complementación del ortogonal"],
-      "correcciones": ["La componente en M, no la componente en Mperp, es la proyección sobre M", "Cuadrados y coeficientes en prueba del teorema de proyección", "El cierre en ejercicio4(ii) sí aparece en PDF; se conserva", "Ejercicio4(ii): aun con M,N distinguidos, falla en preHilbert general; contraejemplo explícito con funciones racionales y medida integral más átomo, versión válida con M,N cerrados en Hilbert", "Norma de proyección es 1 sólo si M no es cero; para M=0 vale0"],
-      "pruebas_pendientes": []
-    },
-    {
-      "capitulo": 31,
-      "archivo": "chapters/31.tex",
-      "ejercicios_encontrados": ["1", "2", "3", "4(i)", "4(ii)", "4(iii)", "5", "6(i)", "6(ii)", "6(iii)", "6(iv)", "7"],
-      "ejercicios_resueltos": ["1", "2", "3", "4(i)", "4(ii)", "4(iii)", "5", "6(i)", "6(ii)", "6(iii)", "6(iv)", "7"],
-      "teoria": ["Distinción Hamel-total-ortonormal-Schauder", "Existencia de base ortonormal por Zorn", "Expansiones en norma y Parseval", "Coordenadas en ell2(S)", "Riesz-Fischer y suprayectividad", "Conservación del producto interno"],
-      "correcciones": ["Normalizar el residuo en prueba de maximalidad", "Admitir base vacía del espacio cero", "En Gram-Schmidt los ortogonales son w_n y no los v_n originales", "Müntz es densidad en norma integral, no uniforme; se explica ausencia de constante y convención N", "Müntz: condición de signo en criterio logarítmico; contraejemplo sin ella", "Müntz: equivalencia logarítmica sólo para m ausente de la lista; si m presente distancia es0 independientemente de la serie", "Ejercicio7 desigualdad estricta requiere v distinto de0"],
+      "archivo": "capitulos/14.tex",
+      "ejercicios_encontrados": [
+        "1",
+        "2",
+        "3(i)",
+        "3(ii)",
+        "4",
+        "5",
+        "6",
+        "7(i)",
+        "7(ii)",
+        "7(iii)",
+        "8(i)",
+        "8(ii)",
+        "8(iii)"
+      ],
+      "ejercicios_resueltos": [
+        "1",
+        "2",
+        "3(i)",
+        "3(ii)",
+        "4",
+        "5",
+        "6",
+        "7(i)",
+        "7(ii)",
+        "7(iii)",
+        "8(i)",
+        "8(ii)",
+        "8(iii)"
+      ],
+      "teoria": [
+        "Producto interno y antilinealidad",
+        "Cauchy-Schwarz",
+        "Norma inducida y paralelogramo",
+        "Ejemplos Hilbert y preHilbert incompleto",
+        "Ortogonalidad y complemento cerrado",
+        "Pitágoras",
+        "Sumas sobre familias arbitrarias",
+        "Soporte numerable y supremum de sumas finitas",
+        "Bessel"
+      ],
+      "correcciones": [
+        "Simetría conjugada, no antisimetría",
+        "La independencia de dos vectores ortogonales exige no nulidad",
+        "Recíproco de Pitágoras falso para n>=3: contraejemplo y versiones válidas",
+        "Paralelogramo original omite factores 2",
+        "Norma uniforme no hilbertiana requiere al menos dos puntos y codominio no nulo",
+        "Bessel implica numerabilidad del soporte de coeficientes, no del conjunto ortonormal",
+        "Sumas finitas sobre índices distintos; permitir repeticiones desvirtúa definición",
+        "Peso continuo a trozos: los valores excepcionales no determinan positividad de la integral"
+      ],
       "pruebas_pendientes": [],
-      "dependencias_previas": ["Aproximación uniforme por polinomios para reducir densidad a monomios; desarrollada en capítulos anteriores"]
+      "lectura_original": 29
     },
     {
-      "capitulo": 32,
-      "archivo": "chapters/32.tex",
-      "ejercicios_encontrados": ["1(i)", "1(ii)", "1(iii)", "1(iv)", "1(v)", "2", "3", "4", "5", "6", "7", "8", "9(i)", "9(ii)", "10(i)", "10(ii)", "10(iii)", "10(iv)"],
-      "ejercicios_resueltos": ["1(i)", "1(ii)", "1(iii)", "1(iv)", "1(v)", "2", "3", "4", "5", "6", "7", "8", "9(i)", "9(ii)", "10(i)", "10(ii)", "10(iii)", "10(iv)"],
-      "teoria": ["Representación de Riesz demostrada desde proyección", "Continuidad conjunta y acotación de formas sesquilineales", "Representación de formas mediante operadores", "Existencia, unicidad y norma del adjunto", "Identidad norma T*T", "Matrices y corrimientos", "Aproximación en norma de compactos por rango finito", "Compacidad de T equivalente a T*"],
-      "correcciones": ["Unitario requiere isometría suprayectiva; corrimiento derecho contraejemplo a definición incompleta original", "C([a,b]) con norma integral no es Hilbert, por lo que ejercicio10 exige construcción directa del adjunto", "Riesz no se deja pendiente para lectura posterior", "Prueba explícita de que forma positiva que se anula en v implica Av=0"],
-      "pruebas_pendientes": []
+      "archivo": "capitulos/14.tex",
+      "ejercicios_encontrados": [
+        "1",
+        "2",
+        "3",
+        "4(i)",
+        "4(ii)",
+        "4(iii)",
+        "5",
+        "6"
+      ],
+      "ejercicios_resueltos": [
+        "1",
+        "2",
+        "3",
+        "4(i)",
+        "4(ii)",
+        "4(iii)",
+        "5",
+        "6"
+      ],
+      "teoria": [
+        "Equivalencia proyección y mejor aproximación",
+        "Contraejemplo subespacio denso no cerrado",
+        "Distinguido implica cerrado",
+        "Completo implica distinguido",
+        "Proyección sobre subespacio cerrado Hilbert",
+        "Descomposición ortogonal",
+        "Doble complemento",
+        "Complementación del ortogonal"
+      ],
+      "correcciones": [
+        "La componente en M, no la componente en Mperp, es la proyección sobre M",
+        "Cuadrados y coeficientes en prueba del teorema de proyección",
+        "El cierre en ejercicio4(ii) sí aparece en PDF; se conserva",
+        "Ejercicio4(ii): aun con M,N distinguidos, falla en preHilbert general; contraejemplo explícito con funciones racionales y medida integral más átomo, versión válida con M,N cerrados en Hilbert",
+        "Norma de proyección es 1 sólo si M no es cero; para M=0 vale0"
+      ],
+      "pruebas_pendientes": [],
+      "lectura_original": 30
+    },
+    {
+      "archivo": "capitulos/15.tex",
+      "ejercicios_encontrados": [
+        "1",
+        "2",
+        "3",
+        "4(i)",
+        "4(ii)",
+        "4(iii)",
+        "5",
+        "6(i)",
+        "6(ii)",
+        "6(iii)",
+        "6(iv)",
+        "7"
+      ],
+      "ejercicios_resueltos": [
+        "1",
+        "2",
+        "3",
+        "4(i)",
+        "4(ii)",
+        "4(iii)",
+        "5",
+        "6(i)",
+        "6(ii)",
+        "6(iii)",
+        "6(iv)",
+        "7"
+      ],
+      "teoria": [
+        "Distinción Hamel-total-ortonormal-Schauder",
+        "Existencia de base ortonormal por Zorn",
+        "Expansiones en norma y Parseval",
+        "Coordenadas en ell2(S)",
+        "Riesz-Fischer y suprayectividad",
+        "Conservación del producto interno"
+      ],
+      "correcciones": [
+        "Normalizar el residuo en prueba de maximalidad",
+        "Admitir base vacía del espacio cero",
+        "En Gram-Schmidt los ortogonales son w_n y no los v_n originales",
+        "Müntz es densidad en norma integral, no uniforme; se explica ausencia de constante y convención N",
+        "Müntz: condición de signo en criterio logarítmico; contraejemplo sin ella",
+        "Müntz: equivalencia logarítmica sólo para m ausente de la lista; si m presente distancia es0 independientemente de la serie",
+        "Ejercicio7 desigualdad estricta requiere v distinto de0"
+      ],
+      "pruebas_pendientes": [],
+      "dependencias_previas": [
+        "Aproximación uniforme por polinomios para reducir densidad a monomios; desarrollada en capítulos anteriores"
+      ],
+      "lectura_original": 31
+    },
+    {
+      "archivo": "capitulos/16.tex",
+      "ejercicios_encontrados": [
+        "1(i)",
+        "1(ii)",
+        "1(iii)",
+        "1(iv)",
+        "1(v)",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9(i)",
+        "9(ii)",
+        "10(i)",
+        "10(ii)",
+        "10(iii)",
+        "10(iv)"
+      ],
+      "ejercicios_resueltos": [
+        "1(i)",
+        "1(ii)",
+        "1(iii)",
+        "1(iv)",
+        "1(v)",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9(i)",
+        "9(ii)",
+        "10(i)",
+        "10(ii)",
+        "10(iii)",
+        "10(iv)"
+      ],
+      "teoria": [
+        "Representación de Riesz demostrada desde proyección",
+        "Continuidad conjunta y acotación de formas sesquilineales",
+        "Representación de formas mediante operadores",
+        "Existencia, unicidad y norma del adjunto",
+        "Identidad norma T*T",
+        "Matrices y corrimientos",
+        "Aproximación en norma de compactos por rango finito",
+        "Compacidad de T equivalente a T*"
+      ],
+      "correcciones": [
+        "Unitario requiere isometría suprayectiva; corrimiento derecho contraejemplo a definición incompleta original",
+        "C([a,b]) con norma integral no es Hilbert, por lo que ejercicio10 exige construcción directa del adjunto",
+        "Riesz no se deja pendiente para lectura posterior",
+        "Prueba explícita de que forma positiva que se anula en v implica Av=0"
+      ],
+      "pruebas_pendientes": [],
+      "lectura_original": 32
     }
-  ]
+  ],
+  "organizacion": "Registros de las lecturas originales; archivos actualizados a la edición temática."
 }

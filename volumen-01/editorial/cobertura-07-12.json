@@ -3,8 +3,7 @@
   "fuente": "Lecturas completas de Análisis Matemático 1, Miguel Ángel Valencia Bucio",
   "capitulos": [
     {
-      "capitulo": 7,
-      "archivo": "chapters/07.tex",
+      "archivo": "capitulos/02.tex",
       "ejercicios_originales": [
         1,
         2,
@@ -64,11 +63,11 @@
         "Distancia a un conjunto requiere conjunto no vacío.",
         "Ejercicio 5 sí utiliza clausura de A en PDF; barra conservada."
       ],
-      "pendientes": []
+      "pendientes": [],
+      "lectura_original": 7
     },
     {
-      "capitulo": 8,
-      "archivo": "chapters/08.tex",
+      "archivo": "capitulos/03.tex",
       "ejercicios_originales": [
         1,
         2,
@@ -133,11 +132,11 @@
         "Prueba ℓp separa índice fijo de Cauchy e índice que tiende a infinito.",
         "Producto de espacios: no vacuidad de factores explicitada."
       ],
-      "pendientes": []
+      "pendientes": [],
+      "lectura_original": 8
     },
     {
-      "capitulo": 9,
-      "archivo": "chapters/09.tex",
+      "archivo": "capitulos/03.tex",
       "ejercicios_originales": [
         1
       ],
@@ -161,11 +160,11 @@
       "referencias_diferidas": [
         "La identificación del modelo abstracto de completación de C([0,1]) con L1([0,1]) se señala como resultado del volumen II; no se presupone ni se usa en las pruebas de este volumen.",
         "Estructura de cuerpo y expansiones p-ádicas sí se desarrollan en el capítulo."
-      ]
+      ],
+      "lectura_original": 9
     },
     {
-      "capitulo": 10,
-      "archivo": "chapters/10.tex",
+      "archivo": "capitulos/04.tex",
       "ejercicios_originales": [
         1,
         2,
@@ -241,11 +240,11 @@
         "Se distingue base de Hamel de Schauder."
       ],
       "pendientes": [],
-      "alcance_metamatematico": "La equivalencia entre Baire y elección dependiente no se formula como resultado demostrado del volumen; se explica el uso de elecciones sucesivas y su evitación en una base numerable ya fijada."
+      "alcance_metamatematico": "La equivalencia entre Baire y elección dependiente no se formula como resultado demostrado del volumen; se explica el uso de elecciones sucesivas y su evitación en una base numerable ya fijada.",
+      "lectura_original": 10
     },
     {
-      "capitulo": 11,
-      "archivo": "chapters/11.tex",
+      "archivo": "capitulos/04.tex",
       "ejercicios_originales": [
         1,
         2,
@@ -302,11 +301,11 @@
         "Sistema de tres ecuaciones: verificación completa y punto fijo exacto (1/2,0,-π/6); unicidad sólo de rama considerada.",
         "Tabla iterativa distingue decimales mostrados y error certificado."
       ],
-      "pendientes": []
+      "pendientes": [],
+      "lectura_original": 11
     },
     {
-      "capitulo": 12,
-      "archivo": "chapters/12.tex",
+      "archivo": "capitulos/13.tex",
       "ejercicios_originales": [
         1,
         2,
@@ -340,7 +339,8 @@
         "Ejercicio 2(ii) requiere 0 en [a,b] para soporte en U≠X; contraejemplo y dos versiones válidas.",
         "Soporte es clausura del conjunto no nulo, confirmado visualmente; se controla clausura estrictamente dentro de U."
       ],
-      "pendientes": []
+      "pendientes": [],
+      "lectura_original": 12
     }
   ],
   "verificacion_visual": {
@@ -352,5 +352,6 @@
     ],
     "fuente": "PDF originales de las lecturas 7–12"
   },
-  "referencias_bibliograficas_inventadas": false
+  "referencias_bibliograficas_inventadas": false,
+  "organizacion": "Registros de las lecturas originales; archivos actualizados a la edición temática."
 }

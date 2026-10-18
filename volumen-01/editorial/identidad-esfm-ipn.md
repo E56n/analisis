@@ -34,4 +34,4 @@ El [repositorio de apuntes de homotopía estable de MrPaborru](https://github.co
 
 El texto se compone en Latin Modern Roman y la notación matemática conserva las fuentes especializadas de TeX, de apariencia compatible. Las versalitas utilizan Latin Modern Roman Caps. Estas familias forman parte de las distribuciones habituales de TeX; se compila con XeLaTeX. Las fuentes Noto de la edición anterior se retiran porque ya no son necesarias.
 
-Esta adaptación cambia la presentación. Los 32 capítulos, 206 ejercicios resueltos, notación, cobertura y referencias matemáticas conservan su contenido.
+La adaptación gráfica original conservó el contenido de las 32 lecturas. La reorganización temática posterior las integra en seis partes y dieciséis capítulos, mantiene los 206 ejercicios resueltos y actualiza la tabla de correspondencia. Las aperturas de parte incluyen una orientación y sus prerrequisitos; las definiciones, teoremas y ejercicios se numeran por capítulo. El índice general muestra partes, capítulos y secciones.
