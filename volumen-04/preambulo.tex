@@ -1,68 +1,8 @@
-\usepackage{fontspec}
-\setmainfont{Latin Modern Roman}[SmallCapsFont={Latin Modern Roman Caps}]
-\setsansfont{Latin Modern Sans}
-\usepackage[provide=*,spanish]{babel}
-\usepackage{microtype}
-\usepackage[margin=26mm,headheight=22pt,headsep=8mm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
-\usepackage{enumitem,longtable,booktabs,array}
-\usepackage{fancyhdr,emptypage}
-\usepackage{imakeidx}
-\usepackage{xr-hyper}
-\usepackage[hidelinks,unicode,bookmarksnumbered]{hyperref}
-\usepackage{bookmark}
-\hypersetup{pdftitle={Análisis armónico y grupos localmente compactos},pdfauthor={Eder Said Martinez Ramirez},pdfsubject={Análisis. Volumen IV. Apuntes y ejercicios propuestos},pdfkeywords={Fourier, convolución, Haar, grupos localmente compactos}}
-\makeindex[title={Índice alfabético},intoc,options=-s indice.ist]
-\setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{2}
-\setlength{\parindent}{1.2em}
-\setlength{\parskip}{3pt plus 1pt minus 1pt}
-\emergencystretch=5em
-\allowdisplaybreaks[1]
-\setlist[enumerate,1]{label=(\roman*),leftmargin=*,itemsep=2pt}
-\setlist[itemize]{leftmargin=*,itemsep=2pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small\nouppercase{\leftmark}}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
-\theoremstyle{plain}
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{proposicion}[teorema]{Proposición}
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{corolario}[teorema]{Corolario}
-\theoremstyle{definition}
-\newtheorem{definicion}[teorema]{Definición}
-\newtheorem{ejemplo}[teorema]{Ejemplo}
-\newtheorem{ejercicio}{Ejercicio}[chapter]
-\theoremstyle{remark}
-\newtheorem{observacion}[teorema]{Observación}
-\newenvironment{solucion}{\begin{proof}[Solución]}{\end{proof}}
-\newenvironment{estrategia}{\par\noindent\textbf{Estrategia.}\ }{\par}
-\newcommand{\R}{\mathbb R}
-\newcommand{\C}{\mathbb C}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Q}{\mathbb Q}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\F}{\mathbb F}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-\newcommand{\cl}[1]{\overline{#1}}
-\newcommand{\interior}[1]{#1^{\circ}}
-\newcommand{\ip}[2]{\left\langle#1,#2\right\rangle}
-\newcommand{\Bcal}{\mathcal B}
-\newcommand{\Lcal}{\mathcal L}
-\newcommand{\Kcal}{\mathcal K}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\spanop}{span}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{id}
-\input{estilo-esfm}
-
+\input{../comun/paquetes}
+\input{../comun/datos-coleccion}
+\input{datos}
+\input{../comun/preambulo}
+\input{../comun/estilo-esfm}
 \newcommand{\T}{\mathbb T}
 \newcommand{\Cc}{C_c}
 \newcommand{\Sscr}{\mathcal S}
@@ -71,3 +11,4 @@
 \DeclareMathOperator{\esssup}{ess\,sup}
 \DeclareMathOperator{\Rea}{Re}
 \DeclareMathOperator{\Ima}{Im}
+\input{../comun/modalidad}

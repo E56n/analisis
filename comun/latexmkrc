@@ -1,0 +1,50 @@
+# Configuracion comun. Ejecutar latexmk desde la raiz o desde un volumen.
+use Cwd qw(abs_path getcwd);
+use File::Basename qw(dirname basename);
+use File::Spec;
+
+my $project_root = abs_path(dirname(__FILE__) . '/..');
+my $working_directory = abs_path(getcwd());
+my $inside_volume = $working_directory =~ m{[/\\]volumen-0[1-4]$};
+die "Ejecute latexmk desde la raiz del proyecto o un volumen.\n"
+    unless $inside_volume || $working_directory eq $project_root;
+
+$pdf_mode = 5; # XeLaTeX
+$do_cd = 1;    # Cada documento usa su volumen como directorio de ejecucion.
+@default_files = $inside_volume
+    ? ('main.tex', 'solucionario.tex')
+    : map { (sprintf('volumen-%02d/main.tex', $_),
+             sprintf('volumen-%02d/solucionario.tex', $_)) } (1..4);
+
+# Aislamiento por volumen y nombre de documento: build/main.*, build/solucionario.*.
+$aux_dir = 'build';
+$out_dir = '.';
+$emulate_aux = 1; # TeX Live y MiKTeX.
+# Latexmk invoca MakeIndex desde volumen-XX/build/.
+$makeindex = 'makeindex -s ../../comun/indice.ist %O -o %D %S';
+
+# Antes de solicitar un solucionario se comprueban TODOS los inputs de sus
+# apuntes mediante latexmk. Si no cambiaron, no se recompila ningun PDF.
+# Esto cubre tanto main.aux inexistente como cambios en capitulos o etiquetas;
+# una dependencia limitada a main.tex no detectaria esos cambios.
+my $only_information_or_cleaning = grep {
+    /^--?(?:c|C|CA|n|help|h|version|v|commands|rules)$/
+} @ARGV;
+unless ($ENV{'ANALISIS_DEPENDENCIA_APUNTES'} || $only_information_or_cleaning) {
+    my @requested = grep {
+        !/^-/ && m{(?:^|[/\\])(?:main|solucionario)(?:\.tex)?$}
+    } @ARGV;
+    @requested = @default_files unless @requested;
+    my %seen;
+    for my $target (@requested) {
+        next unless basename($target) =~ /^solucionario(?:\.tex)?$/;
+        my $notes = File::Spec->rel2abs(dirname($target) . '/main.tex');
+        next if $seen{$notes}++;
+        die "No se encuentran los apuntes: $notes\n" unless -f $notes;
+        local $ENV{'ANALISIS_DEPENDENCIA_APUNTES'} = 1;
+        my $status = system('latexmk', '-cd', '-xelatex',
+                            '-interaction=nonstopmode', '-halt-on-error', $notes);
+        die "No se pudieron actualizar los apuntes requeridos por $target\n" if $status != 0;
+    }
+}
+1;

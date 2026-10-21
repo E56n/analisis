@@ -26,7 +26,7 @@ Del manual se conservan como referencia el guinda **#6C1D45** (Pantone 222 C), e
 
 La [historia oficial del escudo](https://www.esfm.ipn.mx/conocenos/mision.html) explica que no se acordaron formalmente sus colores y documenta la tradición del dorado, blanco y guinda. Por ello no se atribuyen a la escuela códigos cromáticos normativos inexistentes.
 
-Se conserva íntegro y sin recolorear el [PNG del escudo publicado por la ESFM](https://www.esfm.ipn.mx/assets/files/esfm/img/identidad/escudo-esfm.png), incluido en `assets/escudo-esfm.png`. Se reproduce proporcionalmente sobre blanco, a 30 mm de altura. El acento dorado/ocre **#836F3D** se obtuvo de ese archivo; es una elección editorial tomada del recurso publicado, no una especificación oficial de color. Se limita a una línea fina en las aperturas. El naranja que aparece en el propio escudo no se extiende a la paleta de la obra.
+Se conserva íntegro y sin recolorear el [PNG del escudo publicado por la ESFM](https://www.esfm.ipn.mx/assets/files/esfm/img/identidad/escudo-esfm.pdf), incluido en `assets/escudo-esfm.pdf`. Se reproduce proporcionalmente sobre blanco, a 30 mm de altura. El acento dorado/ocre **#836F3D** se obtuvo de ese archivo; es una elección editorial tomada del recurso publicado, no una especificación oficial de color. Se limita a una línea fina en las aperturas. El naranja que aparece en el propio escudo no se extiende a la paleta de la obra.
 
 ## Adaptación del referente
 

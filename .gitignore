@@ -9,14 +9,11 @@
 *.toc
 *.synctex.gz
 *.xdv
-*.pdf
-
-# Conservar los apuntes y el solucionario de los cuatro volúmenes.
-!/volumen-*/main.pdf
-!/volumen-*/solucionario.pdf
+# Los PDF finales y los recursos PDF se versionan con el proyecto.
 
 # Migración y revisión visual locales.
 /tmp/
+# Cada volumen conserva build/; solo se versiona el marcador de carpeta.
 /volumen-*/build/*
 !/volumen-*/build/.gitkeep
 __pycache__/

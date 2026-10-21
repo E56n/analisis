@@ -30,83 +30,122 @@ Los ejercicios conservan una etiqueta de lectura y número de origen. Los proble
 
 La lectura 24 del cuarto curso se conserva como **reconstrucción editorial**: no se atribuye a Valencia Bucio como una lectura original recuperada. Sus ocho ejercicios se contabilizan por separado. En el segundo volumen, el alcance de las soluciones corresponde a las listas de las 33 lecturas; los dos exámenes archivados con ellas no constituyen una lista adicional resuelta.
 
-## Nueva estructura
+## Estructura común y edición
 
-- `main.tex`: entrada de los apuntes, con teoría y ejercicios sin soluciones ni recuadros rojos.
-- `solucionario.tex`: entrada del solucionario, con enunciados y soluciones, y ejercicios en recuadros guinda.
-- `preambulo.tex`: paquetes, macros y configuración compartidos por ambos documentos.
-- `capitulos/`: teoría y ejercicios propuestos, en su ubicación original.
-- `ejercicios-soluciones.tex`: copia de los ejercicios y sus soluciones, organizada por capítulo y con la misma numeración que los apuntes.
-- `portada.tex` y `portada-solucionario.tex`: portadas independientes basadas en el mismo diseño.
-- `estilo-esfm.tex`, `indice.ist` y `assets/`: estilo e identidad gráfica.
-- `partes.tex`, `cobertura.tex` y `notacion.tex`: orden temático, correspondencia con las lecturas e índice de notación de los apuntes.
-- `referencias.tex`: bibliografía compartida, escrita con `thebibliography`; no requiere BibTeX ni Biber.
-- `referencias-apuntes.tex`: referencias del solucionario a resultados de los apuntes mediante `xr-hyper`.
-- `.latexmkrc`: configura XeLaTeX, la compilación de ambos documentos y el almacenamiento de auxiliares en `build/`.
-- `editorial/`: procedencia, cobertura, correcciones y verificaciones.
-- `build/`: carpeta de auxiliares; se conserva con `.gitkeep`, pero su contenido de compilación no se versiona.
+Los cuatro volúmenes dependen de `comun/`; hay que clonar la colección completa.
 
-Los enunciados están en los capítulos y en `ejercicios-soluciones.tex`. Si se corrige uno, hay que actualizar ambas copias. Las soluciones se editan únicamente en `ejercicios-soluciones.tex`. El verificador de la raíz comprueba que los enunciados sean idénticos y que cada ejercicio conserve su solución y su capítulo.
+| Archivo o carpeta | Qué se edita aquí |
+| --- | --- |
+| `comun/paquetes.tex` | Paquetes y fuentes compartidos: Latin Modern Roman, Roman Caps y Sans. |
+| `comun/preambulo.tex` | Metadatos, macros matemáticas comunes, entornos, numeración y configuración del índice. |
+| `comun/estilo-esfm.tex` | Diseño editorial, colores, encabezados, partes, capítulos y recuadros. |
+| `comun/portada.tex`, `comun/modalidad.tex`, `comun/datos-coleccion.tex` | Diseño único de portada, subtítulo y metadatos por modalidad, y datos de la colección. |
+| `comun/assets/escudo-esfm.pdf` | Única copia del escudo original. |
+| `comun/indice.ist` | Estilo de MakeIndex, compartido por ambos documentos. |
+| `comun/referencias-apuntes.tex` | Importación mediante `xr-hyper` de `build/main.aux`, con prefijo `apuntes-` y enlaces relativos a `main.pdf`. |
+| `comun/apuntes.tex`, `comun/solucionario.tex` | Ensamblaje común de los dos tipos de documento. |
+| `comun/latexmkrc` | Configuración única de compilación y dependencia automática del solucionario. |
+| `.latexmkrc` y `volumen-XX/.latexmkrc` | Entradas pequeñas para cargar esa configuración desde la raíz o un volumen. |
+| `volumen-XX/main.tex`, `volumen-XX/solucionario.tex` | Ocho objetivos seleccionables, sin duplicar el ensamblaje. |
+| `volumen-XX/datos.tex` | Título, palabras clave, número de volumen, saltos de portada, tamaños y separaciones específicos. |
+| `volumen-XX/preambulo.tex` | Extensiones locales, respetando su posición respecto de los paquetes y el estilo comunes. |
+| `volumen-XX/capitulos/`, `ejercicios-soluciones.tex` | Teoría y ejercicios locales, y copia de enunciados y soluciones. |
+| `volumen-XX/presentacion.tex`, `partes.tex`, `cobertura.tex`, `notacion.tex`, `referencias.tex` | Presentación, orden, correspondencia con las lecturas, notación y bibliografía locales. |
+| `volumen-XX/build/` | Auxiliares aislados por volumen y por nombre de documento (`main.*` y `solucionario.*`). Solo se versiona `.gitkeep`. |
+| `herramientas/` | Lectura de fuentes efectivas, auditoría de PDF y pruebas de compilación en copias limpias. |
 
-## Compilación
+Las particularidades del volumen II (`xurl`, macros, `DeclareMathOperator*{esssup}` y espaciados del índice) se mantienen locales. III y IV conservan sus operadores, incluida la variante sin asterisco de `esssup`. La presentación del volumen I se extrajo literalmente a su propio archivo local. La bibliografía sigue usando `thebibliography`; no requiere BibTeX ni Biber.
 
-Se requieren XeLaTeX, `latexmk`, MakeIndex, Latin Modern y los paquetes de `preambulo.tex`, incluido `xr-hyper`. Ejecute los comandos desde la carpeta del volumen deseado, por ejemplo `cd volumen-01`. Sustituya `volumen-01` por `volumen-02`, `volumen-03` o `volumen-04` según corresponda.
+Los enunciados continúan duplicados entre los capítulos y `ejercicios-soluciones.tex`: esta migración no cambia ese modelo. Al corregir un enunciado, actualice ambas copias. Las soluciones se editan únicamente en `ejercicios-soluciones.tex`.
 
-Ambos documentos, en orden (apuntes y después solucionario):
+## Dependencias
+
+Para compilar: una distribución TeX con XeLaTeX, `latexmk`, Perl y MakeIndex; las fuentes Latin Modern; y los paquetes de `comun/paquetes.tex` y los preámbulos locales, entre ellos `fontspec`, `babel` (español), AMS, `imakeidx`, `xr-hyper`, `hyperref`, `bookmark`, `titlesec`, `tocloft` y `tcolorbox`. El volumen II añade `xurl`. Se probó con TeX Live 2024 y latexmk 4.86a en Windows. La emulación de directorio auxiliar también está configurada para MiKTeX, que no se probó en este entorno.
+
+Los verificadores de fuentes requieren Python 3 y su biblioteca estándar. La auditoría y la batería de compilación requieren además `pypdf`, `pypdfium2` y `Pillow`.
+
+## Compilar desde la raíz del repositorio
+
+Un documento concreto (cambie `01` por `02`, `03` o `04`):
+
+```sh
+latexmk -interaction=nonstopmode -halt-on-error volumen-01/main.tex
+latexmk -interaction=nonstopmode -halt-on-error volumen-01/solucionario.tex
+```
+
+Una pareja:
+
+```sh
+latexmk -interaction=nonstopmode -halt-on-error volumen-01/main.tex volumen-01/solucionario.tex
+```
+
+Toda la colección, ocho documentos:
 
 ```sh
 latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-La forma explícita equivalente es:
+## Compilar desde la carpeta de un volumen
 
 ```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex solucionario.tex
+cd volumen-01
+latexmk -interaction=nonstopmode -halt-on-error main.tex
+latexmk -interaction=nonstopmode -halt-on-error solucionario.tex
+latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-Solo los apuntes:
+Las tres últimas líneas son alternativas: solo apuntes, solo solucionario y ambos. XeLaTeX se selecciona en la configuración; `-xelatex` sigue siendo válido, pero no es necesario. No se deben invocar las entradas desde `comun/` ni usar directamente `xelatex` si se desea la dependencia automática y el aislamiento de auxiliares.
+
+Al pedir un solucionario, la configuración comprueba primero sus apuntes con `latexmk`. Genera o actualiza sus auxiliares si faltan o cambió cualquiera de sus fuentes, incluidas etiquetas y numeración; si están al día, no recompila sus PDF. No requiere una compilación manual previa y no reconstruye otros volúmenes. Puede generar o actualizar también `main.pdf` del mismo volumen, para que los destinos enlazados correspondan a los apuntes actuales. La comprobación se omite durante la limpieza.
+
+Los resultados permanecen en `volumen-XX/main.pdf` y `volumen-XX/solucionario.pdf`. Los auxiliares van a `volumen-XX/build/`, sin colisiones entre volúmenes ni documentos. Las rutas internas se resuelven desde el volumen, porque la configuración cambia a ese directorio para cada objetivo. MakeIndex se ejecuta desde `build/` y carga `../../comun/indice.ist`; la declaración de `imakeidx` también apunta al estilo común.
+
+Conserve los dos PDF de cada volumen juntos para que funcionen los enlaces del solucionario a los apuntes. Ambos PDF siguen versionados; los auxiliares y las pruebas temporales están excluidos de Git.
+
+## Limpieza y reconstrucción
+
+Desde la raíz, para toda la colección:
 
 ```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
+latexmk -c
+latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-Solo el solucionario:
-
-```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error solucionario.tex
-```
-
-Los resultados son `main.pdf` y `solucionario.pdf`. Los ejercicios tienen la misma numeración por capítulo en ambos PDF. Los apuntes conservan sus índices y tablas de correspondencia; el solucionario contiene índice por capítulos y bibliografía.
-
-**Primera compilación:** compile ambos documentos, o los apuntes antes del solucionario. Este último utiliza `build/main.aux` para resolver las referencias a la teoría. Después se pueden compilar por separado; si cambia la numeración de los resultados o se eliminan los auxiliares, vuelva a compilar primero los apuntes. Conserve los dos PDF en la misma carpeta para que funcionen los enlaces entre ellos.
-
-## Archivos de compilación y limpieza
-
-La configuración `.latexmkrc` está incluida en cada volumen. Al clonar el repositorio y compilar con `latexmk` desde la carpeta del volumen, los auxiliares (`.aux`, `.log`, `.toc`, `.idx`, `.ind`, `.fls`, `.fdb_latexmk`, `.xdv`, etc.) se guardan automáticamente en `build/`. Los dos PDF finales permanecen junto a las fuentes: `main.pdf` y `solucionario.pdf`. La configuración funciona con TeX Live y MiKTeX; no hay que añadir opciones de directorio a los comandos anteriores.
-
-Los auxiliares sirven para generar índices, resolver referencias y evitar recompilaciones innecesarias. Se pueden regenerar. Cada carpeta `build/` se conserva en el repositorio mediante `.gitkeep`; todos sus archivos de compilación están excluidos de Git. Para limpiarla, borre los auxiliares de su interior o use el comando siguiente, conservando la carpeta y `.gitkeep`.
-
-Para limpiar los auxiliares conservando los PDF finales, desde la carpeta del volumen:
+Desde un volumen, para su pareja:
 
 ```sh
 latexmk -c main.tex solucionario.tex
+latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-Después de limpiar, compile ambos documentos para regenerar las referencias entre ellos. Si utiliza un editor, configúrelo para ejecutar `latexmk` desde la carpeta del volumen; invocar directamente `xelatex` no lee `.latexmkrc`.
+La limpieza conserva los PDF finales, las carpetas `build/` y `.gitkeep`. La siguiente compilación regenera los auxiliares necesarios. También puede borrar solo el contenido generado de `build/`, conservando `.gitkeep`. Evite `-C` si quiere conservar los PDF.
 
 ## Verificación
 
-Desde la raíz del proyecto:
+Desde la raíz:
 
 ```sh
 python verificar_solucionarios.py
+python volumen-01/editorial/verificar_estructura.py
 ```
 
-También puede añadir el número de volumen para comprobar uno solo. El programa no modifica archivos ni interpreta el contenido matemático. Verifica enunciados idénticos, número de ejercicios y soluciones, capítulos, etiquetas, referencias, citas y equilibrio de entornos.
+El primero acepta un número de volumen opcional. Ambos inspeccionan las fuentes efectivas, incluidos los archivos comunes, y no reescriben registros históricos. El segundo permite guardar un registro nuevo con `--output ruta.json`.
 
-`verificacion-conjunta.json` y los registros anteriores de `editorial/` corresponden a la edición integrada, que contenía teoría y soluciones en un solo PDF. `editorial/verificacion-separacion.json` documenta la edición separada y los nuevos PDF.
+Para repetir la matriz completa de compilación, limpieza, aislamiento y actualización de referencias en copias temporales:
 
-El primer volumen conserva además `editorial/verificar_estructura.py`, actualizado para comprobar la separación de sus 206 ejercicios originales y 20 ampliaciones.
+```sh
+python herramientas/probar_compilacion.py --salida tmp/aceptacion.json
+```
+
+Para añadir una comparación editorial con ocho PDF de referencia, organizados en carpetas `volumen-01` a `volumen-04`:
+
+```sh
+python herramientas/probar_compilacion.py --referencia ruta/a/referencia --salida tmp/aceptacion.json
+```
+
+La comparación abarca páginas, texto, metadatos específicos, marcadores, destinos y enlaces, y renderizado de todas las páginas. Las diferencias se guardan como imágenes para su revisión. La matriz comprueba los cuatro apuntes individuales, los cuatro solucionarios desde cero con sus dependencias, las cuatro parejas y la colección, además de limpiar, reconstruir y cambiar temporalmente una numeración teórica para verificar que el solucionario se actualiza. Las modificaciones de prueba nunca se hacen sobre las fuentes originales.
+
+`editorial/migracion-comunes.md` y `editorial/migracion-comunes.json` documentan esta migración. Los registros previos de `volumen-XX/editorial/` y `verificacion-conjunta.json` son antecedentes de ediciones anteriores y se conservan sin reescribir.
 
 ## Créditos y referencias
 

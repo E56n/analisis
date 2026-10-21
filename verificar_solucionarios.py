@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 import re
 import sys
+from herramientas.fuentes import expand, inputs
 
 ROOT = Path(__file__).resolve().parent
 EXPECTED = {1: (16, 226), 2: (16, 160), 3: (18, 198), 4: (16, 99)}
@@ -40,15 +41,11 @@ def verify(number):
         statements = EXERCISE.findall(source)
         assert statements == EXERCISE.findall(solution_chapter), f"Enunciados distintos: {path}"
         assert len(statements) == len(SOLUTION.findall(solution_chapter)), path
-    shared = "\n".join(read(volume / name) for name in
-                       ("preambulo.tex", "referencias.tex"))
-    notes = notes_body + "\n" + shared + "\n" + "\n".join(
-        read(volume / name) for name in
-        ("main.tex", "partes.tex", "cobertura.tex", "notacion.tex"))
-    presentation = volume / "presentacion.tex"
-    if presentation.exists():
-        notes += "\n" + read(presentation)
-    solutions = solution_body + "\n" + shared
+    # TeX resuelve los input respecto del volumen, incluso en archivos comunes.
+    notes = expand(volume / 'main.tex', directory=volume)
+    solutions = expand(volume / 'solucionario.tex', directory=volume)
+    inputs(volume / 'main.tex', volume)
+    inputs(volume / 'solucionario.tex', volume)
     note_labels, sol_labels = labels(notes), labels(solutions)
     for document, document_labels in (("apuntes", note_labels), ("solucionario", sol_labels)):
         duplicate = [key for key, count in Counter(document_labels).items() if count > 1]
@@ -64,7 +61,7 @@ def verify(number):
     for source in sources + solution_chapters:
         assert Counter(re.findall(r"\\begin\{([^}]+)\}", source)) == Counter(
             re.findall(r"\\end\{([^}]+)\}", source)), "Entornos desequilibrados"
-    style = read(volume / "estilo-esfm.tex")
+    style = read(ROOT / "comun/estilo-esfm.tex")
     assert style.index(r"\ifsolucionario") < style.index(r"\tcolorboxenvironment{ejercicio}")
     assert r"\solucionariofalse" in read(volume / "main.tex")
     assert r"\solucionariotrue" in read(volume / "solucionario.tex")
