@@ -10,76 +10,49 @@ El alcance de la edición comprende 33 lecturas y 160 ejercicios originales; los
 
 ## Estructura y edición
 
-- `main.tex`: entrada de los apuntes, con teoría y ejercicios sin soluciones ni recuadros rojos.
-- `solucionario.tex`: entrada del solucionario, con enunciados y soluciones, y ejercicios en recuadros guinda.
-- `preambulo.tex`: paquetes, macros y configuración compartidos por ambos documentos.
-- `capitulos/`: teoría y ejercicios propuestos, en su ubicación original.
-- `ejercicios-soluciones.tex`: copia de los ejercicios y sus soluciones, organizada por capítulo y con la misma numeración que los apuntes.
-- `portada.tex` y `portada-solucionario.tex`: portadas independientes basadas en el mismo diseño.
-- `estilo-esfm.tex`, `indice.ist` y `assets/`: estilo e identidad gráfica.
-- `partes.tex`, `cobertura.tex` y `notacion.tex`: orden temático, correspondencia con las lecturas e índice de notación de los apuntes.
-- `referencias.tex`: bibliografía compartida, escrita con `thebibliography`; no requiere BibTeX ni Biber.
-- `referencias-apuntes.tex`: referencias del solucionario a resultados de los apuntes mediante `xr-hyper`.
-- `.latexmkrc`: configura XeLaTeX, la compilación de ambos documentos y el almacenamiento de auxiliares en `build/`.
-- `editorial/`: procedencia, cobertura, correcciones y verificaciones.
-- `build/`: carpeta de auxiliares; se conserva con `.gitkeep`, pero su contenido de compilación no se versiona.
+Este volumen depende de `../comun/`. Conserve la colección completa. `main.tex` y `solucionario.tex` son las entradas; `datos.tex` contiene los datos y ajustes de portada y `preambulo.tex` conserva las extensiones locales. El contenido matemático, `presentacion.tex`, `partes.tex`, `cobertura.tex`, `notacion.tex` y `referencias.tex` permanecen aquí. No se usa BibTeX ni Biber.
 
-Los enunciados están en los capítulos y en `ejercicios-soluciones.tex`. Si se corrige uno, hay que actualizar ambas copias. Las soluciones se editan únicamente en `ejercicios-soluciones.tex`. El verificador de la raíz comprueba que los enunciados sean idénticos y que cada ejercicio conserve su solución y su capítulo.
+Los paquetes, macros comunes, estilo, portadas, escudo, índice, ensamblaje, referencias entre documentos y configuración de compilación viven en `../comun/`. Consulte [la estructura común y las dependencias](../README.md#estructura-común-y-edición). Los enunciados siguen duplicados entre `capitulos/` y `ejercicios-soluciones.tex`; actualice ambas copias al corregirlos. Las soluciones se editan solo en este último.
 
-## Compilación
+## Compilar desde esta carpeta
 
-Se requieren XeLaTeX, `latexmk`, MakeIndex, Latin Modern y los paquetes de `preambulo.tex`, incluido `xr-hyper`. Ejecute los comandos desde esta carpeta.
-
-Ambos documentos, en orden (apuntes y después solucionario):
+Se requieren XeLaTeX, latexmk, Perl, MakeIndex, Latin Modern y los paquetes comunes y locales descritos en el [README general](../README.md#dependencias).
 
 ```sh
+latexmk -interaction=nonstopmode -halt-on-error main.tex
+latexmk -interaction=nonstopmode -halt-on-error solucionario.tex
 latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-La forma explícita equivalente es:
+Son alternativas: apuntes, solucionario y ambos. Al solicitar el solucionario, se comprueban automáticamente los apuntes de este volumen y se actualizan sus auxiliares cuando sea necesario. También funciona desde cero, sin compilación manual previa. Los cambios en capítulos, etiquetas o numeración se detectan, y los otros volúmenes no se reconstruyen. La dependencia puede generar o actualizar también `main.pdf` de este volumen.
+
+Los PDF finales son `main.pdf` y `solucionario.pdf`; conserve ambos juntos para los enlaces externos. Todos los auxiliares se guardan en `build/`, separados por nombre de documento. La carpeta se conserva con `.gitkeep` y su contenido generado se excluye de Git. `.latexmkrc` carga la configuración común; invoque `latexmk` desde aquí o desde la raíz de la colección.
+
+Desde la raíz también puede seleccionar estos objetivos:
 
 ```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex solucionario.tex
+latexmk -interaction=nonstopmode -halt-on-error volumen-02/main.tex
+latexmk -interaction=nonstopmode -halt-on-error volumen-02/solucionario.tex
+latexmk -interaction=nonstopmode -halt-on-error volumen-02/main.tex volumen-02/solucionario.tex
 ```
 
-Solo los apuntes:
+Para toda la colección, ejecute `latexmk -interaction=nonstopmode -halt-on-error` desde la raíz.
 
-```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
-```
-
-Solo el solucionario:
-
-```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error solucionario.tex
-```
-
-Los resultados son `main.pdf` y `solucionario.pdf`. Los ejercicios tienen la misma numeración por capítulo en ambos PDF. Los apuntes conservan sus índices y tablas de correspondencia; el solucionario contiene índice por capítulos y bibliografía.
-
-**Primera compilación:** compile ambos documentos, o los apuntes antes del solucionario. Este último utiliza `build/main.aux` para resolver las referencias a la teoría. Después se pueden compilar por separado; si cambia la numeración de los resultados o se eliminan los auxiliares, vuelva a compilar primero los apuntes. Conserve los dos PDF en la misma carpeta para que funcionen los enlaces entre ellos.
-
-## Archivos de compilación y limpieza
-
-La configuración `.latexmkrc` está incluida en cada volumen. Al clonar el repositorio y compilar con `latexmk` desde la carpeta del volumen, los auxiliares (`.aux`, `.log`, `.toc`, `.idx`, `.ind`, `.fls`, `.fdb_latexmk`, `.xdv`, etc.) se guardan automáticamente en `build/`. Los dos PDF finales permanecen junto a las fuentes: `main.pdf` y `solucionario.pdf`. La configuración funciona con TeX Live y MiKTeX; no hay que añadir opciones de directorio a los comandos anteriores.
-
-Los auxiliares sirven para generar índices, resolver referencias y evitar recompilaciones innecesarias. Se pueden regenerar. Cada carpeta `build/` se conserva en el repositorio mediante `.gitkeep`; todos sus archivos de compilación están excluidos de Git. Para limpiarla, borre los auxiliares de su interior o use el comando siguiente, conservando la carpeta y `.gitkeep`.
-
-Para limpiar los auxiliares conservando los PDF finales, desde la carpeta del volumen:
+## Limpiar y reconstruir desde esta carpeta
 
 ```sh
 latexmk -c main.tex solucionario.tex
+latexmk -interaction=nonstopmode -halt-on-error
 ```
 
-Después de limpiar, compile ambos documentos para regenerar las referencias entre ellos. Si utiliza un editor, configúrelo para ejecutar `latexmk` desde la carpeta del volumen; invocar directamente `xelatex` no lee `.latexmkrc`.
+La limpieza conserva los dos PDF y `build/.gitkeep`. La siguiente compilación regenera los auxiliares. No use `-C` si desea conservar los PDF.
 
-## Verificación
-
-Desde la raíz del proyecto:
+## Verificar desde la raíz
 
 ```sh
-python verificar_solucionarios.py
+python verificar_solucionarios.py 2
 ```
 
-También puede añadir el número de volumen para comprobar uno solo. El programa no modifica archivos ni interpreta el contenido matemático. Verifica enunciados idénticos, número de ejercicios y soluciones, capítulos, etiquetas, referencias, citas y equilibrio de entornos.
+Comprueba los 16 capítulos y 160 ejercicios, los enunciados idénticos, las soluciones solo en el solucionario, las etiquetas, referencias, citas y el equilibrio de entornos sobre las fuentes efectivas. Para la batería completa y la comparación de PDF, consulte [Verificación](../README.md#verificación).
 
-Los registros anteriores de `editorial/` corresponden a la edición integrada, que contenía teoría y soluciones en un solo PDF. `editorial/verificacion-separacion.json` documenta la edición separada y los nuevos PDF.
+Los registros previos de `editorial/` son históricos. El informe nuevo está en [la migración de archivos comunes](../editorial/migracion-comunes.md).

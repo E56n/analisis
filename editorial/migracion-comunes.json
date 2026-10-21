@@ -1,0 +1,1669 @@
+{
+  "timestamp_utc": "2026-10-21T04:34:24.833405+00:00",
+  "initial_commit": "7b76a30bc7cbdeaa9b91de31f1b64e78120e9955",
+  "initial_worktree_before_audit_instrumentation": "clean",
+  "baseline_clean_build": {
+    "volumen-01/main": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+      "candidate_sha256": "70e35516b2c14425eeae1ca97636d39b7478894d5925545111d4ee951c050e1d",
+      "pages": 152,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 3,
+        "remote_page_warning": 0
+      }
+    },
+    "volumen-01/solucionario": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+      "candidate_sha256": "0334277a162b71151a1f29cc7125eb0cbf7ee96f42792e75feaaaf0d72316e81",
+      "pages": 102,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 3,
+        "remote_page_warning": 7
+      }
+    },
+    "volumen-02/main": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+      "candidate_sha256": "958dfcf20d2d51ab8328e9e067419bcf385d50b5da313755a7393edec61b9e4f",
+      "pages": 97,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 0,
+        "remote_page_warning": 0
+      }
+    },
+    "volumen-02/solucionario": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+      "candidate_sha256": "102a3bd10bb22fefeba3aea1645c2dd8439040c0974b05cb6b4586dc2168c88a",
+      "pages": 54,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 0,
+        "remote_page_warning": 4
+      }
+    },
+    "volumen-03/main": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+      "candidate_sha256": "c165c02f84855888f2b18324dde26597652ddced4f252b749d61bfd696bfffe4",
+      "pages": 134,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 3,
+        "remote_page_warning": 0
+      }
+    },
+    "volumen-03/solucionario": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+      "candidate_sha256": "dede442955eb16122b5f9651f18a4280d7d709cafc51188db3c173f980397e42",
+      "pages": 69,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 3,
+        "remote_page_warning": 6
+      }
+    },
+    "volumen-04/main": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+      "candidate_sha256": "c59dc0c62c9a9a21b489e62225872f8b27488c6cc8cda74eb4d0c86373624c9c",
+      "pages": 109,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 6,
+        "remote_page_warning": 0
+      }
+    },
+    "volumen-04/solucionario": {
+      "checks": {
+        "pages": true,
+        "text": true,
+        "metadata": true,
+        "outline": true,
+        "destinations": true,
+        "links": true,
+        "render": true
+      },
+      "changed_pages": [],
+      "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+      "candidate_sha256": "ffe82638f8487f51f7a479ededfad13d901f3656c5f3cde1909ebbe9a2a66489",
+      "pages": 47,
+      "log": {
+        "errors": 0,
+        "undefined": 0,
+        "duplicate_labels": 0,
+        "missing_glyphs": 0,
+        "missing_fonts": 0,
+        "overfull": 0,
+        "underfull": 3,
+        "remote_page_warning": 9
+      }
+    }
+  },
+  "acceptance": {
+    "complete": true,
+    "matrix": {
+      "volumen-02-main": {
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "3e78e3a9a721056fe20f9f9b22897aed4a91535525dbb1e34f3ae7d30609680c",
+            "pages": 97
+          }
+        }
+      },
+      "volumen-01-main": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "f8812dcc4e16041744272fd7ff01f42835fcf0be398491ec8cb1529dcce14733",
+            "pages": 152
+          }
+        }
+      },
+      "volumen-01-pareja": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "a28d66232adb03eab650c81d8a23c8434a4697d29e839d874926fd83974def03",
+            "pages": 152
+          }
+        },
+        "volumen-01/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 7
+          },
+          "pages": 102,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+            "candidate_sha256": "4afc9b59c67daaf24a77834fc26ea06d0e33db7df9bfe9fa3423c0df449c4b14",
+            "pages": 102
+          }
+        }
+      },
+      "volumen-01-solucionario": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "a28d66232adb03eab650c81d8a23c8434a4697d29e839d874926fd83974def03",
+            "pages": 152
+          }
+        },
+        "volumen-01/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 7
+          },
+          "pages": 102,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+            "candidate_sha256": "4afc9b59c67daaf24a77834fc26ea06d0e33db7df9bfe9fa3423c0df449c4b14",
+            "pages": 102
+          }
+        }
+      },
+      "volumen-02-solucionario": {
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "d69daa01ea1bb5681ea81b0c4889cb2fa0911a4f43cf8f266ca45923e5f62444",
+            "pages": 97
+          }
+        },
+        "volumen-02/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 4
+          },
+          "pages": 54,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+            "candidate_sha256": "953b23261cd9c1dce63db3ebc7cf7c06702f51bade7419b05fe4457d437d2067",
+            "pages": 54
+          }
+        }
+      },
+      "volumen-02-pareja": {
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "b6b39d904d9a3ddc0cf2a9de68cc8c4ae74f5a79e1c797cd0b7be9bbc7e48879",
+            "pages": 97
+          }
+        },
+        "volumen-02/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 4
+          },
+          "pages": 54,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+            "candidate_sha256": "93568dde465c6caf68c066c2b450b4381dcdab67424935de6db089bc919f5ed3",
+            "pages": 54
+          }
+        }
+      },
+      "volumen-03-main": {
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "d940ccd95be44e7d1eb30fd1de1e0100e5e75bc47879f344009244773c940266",
+            "pages": 134
+          }
+        }
+      },
+      "volumen-04-main": {
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "1d8263d32a948a1607eafbf153e2d1a82d112678f1a1eae9065d833fff21362b",
+            "pages": 109
+          }
+        }
+      },
+      "volumen-03-solucionario": {
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "ecedee21b29e398de703aac99b6c73b73e75914c00c4689a896d9a71b7d7ca0a",
+            "pages": 134
+          }
+        },
+        "volumen-03/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 6
+          },
+          "pages": 69,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+            "candidate_sha256": "e311e516912fc7eb073d94cb5953750dbf1f7e8581d294a087164aac0b60fff2",
+            "pages": 69
+          }
+        }
+      },
+      "volumen-03-pareja": {
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "234d82c6a9d5e74cb470faf1db3282f8202f0721f8ecc7d5855837732d5c04b2",
+            "pages": 134
+          }
+        },
+        "volumen-03/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 6
+          },
+          "pages": 69,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+            "candidate_sha256": "96bf4e829477d37243ca53356fa8e38f2d63ca92c544b45e67da0567b58dfcde",
+            "pages": 69
+          }
+        }
+      },
+      "volumen-04-solucionario": {
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "3d77038b52b6abe7c683eac9f837accd723918606bb471ead0863cdc2cbf223e",
+            "pages": 109
+          }
+        },
+        "volumen-04/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 9
+          },
+          "pages": 47,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+            "candidate_sha256": "ba828b17a687bbc9430876ad01b61d14589d16749d5cfbf4f58b971b7f8c798a",
+            "pages": 47
+          }
+        }
+      },
+      "volumen-04-pareja": {
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "dcb80486a92b3397ad6c3e4012e49cd6d03931dc1b95f247c41b6bd1c7aff4a5",
+            "pages": 109
+          }
+        },
+        "volumen-04/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 9
+          },
+          "pages": 47,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+            "candidate_sha256": "ef3e7454319634884f9f47918443451586e355584f2e9c8006b8048ab69074e6",
+            "pages": 47
+          }
+        }
+      },
+      "coleccion": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "d96c29b3bec1203fb83e9367eb6469eaa5c4da9dae5d3dece21c5e07a2e4ef46",
+            "pages": 152
+          }
+        },
+        "volumen-01/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 7
+          },
+          "pages": 102,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+            "candidate_sha256": "0db1d15794cc531258251de7fcfa879879020d48781a3445f19563cbce16b675",
+            "pages": 102
+          }
+        },
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "53393e921be52ec3cd65bf7089bf093f258201961ca8d740ddeb46b2e4c2652a",
+            "pages": 97
+          }
+        },
+        "volumen-02/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 4
+          },
+          "pages": 54,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+            "candidate_sha256": "ac6d291975e7e671d02b70a4bff9f30ee256b1d0a4327d1523a8128e240ef0aa",
+            "pages": 54
+          }
+        },
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "2661bf79f1ab73f5e5492096e97b46dde30c10492a8c4872ea0f0753f1bb5438",
+            "pages": 134
+          }
+        },
+        "volumen-03/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 6
+          },
+          "pages": 69,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+            "candidate_sha256": "fcd816439bdd1a60b4b888934b1a84f1907d33bf35a4526290cc125c583579cc",
+            "pages": 69
+          }
+        },
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "2d9f478ac1f06758106dabe808212e304777555c956c691587bb3636f4849d32",
+            "pages": 109
+          }
+        },
+        "volumen-04/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 9
+          },
+          "pages": 47,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+            "candidate_sha256": "1bf1c7d3fcbc3fa8b0e0cc2d85616bfd06a01780c75041775641e03f32967bba",
+            "pages": 47
+          }
+        }
+      },
+      "reconstruccion": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "cc77935d0b52865d3da7e5b4ef253ec365b704ad3e2f58028c00ede824f9c672",
+            "pages": 152
+          }
+        },
+        "volumen-01/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 7
+          },
+          "pages": 102,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+            "candidate_sha256": "fcb33fb0b24b66edbf5dbd8466f4e85a6b98c5d56358eeb72dffaac231086a6f",
+            "pages": 102
+          }
+        },
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "87d75887c1cefe06fcc4a8e3a48eb874f85a5d94ee6900e273041b186edcd704",
+            "pages": 97
+          }
+        },
+        "volumen-02/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 4
+          },
+          "pages": 54,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+            "candidate_sha256": "04e4b8aa011e0c78959713a1437ba615c7007f9384b518877789fc4051af7564",
+            "pages": 54
+          }
+        },
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "49e8b791ab9e50f3172bf6c33d29c660da46e8aac67c5af02d757cd107601849",
+            "pages": 134
+          }
+        },
+        "volumen-03/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 6
+          },
+          "pages": 69,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+            "candidate_sha256": "e157b47a9cc39f570bc913305770695d5990b19f1681483e092d74aac885b57e",
+            "pages": 69
+          }
+        },
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "8c6b538bc7eea67753524d942bae5e76dd6ed3d822cd018284c47455b3e9927d",
+            "pages": 109
+          }
+        },
+        "volumen-04/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 9
+          },
+          "pages": 47,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+            "candidate_sha256": "2489b6b0adaf564b3d8c12ec707ee135723b427d76d02059df7839751bd5c433",
+            "pages": 47
+          }
+        }
+      },
+      "restauracion": {
+        "volumen-01/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 152,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+            "candidate_sha256": "c8106265ea8afe6a3d482868b2a159734c45d9b0bf9059078008b107baae8ae1",
+            "pages": 152
+          }
+        },
+        "volumen-01/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 7
+          },
+          "pages": 102,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+            "candidate_sha256": "c993972be1401f2e267eb5acd8cf4bc0d322199dcb303d2696987358b69232e8",
+            "pages": 102
+          }
+        },
+        "volumen-02/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 0
+          },
+          "pages": 97,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+            "candidate_sha256": "87d75887c1cefe06fcc4a8e3a48eb874f85a5d94ee6900e273041b186edcd704",
+            "pages": 97
+          }
+        },
+        "volumen-02/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 0,
+            "remote_page_warning": 4
+          },
+          "pages": 54,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+            "candidate_sha256": "04e4b8aa011e0c78959713a1437ba615c7007f9384b518877789fc4051af7564",
+            "pages": 54
+          }
+        },
+        "volumen-03/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 0
+          },
+          "pages": 134,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+            "candidate_sha256": "49e8b791ab9e50f3172bf6c33d29c660da46e8aac67c5af02d757cd107601849",
+            "pages": 134
+          }
+        },
+        "volumen-03/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 6
+          },
+          "pages": 69,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+            "candidate_sha256": "e157b47a9cc39f570bc913305770695d5990b19f1681483e092d74aac885b57e",
+            "pages": 69
+          }
+        },
+        "volumen-04/main": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 6,
+            "remote_page_warning": 0
+          },
+          "pages": 109,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+            "candidate_sha256": "8c6b538bc7eea67753524d942bae5e76dd6ed3d822cd018284c47455b3e9927d",
+            "pages": 109
+          }
+        },
+        "volumen-04/solucionario": {
+          "log": {
+            "errors": 0,
+            "undefined": 0,
+            "duplicate_labels": 0,
+            "missing_glyphs": 0,
+            "missing_fonts": 0,
+            "overfull": 0,
+            "underfull": 3,
+            "remote_page_warning": 9
+          },
+          "pages": 47,
+          "editorial": {
+            "checks": {
+              "pages": true,
+              "text": true,
+              "metadata": true,
+              "outline": true,
+              "destinations": true,
+              "links": true,
+              "render": true
+            },
+            "changed_pages": [],
+            "reference_sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+            "candidate_sha256": "2489b6b0adaf564b3d8c12ec707ee135723b427d76d02059df7839751bd5c433",
+            "pages": 47
+          }
+        }
+      }
+    },
+    "no_op_preserves_pdf_mtimes": true,
+    "clean_preserves_pdfs": true,
+    "reference_update": {
+      "label": "ch01:minkowski",
+      "before": "1.7",
+      "after": "1.27",
+      "new_destination_in_solution": "teorema.1.27",
+      "other_volumes_unchanged": true,
+      "test_source_restored": true
+    },
+    "case_sensitive_os_tested": false,
+    "case_sensitive_limitation": "WSL/Linux no disponible; se comprobaron las grafias de las rutas con los nombres reales.",
+    "temporary_directory": "tmp/migracion-comunes/aceptacion",
+    "root_selection": {
+      "volumen-01": "Apuntes, solucionario y pareja seleccionables desde raiz; PDF y logs sin modificar si estan al dia.",
+      "volumen-02": "Apuntes, solucionario y pareja seleccionables desde raiz; PDF y logs sin modificar si estan al dia.",
+      "volumen-03": "Apuntes, solucionario y pareja seleccionables desde raiz; PDF y logs sin modificar si estan al dia.",
+      "volumen-04": "Apuntes, solucionario y pareja seleccionables desde raiz; PDF y logs sin modificar si estan al dia."
+    },
+    "clean_preserves_build_and_gitkeep": {
+      "volumen-01": "Limpieza conserva ambos PDF, build/ y .gitkeep; retira auxiliares.",
+      "volumen-02": "Limpieza conserva ambos PDF, build/ y .gitkeep; retira auxiliares.",
+      "volumen-03": "Limpieza conserva ambos PDF, build/ y .gitkeep; retira auxiliares.",
+      "volumen-04": "Limpieza conserva ambos PDF, build/ y .gitkeep; retira auxiliares."
+    },
+    "no_op_preserves_pdf_and_tex_log_mtimes": true
+  },
+  "unchanged_content_and_historical_files": [
+    "verificacion-conjunta.json",
+    "volumen-01/capitulos/01.tex",
+    "volumen-01/capitulos/02.tex",
+    "volumen-01/capitulos/03.tex",
+    "volumen-01/capitulos/04.tex",
+    "volumen-01/capitulos/05.tex",
+    "volumen-01/capitulos/06.tex",
+    "volumen-01/capitulos/07.tex",
+    "volumen-01/capitulos/08.tex",
+    "volumen-01/capitulos/09.tex",
+    "volumen-01/capitulos/10.tex",
+    "volumen-01/capitulos/11.tex",
+    "volumen-01/capitulos/12.tex",
+    "volumen-01/capitulos/13.tex",
+    "volumen-01/capitulos/14.tex",
+    "volumen-01/capitulos/15.tex",
+    "volumen-01/capitulos/16.tex",
+    "volumen-01/cobertura.tex",
+    "volumen-01/editorial/ampliacion-maximenko.json",
+    "volumen-01/editorial/cobertura-01-06.json",
+    "volumen-01/editorial/cobertura-07-12.json",
+    "volumen-01/editorial/cobertura-13-18.json",
+    "volumen-01/editorial/cobertura-19-24.json",
+    "volumen-01/editorial/cobertura-25-28.json",
+    "volumen-01/editorial/cobertura-29-32.json",
+    "volumen-01/editorial/fuentes.json",
+    "volumen-01/editorial/identidad-esfm-ipn.md",
+    "volumen-01/editorial/referencias-verificadas.md",
+    "volumen-01/editorial/reorganizacion.json",
+    "volumen-01/editorial/revision-final.json",
+    "volumen-01/editorial/verificacion-coeficientes.json",
+    "volumen-01/editorial/verificacion-estructura.json",
+    "volumen-01/editorial/verificacion-separacion.json",
+    "volumen-01/ejercicios-soluciones.tex",
+    "volumen-01/notacion.tex",
+    "volumen-01/partes.tex",
+    "volumen-01/referencias.tex",
+    "volumen-02/capitulos/01.tex",
+    "volumen-02/capitulos/02.tex",
+    "volumen-02/capitulos/03.tex",
+    "volumen-02/capitulos/04.tex",
+    "volumen-02/capitulos/05.tex",
+    "volumen-02/capitulos/06.tex",
+    "volumen-02/capitulos/07.tex",
+    "volumen-02/capitulos/08.tex",
+    "volumen-02/capitulos/09.tex",
+    "volumen-02/capitulos/10.tex",
+    "volumen-02/capitulos/11.tex",
+    "volumen-02/capitulos/12.tex",
+    "volumen-02/capitulos/13.tex",
+    "volumen-02/capitulos/14.tex",
+    "volumen-02/capitulos/15.tex",
+    "volumen-02/capitulos/16.tex",
+    "volumen-02/cobertura.tex",
+    "volumen-02/editorial/cobertura-01-17.json",
+    "volumen-02/editorial/cobertura-18-33.json",
+    "volumen-02/editorial/cobertura.json",
+    "volumen-02/editorial/identidad-esfm-ipn.md",
+    "volumen-02/editorial/verificacion-separacion.json",
+    "volumen-02/editorial/verificacion.json",
+    "volumen-02/ejercicios-soluciones.tex",
+    "volumen-02/notacion.tex",
+    "volumen-02/partes.tex",
+    "volumen-02/presentacion.tex",
+    "volumen-02/referencias.tex",
+    "volumen-03/capitulos/01.tex",
+    "volumen-03/capitulos/02.tex",
+    "volumen-03/capitulos/03.tex",
+    "volumen-03/capitulos/04.tex",
+    "volumen-03/capitulos/05.tex",
+    "volumen-03/capitulos/06.tex",
+    "volumen-03/capitulos/07.tex",
+    "volumen-03/capitulos/08.tex",
+    "volumen-03/capitulos/09.tex",
+    "volumen-03/capitulos/10.tex",
+    "volumen-03/capitulos/11.tex",
+    "volumen-03/capitulos/12.tex",
+    "volumen-03/capitulos/13.tex",
+    "volumen-03/capitulos/14.tex",
+    "volumen-03/capitulos/15.tex",
+    "volumen-03/capitulos/16.tex",
+    "volumen-03/capitulos/17.tex",
+    "volumen-03/capitulos/18.tex",
+    "volumen-03/cobertura.tex",
+    "volumen-03/editorial/cobertura-00-15.json",
+    "volumen-03/editorial/cobertura-16-18.json",
+    "volumen-03/editorial/cobertura-19-36.json",
+    "volumen-03/editorial/cobertura.json",
+    "volumen-03/editorial/verificacion-separacion.json",
+    "volumen-03/editorial/verificacion.json",
+    "volumen-03/ejercicios-soluciones.tex",
+    "volumen-03/notacion.tex",
+    "volumen-03/partes.tex",
+    "volumen-03/presentacion.tex",
+    "volumen-03/referencias.tex",
+    "volumen-04/capitulos/01.tex",
+    "volumen-04/capitulos/02.tex",
+    "volumen-04/capitulos/03.tex",
+    "volumen-04/capitulos/04.tex",
+    "volumen-04/capitulos/05.tex",
+    "volumen-04/capitulos/06.tex",
+    "volumen-04/capitulos/07.tex",
+    "volumen-04/capitulos/08.tex",
+    "volumen-04/capitulos/09.tex",
+    "volumen-04/capitulos/10.tex",
+    "volumen-04/capitulos/11.tex",
+    "volumen-04/capitulos/12.tex",
+    "volumen-04/capitulos/13.tex",
+    "volumen-04/capitulos/14.tex",
+    "volumen-04/capitulos/15.tex",
+    "volumen-04/capitulos/16.tex",
+    "volumen-04/cobertura.tex",
+    "volumen-04/editorial/cobertura-17-21.json",
+    "volumen-04/editorial/cobertura-25-28.json",
+    "volumen-04/editorial/cobertura-completa.json",
+    "volumen-04/editorial/verificacion-final.json",
+    "volumen-04/editorial/verificacion-separacion.json",
+    "volumen-04/ejercicios-soluciones.tex",
+    "volumen-04/notacion.tex",
+    "volumen-04/partes.tex",
+    "volumen-04/presentacion.tex",
+    "volumen-04/referencias.tex"
+  ],
+  "volume_1_presentation_extracted_verbatim": true,
+  "common_files_original_sha256": {
+    "estilo-esfm.tex": "7c101fc07ff949909b24e9d932bf574dae9151b2cd97df8d0f98e3a853eae187",
+    "indice.ist": "046f35e63e442a673343b6c00faea4060ca2c79c6ff171f7f5030d888a3462ba",
+    "referencias-apuntes.tex": "f058fbdd4ee18d588f2c77e1e260fe896e2cbd7f9a75325eedc9ca4cf6914b25",
+    "assets/escudo-esfm.pdf": "7305698eb2af2326b2509b058553a02e873af4bbb02ddf616b50cbdc0c311893"
+  },
+  "effective_tex_sources_identical_to_tested_copy": {
+    "volumen-01/main.tex": "d1dfda65a76164df5d4aa3ce6a7576d5e1c180e98cef0a250986e51ee22ec5c9",
+    "volumen-01/solucionario.tex": "5e5bdf6ca0251133b384202b9781e41fa397f3d865a000e92b5a88aefd4ef4ed",
+    "volumen-02/main.tex": "5d08fe428d0d4d1e14f8a0f8106b641a96cf02a23ff46845693ecc163c334ad1",
+    "volumen-02/solucionario.tex": "7966a03e1047b70046e6ef8ca8a76bf1221ad262a51620600821700294ccdcb1",
+    "volumen-03/main.tex": "7940e59b0a0fd0103dc3a7b1dca3a0680ca8d6d4fe0e7af796fca174f9fad182",
+    "volumen-03/solucionario.tex": "9f272b8ac6ef301ddb3aca6f90993301b0efedcfbfccf52e39ec3bbc40994f65",
+    "volumen-04/main.tex": "458709c3e1bc6e68e3988d3a580b8ed522fa979c422beea0c853e9b97a09c58d",
+    "volumen-04/solucionario.tex": "cdf55f62fb85607acb303e338696366586ae5d98e5b8ff27d8994ca441e6ff6e"
+  },
+  "static_case_checker_detects_wrong_case": true,
+  "final_versioned_pdf_bytes_preserved": {
+    "volumen-01/main": "d0d9a5727c94a6c20012ba07df0c0b82e8170ed54fd74c173a30da56a3e7ac00",
+    "volumen-01/solucionario": "e1452a9f813243511a9db171a971d1b0fe0cec2bf3ffd51574e46cc5947c19fa",
+    "volumen-02/main": "0830b6c43b475698fa9bda964854add885b3b85f5287cee7e2fa0f53d4ba6c00",
+    "volumen-02/solucionario": "82e873617f6c31cb5980219c505c9d1992416c02a92a9685abadcc3b89d8938f",
+    "volumen-03/main": "0bbc864e488ce78f6449e9cc2fe2e0bd2977ab3c25a5566d1dbe95d6b09dcec3",
+    "volumen-03/solucionario": "28c945686766e4e75335f2f10f31cc7104f569c5a7e9dead87a689b0afa8548e",
+    "volumen-04/main": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+    "volumen-04/solucionario": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3"
+  },
+  "reason_for_preserving_pdf_bytes": "Las compilaciones nuevas son editorialmente identicas. Se conservan los PDF binarios originales para evitar cambios de fechas o identificadores sin cambios de contenido.",
+  "environment": {
+    "os": "Windows",
+    "python": "3.12.14",
+    "tex": "TeX Live 2024; XeTeX 0.999996",
+    "latexmk": "4.86a",
+    "pdf_libraries": {
+      "pypdf": "6.10.0",
+      "pypdfium2": "5.14.0",
+      "Pillow": "12.3.0"
+    }
+  },
+  "limitations": [
+    "No se compilo en un sistema sensible a mayusculas: WSL/Linux no esta instalado. Se verificaron las grafias de las rutas.",
+    "MiKTeX no esta instalado; se probo TeX Live en Windows."
+  ],
+  "local_evidence": "tmp/migracion-comunes/ (referencias, copias limpias y logs conservados; excluidos de Git)"
+}

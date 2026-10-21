@@ -3,17 +3,19 @@ from collections import Counter
 from pathlib import Path
 import json
 import re
+import argparse
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT.parent))
+from herramientas.fuentes import expand
 EXPECTED = [7, 7, 9, 6, 9, 8, 7, 7, 1, 10, 6, 3, 8, 6, 6, 5,
             7, 7, 7, 7, 8, 6, 4, 7, 0, 8, 5, 4, 8, 6, 7, 10]
 chapters = sorted((ROOT / "capitulos").glob("*.tex"))
 assert [p.stem for p in chapters] == [f"{i:02}" for i in range(1, 17)]
 body = "\n".join(p.read_text(encoding="utf-8") for p in chapters)
 solutions = (ROOT / "ejercicios-soluciones.tex").read_text(encoding="utf-8")
-files = [ROOT / name for name in ("main.tex", "preambulo.tex", "partes.tex", "cobertura.tex",
-                                  "notacion.tex", "referencias.tex")]
-text = body + "\n" + "\n".join(p.read_text(encoding="utf-8") for p in files)
+text = expand(ROOT / 'main.tex', directory=ROOT)
 labels = re.findall(r"\\label\{([^}]+)\}", text)
 duplicates = [key for key, n in Counter(labels).items() if n > 1]
 assert not duplicates, duplicates
@@ -61,6 +63,9 @@ result = {
         p.stem: p.read_text(encoding="utf-8").count(r"\begin{ejercicio}") for p in chapters
     },
 }
-(ROOT / "editorial/verificacion-estructura.json").write_text(
-    json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output', type=Path, help='Guardar un registro nuevo; no sobrescribe históricos por defecto')
+args = parser.parse_args()
+if args.output:
+    args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
 print(json.dumps(result, ensure_ascii=False, indent=2))
