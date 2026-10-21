@@ -172,74 +172,36 @@ Finalmente, $ST$ es compacto. Para familias ortonormales finitas $(e_i),(h_i)$,
 La fórmula variacional para $p=1$ implica que $ST$ es de traza y da la cota.
 \end{proof}
 
-\section{Ejercicios resueltos}
+\section{Ejercicios propuestos}
 \begin{ejercicio}\label{ej:v3-l12-1}
 Demuestre que $\norm\cdot_{\mathrm{HS}}$ y $\norm\cdot_{\mathrm{tr}}$ son normas en sus respectivas clases.
 \end{ejercicio}
-\begin{solucion}
-Para Hilbert--Schmidt, la identificación $T\mapsto(Te)_{e\in\mathcal E}$ en el espacio de familias cuadrado-sumables prueba homogeneidad y la desigualdad triangular de Minkowski. Si todos los $Te$ son cero, $T$ se anula en el span denso de la base, luego $T=0$. La suma y los múltiplos permanecen en la clase por esa desigualdad. Para traza, no puede sumarse directamente la lista de valores singulares. El lema~\ref{v3:schatten-variacional} con $p=1$ expresa la norma como supremo de módulos de expresiones lineales, y por tanto
-\[\norm{S+T}_{\mathrm{tr}}\le\norm S_{\mathrm{tr}}+\norm T_{\mathrm{tr}},\qquad
-\norm{aT}_{\mathrm{tr}}=|a|\norm T_{\mathrm{tr}}.
-\]
-Las sumas de compactos son compactas y la cota asegura finitud de la norma de la suma. Finalmente $\norm T\le\norm T_{\mathrm{tr}}$ prueba definitud. Todos los axiomas quedan verificados.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l12-2}
 Todo operador de Hilbert--Schmidt es compacto.
 \end{ejercicio}
-\begin{solucion}
-Fijada una base $\mathcal E$, para cada $n$ escoja un conjunto finito $F_n$ con $\sum_{e\notin F_n}\norm{Te}^2<1/n^2$. Entonces $TP_{F_n}$ tiene rango finito y
-\[\norm{T-TP_{F_n}}\le\norm{T(I-P_{F_n})}_{\mathrm{HS}}
-=\Bigl(\sum_{e\notin F_n}\norm{Te}^2\Bigr)^{1/2}<1/n.
-\]
-La desigualdad usada se probó para operadores acotados sin presuponer compacidad en la proposición~\ref{v3:hilbert-schmidt}; así no hay circularidad. El límite en norma de compactos es compacto.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l12-3}
 Pruebe $\norm T\le\norm T_{\mathrm{HS}}$.
 \end{ejercicio}
-\begin{solucion}
-Para $x$ unitario, extiéndalo a una base ortonormal. La independencia de la base da $\norm{Tx}^2\le\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$. Tomar el supremo en $x$ da la desigualdad. También se obtiene de $\sup_ns_n\le(\sum_ns_n^2)^{1/2}$ una vez probada la compacidad.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l12-4}
 Demuestre que las clases de Hilbert--Schmidt y de traza son ideales bilaterales en $\Bcal(H)$.
 \end{ejercicio}
-\begin{solucion}
-La proposición~\ref{v3:ideales-hs-traza} proporciona las cuatro cotas necesarias. Para dejar explícitos los dos lados: $AT$ se controla en Hilbert--Schmidt sumando $\norm{ATe}^2\le\norm A^2\norm{Te}^2$, y $TA$ aplicando ese resultado al adjunto; para traza se usa la serie singular y las identidades $A(g\otimes f)=Ag\otimes f$, $(g\otimes f)A=g\otimes A^*f$. Cada término tiene norma de traza igual al producto de las normas de sus dos vectores. La suma de esas cotas es $\norm A\sum_ns_n(T)<\infty$, de modo que ambos productos pertenecen a la clase. La estructura de subespacio se estableció en el ejercicio~\ref{ej:v3-l12-1}.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l12-5}
 Pruebe: (i) si $T$ es de traza, $T^*$ también y $\tr(T^*)=\overline{\tr T}$; (ii) para $S,T$ Hilbert--Schmidt, $\tr(ST)=\tr(TS)$; (iii) $\langle S,T\rangle_{\mathrm{HS}}=\tr(ST^*)$ es un producto interno que hace Hilbert a $\mathrm{HS}(H)$.
 \end{ejercicio}
-\begin{solucion}
-(i) La descomposición singular intercambia $f_n$ y $g_n$ al pasar de $T$ a $T^*$, luego sus valores singulares son iguales y $\norm{T^*}_{\mathrm{tr}}=\norm T_{\mathrm{tr}}$. En una base ortonormal,
-$\ip{T^*e}e=\overline{\ip{Te}e}$; la convergencia absoluta permite conjugar la suma y da la fórmula.
 
-(ii) Ambos productos son de traza por la proposición anterior. Para una base $(e_i)$, expandiendo $Te_i$ y aplicando $S$,
-\[\tr(ST)=\sum_{i,j}\ip{Te_i}{e_j}\ip{Se_j}{e_i}.
-\]
-La suma doble de módulos es finita: Cauchy--Schwarz y Parseval la acotan por
-\[\Bigl(\sum_{i,j}|\ip{Te_i}{e_j}|^2\Bigr)^{1/2}
-\Bigl(\sum_{i,j}|\ip{Se_j}{e_i}|^2\Bigr)^{1/2}
-=\norm T_{\mathrm{HS}}\norm S_{\mathrm{HS}}.
-\]
-Se puede intercambiar $i,j$; la expresión resultante es $\tr(TS)$.
-
-(iii) Por el inciso (ii),
-\[\tr(ST^*)=\tr(T^*S)=\sum_e\ip{Se}{Te}.
-\]
-La serie converge absolutamente por Cauchy--Schwarz. Es lineal en $S$, conjugado-lineal en $T$, hermitiana y su valor en $(T,T)$ es $\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$, positivo salvo para $T=0$. Así es un producto interno cuya norma es la Hilbert--Schmidt. La completitud se demostró en el teorema~\ref{v3:schatten-banach} con $p=2$; por tanto este espacio es Hilbert.
-\end{solucion}
 
 \begin{ejercicio}[Todas las clases de Schatten]\label{ej:v3-l12-6}
 Para $1\le p<\infty$, pruebe que $\mathcal S_p(H)$ es un espacio vectorial complejo, que $\norm\cdot_p$ es una norma y que ese espacio es completo.
 \end{ejercicio}
-\begin{solucion}
-La prueba completa consta del lema~\ref{v3:schatten-variacional} y del teorema~\ref{v3:schatten-banach}; explicitamos cómo responde a cada parte. La fórmula variacional se obtiene de la descomposición singular, Bessel y Hölder con la matriz no negativa $a_{ij}$ cuyas sumas por filas y columnas son a lo sumo uno. Su cota inferior se obtiene eligiendo las familias singulares y los pesos duales $b_i$. Esta igualdad hace subaditiva y homogénea a $\norm\cdot_p$, y la cota $\norm T\le\norm T_p$ demuestra definitud. Como la suma de compactos es compacta y la desigualdad triangular mantiene finita la norma, la clase es un subespacio vectorial.
 
-Para completitud, una sucesión de Cauchy en $p$ converge en norma de operador a un compacto $T$. Cada expresión finita de la fórmula variacional es continua para esa norma de operador. Pasar al límite en $|F(T_n-T_m)|\le\eps$ y tomar el supremo prueba $\norm{T_n-T}_p\le\eps$ para $n$ grande. Esto demuestra simultáneamente que $T$ pertenece a la clase y que la convergencia ocurre en su norma. No se ha usado ninguna desigualdad de valores singulares sin demostrar.
-\end{solucion}
 
 \section{Ampliación: núcleos integrales y prueba de Schur}\index{Schur, prueba de}
 El siguiente criterio desarrolla la nota de Egor Maximenko \emph{La prueba de Schur simplificada para operadores integrales} \cite{maxschur}. Se distinguen los espacios de entrada y salida para evitar invertirlos en la fórmula.
@@ -287,21 +249,11 @@ La proposición~\ref{v3:hilbert-schmidt} da la conclusión y también la compaci
 \begin{ejercicio}[Complemento: núcleo acotado en medida finita]\label{ej:v3-ampl-schur}
 Si $\mu(X),\nu(Y)<\infty$ y $|K(x,y)|\le M$ casi en todas partes, pruebe $\norm A\le M\sqrt{\mu(X)\nu(Y)}$.
 \end{ejercicio}
-\begin{solucion}
-Las integrales de filas están acotadas por $M\nu(Y)$ y las de columnas por $M\mu(X)$. Schur da
-\[\norm A\le\sqrt{M\nu(Y)\,M\mu(X)}=M\sqrt{\mu(X)\nu(Y)}.
-\]
-Si alguna medida es cero, el operador es cero y la fórmula sigue siendo válida. Esto resuelve el ejercicio final propuesto, sin solución, en la nota complementaria de Schur.
-\end{solucion}
+
 
 \begin{ejercicio}[Complemento: tamaño Hilbert--Schmidt de Volterra]\label{ej:v3-ampl-volterra-hs}
 Calcule la norma Hilbert--Schmidt de $V$ en $L^2[0,1]$ y determine si $V^*V$ es de traza.
 \end{ejercicio}
-\begin{solucion}
-El núcleo es $K(x,y)=\boldsymbol1_{\{0\le y\le x\le1\}}$, cuyo cuadrado integra el área del triángulo: $\int_0^1\int_0^x1\,dy\,dx=1/2$. Por tanto $\norm V_{\mathrm{HS}}=1/\sqrt2$. El producto $V^*V$ es de traza porque ambos factores son Hilbert--Schmidt, y
-\[\tr(V^*V)=\sum_e\ip{V^*Ve}e=\sum_e\norm{Ve}^2=\norm V_{\mathrm{HS}}^2=\tfrac12.
-\]
-Como $V^*V$ es positivo, su norma de traza coincide con su traza, también igual a $1/2$.
-\end{solucion}
+
 
 Las clases de Schatten proporcionan normas que distinguen diferentes grados de compacidad. La traza recupera una suma de valores propios para compactos normales, mientras que la clase Hilbert--Schmidt convierte el espacio de operadores en un Hilbert. Los criterios integrales conectan estas construcciones con ejemplos calculables; más adelante, las topologías débiles permitirán estudiar límites que no convergen en ninguna de estas normas.

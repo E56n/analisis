@@ -62,13 +62,11 @@ Para todo $A\in\Acal$,
 Para cada partición, $|\nu(A_j)|\le\nu^+(A_j)+\nu^-(A_j)$; al sumar se obtiene la cota $|\nu|(A)$. En la partición formada por $A\cap P$ y $A\cap N$, la suma es exactamente $\nu^+(A)+\nu^-(A)$. El signo en la cota es una suma de las variaciones, nunca su diferencia.
 \end{proof}
 
-\section{Ejercicios resueltos: orden e integración de medidas reales}
+\section{Ejercicios propuestos: orden e integración de medidas reales}
 \begin{ejercicio}[Lectura 25, ejercicio 1]\label{ej:v2-l25-1}
 Si $\nu=\nu_1-\nu_2$ con $\nu_1,\nu_2$ positivas y la diferencia definida, demostrar $\nu_1(A)\ge\nu^+(A)$ y $\nu_2(A)\ge\nu^-(A)$.
 \end{ejercicio}
-\begin{solucion}
-En una parte positiva $P$, $\nu^+(A)=\nu(A\cap P)=\nu_1(A\cap P)-\nu_2(A\cap P)\le\nu_1(A\cap P)\le\nu_1(A)$. Si el primer miembro es infinito, la igualdad de la diferencia obliga a $\nu_1(A\cap P)=\infty$ y la desigualdad sigue siendo válida. En una parte negativa $N$ se aplica el mismo argumento a $-\nu$ y se obtiene $\nu^-(A)\le\nu_2(A)$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 25, ejercicio 2: rectificación del ínfimo]\label{ej:v2-l25-2}
 Para medidas con signo finitas $\nu_1,\nu_2$, definir
 \[
@@ -77,39 +75,23 @@ Para medidas con signo finitas $\nu_1,\nu_2$, definir
 \]
 (i) Demostrar que la primera es el menor mayorante de ambas en el orden de medidas. (ii) Demostrar que la segunda es el mayor minorante. La lectura escribe $\nu_1-(\nu_2-\nu_1)^+$ para el ínfimo; examinar esa fórmula.
 \end{ejercicio}
-\begin{solucion}
-El orden $\eta\ge\nu$ significa que $\eta-\nu$ es una medida positiva. Escribamos $d=\nu_2-\nu_1=d^+-d^-$. Entonces $\nu_1+d^+\ge\nu_1$ y $(\nu_1+d^+)-\nu_2=d^-\ge0$. Si $\xi\ge\nu_1,\nu_2$, tenemos $d=(\xi-\nu_1)-(\xi-\nu_2)$, una diferencia de positivas. El ejercicio \ref{ej:v2-l25-1} implica $d^+\le\xi-\nu_1$, luego $\nu_1\vee\nu_2\le\xi$.
 
-Aplicamos este resultado a $-\nu_1,-\nu_2$ y cambiamos de signo: el mayor minorante es $-((-\nu_1)\vee(-\nu_2))=\nu_1-(\nu_1-\nu_2)^+$. La fórmula impresa es falsa: sobre un espacio de un punto, con $\nu_1=0$ y $\nu_2=\delta$, daría $-\delta$, mientras que el mayor minorante es cero.
-\end{solucion}
 \begin{ejercicio}[Lectura 25, ejercicio 3]\label{ej:v2-l25-3}
 Si $|\nu(A)|\le\mu(A)$ para todo medible $A$, con $\mu$ positiva, demostrar $|\nu|(A)\le\mu(A)$.
 \end{ejercicio}
-\begin{solucion}
-Para toda partición finita de $A$, $\sum_j|\nu(A_j)|\le\sum_j\mu(A_j)=\mu(A)$. Tomar el supremo sobre las particiones y usar la proposición \ref{v2:variacion-real} da la conclusión, incluso si $\mu(A)=\infty$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 25, ejercicio 4]\label{ej:v2-l25-4}
 Demostrar que $\norm\nu=|\nu|(X)$ es una norma sobre el espacio de medidas con signo finitas.
 \end{ejercicio}
-\begin{solucion}
-La descomposición de Hahn muestra que $\nu^+(X)=\nu(P)$ y $\nu^-(X)=-\nu(N)$ son finitos, por tanto la expresión está definida. Si $\norm\nu=0$, para todo $A$ tenemos $|\nu(A)|\le|\nu|(A)\le|\nu|(X)=0$, luego $\nu=0$. El supremo por particiones da $|a\nu|(X)=|a||\nu|(X)$. Para cada partición, $\sum_j|\nu(A_j)+\eta(A_j)|\le\sum_j|\nu(A_j)|+\sum_j|\eta(A_j)|\le\norm\nu+\norm\eta$; tomar supremo prueba la desigualdad triangular.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 25, ejercicio 5]\label{ej:v2-l25-5}
 Para medidas con signo finitas, demostrar $\norm{\nu_n-\nu}\to0$ si y solo si $\nu_n(A)\to\nu(A)$ uniformemente en $A\in\Acal$.
 \end{ejercicio}
-\begin{solucion}
-Sea $\eta=\nu_n-\nu$. Por una parte $\sup_A|\eta(A)|\le\norm\eta$. Por otra, si $(P,N)$ es una partición de Hahn de $\eta$,
-\[
- \norm\eta=|\eta(P)|+|\eta(N)|\le2\sup_A|\eta(A)|.
-\]
-Estas dos cotas prueban ambas implicaciones y muestran que las dos formas de medir la convergencia son equivalentes.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 25, ejercicio 6]\label{ej:v2-l25-6}
 Definir $\int f\,d\nu=\int f\,d\nu^+-\int f\,d\nu^-$ cuando $f$ es integrable para ambas medidas. Demostrar que tales funciones forman un espacio vectorial y decidir si $f\mapsto\int|f|\,d|\nu|$ es una seminorma.
 \end{ejercicio}
-\begin{solucion}
-La condición equivale a $\int|f|\,d|\nu|=\int|f|\,d\nu^++\int|f|\,d\nu^-<\infty$, primero por aditividad para simples y después por convergencia monótona. Es, pues, exactamente $\mathcal L^1(|\nu|)$, un espacio vectorial. La expresión solicitada es su seminorma $L^1$: tiene homogeneidad y desigualdad triangular al integrar las correspondientes desigualdades puntuales. Su núcleo consta de funciones nulas $|\nu|$-casi en todas partes. La integral con signo es lineal y satisface $|\int f\,d\nu|\le\int|f|\,d|\nu|$; las dos integrales que se restan son finitas, por lo que no aparece una indeterminación.
-\end{solucion}
+
 
 \section{Variación de una medida compleja}\label{lectura:v2-26}
 Si $\nu=\nu_1+i\nu_2$, las dos medidas reales son finitas y tienen sus variaciones de Jordan. Así
@@ -170,18 +152,14 @@ $|\int s\,d\nu|\le\sum_j|c_j||\nu|(A_j)=\int|s|\,d|\nu|$.
 Aproximamos $f$ en $L^1(|\nu|)$ por simples. La misma aproximación converge en las cuatro normas $L^1(\nu_j^\pm)$, por las cotas de medidas; por tanto sus cuatro integrales convergen a las de $f$. Pasando al límite se obtiene la desigualdad. La linealidad resulta de las cuatro integrales ordinarias. Si una función está definida solo casi en todas partes, se elige un representante medible y se extiende por cero sobre un conjunto excepcional medible; la desigualdad asegura independencia del representante.
 \end{proof}
 
-\section{Ejercicios resueltos: continuidad de medidas y norma de la integral}
+\section{Ejercicios propuestos: continuidad de medidas y norma de la integral}
 \begin{ejercicio}[Lectura 26, ejercicio 1]\label{ej:v2-l26-1}
 Sea $\nu:\Acal\to\C$ finitamente aditiva y nula en el vacío. Demostrar que es una medida si cumple cualquiera de estas condiciones: (i) continuidad sobre sucesiones crecientes; (ii) continuidad sobre sucesiones decrecientes con intersección vacía.
 \end{ejercicio}
-\begin{solucion}
-Si $A_n$ son disjuntos, las uniones finitas $B_m=\bigcup_{n\le m}A_n$ crecen a $B=\bigcup_nA_n$. Bajo (i), $\nu(B)=\lim_m\nu(B_m)=\sum_n\nu(A_n)$. Bajo (ii), los restos $B\setminus B_m$ decrecen al vacío, y la identidad $\nu(B)-\sum_{n\le m}\nu(A_n)=\nu(B\setminus B_m)$ da la misma conclusión. No basta la convergencia de la serie sin una de estas condiciones de continuidad.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 26, ejercicio 2: excepción de la medida cero]\label{ej:v2-l26-2}
 Demostrar que $I_\nu(f)=\int f\,d\nu$ es un funcional continuo sobre $L^1(|\nu|)$, de norma uno cuando $\nu\ne0$. Determinar su norma si $\nu=0$.
 \end{ejercicio}
-\begin{solucion}
-La proposición \ref{v2:integral-compleja} da $\norm{I_\nu}\le1$. Si $M=|\nu|(X)>0$, elegimos una partición $A_1,\ldots,A_m$ con $\sum_j|\nu(A_j)|>M-\eps$. Tomamos $c_j=\overline{\nu(A_j)}/|\nu(A_j)|$ cuando la medida es no nula y $c_j=1$ en otro caso. La simple $s=\sum_jc_j\ind{A_j}$ tiene $|s|=1$, luego $\norm s_{L^1(|\nu|)}=M$, y $I_\nu(s)=\sum_j|\nu(A_j)|>M-\eps$. Aplicar el funcional a $s/M$ y hacer $\eps\downarrow0$ da norma al menos uno. Para $\nu=0$, $L^1(|\nu|)$ es el espacio cero y el funcional tiene norma cero. La excepción no puede omitirse.
-\end{solucion}
+
 \section{La variación como medida de control}
 Hahn separa signos; Jordan transforma esa separación en medidas positivas canónicas; la variación total controla todas las particiones a la vez. Con ella, la integración compleja se reduce a integración positiva y el espacio de medidas adquiere una norma completa. La aditividad numerable sigue siendo esencial: en el capítulo sobre el dual de $L^\infty$ veremos qué cambia al conservar únicamente aditividad finita.

@@ -108,114 +108,45 @@ Así $R^*=L$. Se tiene $LR=I$, pero $RLx=x-x_1e_1$. El corrimiento derecho prese
 \begin{ejercicio}[Lectura 32, ejercicio 1]\label{ej:lectura-32-1}
 Probar las reglas (i) $(\alpha S+\beta T)^*=\bar\alpha S^*+\bar\beta T^*$; (ii) $(ST)^*=T^*S^*$; (iii) $T^{**}=T$; (iv) $I^*=I$; (v) $(T^{-1})^*=(T^*)^{-1}$ para $T$ invertible.
 \end{ejercicio}
-\begin{solucion}
-En todas las verificaciones utilizamos la unicidad del adjunto, una vez identificada la transformación que satisface su relación definitoria.
 
-\emph{(i)} Para $x\in H_1,y\in H_2$,
-\[
- \ip{(\alpha S+\beta T)x}{y}
- =\alpha\ip{x}{S^*y}+\beta\ip{x}{T^*y}
- =\ip{x}{(\bar\alpha S^*+\bar\beta T^*)y}.
-\]
-\emph{(ii)} Para $T:H_1\to H_2$, $S:H_2\to H_3$,
-$\ip{STx}{z}=\ip{Tx}{S^*z}=\ip{x}{T^*S^*z}$.
-\emph{(iii)} La identidad $\ip{Tx}{y}=\ip{x}{T^*y}$, al conjugar, se convierte en $\ip{T^*y}{x}=\ip{y}{Tx}$, que caracteriza al adjunto de $T^*$.
-\emph{(iv)} $\ip{Ix}{y}=\ip{x}{Iy}$.
-\emph{(v)} De $T^{-1}T=TT^{-1}=I$, las reglas (ii) y (iv) dan
-$T^*(T^{-1})^*=I$ y $(T^{-1})^*T^*=I$. Así $(T^{-1})^*$ es la inversa bilateral de $T^*$. Aquí invertible en $\Bcal(H)$ significa que la inversa es acotada; para una biyección acotada entre espacios de Banach esa propiedad se deduce del teorema de la aplicación abierta.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 32, ejercicio 2]\label{ej:lectura-32-2}
 \index{operador!normal}
 Si $T$ es normal, es decir, $T^*T=TT^*$, probar $\norm{Tx}=\norm{T^*x}$ y que $T-\alpha I$ es normal para todo $\alpha\in\C$.
 \end{ejercicio}
-\begin{solucion}
-La identidad de adjunción da
-\[
- \norm{Tx}^{2}=\ip{x}{T^*Tx}=\ip{x}{TT^*x}=\norm{T^*x}^{2}.
-\]
-Ambas normas son no negativas, por lo que sus raíces coinciden. Además,
-\begin{align*}
- (T-\alpha I)^*(T-\alpha I)
- &=T^*T-\alpha T^*-\bar\alpha T+|\alpha|^2I,\\
- (T-\alpha I)(T-\alpha I)^*
- &=TT^*-\bar\alpha T-\alpha T^*+|\alpha|^2I.
-\end{align*}
-La normalidad de $T$ hace iguales estas expresiones.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 32, ejercicio 3]\label{ej:lectura-32-3}
 \index{operador!autoadjunto}\index{operador!positivo}
 Probar que $T+T^*$ y $TT^*$ son autoadjuntos, esto es, coinciden con sus adjuntos.
 \end{ejercicio}
-\begin{solucion}
-Las reglas del ejercicio~\ref{ej:lectura-32-1} dan $(T+T^*)^*=T^*+T^{**}=T^*+T$ y $(TT^*)^*=(T^*)^*T^*=TT^*$. De manera adicional, $TT^*$ es positivo en el sentido de que $\ip{TT^*x}{x}=\norm{T^*x}^{2}\geq0$; ser autoadjunto, por sí solo, no exige esta desigualdad.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 32, ejercicio 4: isometrías y unitarios]\label{ej:lectura-32-4}
 \index{operador!unitario}\index{isometria@isometría!lineal}
 Analizar la afirmación: $\ip{Tx}{Ty}=\ip{x}{y}$ para todo $x,y$ si y solo si $T$ es invertible y $T^{-1}=T^*$.
 \end{ejercicio}
-\begin{solucion}
-Tal como está escrita en dimensión infinita, la afirmación es falsa. El corrimiento $R$ preserva productos internos, pero ningún vector tiene imagen $e_1$. La condición escrita define una \emph{isometría lineal}; un operador \emph{unitario} es una isometría lineal \emph{suprayectiva}.
 
-Si $T$ preserva productos, entonces $\ip{x}{T^*Ty}=\ip{Tx}{Ty}=\ip{x}{y}$ para todo $x$, y $T^*Ty=y$. Por tanto $T^*T=I$. Esto da una inversa por la izquierda, sin asegurar una inversa por la derecha. Si además $T$ es suprayectivo, es biyectivo, pues una isometría tiene núcleo cero. Su inversa preserva normas, así que es acotada. Multiplicando $T^*T=I$ por $T^{-1}$ se obtiene $T^*=T^{-1}$.
-
-Recíprocamente, si $T$ es invertible y $T^*=T^{-1}$, entonces
-$\ip{Tx}{Ty}=\ip{x}{T^*Ty}=\ip{x}{y}$; es una isometría suprayectiva. Una formulación equivalente es $T^*T=TT^*=I$: la primera igualdad da inyectividad y preservación del producto, y la segunda expresa cada $y$ como $T(T^*y)$, dando suprayectividad.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 32, ejercicio 5]\label{ej:lectura-32-5}
 Probar que la proyección ortogonal $P_W$ sobre un subespacio cerrado es autoadjunta.
 \end{ejercicio}
-\begin{solucion}
-Descompongamos $x=w_x+n_x$, $y=w_y+n_y$ en $W\oplus W^{\perp}$. Entonces
-\[
- \ip{P_Wx}{y}=\ip{w_x}{w_y+n_y}=\ip{w_x}{w_y}
- =\ip{w_x+n_x}{w_y}=\ip{x}{P_Wy}.
-\]
-La unicidad del adjunto da $P_W^*=P_W$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 32, ejercicio 6]\label{ej:lectura-32-6}
 Si $T^*T=0$, probar $T=0$. Decidir si la conclusión vale cuando $TT^*=0$.
 \end{ejercicio}
-\begin{solucion}
-Si $T^*T=0$, para cada $x$ se tiene $\norm{Tx}^{2}=\ip{x}{T^*Tx}=0$, de modo que $Tx=0$. Si $TT^*=0$, aplicamos lo anterior al operador $T^*$: $\norm{T^*x}^{2}=\ip{x}{TT^*x}=0$, así que $T^*=0$ y $T=T^{**}=0$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 32, ejercicio 7]\label{ej:lectura-32-7}
 Demostrar que $\norm{Tv}=\norm T\norm v$ si y solo si $T^*Tv=\norm T^{2}v$.
 \end{ejercicio}
-\begin{solucion}
-Sea $A=\norm T^{2}I-T^*T$. Es autoadjunto y para todo $x$,
-\[
- q(x):=\ip{Ax}{x}=\norm T^{2}\norm x^{2}-\norm{Tx}^{2}\geq0.
-\]
-La igualdad de normas propuesta equivale a $q(v)=0$. Demostraremos que esta igualdad implica $Av=0$, un paso que necesita justificación y no se sigue solo de que $A$ sea autoadjunto.
 
-Fijemos $z$ y escribamos $a=\ip{Av}{z}$. Para cualquier escalar $t$, la autoadjunción da
-\[
-0\leq q(v+tz)=2\operatorname{Re}(\bar t a)+|t|^{2}q(z).
-\]
-Si $a\ne0$, elegimos $t=-sa$ con $s>0$. El miembro derecho es $|a|^{2}(-2s+s^{2}q(z))$, negativo para $s$ suficientemente pequeño; contradicción. Por tanto $\ip{Av}{z}=0$ para todo $z$ y, con $z=Av$, se obtiene $Av=0$.
-
-Recíprocamente, si $T^*Tv=\norm T^{2}v$, entonces $\norm{Tv}^{2}=\ip{v}{T^*Tv}=\norm T^{2}\norm v^{2}$; tomando raíces se obtiene la igualdad. Para $v=0$ ambas condiciones se cumplen trivialmente; para hablar de que el operador «alcanza su norma» suele exigirse un vector unitario.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 32, ejercicio 8]\label{ej:lectura-32-8}
 Probar $\ker T=(T^*(H))^{\perp}$.
 \end{ejercicio}
-\begin{solucion}
-Para $x\in H$,
-\[
- x\in(T^*(H))^{\perp}
- \Longleftrightarrow \ip{x}{T^*y}=0\text{ para todo }y
- \Longleftrightarrow \ip{Tx}{y}=0\text{ para todo }y
- \Longleftrightarrow Tx=0.
-\]
-La última equivalencia se prueba tomando $y=Tx$ en una dirección; en la otra, todos los productos son cero. También resulta $\cl{T^*(H)}=(\ker T)^{\perp}$ al tomar complementos y utilizar el doble complemento en Hilbert. El cierre no debe omitirse si no se sabe que el rango es cerrado.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 32, ejercicio 9: polarización de una forma]\label{ej:lectura-32-9}
 Sea $\xi$ sesquilineal y $\widehat\xi(v)=\xi(v,v)$. Probar (i)
@@ -224,40 +155,12 @@ Sea $\xi$ sesquilineal y $\widehat\xi(v)=\xi(v,v)$. Probar (i)
 \]
 y (ii) que la forma cuadrática determina la forma sesquilineal.
 \end{ejercicio}
-\begin{solucion}
-\emph{(i)} Por sesquilinealidad,
-\[
- \widehat\xi\left(\frac{u+i^kv}{2}\right)
- =\frac14\bigl(\xi(u,u)+\xi(v,v)+i^{-k}\xi(u,v)+i^k\xi(v,u)\bigr).
-\]
-Multiplicando por $i^k$ y sumando, las sumas $\sum_{k=1}^{4}i^k$ y $\sum_{k=1}^{4}i^{2k}$ son cero, mientras que el coeficiente de $\xi(u,v)$ es $4/4=1$. No se utilizó simetría conjugada de $\xi$: la identidad vale para toda forma sesquilineal.
 
-\emph{(ii)} Si dos formas tienen la misma función diagonal, los cuatro términos del lado derecho coinciden para cada par $(u,v)$; la identidad prueba que las formas son iguales. La hipótesis compleja es relevante: para formas bilineales reales generales, la parte antisimétrica se anula en la diagonal y no puede recuperarse de ella.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 32, ejercicio 10: multiplicación]\label{ej:lectura-32-10}
 Sea $h\in C([a,b],\C)$, $a<b$, y $T_hf=hf$ en $C([a,b])$ con producto integral. Hallar (i) el adjunto, (ii) cuándo es normal, (iii) cuándo es autoadjunto y (iv) cuándo es unitario.
 \end{ejercicio}
-\begin{solucion}
-Este espacio no es completo para la norma integral. La existencia general de adjuntos de Hilbert no se aplica automáticamente, pero en este caso podemos construir el adjunto explícitamente dentro del espacio. La acotación se obtiene de $\norm{hf}_2\leq\norm h_\infty\norm f_2$.
 
-\emph{(i)} Para $f,g$ continuas,
-\[
- \ip{T_hf}{g}=\int_a^b hf\bar g
- =\int_a^b f\,\overline{\bar h g}=\ip{f}{T_{\bar h}g}.
-\]
-El mismo cálculo funciona si el producto está dividido por $b-a$. Por tanto $T_h^*=T_{\bar h}$; la unicidad se prueba usando la positividad del producto interno como antes.
-
-\emph{(ii)} Para toda $h$, $T_h^*T_h=T_{|h|^{2}}=T_hT_h^*$, así que siempre es normal.
-
-\emph{(iii)} Es autoadjunto si y solo si $h=\bar h$, es decir, si $h$ toma valores reales. La necesidad se ve aplicando $T_h=T_{\bar h}$ a la función constante uno; la suficiencia se lee directamente del adjunto calculado.
-
-\emph{(iv)} Es unitario si y solo si $|h(x)|=1$ para todo $x$. Si esto sucede, preserva productos y tiene inversa $T_{\bar h}$. Recíprocamente, la preservación de la norma implica
-\[
- \int_a^b (|h|^{2}-1)|f|^{2}=0\quad\text{para toda }f\in C([a,b]).
-\]
-Si la función real continua $|h|^{2}-1$ no fuera cero, tendría signo constante y módulo separado de cero en un intervalo. Una función triangular no nula soportada allí daría una integral no nula, contradicción. En este ejemplo, a diferencia del corrimiento, la preservación de normas ya obliga a una inversa explícita dentro de $C([a,b])$.
-\end{solucion}
 
 \section{Aproximación de operadores compactos por rango finito}
 \index{operador!compacto}\index{operador!rango finito}

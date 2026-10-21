@@ -362,65 +362,22 @@ No hemos supuesto que las derivadas sean continuas. Tampoco se obtiene una afirm
 \begin{ejercicio}[Lectura 26, ejercicio 1]\label{ej:lectura-26-1}\label{ch26:ej1}
 Sea $V$ Banach y $f_n:S\to V$. Demuestre que $(f_n)$ converge uniformemente si y solo si para todo $\eps>0$ existe $N$ tal que $\norm{f_n(x)-f_m(x)}<\eps$ para todos $n,m\ge N$ y $x\in S$.
 \end{ejercicio}
-\begin{solucion}
-Si $f_n\rightrightarrows f$, elegimos $N$ con $\norm{f_n(x)-f(x)}<\eps/2$ para todo $n\ge N$ y $x$. Para $n,m\ge N$, la desigualdad triangular da el resultado.
 
-Recíprocamente, para cada $x$ la hipótesis hace de $(f_n(x))$ una sucesión de Cauchy en $V$. La completitud define $f(x)=\lim_nf_n(x)$. Dado $\eps>0$, elegimos $N$ usando $\eps/2$ en la hipótesis. Fijamos $n\ge N$ y $x$ y hacemos $m\to\infty$; obtenemos $\norm{f_n(x)-f(x)}\le\eps/2<\eps$. Como el índice $N$ es independiente de $x$, la convergencia es uniforme. No necesitamos que cada $f_n$ sea acotada: solo controlamos las diferencias de los términos suficientemente avanzados.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 2]\label{ej:lectura-26-2}
 Sean $(f_n)$ y $(g_n)$ sucesiones de funciones escalares sobre $S$, acotadas en $B(S,\F)$, que convergen uniformemente. Demuestre que $(f_ng_n)$ converge uniformemente. Dé un contraejemplo al suprimir el control de acotación.
 \end{ejercicio}
-\begin{solucion}
-Escribamos $f_n\rightrightarrows f$ y $g_n\rightrightarrows g$. Existen $A,B<\infty$ con $\norm{f_n}_\infty\le A$ y $\norm{g_n}_\infty\le B$. Al pasar al límite en cada punto, $\norm f_\infty\le A$ y $\norm g_\infty\le B$. La identidad
-\[
- f_ng_n-fg=f_n(g_n-g)+(f_n-f)g
-\]
-proporciona
-\[
- \norm{f_ng_n-fg}_\infty
- \le A\norm{g_n-g}_\infty+B\norm{f_n-f}_\infty\longrightarrow0.
-\]
-Si las funciones no están acotadas, tomemos $S=\R$, $f_n(x)=x$ y $g_n(x)=1/n$. Ambas sucesiones convergen uniformemente, respectivamente a $f(x)=x$ y a cero. Sin embargo, $f_n(x)g_n(x)=x/n$ no converge uniformemente a cero porque su error no está acotado en $\R$ para ningún $n$. Es suficiente que falle el control de uno de los factores.
 
-Si todas las funciones pertenecen a $B(S,\F)$ y la convergencia es uniforme, la acotación de toda la sucesión se deduce automáticamente: una cola está a distancia menor que uno del límite, y los primeros términos son un conjunto finito de funciones acotadas. La hipótesis expresa, por tanto, el contexto de funciones acotadas en el cual el producto es continuo.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 3: enunciado corregido]\label{ej:lectura-26-3}
 Sean $V,W$ Banach, $f_n\rightrightarrows f$ y $\norm{f_n}_\infty\le\alpha$. La lectura propone que la continuidad de $g$ en la bola de radio $\alpha$ basta para que $g\circ f_n\rightrightarrows g\circ f$. Examine la afirmación y pruebe una versión válida.
 \end{ejercicio}
-\begin{solucion}
-La condición adecuada es que $g$ sea \emph{uniformemente continua} en un conjunto que contenga todas las imágenes $f_n(S)$ y $f(S)$. Con esa hipótesis, dado $\eps>0$ existe $\delta>0$ tal que
-$\norm{u-v}<\delta$ implica $\norm{g(u)-g(v)}<\eps$. La convergencia uniforme da un índice $N$ con $\norm{f_n(x)-f(x)}<\delta$ para todo $n\ge N$ y $x$. Al aplicar $g$ obtenemos el resultado. En particular, basta continuidad de $g$ sobre un conjunto compacto que contenga todas esas imágenes.
 
-Si la bola del enunciado es abierta, incluso puede ocurrir que $f$ tome valores en su frontera y $g\circ f$ no esté definido. La afirmación falla también cuando todas las composiciones sí están definidas: en $S=(0,1)$, $V=W=\R$, tomemos
-\[
- f(x)=x,\qquad f_n(x)=(1-1/n)x,\qquad g(t)=\frac1{1-t}\quad(-1<t<1).
-\]
-Tenemos $\norm{f_n-f}_\infty=1/n$ y $\norm{f_n}_\infty\le1$, pero para cada $n$ el valor $g(f(x))$ tiende a infinito cuando $x\uparrow1$, mientras $g(f_n(x))$ permanece acotado por $n$. La diferencia no está uniformemente acotada.
-
-Interpretar la bola como cerrada tampoco salva el enunciado en dimensión infinita. En $V=\ell^2$, sea $(e_k)$ la sucesión de vectores canónicos. En la bola cerrada unidad definimos
-\[
- g(u)=\sum_{k=1}^\infty k\max\{0,1-4\norm{u-e_k}_2\}.
-\]
-Esta función es continua. Para justificarlo, observamos que $\norm{e_j-e_k}_2=\sqrt2$ si $j\ne k$. Cada punto tiene una vecindad que intersecta a lo sumo una de las bolas $B(e_k,1/4)$: por ejemplo, si dos de esas bolas intersectaran $B(u,1/10)$, la distancia entre sus centros sería menor que $2(1/4+1/10)<\sqrt2$. Así, cerca de cada punto la suma es cero o coincide con una sola función continua. Definamos en $S=\N$
-\[
- f(k)=e_k,\qquad f_n(k)=(1-1/n)e_k.
-\]
-Las imágenes están en la bola cerrada unidad y $\norm{f_n-f}_\infty=1/n$. Para $n>4$, $g(f(k))=k$ y $g(f_n(k))=k(1-4/n)$. La diferencia $4k/n$ no es acotada en $k$. Esto demuestra por qué continuidad sobre una bola acotada no sustituye a continuidad uniforme.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 4]\label{ej:lectura-26-4}
 Sean $V$ Banach y $f_n:S\to V$. Suponga que $\norm{f_{n+1}(x)-f_n(x)}\le M_n$ para todo $x$, donde $\sum_nM_n<\infty$. Demuestre que $(f_n)$ converge uniformemente.
 \end{ejercicio}
-\begin{solucion}
-Para $q>p$, la identidad telescópica da
-\[
- f_q(x)-f_p(x)=\sum_{n=p}^{q-1}(f_{n+1}(x)-f_n(x)),
- \qquad \norm{f_q(x)-f_p(x)}\le\sum_{n=p}^{q-1}M_n.
-\]
-El último miembro es pequeño para todo $q>p$ cuando $p$ es grande, con independencia de $x$. El criterio de Cauchy del ejercicio~\ref{ej:lectura-26-1} concluye la prueba. Además, al pasar al límite $q\to\infty$ obtenemos la estimación útil $\norm{f-f_p}_\infty\le\sum_{n=p}^\infty M_n$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 26, ejercicio 5]\label{ej:lectura-26-5}
 Estudie la relación entre convergencia absoluta y uniforme:
@@ -429,44 +386,12 @@ Estudie la relación entre convergencia absoluta y uniforme:
 \item Demuestre que $\sum_{n=1}^\infty(-1)^n(x^2+n)/n^2$ converge uniformemente en $[0,1]$, pero no absolutamente en ningún punto.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item En cada punto $x>0$ hay a lo sumo dos intervalos $[1/(n+1),1/n]$ que contienen a $x$. Si hay dos, $x=1/m$ y $\sin(\pi/x)=\sin(m\pi)=0$. Por tanto, en cada punto hay a lo sumo un término no nulo, y $\sum_n|u_n(x)|<\infty$. En cero todos los términos son cero. La suma puntual es $s(x)=\sin(\pi/x)$ para $x>0$ y $s(0)=0$.
 
-Para cada $n$, el punto $x_n=1/(n+1/2)$ está en el interior del intervalo que soporta $u_n$ y satisface $|u_n(x_n)|=1$. Así $\norm{u_n}_\infty=1$. Una serie uniformemente convergente debe tener términos que tiendan uniformemente a cero, pues $u_n=s_n-s_{n-1}$; esta condición falla. Por tanto, la serie no converge uniformemente. La propia sucesión $(u_n)$ converge puntualmente a cero y tampoco converge uniformemente. Esta distinción aclara el uso de «convergencia absoluta de la sucesión» en la lectura: la convergencia absoluta corresponde propiamente a una \emph{serie}.
-\item Descomponemos la serie como
-\[
- x^2\sum_{n=1}^\infty\frac{(-1)^n}{n^2}
- +\sum_{n=1}^\infty\frac{(-1)^n}{n}.
-\]
-La primera converge uniformemente por el criterio M, pues $|x^2/n^2|\le1/n^2$. La segunda es una serie numérica convergente por el criterio de Leibniz y sus sumas parciales, vistas como funciones constantes de $x$, convergen uniformemente. Para verlo directamente, el error de la segunda serie es a lo sumo $1/(N+1)$, independientemente de $x$. La suma de dos errores que tienden uniformemente a cero también tiende uniformemente a cero. Sin embargo,
-\[
- \sum_{n=1}^\infty\left|(-1)^n\frac{x^2+n}{n^2}\right|
- =\sum_{n=1}^\infty\left(\frac{x^2}{n^2}+\frac1n\right)=\infty
-\]
-para todo $x\in[0,1]$.
-\end{enumerate}
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 6]\label{ej:lectura-26-6}
 Si $f_n:X\to V$ son continuas y convergen uniformemente a $f$, demuestre que $f_n(x_n)\to f(x)$ siempre que $x_n\to x$. ¿Vale el recíproco?
 \end{ejercicio}
-\begin{solucion}
-El límite uniforme $f$ es continuo por el teorema~\ref{ch12:limite-continuo}, cuyo argumento de tres términos también vale sin acotación global. Entonces
-\[
- \norm{f_n(x_n)-f(x)}
- \le\norm{f_n(x_n)-f(x_n)}+\norm{f(x_n)-f(x)}\longrightarrow0.
-\]
-El primer término está controlado por la convergencia uniforme y el segundo por continuidad de $f$.
 
-El recíproco falla en un espacio no compacto. En $X=\R$ tomemos
-\[
- f_n(t)=\max\{0,1-|t-n|\},\qquad f(t)=0.
-\]
-Si $x_n\to x$, la sucesión $(x_n)$ es acotada. Para $n$ suficientemente grande, $|x_n-n|>1$, y por ello $f_n(x_n)=0$. Se cumple la propiedad pedida, pero $\norm{f_n}_\infty=1$ para todo $n$.
-
-En un espacio métrico compacto sí vale el recíproco. Si no hubiera convergencia uniforme, existirían $\eps>0$, índices estrictamente crecientes $n_j$ y puntos $y_j$ con $\norm{f_{n_j}(y_j)-f(y_j)}\ge\eps$. La propiedad para las sucesiones constantes implica primero $f_n(y)\to f(y)$ en cada punto. Además, implica continuidad de $f$: si $z_j\to z$ y $f(z_j)\not\to f(z)$, elegimos índices crecientes $m_j$ tales que $\norm{f_{m_j}(z_j)-f(z_j)}<1/j$, y definimos $x_{m_j}=z_j$, $x_n=z$ en los demás índices. Entonces $x_n\to z$ y la propiedad obliga a $f_{m_j}(z_j)\to f(z)$, contradicción. Por compacidad podemos extraer $y_{j_k}\to y$. Definimos $x_{n_{j_k}}=y_{j_k}$ y $x_n=y$ en los demás índices. La propiedad da $f_{n_{j_k}}(y_{j_k})\to f(y)$; la continuidad recién probada da $f(y_{j_k})\to f(y)$. Contradice la cota inferior $\eps$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 7: Dirichlet uniforme]\label{ej:lectura-26-7}
 Sean $V$ Banach, $u_n:S\to V$ y $v_n:S\to\R$. Suponga que, para algún $M<\infty$,
@@ -475,54 +400,12 @@ Sean $V$ Banach, $u_n:S\to V$ y $v_n:S\to\R$. Suponga que, para algún $M<\infty
 \]
 que $v_n\rightrightarrows0$ y que $v_{n+1}(x)\le v_n(x)$ para todo $x$. Demuestre que $\sum_nv_nu_n$ converge uniformemente.
 \end{ejercicio}
-\begin{solucion}
-La monotonía y el límite cero implican $v_n(x)\ge0$. Es importante que las sumas parciales de $u_n$ estén acotadas por un \emph{mismo} $M$, independiente tanto de $n$ como de $x$; la acotación puntual no basta para esta prueba.
 
-Fijemos $p\le q$ y pongamos $A_k(x)=\sum_{j=p}^ku_j(x)$, con $A_{p-1}=0$. Como $A_k$ es diferencia de dos sumas parciales, $\norm{A_k(x)}\le2M$. La identidad de sumación por partes es
-\[
- \sum_{k=p}^qv_k u_k
- =v_qA_q+\sum_{k=p}^{q-1}(v_k-v_{k+1})A_k.
-\]
-Para verificarla, sustituimos $u_k=A_k-A_{k-1}$ y agrupamos el coeficiente de cada $A_k$: para $p\le k<q$ es $v_k-v_{k+1}$ y para $k=q$ es $v_q$. Como todos esos coeficientes son no negativos,
-\[
- \left\|\sum_{k=p}^qv_k(x)u_k(x)\right\|
- \le2M\left(v_q(x)+\sum_{k=p}^{q-1}(v_k(x)-v_{k+1}(x))\right)
- =2Mv_p(x).
-\]
-La convergencia uniforme $v_p\to0$ hace pequeña esta cota para todo $q\ge p$ y todo $x$. El criterio de Cauchy uniforme concluye la prueba. Cuando el espacio de escalares de $V$ es $\C$, los multiplicadores $v_n$ siguen siendo reales: el orden $v_{n+1}\le v_n$ no es un orden de números complejos arbitrarios.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 26, ejercicio 8: condensación uniforme de Cauchy]\label{ej:lectura-26-8}
 Sea $(u_n)$ una sucesión de funciones reales sobre $S$, decreciente respecto de $n$ en cada punto. Demuestre que $\sum_{n=1}^\infty u_n$ y $\sum_{k=1}^\infty 2^ku_{2^k}$ convergen uniformemente o dejan de hacerlo simultáneamente.
 \end{ejercicio}
-\begin{solucion}
-Primero atendemos al signo, que el enunciado no especifica. Si para algún $x$ y $n_0$ se tiene $u_{n_0}(x)<0$, la monotonía implica $u_n(x)\le u_{n_0}(x)<0$ para todo $n\ge n_0$. La primera serie diverge en ese punto y los términos $2^ku_{2^k}(x)$ de la segunda ni siquiera tienden a cero. Ninguna puede converger uniformemente. Por tanto, solo queda considerar el caso $u_n(x)\ge0$ para todos $n,x$.
 
-Para cada $k\ge0$, la monotonía produce las desigualdades de bloques
-\[
- 2^ku_{2^{k+1}}(x)
- \le\sum_{n=2^k}^{2^{k+1}-1}u_n(x)
- \le2^ku_{2^k}(x).
-\]
-Si la serie condensada converge uniformemente, dado $\eps>0$ elegimos $K$ tal que toda suma de sus términos con índices al menos $K$ sea menor que $\eps$, uniformemente en $x$. Para $q\ge p\ge2^K$, sea $L$ tal que $q<2^{L+1}$. Por no negatividad,
-\[
- 0\le\sum_{n=p}^qu_n(x)
- \le\sum_{k=K}^L\sum_{n=2^k}^{2^{k+1}-1}u_n(x)
- \le\sum_{k=K}^L2^ku_{2^k}(x)<\eps.
-\]
-Así la primera serie satisface el criterio de Cauchy uniforme.
-
-Recíprocamente, para $k\ge1$ cada término del bloque $2^{k-1}\le n<2^k$ es al menos $u_{2^k}$. Por ello
-\[
- 2^ku_{2^k}(x)\le2\sum_{n=2^{k-1}}^{2^k-1}u_n(x),
-\]
-y, sumando desde $k=K$ hasta $L$,
-\[
- 0\le\sum_{k=K}^L2^ku_{2^k}(x)
- \le2\sum_{n=2^{K-1}}^{2^L-1}u_n(x).
-\]
-Si la primera serie converge uniformemente, la última cota puede hacerse menor que $\eps$ para todo $L\ge K$ y todo $x$. La serie condensada es entonces uniformemente de Cauchy. Omitir o incluir su término $k=0$ no altera la convergencia.
-\end{solucion}
 
 \section{El problema de Cauchy como ecuación entre funciones}\label{ampl:picard}
 Hasta ahora hemos construido límites de funciones y comprobado qué propiedades conservan. Podemos emplear esos resultados para construir una función desconocida a partir de una ecuación. En un problema de Cauchy se prescribe una velocidad que depende del tiempo y del estado, junto con el estado inicial:
@@ -643,55 +526,12 @@ Los cinco ejercicios de esta sección son desarrollos propios de esta edición a
 \begin{ejercicio}[Ampliación: iteraciones que revelan la solución]\label{ej:ampl-picard-1}
 Resuelva $u'=u+t$, $u(0)=1$, en $[0,2]$ mediante Picard. Partiendo de $u_0=1$, encuentre una fórmula para $u_n$ y una cota uniforme explícita del error. Explique por qué la estimación directa del operador no basta para aplicar Banach en la norma uniforme.
 \end{ejercicio}
-\begin{solucion}
-La función $f(t,x)=x+t$ es continua y Lipschitz en $x$ con $L=1$. Con $T=2$ la estimación directa da $LT=2$. Más aún, para dos funciones cuya diferencia es la constante $1$, la diferencia de sus imágenes es $t$, de norma $2$; el operador no es contracción en esa norma.
 
-La recurrencia es $u_{n+1}(t)=1+\int_0^t(u_n(s)+s)\,ds$. Afirmamos que, para $n\ge0$,
-\[
- u_n(t)=2\sum_{k=0}^n\frac{t^k}{k!}-1-t+\frac{t^{n+1}}{(n+1)!}.
-\]
-Para $n=0$ el lado derecho es $1$. Si la fórmula vale para $n$, sumar $s$ cancela el término $-s$, e integrar da
-\[
- u_{n+1}(t)=1+2\sum_{k=0}^n\frac{t^{k+1}}{(k+1)!}-t
- +\frac{t^{n+2}}{(n+2)!},
-\]
-que es la misma fórmula con $n+1$. La serie exponencial converge uniformemente en $[0,2]$ por el criterio M, y $t^{n+1}/(n+1)!\to0$ uniformemente. Por tanto
-\[
- u(t)=2e^t-1-t.
-\]
-La derivación directa verifica $u'=2e^t-1=u+t$ y $u(0)=1$. Finalmente,
-\[
- |u(t)-u_n(t)|
- \le2\sum_{k=n+1}^{\infty}\frac{2^k}{k!}
- \le2e^2\frac{2^{n+1}}{(n+1)!}.
-\]
-En la última desigualdad se usa $(n+1+j)!\ge(n+1)!j!$. Es una cota válida para todo $t$; no presupone que ya conozcamos el punto donde ocurre el mayor error.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: una ecuación no lineal en un intervalo largo]\label{ej:ampl-picard-2}
 Para $u'=\sin u+t$, $u(0)=0$, en $[0,2]$, verifique las hipótesis de Picard, calcule $u_1,u_2$ desde $u_0=0$ y obtenga cotas del error mediante la norma $\norm v_1=\sup_{0\le t\le2}e^{-t}|v(t)|$ y mediante el factorial.
 \end{ejercicio}
-\begin{solucion}
-El valor medio da $|\sin x-\sin y|\le|x-y|$, de modo que $L=1$. La función es continua en todo el cilindro y el teorema asegura una solución única. Las dos primeras aproximaciones son
-\[
- u_1(t)=t^2/2,\qquad
- u_2(t)=t^2/2+\int_0^t\sin(s^2/2)\,ds.
-\]
-No necesitamos una primitiva elemental de la última integral: define una función continua y puede aproximarse mediante integración.
 
-Para $\beta=1$, la constante de contracción es $q=1-e^{-2}$. Como la derivada de $e^{-t}t^2/2$ es $e^{-t}t(2-t)/2\ge0$ en $[0,2]$,
-$\norm{u_1-u_0}_1=2e^{-2}$. La cota de Banach y la equivalencia de normas dan
-\[
- \norm{u-u_n}_\infty
- \le e^2\frac{q^n}{1-q}\norm{u_1-u_0}_1
- =2e^2(1-e^{-2})^n.
-\]
-Por otra parte, $M=\max_{[0,2]}|f(t,0)|=2$, y la proposición~\ref{ampl:picard-error} da
-\[
- \norm{u-u_n}_\infty\le4e^2\frac{2^n}{(n+1)!}.
-\]
-Ambas cotas garantizan convergencia. La segunda utiliza la estructura integral repetida y no sólo una constante de contracción; su factorial ofrece un control más fino para índices grandes.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: estabilidad frente a datos perturbados]\label{ej:ampl-picard-3}
 Sean $u,v$ las soluciones en $I$ de $u'=f(t,u)$, $v'=g(t,v)$ con $u(t_0)=\xi$, $v(t_0)=\eta$. Suponga las hipótesis de Picard para ambas ecuaciones, que $f$ tiene constante Lipschitz $L$, y que $\norm{f(t,x)-g(t,x)}_\infty\le\delta$ para todo $t,x$. Demuestre, con $r=|t-t_0|$, que para $L>0$,
@@ -702,43 +542,12 @@ Sean $u,v$ las soluciones en $I$ de $u'=f(t,u)$, $v'=g(t,v)$ con $u(t_0)=\xi$, $
 \]
 Obtenga la versión para $L=0$ y deduzca dependencia continua respecto del dato inicial.
 \end{ejercicio}
-\begin{solucion}
-Trabajamos primero a la derecha de $t_0$. Ponga $h(r)=\norm{u(t_0+r)-v(t_0+r)}_\infty$ y $A=\norm{\xi-\eta}_\infty$. Restar las ecuaciones integrales y añadir y restar $f(t,v(t))$ produce
-\[
- h(r)\le A+\delta r+L\int_0^r h(s)\,ds=:H(r).
-\]
-La función $h$ es continua, luego $H$ es derivable y
-$H'(r)=\delta+Lh(r)\le\delta+LH(r)$. Multiplicar por $e^{-Lr}$ da
-\[
- (e^{-Lr}H(r))'\le\delta e^{-Lr}.
-\]
-Integrando entre $0$ y $r$, con $H(0)=A$, obtenemos
-$H(r)\le Ae^{Lr}+\delta(e^{Lr}-1)/L$ si $L>0$. Como $h\le H$, esta es la cota buscada. A la izquierda de $t_0$, usamos $h(r)=\norm{u(t_0-r)-v(t_0-r)}_\infty$ y la orientación de la integral desaparece al tomar normas; se obtiene la misma desigualdad.
 
-Para $L=0$, la desigualdad integral inicial ya dice $h(r)\le A+\delta r$. Si $f=g$, entonces $\delta=0$, y en todo el intervalo
-\[
- \norm{u-v}_\infty\le e^{LT}\norm{\xi-\eta}_\infty.
-\]
-Por ello, datos iniciales próximos producen soluciones uniformemente próximas. La estimación también cuantifica el efecto de modificar la ecuación, siempre que la perturbación esté uniformemente controlada.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: versión local y explosión de una solución]\label{ej:ampl-picard-4}
 Sea $f$ continua en $[t_0-a,t_0+a]\times\{x:\norm{x-\xi}_\infty\le b\}$, con $a,b>0$, acotada allí por $M$ y Lipschitz en $x$ con constante $L$. Si $0<h\le a$, $Mh\le b$ y $Lh<1$, pruebe existencia y unicidad en $[t_0-h,t_0+h]$ entre las soluciones que permanecen en esa bola. Aplique el resultado a $u'=u^2$, $u(0)=1$, y explique por qué no puede concluirse existencia en todo $[0,2]$.
 \end{ejercicio}
-\begin{solucion}
-Sea $J=[t_0-h,t_0+h]$ y
-\[
- E=\{u\in C(J,\R^d):\norm{u-\xi}_\infty\le b\}.
-\]
-Es no vacío porque contiene la función constante $\xi$, y es cerrado en el Banach $C(J,\R^d)$, por continuidad de la norma. Por tanto es completo. El operador integral $S$ está definido en $E$, pues todas las parejas $(t,u(t))$ permanecen en el cilindro. Además
-\[
- \norm{Su-\xi}_\infty\le Mh\le b,\qquad
- \norm{Su-Sv}_\infty\le Lh\norm{u-v}_\infty.
-\]
-Así $S:E\to E$ es contracción. Su único punto fijo proporciona la solución y cualquier otra solución que permanezca en la bola sería otro punto fijo de $S$.
 
-Para $f(t,x)=x^2$, tome $a=b=1$, $\xi=1$. En $0\le x\le2$ tenemos $|f|\le4$ y $|x^2-y^2|\le4|x-y|$, de modo que $M=L=4$. Por ejemplo, $h=1/8$ cumple todas las condiciones. La función $u(t)=1/(1-t)$ resuelve la ecuación cerca de cero. De hecho, cualquier solución en un intervalo a la derecha de cero es positiva: su derivada es $u^2\ge0$ y $u(0)=1$. Entonces $(1/u)'=-1$, y por integración $1/u(t)=1-t$. Una solución en $[0,2]$ daría, en $t=1$, $1/u(1)=0$, imposible para un valor real finito positivo. La condición Lipschitz global del teorema~\ref{ampl:picard-teorema} falla: la derivada $2x$ no está acotada en $\R$.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: continuidad sin unicidad]\label{ej:ampl-picard-5}
 Para el problema $u'=2\sqrt{|u|}$, $u(0)=0$, en $[0,1]$, pruebe que para cada $c\in[0,1]$,
@@ -747,15 +556,7 @@ Para el problema $u'=2\sqrt{|u|}$, $u(0)=0$, en $[0,1]$, pruebe que para cada $c
 \]
 es una solución. Identifique exactamente qué hipótesis de unicidad falta, incluso si se restringe el estado a un intervalo compacto alrededor de cero.
 \end{ejercicio}
-\begin{solucion}
-Las dos fórmulas coinciden en $t=c$. Sus derivadas son $0$ a la izquierda y $2(t-c)$ a la derecha, que también coinciden en $c$ y son continuas. Así $u_c$ es $C^1$, satisface el dato inicial y cumple $u_c'=2\sqrt{|u_c|}$ en ambos tramos y en su unión. Distintos tiempos $c<d$ producen funciones distintas: para $c<t<d$ se tiene $u_c(t)>0=u_d(t)$. Incluyendo $c=1$ obtenemos también la solución idénticamente cero.
 
-La función $x\mapsto2\sqrt{|x|}$ es continua, pero no es Lipschitz en ninguna vecindad de cero, pues para $x>0$,
-\[
- \frac{|2\sqrt{x}-0|}{|x-0|}=\frac2{\sqrt{x}}\longrightarrow\infty.
-\]
-Acotar el estado no repara esa falta local. El ejemplo muestra que continuidad del campo y existencia de soluciones no garantizan unicidad; en Picard el control uniforme de las diferencias respecto del estado tiene una función independiente de la continuidad.
-\end{solucion}
 
 \section{Cómo elegir una herramienta de convergencia}
 La convergencia uniforme conserva la continuidad y permite pasar integrales al límite en intervalos compactos. Para derivar, se necesita controlar las derivadas y fijar un valor. El criterio de Cauchy construye el límite sin conocer su fórmula; Dini añade orden y compacidad a la convergencia puntual. El criterio M usa una cota sumable, mientras Dirichlet aprovecha cancelaciones. Estas diferencias determinan qué hipótesis deben comprobarse. Los capítulos~\ref{cap:nuevo12} y~\ref{cap:nuevo13} aplicarán este control a la compacidad, la extensión y la aproximación de funciones.

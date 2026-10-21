@@ -95,120 +95,65 @@ El teorema de Fubini complejo de la lectura 12 se demostrará junto con su versi
 \begin{ejercicio}[Lectura 9, ejercicio 1]\label{ej:v2-l09-1}
 Pruebe: (i) linealidad de la integral sobre $A$; (ii) integrabilidad sobre $A\cup B$ y $A\cap B$, e inclusión--exclusión, si $f$ es integrable sobre $A$ y $B$; (iii) monotonía de la integral sobre $A$.
 \end{ejercicio}
-\begin{solucion}
-(i) Como $(af+bg)\ind A=a(f\ind A)+b(g\ind A)$, la linealidad en $X$ da $\int_A(af+bg)=a\int_Af+b\int_Ag$. Se corrige $af+fg$ por $af+bg$ en la fórmula original.
 
-(ii) Se tiene $|f|\ind{A\cup B}\le|f|\ind A+|f|\ind B$ y $|f|\ind{A\cap B}\le|f|\ind A$, luego ambas integrales absolutas son finitas. La identidad puntual $\ind{A\cup B}+\ind{A\cap B}=\ind A+\ind B$, multiplicada por $f$ e integrada, da $\int_{A\cup B}f=\int_Af+\int_Bf-\int_{A\cap B}f$.
-
-(iii) Si $f\le g$ sobre $A$ y ambas integrales están definidas, entonces $f\ind A\le g\ind A$. La monotonía en $X$ concluye; en particular se aplica cuando ambas son integrables sobre $A$.
-\end{solucion}
 \begin{ejercicio}[Lectura 9, ejercicio 2]\label{ej:v2-l09-2}
 Construya una función no medible cuyo valor absoluto sea integrable.
 \end{ejercicio}
-\begin{solucion}
-En $X=\{a,b\}$ con $\Acal=\{\varnothing,X\}$ y $\mu(X)=1$, defina $f(a)=1$, $f(b)=-1$. No es medible porque $\{f>0\}=\{a\}\notin\Acal$. Sin embargo $|f|=1$ es medible y su integral vale $1$. La frase ``$|f|$ es integrable'' no incluye, por sí misma, la medibilidad de $f$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 3]\label{ej:v2-l09-3}
 Demuestre la desigualdad de Markov y deduzca: (i) una función integrable es finita casi en todas partes; (ii) $\int|f|=0$ implica $f=0$ casi en todas partes; (iii) si $f$ es real integrable y $\int_Af\ge0$ para todo $A$ medible, entonces $f\ge0$ casi en todas partes.
 \end{ejercicio}
-\begin{solucion}
-Para $f\ge0$ y $A_\eps=\{f\ge\eps\}$, integrar $\eps\ind{A_\eps}\le f\ind{A_\eps}\le f$ da las dos desigualdades originales. (i) Aplique esto a $|f|$: para cada $M>0$, $\mu\{|f|=\infty\}\le M^{-1}\int|f|$, y haga $M\to\infty$. (ii) Cada $\{|f|\ge1/n\}$ tiene medida cero; su unión es $\{f\ne0\}$. (iii) Tome $A=\{f<0\}$. Allí $f=-f^-$, de modo que $0\le\int_Af=-\int f^-$; por no negatividad $\int f^-=0$. El inciso anterior da $f^-=0$ casi en todas partes.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 4]\label{ej:v2-l09-4}
 Dé dos funciones integrables cuyo producto no sea integrable.
 \end{ejercicio}
-\begin{solucion}
-En $(0,1)$ con Lebesgue tome $f(x)=g(x)=x^{-2/3}$. Su integral vale $3$, pero $fg=x^{-4/3}$ tiene integral infinita, como muestran las integrales sobre $[\delta,1]$ al hacer $\delta\downarrow0$. La sugerencia original de usar conteo en $\N$ no permite ese ejemplo: si $a,b\in\ell^1$, entonces $\sup_n|a_n|\le\|a\|_1$ y $\sum_n|a_nb_n|\le\|a\|_1\|b\|_1<\infty$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 5]\label{ej:v2-l09-5}
 Si $f$ es integrable, $g$ es medible y $f\le g$ casi en todas partes, pruebe que la integral extendida de $g$ existe y $\int f\le\int g$.
 \end{ejercicio}
-\begin{solucion}
-Como $g^-\le f^-$ casi en todas partes, $\int g^-<\infty$. Por tanto $\int g=\int g^+-\int g^-$ está definida en $(-\infty,\infty]$. Si $\int g^+=\infty$, la desigualdad es inmediata. Si es finita, $g$ es integrable y la monotonía ya probada se aplica. No puede asegurarse que $\int g$ sea un número real finito: $f=0$, $g=1$ en $\R$ es un contraejemplo. La conclusión debe interpretarse en los reales extendidos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 6]\label{ej:v2-l09-6}\index{Riemann y Lebesgue, comparacion@Riemann y Lebesgue, comparación}
 Si $f:[a,b]\to\R$ es Riemann-integrable, pruebe que es Lebesgue-integrable y ambas integrales coinciden.
 \end{ejercicio}
-\begin{solucion}
-La función está acotada, digamos $|f|\le M$. Elija particiones con diferencia entre sumas superior e inferior menor que $2^{-n}$, y reemplácelas por sus refinamientos comunes acumulados. Las funciones escalonadas inferiores $s_n$ y superiores $t_n$, definidas usando ínfimos y supremos en cada subintervalo, pueden asignarse arbitrariamente en los extremos de las particiones: ese conjunto es numerable y nulo. Fuera de él, $s_n\uparrow s$, $t_n\downarrow t$, $s\le f\le t$, y $\int(t_n-s_n)<2^{-n}$. En particular, Fatou da $\int(t-s)=0$, así que $s=t$ casi en todas partes.
 
-Las funciones $s,t$ son medibles como límites de escalonadas y $f=s$ fuera de un conjunto nulo. La completitud de Lebesgue garantiza que $f$ es medible: sus niveles difieren de los de $s$ solamente en subconjuntos de ese nulo. Además $|f|\le M$ sobre un intervalo finito, luego es integrable. Finalmente $\int s_n\le\int f\le\int t_n$, y las integrales de esas escalonadas son las sumas de Darboux correspondientes. Ambas tienden a la integral de Riemann, lo que prueba la igualdad. Esta prueba no presupone medibilidad de una función Riemann-integrable.
-\end{solucion}
 
 \section{Ejercicios sobre intercambio de límites e integrales}
 \begin{ejercicio}[Lectura 10, ejercicio 1: Beppo Levi]\label{ej:v2-l10-1}\index{Beppo Levi, teorema de}
 Si $f_n\ge0$ son medibles, pruebe $\int\sum_nf_n=\sum_n\int f_n$.
 \end{ejercicio}
-\begin{solucion}
-Las sumas parciales $S_m=\sum_{n\le m}f_n$ son medibles y crecen a la serie, que puede valer infinito. Convergencia monótona y aditividad finita dan $\int\sum_nf_n=\lim_m\int S_m=\lim_m\sum_{n\le m}\int f_n=\sum_n\int f_n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 2]\label{ej:v2-l10-2}
 Sea $A\subseteq\R$ y una familia $(f_t)_{t\in A}$ de funciones integrables tal que $f_t(x)\to f_a(x)$ cuando $t\to a$ en $A$, para casi todo $x$ y cada $a\in A$. Si $|f_t|\le g$ casi en todas partes para una sola $g\in L^1$, pruebe la continuidad de $t\mapsto\int f_t$.
 \end{ejercicio}
-\begin{solucion}
-Fije $a$ y una sucesión $t_n\in A$ que converge a $a$. La hipótesis puntual da $f_{t_n}\to f_a$ casi en todas partes. La unión de los conjuntos excepcionales de la dominación para esos índices es nula; fuera de ella toda la sucesión está dominada por $g$. Convergencia dominada da $\int f_{t_n}\to\int f_a$. Como esto vale para toda sucesión $t_n\to a$, el criterio secuencial de continuidad en el subespacio métrico $A$ concluye. No se toma una unión no numerable de excepciones.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 3: transformada de Laplace]\label{ej:v2-l10-3}\index{Laplace, transformada de}
 Para $f$ Lebesgue-medible en $[0,\infty)$, defina $Lf(s)=\int_0^\infty e^{-sx}f(x)\,dx$ cuando la función es integrable. Pruebe: (i) su dominio es estable hacia la derecha; (ii) $Lf$ es diferenciable en el interior del dominio; (iii) si está definida en todo $\R$, $Lf(s)\to0$ cuando $s\to\infty$; (iv) aditividad.
 \end{ejercicio}
-\begin{solucion}
-(i) Si $t\ge s$ y $x\ge0$, $e^{-tx}|f(x)|\le e^{-sx}|f(x)|$. La integrabilidad para $s$ implica la de $t$.
 
-(ii) Fije $s$ interior y elija $\delta>0$ con $s-2\delta$ en el dominio. Para $|h|<\delta$, el teorema del valor medio aplicado al exponencial da
-\[\left|\frac{e^{-(s+h)x}-e^{-sx}}h f(x)\right|\le x e^{-(s-\delta)x}|f(x)|
-\le C_\delta e^{-(s-2\delta)x}|f(x)|,\]
-donde $C_\delta=\sup_{x\ge0}xe^{-\delta x}<\infty$. El lado derecho es integrable. Los cocientes tienden puntualmente a $-xe^{-sx}f(x)$; convergencia dominada, aplicada a toda sucesión $h\to0$, prueba
-\[(Lf)'(s)=-\int_0^\infty xe^{-sx}f(x)\,dx.\]
-
-(iii) En realidad basta que exista algún $s_0$ del dominio. Para $s\ge s_0$, el integrando está dominado por $e^{-s_0x}|f(x)|$, y tiende a cero para $x>0$. El punto $0$ es nulo. Convergencia dominada y el criterio secuencial para el límite en infinito dan $Lf(s)\to0$.
-
-(iv) Si $s$ pertenece a los dominios de $Lf$ y $Lg$, también pertenece al de $L(f+g)$ y la linealidad da $L(f+g)(s)=Lf(s)+Lg(s)$. Esta igualdad se afirma en el dominio común; el dominio de la suma puede ser mayor por cancelación, como muestra $g=-f$.
-\end{solucion}
 \begin{ejercicio}[Lectura 10, ejercicio 4]\label{ej:v2-l10-4}
 Si $|f_n|\le g$ casi en todas partes con $g$ integrable, pruebe integrabilidad de $\limsup f_n$ y $\int\limsup f_n\ge\limsup\int f_n$.
 \end{ejercicio}
-\begin{solucion}
-Fuera de un nulo común, $-g\le\limsup f_n\le g$, por lo que el límite superior es integrable. Fatou aplicado a $g-f_n\ge0$ da
-\[\int g-\int\limsup f_n=\int\liminf(g-f_n)
-\le\liminf\left(\int g-\int f_n\right)=\int g-\limsup\int f_n.\]
-Cancelar la cantidad finita $\int g$ y cambiar de signo produce la desigualdad pedida.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 5]\label{ej:v2-l10-5}
 Para $f_n=-n^{-1}\ind{[0,n]}$ en $\R$, pruebe convergencia uniforme a cero y fallo de la desigualdad de Fatou sin no negatividad.
 \end{ejercicio}
-\begin{solucion}
-Se tiene $\sup_x|f_n(x)|=1/n\to0$, mientras $\int f_n=-1$ para todo $n$. Así $\liminf_n\int f_n=-1<0=\int\liminf_nf_n$. No hay contradicción con Fatou: sus funciones deben ser no negativas, o admitir una cota inferior integrable como en el siguiente ejercicio.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 6]\label{ej:v2-l10-6}
 Si $f_n\ge-h$ con $h\ge0$ integrable, pruebe $\int\liminf f_n\le\liminf\int f_n$. Explique por qué no se aplica al ejercicio anterior.
 \end{ejercicio}
-\begin{solucion}
-Aplique Fatou a $f_n+h\ge0$. Las partes negativas de todos los $f_n$ y del límite inferior están acotadas por $h$, así que sus integrales extendidas están definidas. Restar $\int h<\infty$ de ambos lados da el resultado. En el ejemplo anterior, una cota $h$ tendría que satisfacer, para $x\ge1$, $h(x)\ge1/\lceil x\rceil$ al tomar $n=\lceil x\rceil$. Su integral sería al menos la serie armónica de las contribuciones sobre $(k-1,k]$, y por ello infinita. No existe tal cota inferior integrable.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 7]\label{ej:v2-l10-7}
 Extienda convergencia monótona a una sucesión creciente cuyo primer término es integrable, aunque no sea no negativo.
 \end{ejercicio}
-\begin{solucion}
-Anule las funciones en un nulo común si las condiciones son casi en todas partes. Entonces $g_n=f_n-f_1\ge0$ crece a $f-f_1$. Convergencia monótona da $\int(f-f_1)=\lim_n\int(f_n-f_1)$. Como $f_1$ es integrable, las partes negativas de $f_n,f$ están dominadas por $f_1^-$ y sus integrales extendidas están definidas. Sumar la cantidad finita $\int f_1$ concluye $\int f=\lim_n\int f_n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 10, ejercicio 8: núcleos]\label{ej:v2-l10-8}\index{nucleo de medidas@núcleo de medidas}
 Sea $K:X\times\Bcal\to[0,\infty]$ tal que $K(x,\cdot)$ es una medida en $(Y,\Bcal)$ y $K(\cdot,B)$ es medible para cada $B\in\Bcal$. Si $\mu$ es una medida en $X$ y $f:Y\to[0,\infty]$ es medible, pruebe: (i) $\nu(B)=\int_XK(x,B)\,d\mu(x)$ es una medida; (ii) $x\mapsto\int_Yf(y)K(x,dy)$ es medible; (iii) su integral en $X$ es $\int_Yf\,d\nu$.
 \end{ejercicio}
-\begin{solucion}
-El segundo argumento de $K$ es un \emph{conjunto medible}; por tanto su dominio es $X\times\Bcal$, no $X\times Y$ como aparece en el original.
 
-(i) $K(x,\varnothing)=0$ da $\nu(\varnothing)=0$. Para $B_j$ disjuntos, $K(x,\bigcup_jB_j)=\sum_jK(x,B_j)$. Beppo Levi permite integrar esta serie no negativa y da $\nu(\bigcup_jB_j)=\sum_j\nu(B_j)$.
-
-(ii) Si $f=\ind B$, la integral es $K(x,B)$, medible por hipótesis. Si $f=\sum_ja_j\ind{B_j}$ es simple no negativa, resulta la suma finita $\sum_ja_jK(x,B_j)$, también medible. Para $f$ general elija simples $s_n\uparrow f$. Convergencia monótona para cada medida $K(x,\cdot)$ prueba que sus integrales crecen a $\int f\,K(x,dy)$; el límite de funciones medibles es medible.
-
-(iii) Para indicadores es exactamente la definición de $\nu$. La linealidad no negativa da la igualdad para simples. Aplique convergencia monótona primero en $Y$ y luego en $X$ a las mismas $s_n$. Ambos lados convergen a las integrales requeridas y se conserva la igualdad.
-\end{solucion}
 \begin{ejercicio}[Lectura 10, ejercicio 9]\label{ej:v2-l10-9}
 En el ejercicio anterior suponga $\mu(X)<\infty$, $M=\sup_xK(x,Y)<\infty$ y $f$ medible acotada real. Pruebe medibilidad y acotación de $x\mapsto\int_Yf\,K(x,dy)$ y la misma identidad de integrales.
 \end{ejercicio}
-\begin{solucion}
-Si $|f|\le C$, para cada $x$ se tiene $\int_Y|f|\,K(x,dy)\le CM$. Por tanto todas las integrales interiores existen y están acotadas por $CM$. Las integrales de $f^+$ y $f^-$ son medibles por el ejercicio \ref{ej:v2-l10-8}; su diferencia es medible y coincide con la integral de $f$. Además $\nu(Y)=\int_XK(x,Y)\,d\mu\le M\mu(X)<\infty$, así que $f$ es $\nu$-integrable. Aplique la identidad del ejercicio anterior por separado a $f^+,f^-$ y reste. Todas las integrales son finitas, por lo que esta resta es legítima.
-\end{solucion}
+
 
 \section{Una aplicación: derivación bajo la integral}
 \begin{teorema}\label{teo:v2-derivar-integral}\index{derivacion bajo el signo integral@derivación bajo el signo integral}

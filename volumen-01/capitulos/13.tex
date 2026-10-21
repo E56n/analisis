@@ -93,14 +93,7 @@ ambas sucesiones tienden a cero y $g(x_n)=1$, $g(y_n)=-1$. Una extensión contin
 \begin{ejercicio}[Lectura 12, ejercicio 1]\label{ej:lectura-12-1}
 Sin usar el lema de Urysohn, separe dos cerrados disjuntos $A,B\subset X$ por abiertos disjuntos que los contengan.
 \end{ejercicio}
-\begin{solucion}
-Si alguno es vacío, elegimos para él el abierto vacío y para el otro el abierto $X$. Si ambos son no vacíos, tomamos
-\[
- U=\{x:\dist(x,A)<\tfrac12\dist(x,B)\},\qquad
- W=\{x:\dist(x,B)<\tfrac12\dist(x,A)\}.
-\]
-Son abiertos porque son conjuntos de positividad o negatividad estricta de diferencias de funciones continuas. Si $a\in A$, entonces $\dist(a,A)=0$ y $\dist(a,B)>0$, por ser $B$ cerrado y disjunto de $A$; de ahí $a\in U$. El mismo argumento da $B\subset W$. Un punto en ambos abiertos satisfaría $\dist(x,A)<\frac14\dist(x,A)$, imposible para un número no negativo. Así $U\cap W=\varnothing$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 12, ejercicio 2]\label{ej:lectura-12-2}\label{ch12:soporte}
 Defina el soporte de una función por
@@ -113,48 +106,12 @@ Sean $V$ cerrado y $U$ abierto con $V\subset U$.
 \item Examine la afirmación de que toda $g:V\to[a,b]$ continua tiene una extensión continua $h:X\to[a,b]$ con soporte en $U$, y resuelva la versión válida.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-\textbf{(i)} Si $V=\varnothing$, tomamos $\varphi=0$; si $U=X$, tomamos $\varphi=1$. En otro caso aplicamos Urysohn a los cerrados disjuntos $V$ y $X\setminus U$ y obtenemos $u:X\to[0,1]$ con $u=0$ en $V$ y $u=1$ en $X\setminus U$. Definimos
-\[
- \varphi(x)=\max\{0,1-3u(x)\}.
-\]
-Es continua, vale uno en $V$, y sus puntos no nulos están en $\{u<1/3\}$. Al tomar clausuras,
-\[
- \supp(\varphi)\subset\{u\leq1/3\}\subset U,
-\]
-pues $u=1$ fuera de $U$. El margen entre $1/3$ y $1$ es lo que garantiza la inclusión para la \emph{clausura} del conjunto de no anulación, no sólo para ese conjunto.
 
-\textbf{(ii)} El enunciado requiere una corrección cuando $0\notin[a,b]$ y $U\ne X$. Por ejemplo, si $X=\R$, $V=\{0\}$, $U=(-1,1)$ y $g(0)=1\in[1,2]$, toda función $h:\R\to[1,2]$ es no nula en todo $\R$ y su soporte es $\R$, imposible de contener en $U$. El texto original tampoco hace explícita la igualdad $h|_V=g$, que aquí incluimos para expresar el problema de extensión.
-
-La versión válida conserva todas las propiedades si $0\in[a,b]$. Por Tietze, extendemos $g$ a $\widetilde g:X\to[a,b]$. Tomamos la función $\varphi$ del inciso (i) y ponemos $h=\varphi\widetilde g$. Es continua y coincide con $g$ en $V$. Como $0\leq\varphi\leq1$ y el intervalo contiene a cero, $h(x)$ es una combinación convexa de $\widetilde g(x)$ y cero y permanece en $[a,b]$. Además, $\{h\ne0\}\subset\{\varphi\ne0\}$ y, por clausura, $\supp(h)\subset\supp(\varphi)\subset U$.
-
-Sin exigir $0\in[a,b]$, el mismo procedimiento da siempre una extensión con soporte en $U$ y valores en $[\min\{a,0\},\max\{b,0\}]$. Si se desea conservar exactamente el intervalo original, otra formulación válida fija un $c\in[a,b]$ y exige soporte de $h-c$ en $U$: la función $h=c+\varphi(\widetilde g-c)$ permanece en $[a,b]$, coincide con $g$ en $V$ y vale $c$ fuera del soporte de $\varphi$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 12, ejercicio 3]\label{ej:lectura-12-3}
 Sean $U_1,\ldots,U_n$ abiertos que cubren $X$. Construya funciones continuas $\varphi_i:X\to[0,1]$ con $\supp(\varphi_i)\subset U_i$ y $\sum_{i=1}^n\varphi_i=1$.
 \end{ejercicio}
-\begin{solucion}
-Si $X=\varnothing$, las únicas funciones con ese dominio satisfacen todas las condiciones. Supongamos $X\ne\varnothing$ y $n\geq1$. Para cada $i$ definimos
-\[
- r_i(x)=\begin{cases}
- \min\{1,\dist(x,X\setminus U_i)\},&U_i\ne X,\\
- 1,&U_i=X.
- \end{cases}
-\]
-Son continuas y no negativas. Si $U_i\ne X$, el complemento es cerrado no vacío y $r_i(x)>0$ exactamente cuando $x\in U_i$; esta afirmación también vale para $U_i=X$. Por la propiedad de cubierta, $S(x)=\sum_i r_i(x)>0$ en todo punto. Pongamos $w_i=r_i/S$. Son continuas, no negativas y suman uno.
 
-No basta tomar directamente $w_i$ como partición subordinada en el sentido del soporte: su conjunto no nulo está en $U_i$, pero su clausura podría alcanzar la frontera. Introducimos un margen:
-\[
- V_i=\{x:w_i(x)>1/(2n)\},\qquad
- g_i(x)=\max\{w_i(x)-1/(2n),0\}.
-\]
-Para cada $x$, algún $w_i(x)$ es al menos $1/n$, ya que la suma es uno. Por ello los $V_i$ cubren $X$ y $G=\sum_i g_i$ es estrictamente positiva. Además,
-\[
- \cl{V_i}\subset\{w_i\geq1/(2n)\}\subset\{w_i>0\}=U_i.
-\]
-Ésta realiza explícitamente la reducción de la cubierta sugerida en la lectura original. Finalmente, definimos $\varphi_i=g_i/G$. Son continuas, están entre cero y uno y suman uno. Su conjunto de no anulación es $V_i$, luego $\supp(\varphi_i)=\cl{V_i}\subset U_i$. Hemos construido una partición finita de la unidad con todas las inclusiones de soporte justificadas.
-\end{solucion}
 \index{particion de la unidad@partición de la unidad}\index{soporte de una funcion@soporte de una función}
 
 Las funciones de separación permiten fijar valores sobre cerrados; las series uniformemente convergentes convierten aproximaciones en una extensión exacta; y las funciones de soporte controlado permiten localizar esa extensión. Una partición de la unidad combina estas ideas para repartir una construcción global entre distintos abiertos sin perder continuidad. Pasaremos ahora de conservar valores en una parte del dominio a aproximar una función en todo un compacto mediante una familia algebraicamente sencilla.
@@ -383,46 +340,17 @@ Si todas las funciones de $A$ satisfacen $h(x_0)=0$, todo límite uniforme tiene
 \begin{ejercicio}[Lectura 28, ejercicio 1: aproximación de Weierstrass]\label{ej:lectura-28-1}
 Sea $f:[a,b]\to\F$ continua. Demuestre que existe una sucesión de polinomios con coeficientes en $\F$ que converge uniformemente a $f$.
 \end{ejercicio}
-\begin{solucion}
-Si $a=b$, basta el polinomio constante $f(a)$. Supongamos $a<b$ y primero $\F=\R$. Las restricciones de polinomios reales a $[a,b]$ forman una subálgebra de $C([a,b],\R)$. La función constante $1$ garantiza que no se anula en ningún punto, y el polinomio $p(x)=x$ separa puntos. Por el teorema~\ref{ch28:stone}, para cada $n$ existe un polinomio $p_n$ con $\norm{f-p_n}_\infty<1/n$. Esa elección da la sucesión requerida.
 
-Si $f$ es compleja, escribimos $f=u+iv$ con $u,v$ reales continuas. Elegimos polinomios reales $p_n,q_n$ con $\norm{u-p_n}_\infty<1/(2n)$ y $\norm{v-q_n}_\infty<1/(2n)$. El polinomio complejo $r_n=p_n+iq_n$ satisface
-$\norm{f-r_n}_\infty\le\norm{u-p_n}_\infty+\norm{v-q_n}_\infty<1/n$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 28, ejercicio 2: determinación por momentos]\label{ej:lectura-28-2}
 Sea $f:[0,1]\to\R$ continua y suponga que $\int_0^1 f(x)x^n\,dx=0$ para todo entero $n\ge0$. Demuestre que $f=0$.
 \end{ejercicio}
-\begin{solucion}
-Por linealidad de la integral, $\int_0^1fp=0$ para cualquier polinomio real $p$, porque $p$ es una combinación finita de monomios. El ejercicio~\ref{ej:lectura-28-1} proporciona polinomios $p_n$ con $\norm{p_n-f}_\infty\to0$. La función $f$ es acotada por continuidad en un compacto, y
-\[
- \left|\int_0^1f(x)p_n(x)\,dx-\int_0^1f(x)^2\,dx\right|
- \le\int_0^1|f(x)|\,|p_n(x)-f(x)|\,dx
- \le\norm f_\infty\norm{p_n-f}_\infty\longrightarrow0.
-\]
-La primera integral es cero para todo $n$, de modo que $\int_0^1f^2=0$.
 
-Si existiera $x_0$ con $f(x_0)\ne0$, por continuidad habría una vecindad relativa de $x_0$ en $[0,1]$ donde $|f(x)|>|f(x_0)|/2$. Esa vecindad contiene un intervalo de longitud positiva, incluso cuando $x_0$ es un extremo. La integral de $f^2$ sobre ese intervalo sería al menos su longitud multiplicada por $|f(x_0)|^2/4>0$, contradiciendo $\int_0^1f^2=0$. Por tanto, $f$ se anula en cada punto.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 28, ejercicio 3: Stone--Weierstrass complejo]\label{ej:lectura-28-3}
 Sea $X$ un espacio métrico compacto. Una subálgebra compleja $A\subset C(X,\C)$ es \emph{autoadjunta} si $\overline f\in A$ para toda $f\in A$. Demuestre que, si $A$ es autoadjunta, separa puntos y no se anula en ningún punto, entonces es densa en $C(X,\C)$.
 \end{ejercicio}
-\begin{solucion}
-\index{subalgebra@subálgebra!autoadjunta}
-Consideremos $A_\R=\{f\in A:f(X)\subset\R\}$. Es una subálgebra \emph{real} de $C(X,\R)$: las combinaciones lineales reales y los productos conservan tanto la pertenencia a $A$ como los valores reales. Para $f\in A$, la autoadjunción y la estructura de espacio vectorial complejo dan
-\[
- \operatorname{Re}f=\frac{f+\overline f}{2}\in A_\R,
- \qquad\operatorname{Im}f=\frac{f-\overline f}{2i}\in A_\R.
-\]
-Si $x\ne y$, elegimos $f\in A$ con $f(x)\ne f(y)$. Los números complejos no pueden tener simultáneamente iguales partes real e imaginaria si son distintos; por tanto, $\operatorname{Re}f$ o $\operatorname{Im}f$ separa esos puntos. Si para un $x$ elegimos $f\in A$ con $f(x)\ne0$, alguna de sus dos partes es no nula en $x$. Así, $A_\R$ satisface las hipótesis del teorema real y es densa en $C(X,\R)$.
 
-Para $h=u+iv\in C(X,\C)$ y $\eps>0$, elegimos $a,b\in A_\R$ con $\norm{u-a}_\infty<\eps/2$ y $\norm{v-b}_\infty<\eps/2$. Entonces $a+ib\in A$ y
-\[
- \norm{h-(a+ib)}_\infty\le\norm{u-a}_\infty+\norm{v-b}_\infty<\eps.
-\]
-Esto prueba la densidad compleja.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 28, ejercicio 4: por qué hace falta conjugación]\label{ej:lectura-28-4}
 Sea $\mathbb T=\{z\in\C:|z|=1\}$ y sea $A$ el álgebra de restricciones a $\mathbb T$ de los polinomios complejos en $z$:
@@ -431,28 +359,7 @@ Sea $\mathbb T=\{z\in\C:|z|=1\}$ y sea $A$ el álgebra de restricciones a $\math
 \]
 Demuestre que $A$ separa puntos y no se anula en ningún punto, pero no es densa en $C(\mathbb T,\C)$.
 \end{ejercicio}
-\begin{solucion}
-La función constante $1$ pertenece a $A$, así que no hay ceros comunes. La función $p(z)=z$ pertenece a $A$ y toma valores distintos en puntos distintos de $\mathbb T$; por tanto, separa puntos. La suma y el producto de dos polinomios en potencias no negativas de $z$ siguen siendo de ese tipo, de modo que $A$ es una subálgebra.
 
-Definamos el funcional
-\[
- L(h)=\frac1{2\pi}\int_0^{2\pi}h(e^{i\theta})e^{i\theta}\,d\theta
- \qquad(h\in C(\mathbb T,\C)).
-\]
-Es lineal y satisface $|L(h)|\le\norm h_\infty$, por la desigualdad para integrales del capítulo~\ref{chap:26}; por ello es continuo. Para un monomio $h(z)=z^k$, con $k\ge0$, calculamos
-\[
- L(z^k)=\frac1{2\pi}\int_0^{2\pi}e^{i(k+1)\theta}\,d\theta
- =\frac{e^{2\pi i(k+1)}-1}{2\pi i(k+1)}=0.
-\]
-Por linealidad, $L(p)=0$ para todo $p\in A$. La continuidad implica que también se anula en $\cl A$: si $p_n\to h$ uniformemente, $L(h)=\lim_nL(p_n)=0$.
-
-Sin embargo, la función continua $h(z)=\overline z$ satisface
-\[
- L(h)=\frac1{2\pi}\int_0^{2\pi}e^{-i\theta}e^{i\theta}\,d\theta=1.
-\]
-Así $h\notin\cl A$. Incluso obtenemos una cota cuantitativa: para todo $p\in A$,
-$1=|L(h-p)|\le\norm{h-p}_\infty$. Como el polinomio cero da error uno, la distancia de $h$ a $A$ es exactamente uno. Esta álgebra no es autoadjunta, pues contiene $z$ y no contiene $\overline z$.
-\end{solucion}
 
 \section{Extender, localizar y aproximar}
 Tietze construye una extensión exacta mediante correcciones cuyo error decrece geométricamente; las funciones de soporte controlado permiten localizarla. Stone--Weierstrass resuelve un problema complementario: aproximar una función continua por miembros de una subálgebra. Su argumento crea primero interpolaciones exactas en dos puntos y después las ensambla mediante máximos y mínimos. La aproximación polinómica del valor absoluto permite realizar ese ensamblaje dentro de la clausura de una subálgebra. En el caso complejo, la conjugación recupera partes reales e imaginarias y permite usar el teorema real. El ejercicio~\ref{ej:lectura-28-4} muestra que distinguir puntos no basta si se pierde esa operación. Esta relación entre álgebra y norma uniforme será una herramienta central para las álgebras de operadores y para el análisis armónico de los volúmenes siguientes.

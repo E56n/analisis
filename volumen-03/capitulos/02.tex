@@ -96,31 +96,23 @@ Dados $x_1,\ldots,x_m$ linealmente independientes, existen $\varphi_1,\ldots,\va
 En $E=\spanop(x_1,\ldots,x_m)$, las funcionales coordenada son continuas por equivalencia de normas en dimensión finita. Extiéndalas por Hahn--Banach. La fórmula se verifica escribiendo $x=\sum_ja_jx_j$ y aplicando cada coordenada. Alternativamente, se puede aplicar la proposición de distancia a $x_i$ y al espacio generado por los demás vectores, y dividir la funcional resultante por la distancia positiva; ese factor es necesario para obtener valor uno.
 \end{proof}
 
-\section{Ejercicios resueltos: extensión algebraica y sublinealidad}
+\section{Ejercicios propuestos: extensión algebraica y sublinealidad}
 \begin{ejercicio}[Lectura1, ejercicio1]\label{ej:v3-l01-1}
 Si $p,q$ son sublineales reales y $\alpha>0$, pruebe que $p+q$ y $\alpha p$ son sublineales.
 \end{ejercicio}
-\begin{solucion}
-Sumar $p(x+y)\leq p(x)+p(y)$ y $q(x+y)\leq q(x)+q(y)$ da la subaditividad de $p+q$. Multiplicar la primera desigualdad por $\alpha>0$ da la de $\alpha p$. Para $t\geq0$, $(p+q)(tx)=t(p(x)+q(x))$ y $(\alpha p)(tx)=t\alpha p(x)$. El mismo argumento admite $\alpha=0$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura1, ejercicio2]\label{ej:v3-l01-2}
 Sea $(p_n)$ creciente y sublineal, con límite real $p(x)$ para cada $x$. Pruebe que $p$ es sublineal.
 \end{ejercicio}
-\begin{solucion}
-Pase al límite en $p_n(x+y)\leq p_n(x)+p_n(y)$ y en $p_n(tx)=tp_n(x)$, para cada $x,y$ y $t\geq0$ fijos. Las operaciones preservan límites reales finitos. La monotonía no es necesaria si ya se conoce la existencia finita de todos esos límites; sí es esencial excluir valores infinitos para obtener una funcional $X\to\R$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura1, ejercicio3]\label{ej:v3-l01-3}
 Dados espacios vectoriales reales $X,Y$, un subespacio $M$ y una aplicación lineal $T:M\to Y$, construya una extensión lineal a $X$.
 \end{ejercicio}
-\begin{solucion}
-Elija una base de Hamel $B_M$ de $M$ y extiéndala a una base $B_X$ de $X$. Esta extensión se obtiene por Zorn aplicado a las familias linealmente independientes que contienen $B_M$: la unión de una cadena sigue siendo independiente porque toda relación usa solo un número finito de vectores y está contenida en un miembro de la cadena. La maximalidad obliga a generar $X$. Defina la extensión con los valores $Tb$ en $B_M$ y valor cero en $B_X\setminus B_M$, y extienda por combinaciones finitas. La unicidad de coordenadas garantiza buena definición y linealidad. No se ha afirmado continuidad.
-\end{solucion}
+
 \begin{ejercicio}[Lectura1, ejercicio4]\label{ej:v3-l01-4}
 Construya una solución de $f(x+y)=f(x)+f(y)$ en $\R$ que no tenga la forma $f(x)=cx$.
 \end{ejercicio}
-\begin{solucion}
-Vea $\R$ como espacio vectorial sobre $\Q$. Los números $1,\sqrt2$ son independientes sobre $\Q$. Extiéndalos a una base de Hamel y defina una aplicación $\Q$-lineal por $f(1)=0$, $f(\sqrt2)=1$ y valor cero en los restantes elementos de la base. La aplicación es aditiva. Si fuera $cx$, de $f(1)=0$ se deduciría $c=0$, contradiciendo $f(\sqrt2)=1$. También es discontinua: una aplicación aditiva continua satisface $f(q)=qf(1)$ para racionales $q$; la densidad de $\Q$ y la continuidad fuerzan esa fórmula para todo real.
-\end{solucion}
+
 
 \section{Límites de Banach y convergencia casi uniforme de promedios}
 \index{Banach, limite de@Banach, límite de}\index{casi convergencia}
@@ -153,57 +145,25 @@ Finalmente, todo límite de Banach satisface $B(x)=B(k^{-1}\sum_{j=0}^{k-1}S^jx)
 \begin{ejercicio}[Lectura1, ejercicio5, incisos(i)--(ii)]\label{ej:v3-l01-5}
 Una sucesión es casi convergente si todos sus límites de Banach tienen el mismo valor. (i) Estudie la sucesión $(1,0,1,0,\ldots)$. (ii) Pruebe que $x$ es casi convergente a $\alpha$ si y solo si sus promedios $k^{-1}\sum_{j=0}^{k-1}x_{n+j}$ convergen a $\alpha$ uniformemente respecto de $n$. Distinga la definición corregida de la extensión arbitraria utilizada inicialmente en la lectura.
 \end{ejercicio}
-\begin{solucion}
-\emph{Corrección necesaria.} Ponga $a=(1,0,1,0,\ldots)$. En $c+\C a$, las reglas
-\[
- F_1(y+ta)=\lim_ny_n+t,\qquad F_0(y+ta)=\lim_ny_n
-\]
-están bien definidas porque $a\notin c$. Cada una tiene norma uno: el límite a lo largo de las entradas impares, respectivamente pares, de $y+ta$ es su valor y su módulo no supera la norma uniforme; ambas valen uno en $\mathbf1$. Hahn--Banach las extiende a $\ell^\infty$ sin alterar norma. Sus valores en $a$ son uno y cero. Por tanto (i) es falso si se admiten todas las extensiones normantes del límite, y la invariancia sugerida en el original no puede deducirse de esa condición.
 
-\emph{(i), con límites de Banach invariantes.} Como $Sa=\mathbf1-a$, la invariancia da $B(a)=B(Sa)=1-B(a)$, luego $B(a)=1/2$. La sucesión no converge porque sus subsucesiones pares e impares tienen límites distintos.
 
-\emph{(ii), sucesiones reales.} Si todos los valores son $\alpha$, el lema muestra que $p(x)=q(x)=\alpha$, pues ambos extremos se alcanzan. Los supremos e ínfimos de los promedios convergen entonces al mismo valor, lo cual equivale a
-\[
- \sup_n\left|\frac1k\sum_{j=0}^{k-1}x_{n+j}-\alpha\right|\longrightarrow0.
-\]
-Recíprocamente, esta convergencia y la continuidad de $B$ dan $B(x)=\alpha$, porque $B$ toma el mismo valor en $x$ y en cada promedio desplazado.
-
-\emph{Caso complejo.} Cada límite complejo es la complejificación de uno real. Si todos toman el mismo valor en $x=u+iv$, sus partes real e imaginaria muestran que todos los límites reales coinciden en $u$ y en $v$. Aplique el caso real y use $|z|\leq|\operatorname{Re}z|+|\operatorname{Im}z|$. La implicación inversa vuelve a seguir por continuidad. Así quedan resueltos ambos incisos, con la hipótesis que hace verdadera la caracterización.
-\end{solucion}
-
-\section{Ejercicios resueltos: anulación y cocientes}
+\section{Ejercicios propuestos: anulación y cocientes}
 \begin{ejercicio}[Lectura2, ejercicio1]\label{ej:v3-l02-1}
 Si $X^*$ es separable, demuestre que $X$ es separable.
 \end{ejercicio}
-\begin{solucion}
-Si $X^*=\{0\}$, la separación de puntos implica $X=\{0\}$. En otro caso, elija una sucesión $(\varphi_n)$ densa en la esfera unitaria de $X^*$ y $x_n$ unitarios con $|\varphi_n(x_n)|>1/2$; la definición de supremo permite esa elección. Sea $M=\cl{\spanop(x_n:n\geq1)}$. Si $M\ne X$, la proposición de distancia produce una funcional $\psi$ de norma uno que se anula en $M$. Elija $n$ con $\norm{\varphi_n-\psi}<1/4$. Entonces
-\[
- |\varphi_n(x_n)|=|(\varphi_n-\psi)(x_n)|<1/4,
-\]
-contradicción. Así $M=X$. Las combinaciones finitas de los $x_n$ con coeficientes racionales, o racionales complejos, forman un conjunto numerable denso.
-\end{solucion}
+
 \begin{ejercicio}[Lectura2, ejercicio2, incisos(i)--(iv)]\label{ej:v3-l02-2}
 Pruebe las identidades y contenciones: (i) $\{0\}^\perp=X^*$ y ${}^\perp X^*=\{0\}$; (ii) $M_1\subseteq M_2$ implica $M_1^\perp\supseteq M_2^\perp$; (iii) $(S\cup T)^\perp=S^\perp\cap T^\perp$ y $S^\perp+T^\perp\subseteq(S\cap T)^\perp$; (iv) $S\subseteq{}^\perp A$ equivale a $\varphi(s)=0$ para todo $s\in S$, $\varphi\in A$, y a $A\subseteq S^\perp$.
 \end{ejercicio}
-\begin{solucion}
-(i) Toda funcional lineal se anula en cero; si todas se anulan en un vector, la separación de puntos obliga a que sea cero. (ii) Anular un conjunto mayor implica anular cada elemento del menor. (iii) Anular la unión significa anular ambos conjuntos. Si $\varphi\in S^\perp$ y $\psi\in T^\perp$, para $x\in S\cap T$ se tiene $(\varphi+\psi)(x)=0+0=0$, lo que prueba la contención. (iv) Las tres frases escriben los mismos dos cuantificadores universales sobre la ecuación $\varphi(s)=0$; intercambiar el orden de esos cuantificadores no cambia su significado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura2, ejercicio3: examen del enunciado]\label{ej:v3-l02-3}
 El original pide, para $M_1\cap M_2=\{0\}$ finito dimensionales, funcionales $\varphi_i$ que se anulen en $M_i$ y sean no nulas en todo vector del otro subespacio. Determine cuándo es posible y formule una versión válida para dimensiones arbitrarias.
 \end{ejercicio}
-\begin{solucion}
-Literalmente es imposible porque el vector cero pertenece a ambos subespacios y toda funcional vale cero en él. Incluso excluyendo cero, una funcional escalar no puede ser inyectiva en un espacio de dimensión al menos dos: si toma valores $a,b$ en vectores independientes $u,v$, el vector $bu-av$ está en su núcleo, y si $a=b=0$ cualquiera de los dos sirve. Por ejemplo, tome $M_1=\spanop(e_1,e_2)$ y $M_2=\spanop(e_3)$ en $\R^3$.
 
-Si ambos subespacios son de dimensión uno, elija generadores $u_1,u_2$; son independientes. Las coordenadas biortogonales proporcionan una funcional que anula $u_1$ y vale uno en $u_2$, y otra con los papeles intercambiados. Estas sí son no nulas en todo vector no cero del subespacio opuesto.
-
-Para dimensiones finitas arbitrarias, la versión válida utiliza \emph{familias finitas} de funcionales: tome una base de $M_1$ y otra de $M_2$. Su unión es independiente porque la intersección es cero. Extienda sus coordenadas por Hahn--Banach. Las coordenadas correspondientes a la base de $M_1$ se anulan en $M_2$ y separan los puntos de $M_1$; las correspondientes a $M_2$ hacen lo contrario. Cada vector no cero es detectado por al menos una coordenada de la familia correspondiente.
-\end{solucion}
 \begin{ejercicio}[Lectura2, ejercicio4]\label{ej:v3-l02-4}
 Para $x\in X$, pruebe que $\{\varphi\in X^*: \varphi(x)=\norm x\}$ es no vacío y convexo.
 \end{ejercicio}
-\begin{solucion}
-Si $x\ne0$, contiene una funcional normante. Si $x=0$, es todo $X^*$. Si $\varphi(x)=\psi(x)=\norm x$ y $0\leq t\leq1$, entonces $(t\varphi+(1-t)\psi)(x)=\norm x$. Esto prueba convexidad real, también si $X$ es complejo. El conjunto dado no impone una cota a la norma de sus elementos; si se quieren funcionales de soporte normalizadas, se intersecta además con la bola dual unitaria, y la no vaciedad y convexidad se conservan.
-\end{solucion}
+
 \begin{ejercicio}[Lectura2, ejercicio5]\label{ej:v3-l02-5}
 Si $M$ es un subespacio cerrado de $X$, pruebe que
 \[
@@ -212,17 +172,7 @@ Si $M$ es un subespacio cerrado de $X$, pruebe que
 \]
 son isomorfismos. Precise sus normas.
 \end{ejercicio}
-\begin{solucion}
-El cociente lleva $\norm{x+M}=\inf_{m\in M}\norm{x+m}$. Es una norma porque $M$ es cerrado: si el ínfimo es cero, $x\in\cl M=M$. Homogeneidad y desigualdad triangular se obtienen reescalando representantes y eligiendo aproximantes al ínfimo. El mapa cociente $Q:X\to X/M$ es contractivo.
 
-Para $\Phi$, dos representantes difieren en $M$, donde $\varphi$ se anula, así que la fórmula está bien definida. Además
-\[
- |\varphi(x)|=|\varphi(x+m)|\leq\norm\varphi\norm{x+m}\quad(m\in M),
-\]
-y al tomar ínfimo se obtiene $\norm{\Phi\varphi}\leq\norm\varphi$. Como $\varphi=(\Phi\varphi)\circ Q$, también $\norm\varphi\leq\norm{\Phi\varphi}$. Toda $f\in(X/M)^*$ tiene preimagen $f\circ Q\in M^\perp$; la inyectividad y la linealidad se leen de la fórmula. Por tanto $\Phi$ es un isomorfismo isométrico.
-
-Para $\Psi$, la restricción $R:X^*\to M^*$ es lineal, sobreyectiva por Hahn--Banach y su núcleo es $M^\perp$. Por ello induce la biyección indicada. Para cada $\eta\in M^\perp$, $\norm{R\varphi}=\norm{R(\varphi+\eta)}\leq\norm{\varphi+\eta}$; tomando ínfimo, $\norm{R\varphi}\leq\norm{\varphi+M^\perp}$. Hahn--Banach da una extensión $\theta$ de $R\varphi$ con $\norm\theta=\norm{R\varphi}$. Como $\theta-\varphi\in M^\perp$, la norma cociente es a lo sumo $\norm\theta$. Se obtiene igualdad y $\Psi$ también es isométrico. Ninguno de estos argumentos exige completitud de $X$.
-\end{solucion}
 
 \section{Del álgebra a la geometría}
 Hahn--Banach convierte un cálculo en un subespacio pequeño en una funcional sobre todo el espacio. De ahí proceden la fórmula dual de la norma, la recuperación de subespacios cerrados mediante anuladores y las identificaciones de duales de cocientes. La extensión no añade propiedades que no se hayan impuesto: el caso de los límites de Banach distingue con precisión extensión, positividad e invariancia. En el capítulo siguiente usaremos funciones sublineales para producir hiperplanos que separan conjuntos convexos.

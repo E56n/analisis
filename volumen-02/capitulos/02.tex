@@ -65,49 +65,23 @@ En el caso compacto, primero $f$ está acotada inferiormente: las vecindades don
 \begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:v2-l03-1}
 Pruebe que $f:X\to\R$ es medible si y solo si $f^{-1}(U)$ es medible para cada abierto $U\subseteq\R$.
 \end{ejercicio}
-\begin{solucion}
-La condición para abiertos incluye $U=(a,\infty)$, así que implica la definición. Recíprocamente, la preimagen de $(a,b)$ es $\{f>a\}\cap\{f<b\}$. Todo abierto real es unión de los intervalos de extremos racionales contenidos en él. Hay solamente una cantidad numerable de esos intervalos, por lo que su preimagen es medible. Además, $\{B\subseteq\R:f^{-1}(B)\in\Acal\}$ es una $\sigma$-álgebra que contiene los abiertos; contiene por ello todos los borelianos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 3, ejercicio 2]\label{ej:v2-l03-2}
 Extienda las propiedades de operaciones, supremos, ínfimos y límites a funciones medibles con valores en $\overline\R$. Precise cuándo las operaciones están definidas.
 \end{ejercicio}
-\begin{solucion}
-Los supremos e ínfimos numerables siempre existen en $\overline\R$; las identidades de niveles del teorema \ref{teo:v2-algebra-medibles} siguen siendo exactas. Por tanto también son medibles los límites superiores e inferiores y cualquier límite puntual extendido.
 
-La suma se permite cuando no aparece $\infty+(-\infty)$; una combinación lineal requiere la misma precaución después de multiplicar por los escalares, con $0f=0$. Para comprobar medibilidad, parta $X$ en los conjuntos donde cada función es real, $+\infty$ o $-\infty$. Son nueve piezas medibles por la proposición \ref{prop:v2-infinitos}. En la pieza donde ambas son finitas se usa el álgebra de funciones reales; en cada una de las demás, una suma definida vale un infinito de signo determinado o una función medible multiplicada por un escalar finito. Las preimágenes de niveles son uniones finitas de las correspondientes preimágenes en las piezas.
-
-Para el producto adoptamos $0\cdot(\pm\infty)=0$. Subdividimos las piezas anteriores según los signos y los conjuntos de ceros. En cada pieza el producto es real medible, cero o un infinito de signo fijo. Por la misma razón es medible. El valor absoluto transforma ambas infinitudes en $+\infty$ y conserva la medibilidad. Estas afirmaciones no autorizan a escribir una suma indeterminada: si $f=\infty$ y $g=-\infty$ en un punto, $f+g$ no es una función allí sin una convención adicional explícita.
-\end{solucion}
 \begin{ejercicio}[Lectura 3, ejercicio 3]\label{ej:v2-l03-3}
 Construya $f$ no medible tal que $|f|$ y $f^2$ sean medibles.
 \end{ejercicio}
-\begin{solucion}
-Tome $X=\{a,b\}$ con $\Acal=\{\varnothing,X\}$ y defina $f(a)=1$, $f(b)=-1$. Entonces $\{f>0\}=\{a\}\notin\Acal$, mientras $|f|=f^2=1$ son constantes medibles. Así conocer el tamaño de una función no basta para conocer la medibilidad de su signo.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 3, ejercicio 4]\label{ej:v2-l03-4}
 Pruebe: (i) continuidad equivale a semicontinuidad superior e inferior; (ii) la función piso es semicontinua superior; (iii) semicontinuidad superior equivale a que todos los conjuntos $\{f<a\}$ sean abiertos, y la inferior a que todos los $\{f>a\}$ sean abiertos; (iv) $A$ es abierto, respectivamente cerrado, si y solo si $\ind A$ es semicontinua inferior, respectivamente superior.
 \end{ejercicio}
-\begin{solucion}
-(i) La continuidad produce simultáneamente vecindades donde $f(x)-\eps<f(y)<f(x)+\eps$. Recíprocamente, interseque las dos vecindades obtenidas de las semicontinuidades con esos umbrales; en la intersección se cumple $|f(y)-f(x)|<\eps$.
 
-(ii) Si $k=\lfloor x\rfloor$, elija una vecindad de $x$ contenida en $(-\infty,k+1)$. En ella $\lfloor y\rfloor\le k<a$ para cualquier $a>\lfloor x\rfloor$. En los enteros hay un salto que impide semicontinuidad inferior, pero no superior.
-
-(iii) Si $f(x)<a$, la definición superior proporciona una vecindad de $x$ contenida en $\{f<a\}$; por tanto ese conjunto es abierto. Recíprocamente, para $a>f(x)$, ese mismo abierto es la vecindad requerida. Para la versión inferior intercambie las desigualdades o aplique el resultado a $-f$.
-
-(iv) Para $0\le t<1$, $\{\ind A>t\}=A$, y los restantes niveles estrictos superiores son $X$ o vacío. Esto prueba la equivalencia con apertura. Para $0<t\le1$, $\{\ind A<t\}=A^c$, y los demás niveles inferiores son $X$ o vacío. Esto prueba la equivalencia con cerradura.
-\end{solucion}
 \begin{ejercicio}[Lectura 3, ejercicio 5]\label{ej:v2-l03-5}
 Si $f:X\to\R$ es medible y $g:\R\to\R$ es semicontinua superior o inferior, pruebe que $g\circ f$ es medible.
 \end{ejercicio}
-\begin{solucion}
-Si $g$ es semicontinua inferior, $\{g>a\}$ es abierto. Entonces $\{g\circ f>a\}=f^{-1}(\{g>a\})$ es medible por el ejercicio \ref{ej:v2-l03-1}. Si es semicontinua superior, use $\{g<a\}$ y la caracterización por niveles inferiores. La continuidad no es necesaria; la medibilidad de $g$ respecto de los borelianos sí es la propiedad pertinente.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 3, ejercicio 6]\label{ej:v2-l03-6}
 Pruebe que el conjunto de puntos donde una sucesión de funciones reales medibles tiene límite real es medible.
 \end{ejercicio}
-\begin{solucion}
-La completitud de $\R$ identifica convergencia real con la condición de Cauchy. Por ello el conjunto buscado es
-\[E=\bigcap_{r\ge1}\bigcup_{N\ge1}\bigcap_{m,n\ge N}
-\{|f_m-f_n|<1/r\}.\]
-Cada nivel es medible y todas las operaciones son numerables. Si $x\in E$, dado $\eps>0$ tome $r$ con $1/r<\eps$; el correspondiente $N$ prueba Cauchy. La implicación inversa resulta de aplicar Cauchy con $\eps=1/r$. Si se admiten límites extendidos, añada los dos conjuntos medibles $\bigcap_{r\ge1}\bigcup_N\bigcap_{n\ge N}\{f_n>r\}$ y su análogo $\{f_n<-r\}$. Esto distingue explícitamente límite finito de límite infinito.
-\end{solucion}

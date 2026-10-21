@@ -46,33 +46,15 @@ Para $t\in\R$, demostrar
 \]
 prolongando los cocientes por continuidad en cero.
 \end{ejercicio}
-\begin{solucion}
-Sean $f=\mathbf1_{[-1,1]}$ y $g(x)=e^{itx}f(x)$. Entonces $\widehat f(y)=2\sin y/y$ y $\widehat g(y)=\widehat f(y+t)=2\sin(y+t)/(y+t)$. La transferencia bilineal del ejercicio~\ref{ej:v4-l10-1} da $\int f\widehat g=\int\widehat f g$. Dividimos entre dos y cambiamos $y$ por $-y$ en la integral izquierda para obtener la fórmula.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 13, ejercicio 2]\label{ej:v4-l13-2}
 Calcular la transformada de $f(x)=e^{-|x|}$ y la integral $\int_\R t^2/(1+t^2)^2\,dt$.
 \end{ejercicio}
-\begin{solucion}
-Separar las dos semirrectas da
-\[
- \widehat f(\xi)=\int_0^\infty e^{-x}(e^{ix\xi}+e^{-ix\xi})dx
- =\frac1{1-i\xi}+\frac1{1+i\xi}=\frac2{1+\xi^2}.
-\]
-La función $f$ es localmente absolutamente continua y $f'(x)=-\sgn(x)e^{-|x|}$ casi en todas partes. Por ello $\widehat{f'}(\xi)=-2i\xi/(1+\xi^2)$. Además $\norm{f'}_2^2=2\int_0^\infty e^{-2x}dx=1$. Plancherel da $4\int\xi^2/(1+\xi^2)^2d\xi=2\pi$, así que la integral es $\pi/2$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 13, ejercicio 3]\label{ej:v4-l13-3}
 Para $a>0$ sean $p_a(x)=a/[\pi(x^2+a^2)]$ y $s_a(x)=\sin(ax)/(\pi x)$. Probar $p_a*p_b=p_{a+b}$ y $s_a*s_b=s_{\min(a,b)}$.
 \end{ejercicio}
-\begin{solucion}
-La misma integración del ejercicio anterior da $\widehat{e^{-a|x|}}(\xi)=2a/(a^2+\xi^2)$. La inversión, aplicable porque ambas funciones son integrables, implica $\widehat{p_a}(\xi)=e^{-a|\xi|}$. Por el teorema de convolución y unicidad en $L^1$, $\widehat{p_a*p_b}=e^{-(a+b)|\xi|}=\widehat{p_{a+b}}$.
 
-La función $s_a$ no pertenece a $L^1$, de modo que no se puede aplicar el mismo argumento sin modificación. Es la transformada inversa no normalizada de $\mathbf1_{[-a,a]}$, y pertenece a $L^2$. Hölder asegura que $s_a*s_b(x)$ existe para todo $x$. Aplicando Parseval al producto interno que expresa esa convolución,
-\[
- (s_a*s_b)(x)=\frac1{2\pi}\int_{\R}\mathbf1_{[-a,a]}(\xi)\mathbf1_{[-b,b]}(\xi)e^{-ix\xi}d\xi
- =\frac{\sin(\min(a,b)x)}{\pi x}.
-\]
-Para justificar la identidad de producto interno, escribimos la convolución como $\ip{s_a}{\overline{s_b(x-\cdot)}}$ y usamos las fórmulas de reflexión y traslación de Fourier en $L^2$. Ambas funciones son reales y pares, lo que deja el signo indicado. En $x=0$ se toman los límites continuos.
-\end{solucion}
 \begin{ejercicio}[Lectura 13, ejercicio 4]\label{ej:v4-l13-4}
 Demostrar, para $a,b>0$,
 \[
@@ -80,14 +62,7 @@ Demostrar, para $a,b>0$,
  \int_\R\frac{t^2}{(t^2+a^2)(t^2+b^2)}dt=\frac\pi{a+b}.
 \]
 \end{ejercicio}
-\begin{solucion}
-Evaluar $s_a*s_b=s_{\min(a,b)}$ en cero da la primera integral, pues $s_a,s_b$ son pares y $s_c(0)=c/\pi$. Para $a\ne b$,
-\[
- \frac{t^2}{(t^2+a^2)(t^2+b^2)}
- =\frac1{b^2-a^2}\left(\frac{b^2}{t^2+b^2}-\frac{a^2}{t^2+a^2}\right).
-\]
-Como $\int(t^2+c^2)^{-1}dt=\pi/c$, integrar da $\pi(b-a)/(b^2-a^2)=\pi/(a+b)$. Para $b\to a$, dominada se aplica tomando $b\in[a/2,3a/2]$ y dominando por una constante multiplicada por $(t^2+a^2)^{-1}$; se obtiene el caso $a=b$. En particular $a=b=1$ reproduce el ejercicio~\ref{ej:v4-l13-2}. La referencia final al ejercicio 1 en el original debe apuntar al ejercicio 2.
-\end{solucion}
+
 
 \section{Subespacios invariantes por traslación}\label{lectura:v4-14}
 \index{subespacio!invariante por traslacion@invariante por traslación}\index{multiplicador!de Fourier}
@@ -175,14 +150,7 @@ Por tanto la convergencia es uniforme en toda la recta, no únicamente en interv
 \begin{ejercicio}[Complemento: cambio de ancho de banda]\label{ej:v4-ampl-muestreo}
 En la convención $\widehat f(\nu)=\int f(x)e^{2\pi ix\nu}dx$, resolver el ejercicio de Lozano Vite y Maximenko que sustituye la banda $[-1/2,1/2]$ por $[-b,b]$: hallar la separación entre muestras, el núcleo y Parseval.
 \end{ejercicio}
-\begin{solucion}
-La frecuencia angular de nuestra convención es $\xi=2\pi\nu$, de modo que $a=2\pi b$. Sustituir en el teorema anterior da separación $1/(2b)$ y
-\[
- f(x)=\sum_{k\in\Z}f\left(\frac{k}{2b}\right)\operatorname{sinc}(2bx-k),\qquad
- \norm f_2^2=\frac1{2b}\sum_k\left|f\left(\frac{k}{2b}\right)\right|^2.
-\]
-El núcleo es $K_y(x)=2b\operatorname{sinc}(2b(x-y))$ y la norma de evaluación es $\sqrt{2b}$. Con $b=1/2$ recuperamos muestras enteras y núcleo $\operatorname{sinc}(x-y)$. La distancia entre muestras depende de la banda y de la convención de frecuencia; no debe trasladarse una fórmula sin ajustar ambas.
-\end{solucion}
+
 
 \paragraph{Del espacio euclidiano al grupo.}
 Traslación, medida invariante, caracteres y convolución han aparecido en cada construcción. Los capítulos siguientes abstraen esas cuatro estructuras. El trabajo previo en $\R^d$, $\T$ y los grupos finitos servirá para comprobar las constantes y reconocer los casos concretos de la teoría general.

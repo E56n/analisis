@@ -381,41 +381,18 @@ La cara $F=\{a\in A:\ell(a)=m\}$ es no vacía, compacta y convexa, y es extrema 
 
 El cierre en el enunciado permite límites de combinaciones convexas finitas; no equivale a permitir una suma infinita arbitraria sin comprobar su convergencia. La versión aquí demostrada usa compacidad para la norma. Otras topologías conducen a versiones más generales, pero requieren hipótesis adicionales que no se están utilizando en este capítulo.
 
-\section{Ejercicios resueltos: dualidad, distancia e invertibilidad}
+\section{Ejercicios propuestos: dualidad, distancia e invertibilidad}
 
 \begin{ejercicio}[Lectura 21, ejercicio 1]\label{ej:lectura-21-1}
 Demuestre que el espacio de todas las funcionales lineales de $\F^n$ es isomorfo a $\F^n$.
 \end{ejercicio}
-\begin{solucion}
-Una funcional queda determinada por $a_j=\varphi(e_j)$, porque $\varphi(x)=\sum_{j=1}^n a_jx_j$. Así $J(a)(x)=\sum_j a_jx_j$ es una biyección lineal entre $\F^n$ y su dual algebraico. No introducimos conjugados en esta fórmula porque queremos que $J$ sea lineal también cuando $\F=\C$.
 
-Con la norma uniforme en el dominio de las funcionales,
-\[
- |J(a)(x)|\leq\sum_j|a_j|\quad\text{si }\norm x_\infty\leq1.
-\]
-Elija $x_j=\overline{a_j}/|a_j|$ cuando $a_j\ne0$ y $x_j=1$ cuando $a_j=0$; en el caso real son simplemente signos. Entonces $a_jx_j=|a_j|$, y obtenemos $\norm{J(a)}=\sum_j|a_j|$. Todas las funcionales son continuas y $J$ es una isometría si el espacio de coeficientes lleva norma $\ell^1$. Como $\norm a_\infty\leq\sum_j|a_j|\leq n\norm a_\infty$, también es un isomorfismo para la norma uniforme, y el lema~\ref{ch19:coordenadas} permite cualquier otra norma en dimensión finita.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:lectura-21-2}
 Sea $\varphi\in V^*$ y $M=\ker\varphi$. Pruebe que
 \[|\varphi(v)|=\norm\varphi\,\dist(v,M)\qquad(v\in V).\]
 \end{ejercicio}
-\begin{solucion}
-Si $\varphi=0$, entonces $M=V$ y ambos lados son cero. Suponga $\varphi\ne0$. Para $m\in M$,
-\[
- |\varphi(v)|=|\varphi(v-m)|\leq\norm\varphi\norm{v-m}.
-\]
-Tomar el ínfimo da $|\varphi(v)|\leq\norm\varphi\dist(v,M)$. Si $\varphi(v)=0$, $v\in M$ y ya hay igualdad. En otro caso, por la definición de norma existen $u_j$ con $\norm{u_j}\leq1$ y $|\varphi(u_j)|\to\norm\varphi>0$. Descartamos términos iniciales si hace falta para que $\varphi(u_j)\ne0$. El vector
-\[
- m_j=v-\frac{\varphi(v)}{\varphi(u_j)}u_j
-\]
-pertenece a $M$. Por tanto
-\[
- \dist(v,M)\leq\norm{v-m_j}
- \leq\frac{|\varphi(v)|}{|\varphi(u_j)|}.
-\]
-Al pasar al límite obtenemos la desigualdad inversa. No hemos supuesto que la norma de $\varphi$ se alcance.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:lectura-21-3}
 Sea $A\subseteq V$ no vacío y $U=\overline B(0,1)$. Pruebe
@@ -424,17 +401,7 @@ Sea $A\subseteq V$ no vacío y $U=\overline B(0,1)$. Pruebe
 \]
 Deduzca que $A+U$ es cerrado si y solo si todo $v$ con $\dist(v,A)=1$ admite $a\in A$ con $\norm{v-a}=1$.
 \end{ejercicio}
-\begin{solucion}
-La función distancia a un conjunto no vacío es continua: la desigualdad triangular da $|\dist(x,A)-\dist(y,A)|\leq\norm{x-y}$. El conjunto del lado derecho es por ello cerrado. Contiene a $A+U$, así que también contiene su cierre.
 
-Si $\dist(v,A)\leq1$, elija $a_n\in A$ con $\norm{v-a_n}<1+1/n$. Defina
-\[
- u_n=\frac{v-a_n}{\max\{1,\norm{v-a_n}\}},\qquad z_n=a_n+u_n.
-\]
-Tenemos $\norm{u_n}\leq1$ y $z_n\in A+U$. Si $\norm{v-a_n}\leq1$, entonces $z_n=v$. Si es mayor que $1$, la diferencia entre $v-a_n$ y su normalización tiene norma $\norm{v-a_n}-1<1/n$. Por tanto $z_n\to v$, y queda demostrada la igualdad.
-
-Cuando $\dist(v,A)<1$, la definición de ínfimo ya proporciona $a\in A$ con $\norm{v-a}<1$, de modo que $v\in A+U$. Solo pueden faltar en la suma puntos de distancia exactamente $1$. Para esos puntos, pertenecer a $A+U$ equivale a que exista un $a\in A$ con $\norm{v-a}\leq1$; como la distancia es $1$, tal desigualdad debe ser igualdad. Esto prueba el criterio. Si $A=\varnothing$, la suma es vacía y cerrada, y la identidad se interpreta con $\dist(v,\varnothing)=+\infty$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 21, ejercicio 4]\label{ej:lectura-21-4}
 Sea $\norm\varphi=1$, $M=\ker\varphi$ y $U=\overline B(0,1)$. Demuestre
@@ -443,61 +410,23 @@ Sea $\norm\varphi=1$, $M=\ker\varphi$ y $U=\overline B(0,1)$. Demuestre
 \]
 Pruebe que $M+U$ es cerrado si y solo si existe $u\in U$ con $|\varphi(u)|=1$.
 \end{ejercicio}
-\begin{solucion}
-La primera igualdad se sigue de los ejercicios~\ref{ej:lectura-21-2} y~\ref{ej:lectura-21-3} porque $\dist(v,M)=|\varphi(v)|$. Si $M+U$ es cerrado, elija $v$ con $\varphi(v)=1$, posible porque una funcional no nula es sobreyectiva sobre $\F$. La igualdad del cierre da $v=m+u$, con $m\in M$ y $u\in U$. De ahí $\varphi(u)=1$.
 
-Recíprocamente, suponga $u_0\in U$ y $|\varphi(u_0)|=1$. Si $|\varphi(v)|\leq1$, defina
-\[
- u=\frac{\varphi(v)}{\varphi(u_0)}u_0.
-\]
-Entonces $\norm u\leq1$ y $\varphi(v-u)=0$. Así $v=(v-u)+u\in M+U$. La suma coincide con el cerrado $\{v:|\varphi(v)|\leq1\}$.
-
-La conclusión original escribe $|v|=1$ donde debe aparecer $|\varphi(v)|=1$: la condición relevante es que la funcional alcance su norma. No sucede siempre. En $c_0$ con norma uniforme,
-\[
- \varphi(x)=\sum_{n=1}^{\infty}2^{-n}x_n
-\]
-tiene norma $1$, porque la desigualdad triangular da la cota y las sucesiones con sus primeros $N$ términos iguales a $1$ dan valores $1-2^{-N}$. Si $\norm x_\infty\leq1$ y $|\varphi(x)|=1$, entonces $\sum_n2^{-n}|x_n|=1$, lo que obliga a $|x_n|=1$ para todo $n$: cualquier déficit positivo en un término haría la suma menor que $1$. Eso contradice $x_n\to0$. En este ejemplo $M+U$ no es cerrado.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 21, ejercicio 5]\label{ej:lectura-21-5}
 Sea $V$ de Banach y $T\in\Bcal(V,V)$ con $\sum_{n=0}^{\infty}\norm{T^n}<\infty$. Demuestre que $I-T$ es un isomorfismo y calcule su inversa.
 \end{ejercicio}
-\begin{solucion}
-El espacio $\Bcal(V,V)$ es completo. Por el teorema~\ref{ch19:series}, la serie $S=\sum_{n=0}^{\infty}T^n$ converge en norma de operador. Sus sumas parciales satisfacen
-\[
- (I-T)\sum_{n=0}^NT^n=I-T^{N+1}
- =\left(\sum_{n=0}^NT^n\right)(I-T).
-\]
-Como la serie de normas converge, $\norm{T^{N+1}}\to0$. La continuidad de la composición, probada en el ejercicio~\ref{ej:lectura-20-5}, permite pasar al límite y obtener $(I-T)S=S(I-T)=I$. Por tanto $(I-T)^{-1}=S$ es continuo. En particular, si $\norm T<1$, la hipótesis se cumple porque $\norm{T^n}\leq\norm T^n$.
-\end{solucion}
+
 \index{Neumann, serie de}
 
 \begin{ejercicio}[Lectura 21, ejercicio 6]\label{ej:lectura-21-6}
 Sean $V,W$ de Banach, con $V\ne\{0\}$, y $T:V\to W$ un isomorfismo. Si $S\in\Bcal(V,W)$ satisface $\norm{S-T}<1/\norm{T^{-1}}$, demuestre que $S$ es un isomorfismo. Deduzca que los isomorfismos forman un abierto de $\Bcal(V,W)$, incluyendo por separado el caso $V=W=\{0\}$.
 \end{ejercicio}
-\begin{solucion}
-Supongamos $V\ne\{0\}$; cuando $V=W=\{0\}$ solo existe un operador y la conclusión de apertura es inmediata. Defina $E=T^{-1}(S-T)$. Entonces $\norm E\leq\norm{T^{-1}}\norm{S-T}<1$ y
-\[
- S=T(I+E).
-\]
-El ejercicio~\ref{ej:lectura-21-5} aplicado a $-E$ da que $I+E$ es invertible. Así
-\[
- S^{-1}=(I+E)^{-1}T^{-1},\qquad
- \norm{S^{-1}}\leq\frac{\norm{T^{-1}}}{1-\norm E}.
-\]
-Cada isomorfismo $T$ tiene, por tanto, una bola abierta de radio $1/\norm{T^{-1}}$ formada por isomorfismos. Esa es precisamente la definición de que el conjunto sea abierto. Si no existen isomorfismos, el conjunto vacío también es abierto.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 21, ejercicio 7]\label{ej:lectura-21-7}
 Sea $T$ un isomorfismo de $V$ sobre un subespacio de $W$. Pruebe que, si $\norm{T'-T}$ es suficientemente pequeña, $T'$ es un isomorfismo sobre su imagen.
 \end{ejercicio}
-\begin{solucion}
-El teorema~\ref{ch21:cota-inferior} proporciona $a>0$ con $\norm{Tv}\geq a\norm v$. Si $\delta=\norm{T'-T}<a$, entonces
-\[
- \norm{T'v}\geq\norm{Tv}-\norm{(T'-T)v}\geq(a-\delta)\norm v.
-\]
-También $\norm{T'v}\leq\norm{T'}\norm v$. El mismo teorema muestra que $T'$ es un isomorfismo de $V$ sobre $T'(V)$, con inversa de norma a lo sumo $1/(a-\delta)$. No se afirma que las imágenes de $T$ y $T'$ sean iguales.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 21, ejercicio 8]\label{ej:lectura-21-8}
 Pruebe que la evaluación canónica
@@ -506,113 +435,39 @@ Pruebe que la evaluación canónica
 \]
 es una isometría lineal.
 \end{ejercicio}
-\begin{solucion}
-Para cada $v$, la aplicación $J(v)$ es lineal en $\varphi$, y
-\[
- |J(v)(\varphi)|=|\varphi(v)|\leq\norm\varphi\norm v.
-\]
-Así $J(v)\in V^{**}$ y $\norm{J(v)}\leq\norm v$. Además, para $\alpha,\beta\in\F$,
-\[
- J(\alpha v+\beta w)(\varphi)
- =\varphi(\alpha v+\beta w)
- =\alpha J(v)(\varphi)+\beta J(w)(\varphi),
-\]
-de modo que $J$ es lineal. Si $v\ne0$, el corolario~\ref{ch21:funcional-normante} proporciona una funcional $\varphi$ de norma $1$ con $\varphi(v)=\norm v$. Por tanto
-\[
- \norm{J(v)}\geq|J(v)(\varphi)|=\norm v.
-\]
-Para $v=0$ la igualdad es directa. En consecuencia $\norm{J(v)}=\norm v$ para todo $v$, y $J$ es inyectiva. Su sobreyectividad es una propiedad adicional, llamada reflexividad, que no se deduce de esta prueba.
-\end{solucion}
 
-\section{Ejercicios resueltos: envolventes y separación}
+
+\section{Ejercicios propuestos: envolventes y separación}
 
 \begin{ejercicio}[Lectura 24, ejercicio 1]\label{ej:lectura-24-1}
 Demuestre que la intersección de una familia no vacía de conjuntos convexos es convexa.
 \end{ejercicio}
-\begin{solucion}
-Sea $C=\bigcap_{A\in\mathcal A}A$. Si $x,y\in C$ y $0\leq t\leq1$, entonces $x,y\in A$ para cada $A\in\mathcal A$. Su convexidad implica $(1-t)x+ty\in A$ para cada miembro de la familia, y por ello el punto pertenece a $C$. Si $C$ es vacío, la condición no tiene pares de puntos que comprobar y también se cumple.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24, ejercicio 2]\label{ej:lectura-24-2}
 Si $A,B\subseteq V$ y $C\subseteq W$ son convexos, $\alpha\in\R$ y $T:V\to W$ es lineal, pruebe que $\alpha A$, $A+B$, $T(A)$ y $T^{-1}(C)$ son convexos.
 \end{ejercicio}
-\begin{solucion}
-Para $a_1,a_2\in A$,
-\[
- (1-t)\alpha a_1+t\alpha a_2=\alpha((1-t)a_1+ta_2)\in\alpha A.
-\]
-Esto vale también para $\alpha=0$ y para $\alpha<0$, porque los coeficientes interiores siguen siendo $1-t,t$. Para dos puntos $a_1+b_1,a_2+b_2\in A+B$,
-\[
- (1-t)(a_1+b_1)+t(a_2+b_2)
- =((1-t)a_1+ta_2)+((1-t)b_1+tb_2)\in A+B.
-\]
-Para la imagen, $(1-t)T(a_1)+tT(a_2)=T((1-t)a_1+ta_2)\in T(A)$. Para la preimagen, si $Tx,Ty\in C$, la linealidad da $T((1-t)x+ty)=(1-t)Tx+tTy\in C$, y por tanto $(1-t)x+ty\in T^{-1}(C)$. Los casos de conjuntos vacíos satisfacen la definición de forma vacua.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24, ejercicio 3]\label{ej:lectura-24-3}
 Sean $A_1,\ldots,A_n$ conjuntos convexos no vacíos. Demuestre que $\operatorname{co}(A_1\cup\cdots\cup A_n)$ está formado por las combinaciones $\sum_{j=1}^n\alpha_jx_j$, con $x_j\in A_j$, $\alpha_j\geq0$ y $\sum_j\alpha_j=1$.
 \end{ejercicio}
-\begin{solucion}
-Toda combinación de la forma indicada es, por definición, una combinación convexa de puntos de la unión, así que pertenece a su envolvente. Para la otra inclusión, tome una combinación convexa finita de puntos de la unión y asigne cada punto a uno de los $A_j$ que lo contenga. Agrupe los términos según esa asignación. Sea $\alpha_j$ la suma de sus coeficientes. Si $\alpha_j>0$, el grupo se escribe $\alpha_jx_j$, donde $x_j$ es una combinación convexa de puntos de $A_j$ y pertenece a $A_j$ por convexidad. Si $\alpha_j=0$, elija cualquier $x_j\in A_j$; su contribución será cero. La suma de los $\alpha_j$ es $1$, y hemos obtenido la representación buscada.
 
-La condición de no vacío permite elegir $x_j$ incluso cuando su coeficiente sea cero. Si alguno de los conjuntos originales es vacío, debe omitirse de la lista; exigir literalmente un punto de un conjunto vacío haría falsa la representación.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 24, ejercicio 4: revisión y solución]\label{ej:lectura-24-4}
 La lectura propone, para conjuntos cerrados $A,B$, las afirmaciones: (i) si ambos son compactos, $\operatorname{co}(A\cup B)$ es compacto; (ii) si $A$ es compacto y $B$ acotado, $\operatorname{co}(A\cup B)$ es cerrado. Examine ambas afirmaciones y pruebe sus versiones correctas. Demuestre además que la envolvente convexa de $\{(0,0)\}\cup\{(1,y):y\in\R\}$ no es cerrada.
 \end{ejercicio}
-\begin{solucion}
-\emph{Primero, el defecto en las hipótesis.} Tal como están escritas, ambas afirmaciones son falsas en espacios normados generales: falta convexidad. En $\ell^2$, tome
-\[
- A=\{0\}\cup\{e_n/n:n\in\N\},\qquad B=\{0\}.
-\]
-El conjunto $A$ es compacto porque $e_n/n\to0$: dada una cubierta abierta, el miembro que contiene a $0$ cubre toda la cola y solo quedan finitos puntos que cubrir. También $B$ es compacto. Toda combinación convexa finita de puntos de $A$ tiene soporte finito. Sin embargo,
-\[
- z_N=\sum_{n=1}^N2^{-n}\frac{e_n}{n}+2^{-N}0
- \in\operatorname{co}(A)
-\]
-y $z_N$ converge en $\ell^2$ a $z=\sum_{n=1}^{\infty}2^{-n}e_n/n$, que tiene infinitas coordenadas no nulas y no pertenece a $\operatorname{co}(A)$. La convergencia se verifica, por ejemplo, acotando la norma de la cola por $\sum_{n>N}2^{-n}/n\to0$. Así $\operatorname{co}(A\cup B)$ no es cerrado y, en consecuencia, tampoco compacto. Este único ejemplo contradice los dos incisos originales.
 
-\emph{Versión corregida del inciso (i).} Suponga ahora que $A,B$ son no vacíos, compactos y convexos. Por el ejercicio~\ref{ej:lectura-24-3},
-\[
- \operatorname{co}(A\cup B)
- =\{(1-t)a+tb:a\in A,\ b\in B,\ 0\leq t\leq1\}.
-\]
-Es la imagen del compacto $A\times B\times[0,1]$ por la aplicación continua $(a,b,t)\mapsto(1-t)a+tb$. Por ello es compacto.
-
-\emph{Versión corregida del inciso (ii).} Suponga $A$ compacto convexo no vacío y $B$ cerrado, acotado, convexo y no vacío. Si $z_n=(1-t_n)a_n+t_nb_n$ converge a $z$, la compacidad de $A\times[0,1]$ permite pasar a una subsucesión con $a_n\to a\in A$ y $t_n\to t\in[0,1]$. Si $t=0$, la acotación de $B$ da $t_nb_n\to0$, y entonces $z=a\in A$. Si $t>0$, para índices grandes $t_n>0$ y
-\[
- b_n=\frac{z_n-(1-t_n)a_n}{t_n}
- \longrightarrow b=\frac{z-(1-t)a}{t}.
-\]
-Como $B$ es cerrado, $b\in B$, y $z=(1-t)a+tb$ pertenece a la envolvente. Por el criterio de sucesiones, esta es cerrada. Si uno de los conjuntos es vacío, la envolvente se reduce al otro conjunto convexo, y las conclusiones correspondientes son directas.
-
-\emph{El ejemplo de la recta vertical.} Sea $A=\{(0,0)\}$ y $B=\{(1,y):y\in\R\}$. Ambos son cerrados convexos y $A$ es compacto, pero $B$ no es acotado. Sus combinaciones son $(1-t)(0,0)+t(1,y)=(t,ty)$. De ahí
-\[
- \operatorname{co}(A\cup B)
- =\bigl((0,1]\times\R\bigr)\cup\{(0,0)\}.
-\]
-Los puntos $(1/n,1)$ pertenecen a la envolvente y convergen a $(0,1)$, que no pertenece. La acotación de $B$ en la versión corregida del inciso (ii) no puede eliminarse.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 24, ejercicio 5]\label{ej:lectura-24-5}
 Si $A$ es convexo, demuestre que $C=\bigcup_{s\geq0}sA$ es un cono convexo.
 \end{ejercicio}
-\begin{solucion}
-Si $A$ es vacío, $C$ es vacío y satisface la condición de estabilidad de manera vacua. Suponga $A\ne\varnothing$, por lo que $0\in C$. Sean $u=sa$, $v=tb$, con $s,t\geq0$ y $a,b\in A$, y sean $\alpha,\beta\geq0$. Ponga $q=\alpha s+\beta t$. Si $q=0$, ambos productos son cero y $\alpha u+\beta v=0\in C$. Si $q>0$,
-\[
- \alpha u+\beta v
- =q\left(\frac{\alpha s}{q}a+\frac{\beta t}{q}b\right).
-\]
-Los dos coeficientes interiores son no negativos y suman $1$, por lo que el paréntesis pertenece a $A$. Así el resultado pertenece a $qA\subseteq C$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24, ejercicio 6]\label{ej:lectura-24-6}
 Demuestre que la envolvente convexa cerrada de un compacto no vacío $A$ es el cierre de su envolvente convexa. Determine si la compacidad es necesaria.
 \end{ejercicio}
-\begin{solucion}
-No es necesaria: la igualdad vale para cualquier subconjunto de un espacio normado, incluso vacío. Por la proposición~\ref{ch24:interior-cierre}, $\cl{\operatorname{co}(A)}$ es cerrado y convexo, y contiene a $A$. Por eso contiene a la envolvente convexa cerrada, que es el menor conjunto con esas propiedades. En sentido inverso, cualquier cerrado convexo $D$ que contenga a $A$ contiene $\operatorname{co}(A)$ por su convexidad y luego contiene su cierre por ser cerrado. Al intersectar todos esos $D$, se obtiene que la envolvente convexa cerrada contiene $\cl{\operatorname{co}(A)}$. Las dos inclusiones dan igualdad. Esta afirmación es de cerradura y convexidad, no una afirmación de compacidad de la envolvente.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24, ejercicio 7]\label{ej:lectura-24-7}
 Sean $A,B$ convexos y disjuntos, y sea $x\in V$. Pruebe que
@@ -622,15 +477,3 @@ Sean $A,B$ convexos y disjuntos, y sea $x\in V$. Pruebe que
  \operatorname{co}(B\cup\{x\})\cap A=\varnothing.
 \]
 \end{ejercicio}
-\begin{solucion}
-Si $A$ o $B$ es vacío, una de las intersecciones es vacía directamente. Suponga ambos no vacíos y, buscando una contradicción, que ambas intersecciones contienen puntos. Por la convexidad y el ejercicio~\ref{ej:lectura-24-3} existen $a,a_0\in A$, $b,b_0\in B$ y $s,t\in[0,1]$ tales que
-\[
- a=(1-s)b_0+sx,\qquad b=(1-t)a_0+tx.
-\]
-Los números $s,t$ son positivos: si $s=0$, $a=b_0\in A\cap B$, y si $t=0$, $b=a_0\in A\cap B$. Multiplique la primera igualdad por $t$ y la segunda por $s$, y elimine el término $stx$. Resulta
-\[
- ta+s(1-t)a_0=sb+t(1-s)b_0.
-\]
-La suma de los coeficientes de cada lado es la misma, $q=t+s-st>0$.
-Al dividir entre $q$, el lado izquierdo es una combinación convexa de puntos de $A$ y el derecho una combinación convexa de puntos de $B$. Por tanto su valor común pertenece a $A\cap B$, contradicción. Al menos una de las dos intersecciones debe ser vacía.
-\end{solucion}

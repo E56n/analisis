@@ -1,0 +1,55 @@
+{
+  "revision_original": "30d9b9b8ccc3198798514f45b88a3ec65b1657f7",
+  "ejercicios_copiados_literalmente": 99,
+  "soluciones_copiadas_literalmente": 99,
+  "soluciones_en_apuntes": 0,
+  "numeracion_coincidente": true,
+  "pdf": {
+    "main": {
+      "paginas": 109,
+      "sha256": "54514021c8eedd389b3de25ede2d02e8b4cea3be0016f83b7c6dbab949c1fc08",
+      "referencias_indefinidas": 0,
+      "etiquetas_duplicadas": 0,
+      "desbordamientos": 0,
+      "enlaces_internos": 524,
+      "enlaces_a_apuntes": 0,
+      "enlaces_invalidos": [],
+      "paginas_renderizadas_para_revision": [
+        1,
+        2,
+        9,
+        40,
+        103,
+        109
+      ]
+    },
+    "solucionario": {
+      "paginas": 47,
+      "sha256": "b68c230eb7c056e28732987ddd27f6292d88752fc81957b5fd7e840aab3f35c3",
+      "referencias_indefinidas": 0,
+      "etiquetas_duplicadas": 0,
+      "desbordamientos": 0,
+      "enlaces_internos": 73,
+      "enlaces_a_apuntes": 38,
+      "enlaces_invalidos": [],
+      "paginas_renderizadas_para_revision": [
+        1,
+        2,
+        4,
+        22,
+        46,
+        47
+      ]
+    }
+  },
+  "revision_visual": {
+    "estado": "Aprobada en las muestras renderizadas",
+    "alcance": "Portadas, presentación y páginas de ejercicios del principio, centro y final, además de referencias. Sin solapamientos ni cortes observados. Recuadros guinda solo en el solucionario."
+  },
+  "compilacion_conjunta": {
+    "comando": "latexmk -interaction=nonstopmode -halt-on-error",
+    "exit_code": 0
+  },
+  "directorio_auxiliares": "build/",
+  "compilacion_desde_cero_con_build": "Correcta; índices y enlaces entre documentos comprobados"
+}

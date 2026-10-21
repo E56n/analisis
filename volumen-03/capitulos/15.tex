@@ -82,16 +82,12 @@ prueba simultáneamente que está bien definido y que es isométrico. Su imagen 
 \begin{ejercicio}\label{ej:v3-l29-1}
 Si $\alpha>0$, pruebe que $\pi_\varphi$ y $\pi_{\alpha\varphi}$ son unitariamente equivalentes. Deduzca la reducción a estados para funcionales positivos no nulos.
 \end{ejercicio}
-\begin{solucion}
-Los espacios nulos coinciden, pero la norma de una clase en el segundo cociente es $\sqrt\alpha$ veces la primera. Por ello $U[a]_\varphi=\alpha^{-1/2}[a]_{\alpha\varphi}$ es una isometría sobre el cociente denso y se extiende a un unitario de las completaciones. Además $U\pi_\varphi(c)[a]=\alpha^{-1/2}[ca]_{\alpha\varphi}=\pi_{\alpha\varphi}(c)U[a]$. Si $\varphi\ne0$, $\varphi(1)=\norm\varphi>0$ y $\varphi/\varphi(1)$ es un estado. El funcional cero es una excepción necesaria a la última frase del enunciado original: su GNS actúa en el espacio cero y no es equivalente a la representación de un estado.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l29-2}
 Pruebe que $(\pi_1\oplus\pi_2)(a)(\xi_1,\xi_2)=(\pi_1(a)\xi_1,\pi_2(a)\xi_2)$ es una representación. Si ambas representaciones son cíclicas, determine si su suma debe serlo.
 \end{ejercicio}
-\begin{solucion}
-La suma hilbertiana tiene producto interno suma y es completa porque cada componente de una sucesión de Cauchy converge. El operador diagonal es acotado, con norma $\max(\norm{\pi_1(a)},\norm{\pi_2(a)})$; la cota superior se obtiene sumando cuadrados y la inferior probando vectores apoyados en una sola componente. Linealidad, producto y adjunto se verifican coordenada a coordenada. La suma no tiene por qué ser cíclica: para $A=\C$, tome ambas representaciones escalares en $\C$, que son cíclicas. La suma actúa por $\lambda I$ en $\C^2$, y la órbita de cualquier vector está contenida en una recta, que no es densa en $\C^2$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l29-3}
 Sea $H$ separable de dimensión infinita, $(e_n)$ una base ortonormal y $\operatorname{BL}$ un límite de Banach positivo normalizado. Defina
@@ -100,29 +96,7 @@ Sea $H$ separable de dimensión infinita, $(e_n)$ una base ortonormal y $\operat
 \]
 Pruebe: (i) $\varphi$ es un estado; (ii) $\ker\pi_\varphi=\Kcal(H)$.
 \end{ejercicio}
-\begin{solucion}
-(i) La sucesión de coeficientes está acotada por $\norm T$. La linealidad compleja del límite de Banach (extendido desde sucesiones reales por partes real e imaginaria) da linealidad de $\varphi$. Si $T\ge0$, todos los coeficientes son no negativos y su límite de Banach también. En $I$ la sucesión es constantemente uno, así $\varphi(I)=1$.
 
-(ii) Si $T$ es compacto y $S\in\Lcal(H)$, los vectores $Se_n$ convergen débilmente a cero y están acotados. Un operador compacto los envía a una sucesión que converge en norma a cero: de lo contrario una subsucesión con normas separadas de cero tendría una subsucesión convergente en norma, cuyo límite débil tendría que ser cero. Así $\norm{TSe_n}\to0$, y
-\[
- \norm{\pi_\varphi(T)\pi_\varphi(S)e_\varphi}^2
- =\varphi(S^*T^*TS)=\operatorname{BL}(\norm{TSe_n}^2)=0.
-\]
-La ciclicidad implica $\pi_\varphi(T)=0$.
-
-Para la recíproca construiremos un testigo cuando $T$ no es compacto. Se tiene
-\[
- d:=\inf_{E\subset H\text{ finito dimensional}}
- \norm{T|_{E^\perp}}>0.
-\]
-Si el ínfimo fuera cero, $TP_E$, de rango finito, aproximaría a $T$ en norma, haciendo a $T$ compacto. Elija $0<\delta<d$. Por inducción, elija vectores unitarios $\xi_n$ ortogonales a todos los $\xi_j$ y $T^*T\xi_j$ anteriores, con $\norm{T\xi_n}\ge\delta$. Es posible porque sólo se imponen un número finito de condiciones y la norma de la restricción de $T$ al complemento correspondiente supera $\delta$. Los vectores $T\xi_n$ son ortogonales entre sí, pues $\ip{T\xi_n}{T\xi_j}=\ip{\xi_n}{T^*T\xi_j}=0$.
-
-La aplicación $Ve_n=\xi_n$ se extiende a una isometría $V:H\to H$. En particular $\norm{TVe_n}\ge\delta$ para todo $n$, y
-\[
- \varphi(V^*T^*TV)=\operatorname{BL}(\norm{T\xi_n}^2)\ge\delta^2.
-\]
-Si $\pi_\varphi(T)=0$, el miembro izquierdo sería $\norm{\pi_\varphi(T)\pi_\varphi(V)e_\varphi}^2=0$, contradicción. Así ningún operador no compacto pertenece al núcleo. La prueba requiere más que observar que los compactos son límites de operadores de rango finito: esa observación sólo proporciona una de las inclusiones.
-\end{solucion}
 
 \section{Sumas directas y representación universal}\label{lec:v3-30}
 \fuentelectura{30}{La construcción GNS 2}
@@ -187,35 +161,16 @@ La completación es $L^2(\mu)$ y $\pi_\varphi(f)=M_f$, con vector cíclico $1$. 
 \begin{ejercicio}\label{ej:v3-l30-1}
 Sean $\mu,\nu$ medidas positivas finitas regulares de Borel sobre un compacto Hausdorff $X$. Pruebe: (i) $\pi_\mu\oplus\pi_\nu$ es cíclica si y sólo si $\mu\perp\nu$; (ii) si son mutuamente singulares, $\pi_\mu\oplus\pi_\nu$ es unitariamente equivalente a $\pi_{\mu+\nu}$.
 \end{ejercicio}
-\begin{solucion}
-Si $\mu\perp\nu$, elija un Borel $E$ que soporte a $\mu$ y cuyo complemento soporte a $\nu$. La aplicación
-\[
- U:L^2(\mu+\nu)\to L^2(\mu)\oplus L^2(\nu),\qquad
- Uh=(h,h)
-\]
-es isométrica porque las normas cuadradas suman. Es sobreyectiva: dado $(f,g)$, la función $h=\mathbf1_Ef+\mathbf1_{X\setminus E}g$ tiene las restricciones requeridas, independientemente de los representantes fuera de sus soportes. Además entrelaza las multiplicaciones. Como $1$ es cíclico en $L^2(\mu+\nu)$ por densidad de $C(X)$, se obtiene (ii) y la suficiencia de (i).
 
-Para la necesidad, sea $\lambda=\mu+\nu$, $p=d\mu/d\lambda$, $q=d\nu/d\lambda$, de modo que $p,q\ge0$ y $p+q=1$ casi en todas partes. Identifique $L^2(\mu)$ con el subespacio de $L^2(\lambda)$ soportado en $\{p>0\}$ mediante $f\mapsto\sqrt p f$; la inversa es división por $\sqrt p$ en ese conjunto. Haga lo mismo para $\nu$. Si las medidas no son singulares, el conjunto $D=\{p>0,q>0\}$ tiene medida positiva: si tuviera medida cero, los soportes medibles $\{p>0\}$ y su complemento demostrarían singularidad.
-
-Considere cualquier candidato a vector cíclico, identificado con $(u,v)$ en los dos subespacios de $L^2(\lambda)$. Si $(u,v)$ se anula en un subconjunto $E\subset D$ de medida positiva, el vector $(\mathbf1_E,0)$ es no nulo y ortogonal a toda su órbita. En otro caso, el vector
-\[
- w=\mathbf1_D\frac{(\overline v,-\overline u)}{1+|u|+|v|}
-\]
-es no nulo, pertenece a la suma de los dos subespacios y es ortogonal a $(fu,fv)$ para todo $f\in C(X)$, porque el integrando del producto interno es $f(uv-vu)/(1+|u|+|v|)=0$. Su pertenencia a $L^2$ se sigue de la acotación y de que $\lambda$ es finita. Ningún vector es, pues, cíclico. Las hipótesis de finitud y regularidad explicitan las necesarias para la representación GNS y la densidad de funciones continuas empleadas aquí.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l30-2}
 Si $A$ es separable y $(\varphi_n)$ es débil estrella densa en $S(A)$, defina $\varphi=\sum_{n\ge1}2^{-n}\varphi_n$. Pruebe que $\pi_\varphi$ es isométrica y deduzca que $A$ admite una representación cíclica isométrica.
 \end{ejercicio}
-\begin{solucion}
-La serie converge en norma de $A^*$ porque cada estado tiene norma uno. Su suma es positiva y vale $\sum2^{-n}=1$ en la identidad, así es un estado. Si $\varphi(a^*a)=0$, todos los sumandos $2^{-n}\varphi_n(a^*a)$ son no negativos y deben ser cero. Por densidad y continuidad de la evaluación, todos los estados anulan $a^*a$, lo que implica $a^*a=0$ y $a=0$. El estado es, por tanto, fiel en los positivos. Si $\pi_\varphi(a)=0$, entonces $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$, así $a=0$. La representación es inyectiva, y todo $*$-homomorfismo inyectivo es isométrico por la proposición~\ref{v3:homomorfismo-cstar-norma}. Por construcción es cíclica. La serie del enunciado original debe sumar los funcionales $\varphi_n$, no las representaciones $\pi_{\varphi_n}$, cuyos espacios de Hilbert son diferentes.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l30-3}
 Si $\pi_\varphi(a)=0$ para todos los estados puros, pruebe $a=0$. Deduzca que la suma $\bigoplus_{\varphi\in P(A)}\pi_\varphi$ es isométrica.
 \end{ejercicio}
-\begin{solucion}
-Para cada estado puro, $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$. Como los estados puros separan elementos, $a^*a=0$ y $a=0$. Esto prueba inyectividad de la suma y, por la proposición~\ref{v3:homomorfismo-cstar-norma}, isometría. También se obtiene directamente: existe un estado puro que realiza $\norm{a^*a}=\norm a^2$, y la norma de la correspondiente componente de la suma es al menos $\norm a$ al evaluarla en su vector cíclico unitario.
-\end{solucion}
+
 
 Ya podemos estudiar cualquier álgebra $C^*$ concreta o abstracta mediante operadores en un espacio de Hilbert. Para reconocer qué propiedades dependen de cerrar una familia de operadores en norma y cuáles dependen de su acción sobre vectores, introduciremos ahora las topologías fuerte y débil del operador. Las construcciones de este capítulo se desarrollan también en \cite{murphy1990,zhu1993,conway1990}.

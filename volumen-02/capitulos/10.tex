@@ -161,7 +161,7 @@ La función $h=\norm\varphi\,|v|^{p-2}\overline v$, definida como cero en los ce
 Finalmente, si $\Lambda\in(L^p)^{**}$, el funcional $h\mapsto\Lambda(\Phi(h))$ sobre $L^q$ está representado por un $f\in L^p$, aplicando el resultado con exponente $q$. Por tanto $\Lambda(\Phi(h))=\int fh=\Phi(h)(f)$ para todo $h$. Como todos los funcionales de $(L^p)^*$ son de la forma $\Phi(h)$, se sigue $\Lambda=J(f)$, donde $J$ es el encaje canónico en el bidual. Esta es la reflexividad.
 \end{proof}
 
-\section{Ejercicios resueltos: geometría, multiplicadores y compacidad}
+\section{Ejercicios propuestos: geometría, multiplicadores y compacidad}
 \begin{ejercicio}[Lectura 21, ejercicio 1: precisión de la igualdad]\label{ej:v2-l21-1}
 Para $1<p<\infty$ y $f,g\in L^p$ de normas no nulas, demostrar
 \[
@@ -171,63 +171,23 @@ Para $1<p<\infty$ y $f,g\in L^p$ de normas no nulas, demostrar
 \]
 Encontrar pares que alcancen ambos extremos cuando existen dos conjuntos medibles \emph{disjuntos} de medida positiva finita. La disjunción falta en la condición original para esta última petición.
 \end{ejercicio}
-\begin{solucion}
-Escribamos $r=p/2$ y, para $h\ge0$, $Q_r(h)=(\int h^r)^{1/r}$. Si $r\ge1$, Minkowski y $a^r+b^r\le(a+b)^r$ dan
-\[
- Q_r(a+b)\le Q_r(a)+Q_r(b)\le2^{1-1/r}Q_r(a+b).
-\]
-La segunda cota usa primero la desigualdad entre normas de un par de números: $A+B\le2^{1-1/r}(A^r+B^r)^{1/r}$. Si $0<r\le1$, la desigualdad inversa y $a^r+b^r\le2^{1-r}(a+b)^r$ dan
-\[
- Q_r(a)+Q_r(b)\le Q_r(a+b)\le2^{1/r-1}(Q_r(a)+Q_r(b)).
-\]
-Para la última desigualdad se usa $(a+b)^r\le a^r+b^r$ y la convexidad de $t^{1/r}$ sobre los dos números $Q_r(a)^r,Q_r(b)^r$.
 
-Aplicamos estas comparaciones a $a=|f+g|^2$, $b=|f-g|^2$ y usamos la identidad escalar $a+b=2(|f|^2+|g|^2)$. Resulta
-\[
- \norm{f+g}_p^2+\norm{f-g}_p^2
- \le2C(\norm f_p^2+\norm g_p^2),\qquad C=2^{|1-2/p|}.
-\]
-Sustituyendo ahora $(f,g)$ por $(f+g,f-g)$ en esta cota se obtiene la desigualdad inferior, pues las nuevas suma y diferencia son $2f,2g$.
-
-Sean $u,v$ indicadores normalizados de dos conjuntos disjuntos de medida positiva finita. Para $(f,g)=(u,v)$ el cociente es $2^{2/p-1}$. Para $(f,g)=(u+v,u-v)$ es $2^{1-2/p}$. Son los dos extremos, cuyo orden depende de si $p<2$ o $p>2$. Si $p=2$, ambos valen uno.
-\end{solucion}
 \begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:v2-l21-2}
 Sea $f:X\to\F$ medible. Supóngase que $\{f\ne0\}$ es de medida $\sigma$-finita y que $fg\in L^1$ para todo $g\in L^p$, $1<p<\infty$. Demostrar $f\in L^q$, $q=p/(p-1)$.
 \end{ejercicio}
-\begin{solucion}
-Elegimos conjuntos crecientes $E_n$ de medida finita que cubran $\{f\ne0\}$ y ponemos $f_n=f\ind{E_n\cap\{|f|\le n\}}$. Entonces $f_n\in L^q$, $|f_n|\uparrow|f|$, y los funcionales $T_n(g)=\int f_ng$ tienen norma $\norm{f_n}_q$ por la proposición \ref{v2:dual-isometria}. Para cada $g\in L^p$,
-$|T_n(g)|\le\int|fg|<\infty$, uniformemente en $n$. El principio de acotación uniforme, aplicado al Banach $L^p$, da $\sup_n\norm{f_n}_q=M<\infty$. La convergencia monótona implica $\int|f|^q=\lim_n\int|f_n|^q\le M^q$. Así $f\in L^q$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:v2-l21-3}
 Supóngase que $\mu$ es semifinita: cada conjunto de medida infinita contiene uno de medida positiva finita. Si $f$ es medible y $fg\in L^1$ para todo $g\in L^p$, demostrar $f\in L^q$.
 \end{ejercicio}
-\begin{solucion}
-Primero observemos que, en un conjunto $A$ de medida infinita, las medidas de sus subconjuntos de medida finita no pueden estar acotadas. Si su supremo fuera $M<\infty$, una sucesión que se acercara a $M$ tendría unión $B$ de medida $M$, tomando uniones finitas crecientes. El resto $A\setminus B$ tendría medida infinita y, por semifinitud, contendría un $D$ de medida positiva finita. Entonces $B\cup D$ contradice la definición de $M$. Por tanto podemos elegir $B_n\subset A$ de medida finita con $\mu(B_n)>n$; su unión es $\sigma$-finita e infinita.
 
-Para $A_k=\{|f|\ge1/k\}$, si $\mu(A_k)=\infty$, elegimos un $B\subset A_k$ de medida $\sigma$-finita e infinita. La función $f\ind B$ satisface el ejercicio \ref{ej:v2-l21-2}, luego pertenece a $L^q$, pero $\int_B|f|^q\ge k^{-q}\mu(B)=\infty$, contradicción. Así todos los $A_k$ tienen medida finita. Su unión es $\{f\ne0\}$, y el ejercicio anterior se aplica directamente a $f$.
-\end{solucion}
 \begin{ejercicio}[Lectura 21, ejercicio 4]\label{ej:v2-l21-4}
 En $\R$, sea $\Acal$ la $\sigma$-álgebra de conjuntos numerables o con complemento numerable, y sea $\mu(A)=0$ en el primer caso y $\mu(A)=1$ en el segundo. Explicar por qué la petición de alcanzar ambos extremos del ejercicio \ref{ej:v2-l21-1} falla en este espacio para $p\ne2$.
 \end{ejercicio}
-\begin{solucion}
-Toda función medible real es constante fuera de un conjunto numerable. Para verlo, dividimos su recorrido en intervalos de longitud $2^{-n}$. De sus preimágenes, exactamente una puede ser conumerable y al menos una debe serlo, pues una unión numerable de conjuntos numerables no cubre $\R$. Fuera de la unión numerable de las preimágenes descartadas, los valores de la función están a distancia a lo sumo $2^{-n}$ para todo $n$, luego son iguales. Para funciones complejas se aplica el argumento a sus partes real e imaginaria. Por tanto cada $L^p$ es isométrico a $\F$ y el cociente del ejercicio es siempre uno, por el paralelogramo escalar. Las desigualdades siguen siendo verdaderas, pero ninguno de sus extremos estrictos se alcanza si $p\ne2$. Dos conjuntos de medida positiva pueden coincidir o intersectarse en medida uno; su mera existencia no sustituye la disjunción.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 21, ejercicio 5]\label{ej:v2-l21-5}
 Una sucesión $v_n$ converge débilmente a $v$ si $\varphi(v_n)\to\varphi(v)$ para todo $\varphi\in V^*$. Un operador continuo $T:V\to W$ es completamente continuo si transforma convergencia débil en convergencia en norma. Para espacios de Banach $V,W$, demostrar: (i) todo operador compacto es completamente continuo; (ii) si $V$ es reflexivo, todo operador completamente continuo es compacto.
 \end{ejercicio}
-\begin{solucion}
-(i) Una sucesión débilmente convergente es acotada: se aplica acotación uniforme a los funcionales $J(v_n)$ sobre $V^*$ y se usa $\norm{J(v_n)}=\norm{v_n}$, consecuencia de Hahn--Banach. Si $T$ es compacto, toda subsucesión de $Tv_n$ admite una subsucesión convergente en norma. Su límite debe ser $Tv$, porque para $\psi\in W^*$, $\psi(Tv_n)=(T^*\psi)(v_n)\to\psi(Tv)$, y los funcionales separan puntos por Hahn--Banach. Si $Tv_n$ no convergiera en norma a $Tv$, una subsucesión quedaría a distancia al menos $\eps>0$ y su subsucesión convergente produciría una contradicción.
 
-(ii) Justificamos el hecho de extracción que se necesita. En un Banach reflexivo toda sucesión acotada tiene una subsucesión débilmente convergente. Sea $Y$ el subespacio cerrado generado por los términos de la sucesión; es separable. También es reflexivo: dado $F\in Y^{**}$, la composición de $F$ con la restricción $V^*\to Y^*$ pertenece a $V^{**}$, luego es evaluación en algún $v\in V$. Todo funcional que se anula en $Y$ se anula en $v$; la separación de un punto de un subespacio cerrado mediante Hahn--Banach implica $v\in Y$. Así $F$ es evaluación en ese $v$.
-
-El dual $Y^*$ es separable. En efecto, elijamos $y_j$ densos en la esfera de $Y$ y funcionales $\varphi_j$ de norma uno con $\varphi_j(y_j)=1$. La familia es normante: si $y\ne0$, aproximar $y/\norm y$ por $y_j$ muestra $\sup_j|\varphi_j(y)|=\norm y$. Si el espacio cerrado generado por los $\varphi_j$ no fuera $Y^*$, Hahn--Banach daría un funcional no nulo de $Y^{**}$ que se anula sobre todos ellos; por reflexividad sería evaluación en un $y\ne0$, contradiciendo que la familia sea normante. Las combinaciones racionales de los $\varphi_j$ forman, pues, un conjunto denso numerable de $Y^*$.
-
-Una extracción diagonal hace converger las evaluaciones de una sucesión acotada sobre ese conjunto numerable. La cota uniforme de las normas extiende la convergencia a todo $\varphi\in Y^*$ y define un funcional continuo $F(\varphi)=\lim\varphi(v_{n_j})$. Reflexividad da $F=J(y)$, es decir, convergencia débil a $y$. La restricción de cualquier funcional de $V^*$ muestra que también es débil en $V$.
-
-Aplicamos este hecho a cualquier sucesión de la bola unitaria de $V$. Su subsucesión débilmente convergente tiene, por completa continuidad, imagen convergente en norma. Así la imagen de la bola es relativamente secuencialmente compacta; en un espacio métrico completo eso equivale a compacidad de su cerradura. Por tanto $T$ es compacto.
-
-La lectura menciona además un resultado atribuido a Odell acerca de espacios que no contienen $\ell^1$. Esa afirmación pertenece a la teoría de sucesiones débiles; no se usa como hipótesis ni como paso de estas dos demostraciones.
-\end{solucion}
 \begin{ejercicio}[Lectura 21, ejercicio 6]\label{ej:v2-l21-6}
 Sean $1<p<\infty$, $q=p/(p-1)$ y $\mu$ $\sigma$-finita. Sea $k:X\times X\to\F$ medible para $\Acal\otimes\Acal$, con
 \[
@@ -235,28 +195,6 @@ Sean $1<p<\infty$, $q=p/(p-1)$ y $\mu$ $\sigma$-finita. Sea $k:X\times X\to\F$ m
 \]
 Demostrar que $Kf(x)=\int_Xk(x,y)f(y)\,d\mu(y)$ define, casi en todas partes, un operador compacto en $L^p$, con $\norm K\le\alpha^{1/q}$.
 \end{ejercicio}
-\begin{solucion}
-Escribamos $a(y)=\norm{k(\cdot,y)}_p$, de modo que $\norm a_q=\alpha^{1/q}$. La desigualdad integral de Minkowski da
-\[
- \norm{Kf}_p\le\int_X a(y)|f(y)|\,d\mu(y)\le\norm a_q\norm f_p. \tag{*}
-\]
-Aquí también hay que justificar existencia. Para $H(x)=\int|k(x,y)f(y)|\,d\mu(y)$, Tonelli y Hölder implican $\int Hh\le\norm a_q\norm f_p\norm h_q$ para todo $h\ge0$ de $L^q$. Aplicamos esta desigualdad a las funciones que realizan la norma de $H_m=\min\{H,m\}\ind{E_m}$, donde $E_m\uparrow X$ y $\mu(E_m)<\infty$. Obtenemos $\norm{H_m}_p\le\norm a_q\norm f_p$; por convergencia monótona $H\in L^p$ con la misma cota. Así la integral definitoria es absolutamente convergente casi en todas partes y (*) queda probada. También queda claro que cambiar $f$ en un conjunto nulo no cambia $Kf$ en $L^p$.
 
-Demostraremos compacidad aproximando el núcleo. La norma mixta
-\[
- \norm h_{q,p}=\left(\int\norm{h(\cdot,y)}_p^q\,d\mu(y)\right)^{1/q}
-\]
-controla, por (*), la norma del operador asociado. Los núcleos $k_m=k\ind{E_m\times E_m}\ind{\{|k|\le m\}}$ convergen a $k$ en esta norma: primero, para casi todo $y$, convergencia dominada en $x$ da convergencia de las normas $L^p$ del error; después dominada en $y$, con cota $a(y)^q$, da la afirmación.
-
-En un rectángulo de medida finita, todo núcleo acotado puede aproximarse en $L^r$, $r\ge\max\{p,q\}$, por combinaciones finitas de indicadores de rectángulos medibles. Explicamos el punto sobre conjuntos: la familia de conjuntos aproximables en medida por el álgebra de uniones finitas de rectángulos contiene esa álgebra, es estable por complementos relativos y por uniones numerables. Para esta última propiedad se aproxima primero una unión finita, pues la medida total es finita, y después cada uno de sus miembros. Por tanto contiene la $\sigma$-álgebra producto. Aproximar niveles de una función simple da la densidad en $L^r$. Además, si $h$ está soportado en $E\times F$ de medidas finitas positivas, dos aplicaciones de Hölder dan
-\[
- \norm h_{q,p}\le\mu(E)^{1/p-1/r}\mu(F)^{1/q-1/r}\norm h_{L^r(E\times F)}.
-\]
-Los casos de medida cero son triviales. Así obtenemos núcleos $s_j(x,y)=\sum_{i=1}^{m_j}c_i\ind{A_i}(x)\ind{B_i}(y)$ que convergen a $k$ en norma mixta, con $A_i,B_i$ de medida finita. Su operador es
-\[
- S_jf=\sum_i c_i\left(\int_{B_i}f\,d\mu\right)\ind{A_i},
-\]
-y tiene rango finito. Por (*), $\norm{K-S_j}\le\norm{k-s_j}_{q,p}\to0$. Un límite en norma de operadores compactos es compacto: una red finita para una aproximación, junto con el error uniforme sobre la bola unitaria, da acotación total de la imagen; la completitud del codominio da compacidad de la cerradura. Esto completa tanto la definición como la compacidad de $K$.
-\end{solucion}
 \section{Geometría y representación}
 La convexidad cuantitativa de Clarkson obliga a que una sucesión casi maximizante sea de Cauchy. La diferenciación de la norma identifica después el funcional que apoya a la esfera en su límite. El argumento explica por qué el intervalo $1<p<\infty$ tiene una dualidad especialmente regular y por qué los extremos $p=1,\infty$ requieren estudiar propiedades adicionales de la medida.

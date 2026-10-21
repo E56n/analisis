@@ -89,31 +89,17 @@ $\mu(A(c,d))=c^{-1}\mu(A)$. Por tanto $\Delta(c,d)=c^{-1}$ y el grupo no es unim
 \begin{ejercicio}[Lectura 20, ejercicio 1]\label{ej:v4-l20-1}
 Demuestre que, para $f\in\Cc(G)$ y $\eps>0$, existe una vecindad $U$ de $e$ tal que $x^{-1}y\in U$ o $yx^{-1}\in U$ implica $|f(x)-f(y)|<\eps$.
 \end{ejercicio}
-\begin{solucion}
-Por el lema \ref{v4:haar-uniforme}, elijamos una vecindad simétrica $U$ tal que $\norm{R_uf-f}_\infty<\eps$ y $\norm{L_uf-f}_\infty<\eps$ para $u\in U$. Si $u=x^{-1}y$, entonces $y=xu$ y
-$|f(y)-f(x)|=|R_uf(x)-f(x)|<\eps$. Si $u=yx^{-1}$, entonces $y=ux$ y
-$|f(y)-f(x)|=|L_{u^{-1}}f(x)-f(x)|<\eps$.
 
-La parte esencial del argumento es que la vecindad no depende de $x$. Esto procede de la cubierta finita de un compacto que contiene todos los soportes trasladados, demostrada en el lema citado; la continuidad puntual por sí sola no bastaría.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 20, ejercicio 2]\label{ej:v4-l20-2}
 Pruebe la equivalencia entre: $G$ es discreto; $\mu(\{e\})>0$; $\mu$ es un múltiplo positivo de la medida de conteo.
 \end{ejercicio}
-\begin{solucion}
-Si $G$ es discreto, los compactos son finitos y la medida de conteo es de Haar. La unicidad da la tercera afirmación. Esta implica evidentemente la segunda. Supongamos ahora que $c=\mu(\{e\})>0$. Por invariancia, cada singleton tiene medida $c$. Una vecindad compacta $K$ de $e$ tiene medida finita; no puede contener más de $\mu(K)/c$ puntos, porque la medida de cualquier conjunto de $m$ puntos es $mc$. Así $K$ es finito. Existe un abierto $V$ con $e\in V\subset K$; al quitar los finitos puntos de $V\setminus\{e\}$, que son cerrados por la propiedad Hausdorff, obtenemos que $\{e\}$ es abierto. Todas sus traslaciones son abiertas, luego $G$ es discreto. La medida de conteo en un conjunto infinito, incluso no numerable, se entiende como infinito sobre todo subconjunto infinito.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 3]\label{ej:v4-l20-3}
 Sea $H$ un subgrupo del grupo multiplicativo $(0,\infty)$. Demuestre que es discreto o denso.
 \end{ejercicio}
-\begin{solucion}
-El logaritmo es un isomorfismo topológico de $(0,\infty)$ sobre $(\R,+)$. Basta estudiar el subgrupo aditivo $A=\log H$. Si $A=\{0\}$, es discreto. En otro caso, $A$ tiene elementos positivos. Sea $d=\inf(A\cap(0,\infty))$.
 
-Si $d=0$, dados $x\in\R$ y $\eps>0$, elijamos $0<a\in A$ con $a<\eps$. Existe un entero $n$ con $|x-na|\leq a/2<\eps$. Como $na\in A$, el grupo $A$ es denso.
-
-Si $d>0$, probaremos que $d\in A$. Elijamos $a\in A$ con $d\leq a<2d$. Si $a>d$, la definición de ínfimo proporciona $b\in A$ con $d\leq b<a$ y entonces $0<a-b<d$, contradicción. Por tanto $a=d$. Para cualquier $x\in A$ hacemos división euclidiana real: $x=nd+r$ con $n\in\Z$ y $0\leq r<d$. Como $r=x-nd\in A$, la definición de $d$ fuerza $r=0$. Así $A=d\Z$, que es discreto. Al aplicar la exponencial obtenemos $H=\{e^{nd}:n\in\Z\}$ en este caso.
-\end{solucion}
 
 \section{Promediar sobre un subgrupo}\label{lectura:v4-21}
 Sea ahora $H$ un subgrupo cerrado de $G$, con medida de Haar izquierda $\mu_H$. El espacio $Q=G/H$ es Hausdorff; la proyección $\pi:G\to Q$ es abierta porque $\pi^{-1}(\pi(U))=UH$ es unión de traslaciones abiertas. Si $K$ es una vecindad compacta de $x$, entonces $\pi(K)$ es una vecindad compacta de $xH$. Por tanto $Q$ es localmente compacto.
@@ -262,22 +248,12 @@ Suponga $\Delta_G|_H=\Delta_H$. Si $f:G\to\C$ es Borel y se anula fuera de una u
 \]
 Explique por qué las hipótesis requieren cuidado en el enunciado original.
 \end{ejercicio}
-\begin{solucion}
-El corolario \ref{v4:mod-weil-positivo}, aplicado a $|f|$, identifica la integral iterada con $\int_G|f|$. La finitud de la primera implica la de la segunda, que es exactamente $f\in L^1(G)$. En particular, la afirmación vale para toda función Borel cuando $G$ es $\sigma$-compacto.
 
-El original no exige medibilidad. Esta no se deduce de la medibilidad de $|f|$: en el grupo compacto $\T$, tomemos un conjunto no medible $A$ y $f=1$ en $A$, $f=-1$ fuera. Entonces $|f|=1$, de integral finita, pero $f$ no es medible. Podemos tomar $H=G$ para que la integral iterada del módulo esté perfectamente definida.
-
-Incluso añadiendo medibilidad, en grupos generales y con la convención exteriormente regular aparece otra dificultad real. Sea $G=\R\times D$ con $D$ discreto no numerable, $H=\R\times\{e\}$ y $f=1_{\{0\}\times D}$. Ambas funciones modulares son uno y $G/H$ se identifica con $D$, con medida de conteo. Sobre cada fibra, $f$ es el indicador de un punto de $\R$, así que la integral interior es cero y la integral iterada también. Pero la observación \ref{v4:haar-radon} demuestra que $\int_Gf=\infty$. El conjunto donde $f$ es no nula no está contenido en una unión numerable de compactos. El contraejemplo muestra por qué no se extiende sin más la fórmula $L^1$ a todos los Borel positivos de un grupo no $\sigma$-compacto. La versión demostrada conserva el contenido útil del ejercicio y declara la hipótesis adicional.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:v4-l21-2}
 Si $H$ es cerrado y normal en $G$, demuestre que $\Delta_G|_H=\Delta_H$. Deduzca que $\ker\Delta_G$ es unimodular.
 \end{ejercicio}
-\begin{solucion}
-Cuando $H$ es normal, $G/H$ es un grupo localmente compacto Hausdorff. Su medida de Haar izquierda es invariante bajo la acción izquierda de $G$, pues esta acción es precisamente la traslación por la clase $xH$. La necesidad en el teorema \ref{v4:mod-weil} da $\Delta_G|_H=\Delta_H$. No estamos suponiendo la fórmula cociente para obtener la medida: usamos la existencia independiente de Haar en el grupo $G/H$.
 
-El núcleo $N=\ker\Delta_G$ es cerrado porque $\Delta_G$ es continua y $\{1\}$ es cerrado, y es normal porque es el núcleo de un homomorfismo. Aplicando lo anterior a $N$, obtenemos $\Delta_N=\Delta_G|_N=1$. Esta es la unimodularidad de $N$, aunque $G$ no sea unimodular.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:v4-l21-3}
 Sean $H$ cerrado y $K$ compacto, subgrupos de $G$, con $G=HK$. Demuestre que se pueden normalizar sus medidas de Haar de modo que
@@ -286,16 +262,3 @@ Sean $H$ cerrado y $K$ compacto, subgrupos de $G$, con $G=HK$. Demuestre que se 
  \qquad(f\in L^1(G)).
 \]
 \end{ejercicio}
-\begin{solucion}
-Normalicemos la medida de $K$ como probabilidad y pongamos $P=H\times K$. El grupo $P$ actúa transitivamente en $G$ por $(h,k)\cdot g=hgk^{-1}$: la hipótesis $G=HK$ permite escribir cualquier elemento como $hk^{-1}$. El estabilizador de $e$ es
-$L=\{(\ell,\ell):\ell\in H\cap K\}$, que es compacto. La aplicación $P/L\to G$, $(h,k)L\mapsto hk^{-1}$, es una biyección continua. Es un homeomorfismo: el mapa $P\to G$ es propio, pues la preimagen de un compacto $C$ es cerrada y está contenida en el compacto $(CK\cap H)\times K$; al descender al cociente, una biyección continua propia entre espacios localmente compactos Hausdorff es un homeomorfismo.
-
-La función modular de un grupo es uno en todo subgrupo compacto. Así $\Delta_P|_L=1=\Delta_L$, y el teorema de Weil proporciona una medida $P$-invariante en $P/L$. Normalicemos también la medida de $L$ como probabilidad. Para $f\in\Cc(G)$, la función $F(h,k)=f(hk^{-1})$ tiene soporte compacto en $P$ por la propiedad anterior; es constante en las clases de $L$, de modo que $T_LF$ se identifica con $f$. La fórmula de Weil en $P$ da
-\[
- \int_{P/L}f\,d\eta=\int_H\int_K f(hk^{-1})\,dk\,dh
-                  =\int_H\int_K f(hk)\,dk\,dh,
-\]
-porque la medida de Haar de un grupo compacto es invariante por inversión.
-
-La medida de Haar de $G$ también es $P$-invariante: es invariante bajo la izquierda por $H$, y bajo la derecha por $K$ porque $\Delta_G|_K=1$. La unicidad de la medida invariante en $P/L$ muestra que, después de reescalar la medida de $G$, esta coincide con $\eta$. Obtenemos la igualdad deseada en $\Cc(G)$. Para precisar la extensión a $L^1$, la imagen de la medida de Haar de $P$ bajo el mapa propio $p(h,k)=hk^{-1}$ es una medida finita en compactos y con la regularidad adoptada. La regularidad exterior se conserva porque $p$ es cerrado: si un abierto $U$ contiene $p^{-1}(A)$, el abierto $G\setminus p(P\setminus U)$ contiene $A$ y su preimagen está en $U$. La regularidad interior en abiertos se obtiene proyectando compactos. La igualdad ya probada en $\Cc(G)$ identifica esta medida imagen con $\mu_G$. Por aproximación simple, $f\circ p\in L^1(P)$ y su integral es $\int_Gf$. Finalmente aplicamos Weil en $P$ al subgrupo normal y compacto $\{e\}\times K$; el cociente es $H$ y la normalización de Haar da la integral iterada escrita arriba. La inversión en $K$ no altera la integral ni la integrabilidad.
-\end{solucion}

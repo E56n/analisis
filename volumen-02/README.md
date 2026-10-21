@@ -1,32 +1,85 @@
-# Teoría de la medida e integración
+# Volumen II: Teoría de la medida e integración
 
-Volumen II de **Análisis**, edición de **Eder Said Martinez Ramirez**.
+**Autor de la edición:** Eder Said Martinez Ramirez.
 
-El PDF `main.pdf` tiene 127 páginas. Se organiza en seis partes y dieciséis capítulos, desarrolla las 33 lecturas de *Análisis Matemático 2* de Miguel Ángel Valencia Bucio e incluye los 160 ejercicios de sus listas explícitas con soluciones. Los huecos de demostración dentro de la teoría se desarrollan en las pruebas; no se cuentan como ejercicios adicionales. Los dos exámenes de la carpeta fuente se consultaron, pero no integran el conjunto declarado de ejercicios resueltos.
+**Autor de las lecturas originales:** Miguel Ángel Valencia Bucio.
 
-## Contenido y fuentes
+El volumen se entrega en dos documentos: [apuntes](main.pdf), con teoría y ejercicios propuestos, y [solucionario](solucionario.pdf), con los mismos ejercicios y sus soluciones. Los apuntes se organizan en seis partes y 16 capítulos; el solucionario conserva la numeración de esos capítulos y sus 160 ejercicios.
 
-La teoría abarca álgebras, medidas exteriores y Carathéodory, Lebesgue, integración, convergencia, productos y Fubini, espacios `L^p`, dualidad, medidas con signo y complejas, Radon–Nikodym, regularidad y representación de Riesz. La demostración positiva de Riesz incluye funcionales sobre `C_c(X)` de un espacio localmente compacto Hausdorff general, sin acotación uniforme global, y especifica el alcance de la regularidad de la medida construida.
+El alcance de la edición comprende 33 lecturas y 160 ejercicios originales; los dos exámenes no forman parte de las listas resueltas. Las ampliaciones y rectificaciones conservan sus créditos y su procedencia; las fuentes utilizadas se identifican en `referencias.tex` y en los registros editoriales.
 
-La atribución de las lecturas originales, los materiales docentes de Egor Maximenko y los tratados de consulta aparece en `presentacion.tex` y `referencias.tex`. Las referencias identifican obras reales y ediciones verificadas. Las adaptaciones y correcciones se explican en sus lugares de uso; no se incorpora un enunciado falso como si fuese un teorema.
+## Estructura y edición
 
-## Compilar
+- `main.tex`: entrada de los apuntes, con teoría y ejercicios sin soluciones ni recuadros rojos.
+- `solucionario.tex`: entrada del solucionario, con enunciados y soluciones, y ejercicios en recuadros guinda.
+- `preambulo.tex`: paquetes, macros y configuración compartidos por ambos documentos.
+- `capitulos/`: teoría y ejercicios propuestos, en su ubicación original.
+- `ejercicios-soluciones.tex`: copia de los ejercicios y sus soluciones, organizada por capítulo y con la misma numeración que los apuntes.
+- `portada.tex` y `portada-solucionario.tex`: portadas independientes basadas en el mismo diseño.
+- `estilo-esfm.tex`, `indice.ist` y `assets/`: estilo e identidad gráfica.
+- `partes.tex`, `cobertura.tex` y `notacion.tex`: orden temático, correspondencia con las lecturas e índice de notación de los apuntes.
+- `referencias.tex`: bibliografía compartida, escrita con `thebibliography`; no requiere BibTeX ni Biber.
+- `referencias-apuntes.tex`: referencias del solucionario a resultados de los apuntes mediante `xr-hyper`.
+- `.latexmkrc`: configura XeLaTeX, la compilación de ambos documentos y el almacenamiento de auxiliares en `build/`.
+- `editorial/`: procedencia, cobertura, correcciones y verificaciones.
+- `build/`: carpeta de auxiliares; se conserva con `.gitkeep`, pero su contenido de compilación no se versiona.
 
-Se requiere una distribución de TeX con XeLaTeX, latexmk, MakeIndex y los paquetes declarados en `main.tex`. Las fuentes son Latin Modern.
+Los enunciados están en los capítulos y en `ejercicios-soluciones.tex`. Si se corrige uno, hay que actualizar ambas copias. Las soluciones se editan únicamente en `ejercicios-soluciones.tex`. El verificador de la raíz comprueba que los enunciados sean idénticos y que cada ejercicio conserve su solución y su capítulo.
+
+## Compilación
+
+Se requieren XeLaTeX, `latexmk`, MakeIndex, Latin Modern y los paquetes de `preambulo.tex`, incluido `xr-hyper`. Ejecute los comandos desde esta carpeta.
+
+Ambos documentos, en orden (apuntes y después solucionario):
+
+```sh
+latexmk -interaction=nonstopmode -halt-on-error
+```
+
+La forma explícita equivalente es:
+
+```sh
+latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex solucionario.tex
+```
+
+Solo los apuntes:
 
 ```sh
 latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-La compilación genera el índice general, el índice alfabético y las referencias cruzadas. `notacion.tex` contiene el índice de notación. `partes.tex` determina el orden temático, y `capitulos/` contiene las dieciséis unidades.
+Solo el solucionario:
 
-## Trazabilidad y revisión
+```sh
+latexmk -xelatex -interaction=nonstopmode -halt-on-error solucionario.tex
+```
 
-- `editorial/cobertura.json`: correspondencia de las 33 lecturas, con todos los enunciados originales extraídos, incisos, etiquetas, temas y correcciones.
-- `editorial/cobertura-01-17.json` y `editorial/cobertura-18-33.json`: registros de los dos bloques de redacción.
-- `editorial/verificacion.json`: conteos, resultado de compilación, revisión matemática independiente, revisión visual y huella del PDF.
-- `editorial/identidad-esfm-ipn.md`: procedencia y criterios del diseño, incluido el crédito visual a MrPaborru y el emblema oficial de la ESFM.
+Los resultados son `main.pdf` y `solucionario.pdf`. Los ejercicios tienen la misma numeración por capítulo en ambos PDF. Los apuntes conservan sus índices y tablas de correspondencia; el solucionario contiene índice por capítulos y bibliografía.
 
-Las etiquetas `ej:v2-lXX-N` conservan la lectura y el ejercicio originales; la numeración impresa se organiza por capítulo. Los enunciados que necesitaban hipótesis adicionales se presentan con su corrección y justificación. La correspondencia al final del PDF permite localizar las listas originales.
+**Primera compilación:** compile ambos documentos, o los apuntes antes del solucionario. Este último utiliza `build/main.aux` para resolver las referencias a la teoría. Después se pueden compilar por separado; si cambia la numeración de los resultados o se eliminan los auxiliares, vuelva a compilar primero los apuntes. Conserve los dos PDF en la misma carpeta para que funcionen los enlaces entre ellos.
 
-La revisión técnica confirma 160 ejercicios y 160 soluciones, sin etiquetas duplicadas, referencias indefinidas, glifos ausentes ni desbordamientos de cajas. La revisión visual cubrió las 127 páginas y amplió las páginas con índices, fórmulas largas y referencias.
+## Archivos de compilación y limpieza
+
+La configuración `.latexmkrc` está incluida en cada volumen. Al clonar el repositorio y compilar con `latexmk` desde la carpeta del volumen, los auxiliares (`.aux`, `.log`, `.toc`, `.idx`, `.ind`, `.fls`, `.fdb_latexmk`, `.xdv`, etc.) se guardan automáticamente en `build/`. Los dos PDF finales permanecen junto a las fuentes: `main.pdf` y `solucionario.pdf`. La configuración funciona con TeX Live y MiKTeX; no hay que añadir opciones de directorio a los comandos anteriores.
+
+Los auxiliares sirven para generar índices, resolver referencias y evitar recompilaciones innecesarias. Se pueden regenerar. Cada carpeta `build/` se conserva en el repositorio mediante `.gitkeep`; todos sus archivos de compilación están excluidos de Git. Para limpiarla, borre los auxiliares de su interior o use el comando siguiente, conservando la carpeta y `.gitkeep`.
+
+Para limpiar los auxiliares conservando los PDF finales, desde la carpeta del volumen:
+
+```sh
+latexmk -c main.tex solucionario.tex
+```
+
+Después de limpiar, compile ambos documentos para regenerar las referencias entre ellos. Si utiliza un editor, configúrelo para ejecutar `latexmk` desde la carpeta del volumen; invocar directamente `xelatex` no lee `.latexmkrc`.
+
+## Verificación
+
+Desde la raíz del proyecto:
+
+```sh
+python verificar_solucionarios.py
+```
+
+También puede añadir el número de volumen para comprobar uno solo. El programa no modifica archivos ni interpreta el contenido matemático. Verifica enunciados idénticos, número de ejercicios y soluciones, capítulos, etiquetas, referencias, citas y equilibrio de entornos.
+
+Los registros anteriores de `editorial/` corresponden a la edición integrada, que contenía teoría y soluciones en un solo PDF. `editorial/verificacion-separacion.json` documenta la edición separada y los nuevos PDF.

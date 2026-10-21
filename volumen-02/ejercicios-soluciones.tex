@@ -1,0 +1,1456 @@
+% Ejercicios y soluciones copiados literalmente de los capítulos.
+
+\chapter{Álgebras de conjuntos y medidas}
+
+\begin{ejercicio}[Lectura 1, ejercicio 1]\label{ej:v2-l01-1}
+Sea $\mathcal G$ una familia no vacía estable bajo complementos y uniones binarias. Pruebe que es un álgebra.
+\end{ejercicio}
+\begin{solucion}
+Elija $A\in\mathcal G$. Entonces $A^c\in\mathcal G$, $X=A\cup A^c\in\mathcal G$ y $\varnothing=X^c\in\mathcal G$. Si $B,C\in\mathcal G$, la identidad $B\cap C=(B^c\cup C^c)^c$ prueba la estabilidad restante. La hipótesis de familia no vacía permite elegir $A$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 2]\label{ej:v2-l01-2}
+Dada una sucesión $(A_n)$ en un álgebra, construya $B_n\subseteq A_n$, disjuntos dos a dos, con $\bigcup_nB_n=\bigcup_nA_n$.
+\end{ejercicio}
+\begin{solucion}
+Defina $B_1=A_1$ y $B_n=A_n\setminus\bigcup_{j<n}A_j$. Son elementos del álgebra porque se usan solamente uniones finitas y diferencias. La inclusión es inmediata. Si $m<n$, todo punto de $B_n$ está fuera de $A_m$, mientras $B_m\subseteq A_m$, luego $B_m\cap B_n=\varnothing$. Finalmente, un punto de $\bigcup_nA_n$ tiene un primer índice de pertenencia $n$ y pertenece a $B_n$; la inclusión inversa resulta de $B_n\subseteq A_n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 3]\label{ej:v2-l01-3}
+Pruebe que $\Acal|_Y=\{A\cap Y:A\in\Acal\}$ es un álgebra, o una $\sigma$-álgebra, sobre $Y\subseteq X$ si $\Acal$ lo es sobre $X$.
+\end{ejercicio}
+\begin{solucion}
+Contiene $Y=X\cap Y$. El complemento \emph{en $Y$} de $A\cap Y$ es $A^c\cap Y$. Además, $(A\cap Y)\cap(B\cap Y)=(A\cap B)\cap Y$ y $\bigcup_n(A_n\cap Y)=(\bigcup_nA_n)\cap Y$. Las respectivas estabilidades de $\Acal$ concluyen la prueba. No hace falta que $Y\in\Acal$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 4]\label{ej:v2-l01-4}
+Enliste todas las álgebras sobre un conjunto de cuatro elementos.
+\end{ejercicio}
+\begin{solucion}
+Escriba $X=\{1,2,3,4\}$. Cada partición $\mathcal P$ produce el álgebra de todas las uniones de sus bloques. Recíprocamente, en un álgebra finita los conjuntos mínimos no vacíos, llamados \emph{átomos}, forman una partición: el átomo que contiene $x$ es la intersección de todos los elementos del álgebra que contienen $x$; dos átomos que se cortan coinciden, y todo elemento del álgebra es unión de los átomos que contiene. Por tanto basta enlistar las siguientes quince particiones, indicando que a cada una corresponde el conjunto de todas sus uniones:
+\[
+\begin{gathered}
+1234;\qquad 1|234,\ 2|134,\ 3|124,\ 4|123;\\
+12|34,\ 13|24,\ 14|23;\\
+12|3|4,\ 13|2|4,\ 14|2|3,\ 23|1|4,\ 24|1|3,\ 34|1|2;\\
+1|2|3|4.
+\end{gathered}
+\]
+Aquí $12|3|4$, por ejemplo, denota los bloques $\{1,2\},\{3\},\{4\}$ y genera las ocho uniones posibles de esos bloques. Átomos diferentes generan álgebras diferentes, de modo que la lista es exhaustiva y no tiene repeticiones.\index{atomo de un algebra@átomo de un álgebra}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 5]\label{ej:v2-l01-5}
+Caracterice $A(\mathcal G)$ mediante expresiones finitas de intersecciones y complementos de elementos de una familia no vacía $\mathcal G$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\mathcal E$ la familia de los resultados de tales expresiones. Contiene $\mathcal G$, es estable bajo añadir un complemento y bajo combinar dos expresiones mediante intersección. Contiene $X=(A\cap A^c)^c$ para cualquier $A\in\mathcal G$; por ello es un álgebra y $A(\mathcal G)\subseteq\mathcal E$. En sentido inverso, cualquier álgebra que contiene $\mathcal G$ contiene el resultado de cada expresión, por inducción sobre el número de operaciones. Así $\mathcal E\subseteq A(\mathcal G)$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 6]\label{ej:v2-l01-6}
+En un espacio métrico separable, pruebe que las bolas abiertas generan $\Bcal(X)$.
+\end{ejercicio}
+\begin{solucion}
+Sea $D$ numerable denso. Las bolas $B(a,r)$, con $a\in D$ y $r>0$ racional, constituyen una base numerable. En efecto, si $x\in U$ y $B(x,\delta)\subseteq U$, elija $a\in D$ con $d(a,x)<\delta/3$ y un racional $r$ entre $d(a,x)$ y $\delta-d(a,x)$. Entonces $x\in B(a,r)\subseteq U$. Todo abierto es la unión de los elementos de esta base contenidos en él, una unión numerable. Por ello pertenece a la $\sigma$-álgebra generada por las bolas. La inclusión opuesta se sigue de que toda bola es abierta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 7]\label{ej:v2-l01-7}
+Pruebe que los rayos $(a,\infty)$ generan $\Bcal(\R)$.
+\end{ejercicio}
+\begin{solucion}
+Todos los rayos son abiertos. Recíprocamente, $[b,\infty)=\bigcap_n(b-1/n,\infty)$ y, por tanto, $(a,b)=(a,\infty)\setminus[b,\infty)$ pertenece a la familia generada. Los intervalos de extremos racionales forman una base numerable de $\R$; todo abierto es unión numerable de ellos. Esto prueba la otra inclusión.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 8]\label{ej:v2-l01-8}
+Si $X$ tiene al menos dos puntos, pruebe que los rectángulos $A\times B$ no forman un álgebra en $X\times X$. Determine el álgebra que generan.
+\end{ejercicio}
+\begin{solucion}
+Para $a\ne b$, la unión $\{(a,a),(b,b)\}$ no es un rectángulo: si lo fuera, sus dos proyecciones contendrían $a,b$ y también contendría $(a,b)$. El álgebra generada consiste exactamente en las uniones finitas de rectángulos. Esta familia contiene $X\times X$; las intersecciones de rectángulos son rectángulos y
+\[(A\times B)^c=(A^c\times X)\cup(A\times B^c).\]
+Distribuyendo intersecciones sobre uniones finitas, se comprueba estabilidad bajo complementos e intersecciones. Es un álgebra, y cualquier álgebra que contenga rectángulos contiene sus uniones finitas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 1, ejercicio 9]\label{ej:v2-l01-9}
+Si $f:X\to Y$ y $\Bcal$ es una $\sigma$-álgebra sobre $Y$, determine si $\{f^{-1}(B):B\in\Bcal\}$ es una $\sigma$-álgebra.
+\end{ejercicio}
+\begin{solucion}
+Sí: $f^{-1}(Y)=X$, $f^{-1}(Y\setminus B)=X\setminus f^{-1}(B)$ y $f^{-1}(\bigcup_nB_n)=\bigcup_nf^{-1}(B_n)$. Estas identidades no exigen que $f$ sea inyectiva ni sobreyectiva.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 1]\label{ej:v2-l02-1}
+Para $A\in\Acal$ fijo, pruebe que $\lambda(B)=\mu(A\cap B)$ es una medida.
+\end{ejercicio}
+\begin{solucion}
+Vale cero en vacío. Si los $B_n$ son disjuntos, también lo son $A\cap B_n$ y $A\cap\bigcup_nB_n=\bigcup_n(A\cap B_n)$. Aplicar la aditividad de $\mu$ da la de $\lambda$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 2]\label{ej:v2-l02-2}
+Pruebe que las combinaciones finitas no negativas de medidas son medidas. Pruebe también que $\lambda=\sum_n\alpha_n\mu_n$ es una medida si $\alpha_n\ge0$ y las $\mu_n$ son medidas finitas.
+\end{ejercicio}
+\begin{solucion}
+Para una familia disjunta $(A_j)$,
+\[\lambda\left(\bigcup_jA_j\right)=\sum_n\sum_j\alpha_n\mu_n(A_j)=\sum_j\sum_n\alpha_n\mu_n(A_j)=\sum_j\lambda(A_j).\]
+El intercambio de sumas no usa integración: ambas sumas iteradas son el supremo de las sumas sobre todos los rectángulos finitos de índices. Todo conjunto finito de pares está contenido en un rectángulo finito; de aquí la igualdad de los supremos. El caso finito es idéntico, con una de las sumas finita. Además $\lambda(\varnothing)=0$. La finitud de cada $\mu_n$ no es necesaria para esta conclusión.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 3]\label{ej:v2-l02-3}
+Si $A_n\downarrow A$ y algún $A_N$ tiene medida finita, pruebe que $\mu(A_n)\to\mu(A)$. Muestre la necesidad de la hipótesis de finitud.
+\end{ejercicio}
+\begin{solucion}
+Para $n\ge N$, los conjuntos $A_N\setminus A_n$ crecen a $A_N\setminus A$. La continuidad por abajo da
+\[\mu(A_N)-\mu(A_n)\longrightarrow\mu(A_N)-\mu(A),\]
+y todas las restas son finitas. En $\N$ con conteo, los conjuntos $A_n=\{n,n+1,\ldots\}$ decrecen a vacío, pero $\mu(A_n)=\infty$ para todo $n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 4]\label{ej:v2-l02-4}
+Pruebe $\mu(\liminf A_n)\le\liminf\mu(A_n)$, donde $\liminf A_n=\bigcup_m\bigcap_{n\ge m}A_n$.
+\end{ejercicio}
+\begin{solucion}
+Los conjuntos $B_m=\bigcap_{n\ge m}A_n$ crecen y $\mu(B_m)\le\inf_{n\ge m}\mu(A_n)$. Tomando límites y usando continuidad por abajo obtenemos la desigualdad. Un punto está en $\bigcup_mB_m$ precisamente cuando pertenece a todos los $A_n$ salvo, a lo sumo, una cantidad finita de ellos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 5]\label{ej:v2-l02-5}
+Si $\mu(\bigcup_nA_n)<\infty$, pruebe $\limsup\mu(A_n)\le\mu(\limsup A_n)$.
+\end{ejercicio}
+\begin{solucion}
+Ponga $C_m=\bigcup_{n\ge m}A_n$. Decrecen a $\limsup A_n$ y $\mu(C_1)<\infty$. Como $\sup_{n\ge m}\mu(A_n)\le\mu(C_m)$, la continuidad por arriba permite tomar límites. La pertenencia a $\bigcap_mC_m$ equivale a pertenecer a infinitos $A_n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 6]\label{ej:v2-l02-6}
+Defina $\mu_*(A)=\sup\{\mu(B):B\in\Acal,\ B\subseteq A,\ \mu(B)<\infty\}$. Pruebe que es una medida y que coincide con $\mu$ si esta es $\sigma$-finita.
+\end{ejercicio}
+\begin{solucion}
+El vacío es una opción en el supremo, así que la definición tiene sentido. Para $A=\bigcup_nA_n$ disjunta y $B\subseteq A$ de medida finita,
+\[\mu(B)=\sum_n\mu(B\cap A_n)\le\sum_n\mu_*(A_n).\]
+Tomando supremo resulta $\mu_*(A)\le\sum_n\mu_*(A_n)$. Para la otra desigualdad fije $m$ y números $t_j<\mu_*(A_j)$, no negativos, para los índices con supremo positivo. Elija $B_j\subseteq A_j$ de medida finita con $\mu(B_j)>t_j$. La unión finita $B=\bigcup_{j\le m}B_j$ tiene medida finita y está contenida en $A$, de modo que $\mu_*(A)\ge\sum_{j\le m}t_j$. Al tomar supremos en cada $t_j$, incluyendo valores arbitrariamente grandes si un supremo es infinito, obtenemos $\mu_*(A)\ge\sum_{j\le m}\mu_*(A_j)$. Finalmente $m\to\infty$ prueba la igualdad. Además $\mu_*(\varnothing)=0$.
+
+Si $X=\bigcup_nE_n$ con $E_n\uparrow X$ y $\mu(E_n)<\infty$, entonces $A\cap E_n$ es admisible en el supremo y $\mu_*(A)\ge\lim_n\mu(A\cap E_n)=\mu(A)$. La desigualdad inversa siempre resulta de la monotonía.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 7: Borel--Cantelli]\label{ej:v2-l02-7}\index{Borel--Cantelli, lema de}
+Si $\sum_n\mu(A_n)<\infty$, pruebe que $\mu(\limsup A_n)=0$.
+\end{ejercicio}
+\begin{solucion}
+Para todo $m$, $\limsup A_n\subseteq\bigcup_{n\ge m}A_n$, por lo que $\mu(\limsup A_n)\le\sum_{n\ge m}\mu(A_n)$. Las colas de una serie convergente de términos no negativos tienden a cero. No se necesita que $\mu(X)$ sea finita ni independencia entre los conjuntos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 2, ejercicio 8]\label{ej:v2-l02-8}
+Pruebe que la $\sigma$-finitud equivale a tener $E_n\uparrow X$ con $\mu(E_n)<\infty$.
+\end{ejercicio}
+\begin{solucion}
+De una partición $(D_n)$ de medida finita, tome $E_n=\bigcup_{j\le n}D_j$; su medida es la suma de un número finito de cantidades finitas. Recíprocamente, a una cubierta creciente aplique $D_1=E_1$, $D_n=E_n\setminus E_{n-1}$. Estos conjuntos son disjuntos, cubren $X$ y satisfacen $\mu(D_n)\le\mu(E_n)<\infty$.
+\end{solucion}
+
+\chapter{Funciones medibles y aproximación topológica}
+
+\begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:v2-l03-1}
+Pruebe que $f:X\to\R$ es medible si y solo si $f^{-1}(U)$ es medible para cada abierto $U\subseteq\R$.
+\end{ejercicio}
+\begin{solucion}
+La condición para abiertos incluye $U=(a,\infty)$, así que implica la definición. Recíprocamente, la preimagen de $(a,b)$ es $\{f>a\}\cap\{f<b\}$. Todo abierto real es unión de los intervalos de extremos racionales contenidos en él. Hay solamente una cantidad numerable de esos intervalos, por lo que su preimagen es medible. Además, $\{B\subseteq\R:f^{-1}(B)\in\Acal\}$ es una $\sigma$-álgebra que contiene los abiertos; contiene por ello todos los borelianos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 2]\label{ej:v2-l03-2}
+Extienda las propiedades de operaciones, supremos, ínfimos y límites a funciones medibles con valores en $\overline\R$. Precise cuándo las operaciones están definidas.
+\end{ejercicio}
+\begin{solucion}
+Los supremos e ínfimos numerables siempre existen en $\overline\R$; las identidades de niveles del teorema \ref{teo:v2-algebra-medibles} siguen siendo exactas. Por tanto también son medibles los límites superiores e inferiores y cualquier límite puntual extendido.
+
+La suma se permite cuando no aparece $\infty+(-\infty)$; una combinación lineal requiere la misma precaución después de multiplicar por los escalares, con $0f=0$. Para comprobar medibilidad, parta $X$ en los conjuntos donde cada función es real, $+\infty$ o $-\infty$. Son nueve piezas medibles por la proposición \ref{prop:v2-infinitos}. En la pieza donde ambas son finitas se usa el álgebra de funciones reales; en cada una de las demás, una suma definida vale un infinito de signo determinado o una función medible multiplicada por un escalar finito. Las preimágenes de niveles son uniones finitas de las correspondientes preimágenes en las piezas.
+
+Para el producto adoptamos $0\cdot(\pm\infty)=0$. Subdividimos las piezas anteriores según los signos y los conjuntos de ceros. En cada pieza el producto es real medible, cero o un infinito de signo fijo. Por la misma razón es medible. El valor absoluto transforma ambas infinitudes en $+\infty$ y conserva la medibilidad. Estas afirmaciones no autorizan a escribir una suma indeterminada: si $f=\infty$ y $g=-\infty$ en un punto, $f+g$ no es una función allí sin una convención adicional explícita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 3]\label{ej:v2-l03-3}
+Construya $f$ no medible tal que $|f|$ y $f^2$ sean medibles.
+\end{ejercicio}
+\begin{solucion}
+Tome $X=\{a,b\}$ con $\Acal=\{\varnothing,X\}$ y defina $f(a)=1$, $f(b)=-1$. Entonces $\{f>0\}=\{a\}\notin\Acal$, mientras $|f|=f^2=1$ son constantes medibles. Así conocer el tamaño de una función no basta para conocer la medibilidad de su signo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 4]\label{ej:v2-l03-4}
+Pruebe: (i) continuidad equivale a semicontinuidad superior e inferior; (ii) la función piso es semicontinua superior; (iii) semicontinuidad superior equivale a que todos los conjuntos $\{f<a\}$ sean abiertos, y la inferior a que todos los $\{f>a\}$ sean abiertos; (iv) $A$ es abierto, respectivamente cerrado, si y solo si $\ind A$ es semicontinua inferior, respectivamente superior.
+\end{ejercicio}
+\begin{solucion}
+(i) La continuidad produce simultáneamente vecindades donde $f(x)-\eps<f(y)<f(x)+\eps$. Recíprocamente, interseque las dos vecindades obtenidas de las semicontinuidades con esos umbrales; en la intersección se cumple $|f(y)-f(x)|<\eps$.
+
+(ii) Si $k=\lfloor x\rfloor$, elija una vecindad de $x$ contenida en $(-\infty,k+1)$. En ella $\lfloor y\rfloor\le k<a$ para cualquier $a>\lfloor x\rfloor$. En los enteros hay un salto que impide semicontinuidad inferior, pero no superior.
+
+(iii) Si $f(x)<a$, la definición superior proporciona una vecindad de $x$ contenida en $\{f<a\}$; por tanto ese conjunto es abierto. Recíprocamente, para $a>f(x)$, ese mismo abierto es la vecindad requerida. Para la versión inferior intercambie las desigualdades o aplique el resultado a $-f$.
+
+(iv) Para $0\le t<1$, $\{\ind A>t\}=A$, y los restantes niveles estrictos superiores son $X$ o vacío. Esto prueba la equivalencia con apertura. Para $0<t\le1$, $\{\ind A<t\}=A^c$, y los demás niveles inferiores son $X$ o vacío. Esto prueba la equivalencia con cerradura.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 5]\label{ej:v2-l03-5}
+Si $f:X\to\R$ es medible y $g:\R\to\R$ es semicontinua superior o inferior, pruebe que $g\circ f$ es medible.
+\end{ejercicio}
+\begin{solucion}
+Si $g$ es semicontinua inferior, $\{g>a\}$ es abierto. Entonces $\{g\circ f>a\}=f^{-1}(\{g>a\})$ es medible por el ejercicio \ref{ej:v2-l03-1}. Si es semicontinua superior, use $\{g<a\}$ y la caracterización por niveles inferiores. La continuidad no es necesaria; la medibilidad de $g$ respecto de los borelianos sí es la propiedad pertinente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 3, ejercicio 6]\label{ej:v2-l03-6}
+Pruebe que el conjunto de puntos donde una sucesión de funciones reales medibles tiene límite real es medible.
+\end{ejercicio}
+\begin{solucion}
+La completitud de $\R$ identifica convergencia real con la condición de Cauchy. Por ello el conjunto buscado es
+\[E=\bigcap_{r\ge1}\bigcup_{N\ge1}\bigcap_{m,n\ge N}
+\{|f_m-f_n|<1/r\}.\]
+Cada nivel es medible y todas las operaciones son numerables. Si $x\in E$, dado $\eps>0$ tome $r$ con $1/r<\eps$; el correspondiente $N$ prueba Cauchy. La implicación inversa resulta de aplicar Cauchy con $\eps=1/r$. Si se admiten límites extendidos, añada los dos conjuntos medibles $\bigcap_{r\ge1}\bigcup_N\bigcap_{n\ge N}\{f_n>r\}$ y su análogo $\{f_n<-r\}$. Esto distingue explícitamente límite finito de límite infinito.
+\end{solucion}
+
+\chapter{Construcción y extensión de medidas}
+
+\begin{ejercicio}[Lectura 4, ejercicio 1]\label{ej:v2-l04-1}
+Pruebe que la medida obtenida por Carathéodory es completa.
+\end{ejercicio}
+\begin{solucion}
+Si $A\subseteq N$, $N\in\Mcal_{\mu^*}$ y $\mu^*(N)=0$, entonces $0\le\mu^*(A)\le\mu^*(N)=0$. Para todo $T$, $\mu^*(T\cap A)+\mu^*(T\setminus A)\le\mu^*(A)+\mu^*(T)=\mu^*(T)$. La desigualdad inversa es subaditividad; así $A$ satisface el criterio de medibilidad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 2]\label{ej:v2-l04-2}
+Pruebe que $\rho(A)=\inf_{B\subseteq A}[\mu^*(B)+\nu^*(A\setminus B)]$ es una medida exterior si $\mu^*,\nu^*$ lo son.
+\end{ejercicio}
+\begin{solucion}
+Se tiene $\rho(\varnothing)=0$. Si $A\subseteq C$ y $D\subseteq C$, la elección $B=A\cap D$ da
+\[\rho(A)\le\mu^*(A\cap D)+\nu^*(A\setminus D)\le\mu^*(D)+\nu^*(C\setminus D).\]
+Tomar ínfimo en $D$ prueba monotonía. Para la subaditividad basta considerar $\sum_n\rho(A_n)<\infty$, pues en otro caso la desigualdad es automática. Fije $\eps>0$ y elija $B_n\subseteq A_n$ con
+\[\mu^*(B_n)+\nu^*(A_n\setminus B_n)<\rho(A_n)+\eps2^{-n}.\]
+Sea $A=\bigcup_nA_n$ y $B=\bigcup_nB_n$. Entonces $A\setminus B\subseteq\bigcup_n(A_n\setminus B_n)$, y
+\[\rho(A)\le\mu^*(B)+\nu^*(A\setminus B)
+\le\sum_n[\mu^*(B_n)+\nu^*(A_n\setminus B_n)]<\sum_n\rho(A_n)+\eps.\]
+Haga $\eps\downarrow0$. La elección aproximada del ínfimo evita suponer que existe una partición óptima.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 3]\label{ej:v2-l04-3}
+Si $Y\subseteq X$, pruebe que (i) $\mu^*|_{\mathcal P(Y)}$ es una medida exterior sobre $Y$; (ii) $E\cap Y$ es medible para esta medida exterior si $E$ es $\mu^*$-medible.
+\end{ejercicio}
+\begin{solucion}
+(i) Vacío, inclusiones y uniones numerables de subconjuntos de $Y$ son las mismas operaciones vistas dentro de $X$; por ello se heredan los tres axiomas. (ii) Para $T\subseteq Y$, $T\cap(E\cap Y)=T\cap E$ y $T\setminus(E\cap Y)=T\setminus E$. La igualdad de Carathéodory para $E$ es exactamente la igualdad requerida en $Y$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 4]\label{ej:v2-l04-4}
+Si $R\subseteq X\times Y$ es una relación, pruebe que $\rho(A)=\mu^*(R^{-1}(A))$ es una medida exterior en $Y$.
+\end{ejercicio}
+\begin{solucion}
+Aquí $R^{-1}(A)=\{x:\exists y\in A, (x,y)\in R\}$. La preimagen de vacío es vacía, las inclusiones se preservan y $R^{-1}(\bigcup_nA_n)=\bigcup_nR^{-1}(A_n)$. Aplicar monotonía y subaditividad de $\mu^*$ prueba los axiomas. No se usa una identidad de complementos: para relaciones generales esa identidad puede fallar.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 4, ejercicio 5]\label{ej:v2-l04-5}
+Si $E$ es $\mu^*$-medible, pruebe $\mu^*(E\cap A)+\mu^*(E\cup A)=\mu^*(E)+\mu^*(A)$ para todo $A\subseteq X$.
+\end{ejercicio}
+\begin{solucion}
+Dividir $A$ mediante $E$ da $\mu^*(A)=\mu^*(A\cap E)+\mu^*(A\setminus E)$. Dividir $E\cup A$ mediante $E$ da $\mu^*(E\cup A)=\mu^*(E)+\mu^*(A\setminus E)$. Sustituir la segunda igualdad en el lado izquierdo y reagrupar los tres términos no negativos produce la primera. No se cancela ningún infinito.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 5, ejercicio 1]\label{ej:v2-l05-1}
+Si $v(X)=1$ y $\sum_{k=1}^nv(A_k)>n-1$, pruebe que $\bigcap_{k=1}^nA_k\ne\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+La intersección es finita; el índice infinito del original es una errata. Si fuera vacía, $X=\bigcup_{k=1}^nA_k^c$, luego
+\[1=v(X)\le\sum_{k=1}^nv(A_k^c)=n-\sum_{k=1}^nv(A_k)<1,\]
+contradicción. Se usó $v(A_k^c)=1-v(A_k)$, una resta de cantidades finitas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 5, ejercicio 2]\label{ej:v2-l05-2}
+Pruebe que un volumen es premedida si y solo si $v(B)\le\sum_nv(A_n)$ para toda cubierta $B\subseteq\bigcup_nA_n$ con $B,A_n$ en el anillo.
+\end{ejercicio}
+\begin{solucion}
+La necesidad se probó disjuntando $B\cap A_n$ en la proposición \ref{prop:v2-volumen}. Para la suficiencia, si $B=\bigcup_nA_n$ es una unión disjunta perteneciente al anillo, la hipótesis da $v(B)\le\sum_nv(A_n)$. La monotonía fuerte da $\sum_{n\le m}v(A_n)\le v(B)$ para cada $m$; tomar supremo en $m$ da la otra desigualdad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 5, ejercicio 3]\label{ej:v2-l05-3}
+Pruebe que un volumen en un álgebra es premedida si y solo si es continuo por abajo, siempre que la unión creciente pertenezca al álgebra.
+\end{ejercicio}
+\begin{solucion}
+La salvedad es necesaria para que $v(\bigcup_nA_n)$ esté definida. Si $v$ es premedida y $A_n\uparrow A$ en el álgebra, disjunte mediante $D_1=A_1$, $D_n=A_n\setminus A_{n-1}$. Entonces $v(A)=\sum_nv(D_n)=\lim_nv(A_n)$. Recíprocamente, para una sucesión disjunta cuya unión $A$ pertenece al álgebra, sus uniones parciales $B_m$ crecen a $A$. La continuidad da $v(A)=\lim_mv(B_m)=\sum_nv(A_n)$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 5, ejercicio 4]\label{ej:v2-l05-4}
+Si $v(X)<\infty$, pruebe que una partición de $X$ por elementos del álgebra de volumen estrictamente positivo es a lo sumo numerable.
+\end{ejercicio}
+\begin{solucion}
+Para $m\ge1$, considere los bloques de volumen al menos $1/m$. Si hubiera arbitrariamente muchos, podríamos elegir $N>m v(X)$ distintos y la monotonía fuerte daría $N/m\le v(X)$, contradicción. Hay, pues, solamente una cantidad finita de ellos. Todo bloque positivo pertenece a una de esas familias, porque algún $1/m$ es menor o igual que su volumen. La partición es unión numerable de familias finitas. Basta aditividad finita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 1]\label{ej:v2-l06-1}
+Pruebe que todo abierto de $\R$ es unión numerable disjunta de intervalos semiabiertos.
+\end{ejercicio}
+\begin{solucion}
+Las componentes de un abierto son intervalos abiertos disjuntos. Cada una contiene un racional y componentes distintas contienen racionales distintos, así que hay a lo sumo una cantidad numerable. En cada intervalo $I$ elija una sucesión estrictamente creciente $(x_k)_{k\in\Z}$ que tienda a sus extremos cuando $k\to\pm\infty$. Se puede obtener tomando la imagen de los enteros por un homeomorfismo creciente $\R\to I$. Entonces $I=\bigcup_{k\in\Z}[x_k,x_{k+1})$, unión disjunta. La unión de las familias numerables correspondientes a las componentes sigue siendo numerable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 2]\label{ej:v2-l06-2}
+Pruebe que el conjunto ternario de Cantor tiene medida cero.
+\end{ejercicio}
+\begin{solucion}
+La etapa $n$ consiste en $2^n$ intervalos cerrados de longitud $3^{-n}$; su medida es $(2/3)^n$. El conjunto de Cantor es su intersección decreciente. Como la primera etapa tiene medida finita, continuidad por arriba da $\lambda(C)=\lim_n(2/3)^n=0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 3]\label{ej:v2-l06-3}
+Pruebe la equivalencia entre la condición de medida cero mediante cubiertas de intervalos y medida de Lebesgue cero.
+\end{ejercicio}
+\begin{solucion}
+La condición utilizada es: para cada $\eps>0$, $A$ admite una cubierta \emph{numerable} de intervalos abiertos cuya suma de longitudes es menor que $\eps$. Esta condición implica $\lambda^*(A)=0$; por Carathéodory todo conjunto exterior nulo es medible, luego $\lambda(A)=0$. Recíprocamente, la definición de $\lambda^*$ y la ampliación de intervalos con errores sumables producen esa cubierta. Si se exigieran solamente cubiertas \emph{finitas}, se obtendría el contenido de Jordan nulo, una noción distinta: $\Q\cap[0,1]$ es Lebesgue-nulo y no tiene contenido de Jordan cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 4]\label{ej:v2-l06-4}
+Pruebe que $A\subseteq\R$ es Lebesgue-medible si y solo si $A=B\cup Z$, con $B$ de tipo $F_\sigma$ y $Z$ nulo.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ es medible, para cada $m,n$ elija por regularidad interior un compacto $K_{m,n}\subseteq A\cap[-m,m]$ tal que $\lambda((A\cap[-m,m])\setminus K_{m,n})<1/n$. Sea $B=\bigcup_{m,n}K_{m,n}$. Es $F_\sigma$ y está contenido en $A$. Para cada $m$, $\lambda((A\setminus B)\cap[-m,m])\le1/n$ para todo $n$, luego vale cero; la unión numerable prueba que $Z=A\setminus B$ es nulo. Recíprocamente, $B$ es boreliano, $Z$ es medible por completitud y su unión es medible.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 5]\label{ej:v2-l06-5}
+Pruebe $\lambda^*(A+t)=\lambda^*(A)$ para todo subconjunto $A\subseteq\R$.
+\end{ejercicio}
+\begin{solucion}
+Toda cubierta $A\subseteq\bigcup_n[a_n,b_n]$ se transforma en una cubierta $A+t\subseteq\bigcup_n[a_n+t,b_n+t]$ con la misma suma de longitudes. Tomando ínfimo se obtiene $\lambda^*(A+t)\le\lambda^*(A)$. Aplique lo mismo a $A+t$ y a la traslación $-t$ para obtener la desigualdad inversa. No se presupone medibilidad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 6]\label{ej:v2-l06-6}
+Sea $\nu$ una medida boreliana en $\R$, finita en acotados e invariante bajo traslaciones, con $\nu(\R)>0$. Pruebe $\nu=\alpha\lambda$ en borelianos para algún $\alpha>0$.
+\end{ejercicio}
+\begin{solucion}
+Todos los singletons tienen el mismo valor $c$. Colocar arbitrariamente muchos puntos distintos en $[0,1]$ da $Nc\le\nu([0,1])<\infty$, luego $c=0$. Sea $\alpha=\nu([0,1))$. Si fuera cero, las traslaciones enteras de ese intervalo cubrirían $\R$ con medida cero, contradicción. Dividir $[0,1)$ en $q$ partes iguales y trasladarlas prueba $\nu([0,1/q))=\alpha/q$; unir $p$ de ellas da $\nu([0,p/q))=\alpha p/q$. Para $t>0$, aproximaciones racionales crecientes o decrecientes y monotonía dan $\nu([0,t))=\alpha t$. Las traslaciones extienden la fórmula a cualquier intervalo semiabierto. La unicidad del teorema \ref{teo:v2-lebesgue-prop} aplicada a $\nu/\alpha$ concluye la prueba.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 7: Smith--Volterra--Cantor]\label{ej:v2-l06-7}\index{Smith--Volterra--Cantor, conjunto de}
+En la etapa $n\ge1$, retire de cada uno de los $2^{n-1}$ intervalos restantes su intervalo central abierto de longitud $4^{-n}$. Pruebe que la intersección $C$ es cerrada, no vacía, sin interior ni puntos aislados, y tiene medida $1/2$.
+\end{ejercicio}
+\begin{solucion}
+La longitud total retirada hasta la etapa $n$ es $\sum_{j=1}^n2^{j-1}4^{-j}=\frac12(1-2^{-n})$. Los $2^n$ intervalos restantes tienen igual longitud
+\[\ell_n=2^{-n}\left(\frac12+2^{-n-1}\right)>0.\]
+La longitud $4^{-(n+1)}$ retirada en el paso siguiente es menor que $\ell_n$, así que la construcción está bien definida. Los conjuntos $C_n$ son compactos no vacíos y anidados; sus extremos exteriores $0,1$ permanecen, de modo que $C$ es no vacío y cerrado. Continuidad por arriba da $\lambda(C)=\lim_n\lambda(C_n)=1/2$.
+
+Como $\ell_n\to0$, ningún intervalo abierto no vacío puede estar contenido en todos los $C_n$: un intervalo conexo contenido en $C_n$ tendría que estar dentro de una sola componente, cuya longitud es $\ell_n$. Así $C$ tiene interior vacío. Dado $x\in C$, los dos extremos de la componente de $C_n$ que contiene a $x$ permanecen en $C$; uno de ellos es distinto de $x$ y dista a lo sumo $\ell_n$. Por tanto ningún punto es aislado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 8]\label{ej:v2-l06-8}
+Construya un boreliano $A$ tal que $0<\lambda(A\cap I)<\lambda(I)$ para todo intervalo abierto acotado no vacío $I$.
+\end{ejercicio}
+\begin{solucion}
+Enumere los intervalos abiertos de extremos racionales como $(I_n)$. Inductivamente elija compactos $K_n,H_n\subseteq I_n$, de medida positiva e interior vacío, todos disjuntos entre sí. En el paso $n$, la unión finita de los compactos anteriores es cerrada con interior vacío: su complemento es abierto denso, como se verifica intersectando sucesivamente abiertos densos. Por ello $I_n$ contiene dos pequeños intervalos disjuntos que evitan esa unión. Dentro de ellos coloque copias afines del conjunto del ejercicio \ref{ej:v2-l06-7}. Esto realiza el paso inductivo.
+
+Sea $A=\bigcup_nK_n$, un $F_\sigma$. Cualquier $I$ contiene algún $I_n$. Entonces $K_n\subseteq A\cap I$ da positividad, mientras $H_n\subseteq I\setminus A$ da $\lambda(A\cap I)\le\lambda(I)-\lambda(H_n)<\lambda(I)$. La referencia al ejercicio 5 en la sugerencia original debe apuntar a la construcción del ejercicio 7.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 9]\label{ej:v2-l06-9}
+Construya $A_n\subseteq[0,1]$ decrecientes, con $\lambda^*(A_n)=1$ y $\bigcap_nA_n=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+Elija una base de Hamel $B$ de $\R$ sobre $\Q$ y puntos distintos $b_1,b_2,\ldots\in B$. Defina $B_n=B\setminus\{b_{n+1},b_{n+2},\ldots\}$ y $V_n=\operatorname{span}_{\Q}B_n$. Cada $V_n$ es propio, $V_n\uparrow\R$, porque cada combinación lineal utiliza finitos vectores de la base. Si un conjunto medible $E\subseteq V_n$ tuviera medida positiva, Steinhaus daría una vecindad de cero contenida en $E-E\subseteq V_n$. Cualquier subespacio racional que contiene una vecindad de cero es todo $\R$: dado $x$, elija un entero $m$ grande con $x/m$ en esa vecindad y multiplique por $m$. Contradicción. Así todo subconjunto medible de $V_n$ es nulo.
+
+Ponga $A_n=[0,1]\setminus V_n$. Decrecen y su intersección es vacía. Si $\lambda^*(A_n)<1$, existe un abierto $U\supseteq A_n$ con $\lambda(U)<1$; esto se obtiene ampliando una cubierta de suma menor que $1$. El compacto $[0,1]\setminus U$ estaría contenido en $V_n$ y tendría medida al menos $1-\lambda(U)>0$, contradicción. Como $A_n\subseteq[0,1]$, concluimos $\lambda^*(A_n)=1$. Esta construcción utiliza elección para la base de Hamel y muestra que la continuidad por arriba falla para medidas exteriores en conjuntos arbitrarios.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 10]\label{ej:v2-l06-10}
+Defina la medida de Lebesgue en $\R^d$; pruebe allí medibilidad boreliana, regularidad y unicidad por volúmenes de cajas, así como las versiones multidimensionales de los ejercicios 4, 5 y 6.
+\end{ejercicio}
+\begin{solucion}
+La definición mediante el volumen de cajas, la prueba de que este es premedida y las tres propiedades pedidas están desarrolladas en el lema \ref{lema:v2-cajas} y el teorema \ref{teo:v2-lebesgue-prop}, cuyas pruebas se hicieron para $d$ arbitrario.
+
+Para la versión del ejercicio 4, sustituya $[-m,m]$ por $[-m,m]^d$ y elija compactos $K_{m,n}\subseteq A\cap[-m,m]^d$ con error menor que $1/n$. Su unión es $F_\sigma$ y el resto es nulo por el mismo argumento de agotamiento; la recíproca usa completitud. Para el ejercicio 5, trasladar una caja preserva todas sus longitudes, de modo que la correspondencia biyectiva de cubiertas da invariancia de $\lambda_d^*$, incluso en conjuntos no medibles.
+
+Para el ejercicio 6, sea $\nu$ boreliana, invariante bajo traslaciones, finita en acotados y no nula. Defina $\alpha=\nu([0,1)^d)$. Sus traslaciones enteras cubren $\R^d$, por lo que $\alpha>0$. Dividir el cubo en $q^d$ subcubos trasladados da medida $\alpha/q^d$ a cada uno. Una caja con lados racionales $p_j/q$ es unión disjunta de $\prod_jp_j$ de esos subcubos, luego tiene medida $\alpha\prod_j(p_j/q)$. Aproximando desde dentro y fuera los lados reales por racionales y usando monotonía, toda caja semiabierta tiene medida $\alpha$ por su volumen. La unicidad ya probada da $\nu=\alpha\lambda_d$ en los borelianos. Así se han probado todos los incisos, no solamente definido la medida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 6, ejercicio 11]\label{ej:v2-l06-11}
+Pruebe que $\lambda_2$ es invariante bajo isometrías del plano.
+\end{ejercicio}
+\begin{solucion}
+Sea $T$ una transformación ortogonal. La medida boreliana $\nu(A)=\lambda_2(TA)$ es invariante bajo traslaciones, pues $T(A+t)=TA+Tt$, y es finita en acotados. Es no nula, así que por el ejercicio \ref{ej:v2-l06-10} existe $c>0$ con $\nu=c\lambda_2$. El disco abierto unitario $D$ satisface $TD=D$ y $0<\lambda_2(D)<\infty$, porque contiene un cuadrado de lado positivo y está contenido en un cuadrado acotado. Por tanto $\lambda_2(D)=c\lambda_2(D)$ y $c=1$.
+
+Para pasar de borelianos a conjuntos Lebesgue-medibles, escriba $A=B\cup Z$, con $B$ boreliano y $Z$ nulo. Un nulo está contenido en un boreliano nulo: interseque abiertos que lo cubren con medidas que tienden a cero. Su imagen por $T$ es boreliana nula, luego $TZ$ es Lebesgue-medible nulo por completitud. Así $\lambda_2(TA)=\lambda_2(A)$. Toda isometría euclidiana es la composición de una transformación ortogonal y una traslación; la invariancia de ambas demuestra el resultado. En particular se obtiene la invariancia bajo reflexiones sugerida en el original.
+\end{solucion}
+
+\chapter{Funciones simples e integral no negativa}
+
+\begin{ejercicio}[Lectura 8, ejercicio 1]\label{ej:v2-l08-1}
+Justifique la fórmula de la integral para una representación no canónica $s=\sum_{k=1}^m\alpha_k\ind{A_k}$ de una función simple no negativa.
+\end{ejercicio}
+\begin{solucion}
+Si $\alpha_k\ge0$, las celdas determinadas por todas las pertenencias a los $A_k$ forman una partición finita. En cada celda $C$, $s$ es la suma de los coeficientes cuyos conjuntos contienen $C$. Al sumar ese valor multiplicado por $\mu(C)$ e intercambiar las dos sumas finitas, el coeficiente $\alpha_k$ queda multiplicado por la suma de las medidas de las celdas que componen $A_k$, esto es, $\mu(A_k)$. Por tanto $\int s=\sum_k\alpha_k\mu(A_k)$, como se detalló en la proposición \ref{prop:v2-integralsimple}.
+
+Si se permiten coeficientes negativos, la fórmula exige que el lado derecho esté definido; por ejemplo, basta que todos los conjuntos con coeficiente no nulo tengan medida finita. Sin esa precaución, $0=\ind X-\ind X$ en un espacio de medida infinita produciría $\infty-\infty$. La no negatividad de $s$ por sí sola no elimina ese problema en una representación con coeficientes de signos distintos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 2]\label{ej:v2-l08-2}
+Si $s,t$ son simples no negativas y $s\le t$ casi en todas partes, pruebe $\int s\le\int t$.
+\end{ejercicio}
+\begin{solucion}
+El conjunto medible $N=\{s>t\}$ es nulo. Las funciones $s\ind{X\setminus N}$ y $t\ind{X\setminus N}$ satisfacen la desigualdad en todo punto. Sus integrales coinciden con las de $s,t$ porque las partes sobre $N$ tienen integral cero. Aplicar monotonía puntual concluye.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 3]\label{ej:v2-l08-3}
+Si $f\ge0$ es medible y $\int f<\infty$, pruebe: (i) $\{f>0\}$ es $\sigma$-finito; (ii) $\{f=\infty\}$ es nulo.
+\end{ejercicio}
+\begin{solucion}
+(i) Para $E_n=\{f\ge1/n\}$, la simple $n^{-1}\ind{E_n}\le f$ da $\mu(E_n)/n\le\int f$, de donde $\mu(E_n)<\infty$. Los $E_n$ crecen y su unión es $\{f>0\}$. El ejercicio \ref{ej:v2-l02-8}, aplicado a ese espacio restringido, prueba $\sigma$-finitud.
+
+(ii) Si $Z=\{f=\infty\}$, para cada entero $m>0$ se tiene $m\ind Z\le f$, luego $m\mu(Z)\le\int f$. Por tanto $\mu(Z)\le m^{-1}\int f$ para todo $m$, y hacer $m\to\infty$ da cero. La integrabilidad permite infinitos puntuales, pero solamente en un conjunto nulo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 8, ejercicio 4]\label{ej:v2-l08-4}
+En $\N$ con la medida de conteo, pruebe que $\int_\N f\,d\mu_c=\sum_na_n$ para $f(n)=a_n\ge0$.
+\end{ejercicio}
+\begin{solucion}
+Para cada $m$, la función $s_m=\sum_{n=1}^ma_n\ind{\{n\}}$ es simple y menor o igual que $f$ si los $a_n$ son finitos. Por ello $\int f\ge\sum_{n\le m}a_n$ y, tomando supremo, $\int f\ge\sum_na_n$. Para la otra desigualdad, si $s=\sum_{j=1}^rb_j\ind{B_j}\le f$ es simple no negativa, su integral es $\sum_jb_j\mu_c(B_j)=\sum_ns(n)\le\sum_na_n$: la igualdad intermedia se comprueba agrupando los términos según los niveles de $s$, con suma infinita cuando un nivel positivo tiene infinitos puntos. Tomar supremo sobre $s$ da la desigualdad inversa. Si algún $a_n=\infty$, las simples $M\ind{\{n\}}\le f$ para todo $M$ fuerzan integral infinita, de acuerdo con la serie.
+\end{solucion}
+
+\chapter{Integrabilidad y teoremas de convergencia}
+
+\begin{ejercicio}[Lectura 9, ejercicio 1]\label{ej:v2-l09-1}
+Pruebe: (i) linealidad de la integral sobre $A$; (ii) integrabilidad sobre $A\cup B$ y $A\cap B$, e inclusión--exclusión, si $f$ es integrable sobre $A$ y $B$; (iii) monotonía de la integral sobre $A$.
+\end{ejercicio}
+\begin{solucion}
+(i) Como $(af+bg)\ind A=a(f\ind A)+b(g\ind A)$, la linealidad en $X$ da $\int_A(af+bg)=a\int_Af+b\int_Ag$. Se corrige $af+fg$ por $af+bg$ en la fórmula original.
+
+(ii) Se tiene $|f|\ind{A\cup B}\le|f|\ind A+|f|\ind B$ y $|f|\ind{A\cap B}\le|f|\ind A$, luego ambas integrales absolutas son finitas. La identidad puntual $\ind{A\cup B}+\ind{A\cap B}=\ind A+\ind B$, multiplicada por $f$ e integrada, da $\int_{A\cup B}f=\int_Af+\int_Bf-\int_{A\cap B}f$.
+
+(iii) Si $f\le g$ sobre $A$ y ambas integrales están definidas, entonces $f\ind A\le g\ind A$. La monotonía en $X$ concluye; en particular se aplica cuando ambas son integrables sobre $A$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 9, ejercicio 2]\label{ej:v2-l09-2}
+Construya una función no medible cuyo valor absoluto sea integrable.
+\end{ejercicio}
+\begin{solucion}
+En $X=\{a,b\}$ con $\Acal=\{\varnothing,X\}$ y $\mu(X)=1$, defina $f(a)=1$, $f(b)=-1$. No es medible porque $\{f>0\}=\{a\}\notin\Acal$. Sin embargo $|f|=1$ es medible y su integral vale $1$. La frase ``$|f|$ es integrable'' no incluye, por sí misma, la medibilidad de $f$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 9, ejercicio 3]\label{ej:v2-l09-3}
+Demuestre la desigualdad de Markov y deduzca: (i) una función integrable es finita casi en todas partes; (ii) $\int|f|=0$ implica $f=0$ casi en todas partes; (iii) si $f$ es real integrable y $\int_Af\ge0$ para todo $A$ medible, entonces $f\ge0$ casi en todas partes.
+\end{ejercicio}
+\begin{solucion}
+Para $f\ge0$ y $A_\eps=\{f\ge\eps\}$, integrar $\eps\ind{A_\eps}\le f\ind{A_\eps}\le f$ da las dos desigualdades originales. (i) Aplique esto a $|f|$: para cada $M>0$, $\mu\{|f|=\infty\}\le M^{-1}\int|f|$, y haga $M\to\infty$. (ii) Cada $\{|f|\ge1/n\}$ tiene medida cero; su unión es $\{f\ne0\}$. (iii) Tome $A=\{f<0\}$. Allí $f=-f^-$, de modo que $0\le\int_Af=-\int f^-$; por no negatividad $\int f^-=0$. El inciso anterior da $f^-=0$ casi en todas partes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 9, ejercicio 4]\label{ej:v2-l09-4}
+Dé dos funciones integrables cuyo producto no sea integrable.
+\end{ejercicio}
+\begin{solucion}
+En $(0,1)$ con Lebesgue tome $f(x)=g(x)=x^{-2/3}$. Su integral vale $3$, pero $fg=x^{-4/3}$ tiene integral infinita, como muestran las integrales sobre $[\delta,1]$ al hacer $\delta\downarrow0$. La sugerencia original de usar conteo en $\N$ no permite ese ejemplo: si $a,b\in\ell^1$, entonces $\sup_n|a_n|\le\|a\|_1$ y $\sum_n|a_nb_n|\le\|a\|_1\|b\|_1<\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 9, ejercicio 5]\label{ej:v2-l09-5}
+Si $f$ es integrable, $g$ es medible y $f\le g$ casi en todas partes, pruebe que la integral extendida de $g$ existe y $\int f\le\int g$.
+\end{ejercicio}
+\begin{solucion}
+Como $g^-\le f^-$ casi en todas partes, $\int g^-<\infty$. Por tanto $\int g=\int g^+-\int g^-$ está definida en $(-\infty,\infty]$. Si $\int g^+=\infty$, la desigualdad es inmediata. Si es finita, $g$ es integrable y la monotonía ya probada se aplica. No puede asegurarse que $\int g$ sea un número real finito: $f=0$, $g=1$ en $\R$ es un contraejemplo. La conclusión debe interpretarse en los reales extendidos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 9, ejercicio 6]\label{ej:v2-l09-6}\index{Riemann y Lebesgue, comparacion@Riemann y Lebesgue, comparación}
+Si $f:[a,b]\to\R$ es Riemann-integrable, pruebe que es Lebesgue-integrable y ambas integrales coinciden.
+\end{ejercicio}
+\begin{solucion}
+La función está acotada, digamos $|f|\le M$. Elija particiones con diferencia entre sumas superior e inferior menor que $2^{-n}$, y reemplácelas por sus refinamientos comunes acumulados. Las funciones escalonadas inferiores $s_n$ y superiores $t_n$, definidas usando ínfimos y supremos en cada subintervalo, pueden asignarse arbitrariamente en los extremos de las particiones: ese conjunto es numerable y nulo. Fuera de él, $s_n\uparrow s$, $t_n\downarrow t$, $s\le f\le t$, y $\int(t_n-s_n)<2^{-n}$. En particular, Fatou da $\int(t-s)=0$, así que $s=t$ casi en todas partes.
+
+Las funciones $s,t$ son medibles como límites de escalonadas y $f=s$ fuera de un conjunto nulo. La completitud de Lebesgue garantiza que $f$ es medible: sus niveles difieren de los de $s$ solamente en subconjuntos de ese nulo. Además $|f|\le M$ sobre un intervalo finito, luego es integrable. Finalmente $\int s_n\le\int f\le\int t_n$, y las integrales de esas escalonadas son las sumas de Darboux correspondientes. Ambas tienden a la integral de Riemann, lo que prueba la igualdad. Esta prueba no presupone medibilidad de una función Riemann-integrable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 1: Beppo Levi]\label{ej:v2-l10-1}\index{Beppo Levi, teorema de}
+Si $f_n\ge0$ son medibles, pruebe $\int\sum_nf_n=\sum_n\int f_n$.
+\end{ejercicio}
+\begin{solucion}
+Las sumas parciales $S_m=\sum_{n\le m}f_n$ son medibles y crecen a la serie, que puede valer infinito. Convergencia monótona y aditividad finita dan $\int\sum_nf_n=\lim_m\int S_m=\lim_m\sum_{n\le m}\int f_n=\sum_n\int f_n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 2]\label{ej:v2-l10-2}
+Sea $A\subseteq\R$ y una familia $(f_t)_{t\in A}$ de funciones integrables tal que $f_t(x)\to f_a(x)$ cuando $t\to a$ en $A$, para casi todo $x$ y cada $a\in A$. Si $|f_t|\le g$ casi en todas partes para una sola $g\in L^1$, pruebe la continuidad de $t\mapsto\int f_t$.
+\end{ejercicio}
+\begin{solucion}
+Fije $a$ y una sucesión $t_n\in A$ que converge a $a$. La hipótesis puntual da $f_{t_n}\to f_a$ casi en todas partes. La unión de los conjuntos excepcionales de la dominación para esos índices es nula; fuera de ella toda la sucesión está dominada por $g$. Convergencia dominada da $\int f_{t_n}\to\int f_a$. Como esto vale para toda sucesión $t_n\to a$, el criterio secuencial de continuidad en el subespacio métrico $A$ concluye. No se toma una unión no numerable de excepciones.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 3: transformada de Laplace]\label{ej:v2-l10-3}\index{Laplace, transformada de}
+Para $f$ Lebesgue-medible en $[0,\infty)$, defina $Lf(s)=\int_0^\infty e^{-sx}f(x)\,dx$ cuando la función es integrable. Pruebe: (i) su dominio es estable hacia la derecha; (ii) $Lf$ es diferenciable en el interior del dominio; (iii) si está definida en todo $\R$, $Lf(s)\to0$ cuando $s\to\infty$; (iv) aditividad.
+\end{ejercicio}
+\begin{solucion}
+(i) Si $t\ge s$ y $x\ge0$, $e^{-tx}|f(x)|\le e^{-sx}|f(x)|$. La integrabilidad para $s$ implica la de $t$.
+
+(ii) Fije $s$ interior y elija $\delta>0$ con $s-2\delta$ en el dominio. Para $|h|<\delta$, el teorema del valor medio aplicado al exponencial da
+\[\left|\frac{e^{-(s+h)x}-e^{-sx}}h f(x)\right|\le x e^{-(s-\delta)x}|f(x)|
+\le C_\delta e^{-(s-2\delta)x}|f(x)|,\]
+donde $C_\delta=\sup_{x\ge0}xe^{-\delta x}<\infty$. El lado derecho es integrable. Los cocientes tienden puntualmente a $-xe^{-sx}f(x)$; convergencia dominada, aplicada a toda sucesión $h\to0$, prueba
+\[(Lf)'(s)=-\int_0^\infty xe^{-sx}f(x)\,dx.\]
+
+(iii) En realidad basta que exista algún $s_0$ del dominio. Para $s\ge s_0$, el integrando está dominado por $e^{-s_0x}|f(x)|$, y tiende a cero para $x>0$. El punto $0$ es nulo. Convergencia dominada y el criterio secuencial para el límite en infinito dan $Lf(s)\to0$.
+
+(iv) Si $s$ pertenece a los dominios de $Lf$ y $Lg$, también pertenece al de $L(f+g)$ y la linealidad da $L(f+g)(s)=Lf(s)+Lg(s)$. Esta igualdad se afirma en el dominio común; el dominio de la suma puede ser mayor por cancelación, como muestra $g=-f$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 4]\label{ej:v2-l10-4}
+Si $|f_n|\le g$ casi en todas partes con $g$ integrable, pruebe integrabilidad de $\limsup f_n$ y $\int\limsup f_n\ge\limsup\int f_n$.
+\end{ejercicio}
+\begin{solucion}
+Fuera de un nulo común, $-g\le\limsup f_n\le g$, por lo que el límite superior es integrable. Fatou aplicado a $g-f_n\ge0$ da
+\[\int g-\int\limsup f_n=\int\liminf(g-f_n)
+\le\liminf\left(\int g-\int f_n\right)=\int g-\limsup\int f_n.\]
+Cancelar la cantidad finita $\int g$ y cambiar de signo produce la desigualdad pedida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 5]\label{ej:v2-l10-5}
+Para $f_n=-n^{-1}\ind{[0,n]}$ en $\R$, pruebe convergencia uniforme a cero y fallo de la desigualdad de Fatou sin no negatividad.
+\end{ejercicio}
+\begin{solucion}
+Se tiene $\sup_x|f_n(x)|=1/n\to0$, mientras $\int f_n=-1$ para todo $n$. Así $\liminf_n\int f_n=-1<0=\int\liminf_nf_n$. No hay contradicción con Fatou: sus funciones deben ser no negativas, o admitir una cota inferior integrable como en el siguiente ejercicio.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 6]\label{ej:v2-l10-6}
+Si $f_n\ge-h$ con $h\ge0$ integrable, pruebe $\int\liminf f_n\le\liminf\int f_n$. Explique por qué no se aplica al ejercicio anterior.
+\end{ejercicio}
+\begin{solucion}
+Aplique Fatou a $f_n+h\ge0$. Las partes negativas de todos los $f_n$ y del límite inferior están acotadas por $h$, así que sus integrales extendidas están definidas. Restar $\int h<\infty$ de ambos lados da el resultado. En el ejemplo anterior, una cota $h$ tendría que satisfacer, para $x\ge1$, $h(x)\ge1/\lceil x\rceil$ al tomar $n=\lceil x\rceil$. Su integral sería al menos la serie armónica de las contribuciones sobre $(k-1,k]$, y por ello infinita. No existe tal cota inferior integrable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 7]\label{ej:v2-l10-7}
+Extienda convergencia monótona a una sucesión creciente cuyo primer término es integrable, aunque no sea no negativo.
+\end{ejercicio}
+\begin{solucion}
+Anule las funciones en un nulo común si las condiciones son casi en todas partes. Entonces $g_n=f_n-f_1\ge0$ crece a $f-f_1$. Convergencia monótona da $\int(f-f_1)=\lim_n\int(f_n-f_1)$. Como $f_1$ es integrable, las partes negativas de $f_n,f$ están dominadas por $f_1^-$ y sus integrales extendidas están definidas. Sumar la cantidad finita $\int f_1$ concluye $\int f=\lim_n\int f_n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 8: núcleos]\label{ej:v2-l10-8}\index{nucleo de medidas@núcleo de medidas}
+Sea $K:X\times\Bcal\to[0,\infty]$ tal que $K(x,\cdot)$ es una medida en $(Y,\Bcal)$ y $K(\cdot,B)$ es medible para cada $B\in\Bcal$. Si $\mu$ es una medida en $X$ y $f:Y\to[0,\infty]$ es medible, pruebe: (i) $\nu(B)=\int_XK(x,B)\,d\mu(x)$ es una medida; (ii) $x\mapsto\int_Yf(y)K(x,dy)$ es medible; (iii) su integral en $X$ es $\int_Yf\,d\nu$.
+\end{ejercicio}
+\begin{solucion}
+El segundo argumento de $K$ es un \emph{conjunto medible}; por tanto su dominio es $X\times\Bcal$, no $X\times Y$ como aparece en el original.
+
+(i) $K(x,\varnothing)=0$ da $\nu(\varnothing)=0$. Para $B_j$ disjuntos, $K(x,\bigcup_jB_j)=\sum_jK(x,B_j)$. Beppo Levi permite integrar esta serie no negativa y da $\nu(\bigcup_jB_j)=\sum_j\nu(B_j)$.
+
+(ii) Si $f=\ind B$, la integral es $K(x,B)$, medible por hipótesis. Si $f=\sum_ja_j\ind{B_j}$ es simple no negativa, resulta la suma finita $\sum_ja_jK(x,B_j)$, también medible. Para $f$ general elija simples $s_n\uparrow f$. Convergencia monótona para cada medida $K(x,\cdot)$ prueba que sus integrales crecen a $\int f\,K(x,dy)$; el límite de funciones medibles es medible.
+
+(iii) Para indicadores es exactamente la definición de $\nu$. La linealidad no negativa da la igualdad para simples. Aplique convergencia monótona primero en $Y$ y luego en $X$ a las mismas $s_n$. Ambos lados convergen a las integrales requeridas y se conserva la igualdad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 10, ejercicio 9]\label{ej:v2-l10-9}
+En el ejercicio anterior suponga $\mu(X)<\infty$, $M=\sup_xK(x,Y)<\infty$ y $f$ medible acotada real. Pruebe medibilidad y acotación de $x\mapsto\int_Yf\,K(x,dy)$ y la misma identidad de integrales.
+\end{ejercicio}
+\begin{solucion}
+Si $|f|\le C$, para cada $x$ se tiene $\int_Y|f|\,K(x,dy)\le CM$. Por tanto todas las integrales interiores existen y están acotadas por $CM$. Las integrales de $f^+$ y $f^-$ son medibles por el ejercicio \ref{ej:v2-l10-8}; su diferencia es medible y coincide con la integral de $f$. Además $\nu(Y)=\int_XK(x,Y)\,d\mu\le M\mu(X)<\infty$, así que $f$ es $\nu$-integrable. Aplique la identidad del ejercicio anterior por separado a $f^+,f^-$ y reste. Todas las integrales son finitas, por lo que esta resta es legítima.
+\end{solucion}
+
+\chapter{Medidas producto, Tonelli y Fubini}
+
+\begin{ejercicio}[Lectura 11, ejercicio 1]\label{ej:v2-l11-1}
+Pruebe que una intersección no vacía de clases monótonas es una clase monótona.
+\end{ejercicio}
+\begin{solucion}
+Una sucesión creciente de conjuntos de la intersección pertenece a cada clase por separado. Su unión pertenece a cada una por estabilidad monótona, luego pertenece a la intersección. El mismo razonamiento vale para intersecciones decrecientes. La condición de que la intersección no sea vacía corresponde a la convención de llamar clase monótona solamente a familias no vacías.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 2: Tonelli--Hobson]\label{ej:v2-l11-2}
+Pruebe que una función \emph{medible} $F$ en el producto es integrable si y solo si una de las integrales iteradas de $|F|$ es finita.
+\end{ejercicio}
+\begin{solucion}
+Tonelli da igualdad de ambas integrales iteradas de $|F|$ con $\int_{X\times Y}|F|\,d\pi$, admitiendo infinito. La finitud de cualquiera equivale, por definición, a integrabilidad de $F$ y fuerza finitud de las otras dos. La medibilidad de $F$ es una hipótesis indispensable que no debe suprimirse del enunciado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 3]\label{ej:v2-l11-3}
+Para $a_{m,n}=1$ si $m=n$, $a_{m,n}=-1$ si $m+1=n$ y cero en los demás casos, calcule las dos sumas iteradas.
+\end{ejercicio}
+\begin{solucion}
+Fijado $m$, la fila tiene $1$ en $n=m$ y $-1$ en $n=m+1$, luego $\sum_na_{m,n}=0$ y $\sum_m\sum_na_{m,n}=0$. Fijado $n=1$, la columna tiene solamente $a_{1,1}=1$; para $n\ge2$, la columna tiene $-1$ en $m=n-1$ y $1$ en $m=n$, por lo que suma cero. Así $\sum_n\sum_ma_{m,n}=1$. La suma de los valores absolutos es infinita, pues cada fila aporta $2$; Fubini no es aplicable a esta función en $\N^2$ con conteo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 4]\label{ej:v2-l11-4}
+Si $f\in L^1(X)$ y $g\in L^1(Y)$, pruebe integrabilidad de $h(x,y)=f(x)g(y)$ y $\int h=(\int f)(\int g)$.
+\end{ejercicio}
+\begin{solucion}
+Las funciones $f\circ\mathrm{pr}_X$ y $g\circ\mathrm{pr}_Y$ son medibles, pues sus preimágenes de niveles son rectángulos; su producto también lo es. Tonelli aplicado a $|h|=|f(x)||g(y)|$ da
+\[\int|h|\,d\pi=\int_X|f(x)|\left(\int_Y|g|\,d\nu\right)d\mu
+=\|f\|_1\|g\|_1<\infty.\]
+Fubini y homogeneidad de la integral dan después
+\[\int h\,d\pi=\int_X f(x)\left(\int_Y g\,d\nu\right)d\mu
+=\left(\int_X f\,d\mu\right)\left(\int_Y g\,d\nu\right),\]
+para funciones reales o complejas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 5]\label{ej:v2-l11-5}
+En $X=Y=[0,1]$ con borelianos, tome Lebesgue en $X$ y conteo en $Y$. Para la diagonal $D=\{(x,x):x\in[0,1]\}$, pruebe medibilidad y desigualdad de sus integrales iteradas por secciones.
+\end{ejercicio}
+\begin{solucion}
+La diagonal es cerrada en el cuadrado y es medible para la $\sigma$-álgebra producto: los rectángulos abiertos de extremos racionales forman una base numerable, de modo que los borelianos del cuadrado son generados por rectángulos borelianos. Cada sección $D_x=\{x\}$ tiene medida de conteo $1$, mientras $D^y=\{y\}$ tiene medida de Lebesgue cero. Por tanto
+\[\int_X\mu_c(D_x)\,d\lambda(x)=1,\qquad\int_Y\lambda(D^y)\,d\mu_c(y)=0.\]
+El conteo en un conjunto no numerable no es $\sigma$-finito: todo conjunto de medida finita es finito y una unión numerable de finitos no cubre $[0,1]$. Esta es la hipótesis que falla.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 6: convolución]\label{ej:v2-l11-6}\index{convolucion@convolución}
+Sean $f,g\in L^1(\R)$. Pruebe: (i) $(x,y)\mapsto f(x-y)g(y)$ es Lebesgue-medible en $\R^2$; (ii) $(f*g)(x)=\int_\R f(x-y)g(y)\,dy$ existe casi en todas partes; (iii) $\|f*g\|_1\le\|f\|_1\|g\|_1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Primero tome representantes borelianos $f_0,g_0$ iguales a $f,g$ fuera de nulos. Su existencia se deduce de la representación de conjuntos Lebesgue-medibles como borelianos más nulos y de aproximaciones simples. La función $f_0(x-y)g_0(y)$ es boreliana, porque $(x,y)\mapsto x-y$ y la proyección a $y$ son continuas. Si $N$ es un boreliano nulo que contiene las discrepancias de $f$, el conjunto $\{(x,y):x-y\in N\}$ es boreliano y nulo: por Tonelli, su sección en $x$ para cada $y$ es $N+y$, de medida cero. Análogamente, $\{(x,y):y\in M\}$ es nulo cuando $M$ contiene las discrepancias de $g$; se comprueba primero en franjas acotadas y se toma una unión numerable. Fuera de la unión de estos nulos, el producto original coincide con el boreliano, luego es Lebesgue-medible por completitud.
+
+(ii) Tonelli e invariancia por traslaciones dan
+\[\int_{\R^2}|f(x-y)g(y)|\,dx\,dy
+=\int_\R|g(y)|\left(\int_\R|f(x-y)|\,dx\right)dy
+=\|f\|_1\|g\|_1<\infty.\]
+La igualdad $\int|f(x-y)|\,dx=\int|f|$ se prueba primero en indicadores mediante invariancia de la medida, luego en simples y finalmente por convergencia monótona. Fubini en el producto completado implica que la sección en $y$ es integrable para casi todo $x$. Esto define $f*g$ casi en todas partes; se pone cero en el conjunto excepcional. Se corrige el diferencial $d\lambda(x)$ del original por $dy$, pues $y$ es la variable interior.
+
+(iii) La desigualdad triangular interior da $|f*g(x)|\le\int|f(x-y)g(y)|\,dy$. Integrar y usar la igualdad anterior prueba la cota. Fubini también da
+\[\int_\R(f*g)(x)\,dx=\left(\int_\R f\right)\left(\int_\R g\right).\]
+El dominio de esta última integral es $\R$, no $\R^2$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 11, ejercicio 7]\label{ej:v2-l11-7}
+Si $A,B\in\Acal\otimes\Bcal$ y $\nu(A_x)=\nu(B_x)$ para casi todo $x$, pruebe $\pi(A)=\pi(B)$.
+\end{ejercicio}
+\begin{solucion}
+El lema \ref{lema:v2-cavalieri} identifica las medidas de $A,B$ con las integrales de sus funciones de medidas de secciones. Estas son no negativas, medibles e iguales casi en todas partes; la invariancia de la integral no negativa bajo esa igualdad implica que sus integrales son iguales, incluso si valen infinito.
+\end{solucion}
+
+\chapter{Modos de convergencia de funciones}
+
+\begin{ejercicio}[Lectura 14, ejercicio 1]\label{ej:v2-l14-1}
+Demuestre que la convergencia uniforme implica convergencia en medida.
+\end{ejercicio}
+\begin{solucion}
+Para un umbral $a>0$, desde cierto índice se cumple $|f_n(x)-f(x)|<a$ para todo $x$. El conjunto malo es entonces vacío, incluso cuando $\mu(X)=\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 2]\label{ej:v2-l14-2}
+En $\N$ con medida de conteo, demuestre que converger en medida equivale a converger uniformemente.
+\end{ejercicio}
+\begin{solucion}
+La implicación directa del ejercicio anterior vale en cualquier espacio. Recíprocamente, para $a>0$ la medida del conjunto malo acaba siendo menor que uno. La medida de conteo sólo toma valores enteros no negativos o infinito, por lo que ese conjunto debe ser vacío. Así, $\sup_k|f_n(k)-f(k)|\le a$ desde cierto índice; usar $a=\eps/2$ da la condición uniforme con error $\eps$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 3]\label{ej:v2-l14-3}
+Si $f_n\to0$ casi en todas partes en $[0,1]$, encuentre números $a_n>0$ con $a_n\to\infty$ y $a_nf_n\to0$ casi en todas partes.
+\end{ejercicio}
+\begin{solucion}
+Para cada $k$ elegimos $N_k$ estrictamente creciente de modo que
+\[m\{\sup_{n\ge N_k}|f_n|>k^{-2}\}<2^{-k}.
+\]
+Esto es posible por continuidad desde arriba, como en Egorov. Definimos $a_n=k$ si $N_k\le n<N_{k+1}$, y $a_n=1$ antes de $N_1$. Borel--Cantelli asegura que casi todo $x$ queda fuera de los conjuntos malos para todos los $k$ suficientemente grandes. En el bloque correspondiente, $|a_nf_n(x)|\le k/k^2=1/k$. Puesto que los índices de bloque tienden a infinito, se obtiene el resultado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 14, ejercicio 4]\label{ej:v2-l14-4}
+Suponga $|f_n|\le g\in L^1(\mu)$ y $f_n\to f$ casi en todas partes. Demuestre convergencia casi uniforme sin suponer finita la medida del espacio.
+\end{ejercicio}
+\begin{solucion}
+Retiremos un conjunto nulo común donde fallen las desigualdades o la convergencia. Allí también $|f|\le g$. Sean $E_j=\{g>1/j\}$; Markov da $\mu(E_j)\le j\int g<\infty$. Aplicamos Egorov en cada $E_j$, retirando $N_j\subset E_j$ de medida menor que $\eps2^{-j-1}$. Fuera de $N=\bigcup_jN_j$ y del conjunto nulo inicial, la convergencia es uniforme en cada $E_j$. Para un error $\delta>0$, elegimos $j$ con $2/j<\delta$. Fuera de $E_j$, $|f_n-f|\le2g\le2/j<\delta$ para todo $n$; en $E_j\setminus N$, el error es menor que $\delta$ desde un índice independiente del punto. Como $\mu(N)<\eps$, esto prueba la afirmación. La unión de excepciones se tomó una sola vez; no se cambia al escoger $\delta$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 1]\label{ej:v2-l15-1}
+Complete la extracción casi uniforme de una sucesión de Cauchy en medida.
+\end{ejercicio}
+\begin{solucion}
+Con los conjuntos $A_k,B_j$ del teorema \ref{teo:v2-completitud-medida}, fuera de $B_j$ la desigualdad $|f_{n_p}-f|\le2^{1-p}$ vale simultáneamente para todo $p\ge j$. Dado $\eps$, primero fijamos $j$ para que $\mu(B_j)<\eps$; dado después $\delta$, escogemos $p_0\ge j$ con $2^{1-p_0}<\delta$. Para $p\ge p_0$ la cota es uniforme en el conjunto fijo $X\setminus B_j$. Este orden de elecciones completa el argumento solicitado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 2]\label{ej:v2-l15-2}
+¿La convergencia casi uniforme implica convergencia uniforme fuera de un conjunto nulo?
+\end{ejercicio}
+\begin{solucion}
+No. En $(0,1)$, $f_n=\ind{(0,1/n)}$ converge casi uniformemente a cero: para una excepción de medida $\eps$, retiramos $(0,\eps/2)$, y la sucesión es eventualmente cero en el resto. Pero para cualquier conjunto nulo $N$, el intervalo $(0,1/n)\setminus N$ es no vacío, de modo que $\sup_{(0,1)\setminus N}f_n=1$ para todo $n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 3]\label{ej:v2-l15-3}
+Analice $f_n=\ind{[n,n+1]}$ en $\R$ con medida de Lebesgue.
+\end{ejercicio}
+\begin{solucion}
+Cada punto pertenece a lo sumo a dos de estos intervalos, así que $f_n\to0$ puntualmente. El conjunto $\{|f_n|>1/2\}$ tiene medida uno; no hay convergencia en medida y, por la proposición anterior, tampoco casi uniforme.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 4]\label{ej:v2-l15-4}
+Demuestre que toda subsucesión de una sucesión de Cauchy en medida también lo es.
+\end{ejercicio}
+\begin{solucion}
+Dados umbral $a$ y error $\eps$, elijamos $N$ que sirve para todos los índices originales $m,n\ge N$. Si $n_k$ son los índices de la subsucesión, desde cierto $k_0$ se tiene $n_k\ge N$. La misma estimación sirve entonces para cualesquiera $k,l\ge k_0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 5]\label{ej:v2-l15-5}
+Caracterice las funciones borelianas $\varphi:\R\to\R$ que preservan convergencia casi en todas partes por composición.
+\end{ejercicio}
+\begin{solucion}
+Toda función continua la preserva, aplicando continuidad a la sucesión numérica en cada punto donde $f_n\to f$. Para la recíproca debemos exigir $\mu(X)>0$, o formular la propiedad para todos los espacios de medida. Sean $t_n\to t$ y tomemos las funciones constantes $f_n=t_n$, $f=t$. La convergencia casi en todas partes de las composiciones obliga a $\varphi(t_n)\to\varphi(t)$: si la sucesión numérica no convergiera, fallaría en todo $X$, que tiene medida positiva. La continuidad secuencial equivale a continuidad en $\R$. Sin la hipótesis $\mu(X)>0$, la recíproca original es falsa: si $\mu$ es la medida cero, cualquier función boreliana preserva la propiedad vacía de converger casi en todas partes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 6]\label{ej:v2-l15-6}
+Si $\varphi$ es uniformemente continua y $f_n\to f$ uniformemente, pruebe convergencia uniforme de las composiciones.
+\end{ejercicio}
+\begin{solucion}
+Para $\eps>0$ elija $\delta>0$ tal que $|u-v|<\delta$ implique $|\varphi(u)-\varphi(v)|<\eps$. Desde cierto índice la primera desigualdad vale para $u=f_n(x),v=f(x)$ simultáneamente en todos los puntos, y por ello también la segunda.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 7]\label{ej:v2-l15-7}
+Pruebe el resultado anterior para convergencia casi uniforme y para convergencia en medida.
+\end{ejercicio}
+\begin{solucion}
+En el caso casi uniforme aplicamos el ejercicio \ref{ej:v2-l15-6} en cada conjunto bueno, conservando su excepción. En medida, para un umbral $\eps$ elegimos $\delta$ por continuidad uniforme. Entonces
+\[\{|\varphi(f_n)-\varphi(f)|\ge\eps\}\subset\{|f_n-f|\ge\delta\},
+\]
+y la medida del segundo conjunto tiende a cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 15, ejercicio 8]\label{ej:v2-l15-8}
+Si $\varphi$ no es uniformemente continua, construya funciones $f_n\to f$ uniformemente tales que $\varphi(f_n)$ no converja en medida a $\varphi(f)$.
+\end{ejercicio}
+\begin{solucion}
+Existen $\eps_0>0$ y números $a_k,b_k$ con $|a_k-b_k|<1/k$ y $|\varphi(a_k)-\varphi(b_k)|\ge\eps_0$. En $\N$ con medida de conteo definimos $f(k)=a_k$ y $f_n(k)=a_k$ si $k<n$, $f_n(k)=b_k$ si $k\ge n$. Todas las funciones son medibles y $\sup_k|f_n(k)-f(k)|\le1/n$. Sin embargo, el conjunto donde las composiciones difieren al menos $\eps_0$ contiene $\{n,n+1,\ldots\}$ y tiene medida infinita. Esta construcción identifica la función de la continuidad \emph{uniforme}: el mismo control debe funcionar aun cuando los valores $f(k)$ recorran regiones distintas del dominio.
+\end{solucion}
+
+\chapter{El espacio de funciones integrables}
+
+\begin{ejercicio}[Lectura 13, ejercicio 1]\label{ej:v2-l13-1}
+Si $T:V\to U$ es lineal, pruebe $V/\ker T\cong\operatorname{im}T$.
+\end{ejercicio}
+\begin{solucion}
+Definimos $\widetilde T([v])=T(v)$. Si $[v]=[w]$, entonces $v-w\in\ker T$ y $T(v)=T(w)$; por ello está bien definida. Es lineal, su imagen es $\operatorname{im}T$ y su núcleo sólo contiene la clase cero, pues $T(v)=0$ equivale a $v\in\ker T$. Es, por tanto, un isomorfismo algebraico. No se afirma todavía que sea un isomorfismo topológico entre espacios normados.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 2]\label{ej:v2-l13-2}
+Demuestre $\dim V=\dim W+\dim(V/W)$ para un subespacio $W$.
+\end{ejercicio}
+\begin{solucion}
+Sea $(w_i)_{i\in I}$ una base de $W$ y extiéndase a una base $(w_i)_{i\in I}\cup(v_j)_{j\in J}$ de $V$. Las clases $[v_j]$ generan $V/W$ porque los términos en $W$ desaparecen al tomar clases. Si una combinación finita $\sum_j a_j[v_j]$ es cero, entonces $\sum_ja_jv_j\in W$; expresarla en la base $(w_i)$ y usar independencia de la base extendida obliga a todos los $a_j$ a ser cero. Así, $([v_j])_{j\in J}$ es una base del cociente. Contar ambos grupos da la identidad, con suma de cardinales cuando las dimensiones son infinitas. En dimensión infinita, la existencia y extensión de bases usa elección.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 13, ejercicio 3]\label{ej:v2-l13-3}
+Si $W\subset\ker T$, construya la aplicación inducida $V/W\to U$ y pruebe su unicidad.
+\end{ejercicio}
+\begin{solucion}
+La fórmula $S([v])=T(v)$ es independiente del representante porque $T$ se anula sobre $W$. Es lineal y satisface $S\circ q=T$, donde $q(v)=[v]$. Si otra aplicación satisface esa identidad, su valor en cualquier clase $q(v)$ debe ser $T(v)$; como $q$ es sobreyectiva, coincide con $S$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 1]\label{ej:v2-l16-1}
+Identifique la completación de las funciones Riemann integrables en $[a,b]$ con la seminorma integral.
+\end{ejercicio}
+\begin{solucion}
+Primero se toma el cociente por seminorma cero. La correspondencia con clases de Lebesgue es isométrica, por la igualdad entre las integrales de Riemann y Lebesgue. Su imagen es densa en $L^1([a,b])$: por regularidad, para cada conjunto medible $E\subset[a,b]$ y $\eps>0$ hay un compacto $K\subset E$ y un abierto relativo $U\supset E$ con $m(U\setminus K)<\eps$. Cubrimos $K$ con finitos intervalos contenidos en $U$; su unión $J$ satisface $m(E\triangle J)<\eps$. El indicador de una unión finita de intervalos es Riemann integrable, pues sólo tiene finitos puntos de discontinuidad. Aproximamos así indicadores, después simples, y finalmente funciones de $L^1$. Como $L^1$ es completo, es la completación buscada. El cociente inicial es indispensable para hablar de un espacio normado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v2-l16-2}
+Si $d$ es una seudométrica, pruebe que identificar puntos a distancia cero produce una métrica.
+\end{ejercicio}
+\begin{solucion}
+La relación $x\sim y$ definida por $d(x,y)=0$ es reflexiva y simétrica; es transitiva por la desigualdad triangular. Si $x\sim x'$ y $y\sim y'$, entonces $d(x,y)\le d(x,x')+d(x',y')+d(y',y)=d(x',y')$, y la desigualdad inversa se obtiene intercambiando los pares. Así $\bar d([x],[y])=d(x,y)$ está bien definida. Hereda simetría y desigualdad triangular, y vale cero exactamente para clases iguales.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v2-l16-3}
+Caracterice la separabilidad del cociente mediante una sucesión de representantes.
+\end{ejercicio}
+\begin{solucion}
+Un conjunto numerable de clases es denso si y sólo si, escogiendo un representante $x_n$ de cada clase, para todo $x$ y $\eps>0$ existe $n$ con $d(x,x_n)<\eps$. Esta equivalencia es inmediata de la definición de la métrica cociente; sólo usa una elección numerable de representantes. En particular, la formulación no exige que $d$ separe puntos en el espacio original.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v2-l16-4}
+Compare la separabilidad del álgebra de medida de $\N$ con medida de conteo y la de su espacio $L^1$.
+\end{ejercicio}
+\begin{solucion}
+Dos subconjuntos distintos tienen diferencia simétrica de medida al menos uno, de modo que $d_\mu\ge1/2$. El álgebra de medida es por tanto un espacio discreto no numerable, pues $\mathcal P(\N)$ es no numerable; no es separable. En cambio, $L^1$ es $\ell^1(\N)$. Las sucesiones de soporte finito y coordenadas racionales son numerables y densas: primero se corta una cola cuya suma absoluta es pequeña y luego se aproximan las finitas coordenadas restantes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v2-l16-5}
+Pruebe que $L^1(\R,m)$ es separable.
+\end{ejercicio}
+\begin{solucion}
+Las combinaciones finitas con coeficientes racionales de indicadores de intervalos acotados con extremos racionales forman una familia numerable. Para aproximar un conjunto medible $E$ de medida finita, primero cortamos fuera de $[-M,M]$ con pérdida pequeña, por continuidad desde abajo. La regularidad aproxima la parte restante por una unión finita de intervalos, como en el ejercicio \ref{ej:v2-l16-1}. Mover sus finitos extremos a racionales cambia la medida de la unión a lo sumo en la suma de los desplazamientos. Esto aproxima $\ind E$ en $L^1$; la densidad de simples y la aproximación de coeficientes completan el argumento. En el caso complejo usamos coeficientes de $\Q+i\Q$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v2-l16-6}
+Examine la afirmación de que la medida de conteo en la $\sigma$-álgebra numerable--conumerable de $\R$ produce $L^1$ separable sin ser $\sigma$-finita. Dé una versión correcta.
+\end{ejercicio}
+\begin{solucion}
+Con medida de conteo, cada indicador de un punto pertenece a $L^1$, y dos de ellos distan dos. Esta familia no numerable demuestra que $L^1$ \emph{no} es separable. De hecho, cada función integrable tiene soporte numerable, porque cada conjunto $\{|f|\ge1/n\}$ debe ser finito; el espacio resultante es $\ell^1(\R)$, no $\ell^1(\N)$. La medida no es $\sigma$-finita porque una unión numerable de conjuntos finitos no cubre $\R$.
+
+Una versión correcta mantiene la misma $\sigma$-álgebra y define $\nu(A)=0$ si $A$ es numerable, $\nu(A)=\infty$ si es conumerable. Es una medida: en una familia disjunta hay a lo sumo un conjunto conumerable; si no lo hay, la unión numerable es numerable. No es $\sigma$-finita. Si $f$ es integrable, cada $\{|f|>1/n\}$ tiene medida finita y por tanto cero; su unión es nula, así que $f=0$ casi en todas partes. Luego $L^1(\nu)=\{0\}$ es separable. Este ejemplo no es semifinito, precisamente la hipótesis adicional del teorema \ref{teo:v2-medida-separable}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v2-l17-1}
+Demuestre la unicidad del límite en media.
+\end{ejercicio}
+\begin{solucion}
+Si $f_n\to f$ y $f_n\to g$ en media, entonces $\|f-g\|_1\le\|f-f_n\|_1+\|f_n-g\|_1\to0$. Por tanto $f=g$ casi en todas partes, es decir, representan el mismo elemento de $L^1$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 2]\label{ej:v2-l17-2}
+Analice $f_n=n\ind{[1/n,2/n]}$ en $[0,1]$.
+\end{ejercicio}
+\begin{solucion}
+Para $n\ge2$ el soporte tiene medida $1/n$, así que $\|f_n\|_1=1$. Cada $x>0$ sale definitivamente del soporte y $f_n(0)=0$; hay convergencia puntual a cero. Para cualquier umbral $a$, desde $n>a$ la medida del conjunto malo es $1/n$, por lo que también hay convergencia en medida. No converge a cero en media; tampoco a otro límite en media, pues la convergencia en medida y su unicidad obligarían a que ese límite fuese cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v2-l17-3}
+Si $f_n\to f$ en medida y $|f_n|\le g\in L^1$, pruebe $\int f_n\to\int f$.
+\end{ejercicio}
+\begin{solucion}
+El teorema \ref{teo:v2-dominada-medida} da $f\in L^1$ y $\|f_n-f\|_1\to0$. Entonces $|\int f_n-\int f|\le\int|f_n-f|\to0$. El paso por una subsucesión casi en todas partes es lo que permite aplicar convergencia dominada aunque la hipótesis inicial sea sólo convergencia en medida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v2-l17-4}
+Compare las condiciones de control de masa de Vitali cuando $|f_n|\le g\in L^1$.
+\end{ejercicio}
+\begin{solucion}
+Ambas condiciones se cumplen automáticamente. El conjunto $A$ de medida finita del lema \ref{lema:v2-control-integral} da $\int_{X\setminus A}|f_n|\le\int_{X\setminus A}g<\eps$ uniformemente en $n$. La tolerancia $\delta$ del mismo lema da $\int_E|f_n|\le\int_Eg<\eps$ cuando $\mu(E)<\delta$. Así, dentro de una familia dominada, las dos condiciones son equivalentes en el sentido de que ambas son verdaderas. Sin dominación no son intercambiables: los indicadores de intervalos trasladados de longitud uno tienen continuidad absoluta uniforme pero no el control exterior; las funciones $n\ind{(0,1/n)}$ tienen soporte común finito pero no continuidad absoluta uniforme.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 5: Jensen]\label{ej:v2-l17-5}\index{Jensen, desigualdad de}
+Sea $\mu(X)=1$, $f\in L^1$ real y $\varphi:\R\to\R$ convexa. Pruebe continuidad de $\varphi$, existencia de una recta de soporte en cada punto y $\varphi(\int f)\le\int\varphi(f)$.
+\end{ejercicio}
+\begin{solucion}
+Si $a<b<c$, escribir $b$ como combinación convexa de $a,c$ da
+\[\frac{\varphi(b)-\varphi(a)}{b-a}\le\frac{\varphi(c)-\varphi(a)}{c-a}\le\frac{\varphi(c)-\varphi(b)}{c-b}.
+\]
+Fijemos $u<a<b<v$. Para cualesquiera $a\le x<y\le b$, aplicaciones sucesivas de estas desigualdades dan
+\[\frac{\varphi(a)-\varphi(u)}{a-u}\le\frac{\varphi(y)-\varphi(x)}{y-x}\le\frac{\varphi(v)-\varphi(b)}{v-b}.
+\]
+Los dos extremos son números finitos independientes de $x,y$. Tomando el máximo de sus valores absolutos obtenemos una constante de Lipschitz en $[a,b]$. Todo punto pertenece al interior de un intervalo así, por lo que $\varphi$ es continua.
+
+En un punto $m$, las pendientes de cuerdas que llegan desde la izquierda no exceden ninguna pendiente de cuerda que sale hacia la derecha. Su supremo $a_-$ y el ínfimo $a_+$ de las de la derecha son finitos, por las cotas locales anteriores, y $a_-\le a_+$. Elijamos $a\in[a_-,a_+]$. Para $t<m$, la comparación de pendientes, multiplicada por $t-m<0$, da $\varphi(t)\ge\varphi(m)+a(t-m)$; para $t>m$ se obtiene la misma desigualdad directamente. Es la recta de soporte.
+
+Tomemos $m=\int f$. Por continuidad, $\varphi\circ f$ es medible. La recta inferior muestra que su parte negativa está dominada por $|\varphi(m)-am|+|a||f|$, que es integrable porque $\mu(X)=1$. Su integral extendida está, por tanto, bien definida, aunque puede valer $+\infty$. Al integrar la desigualdad de soporte obtenemos
+\[\int\varphi(f)\,d\mu\ge\varphi(m)+a\left(\int f-m\right)=\varphi(m).
+\]
+No puede afirmarse siempre integrabilidad finita: en $(0,1)$, $f(x)=x^{-1/2}$ es integrable pero para $\varphi(t)=t^2$ la integral de $\varphi(f)$ es infinita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 6]\label{ej:v2-l17-6}
+Si $\mu(X)<\infty$, $\varphi$ es continua y $|\varphi(t)|\le K|t|$ para $|t|\ge K$, demuestre que $f\in L^1$ real implica $\varphi\circ f\in L^1$. Establezca la versión para medida infinita.
+\end{ejercicio}
+\begin{solucion}
+La continuidad da $M=\max_{|t|\le K}|\varphi(t)|<\infty$. Para todo $t$, $|\varphi(t)|\le M+K|t|$, y por ello $\int|\varphi(f)|\le M\mu(X)+K\|f\|_1<\infty$. Si la medida es infinita, basta exigir la cota global $|\varphi(t)|\le K|t|$ para todo $t$; entonces el término constante desaparece. La hipótesis sólo para valores grandes no basta en medida infinita: $\varphi\equiv1$ y $f\equiv0$ dan un contraejemplo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 7]\label{ej:v2-l17-7}
+Bajo las hipótesis del ejercicio \ref{ej:v2-l17-6}, pruebe que $f_n\to f$ en $L^1$ implica $\varphi(f_n)\to\varphi(f)$ en $L^1$.
+\end{ejercicio}
+\begin{solucion}
+De cualquier subsucesión podemos extraer otra, denotada $f_{n_k}$, con $\sum_k\|f_{n_k}-f\|_1<\infty$. Entonces
+\[H=|f|+\sum_k|f_{n_k}-f|\in L^1,
+\]
+y fuera de un conjunto nulo se tiene $|f_{n_k}|\le H$ y $f_{n_k}\to f$, porque la serie de diferencias absolutas es finita. La continuidad de $\varphi$ da convergencia puntual de las composiciones. En medida finita, $|\varphi(f_{n_k})|+|\varphi(f)|\le2M+2KH$; en la versión de medida infinita, la cota es $2KH$. Son dominantes integrables, así que convergencia dominada da convergencia en $L^1$ de esta subsucesión de composiciones. Si la sucesión completa no convergiera en norma, alguna subsucesión tendría sus distancias al límite acotadas inferiormente por un número positivo y no podría admitir la subsucesión que acabamos de construir. Esto concluye el argumento sin exigir continuidad uniforme de $\varphi$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 8]\label{ej:v2-l17-8}
+Si $f\in L^1(\R)$ y $f_x(t)=f(t-x)$, pruebe que $x\mapsto f_x$ es continua con valores en $L^1$.
+\end{ejercicio}
+\begin{solucion}
+La invariancia de la medida de Lebesgue muestra $\|f_x\|_1=\|f\|_1$. Para un intervalo acotado $I$, $\|\ind I(\cdot-h)-\ind I\|_1=m((I+h)\triangle I)\le2|h|$. La desigualdad triangular da continuidad de las traslaciones para toda combinación finita de indicadores de intervalos. Esas funciones son densas en $L^1$ por el ejercicio \ref{ej:v2-l16-5}. Dado $\eps>0$, escojamos una de ellas, $s$, con $\|f-s\|_1<\eps/3$. Entonces
+\[\|f(\cdot-h)-f\|_1\le2\|f-s\|_1+\|s(\cdot-h)-s\|_1<\eps
+\]
+si $|h|$ es suficientemente pequeño. Por la isometría de las traslaciones, $\|f_x-f_{x_0}\|_1=\|f_{x-x_0}-f\|_1$, lo cual prueba continuidad en cualquier $x_0$.
+\end{solucion}
+
+\chapter{Los espacios \texorpdfstring{$L^p$}{Lp} y la convergencia en norma}
+
+\begin{ejercicio}[Lectura 18, ejercicio 1]\label{ej:v2-l18-1}
+Para $a,b>0$ y exponentes conjugados $p,q>1$, demostrar que hay igualdad en Young si y solo si $a^p=b^q$.
+\end{ejercicio}
+\begin{solucion}
+La derivada de $H$ en la prueba del lema \ref{v2:young} cambia de signo en un único punto. Por tanto $H(a)=0$ exactamente cuando $a^{p-1}=b$. Elevar a $q$ da $a^p=b^q$, y cada una de estas operaciones es reversible para números positivos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 2]\label{ej:v2-l18-2}
+Demostrar $ab\le\min_{t>0}\bigl(t^pa^p/p+t^{-q}b^q/q\bigr)$ para $a,b>0$ y $1/p+1/q=1$.
+\end{ejercicio}
+\begin{solucion}
+Young aplicado a $ta$ y $t^{-1}b$ da la desigualdad para cada $t$. Hay igualdad cuando $t^pa^p=t^{-q}b^q$, es decir, cuando $t=(b^q/a^p)^{1/(p+q)}$. Ese número existe y es positivo; por tanto el mínimo existe y en realidad es exactamente $ab$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 3]\label{ej:v2-l18-3}
+Si $f\in\mathcal L^p\cap\mathcal L^q$, demostrar $f\in\mathcal L^r$ para todo $r$ entre $p$ y $q$. Deducir que $\{p\ge1:f\in\mathcal L^p\}$ es un intervalo, posiblemente vacío.
+\end{ejercicio}
+\begin{solucion}
+Podemos suponer $p<r<q$. En $\{|f|\le1\}$ se tiene $|f|^r\le|f|^p$, y en su complemento $|f|^r\le|f|^q$. La suma de las dos integrales es finita. Por tanto, si dos exponentes pertenecen al conjunto indicado, todos los intermedios también pertenecen; esta es precisamente la propiedad que caracteriza a un intervalo de la recta, incluidos singletons e intervalos abiertos o semiabiertos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 4]\label{ej:v2-l18-4}
+Si $\mu(X)=1$ y $1\le p<q<\infty$, demostrar $\norm f_p\le\norm f_q$ para $f\in\mathcal L^q$.
+\end{ejercicio}
+\begin{solucion}
+La proposición \ref{v2:inclusion-finita} da la desigualdad con factor $1^{1/p-1/q}=1$. En concreto, Hölder aplicado a $|f|^p\cdot1$ da $\int|f|^p\le(\int|f|^q)^{p/q}$, y al tomar raíces se obtiene exactamente la afirmación.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 5]\label{ej:v2-l18-5}
+Sean $1\le p<q<\infty$. (i) Demostrar $\ell^p\subset\ell^q$. (ii) Encontrar una sucesión de $\ell^q\setminus\ell^p$. (iii) Encontrar una sucesión acotada que tienda a cero y no pertenezca a ningún $\ell^p$, $p\ge1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Si $\sum|x_n|^p<\infty$, entonces $x_n\to0$: en otro caso habría infinitos términos cuya potencia $p$ supera una constante positiva. Para $n$ grande $|x_n|\le1$, luego $|x_n|^q\le|x_n|^p$; los términos iniciales son finitos. También $\norm x_q\le\norm x_p$, porque $|x_n|\le\norm x_p$ implica $\sum|x_n|^q\le\norm x_p^{q-p}\sum|x_n|^p$.
+
+(ii) Tomamos $x_n=n^{-1/p}$. Su serie de potencias $p$ es armónica y diverge, mientras que $\sum n^{-q/p}$ converge porque $q/p>1$.
+
+(iii) Sirve $x_n=1/\log(n+1)$. Es acotada y tiende a cero. Para cada $p$ fijo, $\log(n+1)^p\le n^{1/2}$ cuando $n$ es suficientemente grande; esto se obtiene escribiendo $n=e^t$ y usando que $t^p e^{-t/2}\to0$. Así $x_n^p\ge n^{-1/2}$ eventualmente y la serie diverge.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 6]\label{ej:v2-l18-6}
+Demostrar que $\langle f,g\rangle=\int_X f\overline g\,d\mu$ es sesquilineal sobre $\mathcal L^2$ y que $\langle f,f\rangle=0$ si y solo si $f=0$ casi en todas partes.
+\end{ejercicio}
+\begin{solucion}
+Hölder garantiza que todas las integrales existen. La linealidad de la integral da linealidad en el primer argumento y conjugado-linealidad en el segundo. Además $\overline{\int f\overline g}=\int g\overline f$ y $\langle f,f\rangle=\int|f|^2\ge0$. La caracterización de integral nula demostrada al inicio da el último enunciado. Sobre funciones aún puede haber vectores no idénticamente cero de longitud cero; el producto interno genuino aparece al pasar al cociente. En el caso complejo la barra es indispensable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 7: rectificación]\label{ej:v2-l18-7}
+El enunciado original pide demostrar que $r\mapsto\norm f_r$ es convexa en $[p,q]$ si $f\in\mathcal L^p\cap\mathcal L^q$. Examinar esta afirmación y establecer la desigualdad de interpolación válida.
+\end{ejercicio}
+\begin{solucion}
+La afirmación no es cierta en un espacio de medida general, ni siquiera en uno de probabilidad. Sea $f=\ind{(0,1/2)}$ en $(0,1)$ con medida de Lebesgue. Entonces $\norm f_r=2^{-1/r}$ y, poniendo $a=\log2$,
+\[
+ \frac{d^2}{dr^2}e^{-a/r}=e^{-a/r}\frac{a(a-2r)}{r^4}<0\qquad(r\ge1).
+\]
+Es estrictamente cóncava, por lo que cualquier intervalo no degenerado contradice la convexidad solicitada.
+
+La afirmación correcta es la convexidad de $s\mapsto\log\norm f_{1/s}$ cuando $f$ no es cero casi en todas partes. Si $1/r=\theta/p+(1-\theta)/q$, $0<\theta<1$, aplicamos Hölder a $|f|^{\theta r}$ y $|f|^{(1-\theta)r}$ con exponentes $p/(\theta r)$ y $q/((1-\theta)r)$. Obtenemos
+\[
+ \norm f_r\le\norm f_p^{\theta}\norm f_q^{1-\theta}.
+\]
+Tomar logaritmos da la convexidad indicada; la desigualdad sigue siendo válida cuando $f=0$. Además, Young ponderada da $\norm f_r\le\theta\norm f_p+(1-\theta)\norm f_q$, con pesos referidos a los exponentes recíprocos, no a $p,q$ directamente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 8]\label{ej:v2-l18-8}
+Supóngase $\mu(X)<\infty$, sea $f:X\to\F$ medible y sea $E_n=\{n-1\le|f|<n\}$. Para $1\le p<\infty$, demostrar que $f\in\mathcal L^p$ si y solo si $\sum_{n\ge1}n^p\mu(E_n)<\infty$.
+\end{ejercicio}
+\begin{solucion}
+Los $E_n$ son disjuntos y cubren $X$, pues $f$ toma valores finitos. Por aditividad de la integral,
+$\int|f|^p\le\sum_n n^p\mu(E_n)$. Recíprocamente, para $n\ge2$ tenemos $n\le2(n-1)\le2|f|$ en $E_n$. Por tanto
+\[
+ \sum_{n\ge1}n^p\mu(E_n)\le\mu(E_1)+2^p\int_X|f|^p\,d\mu<\infty.
+\]
+La finitud de $\mu(X)$ controla el primer estrato, donde $|f|$ puede ser cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 9]\label{ej:v2-l18-9}
+Para $f(x)=x^{-1/2}(1+|\log x|)^{-1}$ en $(0,\infty)$ con medida de Lebesgue, demostrar $f\in\mathcal L^p$ si y solo si $p=2$.
+\end{ejercicio}
+\begin{solucion}
+En $(0,1)$ hacemos $x=e^{-t}$ y en $(1,\infty)$ hacemos $x=e^t$. Las integrales se convierten respectivamente en
+\[
+ \int_0^\infty\frac{e^{(p/2-1)t}}{(1+t)^p}\,dt,
+ \qquad \int_0^\infty\frac{e^{(1-p/2)t}}{(1+t)^p}\,dt.
+\]
+Para $p=2$ ambas son $\int_0^\infty(1+t)^{-2}dt=1$. Si $p>2$, el primer integrando crece exponencialmente salvo un factor polinómico y su integral diverge; si $p<2$, ocurre lo mismo con el segundo. Para justificar esa comparación, si $c>0$, entonces $(1+t)^p\le e^{ct/2}$ eventualmente, así que $e^{ct}/(1+t)^p\ge e^{ct/2}$. Se han controlado por separado el origen y el infinito.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:v2-l19-1}
+Para $f\in L^p(\R)$, $1<p<\infty$, sea $f_x(t)=f(t-x)$. Demostrar $\norm{f_x-f_{x_0}}_p\to0$ cuando $x\to x_0$.
+\end{ejercicio}
+\begin{solucion}
+La invariancia de la medida de Lebesgue da $\norm{h_x}_p=\norm h_p$. Si $h=\ind{(a,b)}$ con $a<b$ finitos, la diferencia de dos traslaciones tiene potencia $p$ igual al indicador de la diferencia simétrica de los intervalos, cuya medida es a lo sumo $2|x-x_0|$. La afirmación sigue para combinaciones finitas de estos indicadores por Minkowski.
+
+Esas combinaciones son densas en $L^p(\R)$. En efecto, ya sabemos aproximar por indicadores de conjuntos $A$ de medida finita. La regularidad de Lebesgue proporciona $K\subset A\subset U$, con $K$ compacto, $U$ abierto y $m(U\setminus K)$ arbitrariamente pequeño. Finitos intervalos acotados contenidos en $U$ cubren $K$; su unión $J$ satisface $A\mathbin\triangle J\subset U\setminus K$. Por tanto $\norm{\ind A-\ind J}_p$ es pequeño. Dado ahora $f$, elegimos una combinación $h$ con $\norm{f-h}_p<\eps/3$. Entonces
+\[
+ \norm{f_x-f_{x_0}}_p\le2\norm{f-h}_p+\norm{h_x-h_{x_0}}_p<\eps
+\]
+para $x$ suficientemente próximo a $x_0$. Esta prueba vale también para $p=1$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 2: hipótesis necesaria]\label{ej:v2-l19-2}
+El enunciado original afirma que para $p\ne2$ la norma de $L^p(X)$ no proviene de un producto interno. Examinar la afirmación y demostrarla cuando existen dos conjuntos medibles disjuntos de medida positiva finita.
+\end{ejercicio}
+\begin{solucion}
+Sin esa condición la afirmación es falsa: en un espacio de un punto de medida uno, $L^p=\F$ y su norma es el valor absoluto para todo $p$. Supongamos ahora $A\cap B=\varnothing$ y $0<\mu(A),\mu(B)<\infty$. Sean $u=\mu(A)^{-1/p}\ind A$ y $v=\mu(B)^{-1/p}\ind B$. Sus normas son uno y $\norm{u+v}_p=\norm{u-v}_p=2^{1/p}$. La ley del paralelogramo exigiría
+\[
+ 2\cdot2^{2/p}=2(1+1)=4,
+\]
+lo que equivale a $p=2$. Para $p\ne2$ se contradice una identidad necesaria de toda norma inducida por producto interno.
+\end{solucion}
+
+\chapter{Dualidad de \texorpdfstring{$L^p$ para $1<p<\infty$}{Lp para 1<p<infinito}}
+
+\begin{ejercicio}[Lectura 21, ejercicio 1: precisión de la igualdad]\label{ej:v2-l21-1}
+Para $1<p<\infty$ y $f,g\in L^p$ de normas no nulas, demostrar
+\[
+ 2^{-|2-p|/p}\le
+ \frac{\norm{f+g}_p^2+\norm{f-g}_p^2}{2(\norm f_p^2+\norm g_p^2)}
+ \le2^{|2-p|/p}.
+\]
+Encontrar pares que alcancen ambos extremos cuando existen dos conjuntos medibles \emph{disjuntos} de medida positiva finita. La disjunción falta en la condición original para esta última petición.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $r=p/2$ y, para $h\ge0$, $Q_r(h)=(\int h^r)^{1/r}$. Si $r\ge1$, Minkowski y $a^r+b^r\le(a+b)^r$ dan
+\[
+ Q_r(a+b)\le Q_r(a)+Q_r(b)\le2^{1-1/r}Q_r(a+b).
+\]
+La segunda cota usa primero la desigualdad entre normas de un par de números: $A+B\le2^{1-1/r}(A^r+B^r)^{1/r}$. Si $0<r\le1$, la desigualdad inversa y $a^r+b^r\le2^{1-r}(a+b)^r$ dan
+\[
+ Q_r(a)+Q_r(b)\le Q_r(a+b)\le2^{1/r-1}(Q_r(a)+Q_r(b)).
+\]
+Para la última desigualdad se usa $(a+b)^r\le a^r+b^r$ y la convexidad de $t^{1/r}$ sobre los dos números $Q_r(a)^r,Q_r(b)^r$.
+
+Aplicamos estas comparaciones a $a=|f+g|^2$, $b=|f-g|^2$ y usamos la identidad escalar $a+b=2(|f|^2+|g|^2)$. Resulta
+\[
+ \norm{f+g}_p^2+\norm{f-g}_p^2
+ \le2C(\norm f_p^2+\norm g_p^2),\qquad C=2^{|1-2/p|}.
+\]
+Sustituyendo ahora $(f,g)$ por $(f+g,f-g)$ en esta cota se obtiene la desigualdad inferior, pues las nuevas suma y diferencia son $2f,2g$.
+
+Sean $u,v$ indicadores normalizados de dos conjuntos disjuntos de medida positiva finita. Para $(f,g)=(u,v)$ el cociente es $2^{2/p-1}$. Para $(f,g)=(u+v,u-v)$ es $2^{1-2/p}$. Son los dos extremos, cuyo orden depende de si $p<2$ o $p>2$. Si $p=2$, ambos valen uno.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 2]\label{ej:v2-l21-2}
+Sea $f:X\to\F$ medible. Supóngase que $\{f\ne0\}$ es de medida $\sigma$-finita y que $fg\in L^1$ para todo $g\in L^p$, $1<p<\infty$. Demostrar $f\in L^q$, $q=p/(p-1)$.
+\end{ejercicio}
+\begin{solucion}
+Elegimos conjuntos crecientes $E_n$ de medida finita que cubran $\{f\ne0\}$ y ponemos $f_n=f\ind{E_n\cap\{|f|\le n\}}$. Entonces $f_n\in L^q$, $|f_n|\uparrow|f|$, y los funcionales $T_n(g)=\int f_ng$ tienen norma $\norm{f_n}_q$ por la proposición \ref{v2:dual-isometria}. Para cada $g\in L^p$,
+$|T_n(g)|\le\int|fg|<\infty$, uniformemente en $n$. El principio de acotación uniforme, aplicado al Banach $L^p$, da $\sup_n\norm{f_n}_q=M<\infty$. La convergencia monótona implica $\int|f|^q=\lim_n\int|f_n|^q\le M^q$. Así $f\in L^q$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 3]\label{ej:v2-l21-3}
+Supóngase que $\mu$ es semifinita: cada conjunto de medida infinita contiene uno de medida positiva finita. Si $f$ es medible y $fg\in L^1$ para todo $g\in L^p$, demostrar $f\in L^q$.
+\end{ejercicio}
+\begin{solucion}
+Primero observemos que, en un conjunto $A$ de medida infinita, las medidas de sus subconjuntos de medida finita no pueden estar acotadas. Si su supremo fuera $M<\infty$, una sucesión que se acercara a $M$ tendría unión $B$ de medida $M$, tomando uniones finitas crecientes. El resto $A\setminus B$ tendría medida infinita y, por semifinitud, contendría un $D$ de medida positiva finita. Entonces $B\cup D$ contradice la definición de $M$. Por tanto podemos elegir $B_n\subset A$ de medida finita con $\mu(B_n)>n$; su unión es $\sigma$-finita e infinita.
+
+Para $A_k=\{|f|\ge1/k\}$, si $\mu(A_k)=\infty$, elegimos un $B\subset A_k$ de medida $\sigma$-finita e infinita. La función $f\ind B$ satisface el ejercicio \ref{ej:v2-l21-2}, luego pertenece a $L^q$, pero $\int_B|f|^q\ge k^{-q}\mu(B)=\infty$, contradicción. Así todos los $A_k$ tienen medida finita. Su unión es $\{f\ne0\}$, y el ejercicio anterior se aplica directamente a $f$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 4]\label{ej:v2-l21-4}
+En $\R$, sea $\Acal$ la $\sigma$-álgebra de conjuntos numerables o con complemento numerable, y sea $\mu(A)=0$ en el primer caso y $\mu(A)=1$ en el segundo. Explicar por qué la petición de alcanzar ambos extremos del ejercicio \ref{ej:v2-l21-1} falla en este espacio para $p\ne2$.
+\end{ejercicio}
+\begin{solucion}
+Toda función medible real es constante fuera de un conjunto numerable. Para verlo, dividimos su recorrido en intervalos de longitud $2^{-n}$. De sus preimágenes, exactamente una puede ser conumerable y al menos una debe serlo, pues una unión numerable de conjuntos numerables no cubre $\R$. Fuera de la unión numerable de las preimágenes descartadas, los valores de la función están a distancia a lo sumo $2^{-n}$ para todo $n$, luego son iguales. Para funciones complejas se aplica el argumento a sus partes real e imaginaria. Por tanto cada $L^p$ es isométrico a $\F$ y el cociente del ejercicio es siempre uno, por el paralelogramo escalar. Las desigualdades siguen siendo verdaderas, pero ninguno de sus extremos estrictos se alcanza si $p\ne2$. Dos conjuntos de medida positiva pueden coincidir o intersectarse en medida uno; su mera existencia no sustituye la disjunción.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 5]\label{ej:v2-l21-5}
+Una sucesión $v_n$ converge débilmente a $v$ si $\varphi(v_n)\to\varphi(v)$ para todo $\varphi\in V^*$. Un operador continuo $T:V\to W$ es completamente continuo si transforma convergencia débil en convergencia en norma. Para espacios de Banach $V,W$, demostrar: (i) todo operador compacto es completamente continuo; (ii) si $V$ es reflexivo, todo operador completamente continuo es compacto.
+\end{ejercicio}
+\begin{solucion}
+(i) Una sucesión débilmente convergente es acotada: se aplica acotación uniforme a los funcionales $J(v_n)$ sobre $V^*$ y se usa $\norm{J(v_n)}=\norm{v_n}$, consecuencia de Hahn--Banach. Si $T$ es compacto, toda subsucesión de $Tv_n$ admite una subsucesión convergente en norma. Su límite debe ser $Tv$, porque para $\psi\in W^*$, $\psi(Tv_n)=(T^*\psi)(v_n)\to\psi(Tv)$, y los funcionales separan puntos por Hahn--Banach. Si $Tv_n$ no convergiera en norma a $Tv$, una subsucesión quedaría a distancia al menos $\eps>0$ y su subsucesión convergente produciría una contradicción.
+
+(ii) Justificamos el hecho de extracción que se necesita. En un Banach reflexivo toda sucesión acotada tiene una subsucesión débilmente convergente. Sea $Y$ el subespacio cerrado generado por los términos de la sucesión; es separable. También es reflexivo: dado $F\in Y^{**}$, la composición de $F$ con la restricción $V^*\to Y^*$ pertenece a $V^{**}$, luego es evaluación en algún $v\in V$. Todo funcional que se anula en $Y$ se anula en $v$; la separación de un punto de un subespacio cerrado mediante Hahn--Banach implica $v\in Y$. Así $F$ es evaluación en ese $v$.
+
+El dual $Y^*$ es separable. En efecto, elijamos $y_j$ densos en la esfera de $Y$ y funcionales $\varphi_j$ de norma uno con $\varphi_j(y_j)=1$. La familia es normante: si $y\ne0$, aproximar $y/\norm y$ por $y_j$ muestra $\sup_j|\varphi_j(y)|=\norm y$. Si el espacio cerrado generado por los $\varphi_j$ no fuera $Y^*$, Hahn--Banach daría un funcional no nulo de $Y^{**}$ que se anula sobre todos ellos; por reflexividad sería evaluación en un $y\ne0$, contradiciendo que la familia sea normante. Las combinaciones racionales de los $\varphi_j$ forman, pues, un conjunto denso numerable de $Y^*$.
+
+Una extracción diagonal hace converger las evaluaciones de una sucesión acotada sobre ese conjunto numerable. La cota uniforme de las normas extiende la convergencia a todo $\varphi\in Y^*$ y define un funcional continuo $F(\varphi)=\lim\varphi(v_{n_j})$. Reflexividad da $F=J(y)$, es decir, convergencia débil a $y$. La restricción de cualquier funcional de $V^*$ muestra que también es débil en $V$.
+
+Aplicamos este hecho a cualquier sucesión de la bola unitaria de $V$. Su subsucesión débilmente convergente tiene, por completa continuidad, imagen convergente en norma. Así la imagen de la bola es relativamente secuencialmente compacta; en un espacio métrico completo eso equivale a compacidad de su cerradura. Por tanto $T$ es compacto.
+
+La lectura menciona además un resultado atribuido a Odell acerca de espacios que no contienen $\ell^1$. Esa afirmación pertenece a la teoría de sucesiones débiles; no se usa como hipótesis ni como paso de estas dos demostraciones.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 21, ejercicio 6]\label{ej:v2-l21-6}
+Sean $1<p<\infty$, $q=p/(p-1)$ y $\mu$ $\sigma$-finita. Sea $k:X\times X\to\F$ medible para $\Acal\otimes\Acal$, con
+\[
+ \alpha=\int_X\left(\int_X|k(x,y)|^p\,d\mu(x)\right)^{q/p}d\mu(y)<\infty.
+\]
+Demostrar que $Kf(x)=\int_Xk(x,y)f(y)\,d\mu(y)$ define, casi en todas partes, un operador compacto en $L^p$, con $\norm K\le\alpha^{1/q}$.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $a(y)=\norm{k(\cdot,y)}_p$, de modo que $\norm a_q=\alpha^{1/q}$. La desigualdad integral de Minkowski da
+\[
+ \norm{Kf}_p\le\int_X a(y)|f(y)|\,d\mu(y)\le\norm a_q\norm f_p. \tag{*}
+\]
+Aquí también hay que justificar existencia. Para $H(x)=\int|k(x,y)f(y)|\,d\mu(y)$, Tonelli y Hölder implican $\int Hh\le\norm a_q\norm f_p\norm h_q$ para todo $h\ge0$ de $L^q$. Aplicamos esta desigualdad a las funciones que realizan la norma de $H_m=\min\{H,m\}\ind{E_m}$, donde $E_m\uparrow X$ y $\mu(E_m)<\infty$. Obtenemos $\norm{H_m}_p\le\norm a_q\norm f_p$; por convergencia monótona $H\in L^p$ con la misma cota. Así la integral definitoria es absolutamente convergente casi en todas partes y (*) queda probada. También queda claro que cambiar $f$ en un conjunto nulo no cambia $Kf$ en $L^p$.
+
+Demostraremos compacidad aproximando el núcleo. La norma mixta
+\[
+ \norm h_{q,p}=\left(\int\norm{h(\cdot,y)}_p^q\,d\mu(y)\right)^{1/q}
+\]
+controla, por (*), la norma del operador asociado. Los núcleos $k_m=k\ind{E_m\times E_m}\ind{\{|k|\le m\}}$ convergen a $k$ en esta norma: primero, para casi todo $y$, convergencia dominada en $x$ da convergencia de las normas $L^p$ del error; después dominada en $y$, con cota $a(y)^q$, da la afirmación.
+
+En un rectángulo de medida finita, todo núcleo acotado puede aproximarse en $L^r$, $r\ge\max\{p,q\}$, por combinaciones finitas de indicadores de rectángulos medibles. Explicamos el punto sobre conjuntos: la familia de conjuntos aproximables en medida por el álgebra de uniones finitas de rectángulos contiene esa álgebra, es estable por complementos relativos y por uniones numerables. Para esta última propiedad se aproxima primero una unión finita, pues la medida total es finita, y después cada uno de sus miembros. Por tanto contiene la $\sigma$-álgebra producto. Aproximar niveles de una función simple da la densidad en $L^r$. Además, si $h$ está soportado en $E\times F$ de medidas finitas positivas, dos aplicaciones de Hölder dan
+\[
+ \norm h_{q,p}\le\mu(E)^{1/p-1/r}\mu(F)^{1/q-1/r}\norm h_{L^r(E\times F)}.
+\]
+Los casos de medida cero son triviales. Así obtenemos núcleos $s_j(x,y)=\sum_{i=1}^{m_j}c_i\ind{A_i}(x)\ind{B_i}(y)$ que convergen a $k$ en norma mixta, con $A_i,B_i$ de medida finita. Su operador es
+\[
+ S_jf=\sum_i c_i\left(\int_{B_i}f\,d\mu\right)\ind{A_i},
+\]
+y tiene rango finito. Por (*), $\norm{K-S_j}\le\norm{k-s_j}_{q,p}\to0$. Un límite en norma de operadores compactos es compacto: una red finita para una aproximación, junto con el error uniforme sobre la bola unitaria, da acotación total de la imagen; la completitud del codominio da compacidad de la cerradura. Esto completa tanto la definición como la compacidad de $K$.
+\end{solucion}
+
+\chapter{El espacio \texorpdfstring{$L^\infty$}{L infinito} y la dualidad de \texorpdfstring{$L^1$}{L1}}
+
+\begin{ejercicio}[Lectura 22, ejercicio 1]\label{ej:v2-l22-1}
+Demostrar $\norm f_\infty=\inf\{\sup_{x\in A}|f(x)|:A\in\Acal,\ \mu(X\setminus A)=0\}$.
+\end{ejercicio}
+\begin{solucion}
+Para cada conjunto con complemento nulo, su supremo es una cota esencial, luego es al menos $\norm f_\infty$. A la inversa, el conjunto $A=\{|f|\le\norm f_\infty\}$ tiene complemento nulo por la proposición \ref{v2:linfty-cota} y el supremo allí es a lo sumo esa norma. Si $A$ es vacío usamos el supremo cero para el recorrido vacío de una función no negativa; esto solo afecta al espacio de medida nula.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 2]\label{ej:v2-l22-2}
+Demostrar que $L^\infty\subset L^1$ si y solo si $\mu(X)<\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si la medida es finita, $\int|f|\le\norm f_\infty\mu(X)<\infty$. Recíprocamente, la función constante uno siempre pertenece a $L^\infty$. Si también pertenece a $L^1$, entonces $\mu(X)=\int1<\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 3]\label{ej:v2-l22-3}
+Demostrar que $L^\infty(\R)$ con medida de Lebesgue no es separable, aunque esta medida sea separable.
+\end{ejercicio}
+\begin{solucion}
+Para $0<t<1$, sea $f_t=\ind{(0,t)}$. Si $s<t$, las funciones difieren en uno sobre $(s,t)$, de medida positiva, luego $\norm{f_t-f_s}_\infty=1$. Las bolas de radio $1/3$ alrededor de los $f_t$ son disjuntas. Un conjunto denso debe tocar todas ellas; al asignar un punto distinto a cada bola tendría que ser incontable. Por tanto no existe un conjunto denso numerable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:v2-l22-4}
+Si $f\in L^p$, $1\le p\le\infty$, y $g\in L^\infty$, demostrar $fg\in L^p$ y $\norm{fg}_p\le\norm f_p\norm g_\infty$.
+\end{ejercicio}
+\begin{solucion}
+Fuera de un conjunto nulo, $|fg|\le\norm g_\infty|f|$. Para $p<\infty$ elevamos a $p$, integramos y tomamos la raíz. Para $p=\infty$ usamos también $|f|\le\norm f_\infty$ casi en todas partes. Si alguna norma es cero, el producto se anula casi en todas partes y la conclusión sigue siendo válida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:v2-l22-5}
+Si $\mu(X)<\infty$, demostrar que $f\in L^\infty$ equivale a: (i) $f\in L^p$ para todo $1\le p<\infty$; (ii) $\sup_{p\ge1}\norm f_p<\infty$. En tal caso, demostrar $\lim_{p\to\infty}\norm f_p=\norm f_\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si $M=\norm f_\infty<\infty$, entonces $\norm f_p\le M\mu(X)^{1/p}$ y los factores están acotados por $\max\{1,\mu(X)\}$. Sea $0<a<M$. El conjunto $E=\{|f|>a\}$ tiene medida positiva, de modo que $\norm f_p\ge a\mu(E)^{1/p}$. Como $0<\mu(E)<\infty$, el límite inferior es al menos $a$, y al hacer $a\uparrow M$ se obtiene la igualdad de límites. Los casos $M=0$ y $\mu(X)=0$ son inmediatos.
+
+Recíprocamente, si todas las normas son a lo sumo $C$ y $\mu(\{|f|>C+\eps\})>0$, la misma cota inferior implicaría $\liminf_p\norm f_p\ge C+\eps$, contradicción. Por tanto $|f|\le C$ casi en todas partes y $f\in L^\infty$. Las dos condiciones se necesitan conjuntamente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 6]\label{ej:v2-l22-6}
+Si $f\in L^p(\R)$ para todo $p\ge p_0\ge1$ y además $f\in L^\infty(\R)$, ¿se cumple $\norm f_p\to\norm f_\infty$?
+\end{ejercicio}
+\begin{solucion}
+Sí, y basta $f\in L^{p_0}\cap L^\infty$. Si $M=\norm f_\infty>0$ y $p\ge p_0$,
+\[
+ \norm f_p^p\le M^{p-p_0}\norm f_{p_0}^{p_0},
+\]
+por lo que el límite superior es a lo sumo $M$. Para $0<a<M$, el conjunto $E=\{|f|>a\}$ tiene medida positiva y finita, pues $a^{p_0}\mu(E)\le\norm f_{p_0}^{p_0}$. La cota $\norm f_p\ge a\mu(E)^{1/p}$ da el límite inferior $M$. Si $M=0$ no hay nada que probar. El argumento vale en cualquier espacio de medida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 22, ejercicio 7]\label{ej:v2-l22-7}
+Si una sucesión $x$ pertenece a $\ell^p$ para todo $p\ge p_0\ge1$, ¿se cumple $\norm x_p\to\norm x_\infty$?
+\end{ejercicio}
+\begin{solucion}
+Sí. La pertenencia a $\ell^{p_0}$ implica acotación, ya que $|x_n|^{p_0}\le\sum_k|x_k|^{p_0}$. Se aplica el ejercicio \ref{ej:v2-l22-6} con medida de conteo. También puede verse la cota inferior directamente: para cada $n$, $\norm x_p\ge|x_n|$; se toma primero límite inferior en $p$ y después supremo en $n$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 1]\label{ej:v2-l23-1}
+Si $\mu$ es semifinita y $g$ es medible con $fg\in L^1$ para todo $f\in L^1$, demostrar $g\in L^\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si $g$ no fuera esencialmente acotada, podemos escoger números $\alpha_n\ge2^n$, estrictamente crecientes, tales que cada estrato $\{\alpha_n<|g|\le\alpha_{n+1}\}$ tenga medida positiva. En efecto, el supernivel $\{|g|>\alpha_n\}$ tiene medida positiva y es unión de sus intersecciones con $\{|g|\le m\}$, pues $g$ es finita; alguna intersección tiene medida positiva. Podemos aumentar el extremo superior para asegurar además $\alpha_{n+1}\ge2^{n+1}$. Por semifinitud elegimos en cada estrato un $A_n$ de medida positiva finita. Son disjuntos. La función
+\[
+ f=\sum_n\frac{\ind{A_n}}{\alpha_n\mu(A_n)}
+\]
+es medible y $\int|f|=\sum_n\alpha_n^{-1}<\infty$, mientras que $\int|fg|\ge\sum_n1=\infty$. Esto contradice la hipótesis.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 2]\label{ej:v2-l23-2}
+Para $f\in L^1$, construir $g\in L^\infty$ con $\norm g_\infty\le1$ y $\int fg=\norm f_1$.
+\end{ejercicio}
+\begin{solucion}
+Tomamos $g(x)=\overline{f(x)}/|f(x)|$ si $f(x)\ne0$ y $g(x)=0$ en los ceros. Es medible, tiene módulo a lo sumo uno y satisface $f(x)g(x)=|f(x)|$ en todo punto. Integrar produce la igualdad, también cuando $f=0$ casi en todas partes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 3]\label{ej:v2-l23-3}
+Si $\mu$ es semifinita y $g\in L^\infty$, demostrar
+\[
+ \norm g_\infty=\sup_{\norm f_1\le1}\left|\int fg\,d\mu\right|
+ =\sup_{\norm f_1\le1}\norm{fg}_1.
+\]
+En el caso real se puede omitir el valor absoluto en el primer supremo; en el caso complejo un supremo de números complejos sin orden no está definido.
+\end{ejercicio}
+\begin{solucion}
+Hölder acota ambos supremos por $\norm g_\infty$. Para $0<a<\norm g_\infty$, la función de prueba de la proposición \ref{v2:l1-isometria} tiene norma uno y satisface $\int fg=\norm{fg}_1>a$. Al hacer $a\uparrow\norm g_\infty$ se obtienen las dos igualdades. Si la norma de $g$ es cero, todos los valores son cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 4]\label{ej:v2-l23-4}
+Dar un espacio de medida finita y una $g\in L^\infty$ tal que $\norm{fg}_1<\norm g_\infty$ para toda $f\in L^1$ con $\norm f_1\le1$.
+\end{ejercicio}
+\begin{solucion}
+En $(0,1)$ con Lebesgue, sea $g(x)=x$. Su norma esencial es uno. Si $f\ne0$ en $L^1$, entonces $(1-x)|f(x)|$ es positiva en un conjunto de medida positiva y su integral es estrictamente positiva. Por ello $\int x|f|<\int|f|\le1$. Si $f=0$, la desigualdad también es estricta. El supremo del ejercicio anterior puede existir sin ser un máximo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 5]\label{ej:v2-l23-5}
+Para un conjunto arbitrario $I$ con todas sus partes medibles y medida de conteo, demostrar $(\ell^1(I))^*\cong\ell^\infty(I)$ isométricamente.
+\end{ejercicio}
+\begin{solucion}
+Si $\varphi\in(\ell^1(I))^*$, ponemos $g(i)=\varphi(e_i)$. Como $\norm{e_i}_1=1$, $|g(i)|\le\norm\varphi$. Cada $f\in\ell^1(I)$ tiene soporte numerable, porque cada conjunto $\{|f|\ge1/n\}$ es finito. Sus sumas parciales sobre ese soporte convergen en norma $\ell^1$; por continuidad,
+$\varphi(f)=\sum_{i\in I}f(i)g(i)$. Toda función en $I$ es medible, de modo que $g\in\ell^\infty(I)$. La norma del funcional es $\sup_i|g(i)|$, por Hölder y las pruebas $e_i$ multiplicadas por fases. La unicidad se obtiene evaluando otra vez en $e_i$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 6]\label{ej:v2-l23-6}
+Supóngase $\mu$ $\sigma$-finita y $\varphi\in(L^1)^*$. Para cada $A$ de medida positiva finita supóngase dada $g_A\in L^\infty(A)$ que representa a $\varphi$ sobre funciones soportadas en $A$. Demostrar: (i) $g_A=g_B$ casi en todas partes en $A\cap B$; (ii) existe $g\in L^\infty(X)$ que representa a $\varphi$ en todo $L^1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Para toda $h\in L^1(A\cap B)$, extendida por cero, $\int h(g_A-g_B)=0$. Si $u=g_A-g_B$, podemos tomar $h=\ind{A\cap B}\overline u/|u|$ en los ceros con valor cero, pues la intersección tiene medida finita. Se obtiene $\int|u|=0$. Esto también cubre el caso de intersección nula.
+
+(ii) Elijamos una partición medible $X=\bigcup_n E_n$ con medidas finitas y pongamos $g=g_{E_n}$ en cada pieza de medida positiva, y cero en las piezas nulas. El punto (i) asegura compatibilidad con cualquier otro representante local. La isometría en cada espacio de medida finita implica $\norm{g_{E_n}}_\infty\le\norm\varphi$; la unión numerable de las excepciones sigue siendo nula, luego $\norm g_\infty\le\norm\varphi$. Para $F_n=\bigcup_{j\le n}E_j$, la aditividad da $\varphi(f\ind{F_n})=\int_{F_n}fg$. Como $f\ind{F_n}\to f$ en $L^1$ y $|fg|\le\norm\varphi|f|$, al pasar al límite queda $\varphi(f)=\int fg$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 23, ejercicio 7]\label{ej:v2-l23-7}
+Sean $(X,\Acal,\mu)$, $(Y,\mathcal B,\nu)$ y $\phi:X\to Y$ medible, con $\mu(\phi^{-1}(A))=\nu(A)$ para todo $A\in\mathcal B$. Demostrar que $T_\phi(g)=g\circ\phi$ define una isometría lineal de $L^\infty(Y)$ en $L^\infty(X)$.
+\end{ejercicio}
+\begin{solucion}
+Para $a\ge0$, $\{|g\circ\phi|>a\}=\phi^{-1}(\{|g|>a\})$, así que ambos superniveles tienen la misma medida. Las cotas esenciales admisibles coinciden exactamente, y por tanto las normas son iguales. Si dos representantes de $g$ difieren en un conjunto nulo, sus composiciones difieren en una preimagen nula por la misma hipótesis; el operador está bien definido sobre clases. La composición respeta suma y multiplicación por escalares. La igualdad de normas implica inyectividad.
+\end{solucion}
+
+\chapter{Medidas con signo y medidas complejas}
+
+\begin{ejercicio}[Lectura 25, ejercicio 1]\label{ej:v2-l25-1}
+Si $\nu=\nu_1-\nu_2$ con $\nu_1,\nu_2$ positivas y la diferencia definida, demostrar $\nu_1(A)\ge\nu^+(A)$ y $\nu_2(A)\ge\nu^-(A)$.
+\end{ejercicio}
+\begin{solucion}
+En una parte positiva $P$, $\nu^+(A)=\nu(A\cap P)=\nu_1(A\cap P)-\nu_2(A\cap P)\le\nu_1(A\cap P)\le\nu_1(A)$. Si el primer miembro es infinito, la igualdad de la diferencia obliga a $\nu_1(A\cap P)=\infty$ y la desigualdad sigue siendo válida. En una parte negativa $N$ se aplica el mismo argumento a $-\nu$ y se obtiene $\nu^-(A)\le\nu_2(A)$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 25, ejercicio 2: rectificación del ínfimo]\label{ej:v2-l25-2}
+Para medidas con signo finitas $\nu_1,\nu_2$, definir
+\[
+ \nu_1\vee\nu_2=\nu_1+(\nu_2-\nu_1)^+,
+ \qquad \nu_1\wedge\nu_2=\nu_1-(\nu_1-\nu_2)^+.
+\]
+(i) Demostrar que la primera es el menor mayorante de ambas en el orden de medidas. (ii) Demostrar que la segunda es el mayor minorante. La lectura escribe $\nu_1-(\nu_2-\nu_1)^+$ para el ínfimo; examinar esa fórmula.
+\end{ejercicio}
+\begin{solucion}
+El orden $\eta\ge\nu$ significa que $\eta-\nu$ es una medida positiva. Escribamos $d=\nu_2-\nu_1=d^+-d^-$. Entonces $\nu_1+d^+\ge\nu_1$ y $(\nu_1+d^+)-\nu_2=d^-\ge0$. Si $\xi\ge\nu_1,\nu_2$, tenemos $d=(\xi-\nu_1)-(\xi-\nu_2)$, una diferencia de positivas. El ejercicio \ref{ej:v2-l25-1} implica $d^+\le\xi-\nu_1$, luego $\nu_1\vee\nu_2\le\xi$.
+
+Aplicamos este resultado a $-\nu_1,-\nu_2$ y cambiamos de signo: el mayor minorante es $-((-\nu_1)\vee(-\nu_2))=\nu_1-(\nu_1-\nu_2)^+$. La fórmula impresa es falsa: sobre un espacio de un punto, con $\nu_1=0$ y $\nu_2=\delta$, daría $-\delta$, mientras que el mayor minorante es cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 25, ejercicio 3]\label{ej:v2-l25-3}
+Si $|\nu(A)|\le\mu(A)$ para todo medible $A$, con $\mu$ positiva, demostrar $|\nu|(A)\le\mu(A)$.
+\end{ejercicio}
+\begin{solucion}
+Para toda partición finita de $A$, $\sum_j|\nu(A_j)|\le\sum_j\mu(A_j)=\mu(A)$. Tomar el supremo sobre las particiones y usar la proposición \ref{v2:variacion-real} da la conclusión, incluso si $\mu(A)=\infty$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 25, ejercicio 4]\label{ej:v2-l25-4}
+Demostrar que $\norm\nu=|\nu|(X)$ es una norma sobre el espacio de medidas con signo finitas.
+\end{ejercicio}
+\begin{solucion}
+La descomposición de Hahn muestra que $\nu^+(X)=\nu(P)$ y $\nu^-(X)=-\nu(N)$ son finitos, por tanto la expresión está definida. Si $\norm\nu=0$, para todo $A$ tenemos $|\nu(A)|\le|\nu|(A)\le|\nu|(X)=0$, luego $\nu=0$. El supremo por particiones da $|a\nu|(X)=|a||\nu|(X)$. Para cada partición, $\sum_j|\nu(A_j)+\eta(A_j)|\le\sum_j|\nu(A_j)|+\sum_j|\eta(A_j)|\le\norm\nu+\norm\eta$; tomar supremo prueba la desigualdad triangular.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 25, ejercicio 5]\label{ej:v2-l25-5}
+Para medidas con signo finitas, demostrar $\norm{\nu_n-\nu}\to0$ si y solo si $\nu_n(A)\to\nu(A)$ uniformemente en $A\in\Acal$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\eta=\nu_n-\nu$. Por una parte $\sup_A|\eta(A)|\le\norm\eta$. Por otra, si $(P,N)$ es una partición de Hahn de $\eta$,
+\[
+ \norm\eta=|\eta(P)|+|\eta(N)|\le2\sup_A|\eta(A)|.
+\]
+Estas dos cotas prueban ambas implicaciones y muestran que las dos formas de medir la convergencia son equivalentes.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 25, ejercicio 6]\label{ej:v2-l25-6}
+Definir $\int f\,d\nu=\int f\,d\nu^+-\int f\,d\nu^-$ cuando $f$ es integrable para ambas medidas. Demostrar que tales funciones forman un espacio vectorial y decidir si $f\mapsto\int|f|\,d|\nu|$ es una seminorma.
+\end{ejercicio}
+\begin{solucion}
+La condición equivale a $\int|f|\,d|\nu|=\int|f|\,d\nu^++\int|f|\,d\nu^-<\infty$, primero por aditividad para simples y después por convergencia monótona. Es, pues, exactamente $\mathcal L^1(|\nu|)$, un espacio vectorial. La expresión solicitada es su seminorma $L^1$: tiene homogeneidad y desigualdad triangular al integrar las correspondientes desigualdades puntuales. Su núcleo consta de funciones nulas $|\nu|$-casi en todas partes. La integral con signo es lineal y satisface $|\int f\,d\nu|\le\int|f|\,d|\nu|$; las dos integrales que se restan son finitas, por lo que no aparece una indeterminación.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 1]\label{ej:v2-l26-1}
+Sea $\nu:\Acal\to\C$ finitamente aditiva y nula en el vacío. Demostrar que es una medida si cumple cualquiera de estas condiciones: (i) continuidad sobre sucesiones crecientes; (ii) continuidad sobre sucesiones decrecientes con intersección vacía.
+\end{ejercicio}
+\begin{solucion}
+Si $A_n$ son disjuntos, las uniones finitas $B_m=\bigcup_{n\le m}A_n$ crecen a $B=\bigcup_nA_n$. Bajo (i), $\nu(B)=\lim_m\nu(B_m)=\sum_n\nu(A_n)$. Bajo (ii), los restos $B\setminus B_m$ decrecen al vacío, y la identidad $\nu(B)-\sum_{n\le m}\nu(A_n)=\nu(B\setminus B_m)$ da la misma conclusión. No basta la convergencia de la serie sin una de estas condiciones de continuidad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 26, ejercicio 2: excepción de la medida cero]\label{ej:v2-l26-2}
+Demostrar que $I_\nu(f)=\int f\,d\nu$ es un funcional continuo sobre $L^1(|\nu|)$, de norma uno cuando $\nu\ne0$. Determinar su norma si $\nu=0$.
+\end{ejercicio}
+\begin{solucion}
+La proposición \ref{v2:integral-compleja} da $\norm{I_\nu}\le1$. Si $M=|\nu|(X)>0$, elegimos una partición $A_1,\ldots,A_m$ con $\sum_j|\nu(A_j)|>M-\eps$. Tomamos $c_j=\overline{\nu(A_j)}/|\nu(A_j)|$ cuando la medida es no nula y $c_j=1$ en otro caso. La simple $s=\sum_jc_j\ind{A_j}$ tiene $|s|=1$, luego $\norm s_{L^1(|\nu|)}=M$, y $I_\nu(s)=\sum_j|\nu(A_j)|>M-\eps$. Aplicar el funcional a $s/M$ y hacer $\eps\downarrow0$ da norma al menos uno. Para $\nu=0$, $L^1(|\nu|)$ es el espacio cero y el funcional tiene norma cero. La excepción no puede omitirse.
+\end{solucion}
+
+\chapter{Radon--Nikodym y descomposición de Lebesgue}
+
+\begin{ejercicio}[Lectura 27, ejercicio 1: aditividad numerable necesaria]\label{ej:v2-l27-1}
+Examinar la afirmación original: para una función solamente finitamente aditiva, continuidad absoluta uniforme equivale a anularse en conjuntos $\mu$-nulos. Dar la versión correcta.
+\end{ejercicio}
+\begin{solucion}
+La implicación uniforme $\Rightarrow$ anulación en nulos siempre vale. La recíproca es falsa. En $\N$, pongamos $\mu(\{n\})=2^{-n}$; su único conjunto nulo es el vacío. Sea $L$ una extensión de norma uno del límite sobre sucesiones convergentes, construida por Hahn--Banach en el ejemplo \ref{v2:limite-extendido}, y trabajemos en el caso real. Es positiva: si $0\le x\le1$, entonces $L(x)=1-L(1-x)\ge1-\norm{1-x}_\infty\ge0$; por homogeneidad lo mismo vale para cualquier sucesión no negativa acotada. Definamos $\nu(A)=L(\ind A)$. Es finitamente aditiva, positiva y se anula sobre el único conjunto $\mu$-nulo. Sin embargo, para $A_m=\{m,m+1,\ldots\}$, tenemos $\mu(A_m)\to0$ y $\nu(A_m)=1$, porque su indicador converge a uno como sucesión de la variable $n$. No hay continuidad uniforme. La versión correcta para medidas finitas numerablemente aditivas es el lema \ref{v2:absoluta-equivalencia}, cuya prueba está desarrollada arriba.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 2: aclaración de notación]\label{ej:v2-l27-2}
+Si $\mu$ es $\sigma$-finita, caracterizar las funciones finitamente aditivas verdaderamente continuas. La lectura pide que esto equivalga a pertenecer a $\mathcal M_\mu$, espacio que ella misma había definido mediante continuidad verdadera.
+\end{ejercicio}
+\begin{solucion}
+Con esa definición de $\mathcal M_\mu$, la equivalencia literal es inmediata y no necesita $\sigma$-finitud. El contenido adicional válido bajo $\sigma$-finitud es el siguiente: son exactamente las medidas finitas numerablemente aditivas que se anulan sobre los conjuntos $\mu$-nulos, y exactamente las integrales indefinidas de funciones $L^1$. La necesidad de aditividad numerable y continuidad absoluta fue probada en la proposición \ref{v2:verdadera-caracterizacion}. Para suficiencia, escribimos $X=\bigcup_nF_n$ con $F_n$ crecientes de medida finita. Como $|\nu|$ es finita, $|\nu|(X\setminus F_n)\to0$; combinando esta cota con la continuidad absoluta uniforme se obtiene el control verdadero. El teorema \ref{v2:radon-nikodym} da la última equivalencia.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 27, ejercicio 3]\label{ej:v2-l27-3}
+Demostrar que $\mathcal M_\mu$ es un subespacio cerrado de $\mathcal M(X,\Acal;\R)$ para cualquier medida $\mu$.
+\end{ejercicio}
+\begin{solucion}
+La estabilidad lineal se obtiene uniendo los conjuntos de control de dos medidas y tomando el mínimo de sus umbrales. Para cerradura, si $\nu_n\to\nu$ en variación y $\eps>0$, elegimos $n$ con $\norm{\nu-\nu_n}<\eps/2$. Tomamos $F,\delta$ que controlen $\nu_n$ con error $\eps/2$. Si $\mu(B\cap F)<\delta$, entonces $|\nu(B)|\le|\nu(B)-\nu_n(B)|+|\nu_n(B)|<\eps$. El conjunto $F$ sigue teniendo medida finita y no depende de $B$. Por tanto $\nu\in\mathcal M_\mu$.
+\end{solucion}
+
+\chapter{Representación del dual de \texorpdfstring{$L^1$}{L1} y del dual de \texorpdfstring{$L^\infty$}{L infinito}}
+
+\begin{ejercicio}[Lectura 29, ejercicio 1: enunciado falso]\label{ej:v2-l29-1}
+La lectura afirma: si $\nu$ es finitamente aditiva y $(A_n)$ es disjunta, la convergencia de $\sum_n\nu(A_n)$ implica que su suma es $\nu(\bigcup_nA_n)$. Examinarla.
+\end{ejercicio}
+\begin{solucion}
+Es falso. La carga $\nu(A)=L(\ind A)$ construida en el ejercicio \ref{ej:v2-l27-1} cumple $\nu(\{n\})=0$ para todo $n$, porque cada vector canónico converge a cero, pero $\nu(\N)=1$. Por tanto $\sum_n\nu(\{n\})=0$ es una serie convergente cuya suma difiere de la medida de la unión. También sirve la carga de un ultrafiltro libre del ejercicio \ref{ej:v2-l29-5}. La hipótesis que falta es continuidad del resto: si $B=\bigcup_nA_n$, la igualdad deseada equivale a $\nu(B\setminus\bigcup_{n\le m}A_n)\to0$, por aditividad finita. Exigir esa continuidad para todas las familias equivale a aditividad numerable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 2]\label{ej:v2-l29-2}
+Para una carga de variación acotada, demostrar: (i) la integral de una simple no depende de su representación; (ii) la integral de una función medible acotada no depende de la sucesión de simples que converge uniformemente a ella.
+\end{ejercicio}
+\begin{solucion}
+(i) Dadas dos representaciones $s=\sum_j a_j\ind{A_j}=\sum_kb_k\ind{B_k}$, refinamos por todas las intersecciones y complementos de los conjuntos que aparecen. Son una partición finita de $X$. En cada pieza, las dos sumas de coeficientes tienen el mismo valor, porque representan la misma función. La aditividad finita de $\nu$ transforma ambas integrales en la misma suma sobre esa partición. El argumento también cubre representaciones con conjuntos solapados.
+
+(ii) Si $s_n,t_n\to f$ uniformemente, entonces $\norm{s_n-t_n}_{\mathrm{sup}}\le\norm{s_n-f}_{\mathrm{sup}}+\norm{t_n-f}_{\mathrm{sup}}\to0$. Por la cota de integración, $|I_\nu(s_n)-I_\nu(t_n)|\le\norm\nu\norm{s_n-t_n}_{\mathrm{sup}}\to0$, luego los límites son iguales. La condición de variación acotada es necesaria para este procedimiento de extensión continua; no se supone automáticamente para una función finitamente aditiva arbitraria.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 3]\label{ej:v2-l29-3}
+Sea $X\ne\varnothing$ y sea $\nu:\mathcal P(X)\to\{0,1\}$ finitamente aditiva, con $\nu(X)=1$. Para $\mathcal U=\{A:\nu(A)=1\}$, demostrar: (i) $\varnothing\notin\mathcal U$; (ii) $A\in\mathcal U$, $A\subset B$ implica $B\in\mathcal U$; (iii) $A,B\in\mathcal U$ implica $A\cap B\in\mathcal U$; (iv) si $A\notin\mathcal U$, entonces $X\setminus A\in\mathcal U$. Deducir una correspondencia biyectiva entre estas cargas y los ultrafiltros sobre $X$.
+\end{ejercicio}
+\begin{solucion}
+(i) La medida del vacío es cero. (ii) $\nu(B)=\nu(A)+\nu(B\setminus A)\ge1$, luego vale uno. (iii) De $\nu(X\setminus B)=0$ se sigue $\nu(A\setminus B)=0$ por monotonía; así $1=\nu(A)=\nu(A\cap B)$. (iv) $\nu(A)+\nu(X\setminus A)=1$ y los valores son cero o uno.
+
+Un filtro es una familia no vacía que cumple (i)--(iii); un ultrafiltro es un filtro que, para cada $A$, contiene $A$ o su complemento. Nunca puede contener ambos, porque su intersección sería vacía. Dado un ultrafiltro, definimos $\nu(A)=1$ cuando $A\in\mathcal U$ y cero en otro caso. Para $A,B$ disjuntos no pueden pertenecer ambos a $\mathcal U$. Además $A\cup B\in\mathcal U$ si y solo si al menos uno pertenece: si ninguno perteneciera, los dos complementos pertenecerían y su intersección excluiría la unión. Esto demuestra aditividad finita. Las dos construcciones se invierten, y por tanto son biyectivas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 4: excepción del funcional cero]\label{ej:v2-l29-4}
+Para $\nu\in\operatorname{ba}_\mu(\Acal)$, caracterizar la identidad
+\[
+ \int fg\,d\nu=\left(\int f\,d\nu\right)\left(\int g\,d\nu\right)
+ \qquad(f,g\in L^\infty).
+\]
+La lectura afirma equivalencia con una carga cero-uno de masa uno.
+\end{ejercicio}
+\begin{solucion}
+Si vale la identidad, probamos con $f=g=\ind A$: se obtiene $\nu(A)=\nu(A)^2$, de modo que $\nu(A)\in\{0,1\}$. Si $\nu\ne0$, existe un $A$ con $\nu(A)=1$ y la identidad con $f=\ind A$, $g=1$ obliga a $\nu(X)=1$. Pero la medida cero también satisface la identidad; esta es la excepción omitida.
+
+Recíprocamente, para una carga cero-uno de masa uno, en cada partición finita de $X$ hay exactamente una pieza de medida uno. La integral de una simple es su valor en esa pieza. Refinando simultáneamente las particiones de dos simples, la integral de su producto es el producto de sus integrales. Para funciones acotadas, elegimos aproximaciones uniformes $s_n\to f$, $t_n\to g$. Las sucesiones están uniformemente acotadas y $s_nt_n\to fg$ uniformemente, porque $|s_nt_n-fg|\le|s_n|\,|t_n-g|+|g|\,|s_n-f|$. La continuidad de la integral pasa la identidad al límite. Para clases de $L^\infty$ usamos representantes acotados. Por tanto la caracterización exacta es: medida cero o carga cero-uno de masa uno.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 29, ejercicio 5]\label{ej:v2-l29-5}
+Un ultrafiltro $\mathcal U$ es libre si $\bigcap\mathcal U=\varnothing$, y fijo en otro caso. Demostrar: (i) si es fijo, existe $x$ con $\mathcal U=\{A:x\in A\}$; (ii) en un conjunto finito todos son fijos, y en uno infinito existen libres; (iii) la carga asociada a uno libre se anula en los conjuntos finitos; (iv) para un ultrafiltro libre en $\N$ y una sucesión real acotada $x$,
+\[
+ \liminf_nx_n\le\int_\N x\,d\nu\le\limsup_nx_n.
+\]
+Deducir que la integral extiende el límite de las sucesiones convergentes.
+\end{ejercicio}
+\begin{solucion}
+(i) Elijamos $x\in\bigcap\mathcal U$. Todo miembro contiene a $x$. Si un conjunto $A$ contiene a $x$ y no pertenece al ultrafiltro, su complemento pertenecería y no contendría a $x$, contradicción. Así el ultrafiltro es exactamente el indicado.
+
+(ii) Si $X$ es finito y la intersección fuera vacía, para cada $x\in X$ elegiríamos un $A_x\in\mathcal U$ que no lo contiene. La intersección finita de los $A_x$ sería vacía, contradiciendo la propiedad de filtro. Si $X$ es infinito, la familia cofinita es un filtro propio. Ordenamos por inclusión los filtros propios que lo contienen. La unión de una cadena sigue siendo un filtro propio: una cantidad finita de miembros pertenece a un mismo filtro de la cadena, y el vacío no pertenece a ninguno. El lema de Zorn produce un maximal $\mathcal U$. Es un ultrafiltro: si $A$ no pertenece y tampoco su complemento, todos los conjuntos $F\cap A$, $F\in\mathcal U$, son no vacíos y generan un filtro propio estrictamente mayor. Esto contradice maximalidad. Contiene cada $X\setminus\{x\}$, luego su intersección es vacía y es libre.
+
+(iii) Si un conjunto finito perteneciera al ultrafiltro, alguno de sus singletons tendría que pertenecer: de lo contrario, intersectar los complementos de todos esos singletons excluiría al conjunto. Un singleton en el ultrafiltro lo hace principal por (i), contradicción. Por tanto los finitos tienen medida cero.
+
+(iv) La integral para una carga positiva preserva el orden: primero se verifica para simples y después por aproximación uniforme. Si $a=\liminf x_n$ y $b=\limsup x_n$, para cada $\eps>0$ tenemos $a-\eps\le x_n\le b+\eps$ salvo finitos índices. Modificar esos índices no cambia la integral, por (iii), y $\nu(\N)=1$. Por monotonía, $a-\eps\le\int x\,d\nu\le b+\eps$. Hacemos $\eps\downarrow0$. Si $x_n\to\ell$, ambos extremos son $\ell$, de modo que $\int x\,d\nu=\ell$. En particular, una sucesión que tiende a cero tiene integral cero.
+\end{solucion}
+
+\chapter{Medidas de Borel y regularidad}
+
+\begin{ejercicio}[Lectura 31, ejercicio 1]\label{ej:v2-l31-1}
+Demostrar que una función continua entre espacios de Hausdorff es Borel-medible.
+\end{ejercicio}
+\begin{solucion}
+La familia de subconjuntos $A$ del codominio cuya preimagen es Borel es una $\sigma$-álgebra, porque la preimagen respeta complementos y uniones numerables. Contiene los abiertos por continuidad; por tanto contiene la $\sigma$-álgebra que generan, esto es, todos los Borel. La propiedad Hausdorff no es necesaria para este argumento.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 2]\label{ej:v2-l31-2}
+Para un subespacio $Y\subset X$, demostrar $\mathcal B(Y)=\{B\cap Y:B\in\mathcal B(X)\}$.
+\end{ejercicio}
+\begin{solucion}
+Las trazas de los Borel de $X$ forman una $\sigma$-álgebra en $Y$ que contiene todos sus abiertos relativos, así que contiene $\mathcal B(Y)$. Para la inclusión inversa, la inclusión $Y\hookrightarrow X$ es continua, y por el ejercicio anterior la preimagen de cada Borel $B$ de $X$, que es $B\cap Y$, pertenece a $\mathcal B(Y)$. No se necesita que $Y$ sea Borel en $X$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 3]\label{ej:v2-l31-3}
+Demostrar el lema de regularidad por abiertos y cerrados para una medida de Borel finita en un espacio localmente compacto Hausdorff segundo numerable.
+\end{ejercicio}
+\begin{solucion}
+Es el lema \ref{v2:borel-finita-regular}, cuya prueba completa se incluyó antes de utilizarlo. Su paso decisivo es que cada abierto es $F_\sigma$, en realidad unión creciente de compactos. La finitud de la medida permite hacer pequeño el resto de una unión creciente y permite intercambiar aproximación interior y exterior tomando complementos. La familia de conjuntos con ambas aproximaciones es entonces una $\sigma$-álgebra; por eso la propiedad pasa de abiertos a todos los Borel.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 4]\label{ej:v2-l31-4}
+Si $A\in\Acal$ es de medida $\sigma$-finita, demostrar que para cada $\eps>0$ existe un abierto $U\supset A$ con $\mu(U\setminus A)<\eps$, incluso cuando $\mu(A)=\infty$.
+\end{ejercicio}
+\begin{solucion}
+Escribimos $A=\bigcup_nA_n$ con cada $\mu(A_n)<\infty$. La regularidad exterior proporciona abiertos $U_n\supset A_n$ con $\mu(U_n\setminus A_n)<\eps2^{-n}$. Para $U=\bigcup_nU_n$, tenemos $U\setminus A\subset\bigcup_n(U_n\setminus A_n)$ y por subaditividad $\mu(U\setminus A)<\eps$. No hemos restado dos cantidades infinitas.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 5: alcance de la hipótesis]\label{ej:v2-l31-5}
+Para $A\in\Acal$ de medida $\sigma$-finita, construir Borel $E\subset A\subset F$ con $\mu(F\setminus E)=0$. Deducir que, si $\mu$ es $\sigma$-finita, $\Acal$ está contenida en la completación de $\mathcal B(X)$ para la restricción de $\mu$. Examinar la omisión de la condición sobre $A$ en el primer enunciado original.
+\end{ejercicio}
+\begin{solucion}
+Si $A=\bigcup_nA_n$ con medidas finitas, aproximamos cada $A_n$ por compactos $K_{n,j}\subset A_n$ con $\mu(A_n\setminus K_{n,j})<1/j$. La unión Borel $E=\bigcup_{n,j}K_{n,j}$ está en $A$ y $\mu(A\setminus E)=0$. Por el ejercicio \ref{ej:v2-l31-4}, elegimos abiertos $U_j\supset A$ con $\mu(U_j\setminus A)<1/j$ y ponemos $F=\bigcap_jU_j$. Entonces $\mu(F\setminus A)=0$, de donde $\mu(F\setminus E)=0$. Si todo $X$ es $\sigma$-finito, el argumento vale para cada $A\in\Acal$ y da precisamente su pertenencia a la completación de los Borel.
+
+La condición no puede eliminarse en general. Sea $D$ discreto no numerable, $X=\R\times D$, y sea $\Acal$ la familia de conjuntos cuyas secciones $A_d\subset\R$ son Lebesgue-medibles. Definimos $\mu(A)=\sum_d m(A_d)$ si $A$ toca solo numerables componentes, y $\mu(A)=\infty$ en otro caso. Es una medida: una unión numerable toca no numerables componentes solo si alguno de sus miembros lo hace; en el otro caso la aditividad se reduce a las sumas numerables de las medidas de las secciones. Es regular: los compactos tocan finitas componentes y son acotados en ellas; los conjuntos de medida finita se aproximan por abiertos sección a sección con errores sumables; para los de medida infinita la regularidad exterior es automática. La regularidad interior de abiertos se sigue de que toda sección abierta no vacía tiene medida positiva, aproximable por compactos.
+
+Elijamos un conjunto Lebesgue-medible nulo $V\subset\R$ que no sea Borel, y pongamos $A=V\times D$. Tal $V$ existe: el conjunto de Cantor es nulo, tiene $2^{\aleph_0}$ puntos y posee más subconjuntos que conjuntos Borel en $\R$. Si Borel $E\subset A\subset F$ cumplieran $\mu(F\setminus E)=0$, fuera de numerables componentes sus secciones tendrían que coincidir exactamente con $V$. Pero las secciones de un Borel son Borel, por continuidad de la inclusión de cada componente, contradicción.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 6]\label{ej:v2-l31-6}
+Demostrar que la completación de una medida regular es regular.
+\end{ejercicio}
+\begin{solucion}
+Un conjunto de la completación está entre dos conjuntos originales $B\subset A\subset C$ con $\mu(C\setminus B)=0$ y tiene medida $\mu(B)=\mu(C)$. La regularidad exterior de $C$ proporciona la misma aproximación exterior para $A$. Las medidas de abiertos y compactos no cambian al completar, así que se conservan finitud en compactos y regularidad interior de abiertos. Esto prueba exactamente las tres condiciones de la definición, sin exigir regularidad interior de conjuntos de medida no $\sigma$-finita.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 7]\label{ej:v2-l31-7}
+Supóngase $\mu(\{x\})=0$ para todo $x$. Para un Borel $B$ de medida finita y $0<\alpha<\mu(B)$, construir un Borel $A\subset B$ con $\mu(A)=\alpha$.
+\end{ejercicio}
+\begin{solucion}
+Primero, para cada $\eta>0$, $B$ admite una partición finita en Borel de medida menor que $\eta$. Elegimos un compacto $K\subset B$ con $\mu(B\setminus K)<\eta$. Cada $x\in K$ tiene un abierto $U_x$ de medida menor que $\eta$, por regularidad exterior de $\{x\}$. Una subcubierta finita de $K$, disjuntada e intersectada con $K$, y la pieza $B\setminus K$ dan la partición.
+
+Construimos $A_n\uparrow A$ con $\mu(A_n)\le\alpha$ y $\alpha-\mu(A_n)<2^{-n}$. Dado $A_{n-1}$, particionamos $B\setminus A_{n-1}$ en piezas de medida menor que $2^{-n}$. Añadimos piezas mientras su suma no supere el déficit $\alpha-\mu(A_{n-1})$. Si el déficit final fuera al menos $2^{-n}$, cada pieza restante cabría, contradiciendo que dejamos de añadir; además hay masa total suficiente porque $\mu(B)>\alpha$. La unión finita elegida define $A_n$. La unión numerable $A=\bigcup_nA_n$ es Borel y, por continuidad creciente, tiene medida $\alpha$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 31, ejercicio 8]\label{ej:v2-l31-8}
+Para $X$ compacto Hausdorff, sea $\mathcal B_0(X)$ la menor $\sigma$-álgebra que hace medibles todas las funciones continuas reales; sus miembros son conjuntos de Baire. Demostrar: (i) está generada por los cerrados $G_\delta$; (ii) si $X$ es segundo numerable, $\mathcal B_0(X)=\mathcal B(X)$.
+\end{ejercicio}
+\begin{solucion}
+(i) Para $f$ continua, $\{f\le a\}=\bigcap_n\{f<a+1/n\}$ es cerrado y $G_\delta$. Estos subniveles generan la medibilidad de $f$, por lo que $\mathcal B_0$ está contenida en la $\sigma$-álgebra indicada. Si $F=\bigcap_nU_n$ es cerrado y $G_\delta$, Urysohn proporciona $h_n:X\to[0,1]$ continua, igual a uno en $F$ y cero fuera de $U_n$. La serie uniformemente convergente $h=\sum_n2^{-n}(1-h_n)$ es continua y $F=\{h=0\}$. Así cada generador pertenece a $\mathcal B_0$, y hay igualdad.
+
+(ii) En un compacto segundo numerable, todo abierto es $F_\sigma$ por la proposición \ref{v2:topologia-lch}; tomando complementos, todo cerrado es $G_\delta$. El punto (i) muestra que $\mathcal B_0$ contiene todos los cerrados y, por tanto, todos los Borel. La inclusión contraria sigue de que toda función continua es Borel-medible. Una medida de Baire es una medida finita definida en $\mathcal B_0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 1]\label{ej:v2-l32-1}
+Para una medida regular y un medible $A$ de medida $\sigma$-finita, demostrar $\mu(A)=\sup\{\mu(K):K\subset A,\ K\text{ compacto}\}$.
+\end{ejercicio}
+\begin{solucion}
+La proposición \ref{v2:regular-interior-sigma} prueba exactamente este resultado. Para medida finita se retira de un compacto aproximante un abierto de pequeña medida que cubre la parte exterior a $A$. Para medida infinita $\sigma$-finita se aplican esas aproximaciones a conjuntos finitos de masa arbitrariamente grande. El ejemplo $H$ anterior muestra por qué no se debe suprimir la condición de $\sigma$-finitud.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 2]\label{ej:v2-l32-2}
+Sea $(x_n)$ una enumeración de $\Q\cap[0,1]$ y $\eps>0$. Para $A_n=(x_n-\eps2^{-n},x_n+\eps2^{-n})$ y $F=[0,1]\setminus\bigcup_nA_n$, demostrar que $\ind{\Q\cap[0,1]}|_F$ es continua y $m(F)\ge1-2\eps$.
+\end{ejercicio}
+\begin{solucion}
+Cada racional de $[0,1]$ pertenece a alguno de los intervalos, por lo que $F$ solo contiene irracionales. La restricción del indicador es la función constante cero, que es continua. Además $m([0,1]\setminus F)\le\sum_n2\eps2^{-n}=2\eps$, de donde la cota. El conjunto $F$ es cerrado en $[0,1]$, luego compacto. Si $2\eps>1$, la cota sigue siendo válida aunque sea menos informativa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 3]\label{ej:v2-l32-3}
+Demostrar que la función $h$ de Lusin puede elegirse con $\norm h_{\mathrm{sup}}\le\norm f_{\mathrm{sup}}$.
+\end{ejercicio}
+\begin{solucion}
+Si $M=\norm f_{\mathrm{sup}}<\infty$, componemos una extensión con $P_M(z)=z\min\{1,M/|z|\}$, con valor cero en cero. Esta aplicación es continua, no aumenta el módulo y deja fijos todos los valores de módulo a lo sumo $M$. Por ello conserva la igualdad en $K$, mantiene el soporte compacto y da la cota. Si $M=0$, basta $h=0$. Si $M=\infty$, cualquier función obtenida por Lusin satisface la desigualdad extendida.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 4]\label{ej:v2-l32-4}
+Demostrar que la unión $O$ de todos los abiertos de medida cero es abierta y tiene medida cero. Definir el soporte de $\mu$.
+\end{ejercicio}
+\begin{solucion}
+La unión es abierta por definición de topología. Si $K\subset O$ es compacto, una cantidad finita de esos abiertos nulos lo cubre, así que $\mu(K)=0$. La regularidad interior del abierto $O$ da $\mu(O)=\sup_{K\subset O}\mu(K)=0$. Se define $\supp\mu=X\setminus O$, un cerrado. Para una medida real con signo o compleja regular se usa $\supp\nu=\supp|\nu|$. La prueba no usa subaditividad para una unión no numerable.\index{soporte de una medida}
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 5: positividad necesaria]\label{ej:v2-l32-5}
+Demostrar que $x\in\supp\mu$ si y solo si toda función \emph{no negativa} $f\in C_c(X)$ con $f(x)>0$ satisface $\int f\,d\mu>0$. La condición $f\ge0$ falta en el enunciado original.
+\end{ejercicio}
+\begin{solucion}
+Si $x$ está en el soporte y $f(x)>0$, la continuidad da un abierto $U\ni x$ y $a>0$ con $f\ge a$ en $U$. Ese abierto tiene medida positiva, pues de lo contrario $x$ no estaría en el soporte. Por tanto $\int f\ge a\mu(U)>0$. Si $x$ no está en el soporte, hay un abierto nulo $U\ni x$ y una función de corte no negativa, de soporte en $U$, con valor uno en $x$. Su integral es cero, lo que contradice la propiedad propuesta.
+
+Sin no negatividad, la afirmación es falsa: en $\R$ con Lebesgue, dos funciones triangulares no negativas de igual integral y soportes disjuntos producen, al restarlas, una función de integral cero que es positiva en el centro del primer triángulo. Ese centro sí pertenece al soporte de Lebesgue.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 32, ejercicio 6]\label{ej:v2-l32-6}
+Sea $D$ discreto infinito no numerable y $D^*$ su compactificación unipuntual. Demostrar que ninguna medida de Borel regular sobre $D^*$ tiene soporte igual a $D^*$.
+\end{ejercicio}
+\begin{solucion}
+Como $D^*$ es compacto, una medida regular allí es finita. Si su soporte fuera todo el espacio, cada singleton abierto $\{d\}$, $d\in D$, tendría medida positiva. En una medida finita solo hay numerables átomos puntuales de medida positiva: los de medida al menos $1/n$ son finitos para cada $n$, y todo peso positivo supera $1/n$ para algún $n$. Esto contradice que $D$ sea no numerable. El punto añadido no puede reparar la ausencia de masa en una de las vecindades singleton.
+\end{solucion}
+
+\chapter{El teorema de representación de Riesz}
+
+\begin{ejercicio}[Lectura 33, ejercicio 1]\label{ej:v2-l33-1}
+Suponga que existe una medida de Borel regular real o compleja $\mu$ tal que $\mu(\{x\})=0$ para todo $x\in X$ y $0<|\mu|(X)<\infty$. Demuestre que $C_0(X)$ no es reflexivo. Considere la funcional sobre medidas dada por $\Phi(\nu)=\sum_{x\in X}\nu(\{x\})$.
+\end{ejercicio}
+\begin{solucion}
+Primero hay que dar sentido a la suma, que puede estar indexada por un conjunto no numerable. Para cualquier conjunto finito $F\subset X$,
+\[
+ \sum_{x\in F}|\nu(\{x\})|=\sum_{x\in F}|\nu|(\{x\})\le|\nu|(X).
+\]
+En particular, para cada $n$ sólo hay un número finito de puntos con $|\nu(\{x\})|\ge1/n$; de otro modo las sumas finitas superarían cualquier cota. La unión de estos conjuntos finitos contiene todos los puntos con masa no nula, así que éstos son a lo sumo numerables. La serie de sus masas converge absolutamente y define $\Phi(\nu)$, independientemente del orden. La desigualdad anterior prueba
+\[
+ |\Phi(\nu)|\le\sum_x|\nu(\{x\})|\le\norm\nu.
+\]
+La linealidad se obtiene sumando sobre la unión numerable de los soportes atómicos de las medidas involucradas. Así $\Phi\in M_r(X)^*$.
+
+Supongamos que $C_0(X)$ fuera reflexivo. Mediante la identificación isométrica $C_0(X)^*=M_r(X)$, la funcional $\Phi$ pertenecería al bidual y estaría representada por evaluación en alguna $f\in C_0(X)$:
+\[
+ \Phi(\nu)=\int f\,d\nu\qquad(\nu\in M_r(X)).
+\]
+Cada medida de Dirac $\delta_x$ es regular, y $\Phi(\delta_x)=1$. Sustituyéndola en la identidad obtenemos $f(x)=1$ para todo $x\in X$.
+
+Ahora usemos la medida positiva $\lambda=|\mu|$, que es regular y no nula. En un singleton, la definición de variación da $\lambda(\{x\})=|\mu(\{x\})|=0$. Por ello $\Phi(\lambda)=0$. Sin embargo, la representación y $f\equiv1$ darían
+\[
+ 0=\Phi(\lambda)=\int f\,d\lambda=\lambda(X)>0,
+\]
+una contradicción. Usar $|\mu|$ es esencial para esta última contradicción: la masa total de una medida compleja no nula puede ser cero por cancelación.
+\end{solucion}

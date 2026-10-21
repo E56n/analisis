@@ -94,29 +94,19 @@ Si $\varphi\in(L^\infty)^*$, definimos $\nu(A)=\varphi(\ind A)$. La linealidad p
 $\sum_j|\nu(A_j)|=\varphi(s)\le\norm\varphi$; por tanto $\nu\in\operatorname{ba}_\mu$. El funcional y la integral coinciden sobre indicadores, después sobre simples y finalmente sobre todo $L^\infty$ por densidad en norma. Así la aplicación es sobreyectiva. Su isometría implica inyectividad.
 \end{proof}
 
-\section{Ejercicios resueltos: aditividad finita y ultrafiltros}
+\section{Ejercicios propuestos: aditividad finita y ultrafiltros}
 \begin{ejercicio}[Lectura 29, ejercicio 1: enunciado falso]\label{ej:v2-l29-1}
 La lectura afirma: si $\nu$ es finitamente aditiva y $(A_n)$ es disjunta, la convergencia de $\sum_n\nu(A_n)$ implica que su suma es $\nu(\bigcup_nA_n)$. Examinarla.
 \end{ejercicio}
-\begin{solucion}
-Es falso. La carga $\nu(A)=L(\ind A)$ construida en el ejercicio \ref{ej:v2-l27-1} cumple $\nu(\{n\})=0$ para todo $n$, porque cada vector canónico converge a cero, pero $\nu(\N)=1$. Por tanto $\sum_n\nu(\{n\})=0$ es una serie convergente cuya suma difiere de la medida de la unión. También sirve la carga de un ultrafiltro libre del ejercicio \ref{ej:v2-l29-5}. La hipótesis que falta es continuidad del resto: si $B=\bigcup_nA_n$, la igualdad deseada equivale a $\nu(B\setminus\bigcup_{n\le m}A_n)\to0$, por aditividad finita. Exigir esa continuidad para todas las familias equivale a aditividad numerable.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 29, ejercicio 2]\label{ej:v2-l29-2}
 Para una carga de variación acotada, demostrar: (i) la integral de una simple no depende de su representación; (ii) la integral de una función medible acotada no depende de la sucesión de simples que converge uniformemente a ella.
 \end{ejercicio}
-\begin{solucion}
-(i) Dadas dos representaciones $s=\sum_j a_j\ind{A_j}=\sum_kb_k\ind{B_k}$, refinamos por todas las intersecciones y complementos de los conjuntos que aparecen. Son una partición finita de $X$. En cada pieza, las dos sumas de coeficientes tienen el mismo valor, porque representan la misma función. La aditividad finita de $\nu$ transforma ambas integrales en la misma suma sobre esa partición. El argumento también cubre representaciones con conjuntos solapados.
 
-(ii) Si $s_n,t_n\to f$ uniformemente, entonces $\norm{s_n-t_n}_{\mathrm{sup}}\le\norm{s_n-f}_{\mathrm{sup}}+\norm{t_n-f}_{\mathrm{sup}}\to0$. Por la cota de integración, $|I_\nu(s_n)-I_\nu(t_n)|\le\norm\nu\norm{s_n-t_n}_{\mathrm{sup}}\to0$, luego los límites son iguales. La condición de variación acotada es necesaria para este procedimiento de extensión continua; no se supone automáticamente para una función finitamente aditiva arbitraria.
-\end{solucion}
 \begin{ejercicio}[Lectura 29, ejercicio 3]\label{ej:v2-l29-3}
 Sea $X\ne\varnothing$ y sea $\nu:\mathcal P(X)\to\{0,1\}$ finitamente aditiva, con $\nu(X)=1$. Para $\mathcal U=\{A:\nu(A)=1\}$, demostrar: (i) $\varnothing\notin\mathcal U$; (ii) $A\in\mathcal U$, $A\subset B$ implica $B\in\mathcal U$; (iii) $A,B\in\mathcal U$ implica $A\cap B\in\mathcal U$; (iv) si $A\notin\mathcal U$, entonces $X\setminus A\in\mathcal U$. Deducir una correspondencia biyectiva entre estas cargas y los ultrafiltros sobre $X$.
 \end{ejercicio}
-\begin{solucion}
-(i) La medida del vacío es cero. (ii) $\nu(B)=\nu(A)+\nu(B\setminus A)\ge1$, luego vale uno. (iii) De $\nu(X\setminus B)=0$ se sigue $\nu(A\setminus B)=0$ por monotonía; así $1=\nu(A)=\nu(A\cap B)$. (iv) $\nu(A)+\nu(X\setminus A)=1$ y los valores son cero o uno.
 
-Un filtro es una familia no vacía que cumple (i)--(iii); un ultrafiltro es un filtro que, para cada $A$, contiene $A$ o su complemento. Nunca puede contener ambos, porque su intersección sería vacía. Dado un ultrafiltro, definimos $\nu(A)=1$ cuando $A\in\mathcal U$ y cero en otro caso. Para $A,B$ disjuntos no pueden pertenecer ambos a $\mathcal U$. Además $A\cup B\in\mathcal U$ si y solo si al menos uno pertenece: si ninguno perteneciera, los dos complementos pertenecerían y su intersección excluiría la unión. Esto demuestra aditividad finita. Las dos construcciones se invierten, y por tanto son biyectivas.
-\end{solucion}
 \begin{ejercicio}[Lectura 29, ejercicio 4: excepción del funcional cero]\label{ej:v2-l29-4}
 Para $\nu\in\operatorname{ba}_\mu(\Acal)$, caracterizar la identidad
 \[
@@ -125,11 +115,7 @@ Para $\nu\in\operatorname{ba}_\mu(\Acal)$, caracterizar la identidad
 \]
 La lectura afirma equivalencia con una carga cero-uno de masa uno.
 \end{ejercicio}
-\begin{solucion}
-Si vale la identidad, probamos con $f=g=\ind A$: se obtiene $\nu(A)=\nu(A)^2$, de modo que $\nu(A)\in\{0,1\}$. Si $\nu\ne0$, existe un $A$ con $\nu(A)=1$ y la identidad con $f=\ind A$, $g=1$ obliga a $\nu(X)=1$. Pero la medida cero también satisface la identidad; esta es la excepción omitida.
 
-Recíprocamente, para una carga cero-uno de masa uno, en cada partición finita de $X$ hay exactamente una pieza de medida uno. La integral de una simple es su valor en esa pieza. Refinando simultáneamente las particiones de dos simples, la integral de su producto es el producto de sus integrales. Para funciones acotadas, elegimos aproximaciones uniformes $s_n\to f$, $t_n\to g$. Las sucesiones están uniformemente acotadas y $s_nt_n\to fg$ uniformemente, porque $|s_nt_n-fg|\le|s_n|\,|t_n-g|+|g|\,|s_n-f|$. La continuidad de la integral pasa la identidad al límite. Para clases de $L^\infty$ usamos representantes acotados. Por tanto la caracterización exacta es: medida cero o carga cero-uno de masa uno.
-\end{solucion}
 \begin{ejercicio}[Lectura 29, ejercicio 5]\label{ej:v2-l29-5}
 Un ultrafiltro $\mathcal U$ es libre si $\bigcap\mathcal U=\varnothing$, y fijo en otro caso. Demostrar: (i) si es fijo, existe $x$ con $\mathcal U=\{A:x\in A\}$; (ii) en un conjunto finito todos son fijos, y en uno infinito existen libres; (iii) la carga asociada a uno libre se anula en los conjuntos finitos; (iv) para un ultrafiltro libre en $\N$ y una sucesión real acotada $x$,
 \[
@@ -137,14 +123,6 @@ Un ultrafiltro $\mathcal U$ es libre si $\bigcap\mathcal U=\varnothing$, y fijo 
 \]
 Deducir que la integral extiende el límite de las sucesiones convergentes.
 \end{ejercicio}
-\begin{solucion}
-(i) Elijamos $x\in\bigcap\mathcal U$. Todo miembro contiene a $x$. Si un conjunto $A$ contiene a $x$ y no pertenece al ultrafiltro, su complemento pertenecería y no contendría a $x$, contradicción. Así el ultrafiltro es exactamente el indicado.
 
-(ii) Si $X$ es finito y la intersección fuera vacía, para cada $x\in X$ elegiríamos un $A_x\in\mathcal U$ que no lo contiene. La intersección finita de los $A_x$ sería vacía, contradiciendo la propiedad de filtro. Si $X$ es infinito, la familia cofinita es un filtro propio. Ordenamos por inclusión los filtros propios que lo contienen. La unión de una cadena sigue siendo un filtro propio: una cantidad finita de miembros pertenece a un mismo filtro de la cadena, y el vacío no pertenece a ninguno. El lema de Zorn produce un maximal $\mathcal U$. Es un ultrafiltro: si $A$ no pertenece y tampoco su complemento, todos los conjuntos $F\cap A$, $F\in\mathcal U$, son no vacíos y generan un filtro propio estrictamente mayor. Esto contradice maximalidad. Contiene cada $X\setminus\{x\}$, luego su intersección es vacía y es libre.
-
-(iii) Si un conjunto finito perteneciera al ultrafiltro, alguno de sus singletons tendría que pertenecer: de lo contrario, intersectar los complementos de todos esos singletons excluiría al conjunto. Un singleton en el ultrafiltro lo hace principal por (i), contradicción. Por tanto los finitos tienen medida cero.
-
-(iv) La integral para una carga positiva preserva el orden: primero se verifica para simples y después por aproximación uniforme. Si $a=\liminf x_n$ y $b=\limsup x_n$, para cada $\eps>0$ tenemos $a-\eps\le x_n\le b+\eps$ salvo finitos índices. Modificar esos índices no cambia la integral, por (iii), y $\nu(\N)=1$. Por monotonía, $a-\eps\le\int x\,d\nu\le b+\eps$. Hacemos $\eps\downarrow0$. Si $x_n\to\ell$, ambos extremos son $\ell$, de modo que $\int x\,d\nu=\ell$. En particular, una sucesión que tiende a cero tiene integral cero.
-\end{solucion}
 \section{Dos representaciones, dos clases de objetos}
 El dual de $L^1$ se representa mediante funciones esencialmente acotadas cuando la medida permite pegar datos locales. El dual de $L^\infty$ se representa siempre mediante cargas de variación acotada que respetan los conjuntos nulos. Las cargas de ultrafiltros muestran por qué sustituir aditividad finita por aditividad numerable cambiaría ese dual y perdería funcionales continuos.

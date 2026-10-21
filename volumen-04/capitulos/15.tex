@@ -181,41 +181,16 @@ La lectura 26 no contiene una lista numerada de ejercicios; sus verificaciones p
 \begin{ejercicio}[Ampliación: dos escalas de Haar]\label{ej:v4-ampl-15-1}
 Si se reemplaza $\mu$ por $c\mu$, con $c>0$, determine cómo cambian la norma $L^1$, la convolución y la transformada de Fourier. Compruebe que la identidad de convolución sigue siendo válida con esas tres modificaciones simultáneas.
 \end{ejercicio}
-\begin{solucion}
-La norma pasa a $\norm f_{1,c\mu}=c\norm f_{1,\mu}$; la convolución pasa a $f*_{c\mu}g=c(f*_{\mu}g)$; la transformada pasa a $\widehat f_{c\mu}=c\widehat f_\mu$. Por ello
-\[
- \widehat{f*_{c\mu}g}_{c\mu}
- =c^2\widehat{f*_{\mu}g}_{\mu}
- =c^2\widehat f_\mu\widehat g_\mu
- =\widehat f_{c\mu}\widehat g_{c\mu}.
-\]
-Modificar sólo una de esas operaciones sin ajustar las demás introduciría un factor incorrecto. La escala de la medida dual que conserva Plancherel será $c^{-1}$, como se comprobará después.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: traslación, modulación y signo]\label{ej:v4-ampl-15-2}
 En $G=\R$ con Lebesgue y $\chi_\xi(x)=e^{i\xi x}$, calcule la transformada de $e^{i\eta x}f(x-a)$ en términos de $\widehat f$. Determine también la transformada de $\overline{f(-x)}$.
 \end{ejercicio}
-\begin{solucion}
-El cambio $y=x-a$ produce
-\[
- \int_\R e^{i\eta x}f(x-a)e^{i\xi x}\,dx
- =e^{i(\xi+\eta)a}\int_\R f(y)e^{i(\xi+\eta)y}\,dy
- =e^{i(\xi+\eta)a}\widehat f(\xi+\eta).
-\]
-La fase contiene $\xi+\eta$, no sólo $\xi$, porque primero se evalúa la modulación en el punto trasladado. Para la segunda función, el cambio $y=-x$ da
-\[
- \int_\R\overline{f(-x)}e^{i\xi x}\,dx
- =\int_\R\overline{f(y)}e^{-i\xi y}\,dy
- =\overline{\widehat f(\xi)}.
-\]
-Ambas integrales existen absolutamente porque las operaciones preservan la integrabilidad.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: una frecuencia que escapa al infinito]\label{ej:v4-ampl-15-3}
 En $\widehat\R\simeq\R$, considere $\chi_n(x)=e^{inx}$. Pruebe que los funcionales $\Phi_{\chi_n}$ convergen débil estrella al funcional cero, aunque ninguno es cero, y que $(\chi_n)$ no converge en $\widehat\R$.
 \end{ejercicio}
-\begin{solucion}
-Para todo $f\in L^1(\R)$, el teorema anterior da $\widehat f\in C_0(\R)$. Como $n$ sale de todo compacto de $\R$, $\Phi_{\chi_n}(f)=\widehat f(n)\to0$. Esto es precisamente convergencia débil estrella al funcional cero. Si $(\chi_n)$ convergiera en el dual, el homeomorfismo de la proposición~\ref{v4:duales-modelos} haría converger la sucesión de parámetros $n$ en $\R$, imposible. El límite existe en el compacto ampliado $\Delta(L^1)\cup\{0\}$ y no en el espectro sin el cero. Este ejemplo explica por qué la compacidad del espectro de un álgebra sin unidad no puede darse por supuesta.
-\end{solucion}
+
 
 La transformada ya es un homomorfismo contractivo hacia funciones que se anulan en el infinito. Falta probar que distingue funciones y construir una transformación unitaria en $L^2$. El álgebra de operadores de convolución permitirá resolver ambas cuestiones sin suponer de antemano la dualidad de Pontryagin.

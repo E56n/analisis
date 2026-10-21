@@ -124,15 +124,7 @@ Un carácter de $\T$ compuesto con $t\mapsto e^{it}$ es $e^{i\xi t}$ y debe tene
 \begin{ejercicio}[Lectura 25, ejercicio 1]\label{ej:v4-l25-1}
 Sea $G$ un grupo abeliano finito de orden $n$. Demuestre que $\widehat G\simeq G$. Explique por qué la afirmación no proporciona, en general, una identificación canónica de $G$ con su dual.
 \end{ejercicio}
-\begin{solucion}
-Primero justificamos la descomposición finita que usaremos. En un grupo abeliano finito, dados elementos de órdenes $r,s$, existe un elemento de orden $\operatorname{mcm}(r,s)$. Para cada primo $p$, una potencia del elemento cuyo orden contiene la mayor potencia $p^{a_p}$ proporciona un elemento de ese orden; el producto de esos elementos, que conmutan y tienen órdenes coprimos, tiene orden $\prod_pp^{a_p}$. Por ello, si $g$ tiene orden máximo $m$, el orden de todo elemento divide $m$.
 
-El carácter de $\langle g\rangle$ que envía $g$ a $e^{2\pi i/m}$ se extiende algebraicamente a $G$. Para ver el paso de extensión, si ya está definido en un subgrupo $H$ y $x\notin H$, sea $k$ el menor entero positivo con $x^k\in H$. Elija $z\in\T$ con $z^k=\chi(x^k)$ y defina $\chi(hx^j)=\chi(h)z^j$. Si $hx^j=h'x^{j'}$, entonces $j-j'$ es múltiplo de $k$; la ecuación de la raíz garantiza que ambas fórmulas coinciden. Se comprueban producto y restricción directamente. Repetir el paso un número finito de veces extiende el carácter a $G$.
-
-Como todos los elementos de $G$ tienen orden que divide $m$, la imagen del carácter extendido está en las raíces $m$-ésimas, y su restricción a $\langle g\rangle$ es un isomorfismo sobre ellas. Todo $x\in G$ puede escribirse de manera única como $g^jh$ con $h\in\ker\chi$: elija $j$ que iguale las imágenes y use que $\langle g\rangle\cap\ker\chi=\{e\}$. Así $G\simeq\langle g\rangle\times\ker\chi$. La inducción sobre el orden descompone $G$ en un producto finito de grupos cíclicos.
-
-Cada factor cíclico es isomorfo a su dual por la proposición~\ref{v4:duales-modelos}, y el dual de un producto finito es el producto de los duales. Esto prueba $\widehat G\simeq G$; todas las topologías finitas de Hausdorff son discretas, por lo que también es un isomorfismo topológico. Se eligieron generadores y descomposiciones. La identificación realmente canónica será con el \emph{bidual}: $x$ determina la evaluación $\chi\mapsto\chi(x)$ sin esas elecciones.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 25, ejercicio 2]\label{ej:v4-l25-2}
 Sea $A\xrightarrow{f}B\xrightarrow{g}C$ una sucesión exacta corta de grupos LCA: $f$ identifica $A$ con $\ker g$ con su topología de subespacio, y $g$ identifica $C$ con $B/f(A)$ con su topología cociente. Pruebe que
@@ -144,15 +136,7 @@ Sea $A\xrightarrow{f}B\xrightarrow{g}C$ una sucesión exacta corta de grupos LCA
 \]
 es exacta corta en el mismo sentido topológico.
 \end{ejercicio}
-\begin{solucion}
-La precomposición es continua para la topología compacto-abierta: la imagen de un compacto por $f$ o $g$ es compacta. Como $g$ es sobreyectiva, $\eta\circ g=1$ implica $\eta=1$, luego $\widehat g$ es inyectiva. Si $\chi$ está en su imagen, se anula en $f(A)$. Recíprocamente, si $\chi\circ f=1$, la fórmula $\eta(g(b))=\chi(b)$ está bien definida porque dos preimágenes difieren por un elemento de $f(A)$. Es un homomorfismo y es continuo por la definición de topología cociente. Así
-\[
- \operatorname{im}\widehat g=\ker\widehat f=f(A)^\perp.
-\]
-La sobreyectividad de $\widehat f$ significa que \emph{todo carácter continuo de un subgrupo cerrado se extiende al grupo}. Esa afirmación no se deduce de la definición de carácter ni de una extensión algebraica: debe preservarse la continuidad. El teorema~\ref{v4:dual-exactitud}, demostrado completamente al final del capítulo~\ref{cap:v4-16}, prueba que la restricción $\widehat B\to\widehat{f(A)}$ es sobreyectiva y abierta. Puesto que $f$ es un isomorfismo topológico sobre su imagen, esto prueba la misma afirmación para $\widehat f$ y garantiza la topología cociente.
 
-Finalmente, el lema~\ref{v4:dual-cociente-encaje} demuestra que la precomposición por $B\to B/f(A)$ es un homeomorfismo sobre el aniquilador $f(A)^\perp$, con la topología de subespacio. Aplicado al isomorfismo $C\simeq B/f(A)$ prueba la condición topológica restante para $\widehat g$. Esta solución separa las verificaciones inmediatas del resultado central de dualidad que necesita; las remisiones contienen sus pruebas y no son hipótesis adicionales sobre los grupos.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 25, ejercicio 3: topologías e hipótesis necesarias]\label{ej:v4-l25-3}
 Demuestre las siguientes versiones precisas de los isomorfismos de la lectura:
@@ -162,17 +146,6 @@ Demuestre las siguientes versiones precisas de los isomorfismos de la lectura:
 \end{enumerate}
 Explique por qué no basta suponer que los $G_n$ sean localmente compactos sin especificar las topologías de las sumas.
 \end{ejercicio}
-\begin{solucion}
-(i) Sea $\chi$ un carácter del producto. La continuidad en la identidad proporciona una vecindad básica $U$ cuya imagen está en el semiplano derecho. Sólo un conjunto finito $F$ de coordenadas está restringido en $U$. El subgrupo de elementos con coordenadas identidad en $F$ está contenido en $U$, por lo que su imagen es un subgrupo de ese semiplano. El lema~\ref{v4:arco-sin-subgrupos} obliga a que $\chi$ sea trivial en ese subgrupo. En consecuencia depende únicamente de las coordenadas de $F$, y el resultado sobre productos finitos da
-\[
- \chi((x_n))=\prod_{n\in F}\chi_n(x_n).
-\]
-Las restricciones a cada factor determinan de manera única los $\chi_n$, todos salvo un número finito triviales. Esto da el isomorfismo algebraico con la suma directa. El producto de los compactos es compacto por Tychonoff, luego su dual es discreto; el isomorfismo es topológico con la topología especificada.
 
-(ii) Un elemento de la suma directa tiene sólo un número finito de coordenadas no identidad. Por eso cualquier familia $(\chi_n)$ define el carácter
-$\chi((x_n))=\prod_n\chi_n(x_n)$: el producto que se evalúa es finito. Es continuo porque el dominio es discreto. Recíprocamente, restringir a los factores recupera toda la familia, de modo que tenemos una biyección homomorfa. Para un subconjunto compacto del dominio, que es finito, la evaluación depende de un número finito de coordenadas de la familia de caracteres; por ello la biyección desde $\prod_n\widehat G_n$ al dual es continua. Su dominio es compacto, pues cada $\widehat G_n$ lo es, y su codominio es Hausdorff. Una biyección continua de compacto en Hausdorff es homeomorfismo.
-
-En general, $\prod_nG_n$ puede dejar de ser localmente compacto: en $\R^{\N}$ toda vecindad básica restringe sólo un número finito de coordenadas. Si estuviera contenida en un compacto, la proyección de ese compacto sobre alguna coordenada no restringida contendría todo $\R$, imposible para un compacto. Por otra parte, «suma directa» especifica una operación algebraica, pero no determina por sí sola una topología. Las versiones anteriores fijan ambos datos y permanecen dentro de los grupos localmente compactos. No se afirma el enunciado general sin esas precisiones.
-\end{solucion}
 
 El grupo dual ya tiene operaciones continuas y una descripción concreta en los ejemplos básicos. El capítulo siguiente probará su compacidad local mediante el espectro del álgebra de convolución. Más adelante, la inversión y Plancherel permitirán recuperar el grupo original a partir de sus frecuencias y completar el ejercicio de exactitud.

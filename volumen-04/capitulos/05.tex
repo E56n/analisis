@@ -96,50 +96,19 @@ El número de esos intervalos crece linealmente con $N$ y la suma armónica dive
 \begin{ejercicio}[Lectura 8, ejercicio 1]\label{ej:v4-l08-1}
 Demostrar que $L^1(\T)$, con convolución, es un álgebra de Banach conmutativa.
 \end{ejercicio}
-\begin{solucion}
-La bilinealidad sigue de la linealidad integral y la cota submultiplicativa del teorema~\ref{v4:conv-T}. La completitud es la de $L^1$. Cambiar $t$ por $x-t$ prueba conmutatividad. Para asociatividad, la integral triple del valor absoluto está acotada por $\norm f_1\norm g_1\norm h_1$. Fubini permite entonces calcular casi en todas partes
-\[
- ((f*g)*h)(x)=\int_\T\int_\T f(s)g(t-s)h(x-t)\,dm(s)dm(t)
- =\int_\T f(s)\int_\T g(u)h(x-s-u)\,dm(u)dm(s),
-\]
-con $u=t-s$. El último miembro es $f*(g*h)(x)$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 8, ejercicio 2: cota del operador]\label{ej:v4-l08-2}
 Si $f\in L^1(\T)$, $g\in L^p(\T)$ y $1<p<\infty$, demostrar que $f*g\in L^p$ y $\norm{f*g}_p\leq\norm f_1\norm g_p$. Precisar la norma de $T_f:g\mapsto f*g$.
 \end{ejercicio}
-\begin{solucion}
-Si $\norm f_1=0$ la conclusión es inmediata. En otro caso, Hölder para la medida finita $|f(t)|dm(t)$ da
-\[
- |f*g(x)|^p\leq\norm f_1^{p-1}\int_\T |f(t)|\,|g(x-t)|^pdm(t).
-\]
-Tonelli e invariancia de la medida hacen integrable el lado derecho y, tras integrar, dan $\norm{f*g}_p^p\leq\norm f_1^p\norm g_p^p$. En particular la integral de convolución existe absolutamente casi en todas partes. Por tanto $\norm{T_f}\leq\norm f_1$.
 
-La igualdad afirmada en el original es falsa en general. Para $p=2$ y $f(t)=1+e^{it}$, Fourier muestra que $T_f$ es la proyección ortogonal sobre $\operatorname{span}\{1,e^{it}\}$, de norma uno, mientras que
-\[
- \norm f_1=\frac1{2\pi}\int_0^{2\pi}2|\cos(t/2)|\,dt=\frac4\pi>1.
-\]
-La cota es la conclusión válida para todo $p$.
-\end{solucion}
 \begin{ejercicio}[Lectura 8, ejercicio 3]\label{ej:v4-l08-3}
 Probar que $f\mapsto T_f$ es un homomorfismo continuo de álgebras de $L^1(\T)$ en $\Bcal(L^p(\T))$.
 \end{ejercicio}
-\begin{solucion}
-La linealidad es inmediata. Si $f,h\in L^1$ y $g\in L^p$, aproximamos $g$ en $L^p$ por funciones acotadas $g_j$ (truncación en altura). Para cada $g_j$, las integrales de valor absoluto en la identidad de asociatividad son finitas porque el círculo tiene medida uno y $g_j$ es acotada. Así $T_{f*h}g_j=T_fT_hg_j$. La cota del ejercicio anterior permite pasar al límite en $L^p$ y obtener $T_{f*h}=T_fT_h$. También $\norm{T_f-T_h}\leq\norm{f-h}_1$, lo que prueba continuidad.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 8, ejercicio 4]\label{ej:v4-l08-4}
 Si $1<p<\infty$, $(k_j)$ es una sucesión de Dirac y $g\in L^p(\T)$, probar $\norm{g-g*k_j}_p\to0$.
 \end{ejercicio}
-\begin{solucion}
-Jensen para la medida de probabilidad $k_jdm$ produce
-\[
-\norm{g-g*k_j}_p^p\leq\int k_j(t)\norm{g-g(\cdot-t)}_p^pdm(t).
-\]
-Para $\eps>0$ escojamos $\delta$ con $\norm{g-g(\cdot-t)}_p<\eps$ si $|t|<\delta$. La integral es a lo sumo
-\[
- \eps^p+(2\norm g_p)^p\int_{|t|\geq\delta}k_j(t)\,dm(t).
-\]
-El límite superior es $\eps^p$; hacer $\eps\downarrow0$ da la conclusión. Esta es la versión $L^p$ completa de la sugerencia original, con una misma letra $g$ en hipótesis y conclusión.
-\end{solucion}
+
 
 \section{Un laboratorio finito: el grupo cíclico}
 \index{Fourier!transformada discreta}\index{grupo!ciclico finito@cíclico finito}\index{matriz!circulante}
@@ -170,13 +139,7 @@ La matriz de $T_a:b\mapsto a*b$ tiene entrada $a(r-k)$; cada columna es una tras
 \begin{ejercicio}[Complemento: cálculo en cuatro puntos]\label{ej:v4-ampl-dft4}
 En $\Z/4\Z$, calcular la convolución de $a=(1,2,0,0)$ y $b=(1,0,1,0)$ mediante sumas y mediante Fourier.
 \end{ejercicio}
-\begin{solucion}
-Como $b$ vale uno en $0$ y $2$, $(a*b)(r)=a(r)+a(r-2)$, por lo que $a*b=(1,2,1,2)$. Las transformadas son
-\[
- \widehat a=(3,1+2i,-1,1-2i),\qquad \widehat b=(2,0,2,0).
-\]
-El producto es $(6,0,-2,0)$. Invirtiendo, $(a*b)(k)=\tfrac14(6-2e^{-\pi ik})$, que vale uno si $k$ es par y dos si es impar. El cálculo exhibe la diferencia entre convolución cíclica y producto de polinomios sin reducción: aquí se trabaja módulo $z^4-1$.
-\end{solucion}
+
 
 \paragraph{La misma operación en tres modelos.}
 Las sumas finitas, las series en grupos discretos y las integrales periódicas comparten la misma identidad de convolución. Al pasar a la recta desaparece la medida total finita; las hipótesis de integrabilidad y las estimaciones de Young serán las que aseguren que las operaciones sigan teniendo sentido.

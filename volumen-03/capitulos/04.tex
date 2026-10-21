@@ -88,67 +88,42 @@ $\norm{Sx}=\norm{U(x,Tx)}\le C\norm{(x,Tx)}$. La lectura original considera el c
 \begin{ejercicio}\label{ej:v3-l03-1}
 Demuestre que la inversa de una aplicación lineal continua biyectiva entre espacios de Banach es continua.
 \end{ejercicio}
-\begin{solucion}
-Por el teorema~\ref{v3:abierta}, $T$ lleva abiertos en abiertos. Para cualquier abierto $U$ de su dominio, la preimagen de $U$ bajo $T^{-1}$ es $T(U)$, abierta. También se obtiene una estimación: si $dB_Y\subset T(B_X)$, la unicidad de las preimágenes da $\norm{T^{-1}y}\le d^{-1}\norm y$ tomando límites desde radios ligeramente mayores.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-2}
 Dos normas $\norm\cdot,\norm\cdot'$ que hacen Banach al mismo espacio son equivalentes si y sólo si existe $C>0$ con $\norm x'\le C\norm x$ para todo $x$.
 \end{ejercicio}
-\begin{solucion}
-La equivalencia implica esa cota por definición. Recíprocamente, la cota hace continua la identidad del primer espacio normado al segundo. Es biyectiva, y ambos son Banach; el ejercicio anterior da continuidad de la identidad inversa: $\norm x\le D\norm x'$. Las dos desigualdades prueban la equivalencia.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-3}
 No existe una sucesión compleja $(z_n)$ tal que, para toda sucesión $(x_n)$, $\sum_n|x_n|<\infty$ equivalga a que $(x_nz_n)$ sea acotada.
 \end{ejercicio}
-\begin{solucion}
-Si hubiera infinitos $z_n=0$, la sucesión indicadora de esos índices violaría la equivalencia. Hay, pues, a lo sumo un número finito de ceros; reemplazarlos por uno no altera ninguna de las dos propiedades. Supongamos todos los $z_n$ distintos de cero. La aplicación
-\[T:\ell^\infty\longrightarrow\ell^1,\qquad (Ta)_n=a_n/z_n\]
-está bien definida por la equivalencia supuesta y es biyectiva, con inversa $x\mapsto(x_nz_n)$. Tiene gráfica cerrada: si $a^{(k)}\to a$ en $\ell^\infty$ y $Ta^{(k)}\to b$ en $\ell^1$, ambas convergencias implican convergencia de cada coordenada, de modo que $b_n=a_n/z_n$. Así $T$ es acotado por gráfica cerrada, y $T^{-1}$ lo es por aplicación abierta. Aplicando la última cota a $e_n$ obtenemos $|z_n|\le\norm{T^{-1}}=:C$. Pero $T(1,1,\ldots)=(1/z_n)\in\ell^1$, imposible porque $|1/z_n|\ge1/C$ para todo $n$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-4}
 Si $T:X\to Y$ es continua e inyectiva entre espacios de Banach, pruebe que $T^{-1}:\ran T\to X$ es continua si y sólo si $\ran T$ es cerrada.
 \end{ejercicio}
-\begin{solucion}
-Si la imagen es cerrada, es Banach con la norma de $Y$ y se aplica el teorema de la inversa acotada. En sentido contrario, sea $Tx_n\to y$ en $Y$. La continuidad de la inversa implica $\norm{x_n-x_m}\le C\norm{Tx_n-Tx_m}$; luego $x_n\to x$ en $X$. Por continuidad de $T$, $y=Tx$, y la imagen es cerrada.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-5}
 La inversa de una aplicación lineal biyectiva con gráfica cerrada también tiene gráfica cerrada.
 \end{ejercicio}
-\begin{solucion}
-El intercambio de coordenadas $(x,y)\mapsto(y,x)$ es una isometría entre los productos con norma suma y lleva $G(T)$ en $G(T^{-1})$. Una isometría biyectiva preserva cerrados. Equivalentemente, si $y_n\to y$ y $T^{-1}y_n\to x$, el cierre de $T$ da $Tx=y$, es decir, $T^{-1}y=x$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-6}
 Si $T$ tiene gráfica cerrada, $x_n\to x$, $y_n\to x$ y ambas sucesiones de imágenes convergen, sus límites son iguales.
 \end{ejercicio}
-\begin{solucion}
-Si $Tx_n\to u$, el cierre de la gráfica implica $u=Tx$. Si $Ty_n\to v$, implica $v=Tx$. Por tanto $u=v$. No hemos supuesto continuidad de $T$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-7}
 El núcleo de una aplicación lineal con gráfica cerrada es cerrado.
 \end{ejercicio}
-\begin{solucion}
-Es un subespacio por linealidad. Si $x_n\in\ker T$ y $x_n\to x$ en el dominio, entonces $Tx_n=0\to0$; el cierre de la gráfica da $Tx=0$. Así el núcleo contiene los límites de sus sucesiones convergentes y es cerrado.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l03-8}
 Sean $S,T:X\to Y$ lineales entre espacios normados. (i) Si $S$ es cerrado y $T$ continuo, $S+T$ es cerrado. (ii) ¿Basta que ambos sean cerrados?
 \end{ejercicio}
-\begin{solucion}
-(i) Si $x_n\to x$ y $(S+T)x_n\to y$, entonces $Tx_n\to Tx$ y $Sx_n\to y-Tx$. El cierre de $S$ da $Sx=y-Tx$, como se requiere.
 
-(ii) No en espacios normados generales. En $X=C^1[0,1]$ con norma uniforme, $Y=C[0,1]$, tomemos
-\[Sf=f',\qquad Tf=f'(0)\boldsymbol1-f'.\]
-Ya probamos que $S$ es cerrado. Para $T$, supongamos $f_n\to f$ y $Tf_n\to g$ uniformemente. Integrando,
-\[f_n(t)-f_n(0)=f_n'(0)t-\int_0^t Tf_n(s)\,ds.
-\]
-En $t=1$ se obtiene $f_n'(0)\to c=f(1)-f(0)+\int_0^1g$. Al pasar al límite para todo $t$ resulta $f(t)=f(0)+ct-\int_0^tg(s)\,ds$. Por tanto $f'=c-g$; además $g(0)=0$, porque $(Tf_n)(0)=0$, así que $f'(0)=c$ y $Tf=g$. Esto prueba que $T$ es cerrado. Sin embargo, $(S+T)f=f'(0)\boldsymbol1$, y para $f_n=\sin(nt)/n$ tenemos $f_n\to0$, $(S+T)f_n=\boldsymbol1\not=(S+T)0$. La suma no es cerrada. Si ambos espacios fueran Banach y el dominio fuera todo $X$, gráfica cerrada haría acotados a ambos operadores y la respuesta sería afirmativa.
-\end{solucion}
 
 \section{El adjunto sobre el dual}\label{lec:v3-04}
 \fuentelectura{4}{Transformaciones adjuntas}
@@ -227,44 +202,27 @@ Pero el supremo de la izquierda es $\norm{S'\phi}$, mientras que $|\phi(y)|\le\n
 \begin{ejercicio}\label{ej:v3-l04-1}
 Para $T\in\Bcal(X,Y)$ entre Banach son equivalentes: (i) el isomorfismo canónico $X/\ker T\to\ran T$ es topológico; (ii) $\ran T$ es cerrada; (iii) existe $C>0$ con $\norm{x+\ker T}\le C\norm{Tx}$.
 \end{ejercicio}
-\begin{solucion}
-La aplicación canónica es siempre una biyección lineal y es acotada, porque $\norm{Tx}\le\norm T\norm{x-m}$ para todo $m\in\ker T$. (i) equivale exactamente a (iii), que es la acotación de su inversa. Si (ii) vale, dominio y codominio son Banach y aplicación abierta da (i). Si (iii) vale y $Tx_n\to y$, entonces $(x_n+\ker T)$ es de Cauchy y converge a $x+\ker T$ por el lema~\ref{v3:cociente-banach}. La continuidad del operador inducido da $Tx_n\to Tx$, luego $y=Tx$ y (ii) vale. La palabra ``topológico'' es esencial: el isomorfismo algebraico existe siempre.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l04-2}
 Examine la afirmación original: si $A$ es convexo y balanceado y $x\notin A$, existen $\phi\in X^*$ y $\alpha>0$ con $|\phi(a)|<\alpha<|\phi(x)|$ para todo $a\in A$.
 \end{ejercicio}
-\begin{solucion}
-Falta exigir $x\notin\cl A$. En $X=\R$, $A=(-1,1)$ y $x=1$, toda funcional es $\phi(t)=ct$. La desigualdad para todos los $a$ implicaría $|c|\le\alpha$, incompatible con $\alpha<|c|$. Si $A$ es no vacío y $x\notin\cl A$, el teorema~\ref{v3:separacion-balanceada} da $\sup_A|\phi|<|\phi(x)|$. Elegimos $\alpha$ estrictamente entre ambos números; como $0\in A$, el supremo es no negativo y $\alpha>0$. Ésta es la versión válida utilizada en el teorema del rango cerrado.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l04-3}
 Para $M\le X$ y $T\in\Bcal(X)$, estudie el mapeo de $(TM)^\perp$ en $M^\perp$ inducido por $T'$, y deduzca la invariancia del anulador si $M$ es $T$-invariante.
 \end{ejercicio}
-\begin{solucion}
-Si $\phi\in(TM)^\perp$ y $m\in M$, entonces $(T'\phi)(m)=\phi(Tm)=0$; esto demuestra la inclusión. La inyectividad afirmada en la lectura es falsa: para $T=0$ en un espacio no nulo y $M=\{0\}$, la restricción es el operador cero sobre $X^*$. De hecho, su núcleo es $\ker T'$, pues $\ker T'\subset(TM)^\perp$; por ello es inyectiva exactamente cuando $\ran T$ es densa. Si $TM\subset M$, tenemos $M^\perp\subset(TM)^\perp$, y la inclusión ya probada da $T'(M^\perp)\subset M^\perp$, sin necesidad de ninguna inyectividad.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l04-4}
 Si $T\in\Bcal(X,Y)$ tiene rango finito, pruebe que $T'$ tiene rango finito y la misma dimensión de imagen.
 \end{ejercicio}
-\begin{solucion}
-Sea $y_1,\ldots,y_m$ una base de $\ran T$. Las coordenadas en este espacio finito son continuas, luego existen $\phi_j\in X^*$ con $Tx=\sum_j\phi_j(x)y_j$. Para $\psi\in Y^*$,
-\[T'\psi=\sum_{j=1}^m\psi(y_j)\phi_j.
-\]
-Así el rango está contenido en el span de las $\phi_j$. Éstas son linealmente independientes: la suprayectividad de $T$ sobre su imagen permite elegir $x_k$ con $Tx_k=y_k$, y entonces $\phi_j(x_k)=\delta_{jk}$. Hahn--Banach extiende a $Y$ cada funcional coordenada de $\ran T$, de modo que cada $\phi_j$ está en $\ran T'$. Por tanto ambas dimensiones son $m$; el caso $m=0$ es inmediato.
 
-La acotación debe agregarse al enunciado original. Una funcional lineal discontinua $f$ en $\ell^2$, construida asignando $f(e_n)=n$ y extendiendo una base de Hamel, da $Tx=f(x)e_1$ de rango uno. La composición con la primera coordenada es $f$, que no pertenece al dual continuo. En este caso ni siquiera está definido un adjunto de Banach con el codominio indicado.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l04-5}
 Pruebe: (i) $T'$ es inyectiva si y sólo si $\ran T$ es densa; (ii) si $\ran T'$ es densa en $X^*$, entonces $T$ es inyectiva.
 \end{ejercicio}
-\begin{solucion}
-(i) $T'\psi=0$ significa que $\psi$ se anula en $\ran T$. Si ésta es densa, la continuidad da $\psi=0$. Si no es densa, Hahn--Banach proporciona una funcional no nula que se anula en el subespacio cerrado propio $\cl{\ran T}$, y $T'$ no es inyectiva.
 
-(ii) Si $Tx=0$, todas las funcionales $T'\psi$ se anulan en $x$. La evaluación $\phi\mapsto\phi(x)$ es continua para la norma del dual, de modo que se anula en su cerradura, que por hipótesis es todo $X^*$. Las funcionales separan puntos, luego $x=0$. La recíproca no es general: la inclusión $\ell^1\hookrightarrow c_0$ es inyectiva, pero su adjunto es la inclusión $\ell^1\hookrightarrow\ell^\infty$, cuya imagen no es densa en $\ell^\infty$ porque su cerradura es $c_0$.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l04-6}
 Demuestre las cuatro relaciones
@@ -272,18 +230,11 @@ Demuestre las cuatro relaciones
 \cl{\ran T}={}^\perp(\ker T'),\qquad \ran T'\subset(\ker T)^\perp.
 \]
 \end{ejercicio}
-\begin{solucion}
-La primera dice en dos notaciones lo mismo: $T'\psi=0$ equivale a $\psi(Tx)=0$ para todo $x$. Para la segunda, $x$ pertenece al preanulador de $\ran T'$ si y sólo si $\psi(Tx)=0$ para toda $\psi\in Y^*$; Hahn--Banach equivale esto a $Tx=0$. La tercera se deduce de la primera y de la identidad de doble anulador $\cl M={}^\perp(M^\perp)$ del teorema~\ref{v3:doble-anulador}, aplicada al subespacio $M=\ran T$. Finalmente, si $x\in\ker T$, entonces $(T'\psi)(x)=\psi(0)=0$, lo que da la cuarta inclusión. El cierre en la tercera fórmula es indispensable y sí está presente en el PDF original.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l04-7}
 Explique con precisión la afirmación $T''|_X=T$.
 \end{ejercicio}
-\begin{solucion}
-Los espacios $X$ y $Y$ se identifican isométricamente con sus imágenes por $J_X$ y $J_Y$ en los biduales. Para $x\in X$ y $\psi\in Y^*$,
-\[(T''J_Xx)(\psi)=(J_Xx)(T'\psi)=(T'\psi)(x)=\psi(Tx)=(J_YTx)(\psi).
-\]
-La igualdad para toda $\psi$ prueba $T''J_X=J_YT$. Sólo después de estas identificaciones tiene sentido escribir la abreviatura del enunciado; no se está suponiendo que los espacios sean reflexivos.
-\end{solucion}
+
 
 Los teoremas de este capítulo convierten propiedades topológicas en estimaciones uniformes. La dualidad añade una segunda perspectiva: densidad e inyectividad se intercambian, la compacidad se preserva y el rango cerrado puede detectarse en el adjunto. Estas herramientas permitirán distinguir los tipos de espectro sin confundir una inversa algebraica con una inversa acotada.

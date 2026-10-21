@@ -583,89 +583,26 @@ Las lecturas 27 y 28 proponen varias demostraciones dentro de la teoría; todas 
 \begin{ejercicio}[Ampliación: Fourier en un grupo finito]\label{ej:v4-ampl-16-1}
 Sea $G$ un grupo abeliano finito de orden $N$, con medida de contar. Determine la medida dual de Plancherel y demuestre explícitamente las fórmulas de inversión y Parseval.
 \end{ejercicio}
-\begin{solucion}
-Si $\chi$ es un carácter no trivial, existe $a$ con $\chi(a)\ne1$. Por reordenamiento de la suma,
-\[
- \sum_{x\in G}\chi(x)=\sum_{x\in G}\chi(ax)
- =\chi(a)\sum_{x\in G}\chi(x),
-\]
-y la suma es cero. Para el carácter trivial la suma es $N$. Por el ejercicio~\ref{ej:v4-l25-1}, $\widehat G$ tiene $N$ elementos; aplicando la misma identidad en el dual y la separación de puntos, resulta
-\[
- \sum_{\chi\in\widehat G}\chi(y)\overline{\chi(x)}
- =\begin{cases}N,&x=y,\\0,&x\ne y.\end{cases}
-\]
-Como $\widehat f(\chi)=\sum_y f(y)\chi(y)$, intercambiar dos sumas finitas da
-\[
- \frac1N\sum_{\chi\in\widehat G}\widehat f(\chi)\overline{\chi(x)}
- =\frac1N\sum_y f(y)\sum_\chi\chi(y)\overline{\chi(x)}=f(x).
-\]
-La medida dual es, por tanto, $N^{-1}$ veces la medida de contar. Asimismo,
-\[
- \frac1N\sum_\chi|\widehat f(\chi)|^2
- =\frac1N\sum_{x,y}f(x)\overline{f(y)}
-                   \sum_\chi\chi(x)\overline{\chi(y)}
- =\sum_x|f(x)|^2.
-\]
-Así la normalización inversa y Plancherel se comprueban sin límites ni integrales impropias.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: el aniquilador de una retícula]\label{ej:v4-ampl-16-2}
 Sea $a>0$ y $H=a\Z\subset\R$. Identifique $H^\perp$ usando los caracteres $\chi_\xi(x)=e^{i\xi x}$. Deduzca el dual de $\R/a\Z$ y describa la aplicación de restricción $\widehat\R\to\widehat{a\Z}$, incluyendo su núcleo y su topología.
 \end{ejercicio}
-\begin{solucion}
-Un carácter $\chi_\xi$ es trivial en $a\Z$ si y sólo si $e^{i\xi a}=1$, es decir, si y sólo si $\xi a\in2\pi\Z$. Luego
-\[
- H^\perp=(2\pi/a)\Z.
-\]
-El lema~\ref{v4:dual-cociente-encaje} identifica el dual de $\R/a\Z$ con esta retícula, que es discreta en $\R$. Sus caracteres son $x+a\Z\mapsto e^{2\pi i n x/a}$.
 
-El grupo $a\Z$ es discreto y está generado por $a$, así que un carácter suyo queda determinado por el valor $z\in\T$ en $a$, y toma el valor $z^n$ en $na$. La restricción, bajo las identificaciones $\widehat\R\simeq\R$ y $\widehat{a\Z}\simeq\T$, es $\xi\mapsto e^{ia\xi}$. Es sobreyectiva, su núcleo es $(2\pi/a)\Z$ y es abierta: la imagen de un intervalo suficientemente corto es un arco abierto, y cualquier abierto es unión de tales intervalos. Por tanto $\R/((2\pi/a)\Z)\simeq\T$ topológicamente, en acuerdo con el teorema de exactitud.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: círculo, enteros y signos]\label{ej:v4-ampl-16-3}
 En $G=\T$ use Haar normalizada $dt/(2\pi)$, con $z=e^{it}$, y caracteres $\chi_n(z)=z^n$. Determine la medida dual en $\Z$ y escriba la inversión de un polinomio trigonométrico. Explique por qué los exponentes en la inversión llevan signo negativo con nuestra convención.
 \end{ejercicio}
-\begin{solucion}
-Para $f(z)=\sum_{m=-M}^M c_mz^m$,
-\[
- \widehat f(n)=\frac1{2\pi}\int_0^{2\pi}
-              \sum_{m=-M}^M c_me^{i(m+n)t}\,dt=c_{-n},
-\]
-con $c_m=0$ fuera del rango. Por tanto
-$f(z)=\sum_{n\in\Z}\widehat f(n)z^{-n}$, suma finita en este caso. La ortogonalidad de $z^m$ da
-\[
- \int_\T|f|^2\,d\mu=\sum_m|c_m|^2
- =\sum_n|\widehat f(n)|^2.
-\]
-En consecuencia la medida dual es la medida de contar. También puede fijarse su escala usando la función constante $1$: su transformada vale uno en $n=0$ y cero en los demás enteros, y ambas normas cuadradas deben valer uno. La invariancia de Haar en el grupo discreto obliga a que todos los puntos tengan esa misma masa. El signo negativo en la inversión es la conjugación del carácter; cambiar el signo de la transformada directa cambiaría el de la inversa.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: positividad espectral y valores negativos]\label{ej:v4-ampl-16-4}
 Muestre con un ejemplo que $\widehat f\ge0$ no implica $f\ge0$ punto por punto. Verifique que el ejemplo sí satisface $f(e)\ge0$ y explique por qué no contradice el lema~\ref{v4:positividad-identidad}.
 \end{ejercicio}
-\begin{solucion}
-Tome $G=\Z$ con medida de contar y
-\[
- f=2\,1_{\{0\}}-1_{\{1\}}-1_{\{-1\}}.
-\]
-Es una función de soporte finito y, por tanto, pertenece a $L^1(\Z)\cap C_0(\Z)\subset E$. Si identificamos el dual con $\T$ mediante $\chi_z(n)=z^n$, entonces
-\[
- \widehat f(z)=2-z-z^{-1}=2-2\operatorname{Re}z=|1-z|^2\ge0.
-\]
-Sin embargo, $f(1)=f(-1)=-1$. En la identidad del grupo, $f(0)=2\ge0$, exactamente lo que afirma el lema. La positividad espectral significa que el operador de convolución $\lambda(f)$ es positivo, es decir, $\ip{\lambda(f)u}{u}\ge0$ para todo $u\in\ell^2(\Z)$; no significa que sus coeficientes sean todos no negativos. De hecho, si $S=L_1$, entonces $\lambda(f)=2I-S-S^*=(I-S)^*(I-S)$, lo que verifica la positividad directamente.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: dos soportes que no se confunden]\label{ej:v4-ampl-16-5}
 En $G=\R$ con medida de Lebesgue, sea $\eta(\xi)=\max\{1-|\xi|,0\}$. Calcule su inversa para la medida dual $(2\pi)^{-1}d\xi$. Pruebe que esa inversa pertenece a $L^1\cap L^2\cap C_0$ y que su soporte no es compacto, aunque $\supp\eta=[-1,1]$.
 \end{ejercicio}
-\begin{solucion}
-La simetría elimina la parte imaginaria. Para $x\ne0$, integración por partes da
-\[
- u(x)=\frac1{2\pi}\int_{-1}^1(1-|\xi|)e^{-i\xi x}\,d\xi
- =\frac1\pi\int_0^1(1-\xi)\cos(\xi x)\,d\xi
- =\frac{1-\cos x}{\pi x^2}.
-\]
-En $x=0$ la integral vale $1/(2\pi)$, coincidiendo con el límite porque $(1-\cos x)/x^2\to1/2$. Así $u$ es continua y acotada cerca de cero. Para $|x|\ge1$, $|u(x)|\le2/(\pi x^2)$, lo cual demuestra integrabilidad, integrabilidad del cuadrado y anulación en el infinito. Por la inversión construida, su transformada es $\eta$; la igualdad inicialmente casi en todas partes es igualdad en cada frecuencia porque ambas funciones son continuas. La función $u$ es positiva salvo en los puntos no nulos $2\pi n$ donde se anula. Cada intervalo abierto contiene puntos donde $u>0$, de modo que $\supp u=\R$. Un soporte espectral compacto no es un soporte compacto en la variable original.
-\end{solucion}
+
 
 La construcción completa enlaza cuatro niveles: una función integrable, su operador de convolución, su símbolo continuo en el dual y su transformación unitaria en $L^2$. La dualidad y la extensión de caracteres son consecuencias de ese enlace, con la topología de cada paso controlada. El ejercicio de exactitud del capítulo~\ref{cap:v4-14} queda así integrado en la teoría demostrada, y los espacios $C_r^*(G)$ y $C_0^*(G)$ conservan sus papeles distintos a lo largo del argumento.

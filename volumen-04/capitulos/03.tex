@@ -66,47 +66,19 @@ Evaluar en $x=0$ da $\sum_{j\geq1}(2j-1)^{-2}=\pi^2/8$.
 \begin{ejercicio}[Lectura 4, ejercicio 1]\label{ej:v4-l04-1}
 Para $f\in L^1(\T)$, expresar la serie compleja como $a_0/2+\sum_{n\geq1}(a_n\cos nx+b_n\sin nx)$.
 \end{ejercicio}
-\begin{solucion}
-Agrupando únicamente los pares finitos de índices $n,-n$,
-\[
- c_ne^{inx}+c_{-n}e^{-inx}
- =(c_n+c_{-n})\cos nx+i(c_n-c_{-n})\sin nx.
-\]
-Por tanto $a_0=2c_0$, $a_n=c_n+c_{-n}$ y $b_n=i(c_n-c_{-n})$. Equivalentemente,
-\[
- a_n=\frac1\pi\int_0^{2\pi}f(t)\cos nt\,dt,\qquad
- b_n=\frac1\pi\int_0^{2\pi}f(t)\sin nt\,dt.
-\]
-Estas igualdades describen cada suma parcial y no requieren reordenar una serie infinita convergente.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 4, ejercicio 2]\label{ej:v4-l04-2}
 Si $f\in L^1(\T)$ es real, probar que sus coeficientes $a_n,b_n$ son reales.
 \end{ejercicio}
-\begin{solucion}
-Las últimas integrales del ejercicio anterior tienen integrandos reales. También $c_{-n}=\overline{c_n}$, por conjugación de la integral; así $a_n=2\Re c_n$ y $b_n=-2\Im c_n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 4, ejercicio 3]\label{ej:v4-l04-3}
 Hallar la serie de $x^2$ en $[-\pi,\pi]$, extendida periódicamente, y deducir $\sum_{n\geq1}n^{-2}=\pi^2/6$.
 \end{ejercicio}
-\begin{solucion}
-La paridad da $b_n=0$ y $a_0=2\pi^2/3$. Para $n\geq1$, dos integraciones por partes dan
-\[
- \int_0^\pi x^2\cos nx\,dx
- =-\frac2n\int_0^\pi x\sin nx\,dx
- =\frac{2\pi(-1)^n}{n^2}.
-\]
-Así $a_n=4(-1)^n/n^2$. La extensión es continua y suave a trozos, luego
-\[
- x^2=\frac{\pi^2}3+4\sum_{n\geq1}\frac{(-1)^n\cos nx}{n^2}.
-\]
-En $x=\pi$ obtenemos $\pi^2=\pi^2/3+4\sum n^{-2}$, que da la suma solicitada.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 4, ejercicio 4]\label{ej:v4-l04-4}
 Sea $f$ periódica, continua y $C^1$ a trozos. Si $\sum_{n\in\Z}|c_n|<\infty$, probar que su serie converge a $f$ absoluta y uniformemente.
 \end{ejercicio}
-\begin{solucion}
-Cada término tiene módulo $|c_n|$, independientemente de $x$. El criterio de Weierstrass hace converger la serie absoluta y uniformemente a alguna función $g$. Por el teorema~\ref{v4:dirichlet-puntual}, las mismas sumas parciales convergen puntualmente a $f$. La unicidad del límite en $\C$ da $g=f$. Más adelante la unicidad de los coeficientes permitirá eliminar la hipótesis de suavidad.
-\end{solucion}
+
 
 \section{Derivación, integración y convergencia uniforme}\label{lectura:v4-05}
 \index{Fourier!derivacion@derivación}\index{Fourier!integracion@integración}

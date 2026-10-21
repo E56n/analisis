@@ -87,45 +87,22 @@ En $\R$, $\mathbf1_{[0,1]}*\mathbf1_{[0,1]}(x)$ es la longitud de $[0,1]\cap[x-1
 \begin{ejercicio}[Lectura 9, ejercicio 1]\label{ej:v4-l09-1}
 Para $1\leq p<\infty$ y $f\in L^p(\R^d)$, demostrar que $t\mapsto f(\cdot+t)$ y $t\mapsto f(\cdot-t)$ son uniformemente continuas con valores en $L^p$.
 \end{ejercicio}
-\begin{solucion}
-Para $u\in C_c$, con soporte $K$, y $|t|\leq1$, la diferencia $u(\cdot+t)-u$ se anula fuera del compacto $K+\overline{B(0,1)}$. Por continuidad uniforme de $u$, su supremo tiende a cero, y su norma $L^p$ está acotada por ese supremo multiplicado por la medida del compacto elevada a $1/p$. Para $f$ general escojamos $u\in C_c$ con $\norm{f-u}_p<\eps/3$. La invariancia de la norma da
-\[
- \norm{f(\cdot+t)-f}_p\leq2\norm{f-u}_p+\norm{u(\cdot+t)-u}_p.
-\]
-Así hay continuidad en cero. La norma de la diferencia entre las traslaciones con parámetros $s,t$ es $\norm{f(\cdot+t-s)-f}_p$, que solo depende de $t-s$; esto da continuidad uniforme. El signo opuesto se trata sustituyendo $t$ por $-t$. Se habla de continuidad fuerte para cada $f$, no de continuidad de los operadores en norma de operador.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 2]\label{ej:v4-l09-2}
 Sean $f\in L^1(\R^d)$ y $g$ acotada, con $g(x)\to0$ cuando $|x|\to\infty$. Probar que $f*g(x)\to0$ y mostrar que no puede omitirse una condición de este tipo en un enunciado general.
 \end{ejercicio}
-\begin{solucion}
-Para cada $y$ fijo, $g(x-y)\to0$ cuando $|x|\to\infty$, y $|f(y)g(x-y)|\leq\norm g_\infty|f(y)|$. Convergencia dominada da el límite. Equivalentemente se puede separar una bola que contiene casi toda la integral de $|f|$ y controlar uniformemente $g(x-y)$ dentro de esa bola. Sin la condición, tomemos $g=1$ y $f=\mathbf1_{[0,1]^d}$: $f*g=1$. Esto muestra que la hipótesis no puede simplemente eliminarse; no afirma que sea necesaria para cada pareja particular, pues, por ejemplo, $f=0$ siempre produce límite cero.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 3]\label{ej:v4-l09-3}
 Si $f,g$ tienen soporte compacto y su convolución existe casi en todas partes, demostrar $\supp(f*g)\subseteq\supp f+\supp g$, entendiendo soporte esencial cuando corresponda.
 \end{ejercicio}
-\begin{solucion}
-Sean $K=\supp f$, $L=\supp g$. Elegimos representantes que se anulan fuera de esos conjuntos. Si $x\notin K+L$, no existe $y$ con $y\in K$ y $x-y\in L$, así que $f(y)g(x-y)=0$ para todo $y$ salvo los nulos de elección de representantes. La integral vale cero. El conjunto $K+L$ es compacto por ser la imagen de $K\times L$ bajo la suma continua, y por tanto es cerrado. La convolución se anula en su complemento, lo que demuestra la inclusión. Para clases de funciones no se usan valores arbitrarios asignados sobre nulos para definir el soporte.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 4]\label{ej:v4-l09-4}
 Sea $(k_j)\subset L^1(\R^d)$, con $k_j\geq0$, $\int k_j=1$ y $\int_{|t|\geq\delta}k_j(t)dt\to0$ para cada $\delta>0$. Probar $f*k_j\to f$ en $L^p$ para $1\leq p<\infty$.
 \end{ejercicio}
-\begin{solucion}
-Jensen para la probabilidad $k_j(t)dt$ y Tonelli dan
-\[
- \norm{f*k_j-f}_p^p\leq\int k_j(t)\norm{f(\cdot-t)-f}_p^pdt.
-\]
-Para $p=1$ basta la desigualdad triangular integral. En $|t|<\delta$, el ejercicio~\ref{ej:v4-l09-1} hace la diferencia menor que cualquier $\eps$ previamente fijado. En el complemento está acotada por $2\norm f_p$. Por tanto el límite superior del lado derecho es a lo sumo $\eps^p$. Hacer $\eps\downarrow0$ prueba el resultado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 9, ejercicio 5: continuidad en los puntos del compacto]\label{ej:v4-l09-5}
 Sea $f$ un representante acotado de $L^\infty(\R^d)$ que es continuo, como función definida en $\R^d$, en cada punto de un compacto $K$. Probar que $f*k_j\to f$ uniformemente en $K$. Explicar por qué no basta continuidad de la restricción $f|_K$.
 \end{ejercicio}
-\begin{solucion}
-Dado $\eps>0$, para cada $z\in K$ elegimos $r_z>0$ tal que $|f(w)-f(z)|<\eps/2$ si $|w-z|<r_z$. Una cantidad finita de bolas $B(z,r_z/2)$ cubre $K$. Si $\delta$ es menor que la mitad del mínimo de sus radios y $x\in K$, $|t|<\delta$, podemos elegir un centro de esa cubierta para el que tanto $x$ como $x-t$ están en $B(z,r_z)$. Entonces $|f(x-t)-f(x)|<\eps$. Así
-\[
- \sup_{x\in K}|f*k_j(x)-f(x)|
- \leq\eps+2\norm f_\infty\int_{|t|\geq\delta}k_j(t)dt\longrightarrow\eps.
-\]
-Si solo se pide continuidad sobre el subespacio $K$, tomemos $K=\{0\}$ y $f=\mathbf1_{\{0\}}$. La restricción es continua, pero toda convolución es cero y $f(0)=1$. La interpretación de la hipótesis en el enunciado es, por tanto, esencial.
-\end{solucion}
+
 
 Las traslaciones y las identidades aproximadas han convertido integrales en límites en norma. Una identidad gaussiana permitirá ahora invertir Fourier mediante cálculos explícitos.

@@ -77,63 +77,30 @@ Los enunciados anteriores se refieren a la $\sigma$-álgebra producto. Si se com
 \begin{ejercicio}[Lectura 11, ejercicio 1]\label{ej:v2-l11-1}
 Pruebe que una intersección no vacía de clases monótonas es una clase monótona.
 \end{ejercicio}
-\begin{solucion}
-Una sucesión creciente de conjuntos de la intersección pertenece a cada clase por separado. Su unión pertenece a cada una por estabilidad monótona, luego pertenece a la intersección. El mismo razonamiento vale para intersecciones decrecientes. La condición de que la intersección no sea vacía corresponde a la convención de llamar clase monótona solamente a familias no vacías.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 11, ejercicio 2: Tonelli--Hobson]\label{ej:v2-l11-2}
 Pruebe que una función \emph{medible} $F$ en el producto es integrable si y solo si una de las integrales iteradas de $|F|$ es finita.
 \end{ejercicio}
-\begin{solucion}
-Tonelli da igualdad de ambas integrales iteradas de $|F|$ con $\int_{X\times Y}|F|\,d\pi$, admitiendo infinito. La finitud de cualquiera equivale, por definición, a integrabilidad de $F$ y fuerza finitud de las otras dos. La medibilidad de $F$ es una hipótesis indispensable que no debe suprimirse del enunciado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 11, ejercicio 3]\label{ej:v2-l11-3}
 Para $a_{m,n}=1$ si $m=n$, $a_{m,n}=-1$ si $m+1=n$ y cero en los demás casos, calcule las dos sumas iteradas.
 \end{ejercicio}
-\begin{solucion}
-Fijado $m$, la fila tiene $1$ en $n=m$ y $-1$ en $n=m+1$, luego $\sum_na_{m,n}=0$ y $\sum_m\sum_na_{m,n}=0$. Fijado $n=1$, la columna tiene solamente $a_{1,1}=1$; para $n\ge2$, la columna tiene $-1$ en $m=n-1$ y $1$ en $m=n$, por lo que suma cero. Así $\sum_n\sum_ma_{m,n}=1$. La suma de los valores absolutos es infinita, pues cada fila aporta $2$; Fubini no es aplicable a esta función en $\N^2$ con conteo.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 11, ejercicio 4]\label{ej:v2-l11-4}
 Si $f\in L^1(X)$ y $g\in L^1(Y)$, pruebe integrabilidad de $h(x,y)=f(x)g(y)$ y $\int h=(\int f)(\int g)$.
 \end{ejercicio}
-\begin{solucion}
-Las funciones $f\circ\mathrm{pr}_X$ y $g\circ\mathrm{pr}_Y$ son medibles, pues sus preimágenes de niveles son rectángulos; su producto también lo es. Tonelli aplicado a $|h|=|f(x)||g(y)|$ da
-\[\int|h|\,d\pi=\int_X|f(x)|\left(\int_Y|g|\,d\nu\right)d\mu
-=\|f\|_1\|g\|_1<\infty.\]
-Fubini y homogeneidad de la integral dan después
-\[\int h\,d\pi=\int_X f(x)\left(\int_Y g\,d\nu\right)d\mu
-=\left(\int_X f\,d\mu\right)\left(\int_Y g\,d\nu\right),\]
-para funciones reales o complejas.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 11, ejercicio 5]\label{ej:v2-l11-5}
 En $X=Y=[0,1]$ con borelianos, tome Lebesgue en $X$ y conteo en $Y$. Para la diagonal $D=\{(x,x):x\in[0,1]\}$, pruebe medibilidad y desigualdad de sus integrales iteradas por secciones.
 \end{ejercicio}
-\begin{solucion}
-La diagonal es cerrada en el cuadrado y es medible para la $\sigma$-álgebra producto: los rectángulos abiertos de extremos racionales forman una base numerable, de modo que los borelianos del cuadrado son generados por rectángulos borelianos. Cada sección $D_x=\{x\}$ tiene medida de conteo $1$, mientras $D^y=\{y\}$ tiene medida de Lebesgue cero. Por tanto
-\[\int_X\mu_c(D_x)\,d\lambda(x)=1,\qquad\int_Y\lambda(D^y)\,d\mu_c(y)=0.\]
-El conteo en un conjunto no numerable no es $\sigma$-finito: todo conjunto de medida finita es finito y una unión numerable de finitos no cubre $[0,1]$. Esta es la hipótesis que falla.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 11, ejercicio 6: convolución]\label{ej:v2-l11-6}\index{convolucion@convolución}
 Sean $f,g\in L^1(\R)$. Pruebe: (i) $(x,y)\mapsto f(x-y)g(y)$ es Lebesgue-medible en $\R^2$; (ii) $(f*g)(x)=\int_\R f(x-y)g(y)\,dy$ existe casi en todas partes; (iii) $\|f*g\|_1\le\|f\|_1\|g\|_1$.
 \end{ejercicio}
-\begin{solucion}
-(i) Primero tome representantes borelianos $f_0,g_0$ iguales a $f,g$ fuera de nulos. Su existencia se deduce de la representación de conjuntos Lebesgue-medibles como borelianos más nulos y de aproximaciones simples. La función $f_0(x-y)g_0(y)$ es boreliana, porque $(x,y)\mapsto x-y$ y la proyección a $y$ son continuas. Si $N$ es un boreliano nulo que contiene las discrepancias de $f$, el conjunto $\{(x,y):x-y\in N\}$ es boreliano y nulo: por Tonelli, su sección en $x$ para cada $y$ es $N+y$, de medida cero. Análogamente, $\{(x,y):y\in M\}$ es nulo cuando $M$ contiene las discrepancias de $g$; se comprueba primero en franjas acotadas y se toma una unión numerable. Fuera de la unión de estos nulos, el producto original coincide con el boreliano, luego es Lebesgue-medible por completitud.
 
-(ii) Tonelli e invariancia por traslaciones dan
-\[\int_{\R^2}|f(x-y)g(y)|\,dx\,dy
-=\int_\R|g(y)|\left(\int_\R|f(x-y)|\,dx\right)dy
-=\|f\|_1\|g\|_1<\infty.\]
-La igualdad $\int|f(x-y)|\,dx=\int|f|$ se prueba primero en indicadores mediante invariancia de la medida, luego en simples y finalmente por convergencia monótona. Fubini en el producto completado implica que la sección en $y$ es integrable para casi todo $x$. Esto define $f*g$ casi en todas partes; se pone cero en el conjunto excepcional. Se corrige el diferencial $d\lambda(x)$ del original por $dy$, pues $y$ es la variable interior.
-
-(iii) La desigualdad triangular interior da $|f*g(x)|\le\int|f(x-y)g(y)|\,dy$. Integrar y usar la igualdad anterior prueba la cota. Fubini también da
-\[\int_\R(f*g)(x)\,dx=\left(\int_\R f\right)\left(\int_\R g\right).\]
-El dominio de esta última integral es $\R$, no $\R^2$.
-\end{solucion}
 \begin{observacion}[Conmutatividad y asociatividad]
 Conmutatividad resulta del cambio $y\mapsto x-y$ en la integral; esta sustitución preserva Lebesgue por la invariancia bajo reflexión y traslación, probada primero en indicadores y extendida por aproximación simple. Para asociatividad, la integral del valor absoluto de $f(x-y-z)g(y)h(z)$ en $\R^3$ es $\|f\|_1\|g\|_1\|h\|_1$ por Tonelli. Fubini permite cambiar el orden y efectuar las traslaciones interiores, dando $f*(g*h)=(f*g)*h$ casi en todas partes. La estimación triple justifica el intercambio; las igualdades son de clases $L^1$ y no necesariamente en cada punto de representantes arbitrarios.
 \end{observacion}
 \begin{ejercicio}[Lectura 11, ejercicio 7]\label{ej:v2-l11-7}
 Si $A,B\in\Acal\otimes\Bcal$ y $\nu(A_x)=\nu(B_x)$ para casi todo $x$, pruebe $\pi(A)=\pi(B)$.
 \end{ejercicio}
-\begin{solucion}
-El lema \ref{lema:v2-cavalieri} identifica las medidas de $A,B$ con las integrales de sus funciones de medidas de secciones. Estas son no negativas, medibles e iguales casi en todas partes; la invariancia de la integral no negativa bajo esa igualdad implica que sus integrales son iguales, incluso si valen infinito.
-\end{solucion}

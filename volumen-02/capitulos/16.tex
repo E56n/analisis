@@ -270,32 +270,10 @@ Si dos medidas regulares representan la misma funcional, su diferencia represent
 El teorema \ref{v2:riesz-positivo-general} permite funcionales positivas sobre $C_c(X)$ sin acotación uniforme global y medidas de masa infinita; el corolario \ref{v2:riesz-positivo} identifica el caso acotado sobre $C_0(X)$ con medidas finitas. En el primero, sobre un espacio localmente compacto Hausdorff general, no se debe afirmar regularidad interior de todos los Borel sin hipótesis adicionales. Las distinciones del capítulo \ref{v2:cap15} siguen siendo necesarias.
 \end{observacion}
 
-\section{Ejercicio resuelto: una obstrucción a la reflexividad}
+\section{Ejercicio propuesto: una obstrucción a la reflexividad}
 \begin{ejercicio}[Lectura 33, ejercicio 1]\label{ej:v2-l33-1}
 Suponga que existe una medida de Borel regular real o compleja $\mu$ tal que $\mu(\{x\})=0$ para todo $x\in X$ y $0<|\mu|(X)<\infty$. Demuestre que $C_0(X)$ no es reflexivo. Considere la funcional sobre medidas dada por $\Phi(\nu)=\sum_{x\in X}\nu(\{x\})$.
 \end{ejercicio}
-\begin{solucion}
-Primero hay que dar sentido a la suma, que puede estar indexada por un conjunto no numerable. Para cualquier conjunto finito $F\subset X$,
-\[
- \sum_{x\in F}|\nu(\{x\})|=\sum_{x\in F}|\nu|(\{x\})\le|\nu|(X).
-\]
-En particular, para cada $n$ sólo hay un número finito de puntos con $|\nu(\{x\})|\ge1/n$; de otro modo las sumas finitas superarían cualquier cota. La unión de estos conjuntos finitos contiene todos los puntos con masa no nula, así que éstos son a lo sumo numerables. La serie de sus masas converge absolutamente y define $\Phi(\nu)$, independientemente del orden. La desigualdad anterior prueba
-\[
- |\Phi(\nu)|\le\sum_x|\nu(\{x\})|\le\norm\nu.
-\]
-La linealidad se obtiene sumando sobre la unión numerable de los soportes atómicos de las medidas involucradas. Así $\Phi\in M_r(X)^*$.
 
-Supongamos que $C_0(X)$ fuera reflexivo. Mediante la identificación isométrica $C_0(X)^*=M_r(X)$, la funcional $\Phi$ pertenecería al bidual y estaría representada por evaluación en alguna $f\in C_0(X)$:
-\[
- \Phi(\nu)=\int f\,d\nu\qquad(\nu\in M_r(X)).
-\]
-Cada medida de Dirac $\delta_x$ es regular, y $\Phi(\delta_x)=1$. Sustituyéndola en la identidad obtenemos $f(x)=1$ para todo $x\in X$.
-
-Ahora usemos la medida positiva $\lambda=|\mu|$, que es regular y no nula. En un singleton, la definición de variación da $\lambda(\{x\})=|\mu(\{x\})|=0$. Por ello $\Phi(\lambda)=0$. Sin embargo, la representación y $f\equiv1$ darían
-\[
- 0=\Phi(\lambda)=\int f\,d\lambda=\lambda(X)>0,
-\]
-una contradicción. Usar $|\mu|$ es esencial para esta última contradicción: la masa total de una medida compleja no nula puede ser cero por cancelación.
-\end{solucion}
 
 El recorrido del volumen termina con dos representaciones complementarias. En $L^p$, la norma y la medida de partida determinan densidades que representan funcionales. En $C_0(X)$, la continuidad y el comportamiento en el infinito permiten reconstruir la medida misma. Las aproximaciones por simples, los teoremas de convergencia, la variación, Radon--Nikodym y la regularidad intervienen aquí con una función precisa, y las hipótesis que las conectan quedan visibles en la demostración.

@@ -247,55 +247,22 @@ Si $y\in B(x,r)$, entonces $\norm{qy-qx}\le\norm{y-x}<r$. Recíprocamente, si $\
 \begin{ejercicio}[Ampliación: una recta como cociente]\label{ej:ampl-cocientes-1}
 En $\R^2$ con la norma euclidiana sea $M=\{(t,t):t\in\R\}$. Calcule la norma de $[(a,b)]$, encuentre el representante de norma mínima y construya una isometría lineal de $\R^2/M$ sobre $\R$. Este ejercicio y su desarrollo son propios de esta edición.
 \end{ejercicio}
-\begin{solucion}
-Para cualquier $t$,
-\[
- (a-t)^2+(b-t)^2
- =2\left(t-\frac{a+b}{2}\right)^2+\frac{(a-b)^2}{2}.
-\]
-El mínimo se alcanza únicamente en $t=(a+b)/2$, de modo que
-\[
- \norm{[(a,b)]}=\frac{|a-b|}{\sqrt2},\qquad
- (a,b)-\left(\frac{a+b}{2},\frac{a+b}{2}\right)
- =\left(\frac{a-b}{2},\frac{b-a}{2}\right).
-\]
-La aplicación $T([(a,b)])=(a-b)/\sqrt2$ está bien definida porque restar un vector de $M$ no cambia $a-b$. Es lineal y preserva la norma calculada. Es sobreyectiva, pues $T([(\sqrt2s,0)])=s$; su núcleo es cero porque $a-b=0$ equivale a $(a,b)\in M$. Esto demuestra la isometría, no sólo una coincidencia de dimensiones.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: el límite como coordenada del cociente]\label{ej:ampl-cocientes-2}
 Sean $c$ y $c_0$ los espacios de sucesiones escalares convergentes y convergentes a cero, con la norma uniforme. Demuestre que $c_0$ es cerrado en $c$ y que $[x]\mapsto\lim_nx_n$ es un isomorfismo isométrico de $c/c_0$ sobre $\F$. Adaptación del ejercicio de la presentación \cite{max-seminormado}; la solución se desarrolla aquí.
 \end{ejercicio}
-\begin{solucion}
-Si $x^{(k)}\in c_0$ y $\norm{x^{(k)}-x}_\infty\to0$, dado $\eps>0$ elegimos $k$ con error menor que $\eps/2$ y luego $N$ con $|x^{(k)}_n|<\eps/2$ para $n\ge N$. Entonces $|x_n|<\eps$ para esos índices, así que $x\in c_0$. Esto demuestra cerradura.
 
-Escribamos $L=\lim_nx_n$. Para todo $y\in c_0$, la sucesión $x_n-y_n$ converge a $L$, por lo que $|L|\le\norm{x-y}_\infty$. Tomar ínfimos da $|L|\le\norm{[x]}$. Por otro lado, $y=x-L\mathbf1$ pertenece a $c_0$, y $x-y=L\mathbf1$ tiene norma $|L|$. Así $\norm{[x]}=|L|$. Dos representantes difieren en $c_0$ exactamente cuando tienen el mismo límite; la aplicación indicada está bien definida, es lineal e inyectiva. Las sucesiones constantes producen todos los escalares, luego también es sobreyectiva. En este caso el representante constante alcanza el ínfimo.
-\end{solucion}
 
 \begin{ejercicio}[Ampliación: un cociente que pierde toda distancia]\label{ej:ampl-cocientes-3}
 En $\ell^2$ sea $c_{00}$ el subespacio de sucesiones de soporte finito. Pruebe que $\ell^2/c_{00}$ no es el espacio vectorial cero, aunque su seminorma cociente vale cero en todas las clases. Explique por qué esto no contradice el teorema~\ref{ampl:cociente-banach}. Adaptación del contraejemplo propuesto en \cite{max-seminormado}.
 \end{ejercicio}
-\begin{solucion}
-La sucesión $x=(1/n)_{n\ge1}$ pertenece a $\ell^2$ y no a $c_{00}$, así que $[x]\ne[0]$. Para cualquier $u\in\ell^2$, sus truncamientos $u^{(N)}\in c_{00}$ satisfacen
-\[
- \norm{u-u^{(N)}}_2^2=\sum_{n>N}|u_n|^2\longrightarrow0.
-\]
-De aquí $\inf_{v\in c_{00}}\norm{u-v}_2=0$, y la seminorma de toda clase es cero. El subespacio $c_{00}$ es denso y propio, por lo que no es cerrado. Falta exactamente la hipótesis que haría de la seminorma una norma. Si se divide por $\cl{c_{00}}=\ell^2$, el cociente sí es el espacio cero: identificar todas las distancias nulas elimina las clases algebraicamente distintas que la seminorma era incapaz de separar.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: observar sólo los extremos]\label{ej:ampl-cocientes-4}
 En $C([0,1],\F)$ defina $p(f)=|f(0)|+|f(1)|$. Describa su núcleo y pruebe que el cociente por ese núcleo es isométrico a $\F^2$ con la norma $\norm{(a,b)}_1=|a|+|b|$. Determine si el cociente es completo aunque $p$ no sea una norma. Ejercicio propio de esta edición.
 \end{ejercicio}
-\begin{solucion}
-La desigualdad triangular y la homogeneidad de $p$ se verifican en cada extremo. Su núcleo es
-\[
- N_p=\{f\in C([0,1]):f(0)=f(1)=0\}.
-\]
-Contiene funciones no nulas, por ejemplo $f(t)=t(1-t)$; por ello $p$ no es una norma. La aplicación $T([f])=(f(0),f(1))$ está bien definida, es lineal y tiene núcleo cero en el cociente. Para cualquier $(a,b)$, la función afín $f(t)=(1-t)a+tb$ tiene esos extremos, de modo que $T$ es sobreyectiva. La proposición~\ref{ampl:nucleo-seminorma} da
-\[
- \norm{[f]}=p(f)=\norm{T([f])}_1.
-\]
-Finalmente, una sucesión de Cauchy en $\F^2$ para $\norm{\cdot}_1$ es de Cauchy en cada coordenada; los dos límites escalares producen el límite en esa norma. La isometría transporta la completitud al cociente. Los valores interiores de las funciones no son necesarios para recuperar el límite de sus clases.
-\end{solucion}
+
 
 \begin{ejercicio}[Ampliación: norma cociente sin mínimo]\label{ej:ampl-cocientes-5}
 Sea $\varphi:V\to\F$ lineal y no nula, y suponga
@@ -305,23 +272,7 @@ $C=\sup_{\norm v\le1}|\varphi(v)|<\infty$. Pruebe que $M=\ker\varphi$ es cerrado
 \]
 Después considere $V=\ell^1$ y $\varphi(x)=\sum_{n\ge1}\frac{n}{n+1}x_n$. Demuestre que $C=1$ y que la clase cuyos representantes satisfacen $\varphi(x)=1$ tiene norma $1$, pero no contiene ningún vector de norma $1$. Ejercicio propio de esta edición.
 \end{ejercicio}
-\begin{solucion}
-La homogeneidad da $|\varphi(v)|\le C\norm v$ para todo $v$, y $C>0$ porque $\varphi\ne0$. La misma desigualdad aplicada a diferencias demuestra continuidad, luego su núcleo es cerrado. Si $m\in M$,
-$|\varphi(x)|=|\varphi(x-m)|\le C\norm{x-m}$; el ínfimo proporciona la cota inferior.
 
-Si $\varphi(x)=0$, la clase es cero y la fórmula está probada. En otro caso elegimos $u_k$ con $\norm{u_k}\le1$ y $|\varphi(u_k)|\to C$, suprimiendo los primeros términos si es necesario para que $\varphi(u_k)\ne0$. Los vectores
-\[
- v_k=\frac{\varphi(x)}{\varphi(u_k)}u_k
-\]
-satisfacen $\varphi(v_k)=\varphi(x)$, así que representan $[x]$. Sus normas son a lo sumo $|\varphi(x)|/|\varphi(u_k)|$. Al pasar al límite resulta la cota superior y, por tanto, la igualdad.
-
-En $\ell^1$ la serie que define $\varphi$ converge absolutamente y $|\varphi(x)|\le\norm x_1$. Como $\varphi(e_n)=n/(n+1)\to1$, el supremo $C$ es $1$. Para cada $x\ne0$,
-\[
- |\varphi(x)|\le\sum_n\frac{n}{n+1}|x_n|
- =\norm x_1-\sum_n\frac{|x_n|}{n+1}<\norm x_1.
-\]
-La última suma es estrictamente positiva porque algún $x_n$ no es cero. Todo representante con $\varphi(x)=1$ tiene, pues, norma mayor que $1$. Sin embargo, $v_n=((n+1)/n)e_n$ satisface $\varphi(v_n)=1$ y $\norm{v_n}_1\downarrow1$. La clase existe, su ínfimo es $1$ y no lo alcanza ningún representante.
-\end{solucion}
 
 Los cocientes permiten medir distancia a un subespacio y las seminormas obligan a precisar qué vectores se identifican. Volvemos ahora a la dimensión finita: allí las coordenadas proporcionan controles que pueden perderse en los espacios de los últimos ejemplos.
 
@@ -433,116 +384,54 @@ Si $V=\bigcup_nK_n$ con cada $K_n$ compacto, todos son cerrados. Baire da un $K_
 En $\ell^2$, los vectores canónicos $e_n$ tienen norma $1$ y $\norm{e_n-e_m}=\sqrt2$ si $n\ne m$. La sucesión no tiene ninguna subsucesión de Cauchy y, por tanto, ninguna convergente. La bola unitaria es cerrada y acotada, pero no compacta. El teorema anterior demuestra que siempre existe una obstrucción de este tipo en dimensión infinita, aunque no haya una base canónica disponible.
 \end{ejemplo}
 
-\section{Ejercicios resueltos: operaciones, series y subespacios}
+\section{Ejercicios propuestos: operaciones, series y subespacios}
 
 \begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:lectura-19-1}
 Para $u,v\ne0$, ponga $u'=u/\norm u$ y $v'=v/\norm v$. Demuestre que
 \[\norm{u'-v'}\leq\frac{2\norm{u-v}}{\norm u}.\]
 \end{ejercicio}
-\begin{solucion}
-Introducimos $v/\norm u$, de modo que una diferencia mida el cambio de vector y la otra el cambio de escala:
-\begin{align*}
- \norm{u'-v'}
- &\leq\frac{\norm{u-v}}{\norm u}
- +\norm v\left|\frac1{\norm u}-\frac1{\norm v}\right|\\
- &=\frac{\norm{u-v}+|\norm v-\norm u|}{\norm u}
- \leq\frac{2\norm{u-v}}{\norm u}.
-\end{align*}
-La última desigualdad es la desigualdad triangular inversa.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 19, ejercicio 2]\label{ej:lectura-19-2}
 Para $A,B\subseteq V$, sea $A+B=\{a+b:a\in A,b\in B\}$. Pruebe: (i) si $A$ es abierto, $A+B$ es abierto; (ii) si $A,B$ son compactos, $A+B$ es compacto; (iii) si $A$ es cerrado y $B$ compacto, $A+B$ es cerrado. Dé además dos conjuntos cerrados cuya suma no sea cerrada.
 \end{ejercicio}
-\begin{solucion}
-(i) Cada traslación $x\mapsto x+b$ es un homeomorfismo, pues ella y su inversa preservan distancias. Así $A+B=\bigcup_{b\in B}(A+b)$ es una unión de abiertos.
 
-(ii) El producto finito $A\times B$ es compacto y la suma es continua por la proposición~\ref{ch19:operaciones}. Su imagen es exactamente $A+B$, luego es compacta.
-
-(iii) Si $a_n+b_n\to x$, la compacidad de $B$ da una subsucesión $b_{n_j}\to b\in B$. Entonces $a_{n_j}=(a_{n_j}+b_{n_j})-b_{n_j}\to x-b$. La cerradura de $A$ implica $x-b\in A$, y así $x\in A+B$. En un espacio métrico este criterio de sucesiones equivale a que el conjunto sea cerrado. Si alguno de los conjuntos es vacío, todas las conclusiones son inmediatas.
-
-Para el contraejemplo tome, en $\R^2$,
-\[
- A=\{(x,y):xy=1\},\qquad B=\R\times\{0\}.
-\]
-Ambos son cerrados, como conjuntos de ceros de funciones continuas. Su suma es $\R\times(\R\setminus\{0\})$: para obtener $(s,t)$ con $t\ne0$ se suma $(1/t,t)$ a $(s-1/t,0)$, y ningún sumando puede producir segunda coordenada cero. Esta suma no es cerrada, pues $(0,1/n)\to(0,0)$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 19, ejercicio 3]\label{ej:lectura-19-3}
 Demuestre que todo subespacio propio $M$ de $V$ tiene interior vacío.
 \end{ejercicio}
-\begin{solucion}
-Si $B(x,r)\subseteq M$, entonces $x\in M$ y, restándolo, $B(0,r)\subseteq M$. Para cualquier $v\ne0$, el vector $(r/(2\norm v))v$ pertenece a esa bola; multiplicarlo por $2\norm v/r$ muestra que $v\in M$. También $0\in M$. Esto da $M=V$, contradicción. No se necesita que $M$ sea cerrado.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 19, ejercicio 4]\label{ej:lectura-19-4}
 Pruebe que $V$ es separable si y solo si $\overline B(0,1)$ es separable.
 \end{ejercicio}
-\begin{solucion}
-Si $V$ es separable, todo subespacio métrico es separable. Para recordar el argumento, tome una base numerable de bolas de $V$ y elija un punto de $\overline B(0,1)$ en cada miembro de la base que lo interseque. Los puntos elegidos forman un conjunto numerable y denso en la bola: toda vecindad relativa contiene una de esas bolas básicas alrededor de alguno de sus puntos.
 
-Recíprocamente, si $D$ es numerable y denso en $\overline B(0,1)$, el conjunto $E=\bigcup_{m=1}^{\infty}mD$ es numerable. Dados $v\in V$ y $\eps>0$, elija un entero $m\geq\max\{1,\norm v\}$. Hay $d\in D$ con $\norm{v/m-d}<\eps/m$, y entonces $md\in E$ satisface $\norm{v-md}<\eps$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 19, ejercicio 5]\label{ej:lectura-19-5}
 Si $(v_n)$ es de Cauchy, $v_n\ne0$, y no converge a $0$, pruebe que $(v_n/\norm{v_n})$ es de Cauchy. Deduzca que $V$ es de Banach si y solo si $\overline B(0,1)$ es completa.
 \end{ejercicio}
-\begin{solucion}
-Por la desigualdad triangular inversa, $(\norm{v_n})$ es una sucesión real de Cauchy. Sea $a$ su límite. Si $a=0$, tendríamos $v_n\to0$, contrario a la hipótesis; luego $a>0$. Para $n$ suficientemente grande, $\norm{v_n}\geq a/2$. El ejercicio~\ref{ej:lectura-19-1} da entonces
-\[
- \norm{\frac{v_n}{\norm{v_n}}-\frac{v_m}{\norm{v_m}}}\leq\frac4a\norm{v_n-v_m},
-\]
-que tiende uniformemente a cero cuando $m,n\to\infty$.
 
-Si $V$ es completo, su bola cerrada es un subconjunto cerrado y por ello completo. Para el recíproco puede usarse una observación aún más directa: toda sucesión de Cauchy $(x_n)$ es acotada. Elija $R>0$ con $\norm{x_n}\leq R$ para todo $n$. Entonces $(x_n/R)$ es de Cauchy en la bola cerrada unitaria, converge a un $y$ de esa bola y $x_n\to Ry$ en $V$. La primera parte explica además cómo controlar las direcciones de una sucesión que permanece alejada del origen.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 19, ejercicio 6]\label{ej:lectura-19-6}
 Sean $M_1,M_2\leq V$ tales que $\cl{M_1}\cap M_2=\{0\}$ y $M_1+M_2$ es cerrado. Demuestre que $M_1$ es cerrado.
 \end{ejercicio}
-\begin{solucion}
-Como $M_1\subseteq M_1+M_2$ y este último es cerrado, $\cl{M_1}\subseteq M_1+M_2$. Para $x\in\cl{M_1}$ escriba $x=a+b$, con $a\in M_1$ y $b\in M_2$. La proposición~\ref{ch19:cierre-subespacio} implica que $b=x-a\in\cl{M_1}$. Así $b\in\cl{M_1}\cap M_2=\{0\}$, y $x=a\in M_1$. Hemos probado $\cl{M_1}\subseteq M_1$. La barra sobre $M_1$ en la hipótesis, visible en el PDF original, es indispensable para este argumento.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 19, ejercicio 7]\label{ej:lectura-19-7}
 Si $v_n\to v$, demuestre que las medias de Cesàro $u_n=(v_1+\cdots+v_n)/n$ convergen a $v$.
 \end{ejercicio}
-\begin{solucion}
-Dado $\eps>0$, elija $N$ con $\norm{v_j-v}<\eps/2$ para $j\geq N$. Para $n\geq N$,
-\[
- \norm{u_n-v}\leq
- \frac1n\sum_{j=1}^{N-1}\norm{v_j-v}
- +\frac{n-N+1}{n}\frac\eps2.
-\]
-La primera suma tiene un número fijo de términos, por lo que, dividida entre $n$, es menor que $\eps/2$ para $n$ suficientemente grande. El segundo término no supera $\eps/2$. Así $u_n\to v$. El argumento separa una parte inicial, cuyo peso desaparece, de una cola cuyos términos ya están cerca del límite.
-\end{solucion}
 
-\section{Ejercicios resueltos: dimensión y mejores aproximantes}
+
+\section{Ejercicios propuestos: dimensión y mejores aproximantes}
 
 \begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:lectura-22-4}
 Si $M$ tiene dimensión finita y $v\notin M$, demuestre que existe $m_0\in M$ con $\dist(v,M)=\norm{v-m_0}$. Deduzca que existe $u$ con $\norm u=\dist(u,M)=1$.
 \end{ejercicio}
-\begin{solucion}
-Sea $d=\dist(v,M)$. El subespacio es cerrado, por lo que $d>0$. Elija $m_j\in M$ con $\norm{v-m_j}\to d$. Como $0\in M$, $d\leq\norm v$. Podemos descartar términos iniciales para que $\norm{v-m_j}\leq\norm v+1$. Entonces
-\[
- \norm{m_j}\leq\norm v+\norm{v-m_j}\leq2\norm v+1.
-\]
-La bola correspondiente de $M$ es compacta por Heine--Borel. Una subsucesión converge a $m_0\in M$, y la continuidad de la norma da $\norm{v-m_0}=d$.
 
-Defina $u=(v-m_0)/d$. Su norma es $1$. Como trasladar por un elemento de $M$ no cambia la distancia a $M$, y multiplicar por $1/d$ la multiplica por $1/d$,
-\[
- \dist(u,M)=\frac{\dist(v-m_0,M)}d=\frac{\dist(v,M)}d=1.
-\]
-En dimensión finita la distancia se alcanza. El lema de Riesz general solo garantiza distancias arbitrariamente próximas a $1$, porque un subespacio cerrado infinito dimensional puede no tener mejores aproximantes.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:lectura-22-5}
 Sea $c_{00}=\spanop\{e_n:n\in\N\}$, el espacio de sucesiones de soporte finito. Demuestre que no es completo con ninguna norma.
 \end{ejercicio}
-\begin{solucion}
-\enlargethispage{\baselineskip}
-Fije una norma arbitraria y sea $M_n=\spanop\{e_1,\ldots,e_n\}$. Cada $M_n$ es cerrado porque tiene dimensión finita. Es propio y, por el ejercicio~\ref{ej:lectura-19-3}, tiene interior vacío. Todo vector de $c_{00}$ pertenece a alguno de los $M_n$ por tener soporte finito; así, $c_{00}=\bigcup_{n=1}^{\infty}M_n$. Si la norma elegida fuera completa, esta unión contradiría Baire. Como no se impuso ninguna condición especial a la norma, ninguna puede hacer completo a $c_{00}$.
-\end{solucion}
+
 
 En dimensión finita, las coordenadas controlan continuidad, completitud y compacidad. El capítulo siguiente estudia cómo cambian estas propiedades al considerar operadores entre espacios normados, especialmente cuando la dimensión es infinita.
-

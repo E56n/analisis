@@ -32,68 +32,39 @@ La familia de rectángulos generadores generalmente no es un álgebra.
 \begin{ejercicio}[Lectura 1, ejercicio 1]\label{ej:v2-l01-1}
 Sea $\mathcal G$ una familia no vacía estable bajo complementos y uniones binarias. Pruebe que es un álgebra.
 \end{ejercicio}
-\begin{solucion}
-Elija $A\in\mathcal G$. Entonces $A^c\in\mathcal G$, $X=A\cup A^c\in\mathcal G$ y $\varnothing=X^c\in\mathcal G$. Si $B,C\in\mathcal G$, la identidad $B\cap C=(B^c\cup C^c)^c$ prueba la estabilidad restante. La hipótesis de familia no vacía permite elegir $A$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 2]\label{ej:v2-l01-2}
 Dada una sucesión $(A_n)$ en un álgebra, construya $B_n\subseteq A_n$, disjuntos dos a dos, con $\bigcup_nB_n=\bigcup_nA_n$.
 \end{ejercicio}
-\begin{solucion}
-Defina $B_1=A_1$ y $B_n=A_n\setminus\bigcup_{j<n}A_j$. Son elementos del álgebra porque se usan solamente uniones finitas y diferencias. La inclusión es inmediata. Si $m<n$, todo punto de $B_n$ está fuera de $A_m$, mientras $B_m\subseteq A_m$, luego $B_m\cap B_n=\varnothing$. Finalmente, un punto de $\bigcup_nA_n$ tiene un primer índice de pertenencia $n$ y pertenece a $B_n$; la inclusión inversa resulta de $B_n\subseteq A_n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 3]\label{ej:v2-l01-3}
 Pruebe que $\Acal|_Y=\{A\cap Y:A\in\Acal\}$ es un álgebra, o una $\sigma$-álgebra, sobre $Y\subseteq X$ si $\Acal$ lo es sobre $X$.
 \end{ejercicio}
-\begin{solucion}
-Contiene $Y=X\cap Y$. El complemento \emph{en $Y$} de $A\cap Y$ es $A^c\cap Y$. Además, $(A\cap Y)\cap(B\cap Y)=(A\cap B)\cap Y$ y $\bigcup_n(A_n\cap Y)=(\bigcup_nA_n)\cap Y$. Las respectivas estabilidades de $\Acal$ concluyen la prueba. No hace falta que $Y\in\Acal$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 4]\label{ej:v2-l01-4}
 Enliste todas las álgebras sobre un conjunto de cuatro elementos.
 \end{ejercicio}
-\begin{solucion}
-Escriba $X=\{1,2,3,4\}$. Cada partición $\mathcal P$ produce el álgebra de todas las uniones de sus bloques. Recíprocamente, en un álgebra finita los conjuntos mínimos no vacíos, llamados \emph{átomos}, forman una partición: el átomo que contiene $x$ es la intersección de todos los elementos del álgebra que contienen $x$; dos átomos que se cortan coinciden, y todo elemento del álgebra es unión de los átomos que contiene. Por tanto basta enlistar las siguientes quince particiones, indicando que a cada una corresponde el conjunto de todas sus uniones:
-\[
-\begin{gathered}
-1234;\qquad 1|234,\ 2|134,\ 3|124,\ 4|123;\\
-12|34,\ 13|24,\ 14|23;\\
-12|3|4,\ 13|2|4,\ 14|2|3,\ 23|1|4,\ 24|1|3,\ 34|1|2;\\
-1|2|3|4.
-\end{gathered}
-\]
-Aquí $12|3|4$, por ejemplo, denota los bloques $\{1,2\},\{3\},\{4\}$ y genera las ocho uniones posibles de esos bloques. Átomos diferentes generan álgebras diferentes, de modo que la lista es exhaustiva y no tiene repeticiones.\index{atomo de un algebra@átomo de un álgebra}
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 5]\label{ej:v2-l01-5}
 Caracterice $A(\mathcal G)$ mediante expresiones finitas de intersecciones y complementos de elementos de una familia no vacía $\mathcal G$.
 \end{ejercicio}
-\begin{solucion}
-Sea $\mathcal E$ la familia de los resultados de tales expresiones. Contiene $\mathcal G$, es estable bajo añadir un complemento y bajo combinar dos expresiones mediante intersección. Contiene $X=(A\cap A^c)^c$ para cualquier $A\in\mathcal G$; por ello es un álgebra y $A(\mathcal G)\subseteq\mathcal E$. En sentido inverso, cualquier álgebra que contiene $\mathcal G$ contiene el resultado de cada expresión, por inducción sobre el número de operaciones. Así $\mathcal E\subseteq A(\mathcal G)$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 6]\label{ej:v2-l01-6}
 En un espacio métrico separable, pruebe que las bolas abiertas generan $\Bcal(X)$.
 \end{ejercicio}
-\begin{solucion}
-Sea $D$ numerable denso. Las bolas $B(a,r)$, con $a\in D$ y $r>0$ racional, constituyen una base numerable. En efecto, si $x\in U$ y $B(x,\delta)\subseteq U$, elija $a\in D$ con $d(a,x)<\delta/3$ y un racional $r$ entre $d(a,x)$ y $\delta-d(a,x)$. Entonces $x\in B(a,r)\subseteq U$. Todo abierto es la unión de los elementos de esta base contenidos en él, una unión numerable. Por ello pertenece a la $\sigma$-álgebra generada por las bolas. La inclusión opuesta se sigue de que toda bola es abierta.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 7]\label{ej:v2-l01-7}
 Pruebe que los rayos $(a,\infty)$ generan $\Bcal(\R)$.
 \end{ejercicio}
-\begin{solucion}
-Todos los rayos son abiertos. Recíprocamente, $[b,\infty)=\bigcap_n(b-1/n,\infty)$ y, por tanto, $(a,b)=(a,\infty)\setminus[b,\infty)$ pertenece a la familia generada. Los intervalos de extremos racionales forman una base numerable de $\R$; todo abierto es unión numerable de ellos. Esto prueba la otra inclusión.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 8]\label{ej:v2-l01-8}
 Si $X$ tiene al menos dos puntos, pruebe que los rectángulos $A\times B$ no forman un álgebra en $X\times X$. Determine el álgebra que generan.
 \end{ejercicio}
-\begin{solucion}
-Para $a\ne b$, la unión $\{(a,a),(b,b)\}$ no es un rectángulo: si lo fuera, sus dos proyecciones contendrían $a,b$ y también contendría $(a,b)$. El álgebra generada consiste exactamente en las uniones finitas de rectángulos. Esta familia contiene $X\times X$; las intersecciones de rectángulos son rectángulos y
-\[(A\times B)^c=(A^c\times X)\cup(A\times B^c).\]
-Distribuyendo intersecciones sobre uniones finitas, se comprueba estabilidad bajo complementos e intersecciones. Es un álgebra, y cualquier álgebra que contenga rectángulos contiene sus uniones finitas.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 1, ejercicio 9]\label{ej:v2-l01-9}
 Si $f:X\to Y$ y $\Bcal$ es una $\sigma$-álgebra sobre $Y$, determine si $\{f^{-1}(B):B\in\Bcal\}$ es una $\sigma$-álgebra.
 \end{ejercicio}
-\begin{solucion}
-Sí: $f^{-1}(Y)=X$, $f^{-1}(Y\setminus B)=X\setminus f^{-1}(B)$ y $f^{-1}(\bigcup_nB_n)=\bigcup_nf^{-1}(B_n)$. Estas identidades no exigen que $f$ sea inyectiva ni sobreyectiva.
-\end{solucion}
+
 
 \section{Aditividad numerable y continuidad}\label{lectura:v2-02}
 En $[0,\infty]$ adoptamos $0\cdot\infty=0$ y $a+\infty=\infty$. Nunca efectuaremos la resta $\infty-\infty$. Una serie de términos no negativos es el supremo de sus sumas parciales, incluso cuando vale infinito.
@@ -118,56 +89,31 @@ La diferencia con todos los términos anteriores es indispensable: quitar solame
 \begin{ejercicio}[Lectura 2, ejercicio 1]\label{ej:v2-l02-1}
 Para $A\in\Acal$ fijo, pruebe que $\lambda(B)=\mu(A\cap B)$ es una medida.
 \end{ejercicio}
-\begin{solucion}
-Vale cero en vacío. Si los $B_n$ son disjuntos, también lo son $A\cap B_n$ y $A\cap\bigcup_nB_n=\bigcup_n(A\cap B_n)$. Aplicar la aditividad de $\mu$ da la de $\lambda$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 2]\label{ej:v2-l02-2}
 Pruebe que las combinaciones finitas no negativas de medidas son medidas. Pruebe también que $\lambda=\sum_n\alpha_n\mu_n$ es una medida si $\alpha_n\ge0$ y las $\mu_n$ son medidas finitas.
 \end{ejercicio}
-\begin{solucion}
-Para una familia disjunta $(A_j)$,
-\[\lambda\left(\bigcup_jA_j\right)=\sum_n\sum_j\alpha_n\mu_n(A_j)=\sum_j\sum_n\alpha_n\mu_n(A_j)=\sum_j\lambda(A_j).\]
-El intercambio de sumas no usa integración: ambas sumas iteradas son el supremo de las sumas sobre todos los rectángulos finitos de índices. Todo conjunto finito de pares está contenido en un rectángulo finito; de aquí la igualdad de los supremos. El caso finito es idéntico, con una de las sumas finita. Además $\lambda(\varnothing)=0$. La finitud de cada $\mu_n$ no es necesaria para esta conclusión.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 3]\label{ej:v2-l02-3}
 Si $A_n\downarrow A$ y algún $A_N$ tiene medida finita, pruebe que $\mu(A_n)\to\mu(A)$. Muestre la necesidad de la hipótesis de finitud.
 \end{ejercicio}
-\begin{solucion}
-Para $n\ge N$, los conjuntos $A_N\setminus A_n$ crecen a $A_N\setminus A$. La continuidad por abajo da
-\[\mu(A_N)-\mu(A_n)\longrightarrow\mu(A_N)-\mu(A),\]
-y todas las restas son finitas. En $\N$ con conteo, los conjuntos $A_n=\{n,n+1,\ldots\}$ decrecen a vacío, pero $\mu(A_n)=\infty$ para todo $n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 4]\label{ej:v2-l02-4}
 Pruebe $\mu(\liminf A_n)\le\liminf\mu(A_n)$, donde $\liminf A_n=\bigcup_m\bigcap_{n\ge m}A_n$.
 \end{ejercicio}
-\begin{solucion}
-Los conjuntos $B_m=\bigcap_{n\ge m}A_n$ crecen y $\mu(B_m)\le\inf_{n\ge m}\mu(A_n)$. Tomando límites y usando continuidad por abajo obtenemos la desigualdad. Un punto está en $\bigcup_mB_m$ precisamente cuando pertenece a todos los $A_n$ salvo, a lo sumo, una cantidad finita de ellos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 5]\label{ej:v2-l02-5}
 Si $\mu(\bigcup_nA_n)<\infty$, pruebe $\limsup\mu(A_n)\le\mu(\limsup A_n)$.
 \end{ejercicio}
-\begin{solucion}
-Ponga $C_m=\bigcup_{n\ge m}A_n$. Decrecen a $\limsup A_n$ y $\mu(C_1)<\infty$. Como $\sup_{n\ge m}\mu(A_n)\le\mu(C_m)$, la continuidad por arriba permite tomar límites. La pertenencia a $\bigcap_mC_m$ equivale a pertenecer a infinitos $A_n$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 6]\label{ej:v2-l02-6}
 Defina $\mu_*(A)=\sup\{\mu(B):B\in\Acal,\ B\subseteq A,\ \mu(B)<\infty\}$. Pruebe que es una medida y que coincide con $\mu$ si esta es $\sigma$-finita.
 \end{ejercicio}
-\begin{solucion}
-El vacío es una opción en el supremo, así que la definición tiene sentido. Para $A=\bigcup_nA_n$ disjunta y $B\subseteq A$ de medida finita,
-\[\mu(B)=\sum_n\mu(B\cap A_n)\le\sum_n\mu_*(A_n).\]
-Tomando supremo resulta $\mu_*(A)\le\sum_n\mu_*(A_n)$. Para la otra desigualdad fije $m$ y números $t_j<\mu_*(A_j)$, no negativos, para los índices con supremo positivo. Elija $B_j\subseteq A_j$ de medida finita con $\mu(B_j)>t_j$. La unión finita $B=\bigcup_{j\le m}B_j$ tiene medida finita y está contenida en $A$, de modo que $\mu_*(A)\ge\sum_{j\le m}t_j$. Al tomar supremos en cada $t_j$, incluyendo valores arbitrariamente grandes si un supremo es infinito, obtenemos $\mu_*(A)\ge\sum_{j\le m}\mu_*(A_j)$. Finalmente $m\to\infty$ prueba la igualdad. Además $\mu_*(\varnothing)=0$.
 
-Si $X=\bigcup_nE_n$ con $E_n\uparrow X$ y $\mu(E_n)<\infty$, entonces $A\cap E_n$ es admisible en el supremo y $\mu_*(A)\ge\lim_n\mu(A\cap E_n)=\mu(A)$. La desigualdad inversa siempre resulta de la monotonía.
-\end{solucion}
 \begin{ejercicio}[Lectura 2, ejercicio 7: Borel--Cantelli]\label{ej:v2-l02-7}\index{Borel--Cantelli, lema de}
 Si $\sum_n\mu(A_n)<\infty$, pruebe que $\mu(\limsup A_n)=0$.
 \end{ejercicio}
-\begin{solucion}
-Para todo $m$, $\limsup A_n\subseteq\bigcup_{n\ge m}A_n$, por lo que $\mu(\limsup A_n)\le\sum_{n\ge m}\mu(A_n)$. Las colas de una serie convergente de términos no negativos tienden a cero. No se necesita que $\mu(X)$ sea finita ni independencia entre los conjuntos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 8]\label{ej:v2-l02-8}
 Pruebe que la $\sigma$-finitud equivale a tener $E_n\uparrow X$ con $\mu(E_n)<\infty$.
 \end{ejercicio}
-\begin{solucion}
-De una partición $(D_n)$ de medida finita, tome $E_n=\bigcup_{j\le n}D_j$; su medida es la suma de un número finito de cantidades finitas. Recíprocamente, a una cubierta creciente aplique $D_1=E_1$, $D_n=E_n\setminus E_{n-1}$. Estos conjuntos son disjuntos, cubren $X$ y satisfacen $\mu(D_n)\le\mu(E_n)<\infty$.
-\end{solucion}

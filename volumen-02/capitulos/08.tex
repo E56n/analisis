@@ -24,21 +24,15 @@ Por comodidad escribimos $f$ para su clase. Una afirmación puntual sobre elemen
 \begin{ejercicio}[Lectura 13, ejercicio 1]\label{ej:v2-l13-1}
 Si $T:V\to U$ es lineal, pruebe $V/\ker T\cong\operatorname{im}T$.
 \end{ejercicio}
-\begin{solucion}
-Definimos $\widetilde T([v])=T(v)$. Si $[v]=[w]$, entonces $v-w\in\ker T$ y $T(v)=T(w)$; por ello está bien definida. Es lineal, su imagen es $\operatorname{im}T$ y su núcleo sólo contiene la clase cero, pues $T(v)=0$ equivale a $v\in\ker T$. Es, por tanto, un isomorfismo algebraico. No se afirma todavía que sea un isomorfismo topológico entre espacios normados.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 13, ejercicio 2]\label{ej:v2-l13-2}
 Demuestre $\dim V=\dim W+\dim(V/W)$ para un subespacio $W$.
 \end{ejercicio}
-\begin{solucion}
-Sea $(w_i)_{i\in I}$ una base de $W$ y extiéndase a una base $(w_i)_{i\in I}\cup(v_j)_{j\in J}$ de $V$. Las clases $[v_j]$ generan $V/W$ porque los términos en $W$ desaparecen al tomar clases. Si una combinación finita $\sum_j a_j[v_j]$ es cero, entonces $\sum_ja_jv_j\in W$; expresarla en la base $(w_i)$ y usar independencia de la base extendida obliga a todos los $a_j$ a ser cero. Así, $([v_j])_{j\in J}$ es una base del cociente. Contar ambos grupos da la identidad, con suma de cardinales cuando las dimensiones son infinitas. En dimensión infinita, la existencia y extensión de bases usa elección.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 13, ejercicio 3]\label{ej:v2-l13-3}
 Si $W\subset\ker T$, construya la aplicación inducida $V/W\to U$ y pruebe su unicidad.
 \end{ejercicio}
-\begin{solucion}
-La fórmula $S([v])=T(v)$ es independiente del representante porque $T$ se anula sobre $W$. Es lineal y satisface $S\circ q=T$, donde $q(v)=[v]$. Si otra aplicación satisface esa identidad, su valor en cualquier clase $q(v)$ debe ser $T(v)$; como $q$ es sobreyectiva, coincide con $S$.
-\end{solucion}
+
 
 \section{Completitud y aproximación por funciones simples}\label{lectura:v2-16}
 \begin{teorema}[Riesz--Fischer para $L^1$]\label{teo:v2-L1-Banach}\index{Riesz--Fischer, teorema de}\index{L1@$L^1$!completitud}
@@ -91,41 +85,27 @@ La separabilidad de $L^1$ no implica separabilidad del álgebra de medida, como 
 \begin{ejercicio}[Lectura 16, ejercicio 1]\label{ej:v2-l16-1}
 Identifique la completación de las funciones Riemann integrables en $[a,b]$ con la seminorma integral.
 \end{ejercicio}
-\begin{solucion}
-Primero se toma el cociente por seminorma cero. La correspondencia con clases de Lebesgue es isométrica, por la igualdad entre las integrales de Riemann y Lebesgue. Su imagen es densa en $L^1([a,b])$: por regularidad, para cada conjunto medible $E\subset[a,b]$ y $\eps>0$ hay un compacto $K\subset E$ y un abierto relativo $U\supset E$ con $m(U\setminus K)<\eps$. Cubrimos $K$ con finitos intervalos contenidos en $U$; su unión $J$ satisface $m(E\triangle J)<\eps$. El indicador de una unión finita de intervalos es Riemann integrable, pues sólo tiene finitos puntos de discontinuidad. Aproximamos así indicadores, después simples, y finalmente funciones de $L^1$. Como $L^1$ es completo, es la completación buscada. El cociente inicial es indispensable para hablar de un espacio normado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v2-l16-2}
 Si $d$ es una seudométrica, pruebe que identificar puntos a distancia cero produce una métrica.
 \end{ejercicio}
-\begin{solucion}
-La relación $x\sim y$ definida por $d(x,y)=0$ es reflexiva y simétrica; es transitiva por la desigualdad triangular. Si $x\sim x'$ y $y\sim y'$, entonces $d(x,y)\le d(x,x')+d(x',y')+d(y',y)=d(x',y')$, y la desigualdad inversa se obtiene intercambiando los pares. Así $\bar d([x],[y])=d(x,y)$ está bien definida. Hereda simetría y desigualdad triangular, y vale cero exactamente para clases iguales.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v2-l16-3}
 Caracterice la separabilidad del cociente mediante una sucesión de representantes.
 \end{ejercicio}
-\begin{solucion}
-Un conjunto numerable de clases es denso si y sólo si, escogiendo un representante $x_n$ de cada clase, para todo $x$ y $\eps>0$ existe $n$ con $d(x,x_n)<\eps$. Esta equivalencia es inmediata de la definición de la métrica cociente; sólo usa una elección numerable de representantes. En particular, la formulación no exige que $d$ separe puntos en el espacio original.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v2-l16-4}
 Compare la separabilidad del álgebra de medida de $\N$ con medida de conteo y la de su espacio $L^1$.
 \end{ejercicio}
-\begin{solucion}
-Dos subconjuntos distintos tienen diferencia simétrica de medida al menos uno, de modo que $d_\mu\ge1/2$. El álgebra de medida es por tanto un espacio discreto no numerable, pues $\mathcal P(\N)$ es no numerable; no es separable. En cambio, $L^1$ es $\ell^1(\N)$. Las sucesiones de soporte finito y coordenadas racionales son numerables y densas: primero se corta una cola cuya suma absoluta es pequeña y luego se aproximan las finitas coordenadas restantes.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v2-l16-5}
 Pruebe que $L^1(\R,m)$ es separable.
 \end{ejercicio}
-\begin{solucion}
-Las combinaciones finitas con coeficientes racionales de indicadores de intervalos acotados con extremos racionales forman una familia numerable. Para aproximar un conjunto medible $E$ de medida finita, primero cortamos fuera de $[-M,M]$ con pérdida pequeña, por continuidad desde abajo. La regularidad aproxima la parte restante por una unión finita de intervalos, como en el ejercicio \ref{ej:v2-l16-1}. Mover sus finitos extremos a racionales cambia la medida de la unión a lo sumo en la suma de los desplazamientos. Esto aproxima $\ind E$ en $L^1$; la densidad de simples y la aproximación de coeficientes completan el argumento. En el caso complejo usamos coeficientes de $\Q+i\Q$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v2-l16-6}
 Examine la afirmación de que la medida de conteo en la $\sigma$-álgebra numerable--conumerable de $\R$ produce $L^1$ separable sin ser $\sigma$-finita. Dé una versión correcta.
 \end{ejercicio}
-\begin{solucion}
-Con medida de conteo, cada indicador de un punto pertenece a $L^1$, y dos de ellos distan dos. Esta familia no numerable demuestra que $L^1$ \emph{no} es separable. De hecho, cada función integrable tiene soporte numerable, porque cada conjunto $\{|f|\ge1/n\}$ debe ser finito; el espacio resultante es $\ell^1(\R)$, no $\ell^1(\N)$. La medida no es $\sigma$-finita porque una unión numerable de conjuntos finitos no cubre $\R$.
 
-Una versión correcta mantiene la misma $\sigma$-álgebra y define $\nu(A)=0$ si $A$ es numerable, $\nu(A)=\infty$ si es conumerable. Es una medida: en una familia disjunta hay a lo sumo un conjunto conumerable; si no lo hay, la unión numerable es numerable. No es $\sigma$-finita. Si $f$ es integrable, cada $\{|f|>1/n\}$ tiene medida finita y por tanto cero; su unión es nula, así que $f=0$ casi en todas partes. Luego $L^1(\nu)=\{0\}$ es separable. Este ejemplo no es semifinito, precisamente la hipótesis adicional del teorema \ref{teo:v2-medida-separable}.
-\end{solucion}
 
 \section{Convergencia en media y control de la masa}\label{lectura:v2-17}
 \begin{definicion}
@@ -179,67 +159,31 @@ La condición $\mu(A)<\infty$ en (ii) es necesaria. Sin ella se podría tomar $A
 \begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v2-l17-1}
 Demuestre la unicidad del límite en media.
 \end{ejercicio}
-\begin{solucion}
-Si $f_n\to f$ y $f_n\to g$ en media, entonces $\|f-g\|_1\le\|f-f_n\|_1+\|f_n-g\|_1\to0$. Por tanto $f=g$ casi en todas partes, es decir, representan el mismo elemento de $L^1$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 2]\label{ej:v2-l17-2}
 Analice $f_n=n\ind{[1/n,2/n]}$ en $[0,1]$.
 \end{ejercicio}
-\begin{solucion}
-Para $n\ge2$ el soporte tiene medida $1/n$, así que $\|f_n\|_1=1$. Cada $x>0$ sale definitivamente del soporte y $f_n(0)=0$; hay convergencia puntual a cero. Para cualquier umbral $a$, desde $n>a$ la medida del conjunto malo es $1/n$, por lo que también hay convergencia en medida. No converge a cero en media; tampoco a otro límite en media, pues la convergencia en medida y su unicidad obligarían a que ese límite fuese cero.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v2-l17-3}
 Si $f_n\to f$ en medida y $|f_n|\le g\in L^1$, pruebe $\int f_n\to\int f$.
 \end{ejercicio}
-\begin{solucion}
-El teorema \ref{teo:v2-dominada-medida} da $f\in L^1$ y $\|f_n-f\|_1\to0$. Entonces $|\int f_n-\int f|\le\int|f_n-f|\to0$. El paso por una subsucesión casi en todas partes es lo que permite aplicar convergencia dominada aunque la hipótesis inicial sea sólo convergencia en medida.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v2-l17-4}
 Compare las condiciones de control de masa de Vitali cuando $|f_n|\le g\in L^1$.
 \end{ejercicio}
-\begin{solucion}
-Ambas condiciones se cumplen automáticamente. El conjunto $A$ de medida finita del lema \ref{lema:v2-control-integral} da $\int_{X\setminus A}|f_n|\le\int_{X\setminus A}g<\eps$ uniformemente en $n$. La tolerancia $\delta$ del mismo lema da $\int_E|f_n|\le\int_Eg<\eps$ cuando $\mu(E)<\delta$. Así, dentro de una familia dominada, las dos condiciones son equivalentes en el sentido de que ambas son verdaderas. Sin dominación no son intercambiables: los indicadores de intervalos trasladados de longitud uno tienen continuidad absoluta uniforme pero no el control exterior; las funciones $n\ind{(0,1/n)}$ tienen soporte común finito pero no continuidad absoluta uniforme.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 5: Jensen]\label{ej:v2-l17-5}\index{Jensen, desigualdad de}
 Sea $\mu(X)=1$, $f\in L^1$ real y $\varphi:\R\to\R$ convexa. Pruebe continuidad de $\varphi$, existencia de una recta de soporte en cada punto y $\varphi(\int f)\le\int\varphi(f)$.
 \end{ejercicio}
-\begin{solucion}
-Si $a<b<c$, escribir $b$ como combinación convexa de $a,c$ da
-\[\frac{\varphi(b)-\varphi(a)}{b-a}\le\frac{\varphi(c)-\varphi(a)}{c-a}\le\frac{\varphi(c)-\varphi(b)}{c-b}.
-\]
-Fijemos $u<a<b<v$. Para cualesquiera $a\le x<y\le b$, aplicaciones sucesivas de estas desigualdades dan
-\[\frac{\varphi(a)-\varphi(u)}{a-u}\le\frac{\varphi(y)-\varphi(x)}{y-x}\le\frac{\varphi(v)-\varphi(b)}{v-b}.
-\]
-Los dos extremos son números finitos independientes de $x,y$. Tomando el máximo de sus valores absolutos obtenemos una constante de Lipschitz en $[a,b]$. Todo punto pertenece al interior de un intervalo así, por lo que $\varphi$ es continua.
 
-En un punto $m$, las pendientes de cuerdas que llegan desde la izquierda no exceden ninguna pendiente de cuerda que sale hacia la derecha. Su supremo $a_-$ y el ínfimo $a_+$ de las de la derecha son finitos, por las cotas locales anteriores, y $a_-\le a_+$. Elijamos $a\in[a_-,a_+]$. Para $t<m$, la comparación de pendientes, multiplicada por $t-m<0$, da $\varphi(t)\ge\varphi(m)+a(t-m)$; para $t>m$ se obtiene la misma desigualdad directamente. Es la recta de soporte.
-
-Tomemos $m=\int f$. Por continuidad, $\varphi\circ f$ es medible. La recta inferior muestra que su parte negativa está dominada por $|\varphi(m)-am|+|a||f|$, que es integrable porque $\mu(X)=1$. Su integral extendida está, por tanto, bien definida, aunque puede valer $+\infty$. Al integrar la desigualdad de soporte obtenemos
-\[\int\varphi(f)\,d\mu\ge\varphi(m)+a\left(\int f-m\right)=\varphi(m).
-\]
-No puede afirmarse siempre integrabilidad finita: en $(0,1)$, $f(x)=x^{-1/2}$ es integrable pero para $\varphi(t)=t^2$ la integral de $\varphi(f)$ es infinita.
-\end{solucion}
 \begin{ejercicio}[Lectura 17, ejercicio 6]\label{ej:v2-l17-6}
 Si $\mu(X)<\infty$, $\varphi$ es continua y $|\varphi(t)|\le K|t|$ para $|t|\ge K$, demuestre que $f\in L^1$ real implica $\varphi\circ f\in L^1$. Establezca la versión para medida infinita.
 \end{ejercicio}
-\begin{solucion}
-La continuidad da $M=\max_{|t|\le K}|\varphi(t)|<\infty$. Para todo $t$, $|\varphi(t)|\le M+K|t|$, y por ello $\int|\varphi(f)|\le M\mu(X)+K\|f\|_1<\infty$. Si la medida es infinita, basta exigir la cota global $|\varphi(t)|\le K|t|$ para todo $t$; entonces el término constante desaparece. La hipótesis sólo para valores grandes no basta en medida infinita: $\varphi\equiv1$ y $f\equiv0$ dan un contraejemplo.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 7]\label{ej:v2-l17-7}
 Bajo las hipótesis del ejercicio \ref{ej:v2-l17-6}, pruebe que $f_n\to f$ en $L^1$ implica $\varphi(f_n)\to\varphi(f)$ en $L^1$.
 \end{ejercicio}
-\begin{solucion}
-De cualquier subsucesión podemos extraer otra, denotada $f_{n_k}$, con $\sum_k\|f_{n_k}-f\|_1<\infty$. Entonces
-\[H=|f|+\sum_k|f_{n_k}-f|\in L^1,
-\]
-y fuera de un conjunto nulo se tiene $|f_{n_k}|\le H$ y $f_{n_k}\to f$, porque la serie de diferencias absolutas es finita. La continuidad de $\varphi$ da convergencia puntual de las composiciones. En medida finita, $|\varphi(f_{n_k})|+|\varphi(f)|\le2M+2KH$; en la versión de medida infinita, la cota es $2KH$. Son dominantes integrables, así que convergencia dominada da convergencia en $L^1$ de esta subsucesión de composiciones. Si la sucesión completa no convergiera en norma, alguna subsucesión tendría sus distancias al límite acotadas inferiormente por un número positivo y no podría admitir la subsucesión que acabamos de construir. Esto concluye el argumento sin exigir continuidad uniforme de $\varphi$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 17, ejercicio 8]\label{ej:v2-l17-8}
 Si $f\in L^1(\R)$ y $f_x(t)=f(t-x)$, pruebe que $x\mapsto f_x$ es continua con valores en $L^1$.
 \end{ejercicio}
-\begin{solucion}
-La invariancia de la medida de Lebesgue muestra $\|f_x\|_1=\|f\|_1$. Para un intervalo acotado $I$, $\|\ind I(\cdot-h)-\ind I\|_1=m((I+h)\triangle I)\le2|h|$. La desigualdad triangular da continuidad de las traslaciones para toda combinación finita de indicadores de intervalos. Esas funciones son densas en $L^1$ por el ejercicio \ref{ej:v2-l16-5}. Dado $\eps>0$, escojamos una de ellas, $s$, con $\|f-s\|_1<\eps/3$. Entonces
-\[\|f(\cdot-h)-f\|_1\le2\|f-s\|_1+\|s(\cdot-h)-s\|_1<\eps
-\]
-si $|h|$ es suficientemente pequeño. Por la isometría de las traslaciones, $\|f_x-f_{x_0}\|_1=\|f_{x-x_0}-f\|_1$, lo cual prueba continuidad en cualquier $x_0$.
-\end{solucion}

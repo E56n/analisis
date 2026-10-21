@@ -85,28 +85,15 @@ La lectura 7 no contiene una lista final de ejercicios; sus comprobaciones sobre
 \begin{ejercicio}[Lectura 8, ejercicio 1]\label{ej:v2-l08-1}
 Justifique la fórmula de la integral para una representación no canónica $s=\sum_{k=1}^m\alpha_k\ind{A_k}$ de una función simple no negativa.
 \end{ejercicio}
-\begin{solucion}
-Si $\alpha_k\ge0$, las celdas determinadas por todas las pertenencias a los $A_k$ forman una partición finita. En cada celda $C$, $s$ es la suma de los coeficientes cuyos conjuntos contienen $C$. Al sumar ese valor multiplicado por $\mu(C)$ e intercambiar las dos sumas finitas, el coeficiente $\alpha_k$ queda multiplicado por la suma de las medidas de las celdas que componen $A_k$, esto es, $\mu(A_k)$. Por tanto $\int s=\sum_k\alpha_k\mu(A_k)$, como se detalló en la proposición \ref{prop:v2-integralsimple}.
 
-Si se permiten coeficientes negativos, la fórmula exige que el lado derecho esté definido; por ejemplo, basta que todos los conjuntos con coeficiente no nulo tengan medida finita. Sin esa precaución, $0=\ind X-\ind X$ en un espacio de medida infinita produciría $\infty-\infty$. La no negatividad de $s$ por sí sola no elimina ese problema en una representación con coeficientes de signos distintos.
-\end{solucion}
 \begin{ejercicio}[Lectura 8, ejercicio 2]\label{ej:v2-l08-2}
 Si $s,t$ son simples no negativas y $s\le t$ casi en todas partes, pruebe $\int s\le\int t$.
 \end{ejercicio}
-\begin{solucion}
-El conjunto medible $N=\{s>t\}$ es nulo. Las funciones $s\ind{X\setminus N}$ y $t\ind{X\setminus N}$ satisfacen la desigualdad en todo punto. Sus integrales coinciden con las de $s,t$ porque las partes sobre $N$ tienen integral cero. Aplicar monotonía puntual concluye.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 8, ejercicio 3]\label{ej:v2-l08-3}
 Si $f\ge0$ es medible y $\int f<\infty$, pruebe: (i) $\{f>0\}$ es $\sigma$-finito; (ii) $\{f=\infty\}$ es nulo.
 \end{ejercicio}
-\begin{solucion}
-(i) Para $E_n=\{f\ge1/n\}$, la simple $n^{-1}\ind{E_n}\le f$ da $\mu(E_n)/n\le\int f$, de donde $\mu(E_n)<\infty$. Los $E_n$ crecen y su unión es $\{f>0\}$. El ejercicio \ref{ej:v2-l02-8}, aplicado a ese espacio restringido, prueba $\sigma$-finitud.
 
-(ii) Si $Z=\{f=\infty\}$, para cada entero $m>0$ se tiene $m\ind Z\le f$, luego $m\mu(Z)\le\int f$. Por tanto $\mu(Z)\le m^{-1}\int f$ para todo $m$, y hacer $m\to\infty$ da cero. La integrabilidad permite infinitos puntuales, pero solamente en un conjunto nulo.
-\end{solucion}
 \begin{ejercicio}[Lectura 8, ejercicio 4]\label{ej:v2-l08-4}
 En $\N$ con la medida de conteo, pruebe que $\int_\N f\,d\mu_c=\sum_na_n$ para $f(n)=a_n\ge0$.
 \end{ejercicio}
-\begin{solucion}
-Para cada $m$, la función $s_m=\sum_{n=1}^ma_n\ind{\{n\}}$ es simple y menor o igual que $f$ si los $a_n$ son finitos. Por ello $\int f\ge\sum_{n\le m}a_n$ y, tomando supremo, $\int f\ge\sum_na_n$. Para la otra desigualdad, si $s=\sum_{j=1}^rb_j\ind{B_j}\le f$ es simple no negativa, su integral es $\sum_jb_j\mu_c(B_j)=\sum_ns(n)\le\sum_na_n$: la igualdad intermedia se comprueba agrupando los términos según los niveles de $s$, con suma infinita cuando un nivel positivo tiene infinitos puntos. Tomar supremo sobre $s$ da la desigualdad inversa. Si algún $a_n=\infty$, las simples $M\ind{\{n\}}\le f$ para todo $M$ fuerzan integral infinita, de acuerdo con la serie.
-\end{solucion}

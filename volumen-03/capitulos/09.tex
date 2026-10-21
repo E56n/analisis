@@ -86,80 +86,32 @@ En sentido inverso, supongamos que una métrica induce la topología débil* en 
 \begin{ejercicio}[Lectura 16, ejercicio 1; formulación precisa]\label{ej:v3-l16-1}
 Sean $\tau$ y $\tau'$ topologías en un mismo conjunto, con $(K,\tau)$ compacto y $(K,\tau')$ Hausdorff. Si $\tau'\subseteq\tau$, pruebe mediante redes que $\tau'=\tau$.
 \end{ejercicio}
-\begin{solucion}
-Sea una red que converge a $x$ para $\tau'$. Si no convergiera para $\tau$, existiría una vecindad $U$ de $x$ para $\tau$ y una subred enteramente fuera de $U$. Por compacidad, esta subred tiene una subred adicional que converge para $\tau$ a algún $y$. Como $K\setminus U$ es $\tau$-cerrado, $y\notin U$. La inclusión $\tau'\subseteq\tau$ implica que esa última subred converge también para $\tau'$ a $y$. Pero toda subred de la red inicial converge para $\tau'$ a $x$; la propiedad Hausdorff fuerza $y=x$, contradicción.
 
-Así toda red convergente para $\tau'$ converge para $\tau$. El criterio de continuidad por redes implica $\tau\subseteq\tau'$, y tenemos igualdad. La afirmación original con «$\tau'\not\subseteq\tau$» excluiría incluso la igualdad y es falsa. Lo que se prohíbe es una topología Hausdorff \emph{estrictamente} más gruesa que una topología compacta.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v3-l16-2}
 Sea $(f_n:X\to Y_n)$ una familia numerable que separa puntos y suponga que cada $Y_n$ es métrico. Construya una métrica en $X$ que induzca la topología inicial de estas aplicaciones. Deduzca que un compacto con una familia numerable de funciones \emph{continuas} complejas que separa puntos es metrizable.
 \end{ejercicio}
-\begin{solucion}
-Si $d_n$ es la métrica de $Y_n$, definimos
-\[
- d(x,y)=\sum_{n\geq1}2^{-n}\min\{1,d_n(f_n(x),f_n(y))\}.
-\]
-Las verificaciones de métrica son las mismas del teorema \ref{v3:bola-dual-metrizable}; la separación de puntos asegura que $d(x,y)=0$ sólo para $x=y$. La convergencia para $d$ implica convergencia de cada coordenada, porque cada término de la suma tiende a cero. La convergencia de todas las coordenadas implica convergencia para $d$, separando una cola pequeña y un número finito de términos iniciales. Estos argumentos valen para redes, de modo que $d$ induce exactamente la topología inicial.
 
-Para completar el criterio empleado, si $\tau_1$ es más fina que $\tau_2$, toda red $\tau_1$-convergente converge para $\tau_2$. Si la inclusión falla, existe un abierto $U$ de $\tau_2$ y $x\in U$ sin vecindad $\tau_1$ contenida en $U$. Para cada vecindad $V$ de $x$ en $\tau_1$ elegimos $x_V\in V\setminus U$, dirigiendo las vecindades por inclusión inversa. La red converge para $\tau_1$ a $x$ pero no para $\tau_2$. Esto prueba el recíproco del criterio.
-
-En el caso compacto, la continuidad de las $f_n$ implica que la topología métrica inicial es más gruesa que la original. La primera es Hausdorff y la segunda es compacta; el ejercicio anterior prueba su igualdad. Sin continuidad, la conclusión sobre la topología original es falsa: $\N$ con la topología cofinita es compacto y admite una aplicación inyectiva en $\R$, pero no es Hausdorff ni metrizable. La construcción de una métrica en un conjunto no identifica automáticamente una topología previamente dada.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v3-l16-3}
 Si $X$ es Banach, pruebe que toda sucesión de Cauchy débil* en $X^*$ converge débil*.
 \end{ejercicio}
-\begin{solucion}
-Para cada $x$, la sucesión escalar $\varphi_n(x)$ es de Cauchy y converge. Definamos $\varphi(x)=\lim_n\varphi_n(x)$. Pasar al límite en las igualdades de linealidad muestra que $\varphi$ es lineal. Cada sucesión $\varphi_n(x)$ es acotada; acotación uniforme da $M=\sup_n\norm{\varphi_n}<\infty$. Por tanto $|\varphi(x)|\leq M\norm x$ y $\varphi\in X^*$. La propia definición del límite muestra convergencia débil*.
 
-La sugerencia mediante compacidad también funciona para esta sucesión, que es acotada: Alaoglu proporciona una subred convergente, y una red de Cauchy con una subred convergente converge al mismo límite. Para verificarlo en una medición $x$, fijamos un umbral que haga $|\varphi_\alpha(x)-\varphi_\beta(x)|<\eps/2$ y elegimos un término de la subred posterior a ese umbral y a distancia menor que $\eps/2$ del límite. La desigualdad triangular controla toda la cola. El ejemplo \ref{v3:red-no-acotada} explica por qué no se puede afirmar acotación eventual para redes arbitrarias.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v3-l16-4}
 Sean $1<p<\infty$, $1/p+1/q=1$, y $(u_\alpha)$ una red en $\ell^q=(\ell^p)^*$. Pruebe: (i) la convergencia débil* a $u$ implica convergencia de cada coordenada; (ii) si la red es acotada en norma y converge coordenada a coordenada a $u\in\ell^q$, converge débil* a $u$.
 \end{ejercicio}
-\begin{solucion}
-(i) Se evalúa en el vector coordenado $e_k\in\ell^p$; el emparejamiento es $\sum_kx_ku_\alpha(k)$, y el resultado de esa evaluación es $u_\alpha(k)$.
 
-(ii) Sea $M=\sup_\alpha\norm{u_\alpha}_q<\infty$. Para $x\in\ell^p$ y su truncamiento $x^{(N)}$,
-\[
- \left|\sum_kx_k(u_\alpha(k)-u(k))\right|
- \leq(M+\norm u_q)\norm{x-x^{(N)}}_p
-       +\left|\sum_{k=1}^Nx_k(u_\alpha(k)-u(k))\right|.
-\]
-La cola se hace pequeña eligiendo $N$, por Hölder. La suma finita se hace pequeña después, por convergencia de las coordenadas y la dirección del conjunto de índices. Esta es convergencia contra todo $x\in\ell^p$, que define la convergencia débil*. No se ha supuesto que convergencia coordenada implique convergencia en norma.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v3-l16-5}
 Demuestre las dos afirmaciones anteriores para $\ell^1=(c_0)^*$ y $\ell^\infty=(\ell^1)^*$, indicando en cada caso el predual.
 \end{ejercicio}
-\begin{solucion}
-Para $\ell^1$ el espacio de prueba es $c_0$. Las evaluaciones en $e_k$ dan la primera dirección. Si $\sup_\alpha\norm{u_\alpha}_1=M$, para $x\in c_0$ la cola de la diferencia del emparejamiento está acotada por
-\[
- (M+\norm u_1)\sup_{k>N}|x_k|,
-\]
-que tiende a cero. Las primeras $N$ coordenadas se controlan como en el ejercicio anterior.
 
-Para $\ell^\infty$ el espacio de prueba es $\ell^1$. La primera dirección usa otra vez $e_k$. Bajo acotación uniforme de $u_\alpha$ en $\ell^\infty$, la cola está acotada por
-$(M+\norm u_\infty)\sum_{k>N}|x_k|$, que tiende a cero. Esto prueba la segunda dirección. El nombre «débil*» depende del predual elegido: en particular, no se identifica automáticamente la topología débil de $\ell^1$ con la topología $\sigma(\ell^1,c_0)$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v3-l16-6}
 Pruebe que todo espacio normado separable se encaja lineal e isométricamente (i) en $C(\mathcal C)$, donde $\mathcal C$ es el conjunto de Cantor; (ii) en $C([0,1])$.
 \end{ejercicio}
-\begin{solucion}
-(i) Los teoremas \ref{v3:encaje-CK} y \ref{v3:bola-dual-metrizable} dan un encaje $T:X\to C(K)$ con $K$ compacto métrico no vacío. El teorema «Todo compacto métrico no vacío es imagen de Cantor», demostrado en el capítulo 7 del volumen I, proporciona una sobreyección continua $p:\mathcal C\to K$. El operador $U:C(K)\to C(\mathcal C)$, $Ug=g\circ p$, es lineal, y
-$\norm{Ug}_\infty=\sup_{z\in\mathcal C}|g(p(z))|=\sup_{y\in K}|g(y)|$ por sobreyectividad. Así $UT$ es el encaje buscado.
 
-(ii) Construiremos una extensión \emph{lineal} e isométrica $E:C(\mathcal C)\to C([0,1])$. Dejamos $Eg=g$ en $\mathcal C$. En cada intervalo componente $(a,b)$ de $[0,1]\setminus\mathcal C$, definimos
-\[
- Eg(t)=\frac{b-t}{b-a}g(a)+\frac{t-a}{b-a}g(b).
-\]
-Los extremos pertenecen a $\mathcal C$. La fórmula es lineal en $g$ y una combinación convexa de valores de módulo a lo sumo $\norm g_\infty$, luego $\norm{Eg}_\infty\leq\norm g_\infty$. La restricción a $\mathcal C$ da la desigualdad inversa.
-
-Para verificar continuidad, fijemos $\eps>0$ y usemos continuidad uniforme de $g$ para escoger $\delta>0$. En los intervalos de longitud menor que $\delta$, ambos valores extremos están próximos a cualquier punto de Cantor que esté próximo al intervalo; la combinación convexa conserva la cota de oscilación. Sólo hay un número finito de intervalos complementarios de longitud al menos $\delta$, porque son disjuntos y su longitud total es a lo sumo uno. En cada uno, la interpolación es continua hasta los extremos y coincide allí con $g$. El mínimo de un número finito de radios controla esos intervalos; los restantes se controlan por la continuidad uniforme. Esto demuestra continuidad en los puntos de Cantor; en el interior de los intervalos ya era evidente. La composición $EUT$ satisface (ii).
-\end{solucion}
 
 \section{Familias normantes y Eberlein--Šmulian}\label{lec:v3-17}
 \fuentelectura{17}{El teorema de Eberlein--Šmulian}
@@ -229,60 +181,27 @@ Para cada $\varphi\in A$, a partir de cierto índice pertenece a todos los $A_n$
 \begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v3-l17-1}
 En $(\ell^\infty)^*$ considere $\varphi_n(x)=x_n$. Pruebe que pertenecen a la bola unitaria y que ninguna subsucesión converge débil*. Concluya que compacidad débil* no implica compacidad secuencial débil*.
 \end{ejercicio}
-\begin{solucion}
-La cota $|x_n|\leq\norm x_\infty$ da $\norm{\varphi_n}\leq1$, y evaluar en $e_n$ da igualdad. Dada una subsucesión con índices $n_j$, definamos $x\in\ell^\infty$ por $x_{n_j}=(-1)^j$ y cero en los demás índices. Entonces $\varphi_{n_j}(x)=(-1)^j$ no converge, por lo que la subsucesión no puede converger débil*. Alaoglu asegura, sin embargo, compacidad débil* de toda la bola. Esto da un contraejemplo explícito y verificable, sin recurrir a la afirmación no desarrollada de la lectura sobre partes fraccionarias en un producto no numerable.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 17, ejercicio 2: lema de Mazur]\label{ej:v3-l17-2}\label{v3:mazur}
 Si $x_n\rightharpoonup x$ en un espacio de Banach, pruebe que $x$ pertenece al cierre en norma de la envolvente convexa de los $x_n$. Más precisamente, encuentre $y_n\in\co\{x_k:k\geq n\}$ con $\norm{y_n-x}\to0$.
 \end{ejercicio}
-\begin{solucion}
-Para cada $n$, sea $C_n=\overline{\co\{x_k:k\geq n\}}$ en norma. Un cerrado convexo es débilmente cerrado: si un punto está fuera, separación estricta por un funcional continuo produce una vecindad débil del punto que evita el convexo. Como toda la cola está en $C_n$ y converge débilmente a $x$, tenemos $x\in C_n$. Por la definición de clausura en norma, existe una combinación convexa finita $y_n$ de la cola con $\norm{y_n-x}<1/n$. Para $n=1$ se obtiene la primera afirmación, y la elección para cada $n$ da el refinamiento. La completitud no interviene en este argumento; el lema vale en todo espacio normado.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v3-l17-3}
 Pruebe: (i) $X$ admite una familia numerable $\alpha$-normante para algún $0<\alpha<1$ si y sólo si existe $T\in\Bcal(X,\ell^\infty)$ y $\beta>0$ con $\norm{Tx}_\infty\geq\beta\norm x$; (ii) admite una familia numerable $1$-normante si y sólo si se encaja lineal e isométricamente en $\ell^\infty$. Deduzca que todo Banach separable se encaja como subespacio cerrado de $\ell^\infty$.
 \end{ejercicio}
-\begin{solucion}
-Si $(\varphi_n)$ es normante, omitamos los funcionales cero y normalicemos los demás a norma uno, repitiendo términos si la familia es finita. Definamos $Tx=(\varphi_n(x))_n$. Es lineal y
-$\alpha\norm x\leq\norm{Tx}_\infty\leq\norm x$. Esto prueba una dirección de (i); si $\alpha=1$, prueba una dirección de (ii).
 
-Recíprocamente, sean $\psi_n=e_n^*\circ T$ los funcionales coordenados. Tienen norma a lo sumo $\norm T$. Para $X\ne\{0\}$, la cota inferior obliga a $\norm T>0$, y
-\[
- \sup_{\psi_n\ne0}\frac{|\psi_n(x)|}{\norm{\psi_n}}
- \geq\frac{\norm{Tx}_\infty}{\norm T}
- \geq\frac\beta{\norm T}\norm x.
-\]
-Elegir un $\alpha\in(0,1)$ menor que $\beta/\norm T$ prueba (i). Si $T$ es isométrico, $\norm{\psi_n}\leq1$ y la misma desigualdad da un supremo al menos $\norm x$; la cota general de todo funcional normalizado da la igualdad, que es (ii). El caso $X=\{0\}$ se trata con el único mapa cero y una familia vacía, interpretando el supremo como cero.
-
-Por el lema \ref{v3:normantes-finitos}, un espacio separable admite una familia numerable $1$-normante. Su imagen isométrica en $\ell^\infty$ es cerrada si es completo. La letra $X$ en el dominio del enunciado original se interpreta aquí como el mismo espacio estudiado, sin introducir un espacio diferente.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v3-l17-4}
 Para un subespacio $Y\subset X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$ mediante evaluación; (ii) $J_X(Y)\subset X^{**}$ es $\alpha$-normante para $X^*$ para algún $0<\alpha<1$; (iii) $\overline Y=X$.
 \end{ejercicio}
-\begin{solucion}
-Si (iii) vale, todo funcional que se anula en $Y$ se anula por continuidad en $X$; esto es (i). Si (i) vale y $\overline Y$ fuera propio, Hahn--Banach daría un funcional no nulo que se anula en $Y$, contradicción; así (i) implica (iii).
 
-Bajo densidad, para $\varphi\in X^*$ tenemos
-\[
- \sup_{y\in Y\setminus\{0\}}\frac{|\varphi(y)|}{\norm y}=\norm\varphi.
-\]
-La cota superior es la definición de norma. Para la inferior, aproximamos cualquier vector unitario $x$ por $y_n\in Y$, de donde $\norm{y_n}\to1$ y $\varphi(y_n)\to\varphi(x)$; después tomamos el supremo sobre $x$. Por tanto $Y$ es incluso $1$-normante, y se obtiene (ii). Finalmente, (ii) obliga a que un funcional que se anula en $Y$ tenga norma cero, lo cual da (i).
-\end{solucion}
 
 \begin{ejercicio}[Lectura 17, ejercicio 5]\label{ej:v3-l17-5}
 En $\ell^2$ sea $v_n=n^{1/4}e_n$. Pruebe: (i) cero es punto de acumulación débil del conjunto de términos; (ii) ninguna subsucesión converge débilmente. Explique por qué no hay contradicción con Eberlein--Šmulian.
 \end{ejercicio}
-\begin{solucion}
-(i) Una vecindad básica débil de cero exige $|\ip{v_n}{a^j}|<\eps$ para $j=1,\ldots,m$, con $a^j\in\ell^2$. Si sólo un número finito de índices satisficiera simultáneamente esas desigualdades, para todo $n$ suficientemente grande tendríamos
-\[
- \sum_{j=1}^m|a_n^j|^2\geq\eps^2n^{-1/2}.
-\]
-Sumar en $n$ contradice que cada $a^j$ sea cuadrado sumable, pues $\sum n^{-1/2}$ diverge. Así toda vecindad contiene términos con índices arbitrariamente grandes; en particular, cero es punto de acumulación.
 
-(ii) Toda sucesión débilmente convergente está acotada en norma por acotación uniforme. Pero en cualquier subsucesión $\norm{v_{n_j}}=n_j^{1/4}\to\infty$. Ninguna puede converger débilmente. Eberlein--Šmulian caracteriza conjuntos compactos, no afirma que toda adherencia débil sea detectable por una subsucesión de la sucesión dada. Aquí el conjunto de términos es no acotado y no es débilmente compacto; una red sí puede converger desde él a cero.
-\end{solucion}
 
 
 \begin{ejemplo}[Un producto compacto que no es secuencialmente compacto]
@@ -406,45 +325,23 @@ La restricción $x\in B_X$ no puede omitirse. Si $\varphi\ne0$, elija $u$ con $\
 \begin{ejercicio}[Lectura 18, ejercicio 1]\label{ej:v3-l18-1}
 Si $X$ es un espacio de Banach reflexivo y $Y$ es un subespacio cerrado, pruebe que $Y$ y $X/Y$ son reflexivos.
 \end{ejercicio}
-\begin{solucion}
-Para $Y$, la bola $B_Y=Y\cap B_X$ es débilmente compacta y la topología inducida es la débil propia de $Y$, por extensión de funcionales mediante Hahn--Banach; esto demuestra la primera afirmación. El cociente $X/Y$ es Banach por el teorema del volumen I. Sea $(z_n)$ una sucesión acotada en él. Por la definición de norma cociente podemos elegir representantes $x_n\in X$ tales que $x_n+Y=z_n$ y $\norm{x_n}\leq\norm{z_n}+1$. No necesitamos que el ínfimo se alcance. La sucesión $(x_n)$ es acotada y tiene una subsucesión débilmente convergente a cierto $x$. El mapa cociente $q$ es lineal continuo, y para cada $\psi\in(X/Y)^*$ el funcional $\psi\circ q$ pertenece a $X^*$. Así $q(x_{n_j})\rightharpoonup q(x)$. El criterio secuencial de reflexividad aplicado a $X/Y$ concluye la prueba.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 18, ejercicio 2]\label{ej:v3-l18-2}
 Pruebe que un espacio de Banach $X$ es reflexivo si y sólo si $X^*$ lo es.
 \end{ejercicio}
-\begin{solucion}
-Si $X$ es reflexivo, todos los elementos de $X^{**}$ son evaluaciones en vectores de $X$. Por tanto las topologías $\sigma(X^*,X^{**})$ y $\sigma(X^*,X)$ coinciden: la débil y la débil* son iguales en $X^*$. Alaoglu hace débilmente compacta a $B_{X^*}$, luego $X^*$ es reflexivo.
 
-Recíprocamente, si $X^*$ es reflexivo, la dirección ya demostrada, aplicada a $X^*$, dice que $X^{**}$ es reflexivo. Como $X$ es completo, su imagen isométrica $J_X(X)$ es cerrada en $X^{**}$. Es, pues, un subespacio reflexivo. La isometría $J_X$ y su inversa sobre la imagen son continuas y preservan convergencia débil; por el criterio de sucesiones acotadas, $X$ es reflexivo.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 18, ejercicio 3; hipótesis precisadas]\label{ej:v3-l18-3}
 Sea $X\ne\{0\}$ un espacio de Banach reflexivo y sea $T:X\to\F^n$ lineal \emph{continuo}. Pruebe que existe $x\in X$ con $\norm x=1$ y $\norm{Tx}=\norm T$.
 \end{ejercicio}
-\begin{solucion}
-Si $T=0$, cualquier vector unitario sirve. Si $T\ne0$, elija vectores unitarios $x_k$ tales que $\norm{Tx_k}\to\norm T$. Una subsucesión converge débilmente a algún $x\in B_X$. Las coordenadas de $Tx_{k_j}$ convergen a las de $Tx$, pues son funcionales continuos sobre $X$. En dimensión finita la convergencia de coordenadas implica convergencia en norma, de modo que $\norm{Tx}=\norm T$. La desigualdad $\norm{Tx}\leq\norm T\norm x$ y $\norm T>0$ fuerzan $\norm x\geq1$, luego $\norm x=1$.
 
-La continuidad omitida en el original es necesaria. En $\ell^2$, extienda el conjunto linealmente independiente $\{e_k\}$ a una base de Hamel y defina un funcional algebraico mediante $T(e_k)=k$, con valores cero en los demás elementos de la base. Es lineal, pero no acotado en la esfera; no tiene norma finita que pueda alcanzar. Si $X=\{0\}$, la esfera unitaria es vacía, lo que explica la otra precisión.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 18, ejercicio 4]\label{ej:v3-l18-4}
 Para un subespacio $Y$ de un espacio de Banach $X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$; (ii) $J_X(Y)$ es $\alpha$-normante para $X^*$ para algún $0<\alpha<1$; (iii) $\overline Y=X$.
 \end{ejercicio}
-\begin{solucion}
-Este enunciado se repite en la lectura 17; se conserva su posición original para que ninguna lista quede incompleta. Si $\overline Y=X$, continuidad da que un funcional anulado en $Y$ es cero, así (iii) implica (i). Si $\overline Y\ne X$, Hahn--Banach produce un funcional no nulo anulado en $Y$, de modo que (i) implica (iii). Bajo densidad, aproximar cada vector unitario de $X$ por vectores de $Y$ y normalizarlos demuestra
-\[
- \sup_{y\in Y\setminus\{0\}}\frac{|\varphi(y)|}{\norm y}=\norm\varphi
- \quad(\varphi\in X^*).
-\]
-Así (iii) implica (ii), incluso con constante uno. Finalmente, si un funcional se anula en $Y$, la desigualdad de $\alpha$-normación obliga a que tenga norma cero; esto da (ii)$\Rightarrow$(i). Para $X=\{0\}$ todas las condiciones son triviales, con la convención del supremo vacío igual a cero.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 18, ejercicio 5]\label{ej:v3-l18-5}
 Un operador acotado $T:X\to Y$ entre espacios de Banach se llama de Dunford--Pettis si transforma toda sucesión débilmente convergente en una sucesión convergente en norma. Pruebe que todo operador compacto es de Dunford--Pettis, y que el recíproco vale cuando $X$ es reflexivo.
 \end{ejercicio}
-\begin{solucion}
-Sea $T$ compacto y $x_n\rightharpoonup x$. Por acotación uniforme, $(x_n)$ está acotada. Además $Tx_n\rightharpoonup Tx$, ya que $\psi(Tx_n)=(\psi\circ T)(x_n)\to(\psi\circ T)(x)$ para cada $\psi\in Y^*$. Si $Tx_n$ no convergiera en norma a $Tx$, existirían $\eps>0$ y una subsucesión cuyas distancias a $Tx$ fueran al menos $\eps$. La compacidad de $T$ daría de ella una subsucesión convergente en norma a algún $y$. También convergería débilmente a $y$, y por unicidad del límite débil tendríamos $y=Tx$, contradicción. Así $\norm{Tx_n-Tx}\to0$.
-
-Supongamos ahora que $X$ es reflexivo y $T$ es de Dunford--Pettis. Toda sucesión acotada $(x_n)$ tiene una subsucesión débilmente convergente. Su imagen por $T$ converge en norma. Por tanto toda sucesión en $T(B_X)$ tiene una subsucesión convergente en $Y$. En el espacio métrico completo $Y$, esto equivale a que $T(B_X)$ sea relativamente compacto: si no fuera totalmente acotado se construiría una sucesión uniformemente separada; y la clausura de un conjunto totalmente acotado en un espacio completo es compacta. Concluimos que $T$ es compacto.
-\end{solucion}

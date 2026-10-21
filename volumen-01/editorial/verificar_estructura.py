@@ -1,4 +1,4 @@
-"""Comprueba cobertura, etiquetas y referencias del volumen integrado."""
+"""Comprueba cobertura, etiquetas y referencias de apuntes y solucionario."""
 from collections import Counter
 from pathlib import Path
 import json
@@ -9,10 +9,11 @@ EXPECTED = [7, 7, 9, 6, 9, 8, 7, 7, 1, 10, 6, 3, 8, 6, 6, 5,
             7, 7, 7, 7, 8, 6, 4, 7, 0, 8, 5, 4, 8, 6, 7, 10]
 chapters = sorted((ROOT / "capitulos").glob("*.tex"))
 assert [p.stem for p in chapters] == [f"{i:02}" for i in range(1, 17)]
-body = "\n".join(p.read_text() for p in chapters)
-files = [ROOT / name for name in ("main.tex", "partes.tex", "cobertura.tex",
+body = "\n".join(p.read_text(encoding="utf-8") for p in chapters)
+solutions = (ROOT / "ejercicios-soluciones.tex").read_text(encoding="utf-8")
+files = [ROOT / name for name in ("main.tex", "preambulo.tex", "partes.tex", "cobertura.tex",
                                   "notacion.tex", "referencias.tex")]
-text = body + "\n" + "\n".join(p.read_text() for p in files)
+text = body + "\n" + "\n".join(p.read_text(encoding="utf-8") for p in files)
 labels = re.findall(r"\\label\{([^}]+)\}", text)
 duplicates = [key for key, n in Counter(labels).items() if n > 1]
 assert not duplicates, duplicates
@@ -30,13 +31,16 @@ actual_additions = {key for key in labels if key.startswith("ej:ampl-")}
 assert actual_additions == expected_additions, expected_additions ^ actual_additions
 assert sum(EXPECTED) == 206
 assert body.count(r"\begin{ejercicio}") == 206 + len(expected_additions) == 226
-assert body.count(r"\begin{solucion}") == 226
+assert body.count(r"\begin{solucion}") == 0
+assert solutions.count(r"\begin{solucion}") == 226
+assert re.findall(r"\\begin\{ejercicio\}.*?\\end\{ejercicio\}", body, re.S) == re.findall(
+    r"\\begin\{ejercicio\}.*?\\end\{ejercicio\}", solutions, re.S)
 assert body.count(r"\chapter{") == 16
-assert (ROOT / "partes.tex").read_text().count(r"\parte{") == 6
+assert (ROOT / "partes.tex").read_text(encoding="utf-8").count(r"\parte{") == 6
 for n in range(1, 33):
     assert f"lectura:{n:02}" in labels and f"chap:{n:02}" in labels
 for path in chapters:
-    source = path.read_text()
+    source = path.read_text(encoding="utf-8")
     assert Counter(re.findall(r"\\begin\{([^}]+)\}", source)) == Counter(
         re.findall(r"\\end\{([^}]+)\}", source)), path.name
 citations = set()
@@ -47,16 +51,16 @@ assert citations <= bibkeys, citations - bibkeys
 result = {
     "partes": 6, "capitulos": 16, "lecturas_originales": 32,
     "ejercicios_originales": 206, "ejercicios_ampliacion": 20,
-    "ejercicios": 226, "soluciones": 226,
+    "ejercicios": 226, "soluciones": 226, "soluciones_en_apuntes": 0,
     "entradas_indice": body.count(r"\index{"),
     "etiquetas_duplicadas": duplicates,
     "referencias_internas_faltantes": missing,
     "citas": sorted(citations),
     "palabras_aproximadas_fuentes_latex": len(text.split()),
     "ejercicios_por_capitulo": {
-        p.stem: p.read_text().count(r"\begin{ejercicio}") for p in chapters
+        p.stem: p.read_text(encoding="utf-8").count(r"\begin{ejercicio}") for p in chapters
     },
 }
 (ROOT / "editorial/verificacion-estructura.json").write_text(
-    json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(result, ensure_ascii=False, indent=2))
