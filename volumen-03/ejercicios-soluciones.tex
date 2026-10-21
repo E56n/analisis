@@ -1,0 +1,1963 @@
+% Ejercicios y soluciones copiados literalmente de los capítulos.
+
+\chapter{Espacios, duales y operadores: punto de partida}
+
+\chapter{Hahn--Banach y la geometría del dual}
+
+\begin{ejercicio}[Lectura1, ejercicio1]\label{ej:v3-l01-1}
+Si $p,q$ son sublineales reales y $\alpha>0$, pruebe que $p+q$ y $\alpha p$ son sublineales.
+\end{ejercicio}
+\begin{solucion}
+Sumar $p(x+y)\leq p(x)+p(y)$ y $q(x+y)\leq q(x)+q(y)$ da la subaditividad de $p+q$. Multiplicar la primera desigualdad por $\alpha>0$ da la de $\alpha p$. Para $t\geq0$, $(p+q)(tx)=t(p(x)+q(x))$ y $(\alpha p)(tx)=t\alpha p(x)$. El mismo argumento admite $\alpha=0$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura1, ejercicio2]\label{ej:v3-l01-2}
+Sea $(p_n)$ creciente y sublineal, con límite real $p(x)$ para cada $x$. Pruebe que $p$ es sublineal.
+\end{ejercicio}
+\begin{solucion}
+Pase al límite en $p_n(x+y)\leq p_n(x)+p_n(y)$ y en $p_n(tx)=tp_n(x)$, para cada $x,y$ y $t\geq0$ fijos. Las operaciones preservan límites reales finitos. La monotonía no es necesaria si ya se conoce la existencia finita de todos esos límites; sí es esencial excluir valores infinitos para obtener una funcional $X\to\R$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura1, ejercicio3]\label{ej:v3-l01-3}
+Dados espacios vectoriales reales $X,Y$, un subespacio $M$ y una aplicación lineal $T:M\to Y$, construya una extensión lineal a $X$.
+\end{ejercicio}
+\begin{solucion}
+Elija una base de Hamel $B_M$ de $M$ y extiéndala a una base $B_X$ de $X$. Esta extensión se obtiene por Zorn aplicado a las familias linealmente independientes que contienen $B_M$: la unión de una cadena sigue siendo independiente porque toda relación usa solo un número finito de vectores y está contenida en un miembro de la cadena. La maximalidad obliga a generar $X$. Defina la extensión con los valores $Tb$ en $B_M$ y valor cero en $B_X\setminus B_M$, y extienda por combinaciones finitas. La unicidad de coordenadas garantiza buena definición y linealidad. No se ha afirmado continuidad.
+\end{solucion}
+
+\begin{ejercicio}[Lectura1, ejercicio4]\label{ej:v3-l01-4}
+Construya una solución de $f(x+y)=f(x)+f(y)$ en $\R$ que no tenga la forma $f(x)=cx$.
+\end{ejercicio}
+\begin{solucion}
+Vea $\R$ como espacio vectorial sobre $\Q$. Los números $1,\sqrt2$ son independientes sobre $\Q$. Extiéndalos a una base de Hamel y defina una aplicación $\Q$-lineal por $f(1)=0$, $f(\sqrt2)=1$ y valor cero en los restantes elementos de la base. La aplicación es aditiva. Si fuera $cx$, de $f(1)=0$ se deduciría $c=0$, contradiciendo $f(\sqrt2)=1$. También es discontinua: una aplicación aditiva continua satisface $f(q)=qf(1)$ para racionales $q$; la densidad de $\Q$ y la continuidad fuerzan esa fórmula para todo real.
+\end{solucion}
+
+\begin{ejercicio}[Lectura1, ejercicio5, incisos(i)--(ii)]\label{ej:v3-l01-5}
+Una sucesión es casi convergente si todos sus límites de Banach tienen el mismo valor. (i) Estudie la sucesión $(1,0,1,0,\ldots)$. (ii) Pruebe que $x$ es casi convergente a $\alpha$ si y solo si sus promedios $k^{-1}\sum_{j=0}^{k-1}x_{n+j}$ convergen a $\alpha$ uniformemente respecto de $n$. Distinga la definición corregida de la extensión arbitraria utilizada inicialmente en la lectura.
+\end{ejercicio}
+\begin{solucion}
+\emph{Corrección necesaria.} Ponga $a=(1,0,1,0,\ldots)$. En $c+\C a$, las reglas
+\[
+ F_1(y+ta)=\lim_ny_n+t,\qquad F_0(y+ta)=\lim_ny_n
+\]
+están bien definidas porque $a\notin c$. Cada una tiene norma uno: el límite a lo largo de las entradas impares, respectivamente pares, de $y+ta$ es su valor y su módulo no supera la norma uniforme; ambas valen uno en $\mathbf1$. Hahn--Banach las extiende a $\ell^\infty$ sin alterar norma. Sus valores en $a$ son uno y cero. Por tanto (i) es falso si se admiten todas las extensiones normantes del límite, y la invariancia sugerida en el original no puede deducirse de esa condición.
+
+\emph{(i), con límites de Banach invariantes.} Como $Sa=\mathbf1-a$, la invariancia da $B(a)=B(Sa)=1-B(a)$, luego $B(a)=1/2$. La sucesión no converge porque sus subsucesiones pares e impares tienen límites distintos.
+
+\emph{(ii), sucesiones reales.} Si todos los valores son $\alpha$, el lema muestra que $p(x)=q(x)=\alpha$, pues ambos extremos se alcanzan. Los supremos e ínfimos de los promedios convergen entonces al mismo valor, lo cual equivale a
+\[
+ \sup_n\left|\frac1k\sum_{j=0}^{k-1}x_{n+j}-\alpha\right|\longrightarrow0.
+\]
+Recíprocamente, esta convergencia y la continuidad de $B$ dan $B(x)=\alpha$, porque $B$ toma el mismo valor en $x$ y en cada promedio desplazado.
+
+\emph{Caso complejo.} Cada límite complejo es la complejificación de uno real. Si todos toman el mismo valor en $x=u+iv$, sus partes real e imaginaria muestran que todos los límites reales coinciden en $u$ y en $v$. Aplique el caso real y use $|z|\leq|\operatorname{Re}z|+|\operatorname{Im}z|$. La implicación inversa vuelve a seguir por continuidad. Así quedan resueltos ambos incisos, con la hipótesis que hace verdadera la caracterización.
+\end{solucion}
+
+\begin{ejercicio}[Lectura2, ejercicio1]\label{ej:v3-l02-1}
+Si $X^*$ es separable, demuestre que $X$ es separable.
+\end{ejercicio}
+\begin{solucion}
+Si $X^*=\{0\}$, la separación de puntos implica $X=\{0\}$. En otro caso, elija una sucesión $(\varphi_n)$ densa en la esfera unitaria de $X^*$ y $x_n$ unitarios con $|\varphi_n(x_n)|>1/2$; la definición de supremo permite esa elección. Sea $M=\cl{\spanop(x_n:n\geq1)}$. Si $M\ne X$, la proposición de distancia produce una funcional $\psi$ de norma uno que se anula en $M$. Elija $n$ con $\norm{\varphi_n-\psi}<1/4$. Entonces
+\[
+ |\varphi_n(x_n)|=|(\varphi_n-\psi)(x_n)|<1/4,
+\]
+contradicción. Así $M=X$. Las combinaciones finitas de los $x_n$ con coeficientes racionales, o racionales complejos, forman un conjunto numerable denso.
+\end{solucion}
+
+\begin{ejercicio}[Lectura2, ejercicio2, incisos(i)--(iv)]\label{ej:v3-l02-2}
+Pruebe las identidades y contenciones: (i) $\{0\}^\perp=X^*$ y ${}^\perp X^*=\{0\}$; (ii) $M_1\subseteq M_2$ implica $M_1^\perp\supseteq M_2^\perp$; (iii) $(S\cup T)^\perp=S^\perp\cap T^\perp$ y $S^\perp+T^\perp\subseteq(S\cap T)^\perp$; (iv) $S\subseteq{}^\perp A$ equivale a $\varphi(s)=0$ para todo $s\in S$, $\varphi\in A$, y a $A\subseteq S^\perp$.
+\end{ejercicio}
+\begin{solucion}
+(i) Toda funcional lineal se anula en cero; si todas se anulan en un vector, la separación de puntos obliga a que sea cero. (ii) Anular un conjunto mayor implica anular cada elemento del menor. (iii) Anular la unión significa anular ambos conjuntos. Si $\varphi\in S^\perp$ y $\psi\in T^\perp$, para $x\in S\cap T$ se tiene $(\varphi+\psi)(x)=0+0=0$, lo que prueba la contención. (iv) Las tres frases escriben los mismos dos cuantificadores universales sobre la ecuación $\varphi(s)=0$; intercambiar el orden de esos cuantificadores no cambia su significado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura2, ejercicio3: examen del enunciado]\label{ej:v3-l02-3}
+El original pide, para $M_1\cap M_2=\{0\}$ finito dimensionales, funcionales $\varphi_i$ que se anulen en $M_i$ y sean no nulas en todo vector del otro subespacio. Determine cuándo es posible y formule una versión válida para dimensiones arbitrarias.
+\end{ejercicio}
+\begin{solucion}
+Literalmente es imposible porque el vector cero pertenece a ambos subespacios y toda funcional vale cero en él. Incluso excluyendo cero, una funcional escalar no puede ser inyectiva en un espacio de dimensión al menos dos: si toma valores $a,b$ en vectores independientes $u,v$, el vector $bu-av$ está en su núcleo, y si $a=b=0$ cualquiera de los dos sirve. Por ejemplo, tome $M_1=\spanop(e_1,e_2)$ y $M_2=\spanop(e_3)$ en $\R^3$.
+
+Si ambos subespacios son de dimensión uno, elija generadores $u_1,u_2$; son independientes. Las coordenadas biortogonales proporcionan una funcional que anula $u_1$ y vale uno en $u_2$, y otra con los papeles intercambiados. Estas sí son no nulas en todo vector no cero del subespacio opuesto.
+
+Para dimensiones finitas arbitrarias, la versión válida utiliza \emph{familias finitas} de funcionales: tome una base de $M_1$ y otra de $M_2$. Su unión es independiente porque la intersección es cero. Extienda sus coordenadas por Hahn--Banach. Las coordenadas correspondientes a la base de $M_1$ se anulan en $M_2$ y separan los puntos de $M_1$; las correspondientes a $M_2$ hacen lo contrario. Cada vector no cero es detectado por al menos una coordenada de la familia correspondiente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura2, ejercicio4]\label{ej:v3-l02-4}
+Para $x\in X$, pruebe que $\{\varphi\in X^*: \varphi(x)=\norm x\}$ es no vacío y convexo.
+\end{ejercicio}
+\begin{solucion}
+Si $x\ne0$, contiene una funcional normante. Si $x=0$, es todo $X^*$. Si $\varphi(x)=\psi(x)=\norm x$ y $0\leq t\leq1$, entonces $(t\varphi+(1-t)\psi)(x)=\norm x$. Esto prueba convexidad real, también si $X$ es complejo. El conjunto dado no impone una cota a la norma de sus elementos; si se quieren funcionales de soporte normalizadas, se intersecta además con la bola dual unitaria, y la no vaciedad y convexidad se conservan.
+\end{solucion}
+
+\begin{ejercicio}[Lectura2, ejercicio5]\label{ej:v3-l02-5}
+Si $M$ es un subespacio cerrado de $X$, pruebe que
+\[
+ \Phi:M^\perp\to(X/M)^*,\quad\Phi(\varphi)(x+M)=\varphi(x),\qquad
+ \Psi:X^*/M^\perp\to M^*,\quad\Psi(\varphi+M^\perp)=\varphi|_M
+\]
+son isomorfismos. Precise sus normas.
+\end{ejercicio}
+\begin{solucion}
+El cociente lleva $\norm{x+M}=\inf_{m\in M}\norm{x+m}$. Es una norma porque $M$ es cerrado: si el ínfimo es cero, $x\in\cl M=M$. Homogeneidad y desigualdad triangular se obtienen reescalando representantes y eligiendo aproximantes al ínfimo. El mapa cociente $Q:X\to X/M$ es contractivo.
+
+Para $\Phi$, dos representantes difieren en $M$, donde $\varphi$ se anula, así que la fórmula está bien definida. Además
+\[
+ |\varphi(x)|=|\varphi(x+m)|\leq\norm\varphi\norm{x+m}\quad(m\in M),
+\]
+y al tomar ínfimo se obtiene $\norm{\Phi\varphi}\leq\norm\varphi$. Como $\varphi=(\Phi\varphi)\circ Q$, también $\norm\varphi\leq\norm{\Phi\varphi}$. Toda $f\in(X/M)^*$ tiene preimagen $f\circ Q\in M^\perp$; la inyectividad y la linealidad se leen de la fórmula. Por tanto $\Phi$ es un isomorfismo isométrico.
+
+Para $\Psi$, la restricción $R:X^*\to M^*$ es lineal, sobreyectiva por Hahn--Banach y su núcleo es $M^\perp$. Por ello induce la biyección indicada. Para cada $\eta\in M^\perp$, $\norm{R\varphi}=\norm{R(\varphi+\eta)}\leq\norm{\varphi+\eta}$; tomando ínfimo, $\norm{R\varphi}\leq\norm{\varphi+M^\perp}$. Hahn--Banach da una extensión $\theta$ de $R\varphi$ con $\norm\theta=\norm{R\varphi}$. Como $\theta-\varphi\in M^\perp$, la norma cociente es a lo sumo $\norm\theta$. Se obtiene igualdad y $\Psi$ también es isométrico. Ninguno de estos argumentos exige completitud de $X$.
+\end{solucion}
+
+\chapter{Convexidad, separación y funciones sublineales}
+
+\begin{ejercicio}[Lectura5, ejercicio1]\label{ej:v3-l05-1}
+Calcule la funcional de calibración de la bola abierta unitaria de un espacio normado real.
+\end{ejercicio}
+\begin{solucion}
+Para $t>0$, $x\in tB(0,1)$ equivale a $\norm x<t$. El ínfimo de esos $t$ es $\norm x$, también para $x=0$. Así $p_{B(0,1)}=\norm\cdot$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio2]\label{ej:v3-l05-2}
+Demuestre que $f(x)=\tfrac12\norm x^2$ es convexa.
+\end{ejercicio}
+\begin{solucion}
+Para $0\leq t\leq1$ y $a,b\geq0$,
+\[
+ (ta+(1-t)b)^2\leq ta^2+(1-t)b^2,
+\]
+pues la diferencia es $t(1-t)(a-b)^2$. Aplicar primero la desigualdad triangular a $tx+(1-t)y$ y después esta desigualdad con $a=\norm x$, $b=\norm y$ da la convexidad, tras dividir entre dos.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio3, incisos(i)--(ii)]\label{ej:v3-l05-3}
+Un espacio es estrictamente convexo si $\norm{u+v}<2$ para vectores unitarios \emph{distintos} $u,v$. (i) Pruebe la equivalencia con $\norm{(u+v)/2}<1$. (ii) Pruebe la equivalencia con la convexidad estricta de $x\mapsto\tfrac12\norm x^2$, también entendida para puntos distintos.
+\end{ejercicio}
+\begin{solucion}
+Excluir $u=v$ es indispensable: en ese caso $\norm{u+v}=2$. (i) La homogeneidad da $\norm{(u+v)/2}=\norm{u+v}/2$, de donde se obtiene la equivalencia.
+
+(ii) Si $f$ es estrictamente convexa, aplíquela al punto medio de dos vectores unitarios distintos: $\norm{(u+v)/2}^2<1$. Recíprocamente, primero extienda la desigualdad del punto medio a cualquier $0<t<1$ para unitarios distintos. Si $t\leq1/2$,
+\[
+ tu+(1-t)v=2t\frac{u+v}{2}+(1-2t)v,
+\]
+y la norma es menor que $2t+(1-2t)=1$; si $t>1/2$, intercambie $u,v$. Para $x\ne y$, si $\norm x\ne\norm y$, la segunda desigualdad de la solución anterior es estricta. Si sus normas coinciden y son positivas, aplique la desigualdad recién obtenida a los vectores normalizados. El único caso restante, normas ambas cero, implicaría $x=y$ y está excluido. Así $f$ es estrictamente convexa.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio4: teorema del sándwich, incisos(i)--(iv)]\label{ej:v3-l05-4}
+Sea $p:X\to\R$ sublineal, $S\subseteq X$ no vacío y $f:S\to\R$ con $f\leq p$ en $S$. Defina
+\[
+ g(x)=\inf_{s\in S,\,t\geq0}\{p(x+ts)-tf(s)\}.
+\]
+Pruebe: (i) $g$ es real, $g\leq p$ y el mismo ínfimo se obtiene con $t>0$; (ii) para una funcional lineal $h$, $h\leq g$ equivale a $h\leq p$ en $X$ y $h\geq f$ en $S$; (iii) si $S$ es convexo y $f$ cóncava, $g$ es sublineal; (iv) bajo esas hipótesis existe una funcional lineal entre las dos cotas. Examine también $S=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+(i) La subaditividad da $p(ts)\leq p(x+ts)+p(-x)$; como $f(s)\leq p(s)$,
+\[
+ p(x+ts)-tf(s)\geq-p(-x)+t(p(s)-f(s))\geq-p(-x).
+\]
+Tomar $t=0$ da la cota superior $g(x)\leq p(x)$. Para un $s\in S$ fijo, las dos estimaciones
+\[
+ p(x)-tp(-s)\leq p(x+ts)\leq p(x)+tp(s)
+\]
+implican $p(x+ts)-tf(s)\to p(x)$ cuando $t\downarrow0$. Por tanto excluir $t=0$ no altera el ínfimo.
+
+(ii) Si $h\leq g$, entonces $h\leq p$. Además $g(-s)\leq p(0)-f(s)=-f(s)$, así que $-h(s)\leq-f(s)$. En la otra dirección,
+\[
+ h(x)=h(x+ts)-th(s)\leq p(x+ts)-tf(s);
+\]
+tomar ínfimo demuestra $h\leq g$.
+
+(iii) El cambio $t=\lambda u$, para $\lambda>0$, da $g(\lambda x)=\lambda g(x)$ y las cotas de(i) dan $g(0)=0$. Para subaditividad, elija $s_1,s_2\in S$ y $t_1,t_2>0$. Ponga $t=t_1+t_2$ y $s=(t_1s_1+t_2s_2)/t\in S$. La concavidad implica $tf(s)\geq t_1f(s_1)+t_2f(s_2)$, de modo que
+\[
+ g(x+y)\leq[p(x+t_1s_1)-t_1f(s_1)]+[p(y+t_2s_2)-t_2f(s_2)].
+\]
+Elija independientemente los dos corchetes a distancia menor que $\eps/2$ de $g(x)$ y $g(y)$; resulta $g(x+y)\leq g(x)+g(y)+\eps$. Dejar $\eps\downarrow0$ prueba la afirmación.
+
+(iv) Extienda la funcional cero del subespacio $\{0\}$ dominada por $g$, usando Hahn--Banach. La extensión $h\leq g$ satisface ambas cotas por(ii). Si $S=\varnothing$, la fórmula original tiene ínfimo vacío, que no es real; por eso(i) necesita la condición añadida. La conclusión(iv) sigue siendo cierta en ese caso, aplicando Hahn--Banach directamente a $p$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio5: separación de un abierto]\label{ej:v3-l05-5}
+Examine si en la separación estricta puede sustituirse ``$A$ compacto'' por ``$A$ abierto'' manteniendo la misma conclusión.
+\end{ejercicio}
+\begin{solucion}
+No. En $\R$, tome $A=(-\infty,0)$ y $B=\{0\}$. Toda funcional es $f(t)=ct$. Si $c>0$, $\sup_Af=0=\inf_Bf$; si $c<0$, el supremo sobre $A$ es infinito; si $c=0$, no hay desigualdad estricta. Ambos conjuntos cumplen las hipótesis propuestas.
+
+La conclusión válida es la separación punto a punto: existe $f\ne0$ con $f(a)<f(b)$ para todo $a\in A$, $b\in B$. La prueba ya está en el teorema~\ref{v3:separacion-interior}, pues ahora $A=\interior A$. El ejemplo demuestra por qué pasar de desigualdades estrictas individuales a una desigualdad estricta entre supremo e ínfimo requiere una hipótesis adicional.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio6]\label{ej:v3-l05-6}
+Si $H$ es un hiperplano afín cerrado real, pruebe que $H=f^{-1}(\alpha)$ para alguna $f\in X^*\setminus\{0\}$ y $\alpha\in\R$. Describa los lados y sus cierres.
+\end{ejercicio}
+\begin{solucion}
+Escriba $H=x_0+M$, donde $M$ es cerrado y tiene codimensión uno. Elija $u\notin M$; la funcional de distancia da $f|_M=0$, $f(u)\ne0$. Como $M$ tiene codimensión uno, $\ker f=M$. Por tanto $H=\{x:f(x)=f(x_0)\}$. Los lados son $\{f>\alpha\}$ y $\{f<\alpha\}$, abiertos por continuidad. Sus cierres son $\{f\geq\alpha\}$ y $\{f\leq\alpha\}$: una inclusión sigue por continuidad; para la otra, si $f(x)=\alpha$, añada o reste $u/n$ eligiendo el signo que haga $f(u)>0$. Así cada punto del hiperplano se aproxima desde ambos lados.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio7: teorema del soporte]\label{ej:v3-l05-7}
+El original supone que $A$ es conexo, con interior no vacío, y pide un hiperplano cerrado por cada $x\notin\interior A$ que deje a $A$ en un semiespacio cerrado. Examine esa hipótesis y pruebe la versión válida.
+\end{ejercicio}
+\begin{solucion}
+La conexión es insuficiente. El anillo $A=\{y\in\R^2:1\leq\norm y_2\leq2\}$ es conexo, tiene interior no vacío y $0\notin\interior A$. Ninguna recta por cero deja a todo el anillo de un mismo lado: para cualquier funcional no nula $f$, el anillo contiene puntos $y,-y$ con $f(y)>0>f(-y)$.
+
+La hipótesis correcta es \emph{convexidad}. Separe el abierto convexo $\interior A$ del punto $x$ por el teorema~\ref{v3:separacion-interior}: existe $f\ne0$ con $f(a)<f(x)$ para todo $a\in\interior A$. La prueba de ese teorema mostró $A\subseteq\cl{\interior A}$; por continuidad $f(a)\leq f(x)$ para todo $a\in A$. El hiperplano $H=\{f=f(x)\}$ pasa por $x$ y el semiespacio cerrado $\{f\leq f(x)\}$ contiene a $A$. En un espacio complejo se usa la parte real de una funcional compleja, es decir, un hiperplano real de soporte.
+\end{solucion}
+
+\begin{ejercicio}[Lectura5, ejercicio8]\label{ej:v3-l05-8}
+Demuestre que un convexo cerrado de un espacio normado real no nulo es la intersección de los semiespacios cerrados que lo contienen.
+\end{ejercicio}
+\begin{solucion}
+Sea primero $A$ no vacío y distinto de $X$. Para cada $x\notin A$, la separación estricta entre $\{x\}$ y $A$ produce $f$ y $c$ con $f(a)\leq c<f(x)$ para todo $a\in A$, tras cambiar el signo si es necesario. Así un semiespacio cerrado contiene $A$ y excluye $x$. La intersección de todos los semiespacios que contienen $A$ no puede contener ningún punto externo; la otra inclusión es inmediata.
+
+Si $A=X$, la intersección de la familia vacía de semiespacios propios se interpreta como $X$. Si $A=\varnothing$ y $X\ne\{0\}$, elija una funcional no nula $f$; los semiespacios $\{f\leq0\}$ y $\{f\geq1\}$ son disjuntos, y ambos contienen el vacío. En el espacio nulo no existen hiperplanos propios: para su conjunto vacío el enunciado literal requiere excluir ese caso o admitir semiespacios degenerados definidos por funcionales nulas. Esa es la razón de la precisión en el enunciado.
+\end{solucion}
+
+\chapter{Aplicación abierta, gráfica cerrada y dualidad de operadores}
+
+\begin{ejercicio}\label{ej:v3-l03-1}
+Demuestre que la inversa de una aplicación lineal continua biyectiva entre espacios de Banach es continua.
+\end{ejercicio}
+\begin{solucion}
+Por el teorema~\ref{v3:abierta}, $T$ lleva abiertos en abiertos. Para cualquier abierto $U$ de su dominio, la preimagen de $U$ bajo $T^{-1}$ es $T(U)$, abierta. También se obtiene una estimación: si $dB_Y\subset T(B_X)$, la unicidad de las preimágenes da $\norm{T^{-1}y}\le d^{-1}\norm y$ tomando límites desde radios ligeramente mayores.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-2}
+Dos normas $\norm\cdot,\norm\cdot'$ que hacen Banach al mismo espacio son equivalentes si y sólo si existe $C>0$ con $\norm x'\le C\norm x$ para todo $x$.
+\end{ejercicio}
+\begin{solucion}
+La equivalencia implica esa cota por definición. Recíprocamente, la cota hace continua la identidad del primer espacio normado al segundo. Es biyectiva, y ambos son Banach; el ejercicio anterior da continuidad de la identidad inversa: $\norm x\le D\norm x'$. Las dos desigualdades prueban la equivalencia.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-3}
+No existe una sucesión compleja $(z_n)$ tal que, para toda sucesión $(x_n)$, $\sum_n|x_n|<\infty$ equivalga a que $(x_nz_n)$ sea acotada.
+\end{ejercicio}
+\begin{solucion}
+Si hubiera infinitos $z_n=0$, la sucesión indicadora de esos índices violaría la equivalencia. Hay, pues, a lo sumo un número finito de ceros; reemplazarlos por uno no altera ninguna de las dos propiedades. Supongamos todos los $z_n$ distintos de cero. La aplicación
+\[T:\ell^\infty\longrightarrow\ell^1,\qquad (Ta)_n=a_n/z_n\]
+está bien definida por la equivalencia supuesta y es biyectiva, con inversa $x\mapsto(x_nz_n)$. Tiene gráfica cerrada: si $a^{(k)}\to a$ en $\ell^\infty$ y $Ta^{(k)}\to b$ en $\ell^1$, ambas convergencias implican convergencia de cada coordenada, de modo que $b_n=a_n/z_n$. Así $T$ es acotado por gráfica cerrada, y $T^{-1}$ lo es por aplicación abierta. Aplicando la última cota a $e_n$ obtenemos $|z_n|\le\norm{T^{-1}}=:C$. Pero $T(1,1,\ldots)=(1/z_n)\in\ell^1$, imposible porque $|1/z_n|\ge1/C$ para todo $n$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-4}
+Si $T:X\to Y$ es continua e inyectiva entre espacios de Banach, pruebe que $T^{-1}:\ran T\to X$ es continua si y sólo si $\ran T$ es cerrada.
+\end{ejercicio}
+\begin{solucion}
+Si la imagen es cerrada, es Banach con la norma de $Y$ y se aplica el teorema de la inversa acotada. En sentido contrario, sea $Tx_n\to y$ en $Y$. La continuidad de la inversa implica $\norm{x_n-x_m}\le C\norm{Tx_n-Tx_m}$; luego $x_n\to x$ en $X$. Por continuidad de $T$, $y=Tx$, y la imagen es cerrada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-5}
+La inversa de una aplicación lineal biyectiva con gráfica cerrada también tiene gráfica cerrada.
+\end{ejercicio}
+\begin{solucion}
+El intercambio de coordenadas $(x,y)\mapsto(y,x)$ es una isometría entre los productos con norma suma y lleva $G(T)$ en $G(T^{-1})$. Una isometría biyectiva preserva cerrados. Equivalentemente, si $y_n\to y$ y $T^{-1}y_n\to x$, el cierre de $T$ da $Tx=y$, es decir, $T^{-1}y=x$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-6}
+Si $T$ tiene gráfica cerrada, $x_n\to x$, $y_n\to x$ y ambas sucesiones de imágenes convergen, sus límites son iguales.
+\end{ejercicio}
+\begin{solucion}
+Si $Tx_n\to u$, el cierre de la gráfica implica $u=Tx$. Si $Ty_n\to v$, implica $v=Tx$. Por tanto $u=v$. No hemos supuesto continuidad de $T$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-7}
+El núcleo de una aplicación lineal con gráfica cerrada es cerrado.
+\end{ejercicio}
+\begin{solucion}
+Es un subespacio por linealidad. Si $x_n\in\ker T$ y $x_n\to x$ en el dominio, entonces $Tx_n=0\to0$; el cierre de la gráfica da $Tx=0$. Así el núcleo contiene los límites de sus sucesiones convergentes y es cerrado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l03-8}
+Sean $S,T:X\to Y$ lineales entre espacios normados. (i) Si $S$ es cerrado y $T$ continuo, $S+T$ es cerrado. (ii) ¿Basta que ambos sean cerrados?
+\end{ejercicio}
+\begin{solucion}
+(i) Si $x_n\to x$ y $(S+T)x_n\to y$, entonces $Tx_n\to Tx$ y $Sx_n\to y-Tx$. El cierre de $S$ da $Sx=y-Tx$, como se requiere.
+
+(ii) No en espacios normados generales. En $X=C^1[0,1]$ con norma uniforme, $Y=C[0,1]$, tomemos
+\[Sf=f',\qquad Tf=f'(0)\boldsymbol1-f'.\]
+Ya probamos que $S$ es cerrado. Para $T$, supongamos $f_n\to f$ y $Tf_n\to g$ uniformemente. Integrando,
+\[f_n(t)-f_n(0)=f_n'(0)t-\int_0^t Tf_n(s)\,ds.
+\]
+En $t=1$ se obtiene $f_n'(0)\to c=f(1)-f(0)+\int_0^1g$. Al pasar al límite para todo $t$ resulta $f(t)=f(0)+ct-\int_0^tg(s)\,ds$. Por tanto $f'=c-g$; además $g(0)=0$, porque $(Tf_n)(0)=0$, así que $f'(0)=c$ y $Tf=g$. Esto prueba que $T$ es cerrado. Sin embargo, $(S+T)f=f'(0)\boldsymbol1$, y para $f_n=\sin(nt)/n$ tenemos $f_n\to0$, $(S+T)f_n=\boldsymbol1\not=(S+T)0$. La suma no es cerrada. Si ambos espacios fueran Banach y el dominio fuera todo $X$, gráfica cerrada haría acotados a ambos operadores y la respuesta sería afirmativa.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-1}
+Para $T\in\Bcal(X,Y)$ entre Banach son equivalentes: (i) el isomorfismo canónico $X/\ker T\to\ran T$ es topológico; (ii) $\ran T$ es cerrada; (iii) existe $C>0$ con $\norm{x+\ker T}\le C\norm{Tx}$.
+\end{ejercicio}
+\begin{solucion}
+La aplicación canónica es siempre una biyección lineal y es acotada, porque $\norm{Tx}\le\norm T\norm{x-m}$ para todo $m\in\ker T$. (i) equivale exactamente a (iii), que es la acotación de su inversa. Si (ii) vale, dominio y codominio son Banach y aplicación abierta da (i). Si (iii) vale y $Tx_n\to y$, entonces $(x_n+\ker T)$ es de Cauchy y converge a $x+\ker T$ por el lema~\ref{v3:cociente-banach}. La continuidad del operador inducido da $Tx_n\to Tx$, luego $y=Tx$ y (ii) vale. La palabra ``topológico'' es esencial: el isomorfismo algebraico existe siempre.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-2}
+Examine la afirmación original: si $A$ es convexo y balanceado y $x\notin A$, existen $\phi\in X^*$ y $\alpha>0$ con $|\phi(a)|<\alpha<|\phi(x)|$ para todo $a\in A$.
+\end{ejercicio}
+\begin{solucion}
+Falta exigir $x\notin\cl A$. En $X=\R$, $A=(-1,1)$ y $x=1$, toda funcional es $\phi(t)=ct$. La desigualdad para todos los $a$ implicaría $|c|\le\alpha$, incompatible con $\alpha<|c|$. Si $A$ es no vacío y $x\notin\cl A$, el teorema~\ref{v3:separacion-balanceada} da $\sup_A|\phi|<|\phi(x)|$. Elegimos $\alpha$ estrictamente entre ambos números; como $0\in A$, el supremo es no negativo y $\alpha>0$. Ésta es la versión válida utilizada en el teorema del rango cerrado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-3}
+Para $M\le X$ y $T\in\Bcal(X)$, estudie el mapeo de $(TM)^\perp$ en $M^\perp$ inducido por $T'$, y deduzca la invariancia del anulador si $M$ es $T$-invariante.
+\end{ejercicio}
+\begin{solucion}
+Si $\phi\in(TM)^\perp$ y $m\in M$, entonces $(T'\phi)(m)=\phi(Tm)=0$; esto demuestra la inclusión. La inyectividad afirmada en la lectura es falsa: para $T=0$ en un espacio no nulo y $M=\{0\}$, la restricción es el operador cero sobre $X^*$. De hecho, su núcleo es $\ker T'$, pues $\ker T'\subset(TM)^\perp$; por ello es inyectiva exactamente cuando $\ran T$ es densa. Si $TM\subset M$, tenemos $M^\perp\subset(TM)^\perp$, y la inclusión ya probada da $T'(M^\perp)\subset M^\perp$, sin necesidad de ninguna inyectividad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-4}
+Si $T\in\Bcal(X,Y)$ tiene rango finito, pruebe que $T'$ tiene rango finito y la misma dimensión de imagen.
+\end{ejercicio}
+\begin{solucion}
+Sea $y_1,\ldots,y_m$ una base de $\ran T$. Las coordenadas en este espacio finito son continuas, luego existen $\phi_j\in X^*$ con $Tx=\sum_j\phi_j(x)y_j$. Para $\psi\in Y^*$,
+\[T'\psi=\sum_{j=1}^m\psi(y_j)\phi_j.
+\]
+Así el rango está contenido en el span de las $\phi_j$. Éstas son linealmente independientes: la suprayectividad de $T$ sobre su imagen permite elegir $x_k$ con $Tx_k=y_k$, y entonces $\phi_j(x_k)=\delta_{jk}$. Hahn--Banach extiende a $Y$ cada funcional coordenada de $\ran T$, de modo que cada $\phi_j$ está en $\ran T'$. Por tanto ambas dimensiones son $m$; el caso $m=0$ es inmediato.
+
+La acotación debe agregarse al enunciado original. Una funcional lineal discontinua $f$ en $\ell^2$, construida asignando $f(e_n)=n$ y extendiendo una base de Hamel, da $Tx=f(x)e_1$ de rango uno. La composición con la primera coordenada es $f$, que no pertenece al dual continuo. En este caso ni siquiera está definido un adjunto de Banach con el codominio indicado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-5}
+Pruebe: (i) $T'$ es inyectiva si y sólo si $\ran T$ es densa; (ii) si $\ran T'$ es densa en $X^*$, entonces $T$ es inyectiva.
+\end{ejercicio}
+\begin{solucion}
+(i) $T'\psi=0$ significa que $\psi$ se anula en $\ran T$. Si ésta es densa, la continuidad da $\psi=0$. Si no es densa, Hahn--Banach proporciona una funcional no nula que se anula en el subespacio cerrado propio $\cl{\ran T}$, y $T'$ no es inyectiva.
+
+(ii) Si $Tx=0$, todas las funcionales $T'\psi$ se anulan en $x$. La evaluación $\phi\mapsto\phi(x)$ es continua para la norma del dual, de modo que se anula en su cerradura, que por hipótesis es todo $X^*$. Las funcionales separan puntos, luego $x=0$. La recíproca no es general: la inclusión $\ell^1\hookrightarrow c_0$ es inyectiva, pero su adjunto es la inclusión $\ell^1\hookrightarrow\ell^\infty$, cuya imagen no es densa en $\ell^\infty$ porque su cerradura es $c_0$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-6}
+Demuestre las cuatro relaciones
+\[\ker T'=(\ran T)^\perp,\qquad \ker T={}^\perp(\ran T'),\qquad
+\cl{\ran T}={}^\perp(\ker T'),\qquad \ran T'\subset(\ker T)^\perp.
+\]
+\end{ejercicio}
+\begin{solucion}
+La primera dice en dos notaciones lo mismo: $T'\psi=0$ equivale a $\psi(Tx)=0$ para todo $x$. Para la segunda, $x$ pertenece al preanulador de $\ran T'$ si y sólo si $\psi(Tx)=0$ para toda $\psi\in Y^*$; Hahn--Banach equivale esto a $Tx=0$. La tercera se deduce de la primera y de la identidad de doble anulador $\cl M={}^\perp(M^\perp)$ del teorema~\ref{v3:doble-anulador}, aplicada al subespacio $M=\ran T$. Finalmente, si $x\in\ker T$, entonces $(T'\psi)(x)=\psi(0)=0$, lo que da la cuarta inclusión. El cierre en la tercera fórmula es indispensable y sí está presente en el PDF original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l04-7}
+Explique con precisión la afirmación $T''|_X=T$.
+\end{ejercicio}
+\begin{solucion}
+Los espacios $X$ y $Y$ se identifican isométricamente con sus imágenes por $J_X$ y $J_Y$ en los biduales. Para $x\in X$ y $\psi\in Y^*$,
+\[(T''J_Xx)(\psi)=(J_Xx)(T'\psi)=(T'\psi)(x)=\psi(Tx)=(J_YTx)(\psi).
+\]
+La igualdad para toda $\psi$ prueba $T''J_X=J_YT$. Sólo después de estas identificaciones tiene sentido escribir la abreviatura del enunciado; no se está suponiendo que los espacios sean reflexivos.
+\end{solucion}
+
+\chapter{Espectro, resolvente y modelos concretos}
+
+\begin{ejercicio}\label{ej:v3-l07-1}
+Sea $(a_n)$ acotada y $Dx=(a_nx_n)$ en $\ell^1$. Calcule su espectro.
+\end{ejercicio}
+\begin{solucion}
+$\norm D=\sup_n|a_n|$: una desigualdad se obtiene sumando $|a_nx_n|$, y la otra evaluando en $e_n$. Si $\lambda\notin\cl{\{a_n:n\ge1\}}$, existe $d>0$ con $|a_n-\lambda|\ge d$; la inversa diagonal $y_n\mapsto y_n/(a_n-\lambda)$ es acotada. Si $\lambda=a_n$, $e_n$ es un vector propio. Si $\lambda$ es un punto de la cerradura que no se alcanza, el operador es inyectivo y su imagen contiene todas las sucesiones de soporte finito, por tanto es densa. Hay índices $n_j$ con $|a_{n_j}-\lambda|\to0$, luego $\norm{(D-\lambda)e_{n_j}}_1\to0$; una inversa acotada sería imposible. Así
+\[\sigma(D)=\cl{\{a_n:n\ge1\}},\quad
+\sigma_p(D)=\{a_n:n\ge1\},\quad
+\sigma_c(D)=\sigma(D)\setminus\sigma_p(D),\quad\sigma_r(D)=\varnothing.
+\]
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-2}
+Demuestre que el corrimiento derecho bilateral en $\ell^2(\Z)$ es invertible y determine su inversa.
+\end{ejercicio}
+\begin{solucion}
+Definimos $(Rx)_n=x_{n-1}$ y $(Lx)_n=x_{n+1}$. El cambio de índice en la suma sobre $\Z$ da $\norm{Rx}_2=\norm{Lx}_2=\norm x_2$. Además, $(LRx)_n=x_n=(RLx)_n$ para todo entero $n$, luego $R^{-1}=L$. La ausencia de una primera coordenada distingue este caso del corrimiento unilateral.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-3}
+Para $f\in C[0,1]$, sea $Tg(t)=f(1-t)g(t)$ en $L^1[0,1]$. Pruebe que $\sigma(T)=f([0,1])$ y determine los valores propios.
+\end{ejercicio}
+\begin{solucion}
+Escribamos $a(t)=f(1-t)$. Si $\lambda\notin a([0,1])$, la compacidad da $\min|a-\lambda|>0$ y multiplicar por $(a-\lambda)^{-1}$ es una inversa acotada. Si $\lambda=a(t_0)$, para cada $\eps>0$ la continuidad da un intervalo de medida positiva $E\subset[0,1]$ donde $|a-\lambda|<\eps$. El vector $g=\boldsymbol1_E/|E|$ tiene norma uno y $\norm{(T-\lambda)g}_1\le\eps$; por tanto no existe inversa acotada y $\lambda\in\sigma(T)$. Finalmente, $(a-\lambda)g=0$ admite una solución no nula exactamente cuando $\{t:a(t)=\lambda\}$ tiene medida positiva: si la tiene, sirve su indicador; si no, cualquier solución se anula casi en todas partes. El cambio $t\mapsto1-t$ preserva medida, de modo que la condición también es $|f^{-1}(\{\lambda\})|>0$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-4}
+Los vectores propios asociados a valores propios \emph{distintos} $\lambda_1,\ldots,\lambda_m$ son linealmente independientes.
+\end{ejercicio}
+\begin{solucion}
+Para $m=1$ se usa que un vector propio es no nulo. Por inducción, si $\sum_{j=1}^mc_jv_j=0$, aplicamos $T-\lambda_m$ y obtenemos $\sum_{j<m}c_j(\lambda_j-\lambda_m)v_j=0$. La hipótesis inductiva y la distinción de los valores dan $c_j=0$ para $j<m$; entonces $c_mv_m=0$ da $c_m=0$. La condición ``distintos'' falta en el original: si $T=I$ y repetimos el mismo vector propio dos veces, la conclusión falla.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-5}
+Si $T\in\Bcal(X)$ es invertible, pruebe $\sigma(T^{-1})=\{\lambda^{-1}:\lambda\in\sigma(T)\}$.
+\end{ejercicio}
+\begin{solucion}
+Ni $T$ ni $T^{-1}$ tienen cero en el espectro. Para $\mu\ne0$,
+\[T^{-1}-\mu I=-\mu T^{-1}(T-\mu^{-1}I).
+\]
+El primer factor es invertible, por lo que el producto es invertible exactamente cuando lo es $T-\mu^{-1}I$. Así $\mu\in\sigma(T^{-1})$ equivale a $\mu^{-1}\in\sigma(T)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-6}
+Para el adjunto de Hilbert, pruebe $\sigma(T^*)=\{\cl\lambda:\lambda\in\sigma(T)\}$.
+\end{ejercicio}
+\begin{solucion}
+$A$ es invertible si y sólo si $A^*$ lo es: una dirección usa $(A^{-1})^*$ como inversa y la otra aplica lo mismo a $A^*$, pues $A^{**}=A$. Como $(T-\lambda I)^*=T^*-\cl\lambda I$, la equivalencia da la fórmula. El conjugado es propio de la convención de Hilbert; para $T'$ la igualdad no lleva conjugación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l07-7}
+Para $L(x_1,x_2,\ldots)=(x_2,x_3,\ldots)$ en $\ell^1$, pruebe (i) $\sigma_p(L)=\{|z|<1\}$; (ii) $\sigma_c(L)=\{|z|=1\}$; (iii) $\sigma_r(L)=\varnothing$.
+\end{ejercicio}
+\begin{solucion}
+(i) La ecuación $Lx=\lambda x$ equivale a $x_n=\lambda^{n-1}x_1$. Esta sucesión es no nula y sumable exactamente cuando $x_1\ne0$ y $|\lambda|<1$. (ii) Si $|\lambda|>1$, Neumann da invertibilidad porque $\norm L=1$. El espectro cerrado contiene el disco abierto del inciso (i), por tanto también su frontera. Para $|\lambda|=1$ no hay vectores propios. Bajo el apareamiento $\ell^1$--$\ell^\infty$, el adjunto de $L$ es el corrimiento derecho $R$; $R-\lambda$ es inyectivo, como ya se probó. Por el ejercicio~\ref{ej:v3-l04-5}, la imagen de $L-\lambda$ es densa. Así la frontera es espectro continuo. (iii) Hemos cubierto todo el plano con resolvente, espectro puntual y espectro continuo; no queda espectro residual.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-1}
+Demuestre que un producto finito de operadores que conmutan dos a dos es invertible si y sólo si cada factor lo es.
+\end{ejercicio}
+\begin{solucion}
+La prueba completa es el lema~\ref{v3:producto-conmutativo}. Explícitamente, si $P=\prod_jT_j$ es invertible, una inversa de $T_i$ es $(\prod_{j\ne i}T_j)P^{-1}$: los factores conmutan con $P$ y con $P^{-1}$, así que el producto a izquierda y derecha con $T_i$ da $I$. Si todos son invertibles, multiplicar sus inversas en orden inverso da una inversa de $P$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-2}
+Pruebe: (i) $T^2=T$ implica $\sigma(T)\subset\{0,1\}$; (ii) $T$ nilpotente implica $\sigma(T)=\{0\}$.
+\end{ejercicio}
+\begin{solucion}
+(i) Aplicación espectral al polinomio $p(z)=z^2-z$ da $p(\sigma(T))=\sigma(0)=\{0\}$; cada punto del espectro satisface $z(z-1)=0$. (ii) Si $T^m=0$, el mismo argumento con $p(z)=z^m$ da $\sigma(T)\subset\{0\}$. La no vacuidad fuerza igualdad. También puede verse que cero debe pertenecer: si $T$ fuera invertible, $T^m=0$ sería invertible, contradicción.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-3}
+Si $T_n\to T$ en norma, $\lambda_n\to\lambda$ y $\lambda_n\in\sigma(T_n)$, pruebe $\lambda\in\sigma(T)$.
+\end{ejercicio}
+\begin{solucion}
+Si $T-\lambda$ fuera invertible, la convergencia $T_n-\lambda_n\to T-\lambda$ y la apertura del conjunto de invertibles harían invertibles a $T_n-\lambda_n$ para $n$ grande. Esto contradice la elección de $\lambda_n$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-4}
+Para los corrimientos unilaterales $L,R$ en $\ell^\infty$, demuestre $\sigma(LR)\ne\sigma(RL)$.
+\end{ejercicio}
+\begin{solucion}
+$LR=I$, luego su espectro es $\{1\}$. En cambio $RL=I-P$, donde $Px=x_1e_1$. Es idempotente, así que su espectro está contenido en $\{0,1\}$. Ambos números son valores propios: $(RL)e_1=0$ y $(RL)e_2=e_2$. Por tanto $\sigma(RL)=\{0,1\}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-5}
+Si $(S\times T)(x,y)=(Sx,Ty)$, pruebe $\sigma(S\times T)=\sigma(S)\cup\sigma(T)$.
+\end{ejercicio}
+\begin{solucion}
+Si ambos $S-\lambda$ y $T-\lambda$ son invertibles, el producto de sus inversas es la inversa acotada de $(S\times T)-\lambda$ con la norma suma. Si este último es biyectivo, resolver las ecuaciones con datos $(u,0)$ y $(0,v)$ demuestra que cada factor es suprayectivo; aplicar su inyectividad a $(x,0)$ y $(0,y)$ demuestra que ambos son inyectivos. Sus inversas son acotadas por aplicación abierta. Por tanto el resolvente del producto es la intersección de los dos resolventes, y tomar complementos da la fórmula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-6}
+Si $T_n\to T$ en norma, para todo $\eps>0$ existe $N$ con $\sigma(T_n)\subset\sigma(T)+B(0,\eps)$ cuando $n\ge N$.
+\end{ejercicio}
+\begin{solucion}
+Las normas $\norm{T_n}$ están acotadas, digamos por $M$, luego todos sus espectros están en el disco cerrado de radio $M$. Si la conclusión fallara, habría una subsucesión $n_j$ y $\lambda_j\in\sigma(T_{n_j})$ con $\dist(\lambda_j,\sigma(T))\ge\eps$. Por compacidad del disco, alguna subsucesión converge a $\lambda$. El ejercicio~\ref{ej:v3-l08-3} da $\lambda\in\sigma(T)$, mientras que la continuidad de la distancia da $\dist(\lambda,\sigma(T))\ge\eps$, contradicción. Ésta es semicontinuidad superior del espectro como conjunto; no afirma que cada punto espectral persista cerca bajo cualquier perturbación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-7}
+Todo compacto no vacío $K\subset\C$ es el espectro de un operador acotado en un espacio de Banach.
+\end{ejercicio}
+\begin{solucion}
+El compacto métrico $K$ tiene una sucesión densa $(a_n)$: para cada $m$ tomamos una $1/m$-red finita y enumeramos su unión, repitiendo puntos si la unión es finita. En $\ell^2$, sea $Dx=(a_nx_n)$. Es acotado, con $\norm D=\sup|a_n|$. Fuera de $K$, la distancia positiva da una inversa diagonal acotada. Si $\lambda\in K$, para cada $j$ elegimos $n_j$ con $|a_{n_j}-\lambda|<1/j$; entonces $\norm{(D-\lambda)e_{n_j}}<1/j$. Si hubiese inversa acotada, tendríamos $1\le\norm{(D-\lambda)^{-1}}/j$, absurdo. Por tanto $\sigma(D)=K$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l08-8}
+Los operadores acotados inyectivos con imagen cerrada forman un abierto de $\Bcal(X)$.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio~\ref{ej:v3-l03-4}, esas propiedades equivalen a una cota inferior $\norm{Tx}\ge c\norm x$ con $c>0$. Si $\norm{S-T}<c$, entonces
+\[\norm{Sx}\ge\norm{Tx}-\norm{(S-T)x}\ge(c-\norm{S-T})\norm x.
+\]
+La constante positiva prueba inyectividad de $S$; además, si $Sx_n$ converge, la cota hace de $x_n$ una sucesión de Cauchy, cuyo límite $x$ satisface $Sx_n\to Sx$. Así la imagen de $S$ es cerrada y toda esa bola alrededor de $T$ tiene la propiedad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-1}
+Si $ST=TS$, pruebe $r(ST)\le r(S)r(T)$ y $r(S+T)\le r(S)+r(T)$.
+\end{ejercicio}
+\begin{solucion}
+La primera se deduce de $(ST)^n=S^nT^n$ y $\norm{(ST)^n}^{1/n}\le\norm{S^n}^{1/n}\norm{T^n}^{1/n}$ al tomar límites. Para la segunda, elijamos $a>r(S)$ y $b>r(T)$. La fórmula de Gelfand permite constantes $C,D\ge1$ con $\norm{S^n}\le Ca^n$ y $\norm{T^n}\le Db^n$ para todos $n\ge0$: para $n$ grande basta la definición de límite y para los finitísimos restantes aumentamos las constantes. El binomio, válido por conmutatividad, da
+\[\norm{(S+T)^n}\le\sum_{k=0}^n\binom nk Ca^kDb^{n-k}=CD(a+b)^n.
+\]
+Tomando raíces, límites y después $a\downarrow r(S)$, $b\downarrow r(T)$ obtenemos la segunda desigualdad. No hay igualdad general en la primera: las matrices diagonales $S=\operatorname{diag}(1,0)$ y $T=\operatorname{diag}(0,1)$ conmutan, tienen radio uno y producto cero. Este ejemplo también corrige el ejercicio 19 de la colección complementaria de problemas de $C^*$-álgebras de Maximenko \cite{maxproblemas}, que enuncia una igualdad excesiva.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-2}
+Pruebe $r(T^m)=r(T)^m$ para todo entero $m\ge1$.
+\end{ejercicio}
+\begin{solucion}
+Por aplicación espectral, $\sigma(T^m)=\{\lambda^m:\lambda\in\sigma(T)\}$. Tomar el máximo del módulo da $r(T^m)=\max_{\lambda\in\sigma(T)}|\lambda|^m=r(T)^m$, porque la función $t\mapsto t^m$ es creciente en los no negativos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-3}
+Para una matriz compleja $A$ con la norma de operador euclídea, pruebe $\norm A^2=r(A^*A)$.
+\end{ejercicio}
+\begin{solucion}
+La matriz $B=A^*A$ es autoadjunta y positiva: $\ip{Bx}{x}=\norm{Ax}^2\ge0$. Por el teorema espectral finito del capítulo~\ref{cap:v3-01}, tiene una base ortonormal de vectores propios con valores $\lambda_j\ge0$. Para $x=\sum_jc_je_j$ unitario,
+\[\norm{Ax}^2=\ip{Bx}{x}=\sum_j\lambda_j|c_j|^2\le\max_j\lambda_j.
+\]
+La igualdad se alcanza en un vector propio correspondiente al máximo. Así $\norm A^2=\max_j\lambda_j=r(B)$. La norma euclídea es necesaria para esta relación con la traspuesta conjugada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l09-4}
+Demuestre que $T\mapsto r(T)$ es semicontinua superior para la norma de operadores.
+\end{ejercicio}
+\begin{solucion}
+Si $T_n\to T$, por el ejercicio~\ref{ej:v3-l08-6}, dado $\eps>0$ y $n$ grande todo $\lambda\in\sigma(T_n)$ está a distancia menor que $\eps$ de algún $\mu\in\sigma(T)$. Entonces $|\lambda|\le|\mu|+\eps\le r(T)+\eps$. Tomando máximos y límite superior se obtiene $\limsup_n r(T_n)\le r(T)+\eps$; como $\eps$ es arbitrario, $\limsup_n r(T_n)\le r(T)$, que es la semicontinuidad superior en este espacio métrico.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: norma y espectro de una proyección]\label{ej:v3-ampl-multiplicador}
+Sea $E\subset\Omega$ medible y suponga que $E$ y su complemento tienen medida positiva. Determine norma, espectro y espacios propios de $M_{\boldsymbol1_E}$ en $L^2(\mu)$.
+\end{ejercicio}
+\begin{solucion}
+El rango esencial de $\boldsymbol1_E$ es $\{0,1\}$, su norma esencial es uno y ambas fibras tienen medida positiva. Por tanto la norma del operador es uno y ambos puntos del espectro son propios. El espacio propio de uno es $\{f:f=0\text{ casi en todas partes fuera de }E\}$; el de cero es $\{f:f=0\text{ casi en todas partes en }E\}$. Son ortogonales, y $f=\boldsymbol1_Ef+\boldsymbol1_{\Omega\setminus E}f$ prueba que su suma es todo $L^2$.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: espectro del corrimiento bilateral]\label{ej:v3-ampl-shift}
+Para $R$ en $\ell^2(\Z)$ del ejercicio~\ref{ej:v3-l07-2}, pruebe $\sigma(R)=\sigma_c(R)=\{|z|=1\}$.
+\end{ejercicio}
+\begin{solucion}
+Si $|\lambda|>1$, Neumann da inversa. Si $|\lambda|<1$, la factorización $R-\lambda=R(I-\lambda R^{-1})$ y $\norm{R^{-1}}=1$ también la da. Para $|\lambda|=1$ y $N\ge1$, definamos $x^{(N)}_n=\lambda^{-n}/\sqrt{2N+1}$ si $|n|\le N$ y cero fuera. Su norma es uno. En $(R-\lambda)x^{(N)}$ se cancelan todas las coordenadas interiores y quedan sólo dos extremos de módulo $1/\sqrt{2N+1}$, de modo que su norma es $\sqrt{2/(2N+1)}\to0$. Esto prueba que $\lambda$ es espectral. La ecuación $Rx=\lambda x$ fuerza $x_n=\lambda^{-n}x_0$ para todos los enteros, que no es cuadrado-sumable salvo que $x_0=0$; no hay valores propios. El adjunto es $R^{-1}$ y tampoco tiene valores propios en la circunferencia, por la misma recurrencia. La imagen de $R-\lambda$ es, pues, densa y el espectro es continuo. Este desarrollo amplía los ejercicios sobre corrimientos de Maximenko \cite{maxshift}.
+\end{solucion}
+
+\chapter{Operadores compactos y descomposición espectral}
+
+\begin{ejercicio}\label{ej:v3-l10-1}
+La lectura afirma, para $S$ acotado y $K$ compacto, que (i) $\dim\ker(S+K)<\infty$ y (ii) $\codim\ran(S+K)<\infty$. Examine el enunciado y pruebe una versión válida.
+\end{ejercicio}
+\begin{solucion}
+Ambos incisos son falsos sin una hipótesis sobre $S$: en un espacio infinito-dimensional, $S=K=0$ tiene núcleo de dimensión infinita e imagen $\{0\}$ de codimensión infinita. Una versión suficiente y natural exige que $S$ sea invertible. Entonces
+\[S+K=S(I+S^{-1}K),
+\]
+donde $C=S^{-1}K$ es compacto. (i) El núcleo de $I+C$ es el espacio propio de $C$ para $-1$, de dimensión finita por la proposición~\ref{v3:compacto-cero}. Es también el núcleo de $S+K$. (ii) La imagen de $I+C$ es cerrada y su anulador es $\ker(I+C')$, de dimensión finita. Para un subespacio cerrado $M$, $(X/M)^*\cong M^\perp$; si ese dual es finito-dimensional, $X/M$ también lo es, pues un conjunto linealmente independiente de $n$ vectores admite $n$ funcionales biortogonales por Hahn--Banach. Por tanto la codimensión es finita. La biyección $S$ preserva codimensión y cierre, dando el inciso (ii) para $S+K$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l10-2}
+Si $K$ es compacto y $r(K)>0$, existe un valor propio de módulo $r(K)$.
+\end{ejercicio}
+\begin{solucion}
+La compacidad no vacía de $\sigma(K)$ asegura que el máximo del módulo se alcanza en algún $\lambda\in\sigma(K)$. Como $|\lambda|=r(K)>0$, el teorema~\ref{v3:fredholm} afirma que ese punto es un valor propio.
+\end{solucion}
+
+\begin{ejercicio}[Segunda alternativa de Fredholm]\label{ej:v3-l10-3}
+Para $\lambda\ne0$, demuestre que o bien $(K-\lambda)x=y$ tiene una única solución para cada $y$, o bien $K'\phi=\lambda\phi$ tiene una solución no nula.
+\end{ejercicio}
+\begin{solucion}
+Si $\ker(K'-\lambda)=0$, el teorema de Fredholm da $\ker(K-\lambda)=0$ y suprayectividad de $K-\lambda$. Existe entonces una única solución para cada dato. Si ese núcleo del adjunto no es cero, obtenemos la segunda alternativa. No pueden ocurrir ambas: si $K-\lambda$ es invertible, también lo es su adjunto, cuyo núcleo debe ser cero. Para un dato particular en la segunda alternativa, la condición de solvencia es que lo anulen todas las soluciones de la ecuación adjunta, como muestra la fórmula previa a los ejercicios.
+\end{solucion}
+
+\begin{ejercicio}[Tercera alternativa de Fredholm]\label{ej:v3-l10-4}
+Para $\lambda\ne0$, pruebe $\dim\ker(K-\lambda)=\dim\ker(K'-\lambda)$.
+\end{ejercicio}
+\begin{solucion}
+Pongamos $A=K-\lambda$, $n=\dim\ker A$, $m=\dim\ker A'$, ambos finitos. Elijamos una base $x_1,\ldots,x_n$ de $\ker A$ y funcionales continuas $f_i$ con $f_i(x_j)=\delta_{ij}$. Sea $\psi_1,\ldots,\psi_m$ una base de $\ker A'$. Existen $y_1,\ldots,y_m\in X$ con $\psi_i(y_j)=\delta_{ij}$: el mapeo $x\mapsto(\psi_i(x))$ es suprayectivo sobre $\C^m$, pues de lo contrario una combinación lineal no nula de sus coordenadas se anularía en su imagen y contradice la independencia de las $\psi_i$.
+
+Supongamos $n<m$ y definamos $F x=\sum_{i=1}^nf_i(x)y_i$. Si $(A+F)x=0$, aplicar $\psi_j$ para $j\le n$ da $f_j(x)=0$, luego $Ax=0$. Escribiendo $x$ en la base del núcleo se obtiene $x=0$. Pero $\psi_{n+1}$ se anula en la imagen de $A+F$, así que este operador no es suprayectivo. Contradice Fredholm, porque $A+F=(K+F)-\lambda I$ y $K+F$ es compacto.
+
+Supongamos ahora $n>m$ y definamos $F x=\sum_{i=1}^mf_i(x)y_i$. Este operador $A+F$ no es inyectivo, pues anula $x_{m+1}$. Sin embargo es suprayectivo. Dado $z\in X$, el vector $z_0=z-\sum_{i=1}^m\psi_i(z)y_i$ es anulado por todas las $\psi_i$, luego pertenece a $\ran A$. Escojamos $u$ con $Au=z_0$ y pongamos
+\[x=u+\sum_{i=1}^m[\psi_i(z)-f_i(u)]x_i.
+\]
+Entonces $Ax=z_0$ y $f_i(x)=\psi_i(z)$, por lo que $(A+F)x=z$. Esto vuelve a contradecir Fredholm. Los argumentos incluyen los casos $n=0$ o $m=0$ interpretando las sumas vacías como cero. Por tanto $n=m$. En la perturbación finita se necesitan los vectores $y_i$ que detectan el conúcleo, no los $x_i$ del núcleo usados en la primera sugerencia original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-1}
+Si $a_n\to0$, pruebe que $D(x_n)=(a_nx_n)$ en $\ell^\infty$ es compacto y $\sigma(D)=\{a_n:n\ge1\}\cup\{0\}$.
+\end{ejercicio}
+\begin{solucion}
+Sea $D_N$ la misma diagonal con ceros después de $N$. Tiene rango finito y $\norm{D-D_N}=\sup_{n>N}|a_n|\to0$, así que $D$ es compacto. Fuera de la cerradura de los $a_n$, la inversa diagonal está acotada; cada $a_n$ es un valor propio. Cero pertenece al espectro porque el espacio es infinito-dimensional y $D$ es compacto. Como la única posible acumulación de la sucesión es cero, su cerradura es exactamente el conjunto indicado. También puede comprobarse directamente que los vectores $e_n$ impiden una inversa acotada en cero si ningún $a_n$ se anula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-2}
+Para un operador normal, demuestre que los espacios propios de dos valores distintos son ortogonales.
+\end{ejercicio}
+\begin{solucion}
+Si $Tv=\lambda v$, $Tw=\mu w$, normalidad implica $T^*w=\cl\mu w$ mediante $\norm{(T^*-\cl\mu)w}=\norm{(T-\mu)w}=0$. Por tanto $\lambda\ip vw=\ip{Tv}w=\ip v{T^*w}=\mu\ip vw$. Si $\lambda\ne\mu$, el producto interno se anula. Esto desarrolla todos los pasos del lema~\ref{v3:normal-nucleos} en el caso pedido.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-3}
+Para $T\in\Bcal(H)$ son equivalentes: (i) $T$ compacto; (ii) $T^*T$ compacto; (iii) $T^*$ compacto.
+\end{ejercicio}
+\begin{solucion}
+(i)$\Rightarrow$(ii) usa que componer un compacto con un acotado da un compacto. (i)$\Leftrightarrow$(iii) se deduce de Schauder y la identificación de Riesz, o de aplicar una dirección a $T^*$ y usar $T^{**}=T$. Para (ii)$\Rightarrow$(i), sea $(x_n)$ acotada, $\norm{x_n}\le C$. Elegimos una subsucesión para la que $T^*Tx_n$ converge. Para dos términos de ella, poniendo $u=x_n-x_m$,
+\[\norm{Tu}^2=\ip{T^*Tu}u\le\norm{T^*Tu}\norm u\le2C\norm{T^*Tx_n-T^*Tx_m}.
+\]
+Así $(Tx_n)$ es de Cauchy y converge por completitud de $H$. Éste es el criterio secuencial de compacidad del operador.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l11-4}
+Si $(e_n)$ es ortonormal y $T$ compacto, demuestre $Te_n\to0$ en norma.
+\end{ejercicio}
+\begin{solucion}
+Bessel implica $\ip{e_n}z\to0$ para todo $z\in H$, porque sus módulos cuadrados forman una serie convergente. Así $\ip{Te_n}y=\ip{e_n}{T^*y}\to0$. Si las normas $\norm{Te_n}$ no tendieran a cero, habría una subsucesión con normas al menos $\eps>0$; por compacidad, una subsucesión adicional convergería en norma a $v$. Sus apareamientos convergen tanto a $\ip vy$ como a cero para todo $y$, luego $v=0$, contradiciendo la cota de normas.
+\end{solucion}
+
+\begin{ejercicio}[Volterra]\label{ej:v3-l11-5}\index{Volterra, operador de}
+En $L^2[0,1]$ sea $(Vf)(x)=\int_0^xf(t)\,dt$. Pruebe (i) que es compacto; (ii) que $(V^*g)(t)=\int_t^1g(x)\,dx$; (iii) que $M_a=\{f:f=0\text{ casi en todas partes en }[0,a]\}$ es $V$-invariante para $0\le a\le1$.
+\end{ejercicio}
+\begin{solucion}
+(i) Cauchy--Schwarz da $|Vf(x)|\le\norm f_2$ y
+\[|Vf(x)-Vf(y)|\le|x-y|^{1/2}\norm f_2.
+\]
+La imagen de la bola unidad es uniformemente acotada y equicontinua en $C[0,1]$. Por Arzelà--Ascoli su cerradura allí es compacta; la inclusión continua $C[0,1]\hookrightarrow L^2[0,1]$ preserva compacidad, de modo que $V$ es compacto.
+
+(ii) Para $f,g\in L^2$, la integral doble de $|f(t)g(x)|$ sobre el triángulo $0\le t\le x\le1$ está acotada por $\norm f_1\norm g_1\le\norm f_2\norm g_2$, así que Fubini es aplicable. Entonces
+\[\ip{Vf}g=\int_0^1\int_0^x f(t)\cl{g(x)}\,dt\,dx
+=\int_0^1 f(t)\overline{\int_t^1g(x)\,dx}\,dt.
+\]
+Esto identifica el adjunto, cuya fórmula define un operador acotado por la misma estimación de Cauchy--Schwarz.
+
+(iii) Si $f=0$ casi en todas partes en $[0,a]$, para todo $x\le a$ la integral $\int_0^xf$ es cero. Por tanto $Vf\in M_a$. Estos subespacios son cerrados porque son núcleos del multiplicador continuo por $\boldsymbol1_{[0,a]}$. La clasificación de \emph{todos} los subespacios invariantes de Volterra, mencionada sin prueba en la lectura, es un resultado adicional que no se usa aquí; el ejercicio sólo solicita esta invariancia.
+\end{solucion}
+
+\chapter{Valores singulares, traza y clases de Schatten}
+
+\begin{ejercicio}\label{ej:v3-l12-1}
+Demuestre que $\norm\cdot_{\mathrm{HS}}$ y $\norm\cdot_{\mathrm{tr}}$ son normas en sus respectivas clases.
+\end{ejercicio}
+\begin{solucion}
+Para Hilbert--Schmidt, la identificación $T\mapsto(Te)_{e\in\mathcal E}$ en el espacio de familias cuadrado-sumables prueba homogeneidad y la desigualdad triangular de Minkowski. Si todos los $Te$ son cero, $T$ se anula en el span denso de la base, luego $T=0$. La suma y los múltiplos permanecen en la clase por esa desigualdad. Para traza, no puede sumarse directamente la lista de valores singulares. El lema~\ref{v3:schatten-variacional} con $p=1$ expresa la norma como supremo de módulos de expresiones lineales, y por tanto
+\[\norm{S+T}_{\mathrm{tr}}\le\norm S_{\mathrm{tr}}+\norm T_{\mathrm{tr}},\qquad
+\norm{aT}_{\mathrm{tr}}=|a|\norm T_{\mathrm{tr}}.
+\]
+Las sumas de compactos son compactas y la cota asegura finitud de la norma de la suma. Finalmente $\norm T\le\norm T_{\mathrm{tr}}$ prueba definitud. Todos los axiomas quedan verificados.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-2}
+Todo operador de Hilbert--Schmidt es compacto.
+\end{ejercicio}
+\begin{solucion}
+Fijada una base $\mathcal E$, para cada $n$ escoja un conjunto finito $F_n$ con $\sum_{e\notin F_n}\norm{Te}^2<1/n^2$. Entonces $TP_{F_n}$ tiene rango finito y
+\[\norm{T-TP_{F_n}}\le\norm{T(I-P_{F_n})}_{\mathrm{HS}}
+=\Bigl(\sum_{e\notin F_n}\norm{Te}^2\Bigr)^{1/2}<1/n.
+\]
+La desigualdad usada se probó para operadores acotados sin presuponer compacidad en la proposición~\ref{v3:hilbert-schmidt}; así no hay circularidad. El límite en norma de compactos es compacto.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-3}
+Pruebe $\norm T\le\norm T_{\mathrm{HS}}$.
+\end{ejercicio}
+\begin{solucion}
+Para $x$ unitario, extiéndalo a una base ortonormal. La independencia de la base da $\norm{Tx}^2\le\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$. Tomar el supremo en $x$ da la desigualdad. También se obtiene de $\sup_ns_n\le(\sum_ns_n^2)^{1/2}$ una vez probada la compacidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-4}
+Demuestre que las clases de Hilbert--Schmidt y de traza son ideales bilaterales en $\Bcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:ideales-hs-traza} proporciona las cuatro cotas necesarias. Para dejar explícitos los dos lados: $AT$ se controla en Hilbert--Schmidt sumando $\norm{ATe}^2\le\norm A^2\norm{Te}^2$, y $TA$ aplicando ese resultado al adjunto; para traza se usa la serie singular y las identidades $A(g\otimes f)=Ag\otimes f$, $(g\otimes f)A=g\otimes A^*f$. Cada término tiene norma de traza igual al producto de las normas de sus dos vectores. La suma de esas cotas es $\norm A\sum_ns_n(T)<\infty$, de modo que ambos productos pertenecen a la clase. La estructura de subespacio se estableció en el ejercicio~\ref{ej:v3-l12-1}.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l12-5}
+Pruebe: (i) si $T$ es de traza, $T^*$ también y $\tr(T^*)=\overline{\tr T}$; (ii) para $S,T$ Hilbert--Schmidt, $\tr(ST)=\tr(TS)$; (iii) $\langle S,T\rangle_{\mathrm{HS}}=\tr(ST^*)$ es un producto interno que hace Hilbert a $\mathrm{HS}(H)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La descomposición singular intercambia $f_n$ y $g_n$ al pasar de $T$ a $T^*$, luego sus valores singulares son iguales y $\norm{T^*}_{\mathrm{tr}}=\norm T_{\mathrm{tr}}$. En una base ortonormal,
+$\ip{T^*e}e=\overline{\ip{Te}e}$; la convergencia absoluta permite conjugar la suma y da la fórmula.
+
+(ii) Ambos productos son de traza por la proposición anterior. Para una base $(e_i)$, expandiendo $Te_i$ y aplicando $S$,
+\[\tr(ST)=\sum_{i,j}\ip{Te_i}{e_j}\ip{Se_j}{e_i}.
+\]
+La suma doble de módulos es finita: Cauchy--Schwarz y Parseval la acotan por
+\[\Bigl(\sum_{i,j}|\ip{Te_i}{e_j}|^2\Bigr)^{1/2}
+\Bigl(\sum_{i,j}|\ip{Se_j}{e_i}|^2\Bigr)^{1/2}
+=\norm T_{\mathrm{HS}}\norm S_{\mathrm{HS}}.
+\]
+Se puede intercambiar $i,j$; la expresión resultante es $\tr(TS)$.
+
+(iii) Por el inciso (ii),
+\[\tr(ST^*)=\tr(T^*S)=\sum_e\ip{Se}{Te}.
+\]
+La serie converge absolutamente por Cauchy--Schwarz. Es lineal en $S$, conjugado-lineal en $T$, hermitiana y su valor en $(T,T)$ es $\sum_e\norm{Te}^2=\norm T_{\mathrm{HS}}^2$, positivo salvo para $T=0$. Así es un producto interno cuya norma es la Hilbert--Schmidt. La completitud se demostró en el teorema~\ref{v3:schatten-banach} con $p=2$; por tanto este espacio es Hilbert.
+\end{solucion}
+
+\begin{ejercicio}[Todas las clases de Schatten]\label{ej:v3-l12-6}
+Para $1\le p<\infty$, pruebe que $\mathcal S_p(H)$ es un espacio vectorial complejo, que $\norm\cdot_p$ es una norma y que ese espacio es completo.
+\end{ejercicio}
+\begin{solucion}
+La prueba completa consta del lema~\ref{v3:schatten-variacional} y del teorema~\ref{v3:schatten-banach}; explicitamos cómo responde a cada parte. La fórmula variacional se obtiene de la descomposición singular, Bessel y Hölder con la matriz no negativa $a_{ij}$ cuyas sumas por filas y columnas son a lo sumo uno. Su cota inferior se obtiene eligiendo las familias singulares y los pesos duales $b_i$. Esta igualdad hace subaditiva y homogénea a $\norm\cdot_p$, y la cota $\norm T\le\norm T_p$ demuestra definitud. Como la suma de compactos es compacta y la desigualdad triangular mantiene finita la norma, la clase es un subespacio vectorial.
+
+Para completitud, una sucesión de Cauchy en $p$ converge en norma de operador a un compacto $T$. Cada expresión finita de la fórmula variacional es continua para esa norma de operador. Pasar al límite en $|F(T_n-T_m)|\le\eps$ y tomar el supremo prueba $\norm{T_n-T}_p\le\eps$ para $n$ grande. Esto demuestra simultáneamente que $T$ pertenece a la clase y que la convergencia ocurre en su norma. No se ha usado ninguna desigualdad de valores singulares sin demostrar.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: núcleo acotado en medida finita]\label{ej:v3-ampl-schur}
+Si $\mu(X),\nu(Y)<\infty$ y $|K(x,y)|\le M$ casi en todas partes, pruebe $\norm A\le M\sqrt{\mu(X)\nu(Y)}$.
+\end{ejercicio}
+\begin{solucion}
+Las integrales de filas están acotadas por $M\nu(Y)$ y las de columnas por $M\mu(X)$. Schur da
+\[\norm A\le\sqrt{M\nu(Y)\,M\mu(X)}=M\sqrt{\mu(X)\nu(Y)}.
+\]
+Si alguna medida es cero, el operador es cero y la fórmula sigue siendo válida. Esto resuelve el ejercicio final propuesto, sin solución, en la nota complementaria de Schur.
+\end{solucion}
+
+\begin{ejercicio}[Complemento: tamaño Hilbert--Schmidt de Volterra]\label{ej:v3-ampl-volterra-hs}
+Calcule la norma Hilbert--Schmidt de $V$ en $L^2[0,1]$ y determine si $V^*V$ es de traza.
+\end{ejercicio}
+\begin{solucion}
+El núcleo es $K(x,y)=\boldsymbol1_{\{0\le y\le x\le1\}}$, cuyo cuadrado integra el área del triángulo: $\int_0^1\int_0^x1\,dy\,dx=1/2$. Por tanto $\norm V_{\mathrm{HS}}=1/\sqrt2$. El producto $V^*V$ es de traza porque ambos factores son Hilbert--Schmidt, y
+\[\tr(V^*V)=\sum_e\ip{V^*Ve}e=\sum_e\norm{Ve}^2=\norm V_{\mathrm{HS}}^2=\tfrac12.
+\]
+Como $V^*V$ es positivo, su norma de traza coincide con su traza, también igual a $1/2$.
+\end{solucion}
+
+\chapter{Topologías débiles, redes y convergencia}
+
+\begin{ejercicio}\label{ej:v3-l13-1}
+Suponga que una topología $\tau$ en $E$ tiene la propiedad: para toda aplicación $g:Z\to E$ desde un espacio topológico, $g$ es continua si y sólo si cada $f_i\circ g$ lo es. Pruebe que $\tau$ es la topología inicial de las $f_i$.
+\end{ejercicio}
+\begin{solucion}
+Tomando $g$ igual a la identidad de $(E,\tau)$ en sí mismo, la hipótesis implica que cada $f_i$ es continua para $\tau$. Por minimalidad, la topología inicial $\tau_0$ está contenida en $\tau$. Ahora tome $Z=(E,\tau_0)$ y $g$ la identidad hacia $(E,\tau)$. Todas las composiciones $f_i\circ g$ son continuas por construcción, así que $g$ es continua y $\tau\subset\tau_0$. Las dos inclusiones dan igualdad. A la inversa, en la topología inicial, la continuidad de todas las composiciones hace abiertas las preimágenes bajo $g$ de los abiertos subbásicos y, por uniones e intersecciones finitas, de todos los abiertos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-2}
+Si la topología inicial de una familia es Hausdorff, demuestre que la familia separa puntos.
+\end{ejercicio}
+\begin{solucion}
+Si dos puntos distintos $x,y$ tuvieran $f_i(x)=f_i(y)$ para todo $i$, pertenecerían exactamente a los mismos abiertos subbásicos. Lo mismo ocurriría para intersecciones finitas y uniones, por tanto para todos los abiertos. No podrían tener vecindades abiertas disjuntas, contradiciendo Hausdorff. Esta dirección ni siquiera requiere que los espacios de llegada sean Hausdorff.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-3}
+Demuestre que los conjuntos $D^*(S,1)=\{\phi:|\phi(x)|<1\text{ para todo }x\in S\}$, con $S\subset X$ finito, forman una base de vecindades débiles estrella de cero.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:vecindades-debiles} da primero los conjuntos con tolerancia arbitraria $\eps>0$. Pero
+\[D^*(\{x_1,\ldots,x_m\},\eps)
+=D^*(\{x_1/\eps,\ldots,x_m/\eps\},1),
+\]
+por linealidad de cada $\phi$. Por tanto fijar el radio en uno no reduce la familia de vecindades necesarias. Cada conjunto indicado es abierto por ser una intersección finita de preimágenes de discos bajo evaluaciones.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l13-4}
+En dimensión infinita, las topologías débil y de norma no coinciden.
+\end{ejercicio}
+\begin{solucion}
+Toda vecindad débil de cero contiene un $D(F,\eps)$, donde $F=\{\phi_1,\ldots,\phi_m\}$. El mapeo lineal $x\mapsto(\phi_1(x),\ldots,\phi_m(x))$ desde un espacio infinito-dimensional a $\F^m$ tiene núcleo no nulo. Si $u\ne0$ pertenece a él, toda la recta $\{tu:t\in\F\}$ está en $D(F,\eps)$, que por ello no es acotado. La bola unidad abierta en norma no puede contener ninguna vecindad débil de cero; por tanto no es débilmente abierta. En dimensión finita las coordenadas de una base son funcionales continuas y las dos topologías sí coinciden.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-1}
+En un espacio Hausdorff, una red convergente tiene límite único.
+\end{ejercicio}
+\begin{solucion}
+Si convergiera a $x\ne y$, elija vecindades abiertas disjuntas $U,V$ de esos puntos. La red estaría eventualmente en cada una, por tanto eventualmente en su intersección vacía al tomar una cota común de los dos umbrales, imposible. También vale el recíproco mencionado en la lectura: si $x\ne y$ no admiten vecindades disjuntas, dirija los pares $(U,V)$ de vecindades por inclusión inversa y elija $z_{U,V}\in U\cap V$. Esa red converge simultáneamente a $x$ e $y$, contradiciendo unicidad de límites.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-2}
+Para $A\subset E$, pruebe: (i) $x$ es interior a $A$ si y sólo si ninguna red en $E\setminus A$ converge a $x$; (ii) $x\in\cl A$ si y sólo si alguna red en $A$ converge a $x$.
+\end{ejercicio}
+\begin{solucion}
+(ii) Si una red en $A$ converge a $x$, toda vecindad de $x$ contiene algún término y, por tanto, intersecta $A$. Recíprocamente, si toda vecindad $U$ de $x$ intersecta $A$, elija $x_U\in A\cap U$ y ordene las vecindades por inclusión inversa. Dada una vecindad $V$, después del índice $V$ todos los $U$ están contenidos en $V$, luego $x_U\in V$. La red converge a $x$.
+
+(i) Si $x$ tiene una vecindad contenida en $A$, ninguna red íntegramente en el complemento puede estar eventualmente en ella. Si $x$ no es interior, toda vecindad intersecta el complemento, o sea $x\in\cl{E\setminus A}$. El inciso (ii) construye entonces una red en ese complemento convergente a $x$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-3}
+Una aplicación $f:E\to Y$ es continua si y sólo si preserva los límites de todas las redes.
+\end{ejercicio}
+\begin{solucion}
+Si es continua y $x_\alpha\to x$, la preimagen de cualquier vecindad de $f(x)$ es una vecindad de $x$, de modo que $f(x_\alpha)\to f(x)$. Si no es continua en $x$, existe una vecindad abierta $V$ de $f(x)$ tal que ninguna vecindad $U$ de $x$ está contenida en $f^{-1}(V)$. Elija $x_U\in U\setminus f^{-1}(V)$; la red dirigida por inclusión inversa converge a $x$, pero sus imágenes nunca pertenecen a $V$, así que no convergen a $f(x)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-4}
+Un espacio topológico es compacto si y sólo si toda red universal converge.
+\end{ejercicio}
+\begin{solucion}
+En un compacto, cualquier red tiene un punto de acumulación por el teorema~\ref{v3:compacto-redes}; si es universal, la observación posterior al lema~\ref{v3:ultrafiltro-existencia} muestra que converge a ese punto. Recíprocamente, cada red tiene una subred universal por ese lema. Si todas las universales convergen, toda red tiene una subred convergente y el teorema~\ref{v3:compacto-redes} da compacidad. Así se justifica también la existencia de subredes universales, que la lectura sólo menciona.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-5}
+Pruebe que los conjuntos en los que una red está eventualmente forman un filtro. Recíprocamente, dado un filtro $\mathcal F$, pruebe que elegir $x_F\in F$ define una red.
+\end{ejercicio}
+\begin{solucion}
+El conjunto total pertenece a la familia de eventualidades y el vacío no. Si la red está eventualmente en $F$ y $F\subset G$, está eventualmente en $G$. Si está eventualmente en $F$ y $G$, después de una cota común de los umbrales está en $F\cap G$. Éstos son los axiomas del filtro. A la inversa, ordene $\mathcal F$ por inclusión inversa. Es un conjunto dirigido porque $F\cap G\in\mathcal F$ y está contenido en ambos. Cada miembro es no vacío, por lo que puede elegirse $x_F\in F$; la aplicación $F\mapsto x_F$ es una red. Su filtro de eventualidades contiene a $\mathcal F$, aunque para elecciones arbitrarias no tiene por qué ser exactamente igual a él.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-6}
+Un filtro converge a $x$ cuando contiene todas las vecindades de $x$. Pruebe que una red converge a $x$ si y sólo si su filtro de eventualidades converge a $x$.
+\end{ejercicio}
+\begin{solucion}
+Por definición, una vecindad $U$ pertenece al filtro de eventualidades exactamente cuando la red está eventualmente en $U$. Exigir esto para todas las vecindades de $x$ es precisamente exigir convergencia de la red a $x$. La frase ``converge a $x$'' completa la omisión verbal del enunciado original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-7}
+Si $y_\beta=x_{a(\beta)}$ es una subred, su filtro de eventualidades contiene al de la red original.
+\end{ejercicio}
+\begin{solucion}
+Si $x_\alpha\in F$ para todos los $\alpha\ge\alpha_0$, la condición de subred proporciona $\beta_0$ con $a(\beta)\ge\alpha_0$ para $\beta\ge\beta_0$. Para esos índices, $y_\beta=x_{a(\beta)}\in F$. Así toda eventualidad de la red original es una eventualidad de la subred, que es exactamente la inclusión de filtros pedida.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l14-8}
+Una red es universal si y sólo si su filtro asociado es un ultrafiltro. Deduzca: (i) todo filtro está contenido en un ultrafiltro; (ii) un espacio es compacto si y sólo si todo ultrafiltro converge.
+\end{ejercicio}
+\begin{solucion}
+La equivalencia traduce literalmente la definición: para cada $B$, la red es eventualmente en $B$ o en su complemento si y sólo si uno de ellos pertenece al filtro de eventualidades. Para (i), el argumento de Zorn del lema~\ref{v3:ultrafiltro-existencia} da una extensión maximal y demuestra que decide cada subconjunto; ésa es la extensión requerida. También puede construirse la red seleccionada del ejercicio~\ref{ej:v3-l14-5} y tomar una subred universal: su ultrafiltro de eventualidades contiene al filtro inicial por el ejercicio~\ref{ej:v3-l14-7}.
+
+(ii) En un compacto, sea $\mathcal U$ un ultrafiltro y elijamos la red $x_U\in U$ ordenada por inclusión inversa. Su filtro de eventualidades contiene a $\mathcal U$ y, por maximalidad del ultrafiltro, es igual a él. La red es universal y converge por el ejercicio~\ref{ej:v3-l14-4}; el ejercicio~\ref{ej:v3-l14-6} da convergencia de $\mathcal U$. Recíprocamente, si todo ultrafiltro converge, el filtro asociado a cualquier red universal converge, así que esa red converge; el ejercicio~\ref{ej:v3-l14-4} da compacidad.
+\end{solucion}
+
+\begin{ejercicio}[Riemann--Lebesgue]\label{ej:v3-l15-1}
+Para $f\in L^1[0,2\pi]$, pruebe $\int_0^{2\pi}f(t)\cos(nt)\,dt\to0$.
+\end{ejercicio}
+\begin{solucion}
+Las funciones $\cos(nt)/\sqrt\pi$, $n\ge1$, son ortonormales en $L^2[0,2\pi]$: la identidad $2\cos(nt)\cos(mt)=\cos((n-m)t)+\cos((n+m)t)$ y la integral de un coseno de frecuencia entera no nula dan ortogonalidad y norma cuadrada $\pi$. Si $g\in L^2$, Bessel implica que los coeficientes $\int g(t)\cos(nt)\,dt$ tienden a cero. Dado $f\in L^1$ y $\eps>0$, elija una función continua $g$ con $\norm{f-g}_1<\eps/2$; esa densidad se obtiene aproximando funciones simples por continuas mediante regularidad de la medida de Lebesgue. Como $g\in L^2$, para $n$ grande su coeficiente tiene módulo menor que $\eps/2$. Entonces
+\[\left|\int f\cos(nt)\right|\le\norm{f-g}_1+\left|\int g\cos(nt)\right|<\eps.
+\]
+El factor correcto es $\cos(nt)$; el enunciado original imprime $\cos(t)$, cuya integral no depende de $n$ y en general no es cero, como muestra $f(t)=\cos t$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-2}
+Si $K$ es compacto Hausdorff y $f_n,f\in C(K)$, pruebe que $f_n\rightharpoonup f$ si y sólo si $(f_n)$ es uniformemente acotada y $f_n(x)\to f(x)$ para cada $x\in K$.
+\end{ejercicio}
+\begin{solucion}
+Si hay convergencia débil, la proposición~\ref{v3:debil-acotacion-secuencias} da $\sup_n\norm{f_n}_\infty<\infty$. Las evaluaciones $\delta_x:g\mapsto g(x)$ son funcionales continuas, así que $f_n(x)\to f(x)$.
+
+Recíprocamente, por el teorema de representación de Riesz para $C(K)$, toda funcional es integración respecto de una medida de Borel regular finita real o compleja $\mu$. Si $\norm{f_n}_\infty\le C$, también $|f(x)|\le C$ por el límite puntual. Así $|f_n-f|\le2C$, integrable respecto de la variación total finita $|\mu|$. Convergencia dominada da
+\[\left|\int(f_n-f)\,d\mu\right|\le\int|f_n-f|\,d|\mu|\longrightarrow0.
+\]
+Por tanto todas las funcionales convergen y la sucesión converge débilmente. Se usa aquí la representación de medidas desarrollada en el volumen II; también puede consultarse \cite{rudin1991}. La hipótesis de que el límite puntual $f$ sea continuo es parte del enunciado y no se deduce de la mera acotación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-3}
+Una aplicación lineal entre espacios normados es continua si y sólo si lleva toda sucesión que converge a cero en una sucesión acotada.
+\end{ejercicio}
+\begin{solucion}
+Si $T$ es continua, $x_n\to0$ implica $Tx_n\to0$, y toda sucesión convergente es acotada. Si $T$ no es continua, no existe una cota global de operador. Para cada $n$ escoja $u_n$ unitario con $\norm{Tu_n}>n^3$. Entonces $x_n=u_n/n$ tiene norma $1/n\to0$, pero $\norm{Tx_n}>n^2$, que no es acotada. Esto prueba el contrapositivo sin requerir completitud.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l15-4}
+Todo conjunto convexo cerrado en norma es débilmente cerrado.
+\end{ejercicio}
+\begin{solucion}
+Si $C$ es vacío o todo el espacio, es inmediato. Para $x\notin C$, el teorema de separación estricta entre el compacto $\{x\}$ y el convexo cerrado $C$ da una funcional continua real $f$ y un real $a$ con $f(x)>a\ge\sup_{c\in C}f(c)$, cambiando el signo si fuera necesario. En un espacio complejo, $f=\Re\phi$ para una funcional compleja continua $\phi$, por la conversión probada en el capítulo~\ref{cap:v3-03}. El conjunto $\{y:\Re\phi(y)>a\}$, o $\{y:f(y)>a\}$ en el caso real, es débilmente abierto, contiene a $x$ y no intersecta $C$. Por tanto el complemento de $C$ es débilmente abierto. No se necesita que una bola cerrada sea compacta en dimensión infinita: separar el punto de $C$ evita esa confusión.
+\end{solucion}
+
+\chapter{Compacidad débil y reflexividad}
+
+\begin{ejercicio}[Lectura 16, ejercicio 1; formulación precisa]\label{ej:v3-l16-1}
+Sean $\tau$ y $\tau'$ topologías en un mismo conjunto, con $(K,\tau)$ compacto y $(K,\tau')$ Hausdorff. Si $\tau'\subseteq\tau$, pruebe mediante redes que $\tau'=\tau$.
+\end{ejercicio}
+\begin{solucion}
+Sea una red que converge a $x$ para $\tau'$. Si no convergiera para $\tau$, existiría una vecindad $U$ de $x$ para $\tau$ y una subred enteramente fuera de $U$. Por compacidad, esta subred tiene una subred adicional que converge para $\tau$ a algún $y$. Como $K\setminus U$ es $\tau$-cerrado, $y\notin U$. La inclusión $\tau'\subseteq\tau$ implica que esa última subred converge también para $\tau'$ a $y$. Pero toda subred de la red inicial converge para $\tau'$ a $x$; la propiedad Hausdorff fuerza $y=x$, contradicción.
+
+Así toda red convergente para $\tau'$ converge para $\tau$. El criterio de continuidad por redes implica $\tau\subseteq\tau'$, y tenemos igualdad. La afirmación original con «$\tau'\not\subseteq\tau$» excluiría incluso la igualdad y es falsa. Lo que se prohíbe es una topología Hausdorff \emph{estrictamente} más gruesa que una topología compacta.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v3-l16-2}
+Sea $(f_n:X\to Y_n)$ una familia numerable que separa puntos y suponga que cada $Y_n$ es métrico. Construya una métrica en $X$ que induzca la topología inicial de estas aplicaciones. Deduzca que un compacto con una familia numerable de funciones \emph{continuas} complejas que separa puntos es metrizable.
+\end{ejercicio}
+\begin{solucion}
+Si $d_n$ es la métrica de $Y_n$, definimos
+\[
+ d(x,y)=\sum_{n\geq1}2^{-n}\min\{1,d_n(f_n(x),f_n(y))\}.
+\]
+Las verificaciones de métrica son las mismas del teorema \ref{v3:bola-dual-metrizable}; la separación de puntos asegura que $d(x,y)=0$ sólo para $x=y$. La convergencia para $d$ implica convergencia de cada coordenada, porque cada término de la suma tiende a cero. La convergencia de todas las coordenadas implica convergencia para $d$, separando una cola pequeña y un número finito de términos iniciales. Estos argumentos valen para redes, de modo que $d$ induce exactamente la topología inicial.
+
+Para completar el criterio empleado, si $\tau_1$ es más fina que $\tau_2$, toda red $\tau_1$-convergente converge para $\tau_2$. Si la inclusión falla, existe un abierto $U$ de $\tau_2$ y $x\in U$ sin vecindad $\tau_1$ contenida en $U$. Para cada vecindad $V$ de $x$ en $\tau_1$ elegimos $x_V\in V\setminus U$, dirigiendo las vecindades por inclusión inversa. La red converge para $\tau_1$ a $x$ pero no para $\tau_2$. Esto prueba el recíproco del criterio.
+
+En el caso compacto, la continuidad de las $f_n$ implica que la topología métrica inicial es más gruesa que la original. La primera es Hausdorff y la segunda es compacta; el ejercicio anterior prueba su igualdad. Sin continuidad, la conclusión sobre la topología original es falsa: $\N$ con la topología cofinita es compacto y admite una aplicación inyectiva en $\R$, pero no es Hausdorff ni metrizable. La construcción de una métrica en un conjunto no identifica automáticamente una topología previamente dada.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v3-l16-3}
+Si $X$ es Banach, pruebe que toda sucesión de Cauchy débil* en $X^*$ converge débil*.
+\end{ejercicio}
+\begin{solucion}
+Para cada $x$, la sucesión escalar $\varphi_n(x)$ es de Cauchy y converge. Definamos $\varphi(x)=\lim_n\varphi_n(x)$. Pasar al límite en las igualdades de linealidad muestra que $\varphi$ es lineal. Cada sucesión $\varphi_n(x)$ es acotada; acotación uniforme da $M=\sup_n\norm{\varphi_n}<\infty$. Por tanto $|\varphi(x)|\leq M\norm x$ y $\varphi\in X^*$. La propia definición del límite muestra convergencia débil*.
+
+La sugerencia mediante compacidad también funciona para esta sucesión, que es acotada: Alaoglu proporciona una subred convergente, y una red de Cauchy con una subred convergente converge al mismo límite. Para verificarlo en una medición $x$, fijamos un umbral que haga $|\varphi_\alpha(x)-\varphi_\beta(x)|<\eps/2$ y elegimos un término de la subred posterior a ese umbral y a distancia menor que $\eps/2$ del límite. La desigualdad triangular controla toda la cola. El ejemplo \ref{v3:red-no-acotada} explica por qué no se puede afirmar acotación eventual para redes arbitrarias.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v3-l16-4}
+Sean $1<p<\infty$, $1/p+1/q=1$, y $(u_\alpha)$ una red en $\ell^q=(\ell^p)^*$. Pruebe: (i) la convergencia débil* a $u$ implica convergencia de cada coordenada; (ii) si la red es acotada en norma y converge coordenada a coordenada a $u\in\ell^q$, converge débil* a $u$.
+\end{ejercicio}
+\begin{solucion}
+(i) Se evalúa en el vector coordenado $e_k\in\ell^p$; el emparejamiento es $\sum_kx_ku_\alpha(k)$, y el resultado de esa evaluación es $u_\alpha(k)$.
+
+(ii) Sea $M=\sup_\alpha\norm{u_\alpha}_q<\infty$. Para $x\in\ell^p$ y su truncamiento $x^{(N)}$,
+\[
+ \left|\sum_kx_k(u_\alpha(k)-u(k))\right|
+ \leq(M+\norm u_q)\norm{x-x^{(N)}}_p
+       +\left|\sum_{k=1}^Nx_k(u_\alpha(k)-u(k))\right|.
+\]
+La cola se hace pequeña eligiendo $N$, por Hölder. La suma finita se hace pequeña después, por convergencia de las coordenadas y la dirección del conjunto de índices. Esta es convergencia contra todo $x\in\ell^p$, que define la convergencia débil*. No se ha supuesto que convergencia coordenada implique convergencia en norma.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v3-l16-5}
+Demuestre las dos afirmaciones anteriores para $\ell^1=(c_0)^*$ y $\ell^\infty=(\ell^1)^*$, indicando en cada caso el predual.
+\end{ejercicio}
+\begin{solucion}
+Para $\ell^1$ el espacio de prueba es $c_0$. Las evaluaciones en $e_k$ dan la primera dirección. Si $\sup_\alpha\norm{u_\alpha}_1=M$, para $x\in c_0$ la cola de la diferencia del emparejamiento está acotada por
+\[
+ (M+\norm u_1)\sup_{k>N}|x_k|,
+\]
+que tiende a cero. Las primeras $N$ coordenadas se controlan como en el ejercicio anterior.
+
+Para $\ell^\infty$ el espacio de prueba es $\ell^1$. La primera dirección usa otra vez $e_k$. Bajo acotación uniforme de $u_\alpha$ en $\ell^\infty$, la cola está acotada por
+$(M+\norm u_\infty)\sum_{k>N}|x_k|$, que tiende a cero. Esto prueba la segunda dirección. El nombre «débil*» depende del predual elegido: en particular, no se identifica automáticamente la topología débil de $\ell^1$ con la topología $\sigma(\ell^1,c_0)$.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v3-l16-6}
+Pruebe que todo espacio normado separable se encaja lineal e isométricamente (i) en $C(\mathcal C)$, donde $\mathcal C$ es el conjunto de Cantor; (ii) en $C([0,1])$.
+\end{ejercicio}
+\begin{solucion}
+(i) Los teoremas \ref{v3:encaje-CK} y \ref{v3:bola-dual-metrizable} dan un encaje $T:X\to C(K)$ con $K$ compacto métrico no vacío. El teorema «Todo compacto métrico no vacío es imagen de Cantor», demostrado en el capítulo 7 del volumen I, proporciona una sobreyección continua $p:\mathcal C\to K$. El operador $U:C(K)\to C(\mathcal C)$, $Ug=g\circ p$, es lineal, y
+$\norm{Ug}_\infty=\sup_{z\in\mathcal C}|g(p(z))|=\sup_{y\in K}|g(y)|$ por sobreyectividad. Así $UT$ es el encaje buscado.
+
+(ii) Construiremos una extensión \emph{lineal} e isométrica $E:C(\mathcal C)\to C([0,1])$. Dejamos $Eg=g$ en $\mathcal C$. En cada intervalo componente $(a,b)$ de $[0,1]\setminus\mathcal C$, definimos
+\[
+ Eg(t)=\frac{b-t}{b-a}g(a)+\frac{t-a}{b-a}g(b).
+\]
+Los extremos pertenecen a $\mathcal C$. La fórmula es lineal en $g$ y una combinación convexa de valores de módulo a lo sumo $\norm g_\infty$, luego $\norm{Eg}_\infty\leq\norm g_\infty$. La restricción a $\mathcal C$ da la desigualdad inversa.
+
+Para verificar continuidad, fijemos $\eps>0$ y usemos continuidad uniforme de $g$ para escoger $\delta>0$. En los intervalos de longitud menor que $\delta$, ambos valores extremos están próximos a cualquier punto de Cantor que esté próximo al intervalo; la combinación convexa conserva la cota de oscilación. Sólo hay un número finito de intervalos complementarios de longitud al menos $\delta$, porque son disjuntos y su longitud total es a lo sumo uno. En cada uno, la interpolación es continua hasta los extremos y coincide allí con $g$. El mínimo de un número finito de radios controla esos intervalos; los restantes se controlan por la continuidad uniforme. Esto demuestra continuidad en los puntos de Cantor; en el interior de los intervalos ya era evidente. La composición $EUT$ satisface (ii).
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v3-l17-1}
+En $(\ell^\infty)^*$ considere $\varphi_n(x)=x_n$. Pruebe que pertenecen a la bola unitaria y que ninguna subsucesión converge débil*. Concluya que compacidad débil* no implica compacidad secuencial débil*.
+\end{ejercicio}
+\begin{solucion}
+La cota $|x_n|\leq\norm x_\infty$ da $\norm{\varphi_n}\leq1$, y evaluar en $e_n$ da igualdad. Dada una subsucesión con índices $n_j$, definamos $x\in\ell^\infty$ por $x_{n_j}=(-1)^j$ y cero en los demás índices. Entonces $\varphi_{n_j}(x)=(-1)^j$ no converge, por lo que la subsucesión no puede converger débil*. Alaoglu asegura, sin embargo, compacidad débil* de toda la bola. Esto da un contraejemplo explícito y verificable, sin recurrir a la afirmación no desarrollada de la lectura sobre partes fraccionarias en un producto no numerable.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 2: lema de Mazur]\label{ej:v3-l17-2}\label{v3:mazur}
+Si $x_n\rightharpoonup x$ en un espacio de Banach, pruebe que $x$ pertenece al cierre en norma de la envolvente convexa de los $x_n$. Más precisamente, encuentre $y_n\in\co\{x_k:k\geq n\}$ con $\norm{y_n-x}\to0$.
+\end{ejercicio}
+\begin{solucion}
+Para cada $n$, sea $C_n=\overline{\co\{x_k:k\geq n\}}$ en norma. Un cerrado convexo es débilmente cerrado: si un punto está fuera, separación estricta por un funcional continuo produce una vecindad débil del punto que evita el convexo. Como toda la cola está en $C_n$ y converge débilmente a $x$, tenemos $x\in C_n$. Por la definición de clausura en norma, existe una combinación convexa finita $y_n$ de la cola con $\norm{y_n-x}<1/n$. Para $n=1$ se obtiene la primera afirmación, y la elección para cada $n$ da el refinamiento. La completitud no interviene en este argumento; el lema vale en todo espacio normado.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v3-l17-3}
+Pruebe: (i) $X$ admite una familia numerable $\alpha$-normante para algún $0<\alpha<1$ si y sólo si existe $T\in\Bcal(X,\ell^\infty)$ y $\beta>0$ con $\norm{Tx}_\infty\geq\beta\norm x$; (ii) admite una familia numerable $1$-normante si y sólo si se encaja lineal e isométricamente en $\ell^\infty$. Deduzca que todo Banach separable se encaja como subespacio cerrado de $\ell^\infty$.
+\end{ejercicio}
+\begin{solucion}
+Si $(\varphi_n)$ es normante, omitamos los funcionales cero y normalicemos los demás a norma uno, repitiendo términos si la familia es finita. Definamos $Tx=(\varphi_n(x))_n$. Es lineal y
+$\alpha\norm x\leq\norm{Tx}_\infty\leq\norm x$. Esto prueba una dirección de (i); si $\alpha=1$, prueba una dirección de (ii).
+
+Recíprocamente, sean $\psi_n=e_n^*\circ T$ los funcionales coordenados. Tienen norma a lo sumo $\norm T$. Para $X\ne\{0\}$, la cota inferior obliga a $\norm T>0$, y
+\[
+ \sup_{\psi_n\ne0}\frac{|\psi_n(x)|}{\norm{\psi_n}}
+ \geq\frac{\norm{Tx}_\infty}{\norm T}
+ \geq\frac\beta{\norm T}\norm x.
+\]
+Elegir un $\alpha\in(0,1)$ menor que $\beta/\norm T$ prueba (i). Si $T$ es isométrico, $\norm{\psi_n}\leq1$ y la misma desigualdad da un supremo al menos $\norm x$; la cota general de todo funcional normalizado da la igualdad, que es (ii). El caso $X=\{0\}$ se trata con el único mapa cero y una familia vacía, interpretando el supremo como cero.
+
+Por el lema \ref{v3:normantes-finitos}, un espacio separable admite una familia numerable $1$-normante. Su imagen isométrica en $\ell^\infty$ es cerrada si es completo. La letra $X$ en el dominio del enunciado original se interpreta aquí como el mismo espacio estudiado, sin introducir un espacio diferente.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v3-l17-4}
+Para un subespacio $Y\subset X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$ mediante evaluación; (ii) $J_X(Y)\subset X^{**}$ es $\alpha$-normante para $X^*$ para algún $0<\alpha<1$; (iii) $\overline Y=X$.
+\end{ejercicio}
+\begin{solucion}
+Si (iii) vale, todo funcional que se anula en $Y$ se anula por continuidad en $X$; esto es (i). Si (i) vale y $\overline Y$ fuera propio, Hahn--Banach daría un funcional no nulo que se anula en $Y$, contradicción; así (i) implica (iii).
+
+Bajo densidad, para $\varphi\in X^*$ tenemos
+\[
+ \sup_{y\in Y\setminus\{0\}}\frac{|\varphi(y)|}{\norm y}=\norm\varphi.
+\]
+La cota superior es la definición de norma. Para la inferior, aproximamos cualquier vector unitario $x$ por $y_n\in Y$, de donde $\norm{y_n}\to1$ y $\varphi(y_n)\to\varphi(x)$; después tomamos el supremo sobre $x$. Por tanto $Y$ es incluso $1$-normante, y se obtiene (ii). Finalmente, (ii) obliga a que un funcional que se anula en $Y$ tenga norma cero, lo cual da (i).
+\end{solucion}
+
+\begin{ejercicio}[Lectura 17, ejercicio 5]\label{ej:v3-l17-5}
+En $\ell^2$ sea $v_n=n^{1/4}e_n$. Pruebe: (i) cero es punto de acumulación débil del conjunto de términos; (ii) ninguna subsucesión converge débilmente. Explique por qué no hay contradicción con Eberlein--Šmulian.
+\end{ejercicio}
+\begin{solucion}
+(i) Una vecindad básica débil de cero exige $|\ip{v_n}{a^j}|<\eps$ para $j=1,\ldots,m$, con $a^j\in\ell^2$. Si sólo un número finito de índices satisficiera simultáneamente esas desigualdades, para todo $n$ suficientemente grande tendríamos
+\[
+ \sum_{j=1}^m|a_n^j|^2\geq\eps^2n^{-1/2}.
+\]
+Sumar en $n$ contradice que cada $a^j$ sea cuadrado sumable, pues $\sum n^{-1/2}$ diverge. Así toda vecindad contiene términos con índices arbitrariamente grandes; en particular, cero es punto de acumulación.
+
+(ii) Toda sucesión débilmente convergente está acotada en norma por acotación uniforme. Pero en cualquier subsucesión $\norm{v_{n_j}}=n_j^{1/4}\to\infty$. Ninguna puede converger débilmente. Eberlein--Šmulian caracteriza conjuntos compactos, no afirma que toda adherencia débil sea detectable por una subsucesión de la sucesión dada. Aquí el conjunto de términos es no acotado y no es débilmente compacto; una red sí puede converger desde él a cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 1]\label{ej:v3-l18-1}
+Si $X$ es un espacio de Banach reflexivo y $Y$ es un subespacio cerrado, pruebe que $Y$ y $X/Y$ son reflexivos.
+\end{ejercicio}
+\begin{solucion}
+Para $Y$, la bola $B_Y=Y\cap B_X$ es débilmente compacta y la topología inducida es la débil propia de $Y$, por extensión de funcionales mediante Hahn--Banach; esto demuestra la primera afirmación. El cociente $X/Y$ es Banach por el teorema del volumen I. Sea $(z_n)$ una sucesión acotada en él. Por la definición de norma cociente podemos elegir representantes $x_n\in X$ tales que $x_n+Y=z_n$ y $\norm{x_n}\leq\norm{z_n}+1$. No necesitamos que el ínfimo se alcance. La sucesión $(x_n)$ es acotada y tiene una subsucesión débilmente convergente a cierto $x$. El mapa cociente $q$ es lineal continuo, y para cada $\psi\in(X/Y)^*$ el funcional $\psi\circ q$ pertenece a $X^*$. Así $q(x_{n_j})\rightharpoonup q(x)$. El criterio secuencial de reflexividad aplicado a $X/Y$ concluye la prueba.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 2]\label{ej:v3-l18-2}
+Pruebe que un espacio de Banach $X$ es reflexivo si y sólo si $X^*$ lo es.
+\end{ejercicio}
+\begin{solucion}
+Si $X$ es reflexivo, todos los elementos de $X^{**}$ son evaluaciones en vectores de $X$. Por tanto las topologías $\sigma(X^*,X^{**})$ y $\sigma(X^*,X)$ coinciden: la débil y la débil* son iguales en $X^*$. Alaoglu hace débilmente compacta a $B_{X^*}$, luego $X^*$ es reflexivo.
+
+Recíprocamente, si $X^*$ es reflexivo, la dirección ya demostrada, aplicada a $X^*$, dice que $X^{**}$ es reflexivo. Como $X$ es completo, su imagen isométrica $J_X(X)$ es cerrada en $X^{**}$. Es, pues, un subespacio reflexivo. La isometría $J_X$ y su inversa sobre la imagen son continuas y preservan convergencia débil; por el criterio de sucesiones acotadas, $X$ es reflexivo.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 3; hipótesis precisadas]\label{ej:v3-l18-3}
+Sea $X\ne\{0\}$ un espacio de Banach reflexivo y sea $T:X\to\F^n$ lineal \emph{continuo}. Pruebe que existe $x\in X$ con $\norm x=1$ y $\norm{Tx}=\norm T$.
+\end{ejercicio}
+\begin{solucion}
+Si $T=0$, cualquier vector unitario sirve. Si $T\ne0$, elija vectores unitarios $x_k$ tales que $\norm{Tx_k}\to\norm T$. Una subsucesión converge débilmente a algún $x\in B_X$. Las coordenadas de $Tx_{k_j}$ convergen a las de $Tx$, pues son funcionales continuos sobre $X$. En dimensión finita la convergencia de coordenadas implica convergencia en norma, de modo que $\norm{Tx}=\norm T$. La desigualdad $\norm{Tx}\leq\norm T\norm x$ y $\norm T>0$ fuerzan $\norm x\geq1$, luego $\norm x=1$.
+
+La continuidad omitida en el original es necesaria. En $\ell^2$, extienda el conjunto linealmente independiente $\{e_k\}$ a una base de Hamel y defina un funcional algebraico mediante $T(e_k)=k$, con valores cero en los demás elementos de la base. Es lineal, pero no acotado en la esfera; no tiene norma finita que pueda alcanzar. Si $X=\{0\}$, la esfera unitaria es vacía, lo que explica la otra precisión.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 4]\label{ej:v3-l18-4}
+Para un subespacio $Y$ de un espacio de Banach $X$, pruebe la equivalencia entre: (i) $Y$ separa puntos de $X^*$; (ii) $J_X(Y)$ es $\alpha$-normante para $X^*$ para algún $0<\alpha<1$; (iii) $\overline Y=X$.
+\end{ejercicio}
+\begin{solucion}
+Este enunciado se repite en la lectura 17; se conserva su posición original para que ninguna lista quede incompleta. Si $\overline Y=X$, continuidad da que un funcional anulado en $Y$ es cero, así (iii) implica (i). Si $\overline Y\ne X$, Hahn--Banach produce un funcional no nulo anulado en $Y$, de modo que (i) implica (iii). Bajo densidad, aproximar cada vector unitario de $X$ por vectores de $Y$ y normalizarlos demuestra
+\[
+ \sup_{y\in Y\setminus\{0\}}\frac{|\varphi(y)|}{\norm y}=\norm\varphi
+ \quad(\varphi\in X^*).
+\]
+Así (iii) implica (ii), incluso con constante uno. Finalmente, si un funcional se anula en $Y$, la desigualdad de $\alpha$-normación obliga a que tenga norma cero; esto da (ii)$\Rightarrow$(i). Para $X=\{0\}$ todas las condiciones son triviales, con la convención del supremo vacío igual a cero.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 18, ejercicio 5]\label{ej:v3-l18-5}
+Un operador acotado $T:X\to Y$ entre espacios de Banach se llama de Dunford--Pettis si transforma toda sucesión débilmente convergente en una sucesión convergente en norma. Pruebe que todo operador compacto es de Dunford--Pettis, y que el recíproco vale cuando $X$ es reflexivo.
+\end{ejercicio}
+\begin{solucion}
+Sea $T$ compacto y $x_n\rightharpoonup x$. Por acotación uniforme, $(x_n)$ está acotada. Además $Tx_n\rightharpoonup Tx$, ya que $\psi(Tx_n)=(\psi\circ T)(x_n)\to(\psi\circ T)(x)$ para cada $\psi\in Y^*$. Si $Tx_n$ no convergiera en norma a $Tx$, existirían $\eps>0$ y una subsucesión cuyas distancias a $Tx$ fueran al menos $\eps$. La compacidad de $T$ daría de ella una subsucesión convergente en norma a algún $y$. También convergería débilmente a $y$, y por unicidad del límite débil tendríamos $y=Tx$, contradicción. Así $\norm{Tx_n-Tx}\to0$.
+
+Supongamos ahora que $X$ es reflexivo y $T$ es de Dunford--Pettis. Toda sucesión acotada $(x_n)$ tiene una subsucesión débilmente convergente. Su imagen por $T$ converge en norma. Por tanto toda sucesión en $T(B_X)$ tiene una subsucesión convergente en $Y$. En el espacio métrico completo $Y$, esto equivale a que $T(B_X)$ sea relativamente compacto: si no fuera totalmente acotado se construiría una sucesión uniformemente separada; y la clausura de un conjunto totalmente acotado en un espacio completo es compacta. Concluimos que $T$ es compacto.
+\end{solucion}
+
+\chapter{Álgebras normadas, ideales y adjunción de una identidad}
+
+\begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:v3-l19-1}
+Estudie las siguientes álgebras normadas y justifique todos los productos:
+\begin{enumerate}
+\item $C^n([a,b])$ con producto puntual y la norma de la lectura 0, $\norm f_n=\sum_{k=0}^n\norm{f^{(k)}}_\infty$. Determine si esa norma es submultiplicativa y, cuando haga falta, corríjala mediante una norma equivalente.
+\item $\ell^1(\Z)$ con $(x*y)_k=\sum_{j\in\Z}x_jy_{k-j}$.
+\item $L^1(\R)$ con $(f*g)(x)=\int_\R f(y)g(x-y)\,dy$, definida casi en todas partes.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+(i) La norma dada no es submultiplicativa para $n\geq2$. Ponga $c=(a+b)/2$, $r=(b-a)/2$ y $f(t)=g(t)=t-c$. Entonces $\norm f_n=\norm g_n=r+1$, mientras que
+\[
+ \norm{fg}_n=r^2+2r+2>(r+1)^2.
+\]
+La versión válida utiliza
+\[
+ \norm f_{n,!}=\sum_{k=0}^n\frac{\norm{f^{(k)}}_\infty}{k!}.
+\]
+Leibniz da
+\[
+ \frac{\norm{(fg)^{(k)}}_\infty}{k!}
+ \leq\sum_{j=0}^k\frac{\norm{f^{(j)}}_\infty}{j!}
+                       \frac{\norm{g^{(k-j)}}_\infty}{(k-j)!}.
+\]
+Al sumar en $k\leq n$, aparecen algunos de los términos no negativos del producto $\norm f_{n,!}\norm g_{n,!}$, y se obtiene la desigualdad requerida. Las normas son equivalentes porque $\norm f_n/n!\leq\norm f_{n,!}\leq\norm f_n$; para $n=0,1$ coinciden. Su completitud puede verse directamente: una sucesión de Cauchy tiene límites uniformes $g_k$ de sus derivadas de orden $k$, y pasar al límite en $f_j^{(k)}(t)-f_j^{(k)}(a)=\int_a^t f_j^{(k+1)}$ da $g_k'=g_{k+1}$. Así $g_0\in C^n$ y la convergencia ocurre en la norma indicada. El producto es asociativo y conmutativo punto por punto, y la constante $1$ es identidad.
+
+(ii) Tonelli para series no negativas y el cambio de índice $l=k-j$ dan
+\[
+ \sum_{k\in\Z}\sum_{j\in\Z}|x_jy_{k-j}|
+ =\sum_j|x_j|\sum_l|y_l|=\norm x_1\norm y_1.
+\]
+Cada coeficiente está definido por una serie absolutamente convergente, la sucesión resultante pertenece a $\ell^1$, y $\norm{x*y}_1\leq\norm x_1\norm y_1$. Bilinealidad y conmutatividad siguen de las series y del cambio $j\mapsto k-j$. Para asociatividad, ambas expresiones tienen coeficiente $\sum_{j,l}x_jy_lz_{k-j-l}$. La suma de los valores absolutos, también sobre $k$, es $\norm x_1\norm y_1\norm z_1$, por lo que Fubini justifica reagrupar. La completitud es la de $\ell^1$.
+
+(iii) Elija representantes medibles. Tonelli e invariancia por traslación de Lebesgue implican
+\[
+ \int_\R\int_\R |f(y)g(x-y)|\,dy\,dx
+ =\int_\R |f(y)|\left(\int_\R|g(x-y)|\,dx\right)dy
+ =\norm f_1\norm g_1.
+\]
+La integral interior existe para casi todo $x$, define una función medible integrable y satisface $\norm{f*g}_1\leq\norm f_1\norm g_1$. El mismo cálculo aplicado a diferencias nulas casi en todas partes prueba independencia de representantes. Bilinealidad se hereda de la integral. La sustitución $u=x-y$ demuestra conmutatividad. Para tres funciones, la integral absoluta total de $f(s)g(t)h(x-s-t)$ sobre $\R^3$ vale $\norm f_1\norm g_1\norm h_1$; Fubini permite calcular las integrales en ambos órdenes y demuestra $(f*g)*h=f*(g*h)$ casi en todas partes. El resultado es un álgebra de Banach porque $L^1$ es completo. La ausencia de identidad se demostrará en el ejercicio~\ref{ej:v3-l20-5}.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 2]\label{ej:v3-l19-2}
+Sea $A$ un álgebra unitaria. Un inverso izquierdo de $a$ satisface $ba=1$; un inverso derecho satisface $ac=1$. Pruebe:
+\begin{enumerate}
+\item Si $a$ tiene inverso izquierdo pero no derecho, posee infinitos inversos izquierdos.
+\item Si $b$ es inverso izquierdo y $c$ derecho, entonces $b=c$.
+\item El inverso bilateral, cuando existe, es único y se denota $a^{-1}$.
+\item Si $a,b$ son invertibles, $\alpha\ne0$ y $n\geq1$, también lo son $ab,\alpha a,a^n$, y sus inversos son $b^{-1}a^{-1},\alpha^{-1}a^{-1},(a^{-1})^n$.
+\item Si $A$ es normada y $b$ es inverso por alguno de los lados, determine la cota inferior correcta para $\norm b$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+(i) Sea $ba=1$. Como $a$ no tiene inverso derecho, $q=1-ab\ne0$. Se tiene $qa=a-aba=0$. Por tanto $(b+tq)a=1$ para todo $t\in\F$. Si $s\ne t$, $(s-t)q\ne0$; los inversos son distintos y $\R,\C$ tienen infinitos escalares.
+
+(ii) La asociatividad da $b=b(ac)=(ba)c=c$. (iii) Dos inversos bilaterales son, en particular, un inverso izquierdo y uno derecho, y el inciso anterior prueba unicidad. (iv) Multiplicar en ambos órdenes verifica, por ejemplo, $(ab)(b^{-1}a^{-1})=a1a^{-1}=1$ y $(b^{-1}a^{-1})(ab)=b^{-1}1b=1$. La compatibilidad con escalares verifica el segundo caso; el tercero se obtiene iterando el primero. Es indispensable $\alpha\ne0$, pues $0a=0$ no es invertible.
+
+(v) En cualquiera de los dos órdenes, $\norm1\leq\norm a\norm b$, de modo que
+\[
+ \norm b\geq\frac{\norm1}{\norm a}\geq\frac1{\norm a}.
+\]
+La cota $\norm b\geq\norm a$ impresa en la lectura es falsa incluso en $\R$: tome $a=2$, $b=1/2$. En particular, $\norm{a^{-1}}\geq1/\norm a$ si $a$ es invertible.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 3]\label{ej:v3-l19-3}
+Para $a$ en un álgebra normada unitaria, defina $L_a(x)=ax$. Pruebe que $L_a$ es lineal continuo y que $a\mapsto L_a$ es lineal, multiplicativo e inyectivo. Deduzca una norma equivalente y submultiplicativa para la que la identidad tiene norma uno.
+\end{ejercicio}
+\begin{solucion}
+Distributividad y compatibilidad escalar dan linealidad, y $\norm{L_ax}\leq\norm a\norm x$ da continuidad. Evaluando en cada $x$ se obtiene $L_{a+b}=L_a+L_b$, $L_{\alpha a}=\alpha L_a$ y $L_{ab}=L_aL_b$. Si $L_a=0$, evaluar en $1$ da $a=0$.
+
+Defina $\norm a'=\norm{L_a}$. La inyectividad garantiza que se trata de una norma; la desigualdad de la composición la hace submultiplicativa. Además,
+\[
+ \norm a'\leq\norm a,
+ \qquad \norm a=\norm{L_a1}\leq\norm a'\norm1.
+\]
+Las normas son equivalentes. Finalmente $L_1$ es la identidad del espacio normado no nulo $A$, cuya norma de operador es uno. Así $\norm1'=1$. La equivalencia preserva también completitud.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 4]\label{ej:v3-l19-4}
+Sea $I$ un ideal \emph{bilateral} cerrado de un álgebra normada $A$. Pruebe que $(a+I)(b+I)=ab+I$ define un producto de álgebra normada sobre $A/I$, con su norma cociente.
+\end{ejercicio}
+\begin{solucion}
+Si se sustituyen $a,b$ por $a+i,b+j$, la diferencia de productos es $aj+ib+ij\in I$. Este cálculo utiliza ambos lados del ideal y demuestra que el producto está bien definido. Todas las identidades algebraicas descienden de las de $A$. Para $\eps>0$, elija representantes $a',b'$ de las clases con normas menores que $\norm{a+I}+\eps$ y $\norm{b+I}+\eps$. Entonces
+\[
+ \norm{ab+I}\leq\norm{a'b'}
+ \leq(\norm{a+I}+\eps)(\norm{b+I}+\eps).
+\]
+Dejar $\eps\downarrow0$ da submultiplicatividad. La cerradura de $I$ garantiza que la norma cociente separa clases: norma cero significa pertenecer a $\cl I=I$. Si $A$ es Banach, $A/I$ es Banach por el teorema de completitud de cocientes. Si $I=A$, se obtiene el álgebra nula; si $A$ es unitaria e $I$ propio, $1+I$ es una identidad no nula.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 5]\label{ej:v3-l19-5}
+Sea $T:A\to B$ lineal, continuo y multiplicativo; cuando se exige homomorfismo unital, suponga además $T(1_A)=1_B$. Pruebe que su núcleo es ideal bilateral y su imagen es subálgebra. Precise el significado del primer teorema de isomorfismo $A/\ker T\simeq T(A)$ y las hipótesis para que sea un isomorfismo topológico.
+\end{ejercicio}
+\begin{solucion}
+Si $i\in\ker T$, entonces $T(ai)=T(a)T(i)=0$ y $T(ia)=0$. El núcleo es subespacio y, por continuidad, cerrado. Las imágenes de sumas, escalares y productos muestran que $T(A)$ es subálgebra. La aplicación
+\[
+ \widetilde T(a+\ker T)=T(a)
+\]
+está bien definida, es sobreyectiva sobre $T(A)$ y es inyectiva porque $T(a)=0$ equivale a $a\in\ker T$. Es lineal y multiplicativa, y
+$\norm{T(a)}\leq\norm T\inf_{i\in\ker T}\norm{a+i}=\norm T\norm{a+\ker T}$.
+
+Esto prueba un isomorfismo \emph{algebraico} y continuidad hacia la imagen, pero no continuidad automática de la inversa. Como contraejemplo, incluya $\ell^1$ en $c_0$, ambos con producto puntual, y use sus normas usuales. Es una inclusión multiplicativa continua; las sucesiones con sus primeros $n$ términos iguales a $1/n$ tienen norma $\ell^1$ igual a $1$ y norma uniforme $1/n$. La inversa sobre la imagen no es continua. Si $A$ y $B$ son Banach y $T(A)$ es cerrado, tanto el cociente como la imagen son Banach y el teorema de la aplicación abierta aplicado a $\widetilde T$ hace continua su inversa. Estas hipótesis justifican la versión topológica, que no se deduce solamente de la identidad algebraica.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 19, ejercicio 6: variables y cerradura]\label{ej:v3-l19-6}
+Sea $X$ localmente compacto Hausdorff y $E\subset X$. Defina
+\[
+ I(E)=\{f:f|_E=0\}.
+\]
+Pruebe que es un ideal en $C_b(X)$, con norma uniforme, y en $C(X)$, con la topología de convergencia uniforme en compactos. Examine la afirmación de que ese ideal es cerrado si y solo si $E$ es cerrado.
+\end{ejercicio}
+\begin{solucion}
+La notación de la lectura usa la misma letra para el conjunto de puntos y el espacio de funciones, por lo que hemos distinguido $E$ e $I(E)$. Las funciones que se anulan en $E$ forman un subespacio, y $(fg)(x)=f(x)g(x)=0$ en $E$ si $g$ se anula allí. Esto prueba la propiedad de ideal.
+
+Para cada $x$, la evaluación $f\mapsto f(x)$ es continua en ambas topologías: en norma uniforme, $|f(x)|\leq\norm f_\infty$; en la otra, se utiliza el compacto $\{x\}$. Así
+$I(E)=\bigcap_{x\in E}\ker(f\mapsto f(x))$ es siempre cerrado. Además, una función continua que se anula en $E$ se anula en $\cl E$, y por ello $I(E)=I(\cl E)$. No puede recuperarse la condición de que $E$ sea cerrado mirando solamente el ideal. Por ejemplo, $E=(0,1)\subset\R$ no es cerrado y su ideal es cerrado. Para los conjuntos cerrados sí puede recuperarse el conjunto como los ceros comunes de su ideal: si $x\notin E$, una función de corte soportada en $X\setminus E$ separa $x$ de $E$. Esto explica la correspondencia geométrica correcta sin afirmar el falso ``si y solo si''.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 1]\label{ej:v3-l20-1}
+Pruebe que la clausura de un ideal izquierdo, derecho o bilateral de un álgebra normada es un ideal del mismo tipo. Examine la conclusión de que todo ideal maximal es cerrado y demuestre la versión válida para álgebras de Banach unitarias.
+\end{ejercicio}
+\begin{solucion}
+El cierre de un subespacio es subespacio por continuidad de las operaciones vectoriales. Si $i_n\in I$ converge a $i$ y $a\in A$, entonces $ai_n\to ai$ y $i_na\to ia$. Cada condición de ideal que valía para $I$ pasa así a $\cl I$.
+
+Supongamos ahora $A$ Banach unitaria e $I$ maximal propio. Si $\cl I=A$, existe $i\in I$ con $\norm{1-i}<1$. El lema~\ref{v3:neumann-basico} hace invertible a $i$; un ideal que contiene un invertible contiene a $1$ y es todo $A$, contradicción. Así $\cl I$ es propio. La maximalidad y $I\subset\cl I$ implican $I=\cl I$. El argumento funciona también para ideales maximales izquierdos o derechos, multiplicando el inverso por el lado correspondiente.
+
+La completitud no puede suprimirse. En $\C[z]$ con la norma uniforme del disco unidad, $I=(z-2)$ es maximal porque es el núcleo de la evaluación sobreyectiva en $2$. Sin embargo,
+\[
+ p_N(z)=-\frac12\sum_{k=0}^N(z/2)^k,
+ \qquad (z-2)p_N(z)=1-(z/2)^{N+1}\longrightarrow1
+\]
+uniformemente en el disco. La clausura del ideal contiene a $1$, luego a toda el álgebra, aunque $I$ es propio. Por tanto el enunciado original para cualquier álgebra normada requiere la corrección indicada.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 2]\label{ej:v3-l20-2}
+Pruebe que un álgebra conmutativa unitaria no nula tiene ideales maximales.
+\end{ejercicio}
+\begin{solucion}
+Ordene por inclusión los ideales propios. La familia no es vacía, pues contiene a $\{0\}$. La unión de una cadena es subespacio e ideal: dados finitos elementos de la unión, alguno de los miembros de la cadena los contiene simultáneamente y permite realizar las operaciones. Esa unión sigue siendo propia, pues si contuviera a $1$, alguno de los ideales de la cadena ya contendría a $1$. Por Zorn existe un elemento maximal. Para la cadena vacía sirve $\{0\}$ como cota superior. Este argumento no presupone norma ni completitud.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 3: el campo cociente]\label{ej:v3-l20-3}
+Sea $A$ conmutativa unitaria sobre $\F$ e $I$ un ideal propio. Determine la relación entre maximalidad de $I$ y el cociente $A/I$. Examine la afirmación de la lectura $I$ maximal si y solo si $A/I\simeq\F$.
+\end{ejercicio}
+\begin{solucion}
+La afirmación algebraica general es: $I$ es maximal si y solo si $A/I$ es un \emph{campo}, que puede ser una extensión propia de $\F$. Si $I$ es maximal y $a\notin I$, el ideal $I+Aa$ contiene estrictamente a $I$, luego es todo $A$. Así $1=i+ba$ para ciertos $i\in I$, $b\in A$, y $(b+I)(a+I)=1+I$. Toda clase no nula tiene inversa. Recíprocamente, si el cociente es campo y un ideal $J$ contiene estrictamente a $I$, elija $a\in J\setminus I$. La inversa de su clase proporciona $b$ con $ba-1\in I\subset J$, de donde $1\in J$ y $J=A$.
+
+Si $A/I\simeq\F$, ciertamente es campo y $I$ es maximal. El recíproco, tal como está impreso, es falso: considere $A=\C$ como álgebra real e $I=\{0\}$. Es maximal, pero $\C$ no es isomorfo a $\R$ como álgebra real. Incluso sobre $\C$, un álgebra puramente algebraica puede ser $\C(t)$, cuyo ideal cero es maximal y cuyo campo no es $\C$. Para un álgebra de Banach \emph{compleja} unitaria, el cociente por un maximal es Banach por el ejercicio anterior y el teorema de Gelfand--Mazur, demostrado en el capítulo~\ref{cap:v3-11}, identifica ese campo con $\C$. Esas son las hipótesis analíticas adicionales que hacen válida la conclusión escalar.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 4]\label{ej:v3-l20-4}
+Demuestre que $e_0=(\delta_{0,n})_{n\in\Z}$ es la identidad de $\ell^1(\Z)$ con el producto de Cauchy.
+\end{ejercicio}
+\begin{solucion}
+La sucesión pertenece a $\ell^1$ y tiene norma uno. Para cada $k$,
+\[
+ (e_0*x)_k=\sum_j\delta_{0,j}x_{k-j}=x_k,
+ \qquad (x*e_0)_k=\sum_jx_j\delta_{0,k-j}=x_k.
+\]
+Cada suma tiene un único término no nulo. Las dos igualdades verifican una identidad bilateral.
+\end{solucion}
+
+\begin{ejercicio}[Lectura 20, ejercicio 5]\label{ej:v3-l20-5}
+Pruebe que $L^1(\R)$ con convolución no tiene identidad. Si existiera $e\in L^1$ con $e*f=f$ casi en todas partes para toda $f\in L^1$, pruebe que la medida $\mu_e(E)=\int_E e\,d\lambda$ asignaría masa uno a todo intervalo abierto acotado que contiene al origen, y obtenga una contradicción con su continuidad absoluta.
+\end{ejercicio}
+\begin{solucion}
+Sea $f_n=(n/2)\mathbf1_{(-1/n,1/n)}$, cuya integral es uno. Fije $a<0<b$. Para $n$ suficientemente grande, $\int_a^b f_n=1$, y la identidad supuesta da $\int_a^b(e*f_n)=1$. Fubini, justificado por $\norm e_1\norm{f_n}_1<\infty$, permite escribir
+\[
+ 1=\int_\R e(y)h_n(y)\,dy,
+ \qquad h_n(y)=\frac n2\lambda\big((a,b)\cap(y-1/n,y+1/n)\big).
+\]
+Se tiene $0\leq h_n\leq1$. Para $y\in(a,b)$, la pequeña ventana termina contenida en el intervalo y $h_n(y)=1$; para $y\notin[a,b]$, termina disjunta y $h_n(y)=0$. Solo los dos extremos pueden tener otro límite. Convergencia dominada con dominante $|e|$ demuestra
+$1=\int_a^b e=\mu_e((a,b))$.
+
+En particular, $\mu_e((-1/n,1/n))=1$. Como esos intervalos decrecen a $\{0\}$ y $e$ es integrable, convergencia dominada vuelve a dar $\mu_e(\{0\})=1$. Pero $\lambda(\{0\})=0$ y una medida de densidad integrable satisface $\mu_e(\{0\})=\int_{\{0\}}e\,d\lambda=0$. Esta contradicción prueba la ausencia de identidad. El obstáculo es concreto: la identidad formal de la convolución es una masa puntual, que no tiene densidad en $L^1(\R)$.
+\end{solucion}
+
+\chapter{Diferenciación, espectro y cálculo holomorfo}
+
+\begin{ejercicio}\label{ej:v3-l21-1}
+Demuestre la unicidad de la derivada de Fréchet. Explique por qué la hipótesis de que el dominio sea abierto es necesaria para esa afirmación.
+\end{ejercicio}
+\begin{solucion}
+La primera afirmación se demostró en la proposición~\ref{v3:reglas-frechet}: para cada dirección $v$ debemos poder usar $a+tv$ con $t$ pequeño. Si el dominio es $E=\R\times\{0\}\subset\R^2$ y $f:E\to\R$ es cero, tanto $T(u,v)=0$ como $S(u,v)=v$ dan resto idénticamente nulo al aproximarse dentro de $E$. La aproximación relativa a $E$ no determina lo que hace una transformación en las direcciones transversales. Este ejemplo no contradice la definición usual, cuyo dominio es abierto.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l21-2}
+Determine si el producto interno de un espacio de Hilbert complejo, visto como aplicación $H\times H\to\C$, es diferenciable.
+\end{ejercicio}
+\begin{solucion}
+Con nuestra convención de linealidad en el primer argumento, es diferenciable como aplicación real en todos los puntos y su derivada real es $(h,k)\mapsto\ip h y+\ip x k$; el resto es $\ip h k$. Como aplicación compleja es diferenciable exactamente en los puntos $(0,y)$. Allí $(h,k)\mapsto\ip h y$ es compleja lineal y el mismo resto es cuadrático. Si $x\ne0$, la restricción a la segunda variable exigiría una derivada compleja para $t\mapsto\ip{x}{y+tx}=\ip x y+\overline t\norm x^2$ en cero. Los cocientes para $t$ real y para $t$ imaginario son opuestos, de modo que esa derivada no existe. La frase ``el producto interno complejo no es diferenciable'' requiere, pues, esta precisión sobre puntos excepcionales y sobre el campo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l21-3}
+Sean $x,y\in A$. Pruebe: (i) la serie $e^x=\sum_{n\ge0}x^n/n!$ converge absolutamente; (ii) si $xy=yx$, entonces $e^{x+y}=e^xe^y$; (iii) $e^x$ es invertible y su inversa es $e^{-x}$; (iv) $e^x=\lim_n(1+x/n)^n$; (v) la fórmula de producto de Trotter
+\[
+ e^{x+y}=\lim_{n\to\infty}(e^{x/n}e^{y/n})^n
+\]
+es válida sin suponer que $x$ e $y$ conmuten.
+\end{ejercicio}
+\begin{solucion}
+(i) $\sum\norm{x^n}/n!\le e^{\norm x}$. (ii) El producto de las dos series es absolutamente convergente; por ello se puede reagrupar por $j+k=n$. La fórmula binomial para elementos que conmutan transforma el coeficiente en $(x+y)^n/n!$. (iii) Aplique (ii) a $x$ y $-x$.
+
+(iv) Escribamos
+\[
+ (1+x/n)^n=\sum_{k\ge0}c_{n,k}x^k,
+ \quad c_{n,k}=\begin{cases}\binom nk n^{-k},&k\le n,\\0,&k>n.\end{cases}
+\]
+Para cada $k$, $c_{n,k}\to1/k!$, y $0\le c_{n,k}\le1/k!$. Fijado $\eps>0$, elija $K$ de modo que $2\sum_{k>K}\norm x^k/k!<\eps/2$; los primeros $K+1$ términos convergen y controlan el resto del error. Esta es una justificación explícita del paso al límite en la serie.
+
+(v) Pongamos $a_n=e^{x/n}e^{y/n}$ y $b_n=e^{(x+y)/n}$. Las expansiones de las exponenciales muestran $a_n=1+(x+y)/n+O(n^{-2})$ y lo mismo para $b_n$, con constantes independientes de $n$; por ejemplo, $\norm{e^u-1-u}\le\norm u^2e^{\norm u}/2$. Además $\norm{a_n},\norm{b_n}\le e^{(\norm x+\norm y)/n}$. La identidad telescópica, que no requiere conmutatividad,
+\[
+ a_n^n-b_n^n=\sum_{j=0}^{n-1}a_n^{n-1-j}(a_n-b_n)b_n^j,
+\]
+da $\norm{a_n^n-b_n^n}\le n e^{\norm x+\norm y}O(n^{-2})\to0$. Como $b_n^n=e^{x+y}$, queda demostrado el último inciso.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l21-4}
+Pruebe que $t\mapsto e^{tx}$ es diferenciable y su derivada es $xe^{tx}=e^{tx}x$.
+\end{ejercicio}
+\begin{solucion}
+Para $t,h\in\C$ (y, en particular, para parámetros reales), las potencias de $x$ conmutan y $e^{(t+h)x}=e^{tx}e^{hx}$. Como $e^{hx}=1+hx+O(|h|^2)$, el cociente incremental converge a $e^{tx}x$. Cada suma parcial de $e^{tx}$ conmuta con $x$ y el producto es continuo, por lo que también lo hace el límite.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l21-5}
+Sea $x\in\partial G(A)$. Pruebe: (i) para cada $y\in G(A)$,
+$\norm{y^{-1}}\ge1/\norm{x-y}$; (ii) $x$ es un divisor topológico de cero por ambos lados, es decir, existen $u_n$ con $\norm{u_n}=1$ y $xu_n,u_nx\to0$; (iii) $x$ no tiene inversa izquierda ni derecha.
+\end{ejercicio}
+\begin{solucion}
+(i) Si $\norm{x-y}\norm{y^{-1}}<1$, el teorema~\ref{v3:derivada-inversa} implicaría $x\in G(A)$; esto es imposible, pues un abierto no contiene puntos de su frontera. (ii) Elija $y_n\in G(A)$ con $y_n\to x$ y ponga $u_n=y_n^{-1}/\norm{y_n^{-1}}$. El inciso anterior implica $\norm{y_n^{-1}}\to\infty$, y
+\[
+ \norm{xu_n},\ \norm{u_nx}\le\norm{x-y_n}+\frac1{\norm{y_n^{-1}}}\longrightarrow0.
+\]
+(iii) Si $bx=1$, entonces $u_n=bxu_n\to0$; si $xb=1$, entonces $u_n=u_nxb\to0$. Ambas conclusiones contradicen $\norm{u_n}=1$. En los dos últimos incisos el elemento correcto es $x$, el punto de frontera; el original cambia accidentalmente la letra a $y$, que allí denota un elemento invertible.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-1}
+Si $p$ es un polinomio complejo, pruebe $\sigma(p(x))=p(\sigma(x))$.
+\end{ejercicio}
+\begin{solucion}
+Para un polinomio constante la afirmación es inmediata. En otro caso factorice $p(z)-\mu=c\prod_{j=1}^m(z-\lambda_j)$. Los factores $x-\lambda_j1$ conmutan. Un producto de elementos que conmutan es invertible si y sólo si todos lo son: si $ab$ es invertible y $ab=ba$, la inversa de $ab$ conmuta con $a,b$, y $b(ab)^{-1}$ es inversa bilateral de $a$; se itera este argumento. Así $p(x)-\mu1$ no es invertible exactamente cuando alguna raíz $\lambda_j$ pertenece a $\sigma(x)$, lo cual equivale a $\mu\in p(\sigma(x))$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-2}
+Para $x\in A$, $y\in B$, pruebe $\sigma_{A\times B}((x,y))=\sigma_A(x)\cup\sigma_B(y)$.
+\end{ejercicio}
+\begin{solucion}
+La identidad de $A\times B$ es $(1_A,1_B)$. El par $(x-\lambda1_A,y-\lambda1_B)$ tiene inversa bilateral si y sólo si cada coordenada la tiene, y en tal caso la inversa es el par de inversas. Negar esta equivalencia produce la unión requerida.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-3}
+Pruebe que $\lambda\mapsto(x-\lambda1)^{-1}$ es diferenciable en el resolvente y que su derivada de Fréchet es continua.
+\end{ejercicio}
+\begin{solucion}
+La regla de la cadena da, para $h\in\C$,
+\[
+ D[(x-\lambda1)^{-1}][h]
+ =-(x-\lambda1)^{-1}(-h1)(x-\lambda1)^{-1}
+ =h(x-\lambda1)^{-2}.
+\]
+La inversión y el producto son continuos; por ello el coeficiente de esta aplicación lineal depende continuamente de $\lambda$. Nótese el signo positivo para esta convención y el signo negativo para $R_x(\lambda)=(\lambda1-x)^{-1}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-4}
+En $C^1([0,1])$ con $\norm f=\norm f_\infty+\norm{f'}_\infty$, calcule el radio espectral de $f(t)=t$.
+\end{ejercicio}
+\begin{solucion}
+Si $\lambda\notin[0,1]$, $1/(t-\lambda)$ pertenece a $C^1([0,1])$; si $\lambda\in[0,1]$, evaluar en ese punto impide una inversa. Luego $\sigma(f)=[0,1]$ y $r(f)=1$. También $\norm{f^n}=1+n$ para $n\ge1$, de modo que $\lim_n(1+n)^{1/n}=1$, en acuerdo con la fórmula de Gelfand. Es instructivo que $\norm f=2$ sea mayor que su radio espectral.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-5}
+Pruebe $r(xy)=r(yx)$.
+\end{ejercicio}
+\begin{solucion}
+Los espectros coinciden fuera de cero por la proposición~\ref{v3:espectro-operaciones}. Añadir o quitar cero no modifica el máximo del módulo de un conjunto compacto no vacío, salvo que todos sus elementos sean cero; en ese caso ambos espectros son $\{0\}$ y ambos radios son cero.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l22-6}
+Si $A$ es conmutativa, pruebe
+\[
+ \sigma(x+y)\subset\sigma(x)+\sigma(y),\qquad
+ \sigma(xy)\subset\sigma(x)\sigma(y),
+\]
+y dé ejemplos de contenciones propias.
+\end{ejercicio}
+\begin{solucion}
+Necesitamos un hecho que también preparará el capítulo siguiente. Si $a$ no es invertible, el ideal $aA$ es propio y está contenido en un ideal maximal $M$. Por el capítulo anterior $M$ es cerrado. El cociente $A/M$ es un álgebra de Banach de división y Gelfand--Mazur lo identifica con $\C$. Así existe un homomorfismo unital $\chi:A\to\C$ con $\chi(a)=0$. Además $\chi(b)\in\sigma(b)$ para todo $b$, pues aplicar $\chi$ a una inversa de $b-\chi(b)1$ daría $0=1$.
+
+Si $\lambda\in\sigma(x+y)$, aplique lo anterior a $a=x+y-\lambda1$: se obtiene $\lambda=\chi(x)+\chi(y)\in\sigma(x)+\sigma(y)$. Para el producto se aplica a $a=xy-\lambda1$ y resulta $\lambda=\chi(x)\chi(y)$. En $A=\C^2$, tome $x=(0,1)$ e $y=(1,0)$. Entonces $\sigma(x+y)=\{1\}$, mientras $\sigma(x)+\sigma(y)=\{0,1,2\}$; y $\sigma(xy)=\{0\}$, mientras $\sigma(x)\sigma(y)=\{0,1\}$. Ambos ejemplos muestran que no se debe reemplazar inclusión por igualdad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-1}
+Si $T\in\Lcal(V)$ y $Tv=\lambda v$ con $v\ne0$, pruebe que $f(T)v=f(\lambda)v$ para toda $f$ holomorfa cerca de $\sigma(T)$.
+\end{ejercicio}
+\begin{solucion}
+Para $z$ en el resolvente, $(zI-T)v=(z-\lambda)v$ y por ello $(zI-T)^{-1}v=(z-\lambda)^{-1}v$. La evaluación $S\mapsto Sv$ es lineal acotada y conmuta con la integral. La fórmula de Cauchy da
+$f(T)v=(2\pi i)^{-1}\int_\Gamma f(z)(z-\lambda)^{-1}\,dz\,v=f(\lambda)v$. Así el mismo vector es propio para $f(T)$, con el valor propio indicado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-2}
+Si $f$ toma el valor cero en algún punto de $\sigma(x)$, pruebe que $f(x)$ no es invertible.
+\end{ejercicio}
+\begin{solucion}
+Si $f(\lambda)=0$ y $\lambda\in\sigma(x)$, el teorema de mapeo espectral implica $0\in\sigma(f(x))$. Por definición esto equivale a que $f(x)$ no sea invertible. No hace falta que $f$ se anule en todo el espectro; un solo cero basta.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-3}
+Sean $A,B$ álgebras de Banach complejas unitarias y $T:A\to B$ un homomorfismo \emph{continuo y unital}. Pruebe $f(Tx)=T(f(x))$ para $f$ holomorfa cerca de $\sigma_A(x)$.
+\end{ejercicio}
+\begin{solucion}
+Si $z1-x$ es invertible, aplicar $T$ a sus dos identidades inversas muestra que $z1-Tx$ es invertible y que su inversa es $T((z1-x)^{-1})$. De aquí $\sigma_B(Tx)\subset\sigma_A(x)$. La continuidad permite pasar $T$ bajo la integral y produce la fórmula solicitada. La condición unital es necesaria para el enunciado tal como está escrito: el homomorfismo cero y $f\equiv1$ darían $1_B=0$. Si ``homomorfismo de álgebras de Banach'' incluye continuidad pero no preservación de la identidad, hay que añadir esta última condición. Para homomorfismos no unitarios la identidad se formula en el rincón con identidad $T(1)$, o se restringe apropiadamente la función.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-4}
+Si $e^x=1$, demuestre $\sigma(x)\subset2\pi i\Z$.
+\end{ejercicio}
+\begin{solucion}
+El cálculo holomorfo y la expansión exponencial coinciden por el siguiente ejercicio; también se obtiene directamente por convergencia uniforme de las sumas parciales sobre una curva. El mapeo espectral da $e^{\sigma(x)}=\sigma(e^x)=\{1\}$. Los números complejos $z$ con $e^z=1$ son exactamente $2\pi ik$, $k\in\Z$: al escribir $z=a+ib$, el módulo obliga $a=0$ y la parte angular obliga $b\in2\pi\Z$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-5}
+Sea $f(z)=\sum_{n\ge0}a_nz^n$ con radio de convergencia $R>r(x)$. Pruebe $f(x)=\sum_{n\ge0}a_nx^n$.
+\end{ejercicio}
+\begin{solucion}
+Elija $r(x)<s<t<R$. La fórmula de Gelfand da $\norm{x^n}\le s^n$ para $n$ suficientemente grande. Como la serie escalar converge absolutamente en $s$, la serie de elementos también lo hace. Por otro lado, las sumas parciales de $f$ convergen uniformemente en $|z|\le t$, un compacto que contiene al espectro en su interior. El cálculo holomorfo envía el polinomio $\sum_{n=0}^Na_nz^n$ a $\sum_{n=0}^Na_nx^n$, y su continuidad demuestra la identidad. No se requiere $R>\norm x$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-6}
+Para $T\in\Lcal(V)$, formule y pruebe la compatibilidad del cálculo holomorfo con el adjunto en el dual. Distinga esta operación del adjunto de Hilbert.
+\end{ejercicio}
+\begin{solucion}
+Denotemos por $T':V^*\to V^*$ el traspuesto de Banach, $T'\varphi=\varphi\circ T$. Esta operación es compleja lineal y acotada en $T$, invierte el orden de los productos y envía inversas a inversas. Se tiene $\sigma(T')=\sigma(T)$. Una inclusión es inmediata; para la otra, si $S'$ es invertible, su inyectividad implica que $S(V)$ es denso, por Hahn--Banach. Además la sobreyectividad de $S'$ y la cota de su inversa dan
+\[
+ \norm v=\sup_{\norm\varphi\le1}|\varphi(v)|
+ \le\norm{(S')^{-1}}\norm{Sv}.
+\]
+Así $S$ es inyectivo y tiene imagen cerrada; por densidad es sobreyectivo y su inversa es acotada. Aplique esto a $S=zI-T$.
+
+Como el traspuesto conmuta con la integral, $(f(T))'=f(T')$. Si en cambio $T^*$ es el adjunto de Hilbert, esa operación es conjugada lineal, y la fórmula correcta es
+\[
+ (f(T))^*=f^\#(T^*),\qquad f^\#(z)=\overline{f(\overline z)}.
+\]
+Se obtiene conjugando la integral, reflejando la curva y teniendo en cuenta la inversión de orientación; equivalentemente, se aplica el traspuesto y la identificación conjugada lineal de Riesz. La fórmula sin conjugación sería falsa para $f\equiv i$: sus dos miembros serían $iI$ y $-iI$. Esta distinción aclara la notación ambigua $T^*$ en el ejercicio original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l23-7}
+Sea $I$ un ideal de $A$, no necesariamente cerrado, $x\in I$, y sea $f$ holomorfa en una vecindad de $\sigma(x)\cup\{0\}$, con $f(0)=0$. Pruebe $f(x)\in I$.
+\end{ejercicio}
+\begin{solucion}
+La función $g(z)=f(z)/z$ para $z\ne0$, completada por $g(0)=f'(0)$, es holomorfa en esa vecindad. El homomorfismo da $f(x)=xg(x)$, que pertenece a $I$ por la propiedad de ideal. No hemos pasado al límite dentro de $I$, por lo que no necesitamos que sea cerrado. Si $I$ es propio, necesariamente $0\in\sigma(x)$, ya que un ideal que contiene un invertible contiene a $1$; en ese caso la condición de dominio adicional ya está implícita. Si $I=A$, la conclusión es trivial, pero para escribir $f(0)$ hay que asegurarse de que el valor esté definido.
+\end{solucion}
+
+\chapter{Caracteres y transformada de Gelfand}
+
+\begin{ejercicio}\label{ej:v3-l24-1}
+Un elemento $a$ es \emph{cuasinilpotente} si $\sigma(a)=\{0\}$. (i) Pruebe que
+\[
+ J=\{a\in A:ab\text{ es cuasinilpotente para todo }b\in A\}
+\]
+es un ideal cerrado, llamado radical de Jacobson, y que es la intersección de todos los ideales maximales. (ii) Pruebe que todo elemento cuasinilpotente es divisor topológico de cero. (iii) Pruebe $\ker\mathcal G=J$. Verifique además que cuasinilpotente no implica nilpotente para el operador de desplazamiento ponderado
+\[
+ T(x_1,x_2,\ldots)=(0,x_1,x_2/2,x_3/3,\ldots)
+ \quad\text{en }\ell^\infty.
+\]
+\end{ejercicio}
+\begin{solucion}
+(i) Si $a\in J$, tome $b=1$. La descripción del espectro por caracteres implica $\varphi(a)=0$ para cada $\varphi$. Recíprocamente, si todos los caracteres anulan $a$, también anulan $ab$, pues $\varphi(ab)=\varphi(a)\varphi(b)=0$; por la misma descripción, $\sigma(ab)=\{0\}$. Por tanto
+\[
+ J=\bigcap_{\varphi\in\Delta(A)}\ker\varphi
+   =\bigcap_{M\text{ maximal}}M.
+\]
+Una intersección de ideales cerrados es un ideal cerrado: la estabilidad algebraica se verifica en cada ideal y la cerradura se conserva bajo intersecciones arbitrarias.
+
+(ii) Si $a$ es cuasinilpotente, $a-\lambda1$ es invertible para cada $\lambda\ne0$, mientras $a$ no lo es. De aquí $a\in\partial G(A)$. El ejercicio~\ref{ej:v3-l21-5} proporciona elementos unitarios en norma $u_n$ con $au_n,u_na\to0$. Aquí ``unitario en norma'' sólo significa $\norm{u_n}=1$, sin relación con una involución. (iii) Por definición, $\mathcal G(a)=0$ equivale a $\varphi(a)=0$ para todo carácter, condición que acabamos de identificar con $a\in J$.
+
+Para el ejemplo, $T^n$ desplaza $n$ posiciones y multiplica la coordenada $k$ por $1/[k(k+1)\cdots(k+n-1)]$. El mayor peso se obtiene en $k=1$, por lo que $\norm{T^n}=1/n!$. La fórmula del radio espectral da $r(T)=0$ porque $(n!)^{1/n}\to\infty$; por ejemplo, al menos $n/2$ factores del factorial son mayores o iguales que $n/2$. Como el espectro es no vacío, es $\{0\}$. Ninguna potencia es cero, pues $T^ne_1=e_{n+1}/n!$. Si se desea situar el ejemplo dentro de un álgebra conmutativa, tome la subálgebra cerrada unitaria generada por $T$: las mismas normas de potencias dan allí el mismo espectro $\{0\}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-2}
+Pruebe que todo carácter de $\ell^1(\N_0)$ con convolución de Cauchy es $\varphi_z$ para un único $z$ con $|z|\le1$.
+\end{ejercicio}
+\begin{solucion}
+Sea $z=\varphi(e_1)$. Como $\norm\varphi=1$ y $\norm{e_1}_1=1$, $|z|\le1$. La identidad $e_n=e_1^{*n}$, con $e_0$ como identidad, implica $\varphi(e_n)=z^n$. Para $a\in\ell^1$, las sumas finitas $\sum_{n=0}^Na_ne_n$ convergen en norma a $a$, y la continuidad de $\varphi$ da $\varphi(a)=\sum a_nz^n$. La unicidad se obtiene evaluando en $e_1$. El parámetro recorre el disco \emph{cerrado}, incluidos sus puntos de frontera. Además $z\mapsto\varphi_z$ es un homeomorfismo de ese disco sobre el espacio de caracteres: cada serie define una función continua de $z$ por convergencia uniforme, y una biyección continua de un compacto a un Hausdorff es un homeomorfismo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-3}
+Demuestre que todo carácter es una aplicación abierta.
+\end{ejercicio}
+\begin{solucion}
+Si $U\subset A$ es abierto y $a\in U$, elija $r>0$ con $B(a,r)\subset U$. Para $|\lambda|<r$ se tiene $a+\lambda1\in U$ y $\varphi(a+\lambda1)=\varphi(a)+\lambda$. Así $B(\varphi(a),r)\subset\varphi(U)$. Cada punto de $\varphi(U)$ es interior. Esta prueba directa evita invocar el teorema de la aplicación abierta, aunque éste también se aplica porque el carácter es lineal, continuo y sobreyectivo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-4}
+Pruebe $\sigma(a+b)\subset\sigma(a)+\sigma(b)$ y $\sigma(ab)\subset\sigma(a)\sigma(b)$, y dé ejemplos en que ambas inclusiones sean propias.
+\end{ejercicio}
+\begin{solucion}
+La imagen espectral de $a+b$ es el conjunto de los valores $\varphi(a)+\varphi(b)$ con \emph{el mismo} carácter en ambos términos. La suma de espectros permite caracteres independientes, por lo que contiene ese conjunto. El mismo argumento, con productos, prueba la segunda inclusión. Para $a=(0,1)$ y $b=(1,0)$ en $\C^2$, los respectivos pares de conjuntos son $\{1\}\subsetneq\{0,1,2\}$ y $\{0\}\subsetneq\{0,1\}$. Aunque este ejercicio repite el de la lectura 22, su nueva solución explica mediante caracteres el origen de las inclusiones estrictas.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-5}
+Pruebe que $a$ es invertible si y sólo si $\widehat a$ es invertible en $C(\Delta(A))$.
+\end{ejercicio}
+\begin{solucion}
+Si $a$ es invertible, $\widehat{a^{-1}}$ es inversa de $\widehat a$. Recíprocamente, una función continua sobre un compacto es invertible precisamente cuando no se anula. Si $\widehat a$ no se anula, la identidad $\widehat a(\Delta(A))=\sigma(a)$ implica $0\notin\sigma(a)$, por lo que $a$ es invertible. La recíproca no procede de una afirmación general sobre homomorfismos: depende de que aquí se han usado todos los caracteres.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l24-6}
+Pruebe $r(a)=\norm{\widehat a}_\infty$. Deduzca que $\mathcal G$ es isométrica si y sólo si $\norm{a^2}=\norm a^2$ para cada $a\in A$.
+\end{ejercicio}
+\begin{solucion}
+La primera igualdad se sigue de que el rango de $\widehat a$ es exactamente el espectro. Si $\mathcal G$ es isométrica, entonces
+\[
+ \norm{a^2}=\norm{\widehat{a^2}}_\infty
+ =\norm{(\widehat a)^2}_\infty=\norm{\widehat a}_\infty^2=\norm a^2.
+\]
+Recíprocamente, la identidad para cuadrados se itera: $\norm{a^{2^k}}=\norm a^{2^k}$. La fórmula del radio espectral, restringida a esa subsucesión, da $r(a)=\norm a$. Por la primera igualdad, $\norm{\mathcal G(a)}_\infty=\norm a$ para todo $a$.
+\end{solucion}
+
+\chapter{Álgebras \texorpdfstring{$C^*$}{C*} y cálculo funcional continuo}
+
+\begin{ejercicio}\label{ej:v3-l25-1}
+Si $a=a^*$, pruebe que $e^{ia}$ es unitario.
+\end{ejercicio}
+\begin{solucion}
+La involución pasa al límite de la serie por ser isométrica, así $(e^{ia})^*=\sum(-ia)^n/n!=e^{-ia}$. Las exponenciales de $ia$ y $-ia$ multiplican a $1$ en ambos órdenes. Por tanto $(e^{ia})^*e^{ia}=e^{ia}(e^{ia})^*=1$. Si $A$ no es unitaria, la exponencial y la afirmación se entienden en su unitización.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-2}
+Para $a$ normal pruebe: (i) existe $\lambda\in\sigma(a)$ con $|\lambda|=\norm a$; (ii) si $a^n=0$ para algún $n\ge1$, entonces $a=0$.
+\end{ejercicio}
+\begin{solucion}
+(i) El módulo alcanza su máximo en el espectro compacto no vacío, y ese máximo es $r(a)=\norm a$. (ii) La nilpotencia implica $r(a)=\lim_k\norm{a^k}^{1/k}=0$. La normalidad convierte esa igualdad en $\norm a=0$. Sin normalidad la conclusión es falsa: la matriz $\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$ es nilpotente y no nula.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-3}
+Decimos que $a,b$ son unitariamente equivalentes si $b=uau^*$ para algún unitario $u$. Pruebe: (i) ésta es una relación de equivalencia; (ii) preserva normalidad, autoadjunción y positividad; (iii) $\sigma(uau^*)=\sigma(a)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La identidad prueba reflexividad; si $b=uau^*$, entonces $a=u^*bu$; y si $c=vbv^*$, entonces $c=(vu)a(vu)^*$, con $vu$ unitario. (ii) Para $b=uau^*$ se tiene $b^*=ua^*u^*$, $b^*b=ua^*au^*$ y $bb^*=uaa^*u^*$; las dos primeras propiedades se conservan. Si $a=c^*c$, entonces $b=(cu^*)^*(cu^*)$, y es positivo. (iii) $b-\lambda1=u(a-\lambda1)u^*$; ese elemento es invertible exactamente cuando lo es $a-\lambda1$, porque los factores externos son invertibles.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-4}
+Pruebe que los unitarios forman un subgrupo cerrado de $G(A)$. Determine si es necesariamente normal.
+\end{ejercicio}
+\begin{solucion}
+El producto de unitarios es unitario y la inversa de $u$ es $u^*$. Si $u_n\to u$ en norma, la continuidad del producto y de la involución da $u^*u=uu^*=1$; el grupo unitario es incluso cerrado en $A$. No tiene por qué ser normal en $G(A)$. En $M_2(\C)$, tome
+\[
+ u=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ s=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+\]
+Entonces $sus^{-1}=\left(\begin{smallmatrix}0&2\\1/2&0\end{smallmatrix}\right)$ y $(sus^{-1})^*(sus^{-1})=\operatorname{diag}(1/4,4)\ne I$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-5}
+Pruebe que $A$ es conmutativa si y sólo si todos sus elementos son normales.
+\end{ejercicio}
+\begin{solucion}
+La implicación directa es inmediata. Recíprocamente, si $h,k$ son autoadjuntos, la normalidad de $h+ik$ y el desarrollo al final de la prueba de Fuglede dan $hk=kh$. Cada elemento es combinación compleja lineal de dos autoadjuntos; distribuir los productos muestra entonces que cualesquiera dos elementos de $A$ conmutan.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-6}
+Pruebe que una misma álgebra con involución tiene a lo sumo una norma que la convierta en álgebra $C^*$.
+\end{ejercicio}
+\begin{solucion}
+En cualquiera de esas normas, $a^*a$ es autoadjunto, de modo que
+\[
+ \norm a^2=\norm{a^*a}=r(a^*a).
+\]
+El miembro derecho sólo depende de la invertibilidad algebraica de $a^*a-\lambda1$, y no de la norma elegida. Por tanto las dos normas coinciden en cada $a$. En el caso no unitario se usa la unitización algebraica $A\oplus\C$, que es la misma para ambas normas; el teorema siguiente garantiza una norma $C^*$ en ella y permite aplicar el mismo argumento sin suponer de antemano que las normas originales sean equivalentes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-7}
+Pruebe que un álgebra de Banach con involución es $C^*$ si y sólo si $\norm{a^*a}\ge\norm a^2$ para cada $a$.
+\end{ejercicio}
+\begin{solucion}
+La necesidad es inmediata. Para la suficiencia, si $a\ne0$,
+$\norm a^2\le\norm{a^*a}\le\norm{a^*}\norm a$, así $\norm a\le\norm{a^*}$. Sustituyendo $a$ por $a^*$ se obtiene la igualdad de normas. Por tanto $\norm{a^*a}\le\norm{a^*}\norm a=\norm a^2$, que junto con la hipótesis da la identidad $C^*$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l25-8}
+Sea $(A_j)_{j\in J}$ una familia de álgebras $C^*$. Pruebe que son álgebras $C^*$, con operaciones coordenadas y norma del supremo: (i) $\prod_j^{\mathrm b}A_j=\{(a_j):\sup_j\norm{a_j}<\infty\}$; (ii) $\bigoplus_j^{c_0}A_j=\{(a_j):\text{para cada }\eps>0,\ \{j:\norm{a_j}\ge\eps\}\text{ es finito}\}$.
+\end{ejercicio}
+\begin{solucion}
+(i) Las operaciones preservan la acotación y la norma es submultiplicativa. Una sucesión de Cauchy converge coordenada a coordenada en los espacios completos $A_j$; la cota de Cauchy uniforme pasa al límite y prueba convergencia en la norma del supremo hacia una familia acotada. La involución coordenada es isométrica y
+$\norm{a^*a}=\sup_j\norm{a_j^*a_j}=\sup_j\norm{a_j}^2=\norm a^2$.
+
+(ii) La condición dada implica acotación: fuera del conjunto finito correspondiente a $\eps=1$, las normas son menores que uno, y dentro hay un máximo finito. Sumas, productos y adjuntos conservan la condición; para productos, use $\norm{a_jb_j}\le\norm a\norm{b_j}$. Es un subespacio cerrado del producto acotado: si $a^{(n)}\to a$ uniformemente, elija $n$ con $\norm{a-a^{(n)}}<\eps/2$; entonces $\{j:\norm{a_j}\ge\eps\}\subset\{j:\norm{a_j^{(n)}}\ge\eps/2\}$, que es finito. Por tanto es completo y hereda la identidad $C^*$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-1}
+Si $F:C(\sigma(a))\to A$ es un $*$-homomorfismo que extiende el cálculo holomorfo, pruebe $F=C_a$.
+\end{ejercicio}
+\begin{solucion}
+La extensión implica $F(1)=1$ y $F(z)=a$; preservar el adjunto implica $F(\overline z)=a^*$. Por multiplicatividad y linealidad coincide con $C_a$ en cada polinomio en $z,\overline z$. Estos polinomios contienen las constantes, separan puntos del compacto $\sigma(a)$ y son estables bajo conjugación; Stone--Weierstrass los hace densos. La continuidad de ambas aplicaciones da la igualdad en toda función continua.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-2}
+Si $A$ es conmutativa, $C^*$ y no unitaria, pruebe que $\Delta(A)$ es localmente compacto Hausdorff y que $\mathcal G:A\to C_0(\Delta(A))$ es un $*$-isomorfismo isométrico.
+\end{ejercicio}
+\begin{solucion}
+Sea $K=\Delta(\widetilde A)$. La proyección escalar $\chi_\infty(a,\lambda)=\lambda$ es un carácter. Cada carácter no nulo $\varphi$ de $A$ se extiende de manera única a $\widetilde\varphi(a,\lambda)=\varphi(a)+\lambda$. Recíprocamente, un carácter de $\widetilde A$ distinto de $\chi_\infty$ se restringe a un carácter no nulo de $A$. Las fórmulas de evaluación prueban que esta biyección identifica la topología débil estrella de $\Delta(A)$ con la de $K\setminus\{\chi_\infty\}$, que es localmente compacta Hausdorff.
+
+La representación unitaria $\widetilde A\simeq C(K)$ lleva $A=\ker\chi_\infty$ al ideal de funciones que se anulan en $\chi_\infty$. Restringirlas a $K\setminus\{\chi_\infty\}$ identifica ese ideal con $C_0$ de dicho espacio: si $f(\chi_\infty)=0$, los conjuntos $\{|f|\ge\eps\}$ son compactos y evitan ese punto; recíprocamente, una función que se anula en infinito se extiende continuamente por cero, porque fuera de un compacto su módulo es menor que cualquier $\eps$. Todos estos mapas preservan productos, adjuntos y normas. El punto $\chi_\infty$ no es aislado: si lo fuera, su complemento sería compacto abierto y el indicador de ese complemento correspondería a una identidad de $A$, contradicción.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-3}
+Para un espacio compacto Hausdorff $X$, pruebe que $X$ es totalmente disconexo si y sólo si el subespacio generado por las proyecciones de $C(X)$ es denso.
+\end{ejercicio}
+\begin{solucion}
+Una proyección de $C(X)$ toma sólo los valores $0,1$, por lo que es el indicador de un conjunto abierto y cerrado. Recordemos por qué en un compacto Hausdorff totalmente disconexo estos conjuntos separan puntos. Para $x\in X$, sea $Q_x$ la intersección de sus vecindades abiertas y cerradas. Afirmamos que $Q_x$ es conexo. Si se separara en dos compactos no vacíos $P,Q$, elija abiertos disjuntos $U,V$ que los contengan. Cada punto del compacto $X\setminus(U\cup V)$ es excluido por alguna vecindad abierta y cerrada de $x$; una intersección finita de ellas da un conjunto $C$ abierto y cerrado con $Q_x\subset C\subset U\cup V$. Los conjuntos $C\cap U$ y $C\cap V$ son abiertos y cerrados en $X$, y el que contiene a $x$ excluiría una parte de $Q_x$, contradicción. Así $Q_x$ es conexo y, por total desconexión, $Q_x=\{x\}$. Para $y\ne x$ existe entonces un conjunto abierto y cerrado que contiene a $x$ y no a $y$.
+
+Los indicadores de esos conjuntos separan puntos. Su espacio generado es un álgebra (el producto de dos indicadores es el indicador de la intersección), contiene las constantes y es estable bajo conjugación; Stone--Weierstrass da densidad. Recíprocamente, una proyección es constante en cualquier subconjunto conexo, porque su imagen continua está en $\{0,1\}$. Si dos puntos distintos pertenecieran a un mismo subconjunto conexo, todas las combinaciones de proyecciones y sus límites uniformes tendrían iguales valores allí. Esto contradice que las funciones continuas de un compacto Hausdorff separan puntos. Por tanto toda componente conexa es un singleton.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-4}
+Si $A$ es una álgebra $C^*$ posiblemente no conmutativa y $a\in A$ es normal, construya su cálculo funcional continuo que extiende al holomorfo.
+\end{ejercicio}
+\begin{solucion}
+En el caso unitario la construcción completa está en el teorema~\ref{v3:calculo-continuo}: se trabaja en $C^*(1,a)$, que es conmutativa, y la permanencia espectral asegura que se usa el espectro correcto. Si $A$ no tiene identidad, se realiza la construcción en $\widetilde A$. Para $f(0)=0$, el elemento $f(a)$ pertenece a $A$: la proyección escalar aplicada al cálculo continuo vale $f(0)$, primero para polinomios en $z,\overline z$ y luego por continuidad. Así el cálculo con valores en $A$ tiene como dominio natural $\{f\in C(\sigma_{\widetilde A}(a)):f(0)=0\}$. Las funciones con $f(0)\ne0$ dan en general elementos de la unitización. Esta precisión es necesaria si el enunciado no supone identidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-5}
+Sea $A$ una álgebra $C^*$ conmutativa unitaria generada por $a_1,\ldots,a_n$ (algebraicamente y luego por clausura, o como álgebra $C^*$). Pruebe que existe un compacto $X\subset\C^n$ y un $*$-isomorfismo $A\to C(X)$ que envía $a_k$ a la coordenada $z_k$.
+\end{ejercicio}
+\begin{solucion}
+Defina $\tau:\Delta(A)\to\C^n$ por $\tau(\varphi)=(\varphi(a_1),\ldots,\varphi(a_n))$ y sea $X=\tau(\Delta(A))$. La continuidad de las coordenadas hace a $X$ compacto. Si dos caracteres coinciden en los generadores, coinciden en todos sus polinomios, en los adjuntos cuando éstos se incluyen, y por continuidad en todo $A$. Por ello $\tau$ es inyectiva y es un homeomorfismo sobre $X$. El isomorfismo buscado es $a\mapsto\widehat a\circ\tau^{-1}$. Evaluarlo en un generador da exactamente $z_k$. La hipótesis $C^*$ procede del contexto de la lista y no puede suprimirse: una álgebra de Banach conmutativa general puede tener radical no nulo y no ser isomorfa a un espacio $C(X)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l26-6}
+Sea $X$ compacto Hausdorff, $x_0\in X$, y sea $A$ el conjunto de sucesiones $(f_n)$ acotadas en $C(X)$ tales que $(f_n(x_0))$ converge. Pruebe que $A$ es una álgebra conmutativa unitaria y determine su espacio de caracteres.
+\end{ejercicio}
+\begin{solucion}
+Con la norma $\norm f=\sup_n\norm{f_n}_\infty$, el producto acotado $B=\prod_{n\ge1}^{\mathrm b}C(X)$ es un álgebra $C^*$ conmutativa unitaria. La aplicación $q:B\to\ell^\infty$, $q(f)=(f_n(x_0))$, es un $*$-homomorfismo contractivo. Como el espacio $c$ de sucesiones convergentes es cerrado en $\ell^\infty$, $A=q^{-1}(c)$ es una subálgebra $C^*$ cerrada y contiene a la identidad. La cerradura de $c$ se verifica directamente: una aproximación uniforme por una sucesión convergente hace que la sucesión límite sea de Cauchy en sus índices.
+
+Para describir todos los caracteres, incluidos los que no son evaluaciones en una coordenada finita, sea $K=\Delta(B)$ y defina $\gamma_n\in K$ por $\gamma_n(f)=f_n(x_0)$. Considere el compacto no vacío
+\[
+ F=\bigcap_{N\ge1}\overline{\{\gamma_n:n\ge N\}}^{\,K}.
+\]
+Es no vacío por la propiedad de intersección finita en el compacto $K$. Afirmamos que, bajo $B\simeq C(K)$, la subálgebra $A$ corresponde exactamente a las funciones continuas constantes sobre $F$. Si $f_n(x_0)\to L$, todo punto de adherencia de las colas tiene valor $L$ por continuidad. Recíprocamente, si $\widehat f=L$ en $F$ y la sucesión no convergiera a $L$, habría $\eps>0$ e infinitos índices con $|\gamma_n(f)-L|\ge\eps$. Las clausuras de las colas de esa subsucesión tendrían un punto común en $F$ donde, por cerradura de la desigualdad, el valor se alejaría de $L$ al menos $\eps$, contradicción.
+
+Sea $K/F$ el espacio que identifica todos los puntos de $F$ en un único punto y deja distintos los demás. Es compacto Hausdorff: la relación de equivalencia es el conjunto cerrado diagonal unido a $F\times F$; alternativamente, la normalidad de $K$ separa el cerrado $F$ de cualquier punto exterior y permite construir vecindades disjuntas en el cociente. Las funciones continuas constantes en $F$ son exactamente las funciones que descienden a $K/F$. En consecuencia
+\[
+ \boxed{\ \Delta(A)\simeq K/F,\qquad K=\Delta\!\left(\prod_{n\ge1}^{\mathrm b}C(X)\right).\ }
+\]
+Esta descripción es concreta en términos de la compactificación de Stone--Čech: $B=C_b(\N\times X)$, con $\N$ discreto, así $K=\beta(\N\times X)$, y $F$ es el resto en infinito de la copia $\N\times\{x_0\}$. Por tanto se colapsa \emph{sólo ese resto} a un punto. El carácter del punto colapsado es $f\mapsto\lim_n f_n(x_0)$; cada $(n,x)$ da el carácter $f\mapsto f_n(x)$, y pueden existir otros caracteres en el resto no colapsado.
+
+Para justificar la última advertencia, si $x_1\ne x_0$, elija $g\in C(X)$ con $g(x_0)=0$, $g(x_1)=1$. Toda sucesión escalar acotada $(c_n)$ produce $(c_ng)\in A$. Para un ultrafiltro libre $\mathcal U$ sobre $\N$, la fórmula $f\mapsto\lim_{n\to\mathcal U}f_n(x_1)$ es un carácter, porque los límites de ultrafiltro de sucesiones acotadas respetan sumas y productos. Distintos ultrafiltros se distinguen con sucesiones indicadoras y, por tanto, con elementos $(c_ng)$ de $A$. En cambio, si $X=\{x_0\}$, $A=c$ y el cociente se reduce a $\N\cup\{\infty\}$, la compactificación por un punto.
+\end{solucion}
+
+\chapter{Positividad, orden y estados}
+
+\begin{ejercicio}\label{ej:v3-l27-1}
+Para $n\ge1$ y $a\ge0$, pruebe que existe un único $b\ge0$ con $b^n=a$.
+\end{ejercicio}
+\begin{solucion}
+El cálculo de la función $t^{1/n}$ da una raíz positiva. Si $c\ge0$ satisface $c^n=a$, la composición del cálculo continuo da $(c^n)^{1/n}=c$, porque $(t^n)^{1/n}=t$ en el espectro no negativo de $c$. Por compatibilidad del cálculo en subálgebras, el miembro izquierdo es la raíz construida a partir de $a$; esto prueba unicidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-2}
+Pruebe $\norm a=\max(\norm{a_+},\norm{a_-})$ para $a=a^*$.
+\end{ejercicio}
+\begin{solucion}
+El cálculo continuo isométrico da $\norm{a_+}=\max_{t\in\sigma(a)}\max(t,0)$ y $\norm{a_-}=\max_{t\in\sigma(a)}\max(-t,0)$. El máximo de esos dos números es $\max_{t\in\sigma(a)}|t|=\norm a$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-3}
+Si $\pi:A\to B$ es un $*$-homomorfismo, pruebe $\norm{\pi(a)}=\inf\{\norm{a-b}:\pi(b)=0\}$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:homomorfismo-cstar-norma} da ambas desigualdades y la aproximación explícita $b=a-aq(a^*a)$ al núcleo. El resultado significa que el isomorfismo algebraico $A/\ker\pi\to\pi(A)$ también es isométrico para la norma cociente. Como el núcleo es cerrado y $A$ es completo, la imagen es completa y por tanto cerrada en $B$. Así, en el contexto $C^*$ sí se obtiene el control topológico que falla para un homomorfismo general de álgebras normadas.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-4}
+Pruebe que los positivos forman un cono: $a,b\ge0$ y $t\ge0$ implican $a+b,ta\ge0$.
+\end{ejercicio}
+\begin{solucion}
+El teorema~\ref{v3:positividad-equivalencias} identifica los positivos con $P_{\mathrm{esp}}$, y el lema~\ref{v3:cono-espectral} prueba que éste es un cono. En particular, la desigualdad
+$\norm{(\norm a+\norm b)1-(a+b)}\le\norm a+\norm b$
+es válida sin exigir $ab=ba$. No sería correcto deducir positividad de una suma usando únicamente una fórmula de suma de espectros reservada al caso conmutativo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-5}
+Pruebe que todo elemento de $A$ es combinación lineal de elementos unitarios.
+\end{ejercicio}
+\begin{solucion}
+Si $h=h^*$ y $\norm h\le1$, $1-h^2\ge0$. Sea $k=(1-h^2)^{1/2}$; como es función continua de $h$, conmuta con él. Entonces $u=h+ik$ satisface $u^*u=uu^*=h^2+k^2=1$, y $h=(u+u^*)/2$. Un autoadjunto general se reduce a una contracción dividiendo por su norma, salvo el cero, que no presenta dificultad. Finalmente escriba $a=h+i\ell$ con $h,\ell$ autoadjuntos. Cada uno es combinación de dos unitarios, así $a$ es combinación de a lo sumo cuatro.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-6}
+Para $a$ invertible defina $|a|=(a^*a)^{1/2}$. Pruebe que existe un unitario $u$ con $a=u|a|$.
+\end{ejercicio}
+\begin{solucion}
+El positivo $a^*a$ es invertible y su raíz también, por mapeo espectral. Defina $u=a|a|^{-1}$. Entonces $u^*u=|a|^{-1}a^*a|a|^{-1}=1$. Además $u$ es invertible, producto de invertibles; por ello la identidad izquierda $u^*u=1$ obliga $u^*=u^{-1}$ y también $uu^*=1$. La factorización es inmediata y el unitario es único porque necesariamente $u=a|a|^{-1}$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l27-7}
+Pruebe que un $*$-homomorfismo preserva el orden.
+\end{ejercicio}
+\begin{solucion}
+Si $b-a=c^*c$, entonces $\pi(b)-\pi(a)=\pi(c)^*\pi(c)\ge0$. Además conserva autoadjuntos porque $\pi(a)^*=\pi(a^*)$. No se requiere inyectividad ni que preserve la identidad.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-1}
+Examine la afirmación: ``todo funcional lineal hermitiano en un álgebra $C^*$ es continuo''. Dé una demostración si es verdadera o un contraejemplo si es falsa, e indique una hipótesis suficiente válida.
+\end{ejercicio}
+\begin{solucion}
+La afirmación original es falsa. En el espacio real $C([0,1],\R)$, los monomios $1,t,t^2,\ldots$ son linealmente independientes. Defina sobre su espacio generado un funcional real $L$ con $L(1)=0$ y $L(t^n)=n$ para $n\ge1$, y extiéndalo algebraicamente a todo el espacio mediante una base de Hamel. Defina en $C([0,1],\C)$
+\[
+ \varphi(f)=L(\operatorname{Re}f)+iL(\operatorname{Im}f).
+\]
+Es compleja lineal: en particular $\varphi(if)=i\varphi(f)$, y respeta conjugación, así es hermitiano. Pero $\norm{t^n}_\infty=1$ y $|\varphi(t^n)|=n$, por lo que no es continuo. La hipótesis suficiente correcta es \emph{positividad}: el lema~\ref{v3:cs-positivo} prueba entonces continuidad y la igualdad exacta $\norm\varphi=\varphi(1)$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-2}
+Si $\norm\xi=1$ en un espacio de Hilbert $H$, pruebe que $T\mapsto\ip{T\xi}{\xi}$ es un estado de $\Lcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+Es complejo lineal por nuestra convención del producto interno y está acotado en módulo por $\norm T$. Si $T=S^*S$, su valor es $\norm{S\xi}^2\ge0$. En la identidad vale $\norm\xi^2=1$, de modo que es un estado, llamado estado vectorial.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-3}
+Si $\varphi$ es un estado y $u$ unitario, pruebe que $a\mapsto\varphi(uau^*)$ es un estado.
+\end{ejercicio}
+\begin{solucion}
+La conjugación por $u$ es lineal, multiplicativa y conserva adjuntos. Para $a=b^*b$ se tiene $uau^*=(bu^*)^*(bu^*)\ge0$, y envía $1$ a $1$. Componerla con $\varphi$ conserva, por tanto, positividad y normalización.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-4}
+Si $a$ es normal, pruebe que existe un estado $\varphi$ con $|\varphi(a)|=\norm a$.
+\end{ejercicio}
+\begin{solucion}
+Elija $\lambda\in\sigma(a)$ con $|\lambda|=r(a)=\norm a$ y aplique el teorema~\ref{v3:estado-espectral}. La normalidad es esencial para identificar el radio con la norma.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-5}
+Sea $K$ un conjunto convexo compacto no vacío en un espacio localmente convexo Hausdorff y $\ell$ un funcional lineal continuo. Pruebe que $\operatorname{Re}\ell$ alcanza su máximo en algún punto extremo de $K$. En particular, vale para un compacto convexo de un espacio normado.
+\end{ejercicio}
+\begin{solucion}
+Sea $m=\max_K\operatorname{Re}\ell$ y $F=\{x\in K:\operatorname{Re}\ell(x)=m\}$. Es compacto, convexo y no vacío. Es una \emph{cara}: si $tx+(1-t)y\in F$, $0<t<1$, ambos valores reales son a lo sumo $m$, y su combinación sólo puede ser $m$ si ambos son $m$. Por Krein--Milman, $F$ tiene un punto extremo $x_0$. Si $x_0$ fuera una combinación convexa no trivial de puntos de $K$, la propiedad de cara obligaría a que estuvieran en $F$, contradiciendo su extremalidad allí. Por tanto es extremo en $K$ y alcanza el máximo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-6}
+Pruebe: (i) $a=0$ si y sólo si todos los estados puros lo anulan; (ii) $a=a^*$ si y sólo si todos los estados puros toman valores reales en $a$; (iii) $a\ge0$ si y sólo si todos los estados puros toman valores no negativos en $a$; (iv) si $a$ es normal, existe un estado puro $\varphi$ con $|\varphi(a)|=\norm a$.
+\end{ejercicio}
+\begin{solucion}
+(i)--(iii) Cada condición sobre el valor en $a$ define un subconjunto convexo débil estrella cerrado de $S(A)$: los conjuntos escalares $\{0\}$, $\R$ y $[0,\infty)$ son cerrados y convexos. Si la condición vale en $P(A)$, Krein--Milman hace que valga en todo $S(A)$. La proposición~\ref{v3:estados-compactos-separan} concluye cada afirmación; las recíprocas son inmediatas.
+
+(iv) Elija un estado $\psi$ con $|\psi(a)|=\norm a$ y una fase $\zeta\in\mathbb T$ con $\zeta\psi(a)=\norm a$ (si $a=0$, cualquier estado puro sirve). El funcional real continuo $\varphi\mapsto\operatorname{Re}(\zeta\varphi(a))$ tiene máximo $\norm a$, pues todos los estados tienen norma uno. Por el ejercicio anterior lo alcanza un estado puro $\varphi$. Entonces $\norm a=\operatorname{Re}(\zeta\varphi(a))\le|\varphi(a)|\le\norm a$, y todas las desigualdades son igualdades.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l28-7}
+Pruebe que, si $A$ es \emph{conmutativa}, $P(A)=\Delta(A)$. Explique por qué la hipótesis de conmutatividad no puede omitirse.
+\end{ejercicio}
+\begin{solucion}
+Todo carácter es un estado: tiene norma uno y vale uno en $1$. Sea $\chi=t\varphi+(1-t)\psi$ con estados $\varphi,\psi$ y $0<t<1$. Para $b=a-\chi(a)1$, $\chi(b^*b)=|\chi(b)|^2=0$. Por positividad, $\varphi(b^*b)=\psi(b^*b)=0$, y Cauchy--Schwarz implica $\varphi(b)=\psi(b)=0$. Así ambos coinciden con $\chi$ en todo $a$, y $\chi$ es puro. Esta dirección no requiere conmutatividad.
+
+Suponga ahora $A$ conmutativa y $\varphi$ puro. Para $0\le h\le1$, defina $\varphi_h(a)=\varphi(ha)$. Es positivo: si $a\ge0$, $ha=h^{1/2}ah^{1/2}\ge0$ porque los factores conmutan. Además $\varphi=\varphi_h+\varphi_{1-h}$ y las normas de estos funcionales positivos son $\varphi(h)$ y $1-\varphi(h)$. Si ambos números son positivos, normalizarlos produce una descomposición convexa de $\varphi$, y su pureza fuerza $\varphi_h=\varphi(h)\varphi$. Si uno de los números es cero, el funcional positivo correspondiente tiene norma cero y la misma identidad sigue siendo válida. Así $\varphi(ha)=\varphi(h)\varphi(a)$ para todo $a$ y toda contracción positiva $h$. Cada elemento es combinación lineal de positivos (descomponga sus partes autoadjuntas), y por linealidad se obtiene multiplicatividad en general. Por tanto $\varphi$ es carácter.
+
+En $M_2(\C)$ no hay caracteres: el núcleo de un carácter sería un ideal propio de codimensión uno, pero las unidades matriciales muestran que cualquier ideal no nulo contiene todas las matrices. Sin embargo, el estado vectorial $\omega(a)=\ip{ae_1}{e_1}$ es puro. Para verlo, sea $p$ la proyección sobre $\C e_1$. Si $\omega=t\varphi+(1-t)\psi$, la igualdad $\omega(1-p)=0$ obliga $\varphi(1-p)=\psi(1-p)=0$. Cauchy--Schwarz anula todos los términos que contienen $1-p$ a izquierda o derecha, así $\varphi(a)=\varphi(pap)=\omega(a)\varphi(p)=\omega(a)$, y lo mismo para $\psi$. Esto refuta el enunciado sin la hipótesis conmutativa.
+\end{solucion}
+
+\chapter{La construcción GNS y representaciones fieles}
+
+\begin{ejercicio}\label{ej:v3-l29-1}
+Si $\alpha>0$, pruebe que $\pi_\varphi$ y $\pi_{\alpha\varphi}$ son unitariamente equivalentes. Deduzca la reducción a estados para funcionales positivos no nulos.
+\end{ejercicio}
+\begin{solucion}
+Los espacios nulos coinciden, pero la norma de una clase en el segundo cociente es $\sqrt\alpha$ veces la primera. Por ello $U[a]_\varphi=\alpha^{-1/2}[a]_{\alpha\varphi}$ es una isometría sobre el cociente denso y se extiende a un unitario de las completaciones. Además $U\pi_\varphi(c)[a]=\alpha^{-1/2}[ca]_{\alpha\varphi}=\pi_{\alpha\varphi}(c)U[a]$. Si $\varphi\ne0$, $\varphi(1)=\norm\varphi>0$ y $\varphi/\varphi(1)$ es un estado. El funcional cero es una excepción necesaria a la última frase del enunciado original: su GNS actúa en el espacio cero y no es equivalente a la representación de un estado.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l29-2}
+Pruebe que $(\pi_1\oplus\pi_2)(a)(\xi_1,\xi_2)=(\pi_1(a)\xi_1,\pi_2(a)\xi_2)$ es una representación. Si ambas representaciones son cíclicas, determine si su suma debe serlo.
+\end{ejercicio}
+\begin{solucion}
+La suma hilbertiana tiene producto interno suma y es completa porque cada componente de una sucesión de Cauchy converge. El operador diagonal es acotado, con norma $\max(\norm{\pi_1(a)},\norm{\pi_2(a)})$; la cota superior se obtiene sumando cuadrados y la inferior probando vectores apoyados en una sola componente. Linealidad, producto y adjunto se verifican coordenada a coordenada. La suma no tiene por qué ser cíclica: para $A=\C$, tome ambas representaciones escalares en $\C$, que son cíclicas. La suma actúa por $\lambda I$ en $\C^2$, y la órbita de cualquier vector está contenida en una recta, que no es densa en $\C^2$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l29-3}
+Sea $H$ separable de dimensión infinita, $(e_n)$ una base ortonormal y $\operatorname{BL}$ un límite de Banach positivo normalizado. Defina
+\[
+ \varphi(T)=\operatorname{BL}\bigl((\ip{Te_n}{e_n})_{n\ge1}\bigr).
+\]
+Pruebe: (i) $\varphi$ es un estado; (ii) $\ker\pi_\varphi=\Kcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+(i) La sucesión de coeficientes está acotada por $\norm T$. La linealidad compleja del límite de Banach (extendido desde sucesiones reales por partes real e imaginaria) da linealidad de $\varphi$. Si $T\ge0$, todos los coeficientes son no negativos y su límite de Banach también. En $I$ la sucesión es constantemente uno, así $\varphi(I)=1$.
+
+(ii) Si $T$ es compacto y $S\in\Lcal(H)$, los vectores $Se_n$ convergen débilmente a cero y están acotados. Un operador compacto los envía a una sucesión que converge en norma a cero: de lo contrario una subsucesión con normas separadas de cero tendría una subsucesión convergente en norma, cuyo límite débil tendría que ser cero. Así $\norm{TSe_n}\to0$, y
+\[
+ \norm{\pi_\varphi(T)\pi_\varphi(S)e_\varphi}^2
+ =\varphi(S^*T^*TS)=\operatorname{BL}(\norm{TSe_n}^2)=0.
+\]
+La ciclicidad implica $\pi_\varphi(T)=0$.
+
+Para la recíproca construiremos un testigo cuando $T$ no es compacto. Se tiene
+\[
+ d:=\inf_{E\subset H\text{ finito dimensional}}
+ \norm{T|_{E^\perp}}>0.
+\]
+Si el ínfimo fuera cero, $TP_E$, de rango finito, aproximaría a $T$ en norma, haciendo a $T$ compacto. Elija $0<\delta<d$. Por inducción, elija vectores unitarios $\xi_n$ ortogonales a todos los $\xi_j$ y $T^*T\xi_j$ anteriores, con $\norm{T\xi_n}\ge\delta$. Es posible porque sólo se imponen un número finito de condiciones y la norma de la restricción de $T$ al complemento correspondiente supera $\delta$. Los vectores $T\xi_n$ son ortogonales entre sí, pues $\ip{T\xi_n}{T\xi_j}=\ip{\xi_n}{T^*T\xi_j}=0$.
+
+La aplicación $Ve_n=\xi_n$ se extiende a una isometría $V:H\to H$. En particular $\norm{TVe_n}\ge\delta$ para todo $n$, y
+\[
+ \varphi(V^*T^*TV)=\operatorname{BL}(\norm{T\xi_n}^2)\ge\delta^2.
+\]
+Si $\pi_\varphi(T)=0$, el miembro izquierdo sería $\norm{\pi_\varphi(T)\pi_\varphi(V)e_\varphi}^2=0$, contradicción. Así ningún operador no compacto pertenece al núcleo. La prueba requiere más que observar que los compactos son límites de operadores de rango finito: esa observación sólo proporciona una de las inclusiones.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l30-1}
+Sean $\mu,\nu$ medidas positivas finitas regulares de Borel sobre un compacto Hausdorff $X$. Pruebe: (i) $\pi_\mu\oplus\pi_\nu$ es cíclica si y sólo si $\mu\perp\nu$; (ii) si son mutuamente singulares, $\pi_\mu\oplus\pi_\nu$ es unitariamente equivalente a $\pi_{\mu+\nu}$.
+\end{ejercicio}
+\begin{solucion}
+Si $\mu\perp\nu$, elija un Borel $E$ que soporte a $\mu$ y cuyo complemento soporte a $\nu$. La aplicación
+\[
+ U:L^2(\mu+\nu)\to L^2(\mu)\oplus L^2(\nu),\qquad
+ Uh=(h,h)
+\]
+es isométrica porque las normas cuadradas suman. Es sobreyectiva: dado $(f,g)$, la función $h=\mathbf1_Ef+\mathbf1_{X\setminus E}g$ tiene las restricciones requeridas, independientemente de los representantes fuera de sus soportes. Además entrelaza las multiplicaciones. Como $1$ es cíclico en $L^2(\mu+\nu)$ por densidad de $C(X)$, se obtiene (ii) y la suficiencia de (i).
+
+Para la necesidad, sea $\lambda=\mu+\nu$, $p=d\mu/d\lambda$, $q=d\nu/d\lambda$, de modo que $p,q\ge0$ y $p+q=1$ casi en todas partes. Identifique $L^2(\mu)$ con el subespacio de $L^2(\lambda)$ soportado en $\{p>0\}$ mediante $f\mapsto\sqrt p f$; la inversa es división por $\sqrt p$ en ese conjunto. Haga lo mismo para $\nu$. Si las medidas no son singulares, el conjunto $D=\{p>0,q>0\}$ tiene medida positiva: si tuviera medida cero, los soportes medibles $\{p>0\}$ y su complemento demostrarían singularidad.
+
+Considere cualquier candidato a vector cíclico, identificado con $(u,v)$ en los dos subespacios de $L^2(\lambda)$. Si $(u,v)$ se anula en un subconjunto $E\subset D$ de medida positiva, el vector $(\mathbf1_E,0)$ es no nulo y ortogonal a toda su órbita. En otro caso, el vector
+\[
+ w=\mathbf1_D\frac{(\overline v,-\overline u)}{1+|u|+|v|}
+\]
+es no nulo, pertenece a la suma de los dos subespacios y es ortogonal a $(fu,fv)$ para todo $f\in C(X)$, porque el integrando del producto interno es $f(uv-vu)/(1+|u|+|v|)=0$. Su pertenencia a $L^2$ se sigue de la acotación y de que $\lambda$ es finita. Ningún vector es, pues, cíclico. Las hipótesis de finitud y regularidad explicitan las necesarias para la representación GNS y la densidad de funciones continuas empleadas aquí.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l30-2}
+Si $A$ es separable y $(\varphi_n)$ es débil estrella densa en $S(A)$, defina $\varphi=\sum_{n\ge1}2^{-n}\varphi_n$. Pruebe que $\pi_\varphi$ es isométrica y deduzca que $A$ admite una representación cíclica isométrica.
+\end{ejercicio}
+\begin{solucion}
+La serie converge en norma de $A^*$ porque cada estado tiene norma uno. Su suma es positiva y vale $\sum2^{-n}=1$ en la identidad, así es un estado. Si $\varphi(a^*a)=0$, todos los sumandos $2^{-n}\varphi_n(a^*a)$ son no negativos y deben ser cero. Por densidad y continuidad de la evaluación, todos los estados anulan $a^*a$, lo que implica $a^*a=0$ y $a=0$. El estado es, por tanto, fiel en los positivos. Si $\pi_\varphi(a)=0$, entonces $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$, así $a=0$. La representación es inyectiva, y todo $*$-homomorfismo inyectivo es isométrico por la proposición~\ref{v3:homomorfismo-cstar-norma}. Por construcción es cíclica. La serie del enunciado original debe sumar los funcionales $\varphi_n$, no las representaciones $\pi_{\varphi_n}$, cuyos espacios de Hilbert son diferentes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l30-3}
+Si $\pi_\varphi(a)=0$ para todos los estados puros, pruebe $a=0$. Deduzca que la suma $\bigoplus_{\varphi\in P(A)}\pi_\varphi$ es isométrica.
+\end{ejercicio}
+\begin{solucion}
+Para cada estado puro, $\varphi(a^*a)=\norm{\pi_\varphi(a)e_\varphi}^2=0$. Como los estados puros separan elementos, $a^*a=0$ y $a=0$. Esto prueba inyectividad de la suma y, por la proposición~\ref{v3:homomorfismo-cstar-norma}, isometría. También se obtiene directamente: existe un estado puro que realiza $\norm{a^*a}=\norm a^2$, y la norma de la correspondiente componente de la suma es al menos $\norm a$ al evaluarla en su vector cíclico unitario.
+\end{solucion}
+
+\chapter{Topologías de operadores y doble conmutante}
+
+\begin{ejercicio}\label{ej:v3-l31-1}
+Pruebe que $D(F,\eps)=\{T:\norm{T\xi}<\eps\text{ para todo }\xi\in F\}$, con $F\subset H$ finito y $\eps>0$, forma una base de vecindades fuertes de cero.
+\end{ejercicio}
+\begin{solucion}
+Por definición de la topología generada por seminormas, una vecindad básica es una intersección finita $\bigcap_{j=1}^n\{T:p_{\xi_j}(T)<\eps_j\}$. El conjunto $D(\{\xi_1,\ldots,\xi_n\},\min_j\eps_j)$ está contenido en ella. A su vez, cada $D(F,\eps)$ es una intersección finita de esos abiertos. Por tanto ambas familias generan las mismas vecindades. Las vecindades en $T_0$ se obtienen por traslación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-2}
+Si $T_\alpha^*T_\alpha\to0$ en WOT, pruebe $T_\alpha\to0$ en SOT. Si además $\sup_\alpha\norm{T_\alpha}<\infty$, pruebe $T_\alpha^*T_\alpha\to0$ en SOT.
+\end{ejercicio}
+\begin{solucion}
+Para cada $\xi$, $\norm{T_\alpha\xi}^2=\ip{T_\alpha^*T_\alpha\xi}{\xi}\to0$. Bajo la cota uniforme $M$, se tiene $\norm{T_\alpha^*T_\alpha\xi}\le M\norm{T_\alpha\xi}\to0$, que prueba la segunda afirmación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-3}
+Sea $L(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ en $\ell^2$. Pruebe: (i) $L^n\to0$ en WOT pero no en SOT; (ii) $(L^*)^n\to0$ en SOT pero no en norma.
+\end{ejercicio}
+\begin{solucion}
+(ii) Primero, $\norm{(L^*)^nx}^2=\sum_{k>n}|x_k|^2\to0$. Sin embargo, $(L^*)^ne_{n+1}=e_1$, así cada operador tiene norma uno. (i) La identidad $\ip{L^nx}{y}=\ip x{(L^*)^ny}$ y Cauchy--Schwarz dan convergencia débil a cero. Como $L$ es isométrico, $\norm{L^nx}=\norm x$ para todo $n$; ningún vector no nulo converge a cero en norma bajo esas potencias. Este ejemplo también muestra que la adjunción no es SOT-continua: $(L^*)^n\to0$ fuertemente pero sus adjuntos $L^n$ no.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-4}
+Pruebe que la bola unitaria cerrada de $\Lcal(H)$ es WOT-compacta.
+\end{ejercicio}
+\begin{solucion}
+Para cada par $\xi,\eta$, sea $D_{\xi,\eta}=\{z:|z|\le\norm\xi\norm\eta\}$. Tychonoff hace compacto el producto de todos estos discos. La aplicación $T\mapsto(\ip{T\xi}{\eta})_{\xi,\eta}$ identifica la bola con el conjunto de familias $b(\xi,\eta)$ que son sesquilineales y satisfacen $|b(\xi,\eta)|\le\norm\xi\norm\eta$. Las identidades de sesquilinealidad son condiciones cerradas coordenada a coordenada, de modo que ese conjunto es cerrado en el producto. Recíprocamente, Riesz aplicado a $\eta\mapsto\overline{b(\xi,\eta)}$, o a la forma sesquilineal acotada, produce un único operador $T$ con norma a lo sumo uno y esos coeficientes; la linealidad en $\xi$ asegura que el operador es lineal. La topología inducida del producto es exactamente WOT. Así la bola es compacta.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-5}
+Si $C\subset\Lcal(H)$ es convexo, pruebe que sus clausuras SOT y WOT coinciden.
+\end{ejercicio}
+\begin{solucion}
+La clausura SOT está contenida en la WOT porque SOT es más fina. Si $T$ no pertenece a la clausura SOT de $C$, existen $\xi_1,\ldots,\xi_n$ y $\eps>0$ tales que ningún $S\in C$ satisface simultáneamente $\norm{(S-T)\xi_j}<\eps$. Defina $J(S)=(S\xi_1,\ldots,S\xi_n)\in H^n$. Entonces $J(T)$ está fuera de la clausura normada del conjunto convexo $J(C)$, pues su distancia a cada punto de éste es al menos $\eps$. La separación de Hahn--Banach en el espacio normado $H^n$ proporciona un funcional real continuo que separa estrictamente $J(T)$ de esa clausura. Es la parte real de un funcional complejo lineal continuo; por Riesz, éste tiene la forma $(v_1,\ldots,v_n)\mapsto\sum_j\ip{v_j}{\eta_j}$. Por tanto el separador compuesto con $J$ es la parte real de $\sum_j\ip{S\xi_j}{\eta_j}$, que es WOT-continuo. Su semiespacio abierto separa $T$ de $C$, así $T$ tampoco pertenece a la clausura WOT. Esto prueba la inclusión inversa usando sólo separación en espacios normados. El argumento funciona también para convexos reales, como el conjunto de autoadjuntos.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-6}
+Examine la afirmación: si $T_\alpha$ son normales y $T_\alpha\to T$ fuertemente, entonces $T_\alpha^*\to T^*$ fuertemente. Pruebe la versión correcta suponiendo además que $T$ es normal.
+\end{ejercicio}
+\begin{solucion}
+La afirmación sin la hipótesis adicional es falsa. En $\ell^2$, sea $U_n$ el unitario que permuta cíclicamente $e_1,\ldots,e_n$, enviando $e_k$ a $e_{k+1}$ para $k<n$ y $e_n$ a $e_1$, y fija los demás vectores de la base. Para cada vector de soporte finito, $U_nx=Lx$ cuando $n$ es grande; la cota uniforme $\norm{U_n}=1$ extiende esta convergencia a todo $\ell^2$. Así $U_n\to L$ fuertemente. Pero $U_n^*e_1=e_n$ no converge en norma a $L^*e_1=0$.
+
+Si $T$ también es normal, WOT-continuidad de la adjunción da $T_\alpha^*\xi\rightharpoonup T^*\xi$. La normalidad implica $\norm{T_\alpha^*\xi}=\norm{T_\alpha\xi}\to\norm{T\xi}=\norm{T^*\xi}$. En un Hilbert, convergencia débil más convergencia de normas implica convergencia en norma, como se ve al expandir
+$\norm{T_\alpha^*\xi-T^*\xi}^2$. Esto prueba la versión corregida, también para redes. El desplazamiento muestra precisamente por qué no puede deducirse que el límite fuerte de normales sea normal.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l31-7}
+Sean $T_\alpha,T$ normales, $T_\alpha\to T$ en SOT, y $\norm{T_\alpha},\norm T\le r$. Si $f:\C\to\C$ es continua, pruebe $f(T_\alpha)\to f(T)$ en SOT.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio anterior, los adjuntos también convergen fuertemente. La continuidad conjunta del producto para familias uniformemente acotadas prueba por inducción la convergencia fuerte de cada polinomio $p(T_\alpha,T_\alpha^*)$ hacia $p(T,T^*)$. Stone--Weierstrass aproxima $f$ uniformemente sobre el disco compacto $|z|\le r$ por un polinomio en $z,\overline z$. Para un vector $\xi$,
+\[
+ \norm{(f(T_\alpha)-f(T))\xi}
+ \le2\norm{f-p}_{\infty,\,|z|\le r}\norm\xi
+ +\norm{(p(T_\alpha,T_\alpha^*)-p(T,T^*))\xi}.
+\]
+Primero haga pequeño el primer término eligiendo $p$ y después el segundo haciendo avanzar la red. La normalidad del límite es necesaria para que $f(T)$ tenga este significado y para la convergencia de adjuntos; no estaba incluida explícitamente en la lectura original.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-1}
+Si $\mathcal A$ es una subálgebra $C^*$ de $\Lcal(H)$, pruebe que $\mathcal A'$ es un álgebra de von Neumann unital.
+\end{ejercicio}
+\begin{solucion}
+Contiene $I$, es una subálgebra y es autoadjunta porque $\mathcal A$ lo es. Para cada $S\in\mathcal A$, la ecuación $TS=ST$ define un cerrado WOT. Su intersección sobre todos los $S$ es $\mathcal A'$, así es WOT-cerrada. No se necesita que $\mathcal A$ contenga la identidad para esta afirmación.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-2}
+Si $\mathcal A_j\subset\Lcal(H_j)$ son álgebras de von Neumann unitarias, pruebe que el álgebra de operadores diagonales
+\[
+ \mathcal M=\{\bigoplus_jT_j:T_j\in\mathcal A_j,\ \sup_j\norm{T_j}<\infty\}
+\]
+es un álgebra de von Neumann sobre $\bigoplus_jH_j$. Aclare qué suma de álgebras se utiliza.
+\end{ejercicio}
+\begin{solucion}
+El producto acotado coordenado es un álgebra $C^*$ y actúa diagonalmente con norma $\sup_j\norm{T_j}$. Contiene la identidad. Si una red de sus operadores converge en WOT a $T$, todos los coeficientes entre componentes diferentes siguen siendo cero, así $T$ es diagonal. Sus compresiones $T_j$ son límites WOT de elementos de $\mathcal A_j$, luego pertenecen a ellas; además $\norm{T_j}\le\norm T$. Por tanto $T\in\mathcal M$ y el álgebra es WOT-cerrada.
+
+La notación de suma directa aquí significa \emph{producto acotado diagonal}. La suma algebraica, ni en general la suma $c_0$, es WOT-cerrada. Por ejemplo, las proyecciones de soporte finito en $\bigoplus_{n\ge1}\C=\ell^2$ pertenecen al álgebra diagonal $c_0$ y convergen fuertemente a $I$, que no pertenece a $c_0$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-3}
+Pruebe que una álgebra de von Neumann es cerrada en norma y, por tanto, es una álgebra $C^*$.
+\end{ejercicio}
+\begin{solucion}
+Una red convergente en norma converge en WOT. Si sus elementos pertenecen al álgebra WOT-cerrada, el límite también pertenece a ella. Así es normocerrada en el álgebra de Banach $\Lcal(H)$, por lo que es completa; hereda la involución y la identidad $C^*$ de los operadores.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l32-4}
+Pruebe que la bola unitaria cerrada de una álgebra de von Neumann es WOT-compacta y SOT-cerrada. Determine si siempre es SOT-compacta.
+\end{ejercicio}
+\begin{solucion}
+La bola del álgebra es la intersección de un cerrado WOT con la bola WOT-compacta de $\Lcal(H)$, y por tanto es WOT-compacta. Es WOT-cerrada porque los compactos en un Hausdorff son cerrados; luego también es SOT-cerrada. No siempre es SOT-compacta. En $\Lcal(\ell^2)$ considere $T_n\xi=\ip\xi{e_1}e_n$. Todos tienen norma uno, pero $T_ne_1=e_n$. Si la bola fuera SOT-compacta, su imagen por la evaluación continua $T\mapsto Te_1$ sería compacta en norma y contendría la sucesión ortonormal, imposible porque sus términos están a distancia $\sqrt2$ unos de otros. En dimensión finita, en cambio, las tres topologías coinciden y la bola sí es compacta.
+\end{solucion}
+
+\chapter{Densidad de Kaplansky y cálculo funcional boreliano}
+
+\begin{ejercicio}\label{ej:v3-l33-1}
+Sea $\mathcal M$ una álgebra de von Neumann. (i) Si $\mathcal B\subset\mathcal M$ es una subálgebra $C^*$ SOT-cerrada y hereditaria, pruebe que existe una única proyección $P\in\mathcal B$ con $\mathcal B=P\mathcal M P$. Hereditaria significa que $0\le a\le b$, $a\in\mathcal M$, $b\in\mathcal B$, implica $a\in\mathcal B$. (ii) Si $I$ es un ideal bilateral SOT-cerrado, pruebe $I=\mathcal M P$ para una única proyección $P\in I\cap\mathcal M'$.
+\end{ejercicio}
+\begin{solucion}
+(i) El teorema~\ref{v3:identidad-propia} proporciona la identidad propia $P$ de $\mathcal B$, así $\mathcal B\subset P\mathcal M P$. Si $a\ge0$ pertenece al rincón $P\mathcal M P$, entonces $0\le a\le\norm a P$: se usa la desigualdad de orden en el álgebra con identidad $P$. Como $P\in\mathcal B$, la propiedad hereditaria implica $a\in\mathcal B$. Todo elemento del rincón es combinación de cuatro positivos, al descomponer sus partes real e imaginaria; por tanto todo el rincón pertenece a $\mathcal B$. Una proyección que satisfaga esa igualdad es identidad de $\mathcal B$, así es única.
+
+(ii) Un ideal normocerrado bilateral en un álgebra $C^*$ es autoadjunto. Aquí puede comprobarse directamente: si $x\in I$, entonces $h=x^*x\in I$, y $h(h+\eps1)^{-1}x^*\in I$. Su diferencia con $x^*$ tiene norma cuadrada
+\[
+ \norm{\eps(h+\eps1)^{-1}x^*}^2
+ =\max_{t\in\sigma(h)}\frac{\eps^2t}{(t+\eps)^2}\le\eps/4,
+\]
+de modo que $x^*\in I$. La cerradura SOT implica cerradura en norma, así el argumento se aplica. El teorema de identidad propia da una proyección $P\in I$ con $xP=Px=x$ para $x\in I$. Como $P\in I$, $\mathcal M P\subset I$, y la identidad $x=xP$ da la inclusión inversa. Para $a\in\mathcal M$, tanto $aP$ como $Pa$ están en $I$, por lo que $aP=P(aP)=(Pa)P=Pa$. Así $P\in\mathcal M'$. La unicidad vuelve a ser la de la identidad de $I$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-2}
+Si $I_H\in\mathcal A$ y $\mathcal M=\overline{\mathcal A}^{\mathrm{SOT}}$, pruebe que los unitarios de $\mathcal A$ son SOT-densos en los unitarios de $\mathcal M$.
+\end{ejercicio}
+\begin{solucion}
+Para $U\in\mathcal M$ unitario, el corolario~\ref{v3:proyecciones-generan} proporciona $S=S^*\in\mathcal M$ con $U=e^{iS}$. Por Kaplansky (i), una red $S_\alpha\in\mathcal A_{\mathrm{sa}}$ converge fuertemente a $S$. La función $t\mapsto e^{it}$ es continua y acotada, así el teorema~\ref{v3:funcion-acotada-sot} da $e^{iS_\alpha}\to U$ fuertemente. Cada aproximante es unitario y pertenece a $\mathcal A$ porque ésta contiene la identidad. La existencia de un logaritmo continuo sobre todo el círculo sería falsa; aquí se ha usado explícitamente el argumento \emph{boreliano} ya construido.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-3}
+Para una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$, pruebe la equivalencia entre: (i) ser WOT-cerrada; (ii) tener bola unitaria SOT-cerrada; (iii) tener bola unitaria WOT-cerrada. Si se usa la definición unital de álgebra de von Neumann, suponga también $I_H\in\mathcal A$.
+\end{ejercicio}
+\begin{solucion}
+(i) implica (iii) porque la bola unitaria de $\Lcal(H)$ es WOT-cerrada y se intersecta con $\mathcal A$. (iii) implica (ii) porque SOT es más fina. Si (ii) vale y $\mathcal M$ es la clausura fuerte de $\mathcal A$, Kaplansky hace que la bola de $\mathcal A$ sea fuertemente densa en la de $\mathcal M$. Como ya es cerrada, ambas bolas coinciden. Multiplicar por escalares muestra $\mathcal A=\mathcal M$, y el cierre fuerte de un álgebra autoadjunta es también su cierre débil. Así (i) vale. Sin asumir identidad, estas condiciones caracterizan la noción amplia descrita al inicio del capítulo.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-4}
+Pruebe las versiones de Kaplansky (i) y (ii) para elementos positivos y para contracciones positivas.
+\end{ejercicio}
+\begin{solucion}
+Sea $T\in\mathcal M$ positivo. Si $T\ne0$, ponga $R=T/\norm T$, una contracción positiva. Por Kaplansky (i), elija autoadjuntos $S_\alpha\in\mathcal A$ que convergen fuertemente a $R$. La función continua acotada $f(t)=\min(1,\max(0,t))$ satisface $f(0)=0$ y $f(R)=R$. Así $f(S_\alpha)$ son contracciones positivas de $\mathcal A$ que convergen fuertemente a $R$. Escalarlas por $\norm T$ aproxima $T$ por positivos. Si $T=0$, la red constante cero sirve. Si desde el inicio $\norm T\le1$, se aplica directamente la misma función para obtener aproximantes positivos de norma a lo sumo uno.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l33-5}
+Sea $\Phi:\Lcal(H_1)\to\Lcal(H_2)$ un $*$-monomorfismo WOT-continuo. Pruebe que lleva álgebras de von Neumann a álgebras de von Neumann en sentido amplio; si $\Phi$ es unital, la imagen es unital.
+\end{ejercicio}
+\begin{solucion}
+Un $*$-monomorfismo es isométrico. Por ello $\Phi$ lleva la bola unitaria de $\mathcal M$ exactamente a la bola unitaria de $\Phi(\mathcal M)$. La primera es WOT-compacta y su imagen también, por continuidad. Como WOT es Hausdorff, esa imagen es WOT-cerrada. El ejercicio~\ref{ej:v3-l33-3} implica que $\Phi(\mathcal M)$ es WOT-cerrada. La imagen es una subálgebra $C^*$ porque el isomorfismo isométrico de un espacio completo tiene imagen normocerrada. Su identidad propia es $\Phi(I_{\mathcal M})$; coincide con $I_{H_2}$ cuando se cumplen las hipótesis unitarias correspondientes.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-1}
+Para una medida espectral $E$ en $X$, pruebe que $f\mapsto\int f\,dE$ es un $*$-homomorfismo de $B^\infty(X)$ en $\Lcal(H)$.
+\end{ejercicio}
+\begin{solucion}
+La proposición~\ref{v3:integral-espectral} realiza la prueba completa. El punto algebraico clave para indicadores es
+$\Phi_E(\mathbf1_B\mathbf1_C)=E(B\cap C)=E(B)E(C)$; al refinar particiones se obtiene el producto de funciones simples. La aproximación uniforme de funciones borelianas acotadas por simples y la cota $\norm{\Phi_E(f)}\le\norm f_\infty$ permiten pasar al límite en el producto y en la involución. No se requiere aproximación uniforme por funciones continuas, que sería imposible para muchos indicadores.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-2}
+Pruebe que la resolución de la identidad de un operador normal es única.
+\end{ejercicio}
+\begin{solucion}
+Si dos medidas espectrales sobre $\sigma(T)$ integran la coordenada como $T$, sus integrales de $\overline z$ son $T^*$ y, por el ejercicio anterior, coinciden en los polinomios en $z,\overline z$. La densidad de éstos en $C(\sigma(T))$ y la contractividad de las integrales hacen que coincidan en todas las funciones continuas. Para cada $\xi,\eta$, la unicidad de la medida regular de Riesz implica igualdad de las medidas escalares de coeficientes. Por tanto los operadores asignados a cada Borel tienen todos los coeficientes iguales y coinciden.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-3}
+Si $0\le T\le I$ pertenece a una álgebra de von Neumann $\mathcal M$, pruebe que existen proyecciones $P_n\in\mathcal M$ con $T=\sum_{n\ge1}2^{-n}P_n$ en norma.
+\end{ejercicio}
+\begin{solucion}
+Para $0\le t<1$, tome sus dígitos binarios
+$b_n(t)=\lfloor2^nt\rfloor-2\lfloor2^{n-1}t\rfloor\in\{0,1\}$; para $t=1$ defina $b_n(1)=1$ para todo $n$. Son funciones borelianas y
+\[
+ 0\le t-\sum_{n=1}^N2^{-n}b_n(t)\le2^{-N}
+ \quad(0\le t\le1).
+\]
+La elección en los puntos diádicos corresponde a la expansión que termina en ceros, salvo el punto uno, tratado por separado. Defina $P_n=b_n(T)$ mediante el cálculo boreliano. Como $b_n^2=b_n=\overline{b_n}$, son proyecciones, y pertenecen a $\mathcal M$. La contractividad del cálculo da $\norm{T-\sum_{n=1}^N2^{-n}P_n}\le2^{-N}$, que prueba convergencia en norma.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-4}
+Si $\mathcal M$ es una álgebra de von Neumann unital, pruebe que $T\in\mathcal M$ si y sólo si conmuta con todas las proyecciones de $\mathcal M'$.
+\end{ejercicio}
+\begin{solucion}
+La necesidad es la definición de conmutante. Para la suficiencia, el conmutante $\mathcal M'$ es una álgebra de von Neumann. Sus proyecciones generan un subespacio normodenso por el corolario~\ref{v3:proyecciones-generan}. Si $T$ conmuta con todas ellas, conmuta con sus combinaciones lineales y, por continuidad en norma del producto, con todo $\mathcal M'$. Así $T\in\mathcal M''=\mathcal M$. La condición unital evita el fallo del doble conmutante para una representación degenerada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l34-5}
+Sea $0\le T\le I$. Si todo subespacio cerrado de $H$ contenido en $TH$ tiene dimensión finita, pruebe que $T$ es compacto. Como paso auxiliar, pruebe que $UU^*\le VV^*$ implica una factorización $U=VW$ con $\norm W\le1$.
+\end{ejercicio}
+\begin{solucion}
+Defina inicialmente $C(V^*\xi)=U^*\xi$ en $\operatorname{ran}V^*$. La desigualdad de operadores da $\norm{U^*\xi}^2\le\norm{V^*\xi}^2$, de modo que la definición es independiente del representante y contractiva. Extiéndala a $\overline{\operatorname{ran}V^*}$ por continuidad y por cero en su complemento ortogonal. Entonces $CV^*=U^*$; tomar adjuntos da $U=VC^*$, así $W=C^*$ tiene norma a lo sumo uno. Ésta es la factorización requerida.
+
+Aplique el ejercicio~\ref{ej:v3-l34-3} al positivo $T^2$: existen proyecciones $P_n$ con $T^2=\sum_{n\ge1}2^{-n}P_n$ en norma. Cada sumando satisface $2^{-n}P_n\le T^2$, porque la diferencia es límite de sumas de positivos y el cono positivo es normocerrado. Tome $U=2^{-n/2}P_n$, $V=T$ en la factorización. Se obtiene $\operatorname{ran}P_n\subset\operatorname{ran}T$. El rango de una proyección es cerrado; por hipótesis cada $P_n$ tiene rango finito. Las sumas parciales son compactas y convergen en norma a $T^2$, así $T^2$ es compacto. Finalmente, aproxime $\sqrt t$ uniformemente en $[0,1]$ por polinomios con término constante cero. Los correspondientes polinomios de $T^2$ son compactos y convergen en norma a $(T^2)^{1/2}=T$. Por tanto $T$ es compacto. La hipótesis se refiere al rango sin cerrar: sustituirlo por su clausura daría una condición mucho más fuerte.
+\end{solucion}
+
+\chapter{Álgebras de multiplicación y el caso conmutativo}
+
+\begin{ejercicio}\label{ej:v3-l35-1}
+Pruebe que una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$ es una álgebra de von Neumann conmutativa maximal si y sólo si $\mathcal A=\mathcal A'$.
+\end{ejercicio}
+\begin{solucion}
+Si $\mathcal A=\mathcal A'$, es WOT-cerrada y contiene $I$ porque todo conmutante tiene esas propiedades; además es conmutativa porque está contenida en su conmutante. Cualquier álgebra conmutativa que la contenga está contenida en $\mathcal A'$ y coincide con ella.
+
+Recíprocamente, suponga que es conmutativa maximal. Si $T\in\mathcal A'$, sus partes autoadjuntas $H=(T+T^*)/2$ y $K=(T-T^*)/(2i)$ también pertenecen a $\mathcal A'$, ya que éste es autoadjunto. La álgebra $C^*(\mathcal A,H)$ es conmutativa: $H$ es autoadjunto y conmuta con todos los elementos de $\mathcal A$. Por maximalidad, $H\in\mathcal A$. Lo mismo vale para $K$, y por tanto $T=H+iK\in\mathcal A$. Se obtiene la inclusión inversa a $\mathcal A\subset\mathcal A'$.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-2}
+Si $\mathcal A$ es una subálgebra $C^*$ conmutativa, pruebe que su clausura WOT es una álgebra de von Neumann conmutativa en sentido amplio. Deduzca que el álgebra de von Neumann unital generada por un operador normal es conmutativa.
+\end{ejercicio}
+\begin{solucion}
+La clausura $\mathcal M$ es una subálgebra autoadjunta por continuidad WOT del adjunto y continuidad separada del producto, como en Kaplansky. Como $\mathcal A\subset\mathcal A'$ y el conmutante es WOT-cerrado, $\mathcal M\subset\mathcal A'$. Por simetría de la conmutación, esto implica $\mathcal A\subset\mathcal M'$. Al cerrar de nuevo, $\mathcal M\subset\mathcal M'$, lo que significa que es conmutativa. Si $T$ es normal, $C^*(I,T)$ es conmutativa; su clausura WOT es el álgebra de von Neumann unital generada por $T$, pues contiene a $T$ y está contenida en toda álgebra WOT-cerrada unital que lo contenga. Si no se supone $I\in\mathcal A$, la primera conclusión utiliza la convención de identidad propia.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-3}
+Con la notación de esta lectura, pruebe $\mathcal C'=\mathcal M_\mu$. Deduzca que $L^\infty(\mu)$ es la clausura débil estrella de $C(X)$.
+\end{ejercicio}
+\begin{solucion}
+Si un operador conmuta con $\mathcal C$, la continuidad WOT por separado del producto y la densidad de $\mathcal C$ en $\mathcal M_\mu$ implican que conmuta con todos los multiplicadores. Así $\mathcal C'\subset\mathcal M_\mu'=\mathcal M_\mu$. La inclusión contraria es inmediata porque los multiplicadores conmutan. De aquí $\mathcal C''=\mathcal M_\mu$, y el doble conmutante identifica la clausura WOT de $\mathcal C$ con $\mathcal M_\mu$. Bajo el homeomorfismo del teorema~\ref{v3:weakstar-wot-multiplicadores}, esto equivale exactamente a la densidad débil estrella afirmada.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-4}
+Pruebe que todo $*$-isomorfismo preserva los supremos existentes en el orden de los autoadjuntos.
+\end{ejercicio}
+\begin{solucion}
+Sea $\Phi:A\to B$ un $*$-isomorfismo y $a=\sup E$ para $E\subset A_{\mathrm{sa}}$. Como $\Phi$ preserva orden, $\Phi(a)$ es cota superior de $\Phi(E)$. Si $b$ es otra cota superior, $\Phi^{-1}(b)$ domina a $E$, de modo que $a\le\Phi^{-1}(b)$ y $\Phi(a)\le b$. Esto prueba la afirmación sin ninguna hipótesis de continuidad de redes.
+
+La sugerencia de construir siempre una sucesión creciente dentro de $E$ que converja al supremo es falsa. En $\C^2$, el conjunto $E=\{(1,0),(0,1)\}$ tiene supremo $(1,1)$, pero sus dos elementos son incomparables; toda sucesión creciente con términos en $E$ es constante y no converge a ese supremo. Además, un álgebra $C^*$ general no tiene supremo para todo conjunto acotado: el resultado sólo afirma preservación de los que existen.
+\end{solucion}
+
+\begin{ejercicio}\label{ej:v3-l35-5}
+Si $\mu,\nu$ son medidas positivas regulares mutuamente absolutamente continuas sobre $X$, pruebe la identificación canónica $L^\infty(X,\mu)=L^\infty(X,\nu)$, sin exigir soporte total.
+\end{ejercicio}
+\begin{solucion}
+La absoluta continuidad mutua significa que ambas medidas tienen exactamente los mismos conjuntos nulos. Por tanto dos funciones representan la misma clase para una medida si y sólo si lo hacen para la otra. Una función está acotada esencialmente por $M$ si $\{|f|>M\}$ es nulo, condición también idéntica para ambas medidas. Así coinciden los conjuntos de clases y sus normas esenciales, y la identificación conserva operaciones e involución. No se afirma que las medidas asignen la misma masa a cada conjunto, ni que las normas $L^p$ con $p<\infty$ coincidan.
+\end{solucion}

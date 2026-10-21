@@ -89,87 +89,57 @@ Las fibras de $q:G\to G/G^\circ$ son las clases conexas $xG^\circ$. Si $S$ es un
 \begin{ejercicio}[Lectura 15, ejercicio 1]\label{ej:v4-l15-1}
 Demostrar que basta exigir continuidad de $(x,y)\mapsto xy^{-1}$ para obtener un grupo topológico.
 \end{ejercicio}
-\begin{solucion}
-Si producto e inversión son continuos, su composición lo es. Recíprocamente, restringir la aplicación dada a $\{e\}\times G$ prueba continuidad de $y\mapsto y^{-1}$. Componer después $(x,y)\mapsto(x,y^{-1})$ con la aplicación dada produce $xy$, que también es continua.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 15, ejercicio 2]\label{ej:v4-l15-2}
 Probar que un grupo infinito con la topología cofinita no es un grupo topológico.
 \end{ejercicio}
-\begin{solucion}
-La topología cofinita es $T_1$ porque los puntos son cerrados, pero no es Hausdorff: dos abiertos no vacíos tienen complementos finitos y, al ser infinito el conjunto, deben intersectarse. En un grupo topológico $T_1$ implica Hausdorff, contradicción.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 15, ejercicio 3]\label{ej:v4-l15-3}
 Sea $P=\prod_{\chi\in\operatorname{Hom}(\Z,\T)}\T$ y $j(n)=(\chi(n))_\chi$. Probar: (i) $P$ es un grupo topológico compacto; (ii) $j$ es un monomorfismo; (iii) la topología que induce sobre $\Z$ no es discreta.
 \end{ejercicio}
-\begin{solucion}
-(i) Las operaciones coordenadas son continuas en la topología producto. Cada factor es compacto y Tychonoff hace compacto al producto. (ii) Cada coordenada de $j$ es un homomorfismo, luego $j$ lo es. Si $n\ne0$, el carácter $\chi(k)=e^{i\pi k/n}$ satisface $\chi(n)=-1\ne1$, por lo que $j(n)\ne j(0)$.
 
-(iii) Una vecindad básica de $j(0)$ restringe solo un número finito de caracteres $\chi_1,\ldots,\chi_r$. Dado un arco suficientemente pequeño alrededor de uno en cada coordenada, dividamos el círculo en $M$ arcos de longitud $2\pi/M$, con $M$ tan grande que el cociente de dos puntos del mismo arco caiga en los arcos pedidos. Entre los $M^r+1$ puntos $(\chi_1(k),\ldots,\chi_r(k))$, $0\leq k\leq M^r$, dos están en el mismo producto de arcos por el principio del palomar. Si sus índices son $p<q$, el entero no nulo $q-p$ tiene todas sus imágenes en las vecindades de uno. Así ninguna vecindad de $j(0)$ lo aísla y el subgrupo no es discreto.
-\end{solucion}
 \begin{ejercicio}[Lectura 15, ejercicio 4]\label{ej:v4-l15-4}
 Construir la topología profinita de un grupo $G$ a partir de sus subgrupos normales de índice finito.
 \end{ejercicio}
-\begin{solucion}
-Esos subgrupos forman una base de vecindades de la identidad; la base de toda la topología está formada por sus clases, no solo por los subgrupos. Una intersección finita sigue siendo normal y de índice finito: el mapa al producto finito de cocientes tiene esa intersección como núcleo. Cada $N$ satisface $NN=N$, $N^{-1}=N$, $xN=N$ si $x\in N$, y $xNx^{-1}=N$ para todo $x$. Se verifican las condiciones del teorema~\ref{v4:base-identidad}. La topología es Hausdorff exactamente cuando la intersección de esos subgrupos es $\{e\}$; no se presupone esta propiedad para un grupo arbitrario.
-\end{solucion}
+
 
 \section{Ejercicios de subgrupos y compacidad}
 \begin{ejercicio}[Lectura 16, ejercicio 1]\label{ej:v4-l16-1}
 Probar que un subgrupo $H$ es abierto si y solo si tiene interior no vacío.
 \end{ejercicio}
-\begin{solucion}
-Si $H$ es abierto, contiene a $e$ y su interior no es vacío. Si $x\in U\subset H$ con $U$ abierto, $x^{-1}U$ es una vecindad abierta de $e$ contenida en $H$. Las traslaciones $h(x^{-1}U)$, $h\in H$, son abiertas, están en $H$ y lo cubren. Así $H$ es abierto.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:v4-l16-2}
 Sea $\mathcal A$ una familia no vacía de vecindades de $e$, dirigida por refinamiento, tal que para cada $U$ hay miembros $V,W$ con $VV\subset U$ y $W^{-1}\subset U$. Probar que $H=\bigcap_{U\in\mathcal A}U$ es un subgrupo cerrado.
 \end{ejercicio}
-\begin{solucion}
-La identidad pertenece a todos los miembros. Si $x,y\in H$, para cada $U$ elegimos $V$ con $VV\subset U$; entonces $xy\in U$. La propiedad de inversión implica de la misma forma $x^{-1}\in U$ para todo $U$. Por tanto $H$ es subgrupo.
 
-Para cerradura, fijemos $U$ y escojamos $V$ con $VV\subset U$. Si $x\in\overline V$, la vecindad $xV^{-1}$ corta $V$, de modo que $xv^{-1}=w$ para algunos $v,w\in V$, y $x=wv\in VV\subset U$. Así $\overline H\subset\overline V\subset U$ para todo $U$, luego $\overline H\subset H$.
-\end{solucion}
 \begin{ejercicio}[Lectura 16, ejercicio 3]\label{ej:v4-l16-3}
 Bajo las hipótesis anteriores, si para cada $U\in\mathcal A$ y $x\in G$ existe $V\in\mathcal A$ con $x^{-1}Vx\subset U$, probar que $H$ es normal.
 \end{ejercicio}
-\begin{solucion}
-Para $h\in H$, $h\in V$ implica $x^{-1}hx\in U$. Como esto vale para todo $U$, $x^{-1}Hx\subset H$. Aplicar la misma inclusión a $x^{-1}$ da la igualdad.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:v4-l16-4}
 Probar que un subgrupo es discreto en su topología de subespacio si y solo si tiene un punto aislado.
 \end{ejercicio}
-\begin{solucion}
-Si $\{h\}$ es abierto en $H$, la traslación por $kh^{-1}$, homeomorfismo de $H$, muestra que $\{k\}$ es abierto para todo $k\in H$. Por tanto todo subconjunto es unión de abiertos unipuntuales. La implicación inversa es parte de la definición de discreto.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:v4-l16-5}
 Si $G$ es Hausdorff y $H$ un subgrupo compacto, demostrar que $q:G\to G/H$ es cerrada.
 \end{ejercicio}
-\begin{solucion}
-Para $F\subset G$ cerrado, $q^{-1}(q(F))=FH$ es cerrado por la proposición sobre producto de cerrado y compacto. Por la definición de topología cociente, una parte del cociente es cerrada exactamente cuando su preimagen es cerrada. Así $q(F)$ es cerrado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 6]\label{ej:v4-l16-6}
 Si $H\leq G$ y $U\cap H$ es cerrado en $G$ para alguna vecindad $U$ de $e$, probar que $H$ es cerrado.
 \end{ejercicio}
-\begin{solucion}
-Escojamos una vecindad abierta $V\subset U$. Entonces $\overline H\cap V\subset\overline{H\cap U}=H\cap U$: cualquier vecindad de un punto de $\overline H\cap V$, al intersectarla con $V$, todavía corta $H$. Si $x\in\overline H$, la vecindad $xV^{-1}$ corta $H$; sea $h=xv^{-1}\in H$ con $v\in V$. Entonces $h^{-1}x=v\in\overline H\cap V\subset H$, pues $\overline H$ es subgrupo. Se concluye $x=h(h^{-1}x)\in H$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 7]\label{ej:v4-l16-7}
 Probar que $\overline{\{e\}}$ es un subgrupo normal.
 \end{ejercicio}
-\begin{solucion}
-Es subgrupo por el resultado de clausura de subgrupos. Cada conjugación es un homeomorfismo y fija $e$, de modo que manda $\overline{\{e\}}$ exactamente en $\overline{\{e\}}$. Por tanto es normal. El cociente por este subgrupo es Hausdorff por el teorema~\ref{v4:cociente-topologico}.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 8]\label{ej:v4-l16-8}
 Si $F$ es compacto y $O$ es abierto con $F\subset O$, hallar una vecindad $V$ de $e$ con $FV\cup VF\subset O$.
 \end{ejercicio}
-\begin{solucion}
-Para cada $x\in F$, continuidad de multiplicación en $(x,e)$ proporciona abiertos $A_x\ni x$ y $V_x\ni e$ con $A_xV_x\subset O$. Extraemos una cubierta finita de $F$ por los $A_x$ y tomamos la intersección $V_1$ de los $V_x$ correspondientes; entonces $FV_1\subset O$. Repetimos en $(e,x)$ para obtener $V_2F\subset O$. La vecindad $V=V_1\cap V_2$ cumple ambas inclusiones.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 16, ejercicio 9]\label{ej:v4-l16-9}
 Si $F$ es una vecindad compacta y abierta de $e$, probar que contiene un subgrupo compacto y abierto, que también es cerrado en $G$.
 \end{ejercicio}
-\begin{solucion}
-El ejercicio anterior con $O=F$ proporciona una vecindad $V$ con $FV\subset F$. Escojamos una vecindad abierta simétrica $W\subset V$. Como $e\in F$, por inducción $W^n\subset F$ para todo $n\geq1$: si $W^n\subset F$, entonces $W^{n+1}\subset FV\subset F$. El conjunto $H=\bigcup_{n\geq1}W^n$ es subgrupo, porque $W$ contiene $e$, es simétrico y $W^nW^m=W^{n+m}$. Es abierto por ser unión de abiertos; todo subgrupo abierto es cerrado. Al ser cerrado en el compacto $F$, es compacto. Así $H\subset F$ tiene las tres propiedades.
-\end{solucion}
+
 
 \paragraph{Entrada a la integración invariante.}
 Las vecindades pequeñas, los soportes compactos y los cocientes abiertos son las herramientas topológicas de la construcción de Haar. La local compacidad añadirá funciones continuas que localizan la integración sin perder invariancia por traslación.

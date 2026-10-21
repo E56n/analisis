@@ -97,103 +97,47 @@ Demostrar que cada una de las siguientes condiciones equivale a continuidad de $
 \end{enumerate}
 En (ii), se corrige la letra $B$, no definida en el original, por $A$.
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item Si $f$ es continua, $f^{-1}(\operatorname{int}A)$ es abierto y está contenido en $f^{-1}(A)$. El interior de un conjunto contiene a todos sus subconjuntos abiertos; de ahí la inclusión. Si la condición vale y $U$ es abierto, entonces $\operatorname{int}U=U$ y $f^{-1}(U)\subset\operatorname{int}(f^{-1}(U))$. La inclusión inversa es automática, de modo que $f^{-1}(U)$ es abierto y $f$ continua.
-\item Si $f$ es continua, $f^{-1}(\cl A)$ es cerrado y contiene a $f^{-1}(A)$; por ello contiene a su clausura. Recíprocamente, para un cerrado $F$ tenemos $\cl F=F$, y la condición da $\cl{f^{-1}(F)}\subset f^{-1}(F)$. Por tanto todas las preimágenes de cerrados son cerradas y $f$ es continua.
-\end{enumerate}
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 5, ejercicio 2]\label{ej:lectura-5-2}
 Demostrar que una función es continua en el espacio si y solo si es continua en cada punto.
 \end{ejercicio}
-\begin{solucion}
-Las dos direcciones están desarrolladas en el teorema~\ref{ch05:criterios}. El mecanismo es local: la preimagen de un abierto $U$ es abierta exactamente cuando contiene una bola alrededor de cada $x$ con $f(x)\in U$. La continuidad en ese $x$ produce esa bola, y la continuidad global garantiza que la preimagen de una bola alrededor de $f(x)$ es un abierto que contiene a $x$. Así se recupera en cada dirección la definición requerida.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 5, ejercicio 3]\label{ej:lectura-5-3}
 Probar que $f$ es continua si y solo si las preimágenes de todas las bolas abiertas son abiertas. Dar una función no continua cuyas preimágenes de todas las bolas cerradas sean cerradas.
 \end{ejercicio}
-\begin{solucion}
-La necesidad sigue de que las bolas abiertas son abiertas. Para la suficiencia, todo abierto $U$ del codominio es una unión $\bigcup_iB_i$ de bolas abiertas. Como las preimágenes preservan uniones,
-\[
-f^{-1}(U)=\bigcup_i f^{-1}(B_i),
-\]
-que es abierto por hipótesis.
 
-Para la segunda parte, tomemos $X=\R$ con la métrica usual, $Y=\R$ con la discreta y $f(t)=t$. Una bola cerrada de radio $r<1$ en $Y$ es un singleton, y una de radio $r\ge1$ es todo $Y$. Sus preimágenes son singletons o $\R$, todos cerrados en $X$. Pero $\{0\}$ es abierto en $Y$ y su preimagen no es abierta en $X$; así $f$ no es continua. El argumento con bolas abiertas no se transfiere a bolas cerradas, porque una unión arbitraria de cerrados no tiene por qué ser cerrada.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 5, ejercicio 4]\label{ej:lectura-5-4}
 Sean $f,g:X\to\R$ continuas. Probar que (i) $\{x:f(x)<g(x)\}$ es abierto y (ii) $\{x:f(x)\le g(x)\}$ es cerrado. Se corrige el dominio de $g$ a $X$, necesario para que ambas expresiones estén definidas.
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item Si $f(x)<g(x)$, sea $\eta=(g(x)-f(x))/3>0$. La continuidad de ambas funciones permite elegir $\delta>0$ tal que $d(x,y)<\delta$ implique $|f(y)-f(x)|<\eta$ y $|g(y)-g(x)|<\eta$. Entonces
-\[
-f(y)<f(x)+\eta<g(x)-\eta<g(y).
-\]
-La bola está contenida en el conjunto, que es abierto.
-\item El complemento es $\{x:g(x)<f(x)\}$, abierto por (i) aplicado con los papeles intercambiados. Por tanto el conjunto original es cerrado.
-\end{enumerate}
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 5, ejercicio 5]\label{ej:lectura-5-5}\index{extension@extensión!por cero}\index{frontera}
 Sea $A\subset X$ cerrado y $f:A\to\R$ continua, con $f=0$ en la frontera $\partial A=\cl A\cap\cl{X\setminus A}$. Demostrar que la extensión $g:X\to\R$, igual a $f$ en $A$ y a cero fuera de $A$, es continua.
 \end{ejercicio}
-\begin{solucion}
-Distinguimos tres posiciones del punto $x$.
 
-Si $x\notin A$, como $A$ es cerrado existe una bola alrededor de $x$ contenida en $X\setminus A$. Allí $g$ es constante y es continua en $x$.
-
-Si $x\in\operatorname{int}A$, existe $r>0$ con $B_X(x,r)\subset A$. Dado $\eps>0$, la continuidad relativa de $f$ da $\delta_0>0$ tal que $y\in A$ y $d(x,y)<\delta_0$ implican $|f(y)-f(x)|<\eps$. Tomando $\delta=\min\{r,\delta_0\}$ se obtiene la misma desigualdad para $g$ y todo $y\in X$ con $d(x,y)<\delta$.
-
-Finalmente, si $x\in A\setminus\operatorname{int}A$, todo entorno de $x$ intersecta al complemento de $A$, así que $x\in\partial A$ y $g(x)=f(x)=0$. Por continuidad relativa existe $\delta>0$ con $|f(y)|<\eps$ para $y\in A\cap B(x,\delta)$. Para $y$ de esa bola fuera de $A$, $g(y)=0$; para los puntos dentro de $A$, $|g(y)|=|f(y)|<\eps$. La misma tolerancia sirve para ambos lados de la frontera. Por tanto $g$ es continua en todos los puntos.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 5, ejercicio 6: corrección del recíproco]\label{ej:lectura-5-6}\index{soporte}
 Sea $S=\supp(f)=\cl{\{x:f(x)\ne0\}}$. Examinar la afirmación «$f$ es continua si y solo si $f=0$ en $\partial S$» y establecer una versión válida.
 \end{ejercicio}
-\begin{solucion}
-La implicación directa es verdadera. Si $x\in\partial S$ y $f(x)\ne0$, por continuidad hay una bola en la que $|f(y)-f(x)|<|f(x)|/2$, así que $|f(y)|>|f(x)|/2>0$. Esa bola está contenida en $S$, lo que convierte a $x$ en punto interior de $S$ y contradice $x\in\partial S$.
 
-El recíproco es falso. En $\R$, tomemos $f(x)=1$ para $x<0$ y $f(x)=2$ para $x\ge0$. La función no es continua en $0$, pero nunca se anula, de modo que $S=\R$ y $\partial S=\varnothing$. La condición en la frontera se satisface de forma vacía y no controla el salto interior.
-
-Una versión exacta es: $f$ es continua en $X$ si y solo si $f|_S$ es continua en el subespacio $S$ y $f=0$ en $\partial S$. La necesidad se sigue de la continuidad de las restricciones y de la prueba anterior. Para la suficiencia, $S$ es cerrado por definición, $f$ es cero en $X\setminus S$ y el ejercicio~\ref{ej:lectura-5-5} aplica a la función continua $f|_S$. Su extensión por cero es precisamente $f$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 5, ejercicio 7]\label{ej:lectura-5-7}
 Probar: (i) $f$ es abierta si y solo si las imágenes de las bolas abiertas son abiertas; (ii) si $f$ es biyectiva, es abierta si y solo si es cerrada; (iii) construir una función suprayectiva abierta que no sea cerrada y una cerrada que no sea abierta.
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item La necesidad es inmediata porque una bola abierta es un abierto. Para la suficiencia, escribimos un abierto $U$ como unión de bolas $B_i$; entonces $f(U)=\bigcup_if(B_i)$ es una unión de abiertos.
-\item Para una biyección se cumple $f(X\setminus A)=Y\setminus f(A)$. Si $f$ es abierta y $F$ cerrado, el conjunto $Y\setminus f(F)=f(X\setminus F)$ es abierto, así que $f(F)$ es cerrado. Si $f$ es cerrada y $U$ abierto, el conjunto $Y\setminus f(U)=f(X\setminus U)$ es cerrado, de modo que $f(U)$ es abierto. La identidad de complementos utiliza tanto inyectividad como suprayectividad.
-\item La proyección $\pi:\R^2\to\R$, $\pi(x,y)=x$, es suprayectiva y abierta. Si $a\in\pi(U)$ con $U$ abierto, existe $b$ con $(a,b)\in U$ y un disco de radio $r>0$ centrado en $(a,b)$ contenido en $U$. Entonces $(a-r,a+r)\subset\pi(U)$, pues $(t,b)$ pertenece a ese disco cuando $|t-a|<r$. Sin embargo, el conjunto $F=\{(x,y):xy=1\}$ es cerrado, como preimagen de $\{1\}$ por la función continua producto, y $\pi(F)=\R\setminus\{0\}$ no es cerrado.
 
-Para una función incluso suprayectiva y cerrada que no sea abierta, tomemos $h:\R\to[0,\infty)$, $h(t)=\max\{t,0\}$. Si $F$ es cerrado, su imagen es $F\cap[0,\infty)$, con el punto $0$ añadido cuando $F$ intersecta $(-\infty,0)$. En ambos casos es un cerrado de $[0,\infty)$. Pero $h((-2,-1))=\{0\}$ no es abierto en $[0,\infty)$: toda bola relativa alrededor de $0$ contiene puntos positivos.
-\end{enumerate}
-\end{solucion}
 
 \begin{ejercicio}[Lectura 5, ejercicio 8]\label{ej:lectura-5-8}\index{pegado!sobre abiertos}
 Sea $(A_i)_{i\in I}$ una cubierta abierta de $X$ y sean $f_i:A_i\to Y$ continuas que coinciden en todas las intersecciones. Probar que la función obtenida pegándolas es continua.
 \end{ejercicio}
-\begin{solucion}
-Para $x\in X$, elijamos $i$ con $x\in A_i$ y definamos $g(x)=f_i(x)$. Si también $x\in A_j$, la hipótesis da $f_i(x)=f_j(x)$; por tanto la definición no depende de la elección. Cualquier función con las restricciones prescritas tiene necesariamente este valor en cada $x$, de modo que es única.
 
-Sea $U$ abierto en $Y$. Entonces
-\[
-g^{-1}(U)=\bigcup_{i\in I}f_i^{-1}(U).
-\]
-Cada preimagen es abierta en $A_i$ por continuidad. Como $A_i$ es abierto en $X$, el ejercicio~\ref{ej:lectura-4-2} garantiza que también es abierta en $X$. Su unión es abierta y el criterio global prueba continuidad de $g$. No se requiere que la cubierta sea finita, porque las uniones arbitrarias de abiertos preservan apertura.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 5, ejercicio 9]\label{ej:lectura-5-9}
 Demostrar que ser homeomorfos es una relación de equivalencia entre espacios métricos.
 \end{ejercicio}
-\begin{solucion}
-La identidad de $X$ es una biyección continua cuya inversa es ella misma; esto prueba reflexividad. Si $h:X\to Y$ es un homeomorfismo, su inversa $h^{-1}:Y\to X$ es biyectiva y continua y tiene inversa continua $h$; esto prueba simetría. Si $h:X\to Y$ y $k:Y\to Z$ son homeomorfismos, $k\circ h$ es una biyección continua y su inversa es $h^{-1}\circ k^{-1}$, continua por composición. Así se prueba transitividad. Cuando se habla de la clase de todos los espacios, «relación de equivalencia» se entiende en ese sentido de clases; sobre cualquier colección que sea un conjunto se obtiene la relación de equivalencia usual.
-\end{solucion}
+
 
 \section{Aproximar un espacio con pocos puntos}\label{lectura:06}
 Los criterios de continuidad se han formulado mediante aproximaciones y entornos. Una sucesión solo utiliza un conjunto numerable de términos; cabe preguntar cuándo todo el espacio puede describirse, en términos de aproximación, a partir de un conjunto numerable. La densidad responderá a la primera parte de la pregunta, y la relación entre separabilidad y bases numerables permitirá controlar después familias de abiertos.
@@ -274,59 +218,27 @@ El teorema no dice que la subcubierta pueda ser finita; esa exigencia define una
 \begin{ejercicio}[Lectura 6, ejercicio 1]\label{ej:lectura-6-1}
 Demostrar que $\ell^\infty$ no es separable.
 \end{ejercicio}
-\begin{solucion}
-Sea $E=\{0,1\}^{\N}\subset\ell^\infty$. Este conjunto no es numerable: si sus elementos se listaran como $a^{(1)},a^{(2)},\ldots$, la sucesión $b$ definida por $b_n=1-a^{(n)}_n$ diferiría de la sucesión número $n$ en la coordenada $n$ y no aparecería en la lista. Es el argumento diagonal de Cantor.
 
-Para $a,b\in E$ distintos, existe una coordenada donde difieren en $1$, y ninguna diferencia tiene módulo mayor que $1$; por tanto $\norm{a-b}_\infty=1$. Las bolas $B(a,1/3)$, $a\in E$, son disjuntas dos a dos: un punto común daría por la triangular una distancia entre centros menor que $2/3$.
-
-Si $D=\{d_n:n\in\N\}$ fuera denso, cada bola contendría algún $d_n$. Asignemos a cada $a\in E$ el primer índice de un punto de $D$ que pertenece a $B(a,1/3)$. Bolas disjuntas reciben índices distintos, lo que produciría una inyección del conjunto no numerable $E$ en $\N$. Es imposible; por tanto $\ell^\infty$ no es separable.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 6, ejercicio 2]\label{ej:lectura-6-2}
 Demostrar que un espacio normado $V$ es separable si y solo si existe un conjunto a lo sumo numerable $L\subset V$ cuyo subespacio generado sea denso.
 \end{ejercicio}
-\begin{solucion}
-Si $D$ es denso y numerable, podemos tomar $L=D$, pues $D\subset\operatorname{span}D$ implica densidad del subespacio generado.
 
-Para el recíproco, sea $\F_0=\Q$ en el caso real y $\F_0=\Q+i\Q$ en el complejo. Sea $D$ el conjunto de todas las combinaciones lineales finitas de elementos de $L$ con coeficientes en $\F_0$, incluyendo el vector cero. Para cada longitud de combinación hay solo un producto finito de conjuntos numerables; al tomar la unión sobre todas las longitudes, $D$ es numerable.
-
-Probemos su densidad. Dado $v\in V$ y $\eps>0$, la densidad de $\operatorname{span}L$ permite escoger $w=\sum_{j=1}^m\alpha_jv_j$ con $\norm{v-w}<\eps/2$. Para cada $j$, elijamos $\beta_j\in\F_0$ tal que
-\[
-|\alpha_j-\beta_j|<\frac{\eps}{2m(1+\norm{v_j})}.
-\]
-Los racionales son densos en $\R$, y $\Q+i\Q$ es denso en $\C$ al aproximar por separado las partes real e imaginaria; por ello estas elecciones son posibles. Entonces $u=\sum_{j=1}^m\beta_jv_j\in D$ y
-\[
-\norm{w-u}\le\sum_{j=1}^m|\alpha_j-\beta_j|\norm{v_j}<\eps/2.
-\]
-La triangular da $\norm{v-u}<\eps$. Si la combinación es vacía, se toma $u=0$; en particular, $V=\{0\}$ queda cubierto. Así $D$ es denso.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 6, ejercicio 3]\label{ej:lectura-6-3}
 Si $(A_n)$ es una familia a lo sumo numerable de subespacios separables de un espacio métrico $X$, demostrar que $Y=\bigcup_nA_n$ es separable.
 \end{ejercicio}
-\begin{solucion}
-Para cada $A_n$ no vacío, elijamos $D_n\subset A_n$ denso en su topología relativa y numerable; para el vacío tomemos $D_n=\varnothing$. El conjunto $D=\bigcup_nD_n$ es numerable. Si $y\in Y$ y $r>0$, existe $n$ con $y\in A_n$. Por densidad relativa, $B_X(y,r)\cap A_n$ contiene un punto de $D_n$, y por tanto $B_Y(y,r)$ contiene un punto de $D$. Esto demuestra $\cl D^{\,Y}=Y$. No se necesita que los $A_n$ sean abiertos ni cerrados.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 6, ejercicio 4]\label{ej:lectura-6-4}
 Demostrar que todo subespacio de un espacio métrico separable es separable.
 \end{ejercicio}
-\begin{solucion}
-Sea $\{B_n\}$ una base numerable de $X$, cuya existencia asegura el teorema~\ref{ch06:separablebase}. Los conjuntos $Y\cap B_n$ forman una base de $Y$: si $U=Y\cap G$ es abierto relativo y $y\in U$, hay $B_n$ con $y\in B_n\subset G$, y entonces $y\in Y\cap B_n\subset U$. Esta base es numerable. Elegimos un punto de cada elemento no vacío de ella; por el lema~\ref{ch06:baseadenso}, esos puntos forman un denso numerable de $Y$.
 
-No basta intersectar con $Y$ un denso numerable prefijado de $X$. Por ejemplo, $\Q$ es denso en $\R$, pero su intersección con $Y=\R\setminus\Q$ es vacía. La prueba con una base elige puntos dentro del subespacio y evita ese error.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 6, ejercicio 5]\label{ej:lectura-6-5}
 Sean $X_1,\ldots,X_m$ espacios métricos no vacíos. Demostrar que su producto finito, con una métrica producto, es separable si y solo si lo es cada factor.
 \end{ejercicio}
-\begin{solucion}
-Podemos usar $d(x,y)=\max_{1\le j\le m}d_j(x_j,y_j)$. Su bola de radio $r$ es el producto de las bolas de radio $r$ de los factores. Si $D_j$ es denso numerable en $X_j$, el producto $D=\prod_{j=1}^mD_j$ es numerable. Dado $x$ y $r>0$, elegimos $a_j\in D_j$ con $d_j(x_j,a_j)<r$ para cada uno de los finitísimos índices. Entonces $a\in D\cap B(x,r)$ y $D$ es denso.
 
-Recíprocamente, sea $D$ denso numerable en el producto. La proyección $\pi_j(D)$ es numerable. Dado $x_j\in X_j$ y $r>0$, elegimos puntos arbitrarios en los demás factores y formamos $x$ con coordenada $j$ igual a $x_j$. Una aproximación $a\in D$ con $d(a,x)<r$ proporciona $d_j(a_j,x_j)<r$, así que $\pi_j(D)$ es denso en $X_j$.
-
-Las métricas producto finitas dadas por suma, máximo o norma $p$ inducen la misma topología: para números no negativos $t_j$, $\max_jt_j\le(\sum_jt_j^p)^{1/p}\le m^{1/p}\max_jt_j$ y $\max_jt_j\le\sum_jt_j\le m\max_jt_j$. Estas cotas comparan las bolas y trasladan el resultado a cualquiera de esas métricas. La hipótesis de factores no vacíos es necesaria: un factor vacío hace que el producto sea vacío, aunque otro factor sea no separable.
-\end{solucion}
 
 \begin{definicion}\index{denso en ninguna parte}
 Un conjunto $A\subset X$ es denso en ninguna parte si $\operatorname{int}(\cl A)=\varnothing$. La clausura dentro de esta definición es esencial: tener interior vacío por sí solo no basta, como muestra $\Q\subset\R$.
@@ -335,31 +247,17 @@ Un conjunto $A\subset X$ es denso en ninguna parte si $\operatorname{int}(\cl A)
 \begin{ejercicio}[Lectura 6, ejercicio 6]\label{ej:lectura-6-6}
 Demostrar que un conjunto denso en ninguna parte tiene complemento denso, y que un conjunto denso y cerrado tiene complemento denso en ninguna parte.
 \end{ejercicio}
-\begin{solucion}
-Si $\operatorname{int}(\cl A)=\varnothing$, ningún abierto no vacío $U$ está contenido en $\cl A$. Por tanto $U\cap(X\setminus\cl A)\ne\varnothing$, y en particular $U\cap(X\setminus A)\ne\varnothing$. Así el complemento de $A$ es denso. Hemos probado algo más fuerte: el complemento de la clausura es abierto y denso.
 
-Si $A$ es denso y cerrado, $A=\cl A=X$; por tanto su complemento es vacío, cuya clausura tiene interior vacío. La segunda afirmación de la lectura es correcta, aunque trivial con ambas hipótesis. Una formulación adicional útil es que el complemento de un abierto denso es cerrado y denso en ninguna parte: si $G$ es abierto y denso, $F=X\setminus G$ es cerrado y no contiene ningún abierto no vacío, porque todo abierto no vacío intersecta a $G$. Así $\operatorname{int}(\cl F)=\operatorname{int}F=\varnothing$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 6, ejercicio 7]\label{ej:lectura-6-7}
 Demostrar que en un espacio métrico no vacío un conjunto no puede ser simultáneamente denso y denso en ninguna parte.
 \end{ejercicio}
-\begin{solucion}
-Si $A$ es denso, $\cl A=X$. Entonces $\operatorname{int}(\cl A)=\operatorname{int}X=X\ne\varnothing$, lo que contradice ser denso en ninguna parte. La condición de espacio no vacío evita la excepción $X=A=\varnothing$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 6, ejercicio 8]\label{ej:lectura-6-8}\label{ch06:intervalos}
 Demostrar que todo abierto de $\R$ es unión a lo sumo numerable de intervalos abiertos disjuntos dos a dos.
 \end{ejercicio}
-\begin{solucion}
-Sea $U\subset\R$ abierto. Si es vacío, la unión vacía resuelve el problema. Para $x\in U$, definamos $I_x$ como la unión de todos los intervalos abiertos contenidos en $U$ que contienen a $x$. Hay al menos uno porque $U$ es abierto. La unión es abierta y está contenida en $U$.
 
-Además, $I_x$ es un intervalo: si $a<b$ pertenecen a $I_x$, hay intervalos $J_a,J_b$ de la familia que contienen respectivamente a $a,b$ y ambos contienen a $x$. Como se intersectan, su unión es un intervalo. Para justificar este último hecho, un punto entre dos puntos de $J_a\cup J_b$ queda en uno de los intervalos, o entre ellos; en el segundo caso un punto común a ambos permite dividir el segmento en dos partes contenidas en los respectivos intervalos. Por ello todos los puntos entre $a,b$ pertenecen a $J_a\cup J_b\subset I_x$.
-
-Así $I_x$ es un intervalo abierto, posiblemente una semirrecta o toda $\R$. Es maximal entre los intervalos de $U$ que contienen a $x$, porque su definición ya reúne a todos ellos. Si $I_x$ e $I_y$ se intersectan, su unión es un intervalo abierto contenido en $U$; contiene tanto a $x$ como a $y$. Por maximalidad está contenida tanto en $I_x$ como en $I_y$, y por tanto $I_x=I_y$. Los intervalos distintos de esta colección son disjuntos y cubren $U$ porque $x\in I_x$.
-
-Cada intervalo no vacío contiene un racional. Fijemos una enumeración de $\Q$ y asignemos a cada intervalo el primer racional de la lista que contiene. Dos intervalos disjuntos reciben racionales distintos, de modo que la familia se inyecta en $\Q$ y es a lo sumo numerable. Esto concluye la descomposición, incluidos los intervalos no acotados.
-\end{solucion}
 
 \section{Una misma precisión para todos los puntos}\label{lectura:07}
 La densidad explica qué puntos bastan para aproximar el espacio; ahora examinaremos qué control permite transportar esas aproximaciones a través de una función. La continuidad ordinaria permite elegir la precisión de entrada después de fijar un punto. La continuidad uniforme exige una elección que funcione simultáneamente en todo el dominio. Esta diferencia de cuantificadores explica por qué una función puede comportarse bien cerca de cada punto y, sin embargo, amplificar mucho las distancias en regiones cada vez más lejanas. Usaremos continuidad, sucesiones y la desigualdad triangular; no necesitaremos compacidad.
@@ -432,13 +330,7 @@ La continuidad ordinaria no basta: $x_n=1/n$ es de Cauchy en $(0,1]$, pero la fu
 \begin{ejercicio}[Lectura 7, ejercicio 1]\label{ej:lectura-7-1}
 Demuestre que la composición de dos funciones Lipschitz es Lipschitz y determine una constante para la composición.
 \end{ejercicio}
-\begin{solucion}
-Si $f:X\to Y$ tiene constante $L$ y $g:Y\to Z$ tiene constante $M$, entonces
-\[
- \sigma(g(f(x)),g(f(y)))\leq M\rho(f(x),f(y))\leq MLd(x,y).
-\]
-Así, $ML$ es una constante válida, incluso cuando alguno de los factores es cero. No necesariamente es la mejor: si $g$ es constante en $f(X)$, la composición tiene constante óptima cero aunque $L,M$ sean positivos.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 7, ejercicio 2]\label{ej:lectura-7-2}
 Sean $f:X\to Y$ y $g:Y\to Z$ continuas. Determine si $g\circ f$ debe ser uniformemente continua cuando: \begin{enumerate}[label=(\roman*)]
@@ -446,46 +338,22 @@ Sean $f:X\to Y$ y $g:Y\to Z$ continuas. Determine si $g\circ f$ debe ser uniform
 \item $g$ es uniformemente continua.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-En ambos casos la respuesta es negativa. En (i) tomamos $X=Y=Z=\R$, $f(x)=x$ y $g(x)=x^2$. La identidad es $1$-Lipschitz y la composición es el cuadrado, que falla por el ejemplo~\ref{ch07:cuadrado}. En (ii) intercambiamos los papeles: $f(x)=x^2$ y $g(x)=x$. Ahora $g$ es $1$-Lipschitz y la composición vuelve a ser $x^2$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 7, ejercicio 3]\label{ej:lectura-7-3}
 Sea $A$ un cerrado no vacío de un espacio métrico $X$. Pruebe que $x\mapsto\dist(x,A)$ es uniformemente continua.
 \end{ejercicio}
-\begin{solucion}
-Para $a\in A$, la desigualdad triangular da $d(x,a)\leq d(x,y)+d(y,a)$. Tomando ínfimos en $a$ obtenemos
-\[
- \dist(x,A)\leq d(x,y)+\dist(y,A).
-\]
-Al intercambiar $x,y$ concluimos
-\[
- |\dist(x,A)-\dist(y,A)|\leq d(x,y).
-\]
-La función es $1$-Lipschitz. La prueba no exige que $A$ sea cerrado; esa hipótesis solamente permite identificar $\dist(x,A)=0$ con $x\in A$. Se agrega la condición $A\ne\varnothing$ porque la distancia al vacío no es una función real finita.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 7, ejercicio 4]\label{ej:lectura-7-4}
 Dé una función uniformemente continua entre espacios métricos que no sea abierta.
 \end{ejercicio}
-\begin{solucion}
-La función constante $f:\R\to\R$, $f(x)=0$, es $0$-Lipschitz. Sin embargo, la imagen del abierto $(-1,1)$ es $\{0\}$, que no es abierto en $\R$. La continuidad controla preimágenes de abiertos; ser abierta controla imágenes y es una condición distinta.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 7, ejercicio 5]\label{ej:lectura-7-5}\label{ch07:ej-extension}
 Sea $A$ abierto en un espacio métrico $X$ y sea $f:X\to\R$ uniformemente continua en $A$. Demuestre que $f|_A$ se extiende continuamente a $\cl A$. Dé un contraejemplo si se reemplaza $\R$ por un espacio métrico arbitrario.
 \end{ejercicio}
-\begin{solucion}
-Probaremos la afirmación más fuerte en que $A$ es cualquier subconjunto y el espacio de llegada $Y$ es completo. Si $A=\varnothing$, la extensión tiene dominio vacío y no hay nada que definir. Para $x\in\cl A$ elegimos $a_n\in A$ con $d(a_n,x)<1/n$. Esta sucesión converge y es de Cauchy. Por el teorema~\ref{ch07:cauchy-imagen}, $(f(a_n))$ es de Cauchy; la completitud de $Y$ proporciona un límite. Definimos
-\[
- g(x)=\lim_{n\to\infty}f(a_n).
-\]
-La elección no afecta al valor: si $b_n\to x$ en $A$, entonces $d(a_n,b_n)\leq d(a_n,x)+d(x,b_n)\to0$; la uniformidad implica $\rho(f(a_n),f(b_n))\to0$. Tomando límites, los dos valores propuestos coinciden. Si $x\in A$, podemos elegir la sucesión constante $a_n=x$, por lo que $g(x)=f(x)$.
 
-Además, $g$ es uniformemente continua. Dado $\eps>0$, elijamos $\delta>0$ de modo que $d(a,b)<\delta$ implique $\rho(f(a),f(b))<\eps/2$ para $a,b\in A$. Si $x,y\in\cl A$ y $d(x,y)<\delta/3$, elegimos $a_n\to x$, $b_n\to y$. Para $n$ suficientemente grande, $d(a_n,b_n)<\delta$; al tomar límites queda $\rho(g(x),g(y))\leq\eps/2<\eps$. La extensión es única porque dos aplicaciones continuas que coinciden en un conjunto denso coinciden en su clausura: evaluamos ambas sobre una sucesión $a_n\to x$.
-
-Para el contraejemplo tomamos $X=\R$, $A=(0,1)$ y $Y=(0,1)$ con la distancia usual. Definimos $f(x)=x$ en $A$ y $f(x)=1/2$ fuera de $A$. Su restricción a $A$ es $1$-Lipschitz. Una extensión continua $g:[0,1]\to(0,1)$ tendría $g(0)=\lim_{n\to\infty}g(1/(n+2))=0$, imposible en el espacio de llegada. Lo que falla es su completitud.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 7, ejercicio 6]\label{ej:lectura-7-6}
 Para subconjuntos no vacíos $A,B$ de $X$, defina $d(A,B)=\inf\{d(a,b):a\in A,b\in B\}$. Pruebe que $f:X\to Y$ es uniformemente continua si y sólo si
@@ -494,31 +362,12 @@ Para subconjuntos no vacíos $A,B$ de $X$, defina $d(A,B)=\inf\{d(a,b):a\in A,b\
 \]
 para todos esos conjuntos.
 \end{ejercicio}
-\begin{solucion}
-Si $f$ es uniformemente continua, dado $\eps>0$ elegimos el correspondiente $\delta>0$. La igualdad $d(A,B)=0$ permite encontrar $a\in A,b\in B$ con $d(a,b)<\delta$. Entonces $\rho(f(A),f(B))\leq\rho(f(a),f(b))<\eps$. Un número no negativo menor que todo $\eps>0$ es cero.
 
-Para el recíproco hay que cuidar las \emph{distancias cruzadas}: saber que $\rho(f(x_n),f(y_n))\geq\eps_0$ no basta por sí solo para separar los conjuntos de imágenes. Si $f$ no es uniformemente continua, existen $\eps_0>0$ y pares $x_n,y_n$ tales que
-\[
- d(x_n,y_n)<1/n,\qquad \rho(p_n,q_n)\geq\eps_0,
- \quad p_n=f(x_n),\ q_n=f(y_n).
-\]
-Pongamos $r=\eps_0/8$. Si alguna bola $B(z,r)$ contiene infinitos $p_n$, retenemos esos índices $I$. Para $i,j\in I$, tenemos $\rho(q_j,z)\geq\eps_0-r$ y, por tanto, $\rho(p_i,q_j)>\eps_0-2r$. Si alguna bola contiene infinitos $q_n$, el argumento con los papeles intercambiados da la misma separación.
-
-Queda el caso en que toda bola de radio $r$ contiene sólo un número finito de términos de cada sucesión, contando sus índices. Elegimos inductivamente índices crecientes $n_k$. Una vez elegidos los primeros $k$, descartamos todos los índices $n$ para los que $p_n\in B(q_{n_j},r)$ o $q_n\in B(p_{n_j},r)$ para algún $j\leq k$. Sólo descartamos una unión finita de conjuntos finitos; por ello queda un índice mayor que $n_k$. La sucesión retenida satisface $\rho(p_{n_i},q_{n_j})\geq r$ si $i\ne j$, y la misma desigualdad vale cuando $i=j$ porque $\eps_0\geq r$.
-
-En cualquiera de los casos obtenemos un conjunto infinito de índices $I$ y una constante $c>0$ tales que $\rho(p_i,q_j)\geq c$ para todo $i,j\in I$. Para $A=\{x_i:i\in I\}$ y $B=\{y_i:i\in I\}$ se cumple $d(A,B)=0$, pues $I$ no está acotado y $d(x_i,y_i)<1/i$, pero $\rho(f(A),f(B))\geq c$. Esto contradice la propiedad supuesta.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 7, ejercicio 7]\label{ej:lectura-7-7}
 Suponga que $f:X\to Y$ satisface $\rho(f(x),f(y))\geq\alpha d(x,y)$ para alguna $\alpha>0$. Pruebe que es inyectiva, que su inversa sobre la imagen es Lipschitz y que $f$ es abierta si $f(X)$ es abierto en $Y$.
 \end{ejercicio}
-\begin{solucion}
-Si $f(x)=f(y)$, la desigualdad da $0\geq\alpha d(x,y)$ y por tanto $x=y$. Para $u=f(x),v=f(y)$ obtenemos
-\[
- d(f^{-1}(u),f^{-1}(v))\leq\alpha^{-1}\rho(u,v).
-\]
-Así, $f^{-1}:f(X)\to X$ es continua. Si $U\subset X$ es abierto, $f(U)=(f^{-1})^{-1}(U)$ es abierto en el subespacio $f(X)$. Cuando $f(X)$ es abierto en $Y$, todo abierto suyo es abierto en $Y$, y $f$ es una aplicación abierta. La hipótesis no afirma que $f$ sea continua; controla únicamente su inversa.
-\end{solucion}
+
 
 \section{Continuidad, aproximación y control uniforme}
 El criterio de tolerancias permite obtener cotas concretas; el de abiertos simplifica composiciones y pegados; el secuencial permite detectar discontinuidades mediante aproximaciones explícitas. Un homeomorfismo conserva esta estructura de continuidad en ambas direcciones. No tiene por qué conservar distancias, acotación ni propiedades que dependan de la métrica concreta.

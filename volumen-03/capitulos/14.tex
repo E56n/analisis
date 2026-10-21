@@ -129,53 +129,37 @@ Tomar $k=a-aq(h)$ demuestra que la distancia al núcleo es a lo sumo $m+\eps$. F
 \begin{ejercicio}\label{ej:v3-l27-1}
 Para $n\ge1$ y $a\ge0$, pruebe que existe un único $b\ge0$ con $b^n=a$.
 \end{ejercicio}
-\begin{solucion}
-El cálculo de la función $t^{1/n}$ da una raíz positiva. Si $c\ge0$ satisface $c^n=a$, la composición del cálculo continuo da $(c^n)^{1/n}=c$, porque $(t^n)^{1/n}=t$ en el espectro no negativo de $c$. Por compatibilidad del cálculo en subálgebras, el miembro izquierdo es la raíz construida a partir de $a$; esto prueba unicidad.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-2}
 Pruebe $\norm a=\max(\norm{a_+},\norm{a_-})$ para $a=a^*$.
 \end{ejercicio}
-\begin{solucion}
-El cálculo continuo isométrico da $\norm{a_+}=\max_{t\in\sigma(a)}\max(t,0)$ y $\norm{a_-}=\max_{t\in\sigma(a)}\max(-t,0)$. El máximo de esos dos números es $\max_{t\in\sigma(a)}|t|=\norm a$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-3}
 Si $\pi:A\to B$ es un $*$-homomorfismo, pruebe $\norm{\pi(a)}=\inf\{\norm{a-b}:\pi(b)=0\}$.
 \end{ejercicio}
-\begin{solucion}
-La proposición~\ref{v3:homomorfismo-cstar-norma} da ambas desigualdades y la aproximación explícita $b=a-aq(a^*a)$ al núcleo. El resultado significa que el isomorfismo algebraico $A/\ker\pi\to\pi(A)$ también es isométrico para la norma cociente. Como el núcleo es cerrado y $A$ es completo, la imagen es completa y por tanto cerrada en $B$. Así, en el contexto $C^*$ sí se obtiene el control topológico que falla para un homomorfismo general de álgebras normadas.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-4}
 Pruebe que los positivos forman un cono: $a,b\ge0$ y $t\ge0$ implican $a+b,ta\ge0$.
 \end{ejercicio}
-\begin{solucion}
-El teorema~\ref{v3:positividad-equivalencias} identifica los positivos con $P_{\mathrm{esp}}$, y el lema~\ref{v3:cono-espectral} prueba que éste es un cono. En particular, la desigualdad
-$\norm{(\norm a+\norm b)1-(a+b)}\le\norm a+\norm b$
-es válida sin exigir $ab=ba$. No sería correcto deducir positividad de una suma usando únicamente una fórmula de suma de espectros reservada al caso conmutativo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-5}
 Pruebe que todo elemento de $A$ es combinación lineal de elementos unitarios.
 \end{ejercicio}
-\begin{solucion}
-Si $h=h^*$ y $\norm h\le1$, $1-h^2\ge0$. Sea $k=(1-h^2)^{1/2}$; como es función continua de $h$, conmuta con él. Entonces $u=h+ik$ satisface $u^*u=uu^*=h^2+k^2=1$, y $h=(u+u^*)/2$. Un autoadjunto general se reduce a una contracción dividiendo por su norma, salvo el cero, que no presenta dificultad. Finalmente escriba $a=h+i\ell$ con $h,\ell$ autoadjuntos. Cada uno es combinación de dos unitarios, así $a$ es combinación de a lo sumo cuatro.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-6}
 Para $a$ invertible defina $|a|=(a^*a)^{1/2}$. Pruebe que existe un unitario $u$ con $a=u|a|$.
 \end{ejercicio}
-\begin{solucion}
-El positivo $a^*a$ es invertible y su raíz también, por mapeo espectral. Defina $u=a|a|^{-1}$. Entonces $u^*u=|a|^{-1}a^*a|a|^{-1}=1$. Además $u$ es invertible, producto de invertibles; por ello la identidad izquierda $u^*u=1$ obliga $u^*=u^{-1}$ y también $uu^*=1$. La factorización es inmediata y el unitario es único porque necesariamente $u=a|a|^{-1}$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l27-7}
 Pruebe que un $*$-homomorfismo preserva el orden.
 \end{ejercicio}
-\begin{solucion}
-Si $b-a=c^*c$, entonces $\pi(b)-\pi(a)=\pi(c)^*\pi(c)\ge0$. Además conserva autoadjuntos porque $\pi(a)^*=\pi(a^*)$. No se requiere inyectividad ni que preserve la identidad.
-\end{solucion}
+
 
 \section{Funcionales positivos y estados}\label{lec:v3-28}
 \fuentelectura{28}{El espacio de estados de un álgebra C*}
@@ -250,62 +234,38 @@ Si todos los estados anulan $a=h+ik$, con $h,k$ autoadjuntos, sus valores en $h,
 \begin{ejercicio}\label{ej:v3-l28-1}
 Examine la afirmación: ``todo funcional lineal hermitiano en un álgebra $C^*$ es continuo''. Dé una demostración si es verdadera o un contraejemplo si es falsa, e indique una hipótesis suficiente válida.
 \end{ejercicio}
-\begin{solucion}
-La afirmación original es falsa. En el espacio real $C([0,1],\R)$, los monomios $1,t,t^2,\ldots$ son linealmente independientes. Defina sobre su espacio generado un funcional real $L$ con $L(1)=0$ y $L(t^n)=n$ para $n\ge1$, y extiéndalo algebraicamente a todo el espacio mediante una base de Hamel. Defina en $C([0,1],\C)$
-\[
- \varphi(f)=L(\operatorname{Re}f)+iL(\operatorname{Im}f).
-\]
-Es compleja lineal: en particular $\varphi(if)=i\varphi(f)$, y respeta conjugación, así es hermitiano. Pero $\norm{t^n}_\infty=1$ y $|\varphi(t^n)|=n$, por lo que no es continuo. La hipótesis suficiente correcta es \emph{positividad}: el lema~\ref{v3:cs-positivo} prueba entonces continuidad y la igualdad exacta $\norm\varphi=\varphi(1)$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l28-2}
 Si $\norm\xi=1$ en un espacio de Hilbert $H$, pruebe que $T\mapsto\ip{T\xi}{\xi}$ es un estado de $\Lcal(H)$.
 \end{ejercicio}
-\begin{solucion}
-Es complejo lineal por nuestra convención del producto interno y está acotado en módulo por $\norm T$. Si $T=S^*S$, su valor es $\norm{S\xi}^2\ge0$. En la identidad vale $\norm\xi^2=1$, de modo que es un estado, llamado estado vectorial.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l28-3}
 Si $\varphi$ es un estado y $u$ unitario, pruebe que $a\mapsto\varphi(uau^*)$ es un estado.
 \end{ejercicio}
-\begin{solucion}
-La conjugación por $u$ es lineal, multiplicativa y conserva adjuntos. Para $a=b^*b$ se tiene $uau^*=(bu^*)^*(bu^*)\ge0$, y envía $1$ a $1$. Componerla con $\varphi$ conserva, por tanto, positividad y normalización.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l28-4}
 Si $a$ es normal, pruebe que existe un estado $\varphi$ con $|\varphi(a)|=\norm a$.
 \end{ejercicio}
-\begin{solucion}
-Elija $\lambda\in\sigma(a)$ con $|\lambda|=r(a)=\norm a$ y aplique el teorema~\ref{v3:estado-espectral}. La normalidad es esencial para identificar el radio con la norma.
-\end{solucion}
+
 
 Los puntos extremos de $S(A)$ se llaman \emph{estados puros}; su conjunto es $P(A)$. El teorema de Krein--Milman, aplicado al espacio dual con topología débil estrella, dice que $S(A)$ es la clausura débil estrella de la envolvente convexa de $P(A)$. Esta aplicación usa la versión para espacios localmente convexos Hausdorff, no la compacidad en norma del dual.
 
 \begin{ejercicio}\label{ej:v3-l28-5}
 Sea $K$ un conjunto convexo compacto no vacío en un espacio localmente convexo Hausdorff y $\ell$ un funcional lineal continuo. Pruebe que $\operatorname{Re}\ell$ alcanza su máximo en algún punto extremo de $K$. En particular, vale para un compacto convexo de un espacio normado.
 \end{ejercicio}
-\begin{solucion}
-Sea $m=\max_K\operatorname{Re}\ell$ y $F=\{x\in K:\operatorname{Re}\ell(x)=m\}$. Es compacto, convexo y no vacío. Es una \emph{cara}: si $tx+(1-t)y\in F$, $0<t<1$, ambos valores reales son a lo sumo $m$, y su combinación sólo puede ser $m$ si ambos son $m$. Por Krein--Milman, $F$ tiene un punto extremo $x_0$. Si $x_0$ fuera una combinación convexa no trivial de puntos de $K$, la propiedad de cara obligaría a que estuvieran en $F$, contradiciendo su extremalidad allí. Por tanto es extremo en $K$ y alcanza el máximo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l28-6}
 Pruebe: (i) $a=0$ si y sólo si todos los estados puros lo anulan; (ii) $a=a^*$ si y sólo si todos los estados puros toman valores reales en $a$; (iii) $a\ge0$ si y sólo si todos los estados puros toman valores no negativos en $a$; (iv) si $a$ es normal, existe un estado puro $\varphi$ con $|\varphi(a)|=\norm a$.
 \end{ejercicio}
-\begin{solucion}
-(i)--(iii) Cada condición sobre el valor en $a$ define un subconjunto convexo débil estrella cerrado de $S(A)$: los conjuntos escalares $\{0\}$, $\R$ y $[0,\infty)$ son cerrados y convexos. Si la condición vale en $P(A)$, Krein--Milman hace que valga en todo $S(A)$. La proposición~\ref{v3:estados-compactos-separan} concluye cada afirmación; las recíprocas son inmediatas.
 
-(iv) Elija un estado $\psi$ con $|\psi(a)|=\norm a$ y una fase $\zeta\in\mathbb T$ con $\zeta\psi(a)=\norm a$ (si $a=0$, cualquier estado puro sirve). El funcional real continuo $\varphi\mapsto\operatorname{Re}(\zeta\varphi(a))$ tiene máximo $\norm a$, pues todos los estados tienen norma uno. Por el ejercicio anterior lo alcanza un estado puro $\varphi$. Entonces $\norm a=\operatorname{Re}(\zeta\varphi(a))\le|\varphi(a)|\le\norm a$, y todas las desigualdades son igualdades.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l28-7}
 Pruebe que, si $A$ es \emph{conmutativa}, $P(A)=\Delta(A)$. Explique por qué la hipótesis de conmutatividad no puede omitirse.
 \end{ejercicio}
-\begin{solucion}
-Todo carácter es un estado: tiene norma uno y vale uno en $1$. Sea $\chi=t\varphi+(1-t)\psi$ con estados $\varphi,\psi$ y $0<t<1$. Para $b=a-\chi(a)1$, $\chi(b^*b)=|\chi(b)|^2=0$. Por positividad, $\varphi(b^*b)=\psi(b^*b)=0$, y Cauchy--Schwarz implica $\varphi(b)=\psi(b)=0$. Así ambos coinciden con $\chi$ en todo $a$, y $\chi$ es puro. Esta dirección no requiere conmutatividad.
 
-Suponga ahora $A$ conmutativa y $\varphi$ puro. Para $0\le h\le1$, defina $\varphi_h(a)=\varphi(ha)$. Es positivo: si $a\ge0$, $ha=h^{1/2}ah^{1/2}\ge0$ porque los factores conmutan. Además $\varphi=\varphi_h+\varphi_{1-h}$ y las normas de estos funcionales positivos son $\varphi(h)$ y $1-\varphi(h)$. Si ambos números son positivos, normalizarlos produce una descomposición convexa de $\varphi$, y su pureza fuerza $\varphi_h=\varphi(h)\varphi$. Si uno de los números es cero, el funcional positivo correspondiente tiene norma cero y la misma identidad sigue siendo válida. Así $\varphi(ha)=\varphi(h)\varphi(a)$ para todo $a$ y toda contracción positiva $h$. Cada elemento es combinación lineal de positivos (descomponga sus partes autoadjuntas), y por linealidad se obtiene multiplicatividad en general. Por tanto $\varphi$ es carácter.
-
-En $M_2(\C)$ no hay caracteres: el núcleo de un carácter sería un ideal propio de codimensión uno, pero las unidades matriciales muestran que cualquier ideal no nulo contiene todas las matrices. Sin embargo, el estado vectorial $\omega(a)=\ip{ae_1}{e_1}$ es puro. Para verlo, sea $p$ la proyección sobre $\C e_1$. Si $\omega=t\varphi+(1-t)\psi$, la igualdad $\omega(1-p)=0$ obliga $\varphi(1-p)=\psi(1-p)=0$. Cauchy--Schwarz anula todos los términos que contienen $1-p$ a izquierda o derecha, así $\varphi(a)=\varphi(pap)=\omega(a)\varphi(p)=\omega(a)$, y lo mismo para $\psi$. Esto refuta el enunciado sin la hipótesis conmutativa.
-\end{solucion}
 
 Los estados detectan cero, autoadjunción y positividad, y los estados puros conservan ese poder de separación. En el siguiente capítulo construiremos, a partir de cada funcional positivo, un espacio de Hilbert donde el álgebra actúa por operadores y el funcional aparece como un producto interno. Véanse también \cite{murphy1990,zhu1993,conway1990}.

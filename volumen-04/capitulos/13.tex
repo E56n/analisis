@@ -93,33 +93,19 @@ Cada $\pi(x)$ conmuta con todos los $\pi(y)$, luego es escalar por Schur. Todos 
 \begin{ejercicio}[Lectura 23, ejercicio 1]\label{ej:v4-l23-1}
 Demuestre que el conjunto $C(\pi,\pi')$ de entrelazadores es un subespacio de $\Bcal(H,H')$.
 \end{ejercicio}
-\begin{solucion}
-El operador cero entrelaza. Si $S,T$ entrelazan y $a,b\in\C$, $(aS+bT)\pi(x)=\pi'(x)(aS+bT)$. Además, el subespacio es cerrado en norma: si $T_n\to T$, las desigualdades $\norm{(T_n-T)\pi(x)}\leq\norm{T_n-T}$ y $\norm{\pi'(x)(T_n-T)}\leq\norm{T_n-T}$ permiten tomar límites en cada igualdad.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 23, ejercicio 2]\label{ej:v4-l23-2}
 Demuestre que el conmutante $C(\pi)$ es un álgebra de von Neumann.
 \end{ejercicio}
-\begin{solucion}
-Contiene $I$, es un subespacio por el ejercicio anterior y es cerrado bajo productos porque $(ST)\pi(x)=S\pi(x)T=\pi(x)ST$. Es cerrado bajo adjuntas tomando la adjunta de $T\pi(x^{-1})=\pi(x^{-1})T$. Finalmente es cerrado en la topología débil de operadores: si una red $T_\alpha$ del conmutante converge débilmente a $T$, para todo $u,v$,
-\[
-\ip{T\pi(x)u}{v}=\lim_\alpha\ip{T_\alpha\pi(x)u}{v}
-=\lim_\alpha\ip{T_\alpha u}{\pi(x)^*v}
-=\ip{\pi(x)Tu}{v}.
-\]
-La igualdad de todos los coeficientes implica $T\pi(x)=\pi(x)T$. Esto es precisamente ser una subálgebra unital autoadjunta débilmente cerrada.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 23, ejercicio 3]\label{ej:v4-l23-3}
 Si $M$ es cerrado e invariante, demuestre que $M^\perp$ es invariante.
 \end{ejercicio}
-\begin{solucion}
-Para $v\in M^\perp$, $m\in M$ y $x\in G$, $\ip{\pi(x)v}{m}=\ip{v}{\pi(x^{-1})m}=0$, pues $\pi(x^{-1})m\in M$. Por definición de complemento ortogonal, $\pi(x)v\in M^\perp$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 23, ejercicio 4]\label{ej:v4-l23-4}
 Para $M$ cerrado, pruebe que $M$ es invariante si y solo si $P_M\in C(\pi)$.
 \end{ejercicio}
-\begin{solucion}
-Si $M$ es invariante, también $M^\perp$ lo es. Para $u=m+n$, con $m\in M$, $n\in M^\perp$, tanto $P_M\pi(x)u$ como $\pi(x)P_Mu$ valen $\pi(x)m$. Recíprocamente, si conmutan y $m\in M$, entonces $\pi(x)m=\pi(x)P_Mm=P_M\pi(x)m\in M$.
-\end{solucion}
+
 
 \section{Representaciones del álgebra de convolución}\label{lectura:v4-24}
 La lectura 24 disponible es una reconstrucción editorial independiente, no un original recuperado de Valencia Bucio. Se integra aquí su desarrollo completo, enlazado con las identidades aproximadas del capítulo \ref{cap:v4-12}; su función es justificar los pasos que conectan las lecturas originales 23 y 25--27. La correspondencia que sigue es un resultado clásico de la teoría de representaciones \cite{reconstruccion24,folland2016}.
@@ -476,122 +462,56 @@ Los ocho ejercicios siguientes verifican consecuencias y casos concretos del teo
 Demuestre que $\varepsilon(f)=\int_G f(x)dx$ es una $*$-representación no degenerada en $\C$. Para $G=\R$, encuentre una función no nula en su núcleo.
 
 \end{ejercicio}
-\begin{solucion} Por Fubini e invariancia izquierda,
-\[
-\varepsilon(f*g)=\int_G f(y)\left(\int_Gg(y^{-1}x)dx\right)dy
-=\varepsilon(f)\varepsilon(g).
-\]
-La integral absoluta está acotada por $\norm f_1\norm g_1$. La fórmula de inversión \eqref{v4-l24-eq:inv} da $\varepsilon(f^*)=\overline{\varepsilon(f)}$. Además, $\varepsilon(e_U)=1$, de modo que $\varepsilon(L^1(G))\C=\C$ y hay no degeneración. Su representación de grupo es $U(x)=1$, porque su integral reproduce $\varepsilon$ y el teorema \ref{v4-l24-t:inverse} da unicidad.
 
-En $\R$, la función $f=\chi_{[0,1]}-\chi_{[1,2]}$ tiene integral cero, pero $\norm f_1=2$. Por tanto, $\varepsilon$ no es inyectiva. La no degeneración se refiere a los vectores sobre los que actúa la representación; no equivale a tener núcleo cero como aplicación del álgebra.\end{solucion}
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 2]\label{ej:v4-l24-2}
 \textbf{Reconstrucción en $\mathbb Z$.}
 Sea $T$ un operador unitario en $H$. Para $a=(a_n)_{n\in\mathbb Z}\in\ell^1(\mathbb Z)$ defina $\rho_T(a)=\sum_{n\in\mathbb Z}a_nT^n$. Pruebe que es una $*$-representación no degenerada y recupere su representación de grupo.
 
 \end{ejercicio}
-\begin{solucion} Las sumas parciales sobre conjuntos finitos forman una familia de Cauchy en norma porque
-\[
-\norm{\sum_{n\in F}a_nT^n}\leq\sum_{n\in F}|a_n|.
-\]
-La suma converge absolutamente en el espacio de Banach $\Bcal(H)$, no depende del orden, y $\norm{\rho_T(a)}\leq\norm a_1$. Para $a,b\in\ell^1$, la serie doble tiene suma de normas a lo sumo $\norm a_1\norm b_1$. Podemos reagrupar por $k=n+m$:
-\[
-\rho_T(a)\rho_T(b)=\sum_{n,m}a_nb_mT^{n+m}
-=\sum_k\left(\sum_n a_nb_{k-n}\right)T^k=\rho_T(a*b).
-\]
-Como $a^*_n=\overline{a_{-n}}$ y $(T^n)^*=T^{-n}$, tomar adjuntas de sumas parciales y pasar al límite da $\rho_T(a^*)=\rho_T(a)^*$. El elemento $\delta_0$ se transforma en $I$; esto prueba no degeneración. La representación del grupo es $U(k)=T^k$, fuertemente continua porque $\mathbb Z$ es discreto. Además, $\rho_T(\delta_k)=T^k$, que verifica directamente la reconstrucción.\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 3]\label{ej:v4-l24-3}
 \textbf{Una identidad aproximada explícita en $\R$.}
 Con medida de Lebesgue, sea $e_n(x)=\tfrac n2\chi_{[-1/n,1/n]}(x)$. Demuestre que $e_n*f\to f$ en $L^1(\R)$ y que $\Pi_U(e_n)u\to u$ para toda representación unitaria fuertemente continua de $\R$.
 
 \end{ejercicio}
-\begin{solucion} Cada $e_n$ es no negativa, tiene integral uno y su soporte se contrae a cero. Aunque no es continua, pertenece a $L^1$ y se puede usar la misma estimación de \eqref{v4-l24-eq:approxbound}:
-\[
-\norm{e_n*f-f}_1\leq\frac n2\int_{-1/n}^{1/n}\norm{L_tf-f}_1dt
-\leq\sup_{|t|\leq1/n}\norm{L_tf-f}_1\longrightarrow0.
-\]
-La última convergencia procede de continuidad en cero: dado $\varepsilon$, todos los valores con $|t|<\delta$ son menores que $\varepsilon$, y elegimos $n$ con $1/n<\delta$. De igual manera,
-\[
-\norm{\Pi_U(e_n)u-u}\leq\sup_{|t|\leq1/n}\norm{U(t)u-u}\longrightarrow0.
-\]
-No se afirma convergencia en norma de operadores, pues la vecindad elegida puede depender del vector $u$.\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 4]\label{ej:v4-l24-4}
 \textbf{Evaluación de Fourier como representación.}
 Para $\xi\in\R$ ponga $\chi_\xi(x)=e^{-i\xi x}$ y $\Phi_\xi(f)=\int_\R f(x)e^{-i\xi x}dx$. Verifique multiplicatividad, compatibilidad con involución y $\norm{\Phi_\xi}=1$.
 
 \end{ejercicio}
-\begin{solucion} El grupo es aditivo y $\Delta=1$. Aplicando Fubini y $x=y+z$,
-\[
-\Phi_\xi(f*g)=\int_\R\int_\R f(y)g(z)e^{-i\xi(y+z)}dzdy
-=\Phi_\xi(f)\Phi_\xi(g).
-\]
-Por $f^*(x)=\overline{f(-x)}$ y $y=-x$,
-\[
-\Phi_\xi(f^*)=\int_\R\overline{f(y)}e^{i\xi y}dy
-=\overline{\Phi_\xi(f)}.
-\]
-La desigualdad $|\Phi_\xi(f)|\leq\norm f_1$ prueba $\norm{\Phi_\xi}\leq1$. Para obtener la cota opuesta, tome cualquier $h\geq0$ integrable con integral uno, y defina $f(x)=e^{i\xi x}h(x)$. Entonces $\norm f_1=1$ y $\Phi_\xi(f)=1$. Esto también prueba que la funcional es no nula y, al actuar en $\C$, no degenerada.
-Con la convención euclidiana de este volumen, $\Phi_\xi(f)=\widehat f(-\xi)$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 5]\label{ej:v4-l24-5}
 \textbf{Fidelidad de la representación regular en $L^1(G)$.}
 Si $\Pi_\lambda(f)=0$ como operador sobre $L^2(G)$, demuestre que $f=0$ en $L^1(G)$. Explique por qué esto no identifica automáticamente $C^*(G)$ con $C_r^*(G)$.
 
 \end{ejercicio}
-\begin{solucion} Las funciones $e_U\in\Cc(G)$ pertenecen a $L^2(G)$, porque son acotadas y tienen soporte de medida finita. Por el ejemplo \ref{v4-l24-e:regular}, $\Pi_\lambda(f)e_U=f*e_U=0$ en $L^2$. Además, $f*e_U\in L^1$ por la proposición \ref{v4-l24-p:banach}; las dos interpretaciones de la convolución coinciden casi en todas partes. Esto se comprueba aproximando $f$ por funciones de $\Cc$: las convoluciones convergen tanto en $L^1$ como en $L^2$, y una sucesión que converge en ambas normas tiene el mismo límite casi en todas partes, extrayendo subsucesiones convergentes casi en todas partes. Así, $f*e_U=0$ también en $L^1$. Por el lema \ref{v4-l24-l:approx}, $f*e_U\to f$ en $L^1$, luego $\norm f_1=0$.
 
-Este argumento prueba inyectividad sobre el álgebra densa $L^1(G)$. Una aplicación continua inyectiva sobre un subespacio denso puede adquirir núcleo al extenderse a otra completación. Para identificar ambas álgebras $C^*$ hace falta controlar las normas de completación; la fidelidad en $L^1$ por sí sola no prueba ese control.\end{solucion}
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 6]\label{ej:v4-l24-6}
 \textbf{Por qué es indispensable la no degeneración.}
 Sea $U_0$ una representación en $H_0$, sea $K\ne\{0\}$ y defina $\rho(f)=\Pi_{U_0}(f)\oplus0$ en $H_0\oplus K$. Pruebe que $\rho$ es una $*$-representación que no puede ser la representación integrada de una representación unitaria en todo $H_0\oplus K$.
 
 \end{ejercicio}
-\begin{solucion} Las operaciones de suma directa se realizan componente a componente, así que multiplicatividad e involución se heredan de $\Pi_{U_0}$ y de la representación cero. Todo vector $(0,k)$ con $k\in K$ es anulado por todas las $\rho(f)$. Para $k\ne0$, la proposición \ref{v4-l24-p:nd} implica degeneración. Si existiera una representación unitaria $W$ con $\Pi_W=\rho$, el teorema \ref{v4-l24-t:direct} daría
-\[
-(0,k)=\lim_U\Pi_W(e_U)(0,k)=\lim_U\rho(e_U)(0,k)=0,
-\]
-contradicción. En $H_0$ sí se recupera $U_0$; el problema consiste exactamente en el sumando anulado $K$.\end{solucion}
+
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 7]\label{ej:v4-l24-7}
 \textbf{Conmutante e irreducibilidad.}
 Pruebe que $U$ es irreducible si y solo si todo operador que conmuta con todas las $\Pi_U(f)$ es un múltiplo escalar de $I$. Precise qué significa aquí ``invariante''.
 
 \end{ejercicio}
-\begin{solucion} Por el teorema \ref{v4-l24-t:intertwine}, el conmutante de las $\Pi_U(f)$ coincide con el de los $U(x)$. Si $U$ es irreducible, el lema de Schur (teorema \ref{v4:schur}) implica que ese conmutante es $\C I$.
 
-Recíprocamente, sea $M$ un subespacio cerrado $U$-invariante. También $M^\perp$ es invariante: para $v\in M^\perp$ y $m\in M$,
-\[
-\ip{U(x)v}{m}=\ip{v}{U(x^{-1})m}=0,
-\]
-porque $U(x^{-1})m\in M$. La proyección ortogonal $P_M$ conmuta entonces con cada $U(x)$: ambos lados de $P_MU(x)=U(x)P_M$ son iguales sobre cada sumando de $H=M\oplus M^\perp$. Conmuta, por tanto, con toda $\Pi_U(f)$. Por hipótesis, $P_M=cI$. Como $P_M^2=P_M$, $c^2=c$; en $\C$ esto implica $c=0$ o $c=1$. En consecuencia, $M=\{0\}$ o $M=H$.
-
-La palabra ``cerrado'' es esencial: la irreducibilidad unitaria se define usando subespacios cerrados invariantes. La existencia de un subespacio algebraico propio, denso e invariante no la contradice.\end{solucion}
 
 \begin{ejercicio}[Lectura 24 (reconstrucción), ejercicio 8]\label{ej:v4-l24-8}
 \textbf{Convergencia fuerte que no es convergencia en norma.}
 Para la representación regular de $\R$, pruebe que los operadores del ejercicio \ref{ej:v4-l24-3} convergen fuertemente a $I$, pero no en norma de operadores. Puede utilizar el teorema de Plancherel y la convención $\widehat f(\xi)=\int_\R f(x)e^{-i\xi x}dx$.
 
 \end{ejercicio}
-\begin{solucion} La convergencia fuerte es el ejercicio \ref{ej:v4-l24-3} aplicado a $\lambda$. Para la norma, calculamos
-\[
-\widehat e_n(\xi)=\begin{cases}
-\displaystyle\frac{\sin(\xi/n)}{\xi/n},&\xi\ne0,\\[4pt]
-1,&\xi=0.
-\end{cases}
-\]
-En efecto, integramos $\tfrac n2e^{-i\xi x}$ entre $-1/n$ y $1/n$; para $\xi=0$ usamos integral uno. Plancherel identifica unitariamente la convolución por $e_n$ con la multiplicación por $\widehat e_n$. La identidad de convolución se comprueba primero en $\Cc$ y se extiende a $L^2$ por la estimación del ejemplo \ref{v4-l24-e:regular}.
 
-En $\xi=n\pi$ el multiplicador vale cero. Por continuidad, para cada $\varepsilon>0$ existe un intervalo $J$ de medida positiva y finita, alrededor de $n\pi$, en el que $|\widehat e_n(\xi)-1|>1-\varepsilon$. Tome $v\in L^2$ cuyo transformado unitario de Plancherel sea $\chi_J/\sqrt{|J|}$. Tiene norma uno y
-\[
-\norm{(\Pi_\lambda(e_n)-I)v}_2^2
-=\frac1{|J|}\int_J|\widehat e_n(\xi)-1|^2d\xi
-\geq(1-\varepsilon)^2.
-\]
-Por definición de norma de operador, $\norm{\Pi_\lambda(e_n)-I}\geq1-\varepsilon$. Como $\varepsilon$ es arbitrario, la norma es al menos uno para cada $n$, y no tiende a cero. El intervalo y el vector pueden depender de $n$; esto es compatible con convergencia fuerte para cada vector fijo.\end{solucion}
 
 
 

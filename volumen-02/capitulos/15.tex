@@ -79,63 +79,39 @@ Para una medida regular en el sentido de este capítulo, si $A\in\Acal$ es de me
 Si $\mu(A)<\infty$, elegimos un abierto $U\supset A$ con $\mu(U\setminus A)<\eps$. Elegimos un compacto $L\subset U$ con $\mu(U\setminus L)<\eps$. La regularidad exterior aplicada a $U\setminus A$ da un abierto $W$ que lo contiene y cumple $\mu(W)<2\eps$. El compacto $K=L\setminus W$ está contenido en $A$, y $\mu(A\setminus K)\le\mu(U\setminus L)+\mu(W)<3\eps$. Si $A$ es $\sigma$-finito de medida infinita, escribimos $A_n\uparrow A$ con medidas finitas; estas crecen a infinito. Para cualquier $M$ elegimos $n$ con $\mu(A_n)>M+1$ y un compacto $K\subset A_n$ con $\mu(K)>M$. El supremo es infinito.
 \end{proof}
 
-\section{Ejercicios resueltos: conjuntos de Borel y regularidad}
+\section{Ejercicios propuestos: conjuntos de Borel y regularidad}
 \begin{ejercicio}[Lectura 31, ejercicio 1]\label{ej:v2-l31-1}
 Demostrar que una función continua entre espacios de Hausdorff es Borel-medible.
 \end{ejercicio}
-\begin{solucion}
-La familia de subconjuntos $A$ del codominio cuya preimagen es Borel es una $\sigma$-álgebra, porque la preimagen respeta complementos y uniones numerables. Contiene los abiertos por continuidad; por tanto contiene la $\sigma$-álgebra que generan, esto es, todos los Borel. La propiedad Hausdorff no es necesaria para este argumento.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 31, ejercicio 2]\label{ej:v2-l31-2}
 Para un subespacio $Y\subset X$, demostrar $\mathcal B(Y)=\{B\cap Y:B\in\mathcal B(X)\}$.
 \end{ejercicio}
-\begin{solucion}
-Las trazas de los Borel de $X$ forman una $\sigma$-álgebra en $Y$ que contiene todos sus abiertos relativos, así que contiene $\mathcal B(Y)$. Para la inclusión inversa, la inclusión $Y\hookrightarrow X$ es continua, y por el ejercicio anterior la preimagen de cada Borel $B$ de $X$, que es $B\cap Y$, pertenece a $\mathcal B(Y)$. No se necesita que $Y$ sea Borel en $X$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 31, ejercicio 3]\label{ej:v2-l31-3}
 Demostrar el lema de regularidad por abiertos y cerrados para una medida de Borel finita en un espacio localmente compacto Hausdorff segundo numerable.
 \end{ejercicio}
-\begin{solucion}
-Es el lema \ref{v2:borel-finita-regular}, cuya prueba completa se incluyó antes de utilizarlo. Su paso decisivo es que cada abierto es $F_\sigma$, en realidad unión creciente de compactos. La finitud de la medida permite hacer pequeño el resto de una unión creciente y permite intercambiar aproximación interior y exterior tomando complementos. La familia de conjuntos con ambas aproximaciones es entonces una $\sigma$-álgebra; por eso la propiedad pasa de abiertos a todos los Borel.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 31, ejercicio 4]\label{ej:v2-l31-4}
 Si $A\in\Acal$ es de medida $\sigma$-finita, demostrar que para cada $\eps>0$ existe un abierto $U\supset A$ con $\mu(U\setminus A)<\eps$, incluso cuando $\mu(A)=\infty$.
 \end{ejercicio}
-\begin{solucion}
-Escribimos $A=\bigcup_nA_n$ con cada $\mu(A_n)<\infty$. La regularidad exterior proporciona abiertos $U_n\supset A_n$ con $\mu(U_n\setminus A_n)<\eps2^{-n}$. Para $U=\bigcup_nU_n$, tenemos $U\setminus A\subset\bigcup_n(U_n\setminus A_n)$ y por subaditividad $\mu(U\setminus A)<\eps$. No hemos restado dos cantidades infinitas.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 31, ejercicio 5: alcance de la hipótesis]\label{ej:v2-l31-5}
 Para $A\in\Acal$ de medida $\sigma$-finita, construir Borel $E\subset A\subset F$ con $\mu(F\setminus E)=0$. Deducir que, si $\mu$ es $\sigma$-finita, $\Acal$ está contenida en la completación de $\mathcal B(X)$ para la restricción de $\mu$. Examinar la omisión de la condición sobre $A$ en el primer enunciado original.
 \end{ejercicio}
-\begin{solucion}
-Si $A=\bigcup_nA_n$ con medidas finitas, aproximamos cada $A_n$ por compactos $K_{n,j}\subset A_n$ con $\mu(A_n\setminus K_{n,j})<1/j$. La unión Borel $E=\bigcup_{n,j}K_{n,j}$ está en $A$ y $\mu(A\setminus E)=0$. Por el ejercicio \ref{ej:v2-l31-4}, elegimos abiertos $U_j\supset A$ con $\mu(U_j\setminus A)<1/j$ y ponemos $F=\bigcap_jU_j$. Entonces $\mu(F\setminus A)=0$, de donde $\mu(F\setminus E)=0$. Si todo $X$ es $\sigma$-finito, el argumento vale para cada $A\in\Acal$ y da precisamente su pertenencia a la completación de los Borel.
 
-La condición no puede eliminarse en general. Sea $D$ discreto no numerable, $X=\R\times D$, y sea $\Acal$ la familia de conjuntos cuyas secciones $A_d\subset\R$ son Lebesgue-medibles. Definimos $\mu(A)=\sum_d m(A_d)$ si $A$ toca solo numerables componentes, y $\mu(A)=\infty$ en otro caso. Es una medida: una unión numerable toca no numerables componentes solo si alguno de sus miembros lo hace; en el otro caso la aditividad se reduce a las sumas numerables de las medidas de las secciones. Es regular: los compactos tocan finitas componentes y son acotados en ellas; los conjuntos de medida finita se aproximan por abiertos sección a sección con errores sumables; para los de medida infinita la regularidad exterior es automática. La regularidad interior de abiertos se sigue de que toda sección abierta no vacía tiene medida positiva, aproximable por compactos.
-
-Elijamos un conjunto Lebesgue-medible nulo $V\subset\R$ que no sea Borel, y pongamos $A=V\times D$. Tal $V$ existe: el conjunto de Cantor es nulo, tiene $2^{\aleph_0}$ puntos y posee más subconjuntos que conjuntos Borel en $\R$. Si Borel $E\subset A\subset F$ cumplieran $\mu(F\setminus E)=0$, fuera de numerables componentes sus secciones tendrían que coincidir exactamente con $V$. Pero las secciones de un Borel son Borel, por continuidad de la inclusión de cada componente, contradicción.
-\end{solucion}
 \begin{ejercicio}[Lectura 31, ejercicio 6]\label{ej:v2-l31-6}
 Demostrar que la completación de una medida regular es regular.
 \end{ejercicio}
-\begin{solucion}
-Un conjunto de la completación está entre dos conjuntos originales $B\subset A\subset C$ con $\mu(C\setminus B)=0$ y tiene medida $\mu(B)=\mu(C)$. La regularidad exterior de $C$ proporciona la misma aproximación exterior para $A$. Las medidas de abiertos y compactos no cambian al completar, así que se conservan finitud en compactos y regularidad interior de abiertos. Esto prueba exactamente las tres condiciones de la definición, sin exigir regularidad interior de conjuntos de medida no $\sigma$-finita.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 31, ejercicio 7]\label{ej:v2-l31-7}
 Supóngase $\mu(\{x\})=0$ para todo $x$. Para un Borel $B$ de medida finita y $0<\alpha<\mu(B)$, construir un Borel $A\subset B$ con $\mu(A)=\alpha$.
 \end{ejercicio}
-\begin{solucion}
-Primero, para cada $\eta>0$, $B$ admite una partición finita en Borel de medida menor que $\eta$. Elegimos un compacto $K\subset B$ con $\mu(B\setminus K)<\eta$. Cada $x\in K$ tiene un abierto $U_x$ de medida menor que $\eta$, por regularidad exterior de $\{x\}$. Una subcubierta finita de $K$, disjuntada e intersectada con $K$, y la pieza $B\setminus K$ dan la partición.
 
-Construimos $A_n\uparrow A$ con $\mu(A_n)\le\alpha$ y $\alpha-\mu(A_n)<2^{-n}$. Dado $A_{n-1}$, particionamos $B\setminus A_{n-1}$ en piezas de medida menor que $2^{-n}$. Añadimos piezas mientras su suma no supere el déficit $\alpha-\mu(A_{n-1})$. Si el déficit final fuera al menos $2^{-n}$, cada pieza restante cabría, contradiciendo que dejamos de añadir; además hay masa total suficiente porque $\mu(B)>\alpha$. La unión finita elegida define $A_n$. La unión numerable $A=\bigcup_nA_n$ es Borel y, por continuidad creciente, tiene medida $\alpha$.
-\end{solucion}
 \begin{ejercicio}[Lectura 31, ejercicio 8]\label{ej:v2-l31-8}
 Para $X$ compacto Hausdorff, sea $\mathcal B_0(X)$ la menor $\sigma$-álgebra que hace medibles todas las funciones continuas reales; sus miembros son conjuntos de Baire. Demostrar: (i) está generada por los cerrados $G_\delta$; (ii) si $X$ es segundo numerable, $\mathcal B_0(X)=\mathcal B(X)$.
 \end{ejercicio}
-\begin{solucion}
-(i) Para $f$ continua, $\{f\le a\}=\bigcap_n\{f<a+1/n\}$ es cerrado y $G_\delta$. Estos subniveles generan la medibilidad de $f$, por lo que $\mathcal B_0$ está contenida en la $\sigma$-álgebra indicada. Si $F=\bigcap_nU_n$ es cerrado y $G_\delta$, Urysohn proporciona $h_n:X\to[0,1]$ continua, igual a uno en $F$ y cero fuera de $U_n$. La serie uniformemente convergente $h=\sum_n2^{-n}(1-h_n)$ es continua y $F=\{h=0\}$. Así cada generador pertenece a $\mathcal B_0$, y hay igualdad.
 
-(ii) En un compacto segundo numerable, todo abierto es $F_\sigma$ por la proposición \ref{v2:topologia-lch}; tomando complementos, todo cerrado es $G_\delta$. El punto (i) muestra que $\mathcal B_0$ contiene todos los cerrados y, por tanto, todos los Borel. La inclusión contraria sigue de que toda función continua es Borel-medible. Una medida de Baire es una medida finita definida en $\mathcal B_0$.
-\end{solucion}
 
 \section{Aproximar funciones por funciones continuas}\label{lectura:v2-32}
 \begin{teorema}\label{v2:cc-denso-lp}
@@ -189,44 +165,30 @@ Si todas las secciones $B\cap F$ son medibles, entonces $B=(B\cap D)\cup\bigcup_
 La lectura 32 anuncia una descomposición de este tipo para todo espacio localmente compacto Hausdorff con medida regular, y remite sus detalles a lecturas posteriores no presentes en la carpeta. Con la convención de regularidad exterior usada allí, su conclusión de localizabilidad general es falsa. En $X=\R\times D$, $D$ discreto no numerable, tomemos la medida de Borel descrita en el ejercicio \ref{ej:v2-l31-5}: masa infinita si un conjunto toca no numerables componentes, y suma de medidas de Lebesgue en otro caso. Es finita sobre compactos, exteriormente regular e interiormente regular sobre abiertos. Sin embargo, $H=\{0\}\times D$ tiene medida infinita y cada uno de sus subconjuntos de medida finita es nulo. No es semifinita y, por tanto, no es localizable. Completarla no cambia esos valores ni repara el problema. El teorema anterior es una versión plenamente demostrada que incluye los espacios segundo numerables utilizados habitualmente en análisis; una ampliación a espacios generales requiere otra noción de medida de Radon o una extensión localmente determinada, y no puede identificarse con la completación ordinaria.
 \end{observacion}
 
-\section{Ejercicios resueltos: Lusin y soporte de una medida}
+\section{Ejercicios propuestos: Lusin y soporte de una medida}
 \begin{ejercicio}[Lectura 32, ejercicio 1]\label{ej:v2-l32-1}
 Para una medida regular y un medible $A$ de medida $\sigma$-finita, demostrar $\mu(A)=\sup\{\mu(K):K\subset A,\ K\text{ compacto}\}$.
 \end{ejercicio}
-\begin{solucion}
-La proposición \ref{v2:regular-interior-sigma} prueba exactamente este resultado. Para medida finita se retira de un compacto aproximante un abierto de pequeña medida que cubre la parte exterior a $A$. Para medida infinita $\sigma$-finita se aplican esas aproximaciones a conjuntos finitos de masa arbitrariamente grande. El ejemplo $H$ anterior muestra por qué no se debe suprimir la condición de $\sigma$-finitud.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 32, ejercicio 2]\label{ej:v2-l32-2}
 Sea $(x_n)$ una enumeración de $\Q\cap[0,1]$ y $\eps>0$. Para $A_n=(x_n-\eps2^{-n},x_n+\eps2^{-n})$ y $F=[0,1]\setminus\bigcup_nA_n$, demostrar que $\ind{\Q\cap[0,1]}|_F$ es continua y $m(F)\ge1-2\eps$.
 \end{ejercicio}
-\begin{solucion}
-Cada racional de $[0,1]$ pertenece a alguno de los intervalos, por lo que $F$ solo contiene irracionales. La restricción del indicador es la función constante cero, que es continua. Además $m([0,1]\setminus F)\le\sum_n2\eps2^{-n}=2\eps$, de donde la cota. El conjunto $F$ es cerrado en $[0,1]$, luego compacto. Si $2\eps>1$, la cota sigue siendo válida aunque sea menos informativa.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 32, ejercicio 3]\label{ej:v2-l32-3}
 Demostrar que la función $h$ de Lusin puede elegirse con $\norm h_{\mathrm{sup}}\le\norm f_{\mathrm{sup}}$.
 \end{ejercicio}
-\begin{solucion}
-Si $M=\norm f_{\mathrm{sup}}<\infty$, componemos una extensión con $P_M(z)=z\min\{1,M/|z|\}$, con valor cero en cero. Esta aplicación es continua, no aumenta el módulo y deja fijos todos los valores de módulo a lo sumo $M$. Por ello conserva la igualdad en $K$, mantiene el soporte compacto y da la cota. Si $M=0$, basta $h=0$. Si $M=\infty$, cualquier función obtenida por Lusin satisface la desigualdad extendida.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 32, ejercicio 4]\label{ej:v2-l32-4}
 Demostrar que la unión $O$ de todos los abiertos de medida cero es abierta y tiene medida cero. Definir el soporte de $\mu$.
 \end{ejercicio}
-\begin{solucion}
-La unión es abierta por definición de topología. Si $K\subset O$ es compacto, una cantidad finita de esos abiertos nulos lo cubre, así que $\mu(K)=0$. La regularidad interior del abierto $O$ da $\mu(O)=\sup_{K\subset O}\mu(K)=0$. Se define $\supp\mu=X\setminus O$, un cerrado. Para una medida real con signo o compleja regular se usa $\supp\nu=\supp|\nu|$. La prueba no usa subaditividad para una unión no numerable.\index{soporte de una medida}
-\end{solucion}
+
 \begin{ejercicio}[Lectura 32, ejercicio 5: positividad necesaria]\label{ej:v2-l32-5}
 Demostrar que $x\in\supp\mu$ si y solo si toda función \emph{no negativa} $f\in C_c(X)$ con $f(x)>0$ satisface $\int f\,d\mu>0$. La condición $f\ge0$ falta en el enunciado original.
 \end{ejercicio}
-\begin{solucion}
-Si $x$ está en el soporte y $f(x)>0$, la continuidad da un abierto $U\ni x$ y $a>0$ con $f\ge a$ en $U$. Ese abierto tiene medida positiva, pues de lo contrario $x$ no estaría en el soporte. Por tanto $\int f\ge a\mu(U)>0$. Si $x$ no está en el soporte, hay un abierto nulo $U\ni x$ y una función de corte no negativa, de soporte en $U$, con valor uno en $x$. Su integral es cero, lo que contradice la propiedad propuesta.
 
-Sin no negatividad, la afirmación es falsa: en $\R$ con Lebesgue, dos funciones triangulares no negativas de igual integral y soportes disjuntos producen, al restarlas, una función de integral cero que es positiva en el centro del primer triángulo. Ese centro sí pertenece al soporte de Lebesgue.
-\end{solucion}
 \begin{ejercicio}[Lectura 32, ejercicio 6]\label{ej:v2-l32-6}
 Sea $D$ discreto infinito no numerable y $D^*$ su compactificación unipuntual. Demostrar que ninguna medida de Borel regular sobre $D^*$ tiene soporte igual a $D^*$.
 \end{ejercicio}
-\begin{solucion}
-Como $D^*$ es compacto, una medida regular allí es finita. Si su soporte fuera todo el espacio, cada singleton abierto $\{d\}$, $d\in D$, tendría medida positiva. En una medida finita solo hay numerables átomos puntuales de medida positiva: los de medida al menos $1/n$ son finitos para cada $n$, y todo peso positivo supera $1/n$ para algún $n$. Esto contradice que $D$ sea no numerable. El punto añadido no puede reparar la ausencia de masa en una de las vecindades singleton.
-\end{solucion}
+
 \section{Regularidad con sus hipótesis visibles}
 La aproximación por compactos y funciones continuas funciona sobre conjuntos de medida finita y se extiende a conjuntos $\sigma$-finitos. El paso a todos los medibles requiere hipótesis adicionales; el ejemplo de masa infinita localmente nula muestra qué puede fallar. Mantener estas distinciones permite usar Lusin, densidad y localización sin convertir una propiedad local en una conclusión global injustificada.

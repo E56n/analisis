@@ -333,106 +333,50 @@ La cota superior se obtiene de la estimación de colas, y el vector $e_{N+1}$ da
 Considere $V=W=c_{00}$ con norma uniforme y $Tx=(x_k/k)_k$. Sus truncaciones $T_N$ tienen rango finito, son acotadas y compactas. Además $\norm{T-T_N}=1/(N+1)\to0$. Sin embargo, $T$ no es compacto con valores en $c_{00}$. Las entradas $x^{(m)}=(1,\ldots,1,0,\ldots)$, con $m$ unos, tienen norma $1$. Sus imágenes convergen uniformemente en $c_0$ a $(1,1/2,1/3,\ldots)$, que no tiene soporte finito. Ninguna subsucesión puede converger en $c_{00}$, porque cualquier límite tendría necesariamente esas mismas coordenadas. Así la hipótesis de completitud en el teorema~\ref{ch23:cierre} no es decorativa.
 \end{ejemplo}
 
-\section{Ejercicios resueltos: acotación y convergencia de operadores}
+\section{Ejercicios propuestos: acotación y convergencia de operadores}
 
 \begin{ejercicio}[Lectura 20, ejercicio 1]\label{ej:lectura-20-1}
 Si $T\in\Bcal(V_1,V_2)$ y $S\in\Bcal(V_2,V_3)$, demuestre que $ST\in\Bcal(V_1,V_3)$ y $\norm{ST}\leq\norm S\norm T$.
 \end{ejercicio}
-\begin{solucion}
-La composición es lineal porque
-\[
- ST(\alpha x+\beta y)=S(\alpha Tx+\beta Ty)=\alpha STx+\beta STy.
-\]
-Para todo $v$,
-\[
- \norm{STv}\leq\norm S\norm{Tv}\leq\norm S\norm T\norm v.
-\]
-El teorema~\ref{ch20:acotado} da continuidad y la caracterización del ínfimo de constantes da la desigualdad de normas.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 2]\label{ej:lectura-20-2}
 Pruebe que un operador lineal es continuo si y solo si manda sucesiones acotadas en sucesiones acotadas.
 \end{ejercicio}
-\begin{solucion}
-Si $T$ es continuo y $\sup_n\norm{v_n}=M<\infty$, entonces $\norm{Tv_n}\leq\norm T M$. Para el recíproco, si $T$ no fuera continuo, no existiría una constante que lo acote. Para cada $n$ podríamos elegir $x_n\ne0$ con $\norm{Tx_n}>n\norm{x_n}$. Los vectores $v_n=x_n/\norm{x_n}$ forman una sucesión acotada, pero $\norm{Tv_n}>n$, contradicción.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 3]\label{ej:lectura-20-3}
 Si $T:V\to W$ es lineal continuo y $F\leq W$ tiene dimensión finita, demuestre que $T^{-1}(F)$ es un subespacio cerrado. Deduzca que $\ker T$ es cerrado.
 \end{ejercicio}
-\begin{solucion}
-Si $x,y\in T^{-1}(F)$, entonces $Tx,Ty\in F$. Para $\alpha,\beta\in\F$, $T(\alpha x+\beta y)=\alpha Tx+\beta Ty\in F$, así que la preimagen es un subespacio. Por el lema~\ref{ch19:coordenadas}, $F$ es cerrado. La preimagen de un cerrado por una función continua es cerrada. Aplicamos esto a $F=\{0\}$ para obtener la afirmación sobre el núcleo.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 4]\label{ej:lectura-20-4}
 Demuestre que un operador lineal es continuo si y solo si es continuo en algún punto de su dominio.
 \end{ejercicio}
-\begin{solucion}
-Una función continua en todo el dominio lo es en cualquier punto. Si $T$ es continuo en $v_0$, dado $\eps>0$ existe $\delta>0$ tal que $\norm{x-v_0}<\delta$ implica $\norm{Tx-Tv_0}<\eps$. Ponga $x=v_0+h$. Como $Tx-Tv_0=Th$, se obtiene $\norm h<\delta\Rightarrow\norm{Th}<\eps$. Así $T$ es continuo en cero, y el teorema~\ref{ch20:acotado} termina la prueba.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 5]\label{ej:lectura-20-5}
 Si $T_n\to T$ en $\Bcal(V_1,V_2)$ y $S_n\to S$ en $\Bcal(V_2,V_3)$, demuestre que $S_nT_n\to ST$ en norma.
 \end{ejercicio}
-\begin{solucion}
-La sucesión convergente $(S_n)$ es acotada; sea $M=\sup_n\norm{S_n}<\infty$. Usamos la identidad
-\[
- S_nT_n-ST=S_n(T_n-T)+(S_n-S)T.
-\]
-La desigualdad del ejercicio~\ref{ej:lectura-20-1} da
-\[
- \norm{S_nT_n-ST}\leq M\norm{T_n-T}+\norm{S_n-S}\norm T\longrightarrow0.
-\]
-La acotación de $S_n$ es necesaria para controlar el producto del primer término; no basta anunciar un ``álgebra de límites'' sin identificar esa cota.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 6]\label{ej:lectura-20-6}
 En $\R^2$ con norma uniforme, sea $T$ el operador de matriz $\begin{pmatrix}a&b\\c&d\end{pmatrix}$. Demuestre que
 \[\norm T=\max\{|a|+|b|,|c|+|d|\}.\]
 \end{ejercicio}
-\begin{solucion}
-Para $\norm{(x,y)}_\infty\leq1$,
-\[
- |ax+by|\leq|a|+|b|,\qquad |cx+dy|\leq|c|+|d|.
-\]
-Esto prueba la cota superior. Si el máximo lo da la primera fila, elija $x=\operatorname{sgn}(a)$ e $y=\operatorname{sgn}(b)$, tomando el valor $1$ cuando el coeficiente sea cero. Entonces $\norm{(x,y)}_\infty=1$ y $ax+by=|a|+|b|$. Si el máximo lo da la segunda fila, elija de la misma manera los signos de $c,d$, para que $cx+dy=|c|+|d|$. En ambos casos la norma de la salida alcanza la cota.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 20, ejercicio 7]\label{ej:lectura-20-7}
 Sea $(T_n)$ una sucesión acotada en $\Bcal(V,W)$ que converge puntualmente a $T$. Si $A\subseteq V$ es totalmente acotado, pruebe que la convergencia es uniforme en $A$.
 \end{ejercicio}
-\begin{solucion}
-Sea $M=\sup_n\norm{T_n}$. El lema~\ref{ch20:limite-puntual} da $\norm T\leq M$. Si $A$ es vacío o $M=0$, la conclusión es inmediata. Suponga $M>0$. Dado $\eps>0$, la acotación total proporciona puntos $a_1,\ldots,a_k\in V$ tales que cada $v\in A$ está a distancia menor que $\delta=\eps/(6M)$ de alguno de ellos. Para cada $i$, $T_na_i\to Ta_i$. Como hay solo un número finito de centros, existe un mismo $N$ tal que
-\[
- \norm{T_na_i-Ta_i}<\eps/3\quad(n\geq N,\ 1\leq i\leq k).
-\]
-Para $v\in A$, elija un centro con $\norm{v-a_i}<\delta$. Entonces
-\begin{align*}
- \norm{T_nv-Tv}
- &\leq\norm{T_n(v-a_i)}+\norm{T_na_i-Ta_i}+\norm{T(a_i-v)}\\
- &<M\delta+\eps/3+M\delta=2\eps/3.
-\end{align*}
-Por tanto $\sup_{v\in A}\norm{T_nv-Tv}\leq2\eps/3<\eps$ para $n\geq N$. La cota finita de centros convierte un umbral dependiente del punto en un umbral común.
-\end{solucion}
 
-\section{Ejercicios resueltos: operadores y dimensión finita}\label{sec:nuevo09:ejercicios-finito}
+
+\section{Ejercicios propuestos: operadores y dimensión finita}\label{sec:nuevo09:ejercicios-finito}
 
 \begin{ejercicio}[Lectura 22, ejercicio 1]\label{ej:lectura-22-1}
 Demuestre que toda transformación lineal sobreyectiva de un espacio normado sobre un espacio normado de dimensión finita es abierta.
 \end{ejercicio}
-\begin{solucion}
-Sea $T:V\to W$ sobreyectiva. Si $W=\{0\}$, la imagen de un abierto es $\varnothing$ o $\{0\}$, ambos abiertos en $W$. Supongamos $\dim W=k>0$. Elija una base $w_1,\ldots,w_k$ y preimágenes $v_j$ con $Tv_j=w_j$. Defina
-\[
- R\left(\sum_j a_jw_j\right)=\sum_j a_jv_j.
-\]
-Es una aplicación lineal con $TR=I_W$. Como su dominio es finito dimensional, es continua; sea $C=\norm R>0$. Si $U\subseteq V$ es abierto y $y=Tx\in T(U)$ con $x\in U$, existe $r>0$ con $B(x,r)\subseteq U$. Para $z\in W$ con $\norm{z-y}<r/C$,
-\[
- \norm{R(z-y)}\leq C\norm{z-y}<r.
-\]
-Por ello $x+R(z-y)\in U$, y su imagen es $y+(z-y)=z$. Así $B(y,r/C)\subseteq T(U)$ y $T(U)$ es abierto.
 
-No se supuso que $T$ fuera continua. La apertura procede de la existencia de una sección lineal continua $R$ con dominio finito dimensional; no es una aplicación del teorema de la aplicación abierta para Banach.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 22, ejercicio 2]\label{ej:lectura-22-2}
 Sea $V$ finito dimensional con base $v_1,\ldots,v_k$, donde $k\geq1$. Pruebe que existe $C>0$ tal que
@@ -441,25 +385,12 @@ Sea $V$ finito dimensional con base $v_1,\ldots,v_k$, donde $k\geq1$. Pruebe que
 \]
 para todo operador lineal $T$ de $V$. Deduzca que si $T_n$ converge puntualmente a cero, entonces $\norm{T_n}\to0$. Compruebe por separado esta última conclusión cuando $V=\{0\}$.
 \end{ejercicio}
-\begin{solucion}
-Por el lema de coordenadas existe $c>0$ tal que $\norm{\sum_j a_jv_j}\geq c\max_j|a_j|$. Para $v=\sum_j a_jv_j$,
-\[
- \norm{Tv}\leq\sum_j|a_j|\norm{Tv_j}
- \leq\frac kc\norm v\max_j\norm{Tv_j}.
-\]
-Tomando el supremo sobre $\norm v\leq1$, sirve $C=k/c$. El argumento funciona también si el codominio de $T$ es cualquier otro espacio normado. Si $T_n$ converge puntualmente a cero, cada una de las $k$ sucesiones $T_nv_j$ converge a cero. El máximo de sus normas tiende a cero porque el conjunto de índices es finito. La desigualdad recién probada concluye que $\norm{T_n}\to0$. Para $V=\{0\}$ todos los operadores son cero y la conclusión es directa.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 22, ejercicio 3]\label{ej:lectura-22-3}
 Sea $\mathcal A_n=\{T\in\Bcal(V,W):\dim T(V)\leq n\}$. Demuestre que $\mathcal A_n$ es cerrado en norma de operador.
 \end{ejercicio}
-\begin{solucion}
-Suponga $T_j\in\mathcal A_n$ y $T_j\to T$ en norma. Si $\dim T(V)>n$, existen $v_1,\ldots,v_{n+1}$ tales que $Tv_1,\ldots,Tv_{n+1}$ son linealmente independientes. Por la proposición~\ref{ch22:independencia}, existe $\delta>0$ que conserva esa independencia bajo perturbaciones menores que $\delta$. Para cada $i$,
-\[
- \norm{T_jv_i-Tv_i}\leq\norm{T_j-T}\norm{v_i}\to0.
-\]
-Hay un mismo $j$ suficientemente grande para que las $n+1$ diferencias sean menores que $\delta$. Entonces $T_jv_1,\ldots,T_jv_{n+1}$ son independientes, contradiciendo $\dim T_j(V)\leq n$. Así $T\in\mathcal A_n$. El criterio de sucesiones en el espacio normado $\Bcal(V,W)$ prueba la cerradura.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 22, ejercicio 6]\label{ej:lectura-22-6}
 Sea $V\subseteq\ell^1$ de dimensión finita. Demuestre que para todo $\eps>0$ existe $N\in\N$ tal que, para todo $x\in V$ y todo $\lambda\in\F$,
@@ -467,49 +398,25 @@ Sea $V\subseteq\ell^1$ de dimensión finita. Demuestre que para todo $\eps>0$ ex
  \norm{x+\lambda e_N}_1\geq|\lambda|+(1-\eps)\norm x_1.
 \]
 \end{ejercicio}
-\begin{solucion}
-Para cada $n$ considere la funcional de coordenada $\varphi_n(x)=x_n$ restringida a $V$. Es continua y $|x_n|\leq\norm x_1$. Como toda sucesión absolutamente sumable tiene términos que tienden a cero, $\varphi_n(x)\to0$ para cada $x\in V$. La versión del ejercicio~\ref{ej:lectura-22-2} con codominio $\F$ muestra que $\norm{\varphi_n}\to0$. Elija $N$ con $\norm{\varphi_N}\leq\eps/2$. Entonces $|x_N|\leq(\eps/2)\norm x_1$ para todos los $x\in V$ a la vez. Finalmente,
-\begin{align*}
- \norm{x+\lambda e_N}_1
- &=\sum_{n\ne N}|x_n|+|x_N+\lambda|\\
- &\geq\norm x_1-|x_N|+|\lambda|-|x_N|\\
- &\geq|\lambda|+(1-\eps)\norm x_1.
-\end{align*}
-El índice $N$ depende de $V$ y $\eps$, pero no de $x$ ni de $\lambda$. Esa uniformidad es exactamente lo que aporta la dimensión finita.
-\end{solucion}
 
-\section{Ejercicios resueltos: compacidad de operadores}
+
+\section{Ejercicios propuestos: compacidad de operadores}
 
 \begin{ejercicio}[Lectura 23, ejercicio 1]\label{ej:lectura-23-1}
 Si $f:V\to W$ es uniformemente continua en todo el espacio normado $V$ y $A\subseteq V$ es acotado, demuestre que $f(A)$ es acotado.
 \end{ejercicio}
-\begin{solucion}
-Por continuidad uniforme existe $\delta>0$ tal que $\norm{x-y}<\delta$ implica $\norm{f(x)-f(y)}<1$. Elija $R>0$ con $\norm a\leq R$ para $a\in A$ y un entero $N$ con $R/N<\delta$. Para cada $a\in A$, divida el segmento del origen a $a$ en los puntos $a_j=ja/N$, $0\leq j\leq N$. Cada salto tiene norma $\norm{a_j-a_{j-1}}=\norm a/N<\delta$. Por tanto
-\[
- \norm{f(a)-f(0)}\leq\sum_{j=1}^N\norm{f(a_j)-f(a_{j-1})}<N.
-\]
-Así $\norm{f(a)}\leq\norm{f(0)}+N$ para todos los $a\in A$. Es una sola cota porque $N$ se eligió a partir de $R$, no de cada punto. La prueba utiliza que el segmento completo está en el dominio; para funciones definidas solamente en un conjunto métrico arbitrario la afirmación no tendría este argumento.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 23, ejercicio 2]\label{ej:lectura-23-2}
 Si $W$ es de Banach, pruebe que un operador lineal $T:V\to W$ es compacto si y solo si manda conjuntos acotados en conjuntos totalmente acotados.
 \end{ejercicio}
-\begin{solucion}
-La proposición~\ref{ch23:totalmente-acotado} ya da la demostración completa. Podemos expresar el núcleo del argumento mediante sucesiones. Si la imagen de algún acotado $A$ no fuera totalmente acotada, existiría $\eps>0$ y podríamos elegir inductivamente $y_n=Tx_n$ con $x_n\in A$ y $\norm{y_n-y_m}\geq\eps$ para $n\ne m$: cada nuevo punto se elige fuera de las bolas de radio $\eps$ centradas en los anteriores. Ninguna subsucesión de $(y_n)$ sería de Cauchy, contradiciendo compacidad. En sentido inverso, una sucesión en un conjunto totalmente acotado tiene una subsucesión de Cauchy, obtenida escogiendo sucesivamente bolas de radios tendiendo a cero que contengan infinitos términos. La completitud de $W$ transforma esa subsucesión de Cauchy en una convergente en $W$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 23, ejercicio 3]\label{ej:lectura-23-3}
 Sean $S:V\to W$ y $T:W\to X$ operadores continuos. Si uno de ellos es compacto, demuestre que $TS$ es compacto.
 \end{ejercicio}
-\begin{solucion}
-Sea $(v_n)$ acotada en $V$. Si $S$ es compacto, existe una subsucesión $Sv_{n_j}\to w$ en $W$. La continuidad de $T$ da $TSv_{n_j}\to Tw$ en $X$.
 
-Si $T$ es compacto, la continuidad lineal de $S$ da $\norm{Sv_n}\leq\norm S\sup_m\norm{v_m}$, de modo que $(Sv_n)$ es acotada. La compacidad de $T$ aplicada a esta sucesión produce una subsucesión convergente de $(TSv_n)$. En ambos casos se verifica la definición. No se requiere que los espacios sean completos.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 23, ejercicio 4]\label{ej:lectura-23-4}
 Sea $T:V\to V$ compacto y $V$ infinito dimensional. Pruebe que no existe un operador continuo $S$ con $ST=TS=I$.
 \end{ejercicio}
-\begin{solucion}
-Si existiera, el ejercicio~\ref{ej:lectura-23-3} haría compacto a $ST=I$. Por el teorema~\ref{ch23:identidad}, eso obligaría a que $V$ tuviera dimensión finita, contradicción. De hecho, basta la igualdad $ST=I$ para llegar a la contradicción. El resultado se refiere a una inversa continua: una biyección algebraica no garantiza automáticamente una inversa continua en espacios normados arbitrarios.
-\end{solucion}

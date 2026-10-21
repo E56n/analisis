@@ -121,34 +121,11 @@ Sean $1/p+1/q=1+1/r$, con exponentes en $[1,\infty]$. Probar la versión válida
 \]
 En un grupo unimodular se reduce a la desigualdad usual. Explicar por qué la versión sin peso no vale siempre.
 \end{ejercicio}
-\begin{solucion}
-Pongamos $h=\Delta^{-1/p'}g$. Para $r<\infty$ escribimos, con $z=y^{-1}x$,
-\[
- |f(y)g(z)|=(|f(y)|^p|h(z)|^q)^{1/r}
- |f(y)|^{1-p/r}|h(z)|^{1-q/r}\Delta(z)^{1/p'}.
-\]
-Aplicamos Hölder con recíprocos $1/r$, $1/p-1/r$ y $1/q-1/r=1/p'$. Para el tercer factor, el cambio $y=xz^{-1}$ da
-\[
- \int |h(y^{-1}x)|^q\Delta(y^{-1}x)dy=\int|h(z)|^qdz.
-\]
-Así
-\[
- |f*g(x)|^r\leq\norm f_p^{r-p}\norm h_q^{r-q}(|f|^p*|h|^q)(x).
-\]
-El teorema~\ref{v4:conv-grupo}, seguido de integración, da la cota. Los factores de potencia cero se omiten. El caso $p=1$ se obtiene directamente por Jensen para $|f|/\norm f_1$; el caso $r=\infty$ es Hölder con el mismo cambio de variable y $q=p'$. De este modo se cubren los extremos sin dividir entre exponentes nulos.
 
-El peso es real, no un artificio de la prueba. Para $1<p<\infty$ y $a$ con $\Delta(a)<1$, sean $g_U=L_ae_U$, de norma $L^1$ uno. Para $f\in C_c$ no nula, el cambio de variable anterior y continuidad de traslaciones muestran
-\[
- f*g_U\longrightarrow\Delta(a)^{-1}f(\cdot a^{-1})\quad\text{en }L^p.
-\]
-Su norma límite es $\Delta(a)^{-1/p'}\norm f_p>\norm f_p$. La desigualdad sin peso, con $q=1,r=p$, fallaría para $U$ suficientemente pequeña. La convergencia se verifica expresando la integral como promedio de las funciones $\Delta(au)^{-1}f(\cdot u^{-1}a^{-1})$, $u\in U$, que convergen en $L^p$ a la función indicada; sobre una vecindad fija de $e$, las normas y factores modulares están uniformemente acotados.
-\end{solucion}
 \begin{ejercicio}[Lectura 22, ejercicio 2]\label{ej:v4-l22-2}
 Si $G$ es discreto, demostrar que $L^1(G)$ tiene unidad.
 \end{ejercicio}
-\begin{solucion}
-Por invariancia, todos los puntos tienen una misma masa $c>0$; es finita porque los puntos son compactos y positiva porque son abiertos. La función $u=c^{-1}\mathbf1_{\{e\}}$ satisface $u*f=f$ directamente en la suma de convolución. También $f*u=f$, pues solo contribuye el término $y=x$, de masa $c$. Con medida de conteo $c=1$ y la unidad es $\delta_e$. No se confunde esta función con una masa puntual como medida en un grupo no discreto.
-\end{solucion}
+
 \begin{proposicion}[El recíproco anunciado en la lectura]\label{v4:luno-unitaria}
 Si $L^1(G)$ tiene unidad, $G$ es discreto.
 \end{proposicion}
@@ -164,39 +141,15 @@ contradicción. La continuidad utilizada también se obtiene directamente por co
 \begin{ejercicio}[Lectura 22, ejercicio 3: control de soportes]\label{ej:v4-l22-3}
 Para $f\in C(G)$, demostrar que $e_U*f$ y $f*e_U$ existen en todo punto y convergen puntualmente a $f$, usando la red con soportes $\supp e_U\subset U$. Mostrar que, para una red de Dirac arbitraria, no basta que cada núcleo tenga soporte compacto.
 \end{ejercicio}
-\begin{solucion}
-En la primera convolución, la variable de integración está en $\supp e_U$; en la segunda, está en $x(\supp e_U)^{-1}$. Son compactos y $f$ es acotada en ellos, así que ambas integrales existen. Para $x$ fijo,
-\[
- |e_U*f(x)-f(x)|\leq\sup_{y\in U}|f(y^{-1}x)-f(x)|\longrightarrow0.
-\]
-Para la otra convolución usamos
-\[
- f*e_U(x)=\int e_U(z)\Delta(z)^{-1}f(xz^{-1})dz.
-\]
-La función de $z$ dentro del promedio es continua y vale $f(x)$ en $e$; el mismo argumento prueba su límite.
 
-La concentración de masa sola no controla una función no acotada. En $\R$, sea $f(x)=e^{x^2}$, sea $b$ una función suave no negativa de integral uno apoyada en $[-1,1]$, y sea $h_n$ una identidad aproximada de soporte $[-1/n,1/n]$. Entonces $k_n=(1-1/n)h_n+n^{-1}b(\cdot-n)$ es una sucesión de Dirac, cada término de soporte compacto, pero
-\[
- (k_n*f)(0)\geq n^{-1}e^{(n-1)^2}\longrightarrow\infty.
-\]
-Por tanto se corrige el enunciado usando soportes que se contraen, condición que cumple la red construida en este capítulo.
-\end{solucion}
 \begin{ejercicio}[Lectura 22, ejercicio 4]\label{ej:v4-l22-4}
 Si $f\in L^1(G)$ y $g\in L^\infty(G)$, probar que $f*g$ está definida en todo punto, es acotada y satisface $\norm{L_a(f*g)-f*g}_\infty\to0$ cuando $a\to e$.
 \end{ejercicio}
-\begin{solucion}
-Elijamos un representante acotado de $g$. Entonces la integral absoluta es a lo sumo $\norm f_1\norm g_\infty$ para cada $x$. Otro representante equivalente da la misma integral: inversión y traslaciones preservan nulos porque el factor modular es positivo. La identidad $L_a(f*g)=(L_af)*g$ da
-\[
- \norm{L_a(f*g)-f*g}_\infty\leq\norm{L_af-f}_1\norm g_\infty\longrightarrow0.
-\]
-Esta es la continuidad uniforme por traslaciones izquierdas que se afirma; en particular implica continuidad ordinaria. En un grupo no abeliano conviene especificar la uniformidad utilizada en lugar de intercambiar sin explicación izquierda y derecha.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 22, ejercicio 5]\label{ej:v4-l22-5}
 Si $f,g\in C_c(G)$, demostrar $\supp(f*g)\subseteq\supp f\,\supp g$ y que $f*g\in C_c(G)$.
 \end{ejercicio}
-\begin{solucion}
-Si $x$ no pertenece al producto de soportes, no puede ocurrir simultáneamente $y\in\supp f$ y $y^{-1}x\in\supp g$; el integrando es cero. El producto de soportes es compacto por continuidad de multiplicación. La convolución es continua por el ejercicio anterior, pues $g$ es acotada y $f\in L^1$. Así se anula fuera de un compacto y pertenece a $C_c$.
-\end{solucion}
+
 
 \paragraph{Los operadores que produce la convolución.}
 La unidad puede faltar en $L^1(G)$, pero la red $(e_U)$ permite aproximar su acción. Esa red hará posible reconstruir operadores del grupo a partir de una representación del álgebra, que es el objetivo del capítulo siguiente.

@@ -1,67 +1,7 @@
 \documentclass[11pt,letterpaper,oneside,openany]{book}
-\usepackage{fontspec}
-\setmainfont{Latin Modern Roman}[SmallCapsFont={Latin Modern Roman Caps}]
-\setsansfont{Latin Modern Sans}
-\usepackage[provide=*,spanish]{babel}
-\usepackage{microtype}
-\usepackage[margin=26mm,headheight=22pt,headsep=8mm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
-\usepackage{enumitem,longtable,booktabs,array}
-\usepackage{fancyhdr,emptypage}
-\usepackage{imakeidx}
-\usepackage[hidelinks,unicode,bookmarksnumbered]{hyperref}
-\usepackage{bookmark}
-\hypersetup{pdftitle={Espacios métricos, normados y de Hilbert},pdfauthor={Eder Said Martinez Ramirez},pdfsubject={Análisis. Volumen I. Teoría y ejercicios resueltos},pdfkeywords={espacios métricos, Banach, Hilbert, análisis}}
-\makeindex[title={Índice alfabético},intoc,options=-s indice.ist]
-\setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{2}
-\setlength{\parindent}{1.2em}
-\setlength{\parskip}{3pt plus 1pt minus 1pt}
-\emergencystretch=5em
-\allowdisplaybreaks[1]
-\setlist[enumerate,1]{label=(\roman*),leftmargin=*,itemsep=2pt}
-\setlist[itemize]{leftmargin=*,itemsep=2pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small\nouppercase{\leftmark}}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
-\theoremstyle{plain}
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{proposicion}[teorema]{Proposición}
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{corolario}[teorema]{Corolario}
-\theoremstyle{definition}
-\newtheorem{definicion}[teorema]{Definición}
-\newtheorem{ejemplo}[teorema]{Ejemplo}
-\newtheorem{ejercicio}{Ejercicio}[chapter]
-\theoremstyle{remark}
-\newtheorem{observacion}[teorema]{Observación}
-\newenvironment{solucion}{\begin{proof}[Solución]}{\end{proof}}
-\newenvironment{estrategia}{\par\noindent\textbf{Estrategia.}\ }{\par}
-\newcommand{\R}{\mathbb R}
-\newcommand{\C}{\mathbb C}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Q}{\mathbb Q}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\F}{\mathbb F}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-\newcommand{\cl}[1]{\overline{#1}}
-\newcommand{\interior}[1]{#1^{\circ}}
-\newcommand{\ip}[2]{\left\langle#1,#2\right\rangle}
-\newcommand{\Bcal}{\mathcal B}
-\newcommand{\Lcal}{\mathcal L}
-\newcommand{\Kcal}{\mathcal K}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\spanop}{span}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{id}
-\input{estilo-esfm}
+\newif\ifsolucionario
+\solucionariofalse
+\input{preambulo}
 \begin{document}
 \renewcommand{\bibname}{Referencias}
 \frontmatter
@@ -95,6 +35,13 @@ Los ejercicios se distribuyen cerca de las herramientas que utilizan. Su número
 Salvo indicación contraria, $\N=\{1,2,\ldots\}$ y $\F$ es $\R$ o $\C$. El producto interno es lineal en su primer argumento. Las bolas abiertas y cerradas se distinguen del cierre de una bola abierta: en un espacio métrico arbitrario esos dos últimos conjuntos pueden ser diferentes. El dual $V^*$ contiene solamente los funcionales lineales continuos.
 
 Rudin \cite{rudin1976} ofrece un desarrollo de topología métrica, sucesiones de funciones y aproximación; Munkres \cite{munkres2000} amplía el contexto topológico; Kreyszig \cite{kreyszig1978} y Conway \cite{conway1990} permiten continuar hacia espacios normados, Hilbert y operadores. La bibliografía final identifica obras reales y ediciones comprobadas. Las referencias externas son orientación y contraste; las demostraciones desarrolladas aquí deben poder seguirse a partir de los resultados previos indicados, sin buscar una página no especificada en otro libro.
+\section*{Apuntes y solucionario}
+Los ejercicios se presentan en estos apuntes sin soluciones. Los mismos
+enunciados, con la misma numeración por capítulo y sus soluciones, se reúnen
+en el documento separado \emph{Solucionario} de este volumen. Las menciones
+a las soluciones y a los ejercicios resueltos de esta presentación se refieren
+a ese documento complementario.
+
 \hypertarget{indice-general}{}
 \tableofcontents
 \mainmatter

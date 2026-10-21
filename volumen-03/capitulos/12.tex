@@ -108,57 +108,31 @@ es un ideal cerrado, llamado radical de Jacobson, y que es la intersección de t
  \quad\text{en }\ell^\infty.
 \]
 \end{ejercicio}
-\begin{solucion}
-(i) Si $a\in J$, tome $b=1$. La descripción del espectro por caracteres implica $\varphi(a)=0$ para cada $\varphi$. Recíprocamente, si todos los caracteres anulan $a$, también anulan $ab$, pues $\varphi(ab)=\varphi(a)\varphi(b)=0$; por la misma descripción, $\sigma(ab)=\{0\}$. Por tanto
-\[
- J=\bigcap_{\varphi\in\Delta(A)}\ker\varphi
-   =\bigcap_{M\text{ maximal}}M.
-\]
-Una intersección de ideales cerrados es un ideal cerrado: la estabilidad algebraica se verifica en cada ideal y la cerradura se conserva bajo intersecciones arbitrarias.
 
-(ii) Si $a$ es cuasinilpotente, $a-\lambda1$ es invertible para cada $\lambda\ne0$, mientras $a$ no lo es. De aquí $a\in\partial G(A)$. El ejercicio~\ref{ej:v3-l21-5} proporciona elementos unitarios en norma $u_n$ con $au_n,u_na\to0$. Aquí ``unitario en norma'' sólo significa $\norm{u_n}=1$, sin relación con una involución. (iii) Por definición, $\mathcal G(a)=0$ equivale a $\varphi(a)=0$ para todo carácter, condición que acabamos de identificar con $a\in J$.
-
-Para el ejemplo, $T^n$ desplaza $n$ posiciones y multiplica la coordenada $k$ por $1/[k(k+1)\cdots(k+n-1)]$. El mayor peso se obtiene en $k=1$, por lo que $\norm{T^n}=1/n!$. La fórmula del radio espectral da $r(T)=0$ porque $(n!)^{1/n}\to\infty$; por ejemplo, al menos $n/2$ factores del factorial son mayores o iguales que $n/2$. Como el espectro es no vacío, es $\{0\}$. Ninguna potencia es cero, pues $T^ne_1=e_{n+1}/n!$. Si se desea situar el ejemplo dentro de un álgebra conmutativa, tome la subálgebra cerrada unitaria generada por $T$: las mismas normas de potencias dan allí el mismo espectro $\{0\}$.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l24-2}
 Pruebe que todo carácter de $\ell^1(\N_0)$ con convolución de Cauchy es $\varphi_z$ para un único $z$ con $|z|\le1$.
 \end{ejercicio}
-\begin{solucion}
-Sea $z=\varphi(e_1)$. Como $\norm\varphi=1$ y $\norm{e_1}_1=1$, $|z|\le1$. La identidad $e_n=e_1^{*n}$, con $e_0$ como identidad, implica $\varphi(e_n)=z^n$. Para $a\in\ell^1$, las sumas finitas $\sum_{n=0}^Na_ne_n$ convergen en norma a $a$, y la continuidad de $\varphi$ da $\varphi(a)=\sum a_nz^n$. La unicidad se obtiene evaluando en $e_1$. El parámetro recorre el disco \emph{cerrado}, incluidos sus puntos de frontera. Además $z\mapsto\varphi_z$ es un homeomorfismo de ese disco sobre el espacio de caracteres: cada serie define una función continua de $z$ por convergencia uniforme, y una biyección continua de un compacto a un Hausdorff es un homeomorfismo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l24-3}
 Demuestre que todo carácter es una aplicación abierta.
 \end{ejercicio}
-\begin{solucion}
-Si $U\subset A$ es abierto y $a\in U$, elija $r>0$ con $B(a,r)\subset U$. Para $|\lambda|<r$ se tiene $a+\lambda1\in U$ y $\varphi(a+\lambda1)=\varphi(a)+\lambda$. Así $B(\varphi(a),r)\subset\varphi(U)$. Cada punto de $\varphi(U)$ es interior. Esta prueba directa evita invocar el teorema de la aplicación abierta, aunque éste también se aplica porque el carácter es lineal, continuo y sobreyectivo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l24-4}
 Pruebe $\sigma(a+b)\subset\sigma(a)+\sigma(b)$ y $\sigma(ab)\subset\sigma(a)\sigma(b)$, y dé ejemplos en que ambas inclusiones sean propias.
 \end{ejercicio}
-\begin{solucion}
-La imagen espectral de $a+b$ es el conjunto de los valores $\varphi(a)+\varphi(b)$ con \emph{el mismo} carácter en ambos términos. La suma de espectros permite caracteres independientes, por lo que contiene ese conjunto. El mismo argumento, con productos, prueba la segunda inclusión. Para $a=(0,1)$ y $b=(1,0)$ en $\C^2$, los respectivos pares de conjuntos son $\{1\}\subsetneq\{0,1,2\}$ y $\{0\}\subsetneq\{0,1\}$. Aunque este ejercicio repite el de la lectura 22, su nueva solución explica mediante caracteres el origen de las inclusiones estrictas.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l24-5}
 Pruebe que $a$ es invertible si y sólo si $\widehat a$ es invertible en $C(\Delta(A))$.
 \end{ejercicio}
-\begin{solucion}
-Si $a$ es invertible, $\widehat{a^{-1}}$ es inversa de $\widehat a$. Recíprocamente, una función continua sobre un compacto es invertible precisamente cuando no se anula. Si $\widehat a$ no se anula, la identidad $\widehat a(\Delta(A))=\sigma(a)$ implica $0\notin\sigma(a)$, por lo que $a$ es invertible. La recíproca no procede de una afirmación general sobre homomorfismos: depende de que aquí se han usado todos los caracteres.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l24-6}
 Pruebe $r(a)=\norm{\widehat a}_\infty$. Deduzca que $\mathcal G$ es isométrica si y sólo si $\norm{a^2}=\norm a^2$ para cada $a\in A$.
 \end{ejercicio}
-\begin{solucion}
-La primera igualdad se sigue de que el rango de $\widehat a$ es exactamente el espectro. Si $\mathcal G$ es isométrica, entonces
-\[
- \norm{a^2}=\norm{\widehat{a^2}}_\infty
- =\norm{(\widehat a)^2}_\infty=\norm{\widehat a}_\infty^2=\norm a^2.
-\]
-Recíprocamente, la identidad para cuadrados se itera: $\norm{a^{2^k}}=\norm a^{2^k}$. La fórmula del radio espectral, restringida a esa subsucesión, da $r(a)=\norm a$. Por la primera igualdad, $\norm{\mathcal G(a)}_\infty=\norm a$ para todo $a$.
-\end{solucion}
+
 
 El radical explica por qué una representación por funciones escalares puede perder información. La identidad $C^*$ eliminará esa pérdida en el caso conmutativo y permitirá identificar el álgebra completa con todas las funciones continuas de su espacio de caracteres. La exposición se complementa con \cite{maxgelfand,murphy1990,rudin1991}.

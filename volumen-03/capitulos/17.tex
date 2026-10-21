@@ -177,89 +177,53 @@ Si $T$ es normal, aproxime uniformemente la función coordenada sobre su espectr
 \begin{ejercicio}\label{ej:v3-l33-1}
 Sea $\mathcal M$ una álgebra de von Neumann. (i) Si $\mathcal B\subset\mathcal M$ es una subálgebra $C^*$ SOT-cerrada y hereditaria, pruebe que existe una única proyección $P\in\mathcal B$ con $\mathcal B=P\mathcal M P$. Hereditaria significa que $0\le a\le b$, $a\in\mathcal M$, $b\in\mathcal B$, implica $a\in\mathcal B$. (ii) Si $I$ es un ideal bilateral SOT-cerrado, pruebe $I=\mathcal M P$ para una única proyección $P\in I\cap\mathcal M'$.
 \end{ejercicio}
-\begin{solucion}
-(i) El teorema~\ref{v3:identidad-propia} proporciona la identidad propia $P$ de $\mathcal B$, así $\mathcal B\subset P\mathcal M P$. Si $a\ge0$ pertenece al rincón $P\mathcal M P$, entonces $0\le a\le\norm a P$: se usa la desigualdad de orden en el álgebra con identidad $P$. Como $P\in\mathcal B$, la propiedad hereditaria implica $a\in\mathcal B$. Todo elemento del rincón es combinación de cuatro positivos, al descomponer sus partes real e imaginaria; por tanto todo el rincón pertenece a $\mathcal B$. Una proyección que satisfaga esa igualdad es identidad de $\mathcal B$, así es única.
 
-(ii) Un ideal normocerrado bilateral en un álgebra $C^*$ es autoadjunto. Aquí puede comprobarse directamente: si $x\in I$, entonces $h=x^*x\in I$, y $h(h+\eps1)^{-1}x^*\in I$. Su diferencia con $x^*$ tiene norma cuadrada
-\[
- \norm{\eps(h+\eps1)^{-1}x^*}^2
- =\max_{t\in\sigma(h)}\frac{\eps^2t}{(t+\eps)^2}\le\eps/4,
-\]
-de modo que $x^*\in I$. La cerradura SOT implica cerradura en norma, así el argumento se aplica. El teorema de identidad propia da una proyección $P\in I$ con $xP=Px=x$ para $x\in I$. Como $P\in I$, $\mathcal M P\subset I$, y la identidad $x=xP$ da la inclusión inversa. Para $a\in\mathcal M$, tanto $aP$ como $Pa$ están en $I$, por lo que $aP=P(aP)=(Pa)P=Pa$. Así $P\in\mathcal M'$. La unicidad vuelve a ser la de la identidad de $I$.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l33-2}
 Si $I_H\in\mathcal A$ y $\mathcal M=\overline{\mathcal A}^{\mathrm{SOT}}$, pruebe que los unitarios de $\mathcal A$ son SOT-densos en los unitarios de $\mathcal M$.
 \end{ejercicio}
-\begin{solucion}
-Para $U\in\mathcal M$ unitario, el corolario~\ref{v3:proyecciones-generan} proporciona $S=S^*\in\mathcal M$ con $U=e^{iS}$. Por Kaplansky (i), una red $S_\alpha\in\mathcal A_{\mathrm{sa}}$ converge fuertemente a $S$. La función $t\mapsto e^{it}$ es continua y acotada, así el teorema~\ref{v3:funcion-acotada-sot} da $e^{iS_\alpha}\to U$ fuertemente. Cada aproximante es unitario y pertenece a $\mathcal A$ porque ésta contiene la identidad. La existencia de un logaritmo continuo sobre todo el círculo sería falsa; aquí se ha usado explícitamente el argumento \emph{boreliano} ya construido.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l33-3}
 Para una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$, pruebe la equivalencia entre: (i) ser WOT-cerrada; (ii) tener bola unitaria SOT-cerrada; (iii) tener bola unitaria WOT-cerrada. Si se usa la definición unital de álgebra de von Neumann, suponga también $I_H\in\mathcal A$.
 \end{ejercicio}
-\begin{solucion}
-(i) implica (iii) porque la bola unitaria de $\Lcal(H)$ es WOT-cerrada y se intersecta con $\mathcal A$. (iii) implica (ii) porque SOT es más fina. Si (ii) vale y $\mathcal M$ es la clausura fuerte de $\mathcal A$, Kaplansky hace que la bola de $\mathcal A$ sea fuertemente densa en la de $\mathcal M$. Como ya es cerrada, ambas bolas coinciden. Multiplicar por escalares muestra $\mathcal A=\mathcal M$, y el cierre fuerte de un álgebra autoadjunta es también su cierre débil. Así (i) vale. Sin asumir identidad, estas condiciones caracterizan la noción amplia descrita al inicio del capítulo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l33-4}
 Pruebe las versiones de Kaplansky (i) y (ii) para elementos positivos y para contracciones positivas.
 \end{ejercicio}
-\begin{solucion}
-Sea $T\in\mathcal M$ positivo. Si $T\ne0$, ponga $R=T/\norm T$, una contracción positiva. Por Kaplansky (i), elija autoadjuntos $S_\alpha\in\mathcal A$ que convergen fuertemente a $R$. La función continua acotada $f(t)=\min(1,\max(0,t))$ satisface $f(0)=0$ y $f(R)=R$. Así $f(S_\alpha)$ son contracciones positivas de $\mathcal A$ que convergen fuertemente a $R$. Escalarlas por $\norm T$ aproxima $T$ por positivos. Si $T=0$, la red constante cero sirve. Si desde el inicio $\norm T\le1$, se aplica directamente la misma función para obtener aproximantes positivos de norma a lo sumo uno.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l33-5}
 Sea $\Phi:\Lcal(H_1)\to\Lcal(H_2)$ un $*$-monomorfismo WOT-continuo. Pruebe que lleva álgebras de von Neumann a álgebras de von Neumann en sentido amplio; si $\Phi$ es unital, la imagen es unital.
 \end{ejercicio}
-\begin{solucion}
-Un $*$-monomorfismo es isométrico. Por ello $\Phi$ lleva la bola unitaria de $\mathcal M$ exactamente a la bola unitaria de $\Phi(\mathcal M)$. La primera es WOT-compacta y su imagen también, por continuidad. Como WOT es Hausdorff, esa imagen es WOT-cerrada. El ejercicio~\ref{ej:v3-l33-3} implica que $\Phi(\mathcal M)$ es WOT-cerrada. La imagen es una subálgebra $C^*$ porque el isomorfismo isométrico de un espacio completo tiene imagen normocerrada. Su identidad propia es $\Phi(I_{\mathcal M})$; coincide con $I_{H_2}$ cuando se cumplen las hipótesis unitarias correspondientes.
-\end{solucion}
+
 
 \section{Ejercicios sobre integrales espectrales y compacidad}
 
 \begin{ejercicio}\label{ej:v3-l34-1}
 Para una medida espectral $E$ en $X$, pruebe que $f\mapsto\int f\,dE$ es un $*$-homomorfismo de $B^\infty(X)$ en $\Lcal(H)$.
 \end{ejercicio}
-\begin{solucion}
-La proposición~\ref{v3:integral-espectral} realiza la prueba completa. El punto algebraico clave para indicadores es
-$\Phi_E(\mathbf1_B\mathbf1_C)=E(B\cap C)=E(B)E(C)$; al refinar particiones se obtiene el producto de funciones simples. La aproximación uniforme de funciones borelianas acotadas por simples y la cota $\norm{\Phi_E(f)}\le\norm f_\infty$ permiten pasar al límite en el producto y en la involución. No se requiere aproximación uniforme por funciones continuas, que sería imposible para muchos indicadores.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l34-2}
 Pruebe que la resolución de la identidad de un operador normal es única.
 \end{ejercicio}
-\begin{solucion}
-Si dos medidas espectrales sobre $\sigma(T)$ integran la coordenada como $T$, sus integrales de $\overline z$ son $T^*$ y, por el ejercicio anterior, coinciden en los polinomios en $z,\overline z$. La densidad de éstos en $C(\sigma(T))$ y la contractividad de las integrales hacen que coincidan en todas las funciones continuas. Para cada $\xi,\eta$, la unicidad de la medida regular de Riesz implica igualdad de las medidas escalares de coeficientes. Por tanto los operadores asignados a cada Borel tienen todos los coeficientes iguales y coinciden.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l34-3}
 Si $0\le T\le I$ pertenece a una álgebra de von Neumann $\mathcal M$, pruebe que existen proyecciones $P_n\in\mathcal M$ con $T=\sum_{n\ge1}2^{-n}P_n$ en norma.
 \end{ejercicio}
-\begin{solucion}
-Para $0\le t<1$, tome sus dígitos binarios
-$b_n(t)=\lfloor2^nt\rfloor-2\lfloor2^{n-1}t\rfloor\in\{0,1\}$; para $t=1$ defina $b_n(1)=1$ para todo $n$. Son funciones borelianas y
-\[
- 0\le t-\sum_{n=1}^N2^{-n}b_n(t)\le2^{-N}
- \quad(0\le t\le1).
-\]
-La elección en los puntos diádicos corresponde a la expansión que termina en ceros, salvo el punto uno, tratado por separado. Defina $P_n=b_n(T)$ mediante el cálculo boreliano. Como $b_n^2=b_n=\overline{b_n}$, son proyecciones, y pertenecen a $\mathcal M$. La contractividad del cálculo da $\norm{T-\sum_{n=1}^N2^{-n}P_n}\le2^{-N}$, que prueba convergencia en norma.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l34-4}
 Si $\mathcal M$ es una álgebra de von Neumann unital, pruebe que $T\in\mathcal M$ si y sólo si conmuta con todas las proyecciones de $\mathcal M'$.
 \end{ejercicio}
-\begin{solucion}
-La necesidad es la definición de conmutante. Para la suficiencia, el conmutante $\mathcal M'$ es una álgebra de von Neumann. Sus proyecciones generan un subespacio normodenso por el corolario~\ref{v3:proyecciones-generan}. Si $T$ conmuta con todas ellas, conmuta con sus combinaciones lineales y, por continuidad en norma del producto, con todo $\mathcal M'$. Así $T\in\mathcal M''=\mathcal M$. La condición unital evita el fallo del doble conmutante para una representación degenerada.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l34-5}
 Sea $0\le T\le I$. Si todo subespacio cerrado de $H$ contenido en $TH$ tiene dimensión finita, pruebe que $T$ es compacto. Como paso auxiliar, pruebe que $UU^*\le VV^*$ implica una factorización $U=VW$ con $\norm W\le1$.
 \end{ejercicio}
-\begin{solucion}
-Defina inicialmente $C(V^*\xi)=U^*\xi$ en $\operatorname{ran}V^*$. La desigualdad de operadores da $\norm{U^*\xi}^2\le\norm{V^*\xi}^2$, de modo que la definición es independiente del representante y contractiva. Extiéndala a $\overline{\operatorname{ran}V^*}$ por continuidad y por cero en su complemento ortogonal. Entonces $CV^*=U^*$; tomar adjuntos da $U=VC^*$, así $W=C^*$ tiene norma a lo sumo uno. Ésta es la factorización requerida.
 
-Aplique el ejercicio~\ref{ej:v3-l34-3} al positivo $T^2$: existen proyecciones $P_n$ con $T^2=\sum_{n\ge1}2^{-n}P_n$ en norma. Cada sumando satisface $2^{-n}P_n\le T^2$, porque la diferencia es límite de sumas de positivos y el cono positivo es normocerrado. Tome $U=2^{-n/2}P_n$, $V=T$ en la factorización. Se obtiene $\operatorname{ran}P_n\subset\operatorname{ran}T$. El rango de una proyección es cerrado; por hipótesis cada $P_n$ tiene rango finito. Las sumas parciales son compactas y convergen en norma a $T^2$, así $T^2$ es compacto. Finalmente, aproxime $\sqrt t$ uniformemente en $[0,1]$ por polinomios con término constante cero. Los correspondientes polinomios de $T^2$ son compactos y convergen en norma a $(T^2)^{1/2}=T$. Por tanto $T$ es compacto. La hipótesis se refiere al rango sin cerrar: sustituirlo por su clausura daría una condición mucho más fuerte.
-\end{solucion}
 
 El cálculo boreliano añade al álgebra las proyecciones que recortan conjuntos espectrales, y esas proyecciones bastan para aproximar en norma todos sus elementos. En el caso conmutativo este fenómeno tendrá una descripción familiar: multiplicación por funciones esencialmente acotadas. Referencias para ampliar: \cite{conway1990,murphy1990,zhu1993}.

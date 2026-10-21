@@ -50,85 +50,43 @@ Si $\mu(X)=0$, ambas seminormas son cero. Si $\mu(X)=1$, la constante es uno.
 Suponiendo $0<\mu(X)<\infty$, aplicamos Hölder a $|f|^p$ y $1$, con exponentes $q/p$ y $q/(q-p)$. Resulta $\int|f|^p\le(\int|f|^q)^{p/q}\mu(X)^{1-p/q}$; tomar la raíz $p$-ésima concluye. Otra prueba de la inclusión divide $X$ en $\{|f|<1\}$ y $\{|f|\ge1\}$: en el primer conjunto $|f|^p\le1$, y en el segundo $|f|^p\le|f|^q$. Esta segunda prueba no produce la mejor constante.
 \end{proof}
 
-\section{Ejercicios resueltos: exponentes y desigualdades}
+\section{Ejercicios propuestos: exponentes y desigualdades}
 \begin{ejercicio}[Lectura 18, ejercicio 1]\label{ej:v2-l18-1}
 Para $a,b>0$ y exponentes conjugados $p,q>1$, demostrar que hay igualdad en Young si y solo si $a^p=b^q$.
 \end{ejercicio}
-\begin{solucion}
-La derivada de $H$ en la prueba del lema \ref{v2:young} cambia de signo en un único punto. Por tanto $H(a)=0$ exactamente cuando $a^{p-1}=b$. Elevar a $q$ da $a^p=b^q$, y cada una de estas operaciones es reversible para números positivos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 2]\label{ej:v2-l18-2}
 Demostrar $ab\le\min_{t>0}\bigl(t^pa^p/p+t^{-q}b^q/q\bigr)$ para $a,b>0$ y $1/p+1/q=1$.
 \end{ejercicio}
-\begin{solucion}
-Young aplicado a $ta$ y $t^{-1}b$ da la desigualdad para cada $t$. Hay igualdad cuando $t^pa^p=t^{-q}b^q$, es decir, cuando $t=(b^q/a^p)^{1/(p+q)}$. Ese número existe y es positivo; por tanto el mínimo existe y en realidad es exactamente $ab$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 3]\label{ej:v2-l18-3}
 Si $f\in\mathcal L^p\cap\mathcal L^q$, demostrar $f\in\mathcal L^r$ para todo $r$ entre $p$ y $q$. Deducir que $\{p\ge1:f\in\mathcal L^p\}$ es un intervalo, posiblemente vacío.
 \end{ejercicio}
-\begin{solucion}
-Podemos suponer $p<r<q$. En $\{|f|\le1\}$ se tiene $|f|^r\le|f|^p$, y en su complemento $|f|^r\le|f|^q$. La suma de las dos integrales es finita. Por tanto, si dos exponentes pertenecen al conjunto indicado, todos los intermedios también pertenecen; esta es precisamente la propiedad que caracteriza a un intervalo de la recta, incluidos singletons e intervalos abiertos o semiabiertos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 4]\label{ej:v2-l18-4}
 Si $\mu(X)=1$ y $1\le p<q<\infty$, demostrar $\norm f_p\le\norm f_q$ para $f\in\mathcal L^q$.
 \end{ejercicio}
-\begin{solucion}
-La proposición \ref{v2:inclusion-finita} da la desigualdad con factor $1^{1/p-1/q}=1$. En concreto, Hölder aplicado a $|f|^p\cdot1$ da $\int|f|^p\le(\int|f|^q)^{p/q}$, y al tomar raíces se obtiene exactamente la afirmación.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 5]\label{ej:v2-l18-5}
 Sean $1\le p<q<\infty$. (i) Demostrar $\ell^p\subset\ell^q$. (ii) Encontrar una sucesión de $\ell^q\setminus\ell^p$. (iii) Encontrar una sucesión acotada que tienda a cero y no pertenezca a ningún $\ell^p$, $p\ge1$.
 \end{ejercicio}
-\begin{solucion}
-(i) Si $\sum|x_n|^p<\infty$, entonces $x_n\to0$: en otro caso habría infinitos términos cuya potencia $p$ supera una constante positiva. Para $n$ grande $|x_n|\le1$, luego $|x_n|^q\le|x_n|^p$; los términos iniciales son finitos. También $\norm x_q\le\norm x_p$, porque $|x_n|\le\norm x_p$ implica $\sum|x_n|^q\le\norm x_p^{q-p}\sum|x_n|^p$.
 
-(ii) Tomamos $x_n=n^{-1/p}$. Su serie de potencias $p$ es armónica y diverge, mientras que $\sum n^{-q/p}$ converge porque $q/p>1$.
-
-(iii) Sirve $x_n=1/\log(n+1)$. Es acotada y tiende a cero. Para cada $p$ fijo, $\log(n+1)^p\le n^{1/2}$ cuando $n$ es suficientemente grande; esto se obtiene escribiendo $n=e^t$ y usando que $t^p e^{-t/2}\to0$. Así $x_n^p\ge n^{-1/2}$ eventualmente y la serie diverge.
-\end{solucion}
 \begin{ejercicio}[Lectura 18, ejercicio 6]\label{ej:v2-l18-6}
 Demostrar que $\langle f,g\rangle=\int_X f\overline g\,d\mu$ es sesquilineal sobre $\mathcal L^2$ y que $\langle f,f\rangle=0$ si y solo si $f=0$ casi en todas partes.
 \end{ejercicio}
-\begin{solucion}
-Hölder garantiza que todas las integrales existen. La linealidad de la integral da linealidad en el primer argumento y conjugado-linealidad en el segundo. Además $\overline{\int f\overline g}=\int g\overline f$ y $\langle f,f\rangle=\int|f|^2\ge0$. La caracterización de integral nula demostrada al inicio da el último enunciado. Sobre funciones aún puede haber vectores no idénticamente cero de longitud cero; el producto interno genuino aparece al pasar al cociente. En el caso complejo la barra es indispensable.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 7: rectificación]\label{ej:v2-l18-7}
 El enunciado original pide demostrar que $r\mapsto\norm f_r$ es convexa en $[p,q]$ si $f\in\mathcal L^p\cap\mathcal L^q$. Examinar esta afirmación y establecer la desigualdad de interpolación válida.
 \end{ejercicio}
-\begin{solucion}
-La afirmación no es cierta en un espacio de medida general, ni siquiera en uno de probabilidad. Sea $f=\ind{(0,1/2)}$ en $(0,1)$ con medida de Lebesgue. Entonces $\norm f_r=2^{-1/r}$ y, poniendo $a=\log2$,
-\[
- \frac{d^2}{dr^2}e^{-a/r}=e^{-a/r}\frac{a(a-2r)}{r^4}<0\qquad(r\ge1).
-\]
-Es estrictamente cóncava, por lo que cualquier intervalo no degenerado contradice la convexidad solicitada.
 
-La afirmación correcta es la convexidad de $s\mapsto\log\norm f_{1/s}$ cuando $f$ no es cero casi en todas partes. Si $1/r=\theta/p+(1-\theta)/q$, $0<\theta<1$, aplicamos Hölder a $|f|^{\theta r}$ y $|f|^{(1-\theta)r}$ con exponentes $p/(\theta r)$ y $q/((1-\theta)r)$. Obtenemos
-\[
- \norm f_r\le\norm f_p^{\theta}\norm f_q^{1-\theta}.
-\]
-Tomar logaritmos da la convexidad indicada; la desigualdad sigue siendo válida cuando $f=0$. Además, Young ponderada da $\norm f_r\le\theta\norm f_p+(1-\theta)\norm f_q$, con pesos referidos a los exponentes recíprocos, no a $p,q$ directamente.
-\end{solucion}
 \begin{ejercicio}[Lectura 18, ejercicio 8]\label{ej:v2-l18-8}
 Supóngase $\mu(X)<\infty$, sea $f:X\to\F$ medible y sea $E_n=\{n-1\le|f|<n\}$. Para $1\le p<\infty$, demostrar que $f\in\mathcal L^p$ si y solo si $\sum_{n\ge1}n^p\mu(E_n)<\infty$.
 \end{ejercicio}
-\begin{solucion}
-Los $E_n$ son disjuntos y cubren $X$, pues $f$ toma valores finitos. Por aditividad de la integral,
-$\int|f|^p\le\sum_n n^p\mu(E_n)$. Recíprocamente, para $n\ge2$ tenemos $n\le2(n-1)\le2|f|$ en $E_n$. Por tanto
-\[
- \sum_{n\ge1}n^p\mu(E_n)\le\mu(E_1)+2^p\int_X|f|^p\,d\mu<\infty.
-\]
-La finitud de $\mu(X)$ controla el primer estrato, donde $|f|$ puede ser cero.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 18, ejercicio 9]\label{ej:v2-l18-9}
 Para $f(x)=x^{-1/2}(1+|\log x|)^{-1}$ en $(0,\infty)$ con medida de Lebesgue, demostrar $f\in\mathcal L^p$ si y solo si $p=2$.
 \end{ejercicio}
-\begin{solucion}
-En $(0,1)$ hacemos $x=e^{-t}$ y en $(1,\infty)$ hacemos $x=e^t$. Las integrales se convierten respectivamente en
-\[
- \int_0^\infty\frac{e^{(p/2-1)t}}{(1+t)^p}\,dt,
- \qquad \int_0^\infty\frac{e^{(1-p/2)t}}{(1+t)^p}\,dt.
-\]
-Para $p=2$ ambas son $\int_0^\infty(1+t)^{-2}dt=1$. Si $p>2$, el primer integrando crece exponencialmente salvo un factor polinómico y su integral diverge; si $p<2$, ocurre lo mismo con el segundo. Para justificar esa comparación, si $c>0$, entonces $(1+t)^p\le e^{ct/2}$ eventualmente, así que $e^{ct}/(1+t)^p\ge e^{ct/2}$. Se han controlado por separado el origen y el infinito.
-\end{solucion}
+
 
 \section{Clases de equivalencia, completitud y densidad}\label{lectura:v2-19}
 \begin{definicion}
@@ -206,28 +164,14 @@ Cada una de las tres hipótesis controla una parte distinta de la integral.
 El ejercicio \ref{ej:v2-l18-6} y la completitud muestran que $L^2$ es un espacio de Hilbert. El teorema de representación de Hilbert del volumen I identifica su dual mediante $\varphi(g)=\langle g,h\rangle$. Todo operador compacto $T$ entre espacios de Hilbert es límite en norma de operadores de rango finito: una red finita de radio $\eps$ para $T$ de la bola unitaria genera un subespacio finito-dimensional $E$; si $P_E$ es la proyección ortogonal, entonces $\norm{T-P_ET}\le\eps$. No se necesita aquí separabilidad: la compacidad de esa imagen ya proporciona la red finita requerida.
 \end{observacion}
 
-\section{Ejercicios resueltos: traslaciones y geometría}
+\section{Ejercicios propuestos: traslaciones y geometría}
 \begin{ejercicio}[Lectura 19, ejercicio 1]\label{ej:v2-l19-1}
 Para $f\in L^p(\R)$, $1<p<\infty$, sea $f_x(t)=f(t-x)$. Demostrar $\norm{f_x-f_{x_0}}_p\to0$ cuando $x\to x_0$.
 \end{ejercicio}
-\begin{solucion}
-La invariancia de la medida de Lebesgue da $\norm{h_x}_p=\norm h_p$. Si $h=\ind{(a,b)}$ con $a<b$ finitos, la diferencia de dos traslaciones tiene potencia $p$ igual al indicador de la diferencia simétrica de los intervalos, cuya medida es a lo sumo $2|x-x_0|$. La afirmación sigue para combinaciones finitas de estos indicadores por Minkowski.
 
-Esas combinaciones son densas en $L^p(\R)$. En efecto, ya sabemos aproximar por indicadores de conjuntos $A$ de medida finita. La regularidad de Lebesgue proporciona $K\subset A\subset U$, con $K$ compacto, $U$ abierto y $m(U\setminus K)$ arbitrariamente pequeño. Finitos intervalos acotados contenidos en $U$ cubren $K$; su unión $J$ satisface $A\mathbin\triangle J\subset U\setminus K$. Por tanto $\norm{\ind A-\ind J}_p$ es pequeño. Dado ahora $f$, elegimos una combinación $h$ con $\norm{f-h}_p<\eps/3$. Entonces
-\[
- \norm{f_x-f_{x_0}}_p\le2\norm{f-h}_p+\norm{h_x-h_{x_0}}_p<\eps
-\]
-para $x$ suficientemente próximo a $x_0$. Esta prueba vale también para $p=1$.
-\end{solucion}
 \begin{ejercicio}[Lectura 19, ejercicio 2: hipótesis necesaria]\label{ej:v2-l19-2}
 El enunciado original afirma que para $p\ne2$ la norma de $L^p(X)$ no proviene de un producto interno. Examinar la afirmación y demostrarla cuando existen dos conjuntos medibles disjuntos de medida positiva finita.
 \end{ejercicio}
-\begin{solucion}
-Sin esa condición la afirmación es falsa: en un espacio de un punto de medida uno, $L^p=\F$ y su norma es el valor absoluto para todo $p$. Supongamos ahora $A\cap B=\varnothing$ y $0<\mu(A),\mu(B)<\infty$. Sean $u=\mu(A)^{-1/p}\ind A$ y $v=\mu(B)^{-1/p}\ind B$. Sus normas son uno y $\norm{u+v}_p=\norm{u-v}_p=2^{1/p}$. La ley del paralelogramo exigiría
-\[
- 2\cdot2^{2/p}=2(1+1)=4,
-\]
-lo que equivale a $p=2$. Para $p\ne2$ se contradice una identidad necesaria de toda norma inducida por producto interno.
-\end{solucion}
+
 \section{Qué control aporta cada hipótesis}
 La norma $L^p$ integra el error, no exige que sea pequeño en cada punto. La convergencia en medida detecta la frecuencia de los errores grandes; la uniformidad de las integrales y la concentración en conjuntos de medida finita impiden que esos errores acumulen masa o escapen al infinito. Las clases de equivalencia eliminan únicamente diferencias nulas: todas las construcciones puntuales anteriores se hicieron con representantes medibles y conjuntos excepcionales medibles identificados explícitamente.

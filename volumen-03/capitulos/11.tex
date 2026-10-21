@@ -101,16 +101,12 @@ La cota prueba el resto requerido y la apertura. También demuestra continuidad 
 \begin{ejercicio}\label{ej:v3-l21-1}
 Demuestre la unicidad de la derivada de Fréchet. Explique por qué la hipótesis de que el dominio sea abierto es necesaria para esa afirmación.
 \end{ejercicio}
-\begin{solucion}
-La primera afirmación se demostró en la proposición~\ref{v3:reglas-frechet}: para cada dirección $v$ debemos poder usar $a+tv$ con $t$ pequeño. Si el dominio es $E=\R\times\{0\}\subset\R^2$ y $f:E\to\R$ es cero, tanto $T(u,v)=0$ como $S(u,v)=v$ dan resto idénticamente nulo al aproximarse dentro de $E$. La aproximación relativa a $E$ no determina lo que hace una transformación en las direcciones transversales. Este ejemplo no contradice la definición usual, cuyo dominio es abierto.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l21-2}
 Determine si el producto interno de un espacio de Hilbert complejo, visto como aplicación $H\times H\to\C$, es diferenciable.
 \end{ejercicio}
-\begin{solucion}
-Con nuestra convención de linealidad en el primer argumento, es diferenciable como aplicación real en todos los puntos y su derivada real es $(h,k)\mapsto\ip h y+\ip x k$; el resto es $\ip h k$. Como aplicación compleja es diferenciable exactamente en los puntos $(0,y)$. Allí $(h,k)\mapsto\ip h y$ es compleja lineal y el mismo resto es cuadrático. Si $x\ne0$, la restricción a la segunda variable exigiría una derivada compleja para $t\mapsto\ip{x}{y+tx}=\ip x y+\overline t\norm x^2$ en cero. Los cocientes para $t$ real y para $t$ imaginario son opuestos, de modo que esa derivada no existe. La frase ``el producto interno complejo no es diferenciable'' requiere, pues, esta precisión sobre puntos excepcionales y sobre el campo.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l21-3}
 Sean $x,y\in A$. Pruebe: (i) la serie $e^x=\sum_{n\ge0}x^n/n!$ converge absolutamente; (ii) si $xy=yx$, entonces $e^{x+y}=e^xe^y$; (iii) $e^x$ es invertible y su inversa es $e^{-x}$; (iv) $e^x=\lim_n(1+x/n)^n$; (v) la fórmula de producto de Trotter
@@ -119,41 +115,18 @@ Sean $x,y\in A$. Pruebe: (i) la serie $e^x=\sum_{n\ge0}x^n/n!$ converge absoluta
 \]
 es válida sin suponer que $x$ e $y$ conmuten.
 \end{ejercicio}
-\begin{solucion}
-(i) $\sum\norm{x^n}/n!\le e^{\norm x}$. (ii) El producto de las dos series es absolutamente convergente; por ello se puede reagrupar por $j+k=n$. La fórmula binomial para elementos que conmutan transforma el coeficiente en $(x+y)^n/n!$. (iii) Aplique (ii) a $x$ y $-x$.
 
-(iv) Escribamos
-\[
- (1+x/n)^n=\sum_{k\ge0}c_{n,k}x^k,
- \quad c_{n,k}=\begin{cases}\binom nk n^{-k},&k\le n,\\0,&k>n.\end{cases}
-\]
-Para cada $k$, $c_{n,k}\to1/k!$, y $0\le c_{n,k}\le1/k!$. Fijado $\eps>0$, elija $K$ de modo que $2\sum_{k>K}\norm x^k/k!<\eps/2$; los primeros $K+1$ términos convergen y controlan el resto del error. Esta es una justificación explícita del paso al límite en la serie.
-
-(v) Pongamos $a_n=e^{x/n}e^{y/n}$ y $b_n=e^{(x+y)/n}$. Las expansiones de las exponenciales muestran $a_n=1+(x+y)/n+O(n^{-2})$ y lo mismo para $b_n$, con constantes independientes de $n$; por ejemplo, $\norm{e^u-1-u}\le\norm u^2e^{\norm u}/2$. Además $\norm{a_n},\norm{b_n}\le e^{(\norm x+\norm y)/n}$. La identidad telescópica, que no requiere conmutatividad,
-\[
- a_n^n-b_n^n=\sum_{j=0}^{n-1}a_n^{n-1-j}(a_n-b_n)b_n^j,
-\]
-da $\norm{a_n^n-b_n^n}\le n e^{\norm x+\norm y}O(n^{-2})\to0$. Como $b_n^n=e^{x+y}$, queda demostrado el último inciso.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l21-4}
 Pruebe que $t\mapsto e^{tx}$ es diferenciable y su derivada es $xe^{tx}=e^{tx}x$.
 \end{ejercicio}
-\begin{solucion}
-Para $t,h\in\C$ (y, en particular, para parámetros reales), las potencias de $x$ conmutan y $e^{(t+h)x}=e^{tx}e^{hx}$. Como $e^{hx}=1+hx+O(|h|^2)$, el cociente incremental converge a $e^{tx}x$. Cada suma parcial de $e^{tx}$ conmuta con $x$ y el producto es continuo, por lo que también lo hace el límite.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l21-5}
 Sea $x\in\partial G(A)$. Pruebe: (i) para cada $y\in G(A)$,
 $\norm{y^{-1}}\ge1/\norm{x-y}$; (ii) $x$ es un divisor topológico de cero por ambos lados, es decir, existen $u_n$ con $\norm{u_n}=1$ y $xu_n,u_nx\to0$; (iii) $x$ no tiene inversa izquierda ni derecha.
 \end{ejercicio}
-\begin{solucion}
-(i) Si $\norm{x-y}\norm{y^{-1}}<1$, el teorema~\ref{v3:derivada-inversa} implicaría $x\in G(A)$; esto es imposible, pues un abierto no contiene puntos de su frontera. (ii) Elija $y_n\in G(A)$ con $y_n\to x$ y ponga $u_n=y_n^{-1}/\norm{y_n^{-1}}$. El inciso anterior implica $\norm{y_n^{-1}}\to\infty$, y
-\[
- \norm{xu_n},\ \norm{u_nx}\le\norm{x-y_n}+\frac1{\norm{y_n^{-1}}}\longrightarrow0.
-\]
-(iii) Si $bx=1$, entonces $u_n=bxu_n\to0$; si $xb=1$, entonces $u_n=u_nxb\to0$. Ambas conclusiones contradicen $\norm{u_n}=1$. En los dos últimos incisos el elemento correcto es $x$, el punto de frontera; el original cambia accidentalmente la letra a $y$, que allí denota un elemento invertible.
-\end{solucion}
+
 
 \section{El espectro en un álgebra de Banach}\label{lec:v3-22}
 \fuentelectura{22}{El espectro de un elemento en un álgebra}
@@ -280,43 +253,27 @@ es invertible por Neumann. Por tanto $\sigma(y)\subset U$, y finalmente se aplic
 \begin{ejercicio}\label{ej:v3-l22-1}
 Si $p$ es un polinomio complejo, pruebe $\sigma(p(x))=p(\sigma(x))$.
 \end{ejercicio}
-\begin{solucion}
-Para un polinomio constante la afirmación es inmediata. En otro caso factorice $p(z)-\mu=c\prod_{j=1}^m(z-\lambda_j)$. Los factores $x-\lambda_j1$ conmutan. Un producto de elementos que conmutan es invertible si y sólo si todos lo son: si $ab$ es invertible y $ab=ba$, la inversa de $ab$ conmuta con $a,b$, y $b(ab)^{-1}$ es inversa bilateral de $a$; se itera este argumento. Así $p(x)-\mu1$ no es invertible exactamente cuando alguna raíz $\lambda_j$ pertenece a $\sigma(x)$, lo cual equivale a $\mu\in p(\sigma(x))$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l22-2}
 Para $x\in A$, $y\in B$, pruebe $\sigma_{A\times B}((x,y))=\sigma_A(x)\cup\sigma_B(y)$.
 \end{ejercicio}
-\begin{solucion}
-La identidad de $A\times B$ es $(1_A,1_B)$. El par $(x-\lambda1_A,y-\lambda1_B)$ tiene inversa bilateral si y sólo si cada coordenada la tiene, y en tal caso la inversa es el par de inversas. Negar esta equivalencia produce la unión requerida.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l22-3}
 Pruebe que $\lambda\mapsto(x-\lambda1)^{-1}$ es diferenciable en el resolvente y que su derivada de Fréchet es continua.
 \end{ejercicio}
-\begin{solucion}
-La regla de la cadena da, para $h\in\C$,
-\[
- D[(x-\lambda1)^{-1}][h]
- =-(x-\lambda1)^{-1}(-h1)(x-\lambda1)^{-1}
- =h(x-\lambda1)^{-2}.
-\]
-La inversión y el producto son continuos; por ello el coeficiente de esta aplicación lineal depende continuamente de $\lambda$. Nótese el signo positivo para esta convención y el signo negativo para $R_x(\lambda)=(\lambda1-x)^{-1}$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l22-4}
 En $C^1([0,1])$ con $\norm f=\norm f_\infty+\norm{f'}_\infty$, calcule el radio espectral de $f(t)=t$.
 \end{ejercicio}
-\begin{solucion}
-Si $\lambda\notin[0,1]$, $1/(t-\lambda)$ pertenece a $C^1([0,1])$; si $\lambda\in[0,1]$, evaluar en ese punto impide una inversa. Luego $\sigma(f)=[0,1]$ y $r(f)=1$. También $\norm{f^n}=1+n$ para $n\ge1$, de modo que $\lim_n(1+n)^{1/n}=1$, en acuerdo con la fórmula de Gelfand. Es instructivo que $\norm f=2$ sea mayor que su radio espectral.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l22-5}
 Pruebe $r(xy)=r(yx)$.
 \end{ejercicio}
-\begin{solucion}
-Los espectros coinciden fuera de cero por la proposición~\ref{v3:espectro-operaciones}. Añadir o quitar cero no modifica el máximo del módulo de un conjunto compacto no vacío, salvo que todos sus elementos sean cero; en ese caso ambos espectros son $\{0\}$ y ambos radios son cero.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l22-6}
 Si $A$ es conmutativa, pruebe
@@ -326,11 +283,7 @@ Si $A$ es conmutativa, pruebe
 \]
 y dé ejemplos de contenciones propias.
 \end{ejercicio}
-\begin{solucion}
-Necesitamos un hecho que también preparará el capítulo siguiente. Si $a$ no es invertible, el ideal $aA$ es propio y está contenido en un ideal maximal $M$. Por el capítulo anterior $M$ es cerrado. El cociente $A/M$ es un álgebra de Banach de división y Gelfand--Mazur lo identifica con $\C$. Así existe un homomorfismo unital $\chi:A\to\C$ con $\chi(a)=0$. Además $\chi(b)\in\sigma(b)$ para todo $b$, pues aplicar $\chi$ a una inversa de $b-\chi(b)1$ daría $0=1$.
 
-Si $\lambda\in\sigma(x+y)$, aplique lo anterior a $a=x+y-\lambda1$: se obtiene $\lambda=\chi(x)+\chi(y)\in\sigma(x)+\sigma(y)$. Para el producto se aplica a $a=xy-\lambda1$ y resulta $\lambda=\chi(x)\chi(y)$. En $A=\C^2$, tome $x=(0,1)$ e $y=(1,0)$. Entonces $\sigma(x+y)=\{1\}$, mientras $\sigma(x)+\sigma(y)=\{0,1,2\}$; y $\sigma(xy)=\{0\}$, mientras $\sigma(x)\sigma(y)=\{0,1\}$. Ambos ejemplos muestran que no se debe reemplazar inclusión por igualdad.
-\end{solucion}
 
 \section{Evaluar funciones holomorfas en un elemento}\label{lec:v3-23}
 \fuentelectura{23}{El cálculo funcional holomorfo}
@@ -414,62 +367,36 @@ $\operatorname{long}(\Gamma)\max_\Gamma|f|M^2\norm h/(2\pi)$; el resto es $O(\no
 \begin{ejercicio}\label{ej:v3-l23-1}
 Si $T\in\Lcal(V)$ y $Tv=\lambda v$ con $v\ne0$, pruebe que $f(T)v=f(\lambda)v$ para toda $f$ holomorfa cerca de $\sigma(T)$.
 \end{ejercicio}
-\begin{solucion}
-Para $z$ en el resolvente, $(zI-T)v=(z-\lambda)v$ y por ello $(zI-T)^{-1}v=(z-\lambda)^{-1}v$. La evaluación $S\mapsto Sv$ es lineal acotada y conmuta con la integral. La fórmula de Cauchy da
-$f(T)v=(2\pi i)^{-1}\int_\Gamma f(z)(z-\lambda)^{-1}\,dz\,v=f(\lambda)v$. Así el mismo vector es propio para $f(T)$, con el valor propio indicado.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l23-2}
 Si $f$ toma el valor cero en algún punto de $\sigma(x)$, pruebe que $f(x)$ no es invertible.
 \end{ejercicio}
-\begin{solucion}
-Si $f(\lambda)=0$ y $\lambda\in\sigma(x)$, el teorema de mapeo espectral implica $0\in\sigma(f(x))$. Por definición esto equivale a que $f(x)$ no sea invertible. No hace falta que $f$ se anule en todo el espectro; un solo cero basta.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l23-3}
 Sean $A,B$ álgebras de Banach complejas unitarias y $T:A\to B$ un homomorfismo \emph{continuo y unital}. Pruebe $f(Tx)=T(f(x))$ para $f$ holomorfa cerca de $\sigma_A(x)$.
 \end{ejercicio}
-\begin{solucion}
-Si $z1-x$ es invertible, aplicar $T$ a sus dos identidades inversas muestra que $z1-Tx$ es invertible y que su inversa es $T((z1-x)^{-1})$. De aquí $\sigma_B(Tx)\subset\sigma_A(x)$. La continuidad permite pasar $T$ bajo la integral y produce la fórmula solicitada. La condición unital es necesaria para el enunciado tal como está escrito: el homomorfismo cero y $f\equiv1$ darían $1_B=0$. Si ``homomorfismo de álgebras de Banach'' incluye continuidad pero no preservación de la identidad, hay que añadir esta última condición. Para homomorfismos no unitarios la identidad se formula en el rincón con identidad $T(1)$, o se restringe apropiadamente la función.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l23-4}
 Si $e^x=1$, demuestre $\sigma(x)\subset2\pi i\Z$.
 \end{ejercicio}
-\begin{solucion}
-El cálculo holomorfo y la expansión exponencial coinciden por el siguiente ejercicio; también se obtiene directamente por convergencia uniforme de las sumas parciales sobre una curva. El mapeo espectral da $e^{\sigma(x)}=\sigma(e^x)=\{1\}$. Los números complejos $z$ con $e^z=1$ son exactamente $2\pi ik$, $k\in\Z$: al escribir $z=a+ib$, el módulo obliga $a=0$ y la parte angular obliga $b\in2\pi\Z$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l23-5}
 Sea $f(z)=\sum_{n\ge0}a_nz^n$ con radio de convergencia $R>r(x)$. Pruebe $f(x)=\sum_{n\ge0}a_nx^n$.
 \end{ejercicio}
-\begin{solucion}
-Elija $r(x)<s<t<R$. La fórmula de Gelfand da $\norm{x^n}\le s^n$ para $n$ suficientemente grande. Como la serie escalar converge absolutamente en $s$, la serie de elementos también lo hace. Por otro lado, las sumas parciales de $f$ convergen uniformemente en $|z|\le t$, un compacto que contiene al espectro en su interior. El cálculo holomorfo envía el polinomio $\sum_{n=0}^Na_nz^n$ a $\sum_{n=0}^Na_nx^n$, y su continuidad demuestra la identidad. No se requiere $R>\norm x$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l23-6}
 Para $T\in\Lcal(V)$, formule y pruebe la compatibilidad del cálculo holomorfo con el adjunto en el dual. Distinga esta operación del adjunto de Hilbert.
 \end{ejercicio}
-\begin{solucion}
-Denotemos por $T':V^*\to V^*$ el traspuesto de Banach, $T'\varphi=\varphi\circ T$. Esta operación es compleja lineal y acotada en $T$, invierte el orden de los productos y envía inversas a inversas. Se tiene $\sigma(T')=\sigma(T)$. Una inclusión es inmediata; para la otra, si $S'$ es invertible, su inyectividad implica que $S(V)$ es denso, por Hahn--Banach. Además la sobreyectividad de $S'$ y la cota de su inversa dan
-\[
- \norm v=\sup_{\norm\varphi\le1}|\varphi(v)|
- \le\norm{(S')^{-1}}\norm{Sv}.
-\]
-Así $S$ es inyectivo y tiene imagen cerrada; por densidad es sobreyectivo y su inversa es acotada. Aplique esto a $S=zI-T$.
 
-Como el traspuesto conmuta con la integral, $(f(T))'=f(T')$. Si en cambio $T^*$ es el adjunto de Hilbert, esa operación es conjugada lineal, y la fórmula correcta es
-\[
- (f(T))^*=f^\#(T^*),\qquad f^\#(z)=\overline{f(\overline z)}.
-\]
-Se obtiene conjugando la integral, reflejando la curva y teniendo en cuenta la inversión de orientación; equivalentemente, se aplica el traspuesto y la identificación conjugada lineal de Riesz. La fórmula sin conjugación sería falsa para $f\equiv i$: sus dos miembros serían $iI$ y $-iI$. Esta distinción aclara la notación ambigua $T^*$ en el ejercicio original.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l23-7}
 Sea $I$ un ideal de $A$, no necesariamente cerrado, $x\in I$, y sea $f$ holomorfa en una vecindad de $\sigma(x)\cup\{0\}$, con $f(0)=0$. Pruebe $f(x)\in I$.
 \end{ejercicio}
-\begin{solucion}
-La función $g(z)=f(z)/z$ para $z\ne0$, completada por $g(0)=f'(0)$, es holomorfa en esa vecindad. El homomorfismo da $f(x)=xg(x)$, que pertenece a $I$ por la propiedad de ideal. No hemos pasado al límite dentro de $I$, por lo que no necesitamos que sea cerrado. Si $I$ es propio, necesariamente $0\in\sigma(x)$, ya que un ideal que contiene un invertible contiene a $1$; en ese caso la condición de dominio adicional ya está implícita. Si $I=A$, la conclusión es trivial, pero para escribir $f(0)$ hay que asegurarse de que el valor esté definido.
-\end{solucion}
+
 
 La función resolvente ha convertido una cuestión algebraica ---la existencia de inversas--- en una herramienta analítica. En un álgebra conmutativa veremos que el espectro puede describirse mediante homomorfismos escalares. En las álgebras $C^*$, la involución permitirá extender después el cálculo de funciones holomorfas a todas las funciones continuas del espectro. Para otras presentaciones y desarrollos del cálculo holomorfo pueden consultarse \cite{conway1990,rudin1991,murphy1990}.

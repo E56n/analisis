@@ -92,9 +92,12 @@
   \subentradaIndiceOriginal}
 \makeatother
 
+% Los recuadros de ejercicios se reservan al solucionario.
+\ifsolucionario
 % El recuadro crece hacia el margen para conservar la anchura de las fórmulas.
 \tcolorboxenvironment{ejercicio}{enhanced,breakable,lines before break=4,sharp corners,
   colback=white,colframe=ipnGuinda!65!white,boxrule=.4pt,
   grow to left by=7pt,grow to right by=7pt,
   boxsep=0pt,left=6.55pt,right=6.55pt,top=5pt,bottom=5pt,
   before skip=10pt,after skip=8pt}
+\fi

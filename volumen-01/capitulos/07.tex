@@ -110,110 +110,31 @@ La fórmula correcta $g(b)=\sum_{n\ge1}b_n/2^n$ lleva continuamente $\{0,1\}^{\N
 Una biyección entre $\N$ y $\N\times\N$ reordena las coordenadas y prueba que $(\{0,1\}^{\N})^{\N}$ es homeomorfo a $\{0,1\}^{\N}$. La continuidad en ambas direcciones sigue de que cada coordenada se convierte en otra coordenada. Aplicando $g$ fila por fila obtenemos una sobreyección continua $C\to H$. Sin embargo, de $X\subset H$ no se deduce automáticamente una sobreyección $C\to X$: un mapa sobre $H$ no tiene por qué tomar valores en $X$. La construcción del teorema \ref{ch16:imagenCantor} cubre exactamente ese paso.
 \end{observacion}
 
-\section{Ejercicios resueltos: compactificaciones y obstrucciones topológicas}
+\section{Ejercicios propuestos: compactificaciones y obstrucciones topológicas}
 \begin{ejercicio}[Lectura 16, ejercicio 1]\label{ej:lectura-16-1}
 Probar que $x\mapsto e^{2i\arctan x}$ encaja $\R$ densamente en $S^1$. Probar que $S^1$ y $[0,1]$ no son homeomorfos.
 \end{ejercicio}
-\begin{solucion}
-La función $2\arctan$ es un homeomorfismo de $\R$ sobre $(-\pi,\pi)$, y $t\mapsto e^{it}$ es un homeomorfismo de ese intervalo sobre $S^1\setminus\{-1\}$. Su inversa es el argumento en $(-\pi,\pi)$; es continuo en la circunferencia cortada porque localmente puede elegirse un intervalo angular de longitud menor que $2\pi$. Así la composición es un encaje. Su imagen es densa: el único punto que falta, $-1$, es límite de $e^{2i\arctan n}$.
 
-Al quitar cualquier punto de $S^1$ queda un espacio homeomorfo a $\R$, por una rotación seguida de la parametrización anterior; por tanto queda conexo. Al quitar $1/2$ de $[0,1]$, quedan los dos abiertos relativos no vacíos $[0,1/2)$ y $(1/2,1]$, que son disjuntos. Un homeomorfismo induciría otro entre los espacios con los puntos correspondientes eliminados, y preservaría conexidad. Esto es imposible. La conexidad de los intervalos quedó demostrada en el lema \ref{ch17:intervalos} a partir de la propiedad del supremo.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 2]\label{ej:lectura-16-2}
 Probar que $S^2$, el toro $S^1\times S^1$ y $[0,1]^2$ son compactificaciones de $\R^2$ y son dos a dos no homeomorfos.
 \end{ejercicio}
-\begin{solucion}
-\emph{Construcción de las compactificaciones.} Los tres espacios son compactos: la esfera es cerrada y acotada en $\R^3$, y los otros dos son productos finitos de compactos. La proyección estereográfica inversa
-\[
-\sigma(u,v)=\left(\frac{2u}{1+u^2+v^2},
-\frac{2v}{1+u^2+v^2},\frac{u^2+v^2-1}{1+u^2+v^2}\right)
-\]
-es un homeomorfismo de $\R^2$ sobre $S^2\setminus\{(0,0,1)\}$. Sustituir la fórmula verifica que la suma de cuadrados es uno, y la inversa es $(x,y,z)\mapsto(x/(1-z),y/(1-z))$. Ambos mapas son continuos en sus dominios. El punto norte es límite de $\sigma(n,0)$, de modo que la imagen es densa. El producto de dos copias del encaje del ejercicio \ref{ej:lectura-16-1} encaja $\R^2$ densamente en el toro. El producto del mapa $u:\R\to(0,1)$ del ejemplo sobre la recta extendida encaja $\R^2$ densamente en $[0,1]^2$. La densidad en los productos se verifica en rectángulos abiertos, que forman una base.
 
-El producto $S^1\times S^1$ está naturalmente en $\R^4$, no literalmente en $\R^3$. Su modelo usual en $\R^3$ es la imagen de
-\[
-(e^{i\alpha},e^{i\beta})\longmapsto
-((2+\cos\beta)\cos\alpha,(2+\cos\beta)\sin\alpha,\sin\beta).
-\]
-Es continuo e inyectivo: el radio cilíndrico $\rho=\sqrt{x^2+y^2}$ determina $\cos\beta=\rho-2$, la tercera coordenada determina $\sin\beta$, y $(x/\rho,y/\rho)$ determina $e^{i\alpha}$. Como el dominio es compacto, es un homeomorfismo sobre su imagen.
-
-\emph{Herramienta elemental para distinguirlos.} Un \emph{lazo} en un espacio es una aplicación continua $\gamma:[0,1]\to X$ con $\gamma(0)=\gamma(1)$. Decimos que se contrae si existe un mapa continuo $F:[0,1]^2\to X$ con $F(t,0)=\gamma(t)$, $F(t,1)$ constante en $t$ y $F(0,s)=F(1,s)$ para todo $s$. Esta propiedad es preservada por homeomorfismos. Demostraremos los hechos que necesitamos, sin suponer teoría del grupo fundamental. Usaremos la conexidad del intervalo, demostrada mediante el supremo en el lema \ref{ch17:intervalos}, y las nociones de caminos del capítulo \ref{cap:nuevo06}.\index{lazo}\index{homotopia@homotopía}
-
-Todo camino $\gamma:[0,1]\to S^1$ admite un argumento continuo $\vartheta:[0,1]\to\R$ con $\gamma(t)=e^{i\vartheta(t)}$. Para construirlo, por continuidad uniforme elegimos una partición tal que, en cada subintervalo $[t_j,t_{j+1}]$, $|\gamma(t)-\gamma(t_j)|<1$. El cociente $\gamma(t)/\gamma(t_j)$ evita $-1$ y tiene un argumento principal continuo en $(-\pi,\pi)$. Elegida $\vartheta(0)$, definimos en ese subintervalo
-\[
-\vartheta(t)=\vartheta(t_j)+\operatorname{Arg}(\gamma(t)/\gamma(t_j)).
-\]
-Las definiciones se pegan en los extremos. Dos argumentos continuos difieren en un múltiplo constante de $2\pi$, pues su diferencia es continua y toma valores en el conjunto discreto $2\pi\Z$.
-
-Para un lazo, el entero
-\[
-\operatorname{ind}(\gamma)=\frac{\vartheta(1)-\vartheta(0)}{2\pi}
-\]
-no depende del argumento elegido. Si dos lazos $\alpha,\beta$ satisfacen $\sup_t|\alpha(t)-\beta(t)|<2$, entonces $q(t)=\operatorname{Arg}(\beta(t)/\alpha(t))$ es continuo y $q(0)=q(1)$. Un argumento de $\beta$ se obtiene sumando $q$ a uno de $\alpha$, así que tienen el mismo índice. En una deformación continua $F(t,s)$, la continuidad uniforme permite dividir el intervalo de $s$ en finitos pasos tales que lazos sucesivos estén uniformemente a distancia menor que $1$. Por lo anterior el índice es constante durante la deformación. El lazo $e^{2\pi it}$ tiene índice $1$; un lazo constante tiene índice $0$. En consecuencia, el primero no se contrae en $S^1$.\index{indice de un lazo@índice de un lazo}
-
-\emph{El toro tiene un lazo que no se contrae.} Consideremos $\gamma(t)=(e^{2\pi it},1)$. Si se contrajera en el toro, al componer la contracción con la primera proyección obtendríamos una contracción de $e^{2\pi it}$ en $S^1$, que acabamos de excluir.
-
-\emph{Todos los lazos de la esfera se contraen.} Este paso necesita justificación: una curva continua puede llenar una región, así que no debemos suponer sin prueba que omite algún punto de la esfera. Sea $\gamma$ un lazo en $S^2$. Elegimos una partición tan fina que en cada intervalo $[t_j,t_{j+1}]$ se cumpla $\norm{\gamma(t)-\gamma(t_j)}<1/4$. Unimos los valores consecutivos $a_j=\gamma(t_j)$ y $a_{j+1}$ mediante el arco
-\[
-\beta(t)=\frac{(1-r)a_j+ra_{j+1}}{\norm{(1-r)a_j+ra_{j+1}}},\qquad
-r=\frac{t-t_j}{t_{j+1}-t_j}.
-\]
-El denominador es positivo porque los extremos están a distancia menor que $1/4$, de modo que no son antipodales. Si $v=(1-r)a_j+ra_{j+1}$, entonces $\norm{v-a_j}<1/4$ y
-\[
-\norm{v/\norm v-a_j}\le |1-\norm v|+\norm{v-a_j}<1/2.
-\]
-Por tanto $\norm{\beta(t)-\gamma(t)}<3/4$. Los dos valores nunca son antipodales, y
-\[
-F(t,s)=\frac{(1-s)\gamma(t)+s\beta(t)}{\norm{(1-s)\gamma(t)+s\beta(t)}}
-\]
-define una deformación continua de lazos entre $\gamma$ y $\beta$.
-
-La imagen de $\beta$ está en una unión finita de planos propios que pasan por el origen, intersectados con $S^2$, porque cada arco está en el plano generado por sus extremos; si ambos son iguales elegimos cualquier plano que contenga ese punto. Hay un punto $q\in S^2$ fuera de todos esos planos. Para verlo sin un argumento de medida, escribamos sus ecuaciones como $A_jx+B_jy+C_jz=0$, con algún coeficiente no cero. El vector $(1,t,t^2)$ pertenece al plano $j$ solo si $A_j+B_jt+C_jt^2=0$, ecuación con finitas raíces. Elegimos $t$ fuera de la unión finita de raíces y normalizamos el vector. Entonces $q$ no pertenece a la imagen de $\beta$.
-
-Una rotación seguida de la proyección estereográfica identifica $S^2\setminus\{q\}$ con $\R^2$. Allí todo lazo se contrae por interpolación lineal con un punto fijo. Transportamos esa contracción a la esfera y la concatenamos con $F$, usando la primera mitad del parámetro para $F$ y la segunda para la contracción. Así $\gamma$ se contrae. La esfera y el toro no son homeomorfos.
-
-\emph{El cuadrado y el toro tampoco son homeomorfos.} Todo lazo del cuadrado se contrae mediante $F(t,s)=(1-s)\gamma(t)+s(1/2,1/2)$, pues el cuadrado es convexo; el toro tiene el lazo no contraíble ya construido.
-
-\emph{La esfera y el cuadrado no son homeomorfos.} Al quitar cualquier punto de la esfera queda un espacio homeomorfo a $\R^2$, donde todos los lazos se contraen. En cambio, al quitar $a=(1/2,1/2)$ del cuadrado, el lazo
-\[
-\gamma(t)=a+\tfrac14(\cos2\pi t,\sin2\pi t)
-\]
-no se contrae: componer una supuesta contracción con $x\mapsto(x-a)/\norm{x-a}$ daría una contracción del lazo de índice uno en $S^1$. Si existiera un homeomorfismo de la esfera al cuadrado, al eliminar la preimagen de $a$ produciría un homeomorfismo entre estos dos espacios perforados. La contradicción termina las tres comparaciones.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 3: examen y corrección del enunciado]\label{ej:lectura-16-3}
 El enunciado propone que el conjunto de Cantor sea una compactificación de todo espacio discreto infinito separable. Decidir si es válido con la definición de encaje y construir una compactificación correcta.
 \end{ejercicio}
-\begin{solucion}
-Un espacio discreto separable es numerable, porque todo subconjunto denso debe contener cada singleton abierto. Sin embargo, \emph{no puede encajarse densamente en Cantor}. En efecto, si $D$ es un subespacio denso y discreto de un espacio métrico $K$, para cada $d\in D$ existe un abierto $U\subset K$ con $U\cap D=\{d\}$. Si $U$ contuviera un punto $y\ne d$, el abierto no vacío $U\setminus\{d\}$ tendría que tocar $D$ por densidad, contradicción. Así $U=\{d\}$ y $d$ es un punto aislado de $K$. Pero Cantor no tiene puntos aislados: manteniendo un prefijo binario y cambiando algún dígito posterior obtenemos puntos distintos arbitrariamente próximos.
 
-La sugerencia de enumerar un subconjunto denso de vértices proporciona una inyección continua desde el discreto numerable, pero su inversa sobre la imagen no es continua. Esta es precisamente la dificultad de la definición original. Una versión correcta es la siguiente: si $X=\{x_1,x_2,\ldots\}$ es discreto, el mapa $x_n\mapsto1/n$ lo encaja densamente en
-\[
-K=\{0\}\cup\{1/n:n\ge1\}.
-\]
-Cada $1/n$ es aislado en $K$, de modo que la imagen tiene la topología discreta; $0$ es su único punto límite añadido. El conjunto $K$ es cerrado y acotado en $\R$, luego compacto.
-
-La afirmación adicional de que todo espacio ultramétrico tiene a Cantor como compactificación tampoco es válida en esa generalidad: los discretos anteriores son ultramétricos, y los no separables ni siquiera admiten compactificación métrica. Sí puede afirmarse, por el teorema \ref{ch16:encaje}, que todo espacio ultramétrico \emph{separable} admite alguna compactificación métrica.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 16, ejercicio 4]\label{ej:lectura-16-4}
 Probar que $T:K\to H$, $T(x)_n=nx_n$, es un homeomorfismo, donde $K=\{x\in\ell^2:0\le x_n\le1/n\}$.
 \end{ejercicio}
-\begin{solucion}
-El mapa toma valores en $H$ y es inyectivo. Para $y\in H$, la sucesión $x_n=y_n/n$ satisface $\sum_n|x_n|^2\le\sum_n1/n^2<\infty$ y pertenece a $K$, de modo que es sobreyectivo. Si $x^{(j)}\to x$ en $\ell^2$, entonces $|x_n^{(j)}-x_n|\le\norm{x^{(j)}-x}_2\to0$ para cada $n$; por tanto $nx_n^{(j)}\to nx_n$ y la convergencia coordenada implica convergencia en $H$. Así $T$ es continua. Como $K$ es compacto y $H$ es métrico, la biyección continua $T$ es un homeomorfismo. Obsérvese que no estamos afirmando continuidad de este multiplicador en todo $\ell^2$ con valores en $\ell^2$: aquí el codominio tiene la topología producto.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 16, ejercicio 5]\label{ej:lectura-16-5}
 Probar que todo espacio métrico separable es homeomorfo a un subespacio del toro infinito $\mathbb T^\infty=(S^1)^{\N}$.
 \end{ejercicio}
-\begin{solucion}
-Por el teorema \ref{ch16:encaje}, basta encajar $H$ en $\mathbb T^\infty$. El mapa $h:[0,1]\to S^1$, $h(t)=e^{i\pi t}$, es continuo e inyectivo; por compacidad es un homeomorfismo sobre el semicírculo superior. Aplicamos $h$ coordenada a coordenada:
-\[
-\Phi((x_n))=(e^{i\pi x_n})_{n\ge1}.
-\]
-Este mapa es continuo e inyectivo en las topologías producto. Como $H$ es compacto y el producto numerable de circunferencias es métrico, $\Phi$ es un encaje. La composición $\Phi\circ J$ da el encaje de $X$. Se utiliza un semicírculo, no $e^{2\pi it}$ en todo $[0,1]$, pues este último identificaría los dos extremos.
-\end{solucion}
+
 
 \section{Encajes e imágenes continuas de compactos}
 Una compactificación conserva la topología y añade límites; una inyección continua puede hacer algo distinto. El cubo de Hilbert contiene modelos de todos los espacios métricos separables, mientras que Cantor se proyecta continuamente sobre todos los compactos métricos no vacíos. Encajar y proyectar son operaciones diferentes, y distinguirlas evita errores en las demostraciones y en los ejercicios.

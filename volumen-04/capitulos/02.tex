@@ -55,43 +55,19 @@ Si se desea integrar sobre toda $\R$ en ambos lados, se añade $J=\R$; si se omi
 \begin{ejercicio}[Lectura 2, ejercicio 1]\label{ej:v4-l02-1}
 Sea $\varphi\in C^1(\R)$ con $\varphi'(x)\ne0$ para todo $x$, y sea $f$ Lebesgue-medible en $J$. Probar que $f\circ\varphi$ es Lebesgue-medible.
 \end{ejercicio}
-\begin{solucion}
-La continuidad de $\varphi'$ y el teorema del valor intermedio muestran que tiene signo constante. El teorema del valor medio hace a $\varphi$ estrictamente monótona; su inversa $\psi:J\to\R$ es $C^1$ y $\psi'(y)=1/\varphi'(\psi(y))$. En cada subintervalo compacto de $J$, esa derivada es acotada, así que $\psi$ es Lipschitz. Una aplicación $L$-Lipschitz manda conjuntos nulos en nulos: una cubierta por intervalos de longitud total $<\eps/L$ produce una cubierta imagen de longitud total $<\eps$. Agotando $J$ por compactos, concluimos que $\varphi^{-1}(N)=\psi(N)$ es nulo si $N$ es nulo. La preimagen de un boreliano es boreliana por continuidad. Descomponer cada conjunto medible en un boreliano y una modificación nula prueba el resultado.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 2]\label{ej:v4-l02-2}
 Definir $\mu(A)=\int_\R\mathbf1_A(\varphi(x))\,dx$ para conjuntos medibles $A\subseteq\R$. Probar que $\mu$ es una medida absolutamente continua respecto de Lebesgue.
 \end{ejercicio}
-\begin{solucion}
-La igualdad $\mu(A)=|\varphi^{-1}(A\cap J)|$ prueba $\mu(\varnothing)=0$. Para conjuntos disjuntos $A_j$, sus preimágenes son disjuntas; la aditividad numerable de Lebesgue, o la convergencia monótona aplicada a las indicadoras, da $\mu(\bigcup_j A_j)=\sum_j\mu(A_j)$. Si $|A|=0$, el ejercicio anterior da $|\varphi^{-1}(A)|=0$, luego $\mu\ll dx$. Es $\sigma$-finita: los conjuntos $\varphi([-n,n])$ tienen medida $2n$ y cubren $J$, mientras que $\R\setminus J$ tiene medida $\mu$ nula.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 3: derivada de la medida imagen]\label{ej:v4-l02-3}
 Hallar la derivada de Radon--Nikodym de $\mu$. Corregir la afirmación original $d\mu/dx=\varphi'$.
 \end{ejercicio}
-\begin{solucion}
-La derivada correcta es
-\[
- h(y)=\frac{\mathbf1_J(y)}{|\varphi'(\varphi^{-1}(y))|}.
-\]
-Para $[a,b]\subset J$, la monotonía y el teorema fundamental del cálculo aplicados a $\psi=\varphi^{-1}$ dan
-\[
- \mu([a,b])=|\psi(b)-\psi(a)|=\int_a^b|\psi'(y)|\,dy=\int_a^b h(y)\,dy.
-\]
-La unicidad de medidas en cada intervalo compacto, seguida de agotamiento de $J$, extiende la igualdad a todos los borelianos; ambas medidas son completas sobre los conjuntos de Lebesgue medibles, pues se anulan en los nulos. Fuera de $J$ ambas son cero. Así $h=d\mu/dx$. Con $\varphi(x)=2x$ se obtiene $h=1/2$, no $2$, lo que ya refuta la fórmula original.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 2, ejercicio 4]\label{ej:v4-l02-4}
 Completar la demostración del cambio de variable, con las hipótesis corregidas anteriores.
 \end{ejercicio}
-\begin{solucion}
-Por la definición de medida imagen, primero para indicadoras y después por aproximación simple,
-\[
- \int_\R q(\varphi(x))\,dx=\int_J q(y)h(y)\,dy
-\]
-para toda $q\geq0$ medible. Apliquemos esto a $q(y)=|f(y)|\,|\varphi'(\psi(y))|$. Resulta
-\[
- \int_\R |f(\varphi(x))|\,|\varphi'(x)|\,dx=\int_J|f(y)|\,dy<\infty.
-\]
-La misma identidad para las partes positivas y negativas de las partes real e imaginaria de $f$ da la fórmula buscada. Así se prueban a la vez la integrabilidad del integrando transformado y la igualdad, sin presuponer el cambio de variable que se quería demostrar.
-\end{solucion}
+
 
 \section{El círculo como espacio de medida}\label{lectura:v4-03}
 \index{circulo@círculo}\index{espacio!Lp periodico@Lp periódico}
@@ -146,22 +122,11 @@ Su producto interno es $(2\pi)^{-1}\int_0^{2\pi}e^{i(n-k)t}\,dt$. Vale uno si $n
 \begin{ejercicio}[Lectura 3, ejercicio 1]\label{ej:v4-l03-1}
 Sea $1<p<\infty$ y sea $A\subset L^p(X,\mu)$. Demostrar que $A$ es completa en $L^p$ si y solo si los funcionales $g\mapsto\int_X a\overline g\,d\mu$, $a\in A$, son totales en $L^{p'}$.
 \end{ejercicio}
-\begin{solucion}
-Si $A$ es completa y $g\in L^{p'}$ satisface $\int a\overline g=0$ para todo $a\in A$, Hölder permite extender esa identidad al cierre del espacio generado. En particular se puede tomar $a=|g|^{p'-2}g$ (cero donde $g=0$), que pertenece a $L^p$ porque $(p'-1)p=p'$; obtenemos $\int|g|^{p'}=0$.
 
-Recíprocamente, si el cierre $M$ del espacio generado es propio, Hahn--Banach produce un funcional continuo no nulo de $L^p$ que se anula en $M$. Por la representación del dual de $L^p$, válida para $1<p<\infty$, ese funcional tiene la forma $a\mapsto\int a\overline g$ para algún $g\in L^{p'}$ no nulo. Contradice totalidad. Aquí se usan, con el alcance de medida correspondiente, los teoremas de dualidad desarrollados en el volumen II; en particular cubren los espacios de Lebesgue de este volumen.
-\end{solucion}
 \begin{ejercicio}[Lectura 3, ejercicio 2: normalización real]\label{ej:v4-l03-2}
 Establecer Riemann--Lebesgue y ortogonalidad para los senos y cosenos. Precisar su normalización ortonormal.
 \end{ejercicio}
-\begin{solucion}
-Las identidades $\cos nt=(e_n+e_{-n})/2$ y $\sin nt=(e_n-e_{-n})/(2i)$ expresan los coeficientes reales como combinaciones de coeficientes complejos; por el teorema~\ref{v4:rl-circulo}, tienden a cero. La ortogonalidad de los exponenciales da, para $n,k\geq1$,
-\[
- \ip{\cos nt}{\cos kt}=\ip{\sin nt}{\sin kt}=\tfrac12\delta_{nk},
- \qquad\ip{\sin nt}{\cos kt}=0.
-\]
-Ambos tipos son ortogonales a la constante $1$, cuya norma es uno. Por tanto la familia ortonormal correcta es $\{1\}\cup\{\sqrt2\cos nt,\sqrt2\sin nt:n\geq1\}$. Los senos y cosenos sin esos factores son ortogonales, pero no ortonormales con la medida elegida.
-\end{solucion}
+
 
 \paragraph{Hacia la reconstrucción.}
 La ortogonalidad proporciona coeficientes y cotas; por sí sola no asegura que los coeficientes reconstruyan todas las funciones. El siguiente capítulo desarrolla los núcleos que harán posible esa reconstrucción y distinguirá cuidadosamente convergencia puntual, uniforme y en norma.

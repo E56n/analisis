@@ -73,40 +73,22 @@ porque está cerrada y es el preanulador de ese núcleo. Esto concreta las condi
 \begin{ejercicio}\label{ej:v3-l10-1}
 La lectura afirma, para $S$ acotado y $K$ compacto, que (i) $\dim\ker(S+K)<\infty$ y (ii) $\codim\ran(S+K)<\infty$. Examine el enunciado y pruebe una versión válida.
 \end{ejercicio}
-\begin{solucion}
-Ambos incisos son falsos sin una hipótesis sobre $S$: en un espacio infinito-dimensional, $S=K=0$ tiene núcleo de dimensión infinita e imagen $\{0\}$ de codimensión infinita. Una versión suficiente y natural exige que $S$ sea invertible. Entonces
-\[S+K=S(I+S^{-1}K),
-\]
-donde $C=S^{-1}K$ es compacto. (i) El núcleo de $I+C$ es el espacio propio de $C$ para $-1$, de dimensión finita por la proposición~\ref{v3:compacto-cero}. Es también el núcleo de $S+K$. (ii) La imagen de $I+C$ es cerrada y su anulador es $\ker(I+C')$, de dimensión finita. Para un subespacio cerrado $M$, $(X/M)^*\cong M^\perp$; si ese dual es finito-dimensional, $X/M$ también lo es, pues un conjunto linealmente independiente de $n$ vectores admite $n$ funcionales biortogonales por Hahn--Banach. Por tanto la codimensión es finita. La biyección $S$ preserva codimensión y cierre, dando el inciso (ii) para $S+K$.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l10-2}
 Si $K$ es compacto y $r(K)>0$, existe un valor propio de módulo $r(K)$.
 \end{ejercicio}
-\begin{solucion}
-La compacidad no vacía de $\sigma(K)$ asegura que el máximo del módulo se alcanza en algún $\lambda\in\sigma(K)$. Como $|\lambda|=r(K)>0$, el teorema~\ref{v3:fredholm} afirma que ese punto es un valor propio.
-\end{solucion}
+
 
 \begin{ejercicio}[Segunda alternativa de Fredholm]\label{ej:v3-l10-3}
 Para $\lambda\ne0$, demuestre que o bien $(K-\lambda)x=y$ tiene una única solución para cada $y$, o bien $K'\phi=\lambda\phi$ tiene una solución no nula.
 \end{ejercicio}
-\begin{solucion}
-Si $\ker(K'-\lambda)=0$, el teorema de Fredholm da $\ker(K-\lambda)=0$ y suprayectividad de $K-\lambda$. Existe entonces una única solución para cada dato. Si ese núcleo del adjunto no es cero, obtenemos la segunda alternativa. No pueden ocurrir ambas: si $K-\lambda$ es invertible, también lo es su adjunto, cuyo núcleo debe ser cero. Para un dato particular en la segunda alternativa, la condición de solvencia es que lo anulen todas las soluciones de la ecuación adjunta, como muestra la fórmula previa a los ejercicios.
-\end{solucion}
+
 
 \begin{ejercicio}[Tercera alternativa de Fredholm]\label{ej:v3-l10-4}
 Para $\lambda\ne0$, pruebe $\dim\ker(K-\lambda)=\dim\ker(K'-\lambda)$.
 \end{ejercicio}
-\begin{solucion}
-Pongamos $A=K-\lambda$, $n=\dim\ker A$, $m=\dim\ker A'$, ambos finitos. Elijamos una base $x_1,\ldots,x_n$ de $\ker A$ y funcionales continuas $f_i$ con $f_i(x_j)=\delta_{ij}$. Sea $\psi_1,\ldots,\psi_m$ una base de $\ker A'$. Existen $y_1,\ldots,y_m\in X$ con $\psi_i(y_j)=\delta_{ij}$: el mapeo $x\mapsto(\psi_i(x))$ es suprayectivo sobre $\C^m$, pues de lo contrario una combinación lineal no nula de sus coordenadas se anularía en su imagen y contradice la independencia de las $\psi_i$.
 
-Supongamos $n<m$ y definamos $F x=\sum_{i=1}^nf_i(x)y_i$. Si $(A+F)x=0$, aplicar $\psi_j$ para $j\le n$ da $f_j(x)=0$, luego $Ax=0$. Escribiendo $x$ en la base del núcleo se obtiene $x=0$. Pero $\psi_{n+1}$ se anula en la imagen de $A+F$, así que este operador no es suprayectivo. Contradice Fredholm, porque $A+F=(K+F)-\lambda I$ y $K+F$ es compacto.
-
-Supongamos ahora $n>m$ y definamos $F x=\sum_{i=1}^mf_i(x)y_i$. Este operador $A+F$ no es inyectivo, pues anula $x_{m+1}$. Sin embargo es suprayectivo. Dado $z\in X$, el vector $z_0=z-\sum_{i=1}^m\psi_i(z)y_i$ es anulado por todas las $\psi_i$, luego pertenece a $\ran A$. Escojamos $u$ con $Au=z_0$ y pongamos
-\[x=u+\sum_{i=1}^m[\psi_i(z)-f_i(u)]x_i.
-\]
-Entonces $Ax=z_0$ y $f_i(x)=\psi_i(z)$, por lo que $(A+F)x=z$. Esto vuelve a contradecir Fredholm. Los argumentos incluyen los casos $n=0$ o $m=0$ interpretando las sumas vacías como cero. Por tanto $n=m$. En la perturbación finita se necesitan los vectores $y_i$ que detectan el conúcleo, no los $x_i$ del núcleo usados en la primera sugerencia original.
-\end{solucion}
 
 \section{La geometría de un compacto normal}\label{lec:v3-11}
 \fuentelectura{11}{El teorema espectral}
@@ -187,50 +169,26 @@ La descomposición autoadjunta y el control exacto del resto amplían las notas 
 \begin{ejercicio}\label{ej:v3-l11-1}
 Si $a_n\to0$, pruebe que $D(x_n)=(a_nx_n)$ en $\ell^\infty$ es compacto y $\sigma(D)=\{a_n:n\ge1\}\cup\{0\}$.
 \end{ejercicio}
-\begin{solucion}
-Sea $D_N$ la misma diagonal con ceros después de $N$. Tiene rango finito y $\norm{D-D_N}=\sup_{n>N}|a_n|\to0$, así que $D$ es compacto. Fuera de la cerradura de los $a_n$, la inversa diagonal está acotada; cada $a_n$ es un valor propio. Cero pertenece al espectro porque el espacio es infinito-dimensional y $D$ es compacto. Como la única posible acumulación de la sucesión es cero, su cerradura es exactamente el conjunto indicado. También puede comprobarse directamente que los vectores $e_n$ impiden una inversa acotada en cero si ningún $a_n$ se anula.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l11-2}
 Para un operador normal, demuestre que los espacios propios de dos valores distintos son ortogonales.
 \end{ejercicio}
-\begin{solucion}
-Si $Tv=\lambda v$, $Tw=\mu w$, normalidad implica $T^*w=\cl\mu w$ mediante $\norm{(T^*-\cl\mu)w}=\norm{(T-\mu)w}=0$. Por tanto $\lambda\ip vw=\ip{Tv}w=\ip v{T^*w}=\mu\ip vw$. Si $\lambda\ne\mu$, el producto interno se anula. Esto desarrolla todos los pasos del lema~\ref{v3:normal-nucleos} en el caso pedido.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l11-3}
 Para $T\in\Bcal(H)$ son equivalentes: (i) $T$ compacto; (ii) $T^*T$ compacto; (iii) $T^*$ compacto.
 \end{ejercicio}
-\begin{solucion}
-(i)$\Rightarrow$(ii) usa que componer un compacto con un acotado da un compacto. (i)$\Leftrightarrow$(iii) se deduce de Schauder y la identificación de Riesz, o de aplicar una dirección a $T^*$ y usar $T^{**}=T$. Para (ii)$\Rightarrow$(i), sea $(x_n)$ acotada, $\norm{x_n}\le C$. Elegimos una subsucesión para la que $T^*Tx_n$ converge. Para dos términos de ella, poniendo $u=x_n-x_m$,
-\[\norm{Tu}^2=\ip{T^*Tu}u\le\norm{T^*Tu}\norm u\le2C\norm{T^*Tx_n-T^*Tx_m}.
-\]
-Así $(Tx_n)$ es de Cauchy y converge por completitud de $H$. Éste es el criterio secuencial de compacidad del operador.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l11-4}
 Si $(e_n)$ es ortonormal y $T$ compacto, demuestre $Te_n\to0$ en norma.
 \end{ejercicio}
-\begin{solucion}
-Bessel implica $\ip{e_n}z\to0$ para todo $z\in H$, porque sus módulos cuadrados forman una serie convergente. Así $\ip{Te_n}y=\ip{e_n}{T^*y}\to0$. Si las normas $\norm{Te_n}$ no tendieran a cero, habría una subsucesión con normas al menos $\eps>0$; por compacidad, una subsucesión adicional convergería en norma a $v$. Sus apareamientos convergen tanto a $\ip vy$ como a cero para todo $y$, luego $v=0$, contradiciendo la cota de normas.
-\end{solucion}
+
 
 \begin{ejercicio}[Volterra]\label{ej:v3-l11-5}\index{Volterra, operador de}
 En $L^2[0,1]$ sea $(Vf)(x)=\int_0^xf(t)\,dt$. Pruebe (i) que es compacto; (ii) que $(V^*g)(t)=\int_t^1g(x)\,dx$; (iii) que $M_a=\{f:f=0\text{ casi en todas partes en }[0,a]\}$ es $V$-invariante para $0\le a\le1$.
 \end{ejercicio}
-\begin{solucion}
-(i) Cauchy--Schwarz da $|Vf(x)|\le\norm f_2$ y
-\[|Vf(x)-Vf(y)|\le|x-y|^{1/2}\norm f_2.
-\]
-La imagen de la bola unidad es uniformemente acotada y equicontinua en $C[0,1]$. Por Arzelà--Ascoli su cerradura allí es compacta; la inclusión continua $C[0,1]\hookrightarrow L^2[0,1]$ preserva compacidad, de modo que $V$ es compacto.
 
-(ii) Para $f,g\in L^2$, la integral doble de $|f(t)g(x)|$ sobre el triángulo $0\le t\le x\le1$ está acotada por $\norm f_1\norm g_1\le\norm f_2\norm g_2$, así que Fubini es aplicable. Entonces
-\[\ip{Vf}g=\int_0^1\int_0^x f(t)\cl{g(x)}\,dt\,dx
-=\int_0^1 f(t)\overline{\int_t^1g(x)\,dx}\,dt.
-\]
-Esto identifica el adjunto, cuya fórmula define un operador acotado por la misma estimación de Cauchy--Schwarz.
-
-(iii) Si $f=0$ casi en todas partes en $[0,a]$, para todo $x\le a$ la integral $\int_0^xf$ es cero. Por tanto $Vf\in M_a$. Estos subespacios son cerrados porque son núcleos del multiplicador continuo por $\boldsymbol1_{[0,a]}$. La clasificación de \emph{todos} los subespacios invariantes de Volterra, mencionada sin prueba en la lectura, es un resultado adicional que no se usa aquí; el ejercicio sólo solicita esta invariancia.
-\end{solucion}
 
 El teorema espectral convierte un compacto normal en una diagonal ortogonal y controla el error al truncarla. Para compactos generales esa diagonalización falla, como mostró el corrimiento ponderado. El sustituto correcto será la descomposición en valores singulares, que conserva dos familias ortonormales y permite medir cuán rápidamente decae la acción del operador.

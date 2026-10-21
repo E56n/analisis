@@ -225,41 +225,18 @@ Esto prueba continuidad en $e$. Como $L_a^{-1}L_x=L_{a^{-1}x}$ y $L_a$ es una is
 \begin{ejercicio}[Lectura 17, ejercicio 1]\label{ej:v4-l17-1}
 Sea $\mu$ una medida de Haar izquierda de $G$. Demuestre que $\mu(G)<\infty$ si y sólo si $G$ es compacto.
 \end{ejercicio}
-\begin{solucion}
-Si $G$ es compacto, la definición da $\mu(G)<\infty$. Para la otra dirección, supongamos que $G$ no es compacto. Elijamos un abierto no vacío $U$ de cierre compacto $K$. Construiremos $x_n$ con las traslaciones $x_nU$ disjuntas. Elegido $x_1=e$, si ya elegimos $x_1,\ldots,x_n$, la unión finita $\bigcup_{j=1}^n x_jKK^{-1}$ es compacta y no puede ser todo $G$. Tomemos $x_{n+1}$ fuera de ella. Si $x_{n+1}U\cap x_jU\ne\varnothing$, existirían $u,v\in U$ con $x_{n+1}u=x_jv$, de donde $x_{n+1}=x_jvu^{-1}\in x_jKK^{-1}$, contradicción. La aditividad y la invariancia dan
-$\mu(G)\geq\sum_n\mu(x_nU)=\sum_n\mu(U)=\infty$, pues $\mu(U)>0$.
 
-La hipótesis «$\mu$ es de Haar» es esencial y no aparece explícita en el ejercicio original. Una probabilidad gaussiana sobre $\R$ es finita, aunque $\R$ no sea compacto; no es invariante por traslaciones.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 17, ejercicio 2]\label{ej:v4-l17-2}
 Si $A$ es Borel y $0<\mu(A)<\infty$, pruebe que $a(x)=\mu(A\cap xA)$ es continua.
 \end{ejercicio}
-\begin{solucion}
-Tenemos $1_A\in L^2(G)$ y $L_x1_A=1_{xA}$. Por tanto
-$a(x)=\ip{1_A}{L_x1_A}$. Para $x$ cercano a $y$, Cauchy--Schwarz da
-\[
- |a(x)-a(y)|\leq\norm{1_A}_2\norm{L_x1_A-L_y1_A}_2\longrightarrow0
-\]
-por la proposición \ref{v4:haar-Lp}. La fórmula con $x^{-1}$ sugerida en la lectura también vale: trasladar $A\cap x^{-1}A$ por $x$ produce $xA\cap A$.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 17, ejercicio 3]\label{ej:v4-l17-3}
 Con las mismas hipótesis, pruebe que $K=\{x:\mu(A\cap xA)=\mu(A)\}$ es un subgrupo cerrado.
 \end{ejercicio}
-\begin{solucion}
-La invariancia da $\mu(xA)=\mu(A)$, y de aquí
-\[
- \norm{L_x1_A-1_A}_2^2=\mu(A\mathbin\triangle xA)
-       =2\mu(A)-2\mu(A\cap xA).
-\]
-Así $K$ es el estabilizador del vector $1_A$ para la representación $x\mapsto L_x$ en $L^2$. Contiene $e$; si $x,y\in K$, entonces $L_{xy}1_A=L_xL_y1_A=1_A$; si $x\in K$, aplicar $L_{x^{-1}}$ a $L_x1_A=1_A$ da $L_{x^{-1}}1_A=1_A$. Es, pues, un subgrupo. Es cerrado porque la función $x\mapsto\norm{L_x1_A-1_A}_2$ es continua y $K$ es su conjunto de ceros.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 17, ejercicio 4]\label{ej:v4-l17-4}
 Sea $H$ un subgrupo denso de $G$ y $\mu$ una medida no nula, finita en compactos y con la regularidad de la definición \ref{v4:haar-def}. Si $\mu(hA)=\mu(A)$ para $h\in H$, pruebe que $\mu$ es de Haar izquierda.
 \end{ejercicio}
-\begin{solucion}
-Fijemos $f\in\Cc(G)$. La aplicación $x\mapsto\int L_xf\,d\mu$ es continua: cerca de un punto fijo los soportes quedan en un compacto $C$ y
-$|\int(L_xf-L_yf)\,d\mu|\leq\mu(C)\norm{L_xf-L_yf}_\infty$, cantidad que tiende a cero. El conjunto donde esta integral vale $\int f\,d\mu$ es cerrado y contiene al subgrupo denso $H$; es todo $G$. Aplicando la proposición \ref{v4:haar-integral} concluimos la invariancia de la medida. No hemos supuesto que un punto de $G$ sea límite de una sucesión de $H$: la argumentación con un cerrado funciona también en grupos no metrizables.
-\end{solucion}

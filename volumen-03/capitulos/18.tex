@@ -93,41 +93,27 @@ Este resultado no afirma que todas las medidas de soporte total sean equivalente
 \begin{ejercicio}\label{ej:v3-l35-1}
 Pruebe que una subálgebra $C^*$ $\mathcal A\subset\Lcal(H)$ es una álgebra de von Neumann conmutativa maximal si y sólo si $\mathcal A=\mathcal A'$.
 \end{ejercicio}
-\begin{solucion}
-Si $\mathcal A=\mathcal A'$, es WOT-cerrada y contiene $I$ porque todo conmutante tiene esas propiedades; además es conmutativa porque está contenida en su conmutante. Cualquier álgebra conmutativa que la contenga está contenida en $\mathcal A'$ y coincide con ella.
 
-Recíprocamente, suponga que es conmutativa maximal. Si $T\in\mathcal A'$, sus partes autoadjuntas $H=(T+T^*)/2$ y $K=(T-T^*)/(2i)$ también pertenecen a $\mathcal A'$, ya que éste es autoadjunto. La álgebra $C^*(\mathcal A,H)$ es conmutativa: $H$ es autoadjunto y conmuta con todos los elementos de $\mathcal A$. Por maximalidad, $H\in\mathcal A$. Lo mismo vale para $K$, y por tanto $T=H+iK\in\mathcal A$. Se obtiene la inclusión inversa a $\mathcal A\subset\mathcal A'$.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l35-2}
 Si $\mathcal A$ es una subálgebra $C^*$ conmutativa, pruebe que su clausura WOT es una álgebra de von Neumann conmutativa en sentido amplio. Deduzca que el álgebra de von Neumann unital generada por un operador normal es conmutativa.
 \end{ejercicio}
-\begin{solucion}
-La clausura $\mathcal M$ es una subálgebra autoadjunta por continuidad WOT del adjunto y continuidad separada del producto, como en Kaplansky. Como $\mathcal A\subset\mathcal A'$ y el conmutante es WOT-cerrado, $\mathcal M\subset\mathcal A'$. Por simetría de la conmutación, esto implica $\mathcal A\subset\mathcal M'$. Al cerrar de nuevo, $\mathcal M\subset\mathcal M'$, lo que significa que es conmutativa. Si $T$ es normal, $C^*(I,T)$ es conmutativa; su clausura WOT es el álgebra de von Neumann unital generada por $T$, pues contiene a $T$ y está contenida en toda álgebra WOT-cerrada unital que lo contenga. Si no se supone $I\in\mathcal A$, la primera conclusión utiliza la convención de identidad propia.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l35-3}
 Con la notación de esta lectura, pruebe $\mathcal C'=\mathcal M_\mu$. Deduzca que $L^\infty(\mu)$ es la clausura débil estrella de $C(X)$.
 \end{ejercicio}
-\begin{solucion}
-Si un operador conmuta con $\mathcal C$, la continuidad WOT por separado del producto y la densidad de $\mathcal C$ en $\mathcal M_\mu$ implican que conmuta con todos los multiplicadores. Así $\mathcal C'\subset\mathcal M_\mu'=\mathcal M_\mu$. La inclusión contraria es inmediata porque los multiplicadores conmutan. De aquí $\mathcal C''=\mathcal M_\mu$, y el doble conmutante identifica la clausura WOT de $\mathcal C$ con $\mathcal M_\mu$. Bajo el homeomorfismo del teorema~\ref{v3:weakstar-wot-multiplicadores}, esto equivale exactamente a la densidad débil estrella afirmada.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l35-4}
 Pruebe que todo $*$-isomorfismo preserva los supremos existentes en el orden de los autoadjuntos.
 \end{ejercicio}
-\begin{solucion}
-Sea $\Phi:A\to B$ un $*$-isomorfismo y $a=\sup E$ para $E\subset A_{\mathrm{sa}}$. Como $\Phi$ preserva orden, $\Phi(a)$ es cota superior de $\Phi(E)$. Si $b$ es otra cota superior, $\Phi^{-1}(b)$ domina a $E$, de modo que $a\le\Phi^{-1}(b)$ y $\Phi(a)\le b$. Esto prueba la afirmación sin ninguna hipótesis de continuidad de redes.
 
-La sugerencia de construir siempre una sucesión creciente dentro de $E$ que converja al supremo es falsa. En $\C^2$, el conjunto $E=\{(1,0),(0,1)\}$ tiene supremo $(1,1)$, pero sus dos elementos son incomparables; toda sucesión creciente con términos en $E$ es constante y no converge a ese supremo. Además, un álgebra $C^*$ general no tiene supremo para todo conjunto acotado: el resultado sólo afirma preservación de los que existen.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l35-5}
 Si $\mu,\nu$ son medidas positivas regulares mutuamente absolutamente continuas sobre $X$, pruebe la identificación canónica $L^\infty(X,\mu)=L^\infty(X,\nu)$, sin exigir soporte total.
 \end{ejercicio}
-\begin{solucion}
-La absoluta continuidad mutua significa que ambas medidas tienen exactamente los mismos conjuntos nulos. Por tanto dos funciones representan la misma clase para una medida si y sólo si lo hacen para la otra. Una función está acotada esencialmente por $M$ si $\{|f|>M\}$ es nulo, condición también idéntica para ambas medidas. Así coinciden los conjuntos de clases y sus normas esenciales, y la identificación conserva operaciones e involución. No se afirma que las medidas asignen la misma masa a cada conjunto, ni que las normas $L^p$ con $p<\infty$ coincidan.
-\end{solucion}
+
 
 \section{Vectores cíclicos y separantes}\label{lec:v3-36}
 \fuentelectura{36}{Caracterización de las álgebras de von Neumann conmutativas}

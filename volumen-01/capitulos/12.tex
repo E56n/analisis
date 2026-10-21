@@ -120,9 +120,7 @@ En estos ejercicios, $X$ es un espacio métrico compacto, salvo indicación cont
 \begin{ejercicio}[Lectura 27, ejercicio 1]\label{ej:lectura-27-1}
 Demuestre que $\mathcal A\subset C(X,\R)$ es compacta si y solo si es cerrada, acotada en norma y equicontinua.
 \end{ejercicio}
-\begin{solucion}
-Si $\mathcal A$ es compacta, es cerrada y acotada por las propiedades generales de espacios métricos; además es equicontinua por Arzelà--Ascoli. Recíprocamente, la acotación en norma implica acotación puntual porque $|f(x)|\le\norm f_\infty$. La equicontinuidad y la acotación puntual hacen compacta su clausura. Como $\mathcal A$ es cerrada, coincide con esa clausura y es compacta. La condición de cerrado no puede omitirse si se desea compacidad y no solo compacidad relativa.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 27, ejercicio 2]\label{ej:lectura-27-2}
 Sea $v:C(X,\R)\times X\to\R$ la evaluación $v(f,x)=f(x)$.
@@ -135,38 +133,17 @@ Sea $v:C(X,\R)\times X\to\R$ la evaluación $v(f,x)=f(x)$.
 es abierto en $(\mathcal A\times X)^2$ y contiene la diagonal. Si $\mathcal A$ es compacta, deduzca la necesidad de Arzelà--Ascoli.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item Fijemos $(f,x)$ y $\eps>0$. Por continuidad de $f$, existe $\delta>0$ con $|f(y)-f(x)|<\eps/2$ si $d(x,y)<\delta$. Si además $\norm{g-f}_\infty<\eps/2$, entonces
-\[
- |v(g,y)-v(f,x)|\le|g(y)-f(y)|+|f(y)-f(x)|<\eps.
-\]
-Esto demuestra continuidad para la topología producto. No necesitamos una estimación de continuidad común para todas las funciones del espacio: trabajamos cerca de una función fija $f$.
-\item La aplicación $((f,x),(g,y))\mapsto|v(f,x)-v(g,y)|$ es continua por el inciso anterior y por continuidad de la resta y del valor absoluto. Por tanto, $U_\eps$ es la preimagen del abierto $(-\infty,\eps)$ y es abierto. Si $(f,x)=(g,y)$, la diferencia vale cero; así la diagonal está contenida en $U_\eps$.
 
-Supongamos ahora que $\mathcal A$ es compacta y no vacía. El producto $K=\mathcal A\times X$, con métrica
-$\rho((f,x),(g,y))=\max\{\norm{f-g}_\infty,d(x,y)\}$, es compacto. Justificamos la propiedad de vecindad de la diagonal usada en el ejercicio: si no existiera $\delta>0$ tal que $\rho(p,q)<\delta$ implicara $(p,q)\in U_\eps$, podríamos elegir $p_n,q_n\in K$ con $\rho(p_n,q_n)<1/n$ y $(p_n,q_n)\notin U_\eps$. Una subsucesión de $p_n$ converge a algún $p\in K$, y la desigualdad triangular obliga a que la correspondiente subsucesión de $q_n$ converja al mismo $p$. El complemento de $U_\eps$ es cerrado, por lo que contendría a $(p,p)$, contradiciendo que $U_\eps$ incluye la diagonal.
-
-Para $p=(f,x)$ y $q=(f,y)$ tenemos $\rho(p,q)=d(x,y)$. Así, el $\delta$ anterior asegura $|f(x)-f(y)|<\eps$ simultáneamente para toda $f\in\mathcal A$, lo que prueba equicontinuidad uniforme. Para cada $x$, la imagen de $\mathcal A$ por la evaluación es compacta y, por tanto, acotada. Si la familia inicial es solo relativamente compacta, aplicamos este argumento a su clausura y restringimos después a la familia.
-\end{enumerate}
-\end{solucion}
 
 \begin{ejercicio}[Lectura 27, ejercicio 3]\label{ej:lectura-27-3}
 En $C^1([a,b],\R)$ consideramos $\norm f_{C^1}=\norm f_\infty+\norm{f'}_\infty$. Demuestre que la inclusión $J:C^1([a,b])\to C([a,b])$, $Jf=f$, es lineal y compacta.
 \end{ejercicio}
-\begin{solucion}
-La linealidad se verifica punto por punto y $\norm{Jf}_\infty\le\norm f_{C^1}$ demuestra continuidad. Sea $\mathcal E$ un conjunto acotado para la norma $C^1$; existe $M$ con $\norm f_\infty+\norm{f'}_\infty\le M$ para toda $f\in\mathcal E$. En particular, $|f(x)|\le M$. El teorema del valor medio da
-$|f(x)-f(y)|\le M|x-y|$ para todos $x,y\in[a,b]$. Si $M>0$, elegir $\delta=\eps/M$ demuestra equicontinuidad; si $M=0$, todas las funciones son cero. Por Arzelà--Ascoli, $J(\mathcal E)$ tiene clausura compacta. Esto es la definición de operador compacto.
 
-Como complemento, la norma usada convierte $C^1([a,b])$ en Banach. Si $(f_n)$ es de Cauchy para ella, existen límites uniformes $f_n\to f$ y $f_n'\to g$ en $C([a,b])$. El teorema~\ref{ch26:derivacion}, junto con continuidad en los extremos, implica $f'=g$ en el interior; las derivadas laterales en los extremos se obtienen pasando al límite en los cocientes o integrando $g$. Concretamente, $f_n(x)-f_n(a)=\int_a^x f_n'$ y el límite uniforme da $f(x)-f(a)=\int_a^xg$, de donde $f\in C^1([a,b])$. Las dos convergencias uniformes equivalen a $\norm{f_n-f}_{C^1}\to0$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura 27, ejercicio 4]\label{ej:lectura-27-4}
 Sea $\mathcal A\subset C([a,b],\R)$ una familia cuyas funciones son derivables en $(a,b)$. Si $|f'(x)|\le M$ para todas las funciones y todos los puntos interiores, demuestre que $\mathcal A$ es equicontinua.
 \end{ejercicio}
-\begin{solucion}
-Para $x<y$ en $[a,b]$, la función $f$ es continua en $[x,y]$ y derivable en $(x,y)$, incluso si $x=a$ o $y=b$. El teorema del valor medio proporciona $\xi\in(x,y)$ tal que $f(y)-f(x)=f'(\xi)(y-x)$. Así $|f(y)-f(x)|\le M|y-x|$. Si $M>0$, el radio $\delta=\eps/(2M)$ funciona para toda la familia y todos los puntos. Si $M=0$, la misma estimación implica que cada función es constante, y cualquier $\delta>0$ funciona. Las constantes pueden variar sin estar acotadas entre funciones: equicontinuidad por sí sola no implica acotación puntual.
-\end{solucion}
+
 
 \begin{ejercicio}[Lectura 27, ejercicio 5: versión compleja]\label{ej:lectura-27-5}
 Sea $\mathcal A\subset C(X,\C)$ y ponga $\mathcal A_1=\{\operatorname{Re}f:f\in\mathcal A\}$, $\mathcal A_2=\{\operatorname{Im}f:f\in\mathcal A\}$.
@@ -176,20 +153,7 @@ Sea $\mathcal A\subset C(X,\C)$ y ponga $\mathcal A_1=\{\operatorname{Re}f:f\in\
 \item Deduzca Arzelà--Ascoli complejo: $\mathcal A$ es relativamente compacta si y solo si es equicontinua y cada $\mathcal A(x)$ es acotado.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[label=(\roman*)]
-\item Las desigualdades $|\operatorname{Re}z|,|\operatorname{Im}z|\le|z|$ demuestran que un radio válido para la familia compleja funciona para sus dos partes. Recíprocamente, dados $x$ y $\eps$, elegimos radios que controlen las diferencias de las partes real e imaginaria por $\eps/2$ y tomamos el mínimo. La desigualdad $|z|\le|\operatorname{Re}z|+|\operatorname{Im}z|$ produce el control $\eps$ para toda la familia compleja.
-\item Para $u,v,u',v'$ reales continuas,
-\[
- \norm{\Phi(u,v)-\Phi(u',v')}_\infty
- \le\norm{u-u'}_\infty+\norm{v-v'}_\infty.
-\]
-Así $\Phi$ es Lipschitz para la norma producto suma y, en particular, continua.
-\item Supongamos equicontinuidad y acotación puntual de $\mathcal A$. Sus partes real e imaginaria tienen esas mismas propiedades, así que $K_j=\cl{\mathcal A_j}$ es compacto por el teorema real. El producto $K_1\times K_2$ es compacto, y su imagen por $\Phi$ es un compacto de $C(X,\C)$ que contiene a $\mathcal A$. Esa imagen es cerrada, por ser compacta en un espacio métrico. Por ello contiene también a $\cl{\mathcal A}$, que es un subconjunto cerrado de un compacto y resulta compacto.
 
-Recíprocamente, las aplicaciones $f\mapsto\operatorname{Re}f$ y $f\mapsto\operatorname{Im}f$ son continuas y llevan la clausura compacta de $\mathcal A$ a conjuntos compactos reales. Las clausuras de $\mathcal A_1,\mathcal A_2$ son entonces compactas. El teorema real y el inciso (i) proporcionan equicontinuidad de $\mathcal A$. Para cada $x$, la evaluación compleja es continua y su imagen sobre la clausura es compacta en $\C$, luego acotada.
-\end{enumerate}
-\end{solucion}
 
 \section{La información que se vuelve finita}
 Arzelà--Ascoli convierte dos controles sobre una familia infinita en una propiedad de extracción: de cualquier sucesión puede elegirse una subsucesión convergente uniformemente. El mecanismo combina un conjunto numerable de puntos para la extracción diagonal y una cubierta finita para controlar el error en todo el dominio. Las aplicaciones a operadores compactos, como la inclusión de $C^1$ en $C$, descansan en esa reducción y no en una supuesta extensión de Heine--Borel a todos los espacios normados.

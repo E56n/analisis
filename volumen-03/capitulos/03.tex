@@ -94,35 +94,19 @@ Sea $A\ne\varnothing$ convexo y balanceado en un espacio real o complejo: $\lamb
 Separe estrictamente $\cl A$ del compacto $\{x\}$. En el caso complejo obtenga $\sup_A\operatorname{Re}\varphi<\operatorname{Re}\varphi(x)$. Como $A$ es balanceado, para cada $a$ todas sus rotaciones de módulo uno están en $A$, y $\sup_A\operatorname{Re}\varphi=\sup_A|\varphi|$. En el caso real basta cambiar el signo. Este supremo es no negativo porque $0\in A$. Elija $\alpha$ estrictamente entre el supremo y $\operatorname{Re}\varphi(x)\leq|\varphi(x)|$.
 \end{proof}
 
-\section{Ejercicios resueltos: calibración y convexidad}
+\section{Ejercicios propuestos: calibración y convexidad}
 \begin{ejercicio}[Lectura5, ejercicio1]\label{ej:v3-l05-1}
 Calcule la funcional de calibración de la bola abierta unitaria de un espacio normado real.
 \end{ejercicio}
-\begin{solucion}
-Para $t>0$, $x\in tB(0,1)$ equivale a $\norm x<t$. El ínfimo de esos $t$ es $\norm x$, también para $x=0$. Así $p_{B(0,1)}=\norm\cdot$.
-\end{solucion}
+
 \begin{ejercicio}[Lectura5, ejercicio2]\label{ej:v3-l05-2}
 Demuestre que $f(x)=\tfrac12\norm x^2$ es convexa.
 \end{ejercicio}
-\begin{solucion}
-Para $0\leq t\leq1$ y $a,b\geq0$,
-\[
- (ta+(1-t)b)^2\leq ta^2+(1-t)b^2,
-\]
-pues la diferencia es $t(1-t)(a-b)^2$. Aplicar primero la desigualdad triangular a $tx+(1-t)y$ y después esta desigualdad con $a=\norm x$, $b=\norm y$ da la convexidad, tras dividir entre dos.
-\end{solucion}
+
 \begin{ejercicio}[Lectura5, ejercicio3, incisos(i)--(ii)]\label{ej:v3-l05-3}
 Un espacio es estrictamente convexo si $\norm{u+v}<2$ para vectores unitarios \emph{distintos} $u,v$. (i) Pruebe la equivalencia con $\norm{(u+v)/2}<1$. (ii) Pruebe la equivalencia con la convexidad estricta de $x\mapsto\tfrac12\norm x^2$, también entendida para puntos distintos.
 \end{ejercicio}
-\begin{solucion}
-Excluir $u=v$ es indispensable: en ese caso $\norm{u+v}=2$. (i) La homogeneidad da $\norm{(u+v)/2}=\norm{u+v}/2$, de donde se obtiene la equivalencia.
 
-(ii) Si $f$ es estrictamente convexa, aplíquela al punto medio de dos vectores unitarios distintos: $\norm{(u+v)/2}^2<1$. Recíprocamente, primero extienda la desigualdad del punto medio a cualquier $0<t<1$ para unitarios distintos. Si $t\leq1/2$,
-\[
- tu+(1-t)v=2t\frac{u+v}{2}+(1-2t)v,
-\]
-y la norma es menor que $2t+(1-2t)=1$; si $t>1/2$, intercambie $u,v$. Para $x\ne y$, si $\norm x\ne\norm y$, la segunda desigualdad de la solución anterior es estricta. Si sus normas coinciden y son positivas, aplique la desigualdad recién obtenida a los vectores normalizados. El único caso restante, normas ambas cero, implicaría $x=y$ y está excluido. Así $f$ es estrictamente convexa.
-\end{solucion}
 
 \begin{ejercicio}[Lectura5, ejercicio4: teorema del sándwich, incisos(i)--(iv)]\label{ej:v3-l05-4}
 Sea $p:X\to\R$ sublineal, $S\subseteq X$ no vacío y $f:S\to\R$ con $f\leq p$ en $S$. Defina
@@ -131,62 +115,24 @@ Sea $p:X\to\R$ sublineal, $S\subseteq X$ no vacío y $f:S\to\R$ con $f\leq p$ en
 \]
 Pruebe: (i) $g$ es real, $g\leq p$ y el mismo ínfimo se obtiene con $t>0$; (ii) para una funcional lineal $h$, $h\leq g$ equivale a $h\leq p$ en $X$ y $h\geq f$ en $S$; (iii) si $S$ es convexo y $f$ cóncava, $g$ es sublineal; (iv) bajo esas hipótesis existe una funcional lineal entre las dos cotas. Examine también $S=\varnothing$.
 \end{ejercicio}
-\begin{solucion}
-(i) La subaditividad da $p(ts)\leq p(x+ts)+p(-x)$; como $f(s)\leq p(s)$,
-\[
- p(x+ts)-tf(s)\geq-p(-x)+t(p(s)-f(s))\geq-p(-x).
-\]
-Tomar $t=0$ da la cota superior $g(x)\leq p(x)$. Para un $s\in S$ fijo, las dos estimaciones
-\[
- p(x)-tp(-s)\leq p(x+ts)\leq p(x)+tp(s)
-\]
-implican $p(x+ts)-tf(s)\to p(x)$ cuando $t\downarrow0$. Por tanto excluir $t=0$ no altera el ínfimo.
 
-(ii) Si $h\leq g$, entonces $h\leq p$. Además $g(-s)\leq p(0)-f(s)=-f(s)$, así que $-h(s)\leq-f(s)$. En la otra dirección,
-\[
- h(x)=h(x+ts)-th(s)\leq p(x+ts)-tf(s);
-\]
-tomar ínfimo demuestra $h\leq g$.
-
-(iii) El cambio $t=\lambda u$, para $\lambda>0$, da $g(\lambda x)=\lambda g(x)$ y las cotas de(i) dan $g(0)=0$. Para subaditividad, elija $s_1,s_2\in S$ y $t_1,t_2>0$. Ponga $t=t_1+t_2$ y $s=(t_1s_1+t_2s_2)/t\in S$. La concavidad implica $tf(s)\geq t_1f(s_1)+t_2f(s_2)$, de modo que
-\[
- g(x+y)\leq[p(x+t_1s_1)-t_1f(s_1)]+[p(y+t_2s_2)-t_2f(s_2)].
-\]
-Elija independientemente los dos corchetes a distancia menor que $\eps/2$ de $g(x)$ y $g(y)$; resulta $g(x+y)\leq g(x)+g(y)+\eps$. Dejar $\eps\downarrow0$ prueba la afirmación.
-
-(iv) Extienda la funcional cero del subespacio $\{0\}$ dominada por $g$, usando Hahn--Banach. La extensión $h\leq g$ satisface ambas cotas por(ii). Si $S=\varnothing$, la fórmula original tiene ínfimo vacío, que no es real; por eso(i) necesita la condición añadida. La conclusión(iv) sigue siendo cierta en ese caso, aplicando Hahn--Banach directamente a $p$.
-\end{solucion}
 
 \begin{ejercicio}[Lectura5, ejercicio5: separación de un abierto]\label{ej:v3-l05-5}
 Examine si en la separación estricta puede sustituirse ``$A$ compacto'' por ``$A$ abierto'' manteniendo la misma conclusión.
 \end{ejercicio}
-\begin{solucion}
-No. En $\R$, tome $A=(-\infty,0)$ y $B=\{0\}$. Toda funcional es $f(t)=ct$. Si $c>0$, $\sup_Af=0=\inf_Bf$; si $c<0$, el supremo sobre $A$ es infinito; si $c=0$, no hay desigualdad estricta. Ambos conjuntos cumplen las hipótesis propuestas.
 
-La conclusión válida es la separación punto a punto: existe $f\ne0$ con $f(a)<f(b)$ para todo $a\in A$, $b\in B$. La prueba ya está en el teorema~\ref{v3:separacion-interior}, pues ahora $A=\interior A$. El ejemplo demuestra por qué pasar de desigualdades estrictas individuales a una desigualdad estricta entre supremo e ínfimo requiere una hipótesis adicional.
-\end{solucion}
 \begin{ejercicio}[Lectura5, ejercicio6]\label{ej:v3-l05-6}
 Si $H$ es un hiperplano afín cerrado real, pruebe que $H=f^{-1}(\alpha)$ para alguna $f\in X^*\setminus\{0\}$ y $\alpha\in\R$. Describa los lados y sus cierres.
 \end{ejercicio}
-\begin{solucion}
-Escriba $H=x_0+M$, donde $M$ es cerrado y tiene codimensión uno. Elija $u\notin M$; la funcional de distancia da $f|_M=0$, $f(u)\ne0$. Como $M$ tiene codimensión uno, $\ker f=M$. Por tanto $H=\{x:f(x)=f(x_0)\}$. Los lados son $\{f>\alpha\}$ y $\{f<\alpha\}$, abiertos por continuidad. Sus cierres son $\{f\geq\alpha\}$ y $\{f\leq\alpha\}$: una inclusión sigue por continuidad; para la otra, si $f(x)=\alpha$, añada o reste $u/n$ eligiendo el signo que haga $f(u)>0$. Así cada punto del hiperplano se aproxima desde ambos lados.
-\end{solucion}
+
 \begin{ejercicio}[Lectura5, ejercicio7: teorema del soporte]\label{ej:v3-l05-7}
 El original supone que $A$ es conexo, con interior no vacío, y pide un hiperplano cerrado por cada $x\notin\interior A$ que deje a $A$ en un semiespacio cerrado. Examine esa hipótesis y pruebe la versión válida.
 \end{ejercicio}
-\begin{solucion}
-La conexión es insuficiente. El anillo $A=\{y\in\R^2:1\leq\norm y_2\leq2\}$ es conexo, tiene interior no vacío y $0\notin\interior A$. Ninguna recta por cero deja a todo el anillo de un mismo lado: para cualquier funcional no nula $f$, el anillo contiene puntos $y,-y$ con $f(y)>0>f(-y)$.
 
-La hipótesis correcta es \emph{convexidad}. Separe el abierto convexo $\interior A$ del punto $x$ por el teorema~\ref{v3:separacion-interior}: existe $f\ne0$ con $f(a)<f(x)$ para todo $a\in\interior A$. La prueba de ese teorema mostró $A\subseteq\cl{\interior A}$; por continuidad $f(a)\leq f(x)$ para todo $a\in A$. El hiperplano $H=\{f=f(x)\}$ pasa por $x$ y el semiespacio cerrado $\{f\leq f(x)\}$ contiene a $A$. En un espacio complejo se usa la parte real de una funcional compleja, es decir, un hiperplano real de soporte.
-\end{solucion}
 \begin{ejercicio}[Lectura5, ejercicio8]\label{ej:v3-l05-8}
 Demuestre que un convexo cerrado de un espacio normado real no nulo es la intersección de los semiespacios cerrados que lo contienen.
 \end{ejercicio}
-\begin{solucion}
-Sea primero $A$ no vacío y distinto de $X$. Para cada $x\notin A$, la separación estricta entre $\{x\}$ y $A$ produce $f$ y $c$ con $f(a)\leq c<f(x)$ para todo $a\in A$, tras cambiar el signo si es necesario. Así un semiespacio cerrado contiene $A$ y excluye $x$. La intersección de todos los semiespacios que contienen $A$ no puede contener ningún punto externo; la otra inclusión es inmediata.
 
-Si $A=X$, la intersección de la familia vacía de semiespacios propios se interpreta como $X$. Si $A=\varnothing$ y $X\ne\{0\}$, elija una funcional no nula $f$; los semiespacios $\{f\leq0\}$ y $\{f\geq1\}$ son disjuntos, y ambos contienen el vacío. En el espacio nulo no existen hiperplanos propios: para su conjunto vacío el enunciado literal requiere excluir ese caso o admitir semiespacios degenerados definidos por funcionales nulas. Esa es la razón de la precisión en el enunciado.
-\end{solucion}
 
 \section{Funcionales minimales y una segunda extensión}\label{lec:v3-06}
 \fuentelectura{06}{Más sobre funcionales sublineales}

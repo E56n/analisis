@@ -93,25 +93,19 @@ Si $\mu$ es $\sigma$-finita y $\nu$ es una medida finita real o compleja, entonc
 En la caracterización de continuidad verdadera podemos tomar $S=X$, que es $\sigma$-finito. Aplicamos el teorema. La implicación desde una densidad a la anulación sobre nulos es inmediata de la integral.
 \end{proof}
 
-\section{Ejercicios resueltos: hipótesis de continuidad absoluta}
+\section{Ejercicios propuestos: hipótesis de continuidad absoluta}
 \begin{ejercicio}[Lectura 27, ejercicio 1: aditividad numerable necesaria]\label{ej:v2-l27-1}
 Examinar la afirmación original: para una función solamente finitamente aditiva, continuidad absoluta uniforme equivale a anularse en conjuntos $\mu$-nulos. Dar la versión correcta.
 \end{ejercicio}
-\begin{solucion}
-La implicación uniforme $\Rightarrow$ anulación en nulos siempre vale. La recíproca es falsa. En $\N$, pongamos $\mu(\{n\})=2^{-n}$; su único conjunto nulo es el vacío. Sea $L$ una extensión de norma uno del límite sobre sucesiones convergentes, construida por Hahn--Banach en el ejemplo \ref{v2:limite-extendido}, y trabajemos en el caso real. Es positiva: si $0\le x\le1$, entonces $L(x)=1-L(1-x)\ge1-\norm{1-x}_\infty\ge0$; por homogeneidad lo mismo vale para cualquier sucesión no negativa acotada. Definamos $\nu(A)=L(\ind A)$. Es finitamente aditiva, positiva y se anula sobre el único conjunto $\mu$-nulo. Sin embargo, para $A_m=\{m,m+1,\ldots\}$, tenemos $\mu(A_m)\to0$ y $\nu(A_m)=1$, porque su indicador converge a uno como sucesión de la variable $n$. No hay continuidad uniforme. La versión correcta para medidas finitas numerablemente aditivas es el lema \ref{v2:absoluta-equivalencia}, cuya prueba está desarrollada arriba.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 27, ejercicio 2: aclaración de notación]\label{ej:v2-l27-2}
 Si $\mu$ es $\sigma$-finita, caracterizar las funciones finitamente aditivas verdaderamente continuas. La lectura pide que esto equivalga a pertenecer a $\mathcal M_\mu$, espacio que ella misma había definido mediante continuidad verdadera.
 \end{ejercicio}
-\begin{solucion}
-Con esa definición de $\mathcal M_\mu$, la equivalencia literal es inmediata y no necesita $\sigma$-finitud. El contenido adicional válido bajo $\sigma$-finitud es el siguiente: son exactamente las medidas finitas numerablemente aditivas que se anulan sobre los conjuntos $\mu$-nulos, y exactamente las integrales indefinidas de funciones $L^1$. La necesidad de aditividad numerable y continuidad absoluta fue probada en la proposición \ref{v2:verdadera-caracterizacion}. Para suficiencia, escribimos $X=\bigcup_nF_n$ con $F_n$ crecientes de medida finita. Como $|\nu|$ es finita, $|\nu|(X\setminus F_n)\to0$; combinando esta cota con la continuidad absoluta uniforme se obtiene el control verdadero. El teorema \ref{v2:radon-nikodym} da la última equivalencia.
-\end{solucion}
+
 \begin{ejercicio}[Lectura 27, ejercicio 3]\label{ej:v2-l27-3}
 Demostrar que $\mathcal M_\mu$ es un subespacio cerrado de $\mathcal M(X,\Acal;\R)$ para cualquier medida $\mu$.
 \end{ejercicio}
-\begin{solucion}
-La estabilidad lineal se obtiene uniendo los conjuntos de control de dos medidas y tomando el mínimo de sus umbrales. Para cerradura, si $\nu_n\to\nu$ en variación y $\eps>0$, elegimos $n$ con $\norm{\nu-\nu_n}<\eps/2$. Tomamos $F,\delta$ que controlen $\nu_n$ con error $\eps/2$. Si $\mu(B\cap F)<\delta$, entonces $|\nu(B)|\le|\nu(B)-\nu_n(B)|+|\nu_n(B)|<\eps$. El conjunto $F$ sigue teniendo medida finita y no depende de $B$. Por tanto $\nu\in\mathcal M_\mu$.
-\end{solucion}
+
 
 \section{Singularidad y las tres partes de una medida}\label{lectura:v2-30}
 \begin{definicion}

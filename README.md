@@ -8,16 +8,16 @@ Colección de cuatro volúmenes basada en las lecturas de los cursos de Análisi
 
 ## Los cuatro volúmenes
 
-| Volumen | Tema central | Organización | Páginas | PDF compilado | Fuentes |
-| --- | --- | --- | --- | --- | --- |
-| I | Espacios métricos, normados y de Hilbert | 6 partes, 16 capítulos | 221 | [Volumen I](volumen-01/main.pdf) | [LaTeX](volumen-01/) |
-| II | Teoría de la medida e integración | 6 partes, 16 capítulos | 127 | [Volumen II](volumen-02/main.pdf) | [LaTeX](volumen-02/) |
-| III | Análisis funcional y álgebras de operadores | 6 partes, 18 capítulos | 176 | [Volumen III](volumen-03/main.pdf) | [LaTeX](volumen-03/) |
-| IV | Análisis armónico y grupos localmente compactos | 6 partes, 16 capítulos | 131 | [Volumen IV](volumen-04/main.pdf) | [LaTeX](volumen-04/) |
+| Volumen | Tema central | Organización | Apuntes | Solucionario |
+| --- | --- | --- | --- | --- |
+| I | Espacios métricos, normados y de Hilbert | 6 partes, 16 capítulos | [main.pdf](volumen-01/main.pdf) | [solucionario.pdf](volumen-01/solucionario.pdf) |
+| II | Teoría de la medida e integración | 6 partes, 16 capítulos | [main.pdf](volumen-02/main.pdf) | [solucionario.pdf](volumen-02/solucionario.pdf) |
+| III | Análisis funcional y álgebras de operadores | 6 partes, 18 capítulos | [main.pdf](volumen-03/main.pdf) | [solucionario.pdf](volumen-03/solucionario.pdf) |
+| IV | Análisis armónico y grupos localmente compactos | 6 partes, 16 capítulos | [main.pdf](volumen-04/main.pdf) | [solucionario.pdf](volumen-04/solucionario.pdf) |
 
-La edición reúne **655 páginas y 683 ejercicios con solución**: 641 procedentes de las lecturas originales, ocho de la reconstrucción editorial de la lectura 24 del cuarto curso y 34 complementos.
+La colección conserva **683 ejercicios**: 641 procedentes de las lecturas originales, ocho de la reconstrucción editorial de la lectura 24 del cuarto curso y 34 complementos. Cada volumen tiene apuntes con ejercicios propuestos y un solucionario aparte con los mismos enunciados y sus soluciones.
 
-La jerarquía es **volumen → parte → capítulo → sección**. Los capítulos se numeran consecutivamente dentro de cada volumen. Cada libro contiene índice general, índice de notación, índice alfabético y referencias al final. Las tablas de correspondencia permiten encontrar las lecturas originales dentro de la nueva organización.
+La jerarquía es **volumen → parte → capítulo → sección**. Los capítulos se numeran consecutivamente dentro de cada volumen. Cada libro de apuntes contiene índice general, índice de notación, índice alfabético y referencias al final. Las tablas de correspondencia permiten encontrar las lecturas originales dentro de la nueva organización. Cada solucionario conserva los capítulos y la numeración de los ejercicios de su volumen.
 
 ## Contenido y alcance editorial
 
@@ -30,18 +30,83 @@ Los ejercicios conservan una etiqueta de lectura y número de origen. Los proble
 
 La lectura 24 del cuarto curso se conserva como **reconstrucción editorial**: no se atribuye a Valencia Bucio como una lectura original recuperada. Sus ocho ejercicios se contabilizan por separado. En el segundo volumen, el alcance de las soluciones corresponde a las listas de las 33 lecturas; los dos exámenes archivados con ellas no constituyen una lista adicional resuelta.
 
-## Compilar
+## Nueva estructura
 
-Se requiere una distribución de TeX con `xelatex`, `latexmk`, `makeindex`, las fuentes Latin Modern y los paquetes indicados en los archivos principales. Desde la carpeta del volumen deseado:
+- `main.tex`: entrada de los apuntes, con teoría y ejercicios sin soluciones ni recuadros rojos.
+- `solucionario.tex`: entrada del solucionario, con enunciados y soluciones, y ejercicios en recuadros guinda.
+- `preambulo.tex`: paquetes, macros y configuración compartidos por ambos documentos.
+- `capitulos/`: teoría y ejercicios propuestos, en su ubicación original.
+- `ejercicios-soluciones.tex`: copia de los ejercicios y sus soluciones, organizada por capítulo y con la misma numeración que los apuntes.
+- `portada.tex` y `portada-solucionario.tex`: portadas independientes basadas en el mismo diseño.
+- `estilo-esfm.tex`, `indice.ist` y `assets/`: estilo e identidad gráfica.
+- `partes.tex`, `cobertura.tex` y `notacion.tex`: orden temático, correspondencia con las lecturas e índice de notación de los apuntes.
+- `referencias.tex`: bibliografía compartida, escrita con `thebibliography`; no requiere BibTeX ni Biber.
+- `referencias-apuntes.tex`: referencias del solucionario a resultados de los apuntes mediante `xr-hyper`.
+- `.latexmkrc`: configura XeLaTeX, la compilación de ambos documentos y el almacenamiento de auxiliares en `build/`.
+- `editorial/`: procedencia, cobertura, correcciones y verificaciones.
+- `build/`: carpeta de auxiliares; se conserva con `.gitkeep`, pero su contenido de compilación no se versiona.
+
+Los enunciados están en los capítulos y en `ejercicios-soluciones.tex`. Si se corrige uno, hay que actualizar ambas copias. Las soluciones se editan únicamente en `ejercicios-soluciones.tex`. El verificador de la raíz comprueba que los enunciados sean idénticos y que cada ejercicio conserve su solución y su capítulo.
+
+## Compilación
+
+Se requieren XeLaTeX, `latexmk`, MakeIndex, Latin Modern y los paquetes de `preambulo.tex`, incluido `xr-hyper`. Ejecute los comandos desde la carpeta del volumen deseado, por ejemplo `cd volumen-01`. Sustituya `volumen-01` por `volumen-02`, `volumen-03` o `volumen-04` según corresponda.
+
+Ambos documentos, en orden (apuntes y después solucionario):
 
 ```sh
-cd volumen-01
+latexmk -interaction=nonstopmode -halt-on-error
+```
+
+La forma explícita equivalente es:
+
+```sh
+latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex solucionario.tex
+```
+
+Solo los apuntes:
+
+```sh
 latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Sustituya `volumen-01` por `volumen-02`, `volumen-03` o `volumen-04`. El resultado es `main.pdf` dentro de esa carpeta. `latexmk` repite las pasadas necesarias para resolver referencias y genera el índice alfabético. Los archivos temporales de compilación no forman parte del repositorio.
+Solo el solucionario:
 
-Cada carpeta contiene el documento principal, los capítulos, la organización en partes, la notación, la bibliografía y los registros editoriales de cobertura y correcciones. El primer volumen incluye además `editorial/verificar_estructura.py` para comprobar sus 206 ejercicios originales y sus 20 ampliaciones.
+```sh
+latexmk -xelatex -interaction=nonstopmode -halt-on-error solucionario.tex
+```
+
+Los resultados son `main.pdf` y `solucionario.pdf`. Los ejercicios tienen la misma numeración por capítulo en ambos PDF. Los apuntes conservan sus índices y tablas de correspondencia; el solucionario contiene índice por capítulos y bibliografía.
+
+**Primera compilación:** compile ambos documentos, o los apuntes antes del solucionario. Este último utiliza `build/main.aux` para resolver las referencias a la teoría. Después se pueden compilar por separado; si cambia la numeración de los resultados o se eliminan los auxiliares, vuelva a compilar primero los apuntes. Conserve los dos PDF en la misma carpeta para que funcionen los enlaces entre ellos.
+
+## Archivos de compilación y limpieza
+
+La configuración `.latexmkrc` está incluida en cada volumen. Al clonar el repositorio y compilar con `latexmk` desde la carpeta del volumen, los auxiliares (`.aux`, `.log`, `.toc`, `.idx`, `.ind`, `.fls`, `.fdb_latexmk`, `.xdv`, etc.) se guardan automáticamente en `build/`. Los dos PDF finales permanecen junto a las fuentes: `main.pdf` y `solucionario.pdf`. La configuración funciona con TeX Live y MiKTeX; no hay que añadir opciones de directorio a los comandos anteriores.
+
+Los auxiliares sirven para generar índices, resolver referencias y evitar recompilaciones innecesarias. Se pueden regenerar. Cada carpeta `build/` se conserva en el repositorio mediante `.gitkeep`; todos sus archivos de compilación están excluidos de Git. Para limpiarla, borre los auxiliares de su interior o use el comando siguiente, conservando la carpeta y `.gitkeep`.
+
+Para limpiar los auxiliares conservando los PDF finales, desde la carpeta del volumen:
+
+```sh
+latexmk -c main.tex solucionario.tex
+```
+
+Después de limpiar, compile ambos documentos para regenerar las referencias entre ellos. Si utiliza un editor, configúrelo para ejecutar `latexmk` desde la carpeta del volumen; invocar directamente `xelatex` no lee `.latexmkrc`.
+
+## Verificación
+
+Desde la raíz del proyecto:
+
+```sh
+python verificar_solucionarios.py
+```
+
+También puede añadir el número de volumen para comprobar uno solo. El programa no modifica archivos ni interpreta el contenido matemático. Verifica enunciados idénticos, número de ejercicios y soluciones, capítulos, etiquetas, referencias, citas y equilibrio de entornos.
+
+`verificacion-conjunta.json` y los registros anteriores de `editorial/` corresponden a la edición integrada, que contenía teoría y soluciones en un solo PDF. `editorial/verificacion-separacion.json` documenta la edición separada y los nuevos PDF.
+
+El primer volumen conserva además `editorial/verificar_estructura.py`, actualizado para comprobar la separación de sus 206 ejercicios originales y 20 ampliaciones.
 
 ## Créditos y referencias
 

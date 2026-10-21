@@ -63,60 +63,37 @@ En el subespacio $E=\{(T\xi_1,\ldots,T\xi_n):T\in\Lcal(H)\}\subset H^n$, defina 
 \begin{ejercicio}\label{ej:v3-l31-1}
 Pruebe que $D(F,\eps)=\{T:\norm{T\xi}<\eps\text{ para todo }\xi\in F\}$, con $F\subset H$ finito y $\eps>0$, forma una base de vecindades fuertes de cero.
 \end{ejercicio}
-\begin{solucion}
-Por definición de la topología generada por seminormas, una vecindad básica es una intersección finita $\bigcap_{j=1}^n\{T:p_{\xi_j}(T)<\eps_j\}$. El conjunto $D(\{\xi_1,\ldots,\xi_n\},\min_j\eps_j)$ está contenido en ella. A su vez, cada $D(F,\eps)$ es una intersección finita de esos abiertos. Por tanto ambas familias generan las mismas vecindades. Las vecindades en $T_0$ se obtienen por traslación.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l31-2}
 Si $T_\alpha^*T_\alpha\to0$ en WOT, pruebe $T_\alpha\to0$ en SOT. Si además $\sup_\alpha\norm{T_\alpha}<\infty$, pruebe $T_\alpha^*T_\alpha\to0$ en SOT.
 \end{ejercicio}
-\begin{solucion}
-Para cada $\xi$, $\norm{T_\alpha\xi}^2=\ip{T_\alpha^*T_\alpha\xi}{\xi}\to0$. Bajo la cota uniforme $M$, se tiene $\norm{T_\alpha^*T_\alpha\xi}\le M\norm{T_\alpha\xi}\to0$, que prueba la segunda afirmación.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l31-3}
 Sea $L(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ en $\ell^2$. Pruebe: (i) $L^n\to0$ en WOT pero no en SOT; (ii) $(L^*)^n\to0$ en SOT pero no en norma.
 \end{ejercicio}
-\begin{solucion}
-(ii) Primero, $\norm{(L^*)^nx}^2=\sum_{k>n}|x_k|^2\to0$. Sin embargo, $(L^*)^ne_{n+1}=e_1$, así cada operador tiene norma uno. (i) La identidad $\ip{L^nx}{y}=\ip x{(L^*)^ny}$ y Cauchy--Schwarz dan convergencia débil a cero. Como $L$ es isométrico, $\norm{L^nx}=\norm x$ para todo $n$; ningún vector no nulo converge a cero en norma bajo esas potencias. Este ejemplo también muestra que la adjunción no es SOT-continua: $(L^*)^n\to0$ fuertemente pero sus adjuntos $L^n$ no.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l31-4}
 Pruebe que la bola unitaria cerrada de $\Lcal(H)$ es WOT-compacta.
 \end{ejercicio}
-\begin{solucion}
-Para cada par $\xi,\eta$, sea $D_{\xi,\eta}=\{z:|z|\le\norm\xi\norm\eta\}$. Tychonoff hace compacto el producto de todos estos discos. La aplicación $T\mapsto(\ip{T\xi}{\eta})_{\xi,\eta}$ identifica la bola con el conjunto de familias $b(\xi,\eta)$ que son sesquilineales y satisfacen $|b(\xi,\eta)|\le\norm\xi\norm\eta$. Las identidades de sesquilinealidad son condiciones cerradas coordenada a coordenada, de modo que ese conjunto es cerrado en el producto. Recíprocamente, Riesz aplicado a $\eta\mapsto\overline{b(\xi,\eta)}$, o a la forma sesquilineal acotada, produce un único operador $T$ con norma a lo sumo uno y esos coeficientes; la linealidad en $\xi$ asegura que el operador es lineal. La topología inducida del producto es exactamente WOT. Así la bola es compacta.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l31-5}
 Si $C\subset\Lcal(H)$ es convexo, pruebe que sus clausuras SOT y WOT coinciden.
 \end{ejercicio}
-\begin{solucion}
-La clausura SOT está contenida en la WOT porque SOT es más fina. Si $T$ no pertenece a la clausura SOT de $C$, existen $\xi_1,\ldots,\xi_n$ y $\eps>0$ tales que ningún $S\in C$ satisface simultáneamente $\norm{(S-T)\xi_j}<\eps$. Defina $J(S)=(S\xi_1,\ldots,S\xi_n)\in H^n$. Entonces $J(T)$ está fuera de la clausura normada del conjunto convexo $J(C)$, pues su distancia a cada punto de éste es al menos $\eps$. La separación de Hahn--Banach en el espacio normado $H^n$ proporciona un funcional real continuo que separa estrictamente $J(T)$ de esa clausura. Es la parte real de un funcional complejo lineal continuo; por Riesz, éste tiene la forma $(v_1,\ldots,v_n)\mapsto\sum_j\ip{v_j}{\eta_j}$. Por tanto el separador compuesto con $J$ es la parte real de $\sum_j\ip{S\xi_j}{\eta_j}$, que es WOT-continuo. Su semiespacio abierto separa $T$ de $C$, así $T$ tampoco pertenece a la clausura WOT. Esto prueba la inclusión inversa usando sólo separación en espacios normados. El argumento funciona también para convexos reales, como el conjunto de autoadjuntos.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l31-6}
 Examine la afirmación: si $T_\alpha$ son normales y $T_\alpha\to T$ fuertemente, entonces $T_\alpha^*\to T^*$ fuertemente. Pruebe la versión correcta suponiendo además que $T$ es normal.
 \end{ejercicio}
-\begin{solucion}
-La afirmación sin la hipótesis adicional es falsa. En $\ell^2$, sea $U_n$ el unitario que permuta cíclicamente $e_1,\ldots,e_n$, enviando $e_k$ a $e_{k+1}$ para $k<n$ y $e_n$ a $e_1$, y fija los demás vectores de la base. Para cada vector de soporte finito, $U_nx=Lx$ cuando $n$ es grande; la cota uniforme $\norm{U_n}=1$ extiende esta convergencia a todo $\ell^2$. Así $U_n\to L$ fuertemente. Pero $U_n^*e_1=e_n$ no converge en norma a $L^*e_1=0$.
 
-Si $T$ también es normal, WOT-continuidad de la adjunción da $T_\alpha^*\xi\rightharpoonup T^*\xi$. La normalidad implica $\norm{T_\alpha^*\xi}=\norm{T_\alpha\xi}\to\norm{T\xi}=\norm{T^*\xi}$. En un Hilbert, convergencia débil más convergencia de normas implica convergencia en norma, como se ve al expandir
-$\norm{T_\alpha^*\xi-T^*\xi}^2$. Esto prueba la versión corregida, también para redes. El desplazamiento muestra precisamente por qué no puede deducirse que el límite fuerte de normales sea normal.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l31-7}
 Sean $T_\alpha,T$ normales, $T_\alpha\to T$ en SOT, y $\norm{T_\alpha},\norm T\le r$. Si $f:\C\to\C$ es continua, pruebe $f(T_\alpha)\to f(T)$ en SOT.
 \end{ejercicio}
-\begin{solucion}
-Por el ejercicio anterior, los adjuntos también convergen fuertemente. La continuidad conjunta del producto para familias uniformemente acotadas prueba por inducción la convergencia fuerte de cada polinomio $p(T_\alpha,T_\alpha^*)$ hacia $p(T,T^*)$. Stone--Weierstrass aproxima $f$ uniformemente sobre el disco compacto $|z|\le r$ por un polinomio en $z,\overline z$. Para un vector $\xi$,
-\[
- \norm{(f(T_\alpha)-f(T))\xi}
- \le2\norm{f-p}_{\infty,\,|z|\le r}\norm\xi
- +\norm{(p(T_\alpha,T_\alpha^*)-p(T,T^*))\xi}.
-\]
-Primero haga pequeño el primer término eligiendo $p$ y después el segundo haciendo avanzar la red. La normalidad del límite es necesaria para que $f(T)$ tenga este significado y para la convergencia de adjuntos; no estaba incluida explícitamente en la lectura original.
-\end{solucion}
+
 
 \section{Redes monótonas de operadores}\label{lec:v3-32}
 \fuentelectura{32}{El teorema del doble conmutador}
@@ -186,9 +163,7 @@ La condición $I_H\in\mathcal A$ no puede omitirse sin reemplazarla por no degen
 \begin{ejercicio}\label{ej:v3-l32-1}
 Si $\mathcal A$ es una subálgebra $C^*$ de $\Lcal(H)$, pruebe que $\mathcal A'$ es un álgebra de von Neumann unital.
 \end{ejercicio}
-\begin{solucion}
-Contiene $I$, es una subálgebra y es autoadjunta porque $\mathcal A$ lo es. Para cada $S\in\mathcal A$, la ecuación $TS=ST$ define un cerrado WOT. Su intersección sobre todos los $S$ es $\mathcal A'$, así es WOT-cerrada. No se necesita que $\mathcal A$ contenga la identidad para esta afirmación.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l32-2}
 Si $\mathcal A_j\subset\Lcal(H_j)$ son álgebras de von Neumann unitarias, pruebe que el álgebra de operadores diagonales
@@ -197,24 +172,16 @@ Si $\mathcal A_j\subset\Lcal(H_j)$ son álgebras de von Neumann unitarias, prueb
 \]
 es un álgebra de von Neumann sobre $\bigoplus_jH_j$. Aclare qué suma de álgebras se utiliza.
 \end{ejercicio}
-\begin{solucion}
-El producto acotado coordenado es un álgebra $C^*$ y actúa diagonalmente con norma $\sup_j\norm{T_j}$. Contiene la identidad. Si una red de sus operadores converge en WOT a $T$, todos los coeficientes entre componentes diferentes siguen siendo cero, así $T$ es diagonal. Sus compresiones $T_j$ son límites WOT de elementos de $\mathcal A_j$, luego pertenecen a ellas; además $\norm{T_j}\le\norm T$. Por tanto $T\in\mathcal M$ y el álgebra es WOT-cerrada.
 
-La notación de suma directa aquí significa \emph{producto acotado diagonal}. La suma algebraica, ni en general la suma $c_0$, es WOT-cerrada. Por ejemplo, las proyecciones de soporte finito en $\bigoplus_{n\ge1}\C=\ell^2$ pertenecen al álgebra diagonal $c_0$ y convergen fuertemente a $I$, que no pertenece a $c_0$.
-\end{solucion}
 
 \begin{ejercicio}\label{ej:v3-l32-3}
 Pruebe que una álgebra de von Neumann es cerrada en norma y, por tanto, es una álgebra $C^*$.
 \end{ejercicio}
-\begin{solucion}
-Una red convergente en norma converge en WOT. Si sus elementos pertenecen al álgebra WOT-cerrada, el límite también pertenece a ella. Así es normocerrada en el álgebra de Banach $\Lcal(H)$, por lo que es completa; hereda la involución y la identidad $C^*$ de los operadores.
-\end{solucion}
+
 
 \begin{ejercicio}\label{ej:v3-l32-4}
 Pruebe que la bola unitaria cerrada de una álgebra de von Neumann es WOT-compacta y SOT-cerrada. Determine si siempre es SOT-compacta.
 \end{ejercicio}
-\begin{solucion}
-La bola del álgebra es la intersección de un cerrado WOT con la bola WOT-compacta de $\Lcal(H)$, y por tanto es WOT-compacta. Es WOT-cerrada porque los compactos en un Hausdorff son cerrados; luego también es SOT-cerrada. No siempre es SOT-compacta. En $\Lcal(\ell^2)$ considere $T_n\xi=\ip\xi{e_1}e_n$. Todos tienen norma uno, pero $T_ne_1=e_n$. Si la bola fuera SOT-compacta, su imagen por la evaluación continua $T\mapsto Te_1$ sería compacta en norma y contendría la sucesión ortonormal, imposible porque sus términos están a distancia $\sqrt2$ unos de otros. En dimensión finita, en cambio, las tres topologías coinciden y la bola sí es compacta.
-\end{solucion}
+
 
 El doble conmutante identifica el cierre de un álgebra mediante sus simetrías de conmutación. Todavía falta controlar las normas de los operadores aproximantes. El teorema de Kaplansky hará posible esa mejora y preparará la extensión del cálculo continuo a funciones borelianas. Referencias complementarias: \cite{conway1990,murphy1990,zhu1993}.
